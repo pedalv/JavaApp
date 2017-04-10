@@ -1,8 +1,10 @@
 # Sprint Boot
 Project to start with Sprint Boot - Hello World.
 
-## Location
-Hello World project is located on [https://github.com/pedalv/JavaApp/tree/master/SpringBoot](https://github.com/pedalv/JavaApp/tree/master/SpringBoot)
+## External Libraries
+- Java 8
+- Spring Boot 1.4.1
+- JUnit 4.12
 
 ## Create project
 - [Start](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started)

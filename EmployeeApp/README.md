@@ -1,11 +1,12 @@
 # EmployeeApp
-EmployeeApp from Oracle.
+EmployeeApp from [Oracle](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/basic_app_embedded_tomcat/basic_app-tomcat-embedded.html#overview).
 
-## Location
-JavaWeb is located on [https://github.com/pedalv/JavaApp/tree/master/EmployeeApp](https://github.com/pedalv/JavaApp/tree/master/EmployeeApp)
-
-## Description
-- [Oracle](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/basic_app_embedded_tomcat/basic_app-tomcat-embedded.html#overview)
+## External Libraries
+- Java 8
+- JSTL 1.2
+- JUnit 4.12, Hamcrest 1.3
+- Tomcat 7.070
+- JSP, CSS, JS, HTML
 
 ## Create jar file
 ```bash
