@@ -5,9 +5,9 @@ Das Boot project.
 - Java 8
 - Spring Boot 1.4.1
 - JUnit 4.12
-- H2 Database
-- AngularJs 
-- JSP, CSS, JS, HTML
+- H2 Database 1.4.192, Hibernate-JPA 2.1
+- RESTfull, JSON
+- AngularJs, CSS, JS, HTML
 
 ## Documentations
 - [Spring Tool Suite](https://spring.io/tools)
@@ -18,25 +18,24 @@ Das Boot project.
 ```bash
 $ ./spring init --dependencies= web myDasApp
 ```
-## [RESTful Web App](git clone https://github.com/dlbunker/ps-spring-boot-resources.git)
+## [RESTful Web App](https://github.com/dlbunker/ps-spring-boot-resources.git)
 Spring MVC REST Controller ngResource for “shipwreck” 
 - GET /api/v1/shipwrecks (list) -> [GET](http://localhost:8080/api/v1/shipwrecks) 
 - POST /api/v1/shipwrecks (add)
 - GET /api/v1/shipwrecks/{id} (view)
 - PUT /api/v1/shipwrecks/{id} (udpate)
 - DELETE /api/v1/shipwrecks/{id} (delete)
-- [Das Index from Github](http://localhost:8080/index.html#/)
 > Copy content located on www directory to "Das Boot" project on resources/public.
-- [Das Home](http://localhost:8080)
 
 ##[§ Appendix A. Common application properties](http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
 - VM arguments: 
 ```
 -Dspring.profiles.active=test
 ```
-## [H2 Database](http://localhost:8080/h2)
-
-## Run test
+- [Das Home](http://localhost:8080)
+- [Das Index](http://localhost:8080/index.html#/)
+- [Das H2 Database](http://localhost:8080/h2)
+- Run test
 ```
 $ mvn test
 ``` 
