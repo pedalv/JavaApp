@@ -1,8 +1,12 @@
 # JavaApp
 Java projects to build competence.
 
+# Project 5: InsuranceApp
+- Project for create an insurance contrat via one request through many services
+- InsuranceApp project is located on [https://github.com/pedalv/JavaApp/tree/master/nsuranceApp](https://github.com/pedalv/JavaApp/tree/master/nsuranceApp)
+
 # Project 4: Weather
-- Project for show forecast and send report by e-mail every time
+- Project for show forecast from yr.no and send report by e-mail every time
 - Weather project is located on [https://github.com/pedalv/JavaApp/tree/master/Weather](https://github.com/pedalv/JavaApp/tree/master/Weather)
 
 # Project 3: DasBoot
@@ -17,13 +21,3 @@ Java projects to build competence.
 # Project 1: Sprint Boot - Hello World
 - Project to start with Sprint Boot framework.
 - Hello World project is located on [https://github.com/pedalv/JavaApp/tree/master/SpringBoot](https://github.com/pedalv/JavaApp/tree/master/SpringBoot)
-
-
-
-
-
-
-
-# Project 5:
-
-# Project 6:
