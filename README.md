@@ -3,7 +3,7 @@ Java projects to build competence.
 
 # Project 5: InsuranceApp
 - Project for create an insurance contrat via one request through many services
-- InsuranceApp project is located on [https://github.com/pedalv/JavaApp/tree/master/nsuranceApp](https://github.com/pedalv/JavaApp/tree/master/nsuranceApp)
+- InsuranceApp project is located on [https://github.com/pedalv/JavaApp/tree/master/InsuranceApp](https://github.com/pedalv/JavaApp/tree/master/InsuranceApp)
 
 # Project 4: Weather
 - Project for show forecast from yr.no and send report by e-mail every time

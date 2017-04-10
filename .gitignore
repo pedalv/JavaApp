@@ -99,6 +99,7 @@ target/
 .settings
 .springBeans
 WeatherApplication.log*
+*.pdf
 
 ### front-end ###
 node_modules
