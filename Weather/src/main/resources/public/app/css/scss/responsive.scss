@@ -1,0 +1,26 @@
+@import 'common';
+@import 'variables';
+
+@media screen and (max-width: $screen-xs-max) {
+    .weather, .error {
+      @include mainContent(0);
+    }
+}
+@media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .weather, .error {
+        @include mainContent(1em);
+    }
+
+}
+@media screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    .weather, .error {
+      @include mainContent(1.5em);
+    }
+
+}
+@media screen and (min-width: $screen-lg-min) {
+    .weather, .error {
+      @include mainContent(2em);
+    }
+
+}

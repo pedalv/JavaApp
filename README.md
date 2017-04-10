@@ -1,6 +1,10 @@
 # JavaApp
 Java projects to build competence.
 
+# Project 4: Weather
+- Project for show forecast and send report by e-mail every time
+- Weather project is located on [https://github.com/pedalv/JavaApp/tree/master/Weather](https://github.com/pedalv/JavaApp/tree/master/Weather)
+
 # Project 3: DasBoot
 - Project for create, update, edit and delete boat form with H2 database
 - DasBoot project is located on [https://github.com/pedalv/JavaApp/tree/master/DasBoot](https://github.com/pedalv/JavaApp/tree/master/DasBoot)
@@ -19,7 +23,6 @@ Java projects to build competence.
 
 
 
-# Project 4:
 
 # Project 5:
 

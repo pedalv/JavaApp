@@ -7,7 +7,6 @@
 .idea/dictionaries
 .idea/vcs.xml
 .idea/jsLibraryMappings.xml
-
 # Sensitive or high-churn files:
 .idea/dataSources.ids
 .idea/dataSources.xml
@@ -25,6 +24,18 @@
 
 ## File-based project format:
 *.iws
+### front-end ###
+node_modules
+npm-debug.log
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+WeatherApplication.log*
 
 ## Plugin-specific files:
 
@@ -33,6 +44,10 @@
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+.idea
+*.iws
+*.iml
+*.ipr
 
 # JIRA plugin
 atlassian-ide-plugin.xml
@@ -72,3 +87,27 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+WeatherApplication.log*
+
+### front-end ###
+node_modules
+npm-debug.log
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/

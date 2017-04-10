@@ -1,0 +1,47 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "Oppgaver prosjekt for intervjue med Spring",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedalv/Oppgaver.git"
+  },
+  "author": "Pedro Alves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedalv/Oppgaver/issues"
+  },
+  "homepage": "https://github.com/pedalv/Oppgaver#readme",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "angular":"^1.6.1",
+    "angular-route": "^1.6.1",
+    "angular-animate": "^1.6.1",
+    "angular-aria": "^1.6.1",
+    "angular-sanitize": "^1.6.1",
+    "angular-material":"^1.1.2",
+    "bootstrap":"^3.3.7",
+    "jquery":"^3.1.1",
+    "tether":"^1.4.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-minify-css":"^1.2.4",
+    "run-sequence":"^1.2.2",
+    "jasmine-core":"^2.5.2",
+    "karma":"^1.4.1",
+    "karma-jasmine":"^1.1.0",
+    "karma-chrome-launcher":"^2.0.0",
+    "karma-requirejs":"^1.1.0",
+    "requirejs":"^2.3.2",
+    "karma-cli":"^1.0.1",
+    "angular-mocks":"^1.6.1"
+  }
+}
