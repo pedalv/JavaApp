@@ -1,6 +1,10 @@
 # JavaApp
 Java projects to build competence.
 
+# Project 6: Ortogram
+- Project for show logic skills
+- InsuranceApp project is located on [https://github.com/pedalv/JavaApp/tree/master/Ortogram](https://github.com/pedalv/JavaApp/tree/master/Ortogram)
+
 # Project 5: InsuranceApp
 - Project for create an insurance contrat via one request through many services
 - InsuranceApp project is located on [https://github.com/pedalv/JavaApp/tree/master/InsuranceApp](https://github.com/pedalv/JavaApp/tree/master/InsuranceApp)
