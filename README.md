@@ -1,6 +1,11 @@
 # JavaApp
 Java projects to build competence.
 
+# Fetch all JavaApp projects
+```bash
+git clone https://github.com/pedalv/JavaApp.git
+```
+
 # Project 6: Ortogram
 - Project for show logic skills
 - InsuranceApp project is located on [https://github.com/pedalv/JavaApp/tree/master/Ortogram](https://github.com/pedalv/JavaApp/tree/master/Ortogram)

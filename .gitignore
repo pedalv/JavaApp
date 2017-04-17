@@ -49,6 +49,7 @@ WeatherApplication.log*
 *.iml
 *.ipr
 
+
 # JIRA plugin
 atlassian-ide-plugin.xml
 
