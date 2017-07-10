@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-Jul-2017 10:46:06 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="no.domain.User" table="users">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        
+        <component name="proteinData">
+        	<property name="total" type="int">
+	            <column name="total" />
+	        </property>
+	        <property name="goal" type="int">
+	            <column name="goal" />
+	        </property>
+        </component>
+        <!-- SET
+        <set name="history" table="user_history">
+        	<key column="id" />
+        	<composite-element class="no.domain.UserHistory">
+        		<property name="entryTime" type="date" column="entryTime" />
+        		<property name="entry" type="string" column="entry" />
+        	</composite-element>
+        </set>
+         -->
+         <!-- LIST
+        <list name="history" table="user_history">
+        	<key column="id" />
+        	<list-index column="position"/>
+        	<composite-element class="no.domain.UserHistory">
+        		<property name="entryTime" type="date" column="entryTime" />
+        		<property name="entry" type="string" column="entry" />
+        	</composite-element>
+        </list>
+         -->
+         <!-- MAP -->
+         <map name="history" table="user_history">
+        	<key column="id" />
+        	<map-key type="string" column="entry_identifier" />
+        	<composite-element class="no.domain.UserHistory">
+        		<property name="entryTime" type="date" column="entryTime" />
+        		<property name="entry" type="string" column="entry" />
+        	</composite-element>
+        </map>
+        
+        
+         
+    </class>
+</hibernate-mapping>
