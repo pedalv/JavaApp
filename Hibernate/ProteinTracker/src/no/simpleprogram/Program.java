@@ -6,6 +6,8 @@ import java.util.Map.Entry;
 
 import org.hibernate.Session;
 
+import no.domain.GoalAlert;
+import no.domain.ProteinData;
 import no.domain.User;
 import no.domain.UserHistory;
 
@@ -22,15 +24,20 @@ public class Program {
 		
 		User user = new User();
 		user.setName("Pedro");
-		//SET and LIST
+		//SET and LIST and BAG
 		//user.getHistory().add(new UserHistory(new Date(), "Set name to Pedro"));
+		user.addHistory(new UserHistory(new Date(), "Set name to Pedro"));
 		//MAP
-		user.getHistory().put("guid1", new UserHistory(new Date(), "Set name to Pedro"));
+		//user.getHistory().put("guid1", new UserHistory(new Date(), "Set name to Pedro"));
 		user.getProteinData().setGoal(256);
-		//SET and LIST
+		//SET and LIST and BAG
 		//user.getHistory().add(new UserHistory(new Date(), "Set the goal to 280"));
+		user.addHistory(new UserHistory(new Date(), "Set the goal to 280"));
 		//MAP
-		user.getHistory().put("guid2", new UserHistory(new Date(), "Set the goal to 280"));
+		//user.getHistory().put("guid2", new UserHistory(new Date(), "Set the goal to 280"));
+		user.getGoalAlerts().add(new GoalAlert("Congratulations!"));
+		user.getGoalAlerts().add(new GoalAlert("You did it!"));
+		
 		session.save(user);
 		
 		
@@ -45,24 +52,26 @@ public class Program {
 		System.out.println(loadedUser.getName());
 		System.out.println(loadedUser.getProteinData().getGoal());
 		
-		//SET and LIST
-		/*
+		//SET and LIST and BAG
 		for(UserHistory history: loadedUser.getHistory()) {
 			System.out.println(history.getEntryTime().toString() + " - " + history.getEntry());
 		}
-		*/
-		//MAP
+		
+		/* MAP
 		for(Entry<String, UserHistory> history: loadedUser.getHistory().entrySet()) {
 			System.out.println("Key: " + history.getKey());
 			System.out.println(history.getValue().getEntryTime().toString() + " - " + history.getValue().getEntry());
 		}
-		
+		*/
 		// and Update
 		loadedUser.getProteinData().setTotal(loadedUser.getProteinData().getTotal() + 58);
-		//SET and LIST
+		//SET and LIST and BAG
 		//loadedUser.getHistory().add(new UserHistory(new Date(), "Added 58 to protein"));
+		loadedUser.addHistory(new UserHistory(new Date(), "Added 58 to protein"));
 		//MAP
-		loadedUser.getHistory().put("GUID3", new UserHistory(new Date(), "Added 58 to protein"));
+		//	loadedUser.getHistory().put("GUID3", new UserHistory(new Date(), "Added 58 to protein"));
+		
+		user.setProteinData(new ProteinData() );
 		
 		session.getTransaction().commit();
 		

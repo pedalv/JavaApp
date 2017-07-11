@@ -12,6 +12,8 @@
             <column name="name" />
         </property>
         
+        
+        <!-- 
         <component name="proteinData">
         	<property name="total" type="int">
 	            <column name="total" />
@@ -20,6 +22,16 @@
 	            <column name="goal" />
 	        </property>
         </component>
+         -->
+         <!--  one to one: id is from user
+         <one-to-one name="proteinData" class="no.domain.ProteinData"  
+         	cascade="save-update"/>
+         -->
+        <!--  many to one: id from proteinData and id from user -->
+        <many-to-one name="proteinData" class="no.domain.ProteinData"  
+        	column="protein_data_id" cascade="save-update" unique="true" />
+        
+        
         <!-- SET
         <set name="history" table="user_history">
         	<key column="id" />
@@ -39,7 +51,7 @@
         	</composite-element>
         </list>
          -->
-         <!-- MAP -->
+         <!-- MAP 
          <map name="history" table="user_history">
         	<key column="id" />
         	<map-key type="string" column="entry_identifier" />
@@ -48,7 +60,47 @@
         		<property name="entry" type="string" column="entry" />
         	</composite-element>
         </map>
+        -->
+        <!-- bag: not allow duplicate rows - idbag: allow duplicate rows -->
+        <!-- BAG  
+         <idbag name="history" table="user_history">
+         	<collection-id type="int" column="id">
+         		<generator class="increment" />
+         	</collection-id>
+        	<key column="user_id" />
+        	<composite-element class="no.domain.UserHistory">
+        		<property name="entryTime" type="date" column="entryTime" />
+        		<property name="entry" type="string" column="entry" />
+        	</composite-element>
+        </idbag>
+        -->
+        <!-- inverse="true": update id only one time in user identity and userhistory will be postpone -->
+        <!-- cascade="save-update": save user and userhistory, both are different identity, at same time. 
+             cascade will fix the error: object references an unsaved transient instance - save the transient 
+             instance beforeQuery flushing: no.domain.UserHistory
+         -->
+        <!-- LIST one-to-many -->
+        <list name="history" table="user_history" inverse="true" cascade="save-update">
+        	<key column="user_id" />
+        	<list-index column="position"/>
+        	<one-to-many class="no.domain.UserHistory"/>
+        </list>
         
+        <!--  one-to-one or one-to-zero 
+        <join table="user_goalalert" optional="true">
+        	<key column="user_id" />
+        	<many-to-one name="goalAlert" 
+        		column="goalalert_id" 
+        		not-null="true" 
+        		unique="true" 
+        		cascade="save-update" />
+        </join>
+        -->
+        
+        <set name="goalAlerts" table="user_goalalert" cascade="save-update">
+        	<key column="user_id"/>
+        	<many-to-many class="no.domain.GoalAlert" column="goalalert_id"/>
+        </set>
         
          
     </class>

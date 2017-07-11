@@ -9,9 +9,12 @@
   <property name="hibernate.connection.username"></property>
   <property name="hibernate.default_schema">protein_tracker</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-  <property name="connection.autocommit">true</property>  
+  <property name="connection.autocommit">true</property>
   <!--  not use in production  -->
   <property name="hibernate.show_sql">true</property>
   <mapping resource="no/domain/User.hbm.xml"/>
+  <mapping resource="no/domain/UserHistory.hbm.xml"/>
+  <mapping resource="no/domain/ProteinData.hbm.xml"/>
+  <mapping resource="no/domain/GoalAlert.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

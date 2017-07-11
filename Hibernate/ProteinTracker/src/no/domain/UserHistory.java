@@ -3,10 +3,10 @@ package no.domain;
 import java.util.Date;
 
 public class UserHistory {
-	/*
+	
 	private int id;
 	private User user;
-_*/
+
 	public UserHistory() {}
 	
 	public UserHistory(Date entryTime, String entry) {
@@ -62,7 +62,7 @@ _*/
 	public void setEntry(String entry) {
 		this.entry = entry;
 	}
-/*
+
 	public int getId() {
 		return id;
 	}
@@ -78,5 +78,5 @@ _*/
 	public void setUser(User user) {
 		this.user = user;
 	}
-*/
+
 }
