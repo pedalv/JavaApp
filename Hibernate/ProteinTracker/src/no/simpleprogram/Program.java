@@ -58,15 +58,35 @@ public class Program {
 
 		//usingInterceptors();
 		
-		implementingListeners();
+		//implementingListeners();
 
+		//dataFilters
 		
-		
-		
-
-		
+		getUsersByFilter();
 		
 		HibernateUtilities.getSessionFactory().close();
+	}
+
+	private static void getUsersByFilter() {
+		Session session = HibernateUtilities.getSessionFactory().openSession();
+		
+		//session.enableFilter("nameFilter").setParameter("name", "j%"); // not work
+		
+		session.beginTransaction();
+		
+		//Criteria criteria = session.createCriteria(User.class);
+		//List<User> users = criteria.list();
+		
+		Query query = session.createQuery("from User");
+		List<User> users = query.list();
+		
+		for(User user : users)
+		{
+			System.out.println(user.getName());
+		}
+		
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	private static void implementingListeners() {
