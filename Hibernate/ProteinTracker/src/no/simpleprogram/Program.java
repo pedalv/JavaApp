@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import org.hibernate.Session;
 import org.ehcache.Cache;
+import org.hibernate.CacheMode;
 import org.hibernate.Criteria;
+import org.hibernate.ScrollableResults;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -16,7 +18,7 @@ import no.domain.GoalAlert;
 import no.domain.ProteinData;
 import no.domain.User;
 import no.domain.UserHistory;
-import no.domain.UserTotal;
+import no.model.UserTotal;
 
 public class Program {
 
@@ -46,10 +48,92 @@ public class Program {
 		
 		//getQueryByExample();
 		
-		 ehCacheExample();
-		 		
+		 //ehCacheExample();
+		 	
+		//batchProcessingWithQuery();
+		
+		//batchProcessingManual();
+
+		//nativeSQL();
+
+		usingInterceptors();
+
+
+		
 		
 		HibernateUtilities.getSessionFactory().close();
+	}
+
+	private static void usingInterceptors() {
+		PopulateSampleData();
+		Session session = HibernateUtilities.getSessionFactory().openSession();
+		session.beginTransaction();
+		
+		Query query = session.createSQLQuery("Select * from Users")
+				.addEntity(User.class);
+		List<User> users = query.list();
+		for(User user : users) {
+			System.out.println(user.getName());
+		}
+				
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	private static void nativeSQL() {
+		Session session = HibernateUtilities.getSessionFactory().openSession();
+		session.beginTransaction();
+		
+		Query query = session.createSQLQuery("Select * from Users")
+				.addEntity(User.class);
+		List<User> users = query.list();
+		for(User user : users) {
+			System.out.println(user.getName());
+		}
+				
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	private static void batchProcessingManual() {
+		Session session = HibernateUtilities.getSessionFactory().openSession();
+		session.beginTransaction();
+		
+		Criteria criteria = session.createCriteria(User.class);
+				
+		ScrollableResults users = criteria.setCacheMode(CacheMode.IGNORE).scroll();
+		int count = 0;
+		while(users.next()) {
+			User user = (User) users.get(0);
+			session.save(user);
+			if(++count % 10 == 0) {
+				session.flush();
+				session.clear();
+			}
+			System.out.println(user.getName());
+		}
+		
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	private static void batchProcessingWithQuery() {
+		Session session = HibernateUtilities.getSessionFactory().openSession();
+		session.beginTransaction();
+		
+		Criteria criteria = session.createCriteria(User.class);
+				
+		List<User> users = criteria.list();
+		for(User user: users) {
+			System.out.println(user.getName());
+		}
+
+		Query query = session.createQuery("update ProteinData pd set pd.total = 0");
+		query.executeUpdate();
+		
+		
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	private static void ehCacheExample() {

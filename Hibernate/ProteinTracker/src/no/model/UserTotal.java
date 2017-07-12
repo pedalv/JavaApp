@@ -1,4 +1,4 @@
-package no.domain;
+package no.model;
 
 public class UserTotal {
 
