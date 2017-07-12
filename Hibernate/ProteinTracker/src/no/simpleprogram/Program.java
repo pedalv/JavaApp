@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.ehcache.Cache;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -44,9 +44,21 @@ public class Program {
 
 		//getCriteriaJoins(); 
 		
-		getQueryByExample();
+		//getQueryByExample();
+		
+		 ehCacheExample();
+		 		
 		
 		HibernateUtilities.getSessionFactory().close();
+	}
+
+	private static void ehCacheExample() {
+		
+		Cache<Long, String> mycache = EhCacheConfig.getMyCacheInstance();
+		
+		System.out.println("Value cached (null data): " + mycache.get(1L));
+		mycache.put(1L, "It has data now!"); 
+		System.out.println("Value cached (has data): " + mycache.get(1L));
 	}
 
 	private static void getQueryByExample() {
