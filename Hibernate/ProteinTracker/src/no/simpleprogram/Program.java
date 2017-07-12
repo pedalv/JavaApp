@@ -70,7 +70,10 @@ public class Program {
 	private static void getUsersByFilter() {
 		Session session = HibernateUtilities.getSessionFactory().openSession();
 		
-		//session.enableFilter("nameFilter").setParameter("name", "j%"); // not work
+		//session.enableFilter("nameFilter").setParameter("name", "j%");
+		//ERROR: HHH000099: an assertion failure occurred (this may indicate a bug in Hibernate, 
+		//but is more likely due to unsafe use of the session): org.hibernate.AssertionFailure: Table protein_tracker.users not found
+		//Exception in thread "main" org.hibernate.AssertionFailure: Table protein_tracker.users not found
 		
 		session.beginTransaction();
 		
