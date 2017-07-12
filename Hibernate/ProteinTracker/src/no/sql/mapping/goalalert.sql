@@ -4,3 +4,7 @@ CREATE TABLE `protein_tracker`.`GoalAlert` (
   `message` VARCHAR(255) NOT NULL);
 
   commit;
+
+GoalAlert
+id:int
+message:string

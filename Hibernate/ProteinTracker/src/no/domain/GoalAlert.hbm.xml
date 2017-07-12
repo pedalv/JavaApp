@@ -12,4 +12,7 @@
             <column name="message" />
         </property>
     </class>
+    <query name="AllGoalAlerts">
+    	<![CDATA[from GoalAlert]]>
+    </query>
 </hibernate-mapping>
