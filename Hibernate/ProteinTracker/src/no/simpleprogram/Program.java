@@ -56,12 +56,35 @@ public class Program {
 
 		//nativeSQL();
 
-		usingInterceptors();
+		//usingInterceptors();
+		
+		implementingListeners();
 
+		
+		
+		
 
 		
 		
 		HibernateUtilities.getSessionFactory().close();
+	}
+
+	private static void implementingListeners() {
+		Session session = HibernateUtilities.getSessionFactory().openSession();
+		session.beginTransaction();
+		
+		Query query = session.createSQLQuery("Select * from Users")
+				.addEntity(User.class);
+		List<User> users = query.list();
+		for(User user : users) {
+			System.out.println(user.getName());
+		}
+		
+		User u = (User) session.load(User.class, 1);
+		System.out.println(u.getName());
+		
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	private static void usingInterceptors() {
