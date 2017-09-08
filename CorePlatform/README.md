@@ -6,6 +6,7 @@ Sun Oracle
 - Creating client apps ( JavaFX)
 - Creating high scalable applications (Java EE)
 - Embedded System for IoS (Java ME)
+
 Google
 - Android
 
