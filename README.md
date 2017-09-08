@@ -6,6 +6,10 @@ Java projects to build competence.
 git clone https://github.com/pedalv/JavaApp.git
 ```
 
+# Project 7: Java Core Platform
+- Project for understand Java Core Platform (JRE / Java SE)
+- CorePlatform project is located on [https://github.com/pedalv/JavaApp/tree/master/CorePlatform](https://github.com/pedalv/JavaApp/tree/master/CorePlatform)
+
 # Project 6: Ortogram
 - Project for show logic skills
 - InsuranceApp project is located on [https://github.com/pedalv/JavaApp/tree/master/Ortogram](https://github.com/pedalv/JavaApp/tree/master/Ortogram)

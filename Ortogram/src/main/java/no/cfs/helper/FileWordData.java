@@ -2,6 +2,7 @@ package no.cfs.helper;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,8 @@ public class FileWordData {
                     .collect(Collectors.toList());
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
+            //e.printStackTrace();
         }
 
         //list.forEach(System.out::println);
