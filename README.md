@@ -5,13 +5,13 @@ Java projects to build competence.
 ```bash
 git clone https://github.com/pedalv/JavaApp.git
 ```
+# Project 8: Java Core Platform
+- Project for understand Java Core Platform (JRE / Java SE)
+- CorePlatform project is located on [https://github.com/pedalv/JavaApp/tree/master/CorePlatform](https://github.com/pedalv/JavaApp/tree/master/CorePlatform)
+
 # Project 7: ProteinTracker
 - Project to introduce Hibernate
 - InsuranceApp project is located on [https://github.com/pedalv/JavaApp/tree/master/Hibernate/ProteinTracker](https://github.com/pedalv/JavaApp/tree/master/Hibernate/ProteinTracker)
-
-# Project 7: Java Core Platform
-- Project for understand Java Core Platform (JRE / Java SE)
-- CorePlatform project is located on [https://github.com/pedalv/JavaApp/tree/master/CorePlatform](https://github.com/pedalv/JavaApp/tree/master/CorePlatform)
 
 # Project 6: Ortogram
 - Project to show logic skills
