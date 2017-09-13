@@ -1,5 +1,9 @@
 package no.the.core.platform.multithreadingconcurrency.concurrency;
 
+import no.the.core.platform.metadata.ProcessedBy;
+import no.the.core.platform.multithreadingconcurrency.concurrency.runnable.AccountWorkerRunnable2;
+
+@ProcessedBy(AccountWorkerRunnable2.class)
 public class BankAccount {
 
     private final String id;
@@ -43,4 +47,11 @@ public class BankAccount {
         - Balance could be 100, 120, 110, 130, ...
      */
 
+    @Override
+    public String toString() {
+        return "BankAccount{" +
+                "id='" + id + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
 }

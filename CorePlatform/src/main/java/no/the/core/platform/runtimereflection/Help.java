@@ -1,11 +1,19 @@
 package no.the.core.platform.runtimereflection;
 
+import no.the.core.platform.metadata.ProcessedBy;
+import no.the.core.platform.metadata.WorkHandler;
 import no.the.core.platform.multithreadingconcurrency.concurrency.BankAccount;
 import no.the.core.platform.multithreadingconcurrency.concurrency.runnable.TaskWorker;
 
 import java.lang.reflect.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Help {
+
+    //ONLY 2 threads can be create without concluded
+    private static ExecutorService pool = Executors.newFixedThreadPool(2);
+
 
     public void doWork(Object obj) {
         Class<?> c = obj.getClass();
@@ -127,7 +135,7 @@ public class Help {
     }
 
     // one way  to achieve this type of results - exception
-    public void startWork(String workerTypeName, Object workerTarget) {
+    public void startWork(String workerTypeName, Object workerTarget)  {
         try {
             //get type information for worker
             Class<?> workerType = Class.forName(workerTypeName);
@@ -144,21 +152,57 @@ public class Help {
     }
 
     // other way more easy to achieve this type of results - OKAY
-    public void startWork2(String workerTypeName, Object workerTarget) {
+    public void startWork2(String workerTypeName, Object workerTarget) throws Exception {
         try {
             //get type information for THE worker
             Class<?> workerType = Class.forName(workerTypeName);
             TaskWorker worker = (TaskWorker)workerType.newInstance();
             worker.setTarget(workerTarget);
-            worker.doWork();
+
+            // anotation
+            WorkHandler wh = workerType.getAnnotation(WorkHandler.class);
+            if(wh == null)
+                throw new IllegalArgumentException("feil call WorkHandler annotation");
+
+            if(wh.useThreadPool()) {
+                pool.submit(new Runnable() {
+                    @Override
+                    public void run() {
+                        worker.doWork();
+                    }
+                });
+            } else
+                worker.doWork();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
+    public void startWorkContained(Object workerTarget) {
+        try {
+            Class<?> targetType = workerTarget.getClass();
+            ProcessedBy pb = targetType.getAnnotation(ProcessedBy.class);
+            Class<?> workerType = pb.value();
+            TaskWorker worker = (TaskWorker)workerType.newInstance();
+            worker.setTarget(workerTarget);
 
+            // anotation
+            WorkHandler wh = workerType.getAnnotation(WorkHandler.class);
+            if(wh == null)
+                throw new IllegalArgumentException("feil call WorkHandler annotation");
 
-
-
+            if(wh.useThreadPool()) {
+                pool.submit(new Runnable() {
+                    @Override
+                    public void run() {
+                        worker.doWork();
+                    }
+                });
+            } else
+                worker.doWork();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

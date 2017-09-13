@@ -1,8 +1,10 @@
 package no.the.core.platform.multithreadingconcurrency.concurrency.runnable;
 
+import no.the.core.platform.metadata.WorkHandler;
 import no.the.core.platform.multithreadingconcurrency.concurrency.BankAccount;
 import no.the.core.platform.multithreadingconcurrency.concurrency.HighVolumeAccount;
 
+@WorkHandler(useThreadPool = false)
 public class AccountWorkerRunnable2 implements Runnable, TaskWorker {
 
     BankAccount ba; //Target

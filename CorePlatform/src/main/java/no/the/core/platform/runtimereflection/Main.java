@@ -50,10 +50,23 @@ public class Main {
          */
 
         BankAccount acct4 = new BankAccount();
+        /*
         // other way more easy to achieve this type of results - OKAY
-        help.startWork2(
-                "no.the.core.platform.multithreadingconcurrency.concurrency.runnable.AccountWorkerRunnable2",
-                acct4);
+        try {
+            help.startWork2(
+                    "no.the.core.platform.multithreadingconcurrency.concurrency.runnable.AccountWorkerRunnable2",
+                    acct4);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        */
+
+        BankAccount acct5 = new BankAccount();
+        help.startWorkContained(acct5);
+
+
+
 
 
     }
