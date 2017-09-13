@@ -14,7 +14,7 @@ public class PollTxThreadConcurrencyRunnable {
 
     public static void userAccount() {
 
-        BankAccount account = new BankAccount(450);
+        BankAccount account = new BankAccount(450, "1");
 
         /*
         TxWorkerRunnable[] workers = {

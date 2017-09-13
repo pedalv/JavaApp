@@ -2,10 +2,24 @@ package no.the.core.platform.multithreadingconcurrency.concurrency;
 
 public class BankAccount {
 
+    private final String id;
     private int balance;
 
-    public BankAccount(int balance) {
+    public BankAccount(String id) {
+        this.id = id;
+    }
+
+    public BankAccount(int balance, String id) {
         this.balance = balance;
+        this.id = id;
+    }
+
+    public BankAccount() {
+        this.id = "";
+    }
+
+    public String getId() {
+        return id;
     }
 
     public synchronized int getBalance() {
