@@ -11,7 +11,7 @@ public class LongWrapper {
 
     public long getValue() {
         synchronized (key) {
-            return l;
+            return l; //fix access to read on field l
         }
     }
 
@@ -19,5 +19,12 @@ public class LongWrapper {
         synchronized (key) { //fix access to read/write on some field l
             l = l + 1;
         }
+
+        /*
+            Note:
+            - Volatile fix the read
+            - Write need be synchronize
+            - So this is the best solution here
+         */
     }
 }
