@@ -1,15 +1,13 @@
 package no.the.core.platform.collections.lists;
 
-
-
-
 import org.junit.Test;
 
-import static no.the.core.platform.collections.lists.ProductFixtures.door;
-import static no.the.core.platform.collections.lists.ProductFixtures.floorPanel;
-import static no.the.core.platform.collections.lists.ProductFixtures.window;
+import static no.the.core.platform.collections.ProductFixtures.door;
+import static no.the.core.platform.collections.ProductFixtures.floorPanel;
+import static no.the.core.platform.collections.ProductFixtures.window;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+
 
 public class ShipmentTest {
 

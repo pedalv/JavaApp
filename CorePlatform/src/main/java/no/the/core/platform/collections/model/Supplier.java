@@ -23,6 +23,11 @@ public class Supplier {
         return products;
     }
 
+    public List<Product> products()
+    {
+        return products;
+    }
+
     @Override
     public String toString()
     {
