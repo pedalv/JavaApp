@@ -1,6 +1,7 @@
 package no.the.core.platform.collections.lists;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import static no.the.core.platform.collections.ProductFixtures.door;
 import static no.the.core.platform.collections.ProductFixtures.floorPanel;

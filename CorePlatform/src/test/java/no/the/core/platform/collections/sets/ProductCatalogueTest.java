@@ -1,6 +1,6 @@
 package no.the.core.platform.collections.sets;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static no.the.core.platform.collections.ProductFixtures.*;
 import static org.hamcrest.MatcherAssert.assertThat;
