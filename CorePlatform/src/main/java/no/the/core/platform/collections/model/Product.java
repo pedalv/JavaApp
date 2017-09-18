@@ -1,7 +1,6 @@
 package no.the.core.platform.collections.model;
 
 import java.util.Comparator;
-import java.util.Objects;
 
 import static java.util.Comparator.comparing;
 
@@ -25,13 +24,24 @@ public class Product {
     public static final Comparator<Product> BY_NAME =
             comparing(Product::getName);
 
+    private int id;
     private final String name;
     private final int weight;
 
-    public Product(String name, int weight)
-    {
+    public Product(String name, int weight) {
         this.name = name;
         this.weight = weight;
+    }
+
+    public Product(int id, String name, int weight)
+    {
+        this.id = id;
+        this.name = name;
+        this.weight = weight;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName()
@@ -45,10 +55,10 @@ public class Product {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Product{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", weight=" + weight +
                 '}';
     }

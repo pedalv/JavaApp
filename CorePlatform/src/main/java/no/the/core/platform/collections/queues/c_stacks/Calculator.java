@@ -8,7 +8,7 @@ import java.util.Queue;
 
 import static java.lang.Integer.parseInt;
 
-public class d 
+public class Calculator
 {
 
     /*
