@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+C:\Workspace\JavaApp\CXF\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1109336428.index
+1067347814.index
+3946876861.index
+4230072313.index
+1823199516.index
+1871758841.index

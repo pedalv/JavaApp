@@ -5,6 +5,10 @@ Java projects to build competence.
 ```bash
 git clone https://github.com/pedalv/JavaApp.git
 ```
+# Project 9: Apache CXF
+- Project for understand Apache CXF
+- CXF project is located on [https://github.com/pedalv/JavaApp/tree/master/CXF](https://github.com/pedalv/JavaApp/tree/master/CXF)
+
 # Project 8: Java Core Platform
 - Project for understand Java Core Platform (JRE / Java SE)
 - CorePlatform project is located on [https://github.com/pedalv/JavaApp/tree/master/CorePlatform](https://github.com/pedalv/JavaApp/tree/master/CorePlatform)
