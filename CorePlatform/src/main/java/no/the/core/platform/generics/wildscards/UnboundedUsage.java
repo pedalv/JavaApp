@@ -41,7 +41,7 @@ public class UnboundedUsage
     - <? extends Object>: to get type information that is parent of a Object
     - <? super Person>: to set/put type information that is a person or parent of a person: person, employ, partner
     - <object>: to set/put/get type information that is object and parent of Object => arrays
-    - UpperBounded: List<? extends cls>
-    - Lower Bounded: List<? super cls>
+    - UpperBounded: List<? extends cls> - get
+    - Lower Bounded: List<? super cls> - set/put
     - Unbounded: List<?>
  */
