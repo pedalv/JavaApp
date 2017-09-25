@@ -1,10 +1,9 @@
 package no.the.core.platform.generics.colections.maps;
 
-import no.the.core.platform.generics.colections.model.Person;
+import no.the.core.platform.generics.model.Person;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class MapExamples
 {
@@ -38,7 +37,7 @@ public class MapExamples
         }
 
         // foreach entry - again two generic parameters
-        for (Entry<String, Person> entry : personByName.entrySet())
+        for (Map.Entry<String, Person> entry : personByName.entrySet())
         {
             System.out.println(entry);
             System.out.println(entry.getKey());

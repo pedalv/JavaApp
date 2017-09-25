@@ -1,6 +1,5 @@
 package no.the.core.platform.generics.why.ex1;
 
-import no.the.core.platform.generics.why.ex1.CircularBuffer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

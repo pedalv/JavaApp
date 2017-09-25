@@ -1,11 +1,31 @@
-package no.the.core.platform.generics.colections.model;
+package no.the.core.platform.generics.model;
 
+import java.util.Comparator;
 import java.util.Objects;
+
+import static java.util.Comparator.comparing;
 
 public final class Person
 {
     private final String name;
     private final int age;
+
+    /* Java 7 */
+    public static final Comparator<Person> BY_AGE1
+            = new Comparator<Person>()
+    {
+        public int compare(final Person p1, final Person p2)
+        {
+            return Integer.compare(p1.getAge(), p2.getAge());
+        }
+    };
+
+
+    /* Java 8 */
+    public static final Comparator<Person> BY_AGE2
+            = comparing(Person::getAge);
+
+
 
     public Person(String name, int age)
     {
@@ -53,3 +73,4 @@ public final class Person
             '}';
     }
 }
+

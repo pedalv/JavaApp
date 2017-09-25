@@ -1,6 +1,6 @@
 package no.the.core.platform.generics.colections.lists;
 
-import no.the.core.platform.generics.colections.model.Person;
+import no.the.core.platform.generics.model.Person;
 
 import java.util.ArrayList;
 import java.util.Iterator;
