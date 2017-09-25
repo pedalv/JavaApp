@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import static java.util.Comparator.comparing;
 
-public final class Person
+public class Person
 {
     private final String name;
     private final int age;

@@ -14,6 +14,7 @@ public class Main {
 
         try {
             Class<?> c = Class.forName("no.the.core.platform.multithreadingconcurrency.concurrency.BankAccount");
+            // Class<? extends Object> c = Class.forName("no.the.core.platform.multithreadingconcurrency.concurrency.BankAccount");
             //help.doWork(c);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
