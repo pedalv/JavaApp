@@ -1,4 +1,4 @@
-package no.the.core.platform.generics;
+package no.the.core.platform.generics.why.ex2;
 
 public class TypeSafeExample
 {
@@ -10,6 +10,7 @@ public class TypeSafeExample
         buffer.offer("bc");
         buffer.offer("d");
 
+        // compile time error
         //buffer.offer(1);
 
         String value = concatenate(buffer);

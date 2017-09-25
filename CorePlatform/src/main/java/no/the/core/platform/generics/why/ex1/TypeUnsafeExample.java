@@ -1,6 +1,4 @@
-package no.the.core.platform.generics;
-
-import no.the.core.platform.generics.why.CircularBuffer;
+package no.the.core.platform.generics.why.ex1;
 
 public class TypeUnsafeExample
 {
@@ -12,6 +10,7 @@ public class TypeUnsafeExample
         buffer.offer("bc");
         buffer.offer("d");
 
+        // ClassCastException
         buffer.offer(1);
 
         String value = concatenate(buffer);

@@ -1,17 +1,18 @@
-package no.the.core.platform.generics.why;
+package no.the.core.platform.generics.why.ex3;
 
-public class CircularBuffer
+public class GenericCircularBuffer<T>
 {
-    private final Object[] buffer;
+    private final T[] buffer;
     private int readCursor = 0;
     private int writeCursor = 0;
 
-    public CircularBuffer(int size)
+    @SuppressWarnings("unchecked")
+    public GenericCircularBuffer(int size)
     {
-        buffer = new Object[size];
+        buffer = (T[]) new Object[size];
     }
 
-    public boolean offer(Object value)
+    public boolean offer(T value)
     {
         if (buffer[writeCursor] != null)
         {
@@ -23,9 +24,10 @@ public class CircularBuffer
         return true;
     }
 
-    public Object poll()
+    @SuppressWarnings("unchecked")
+    public T poll()
     {
-        Object value = buffer[readCursor];
+        T value = buffer[readCursor];
         if (value != null)
         {
             buffer[readCursor] = null;

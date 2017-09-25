@@ -1,4 +1,4 @@
-package no.the.core.platform.generics;
+package no.the.core.platform.generics.why.ex3;
 
 public class GenericExample
 {
