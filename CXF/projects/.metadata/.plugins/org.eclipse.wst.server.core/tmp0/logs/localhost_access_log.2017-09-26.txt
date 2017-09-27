@@ -1,0 +1,11 @@
+127.0.0.1 - - [26/Sep/2017:09:58:26 +0200] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:09:58:27 +0200] "GET /apache-cxf-jax-ws-demo/WEB-INF/classes/no/pluralsight/cxfdemo/HelloWorld.java HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:09:58:41 +0200] "GET /apache-cxf-jax-ws-demo/ HTTP/1.1" 200 959
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:09:58:41 +0200] "GET /apache-cxf-jax-ws-demo/?stylesheet=1 HTTP/1.1" 200 367
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:09:58:48 +0200] "GET /apache-cxf-jax-ws-demo/HelloWorld?wsdl HTTP/1.1" 200 2314
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:15:26:13 +0200] "GET /apache-cxf-jax-ws-demo/HelloWorld?wsdl HTTP/1.1" 200 2314
+127.0.0.1 - - [26/Sep/2017:15:26:26 +0200] "GET /apache-cxf-jax-ws-demo/HelloWorld?wsdl HTTP/1.1" 200 2314
+127.0.0.1 - - [26/Sep/2017:15:26:26 +0200] "GET /apache-cxf-jax-ws-demo/HelloWorld?wsdl HTTP/1.1" 200 2314
+127.0.0.1 - - [26/Sep/2017:15:27:32 +0200] "POST /apache-cxf-jax-ws-demo/HelloWorld HTTP/1.1" 200 253
+127.0.0.1 - - [26/Sep/2017:15:39:21 +0200] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:15:39:35 +0200] "GET /apache-cxf-jax-ws-demo/HelloWorld?wsdl HTTP/1.1" 200 2314
