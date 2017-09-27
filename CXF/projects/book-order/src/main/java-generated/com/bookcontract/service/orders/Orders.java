@@ -18,10 +18,15 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 public interface Orders {
 
-    @WebMethod(operationName = "ProcessOrderPlacement", action = "http://www.bookcontract.com/service/Orders/ProcessOrderPlacement")
-    @WebResult(name = "orderInquiryResponse", targetNamespace = "http://www.bookcontract.com/schema/Order", partName = "orderInquiryResponse")
+    @WebMethod(operationName = "ProcessOrderPlacement", 
+    		action = "http://www.bookcontract.com/service/Orders/ProcessOrderPlacement")
+    @WebResult(name = "orderInquiryResponse", 
+    		targetNamespace = "http://www.bookcontract.com/schema/Order", 
+    		partName = "orderInquiryResponse")
     public com.bookcontract.schema.order.OrderInquiryResponseType processOrderPlacement(
-        @WebParam(partName = "orderInquiry", name = "orderInquiry", targetNamespace = "http://www.bookcontract.com/schema/Order")
+        @WebParam(partName = "orderInquiry", 
+        	name = "orderInquiry", 
+        	targetNamespace = "http://www.bookcontract.com/schema/Order")
         com.bookcontract.schema.order.OrderInquiryType orderInquiry
     );
 }
