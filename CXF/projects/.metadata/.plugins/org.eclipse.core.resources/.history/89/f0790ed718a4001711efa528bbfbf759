@@ -1,0 +1,13 @@
+package no.book.order.contractorders;
+
+import com.bookcontract.schema.order.OrderInquiryResponseType;
+
+public class DefaultOrderService implements OrderService {
+
+	@Override
+	public OrderInquiryResponseType processOrder(int uniqueOrderId, int orderQuantity, int accountId, long ean13) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+package no.book.order.contractorders;
+
+public interface OrderService {
+
+}
