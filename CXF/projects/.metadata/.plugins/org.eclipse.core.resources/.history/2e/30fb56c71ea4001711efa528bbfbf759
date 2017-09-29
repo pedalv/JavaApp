@@ -1,0 +1,24 @@
+package no.book.order.orders;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class DefaultOrdersEndpointTest {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testProcessOrderPlacement() {
+		fail("Not yet implemented");
+	}
+
+}

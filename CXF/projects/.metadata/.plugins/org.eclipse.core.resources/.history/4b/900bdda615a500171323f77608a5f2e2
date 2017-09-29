@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:jaxws="http://cxf.apache.org/jaxws"
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+             
+	<!-- Spring's component scan for identifying beans to be managed by the 
+		container. -->
+	<context:component-scan base-package="no.book.order" />
+
+	<bean id="defaultOrdersEndpoint" 
+		class="no.book.order.contractorders.DefaultOrdersEndpoint" />
+
+	<!-- CXF JAX-WS server configuration -->
+	<jaxws:server id="testOrdersServer"
+	address="http://localhost:9000/book-order/services/orders" serviceBean="#defaultOrdersEndpoint"
+	serviceClass="com.bookcontract.service.orders.Orders">
+		<jaxws:inInterceptors>
+			<ref bean="loggingInInterceptor" />
+		</jaxws:inInterceptors>
+		<jaxws:outInterceptors>
+			<ref bean="loggingOutInterceptor" />
+		</jaxws:outInterceptors>
+	</jaxws:server>
+	
+
+	<!-- Logging interceptors to log inbound and outbound messages -->
+	<bean id="loggingInInterceptor" 
+		class="org.apache.cxf.interceptor.LoggingInInterceptor" />
+	<bean id="loggingOutInterceptor" 
+		class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+
+	<!-- CXF JAX-WS client configuration. -->
+	<jaxws:client id="testOrdersClient"
+		address="http://localhost:9000/book-order/services/orders"
+		serviceClass="com.bookcontract.service.orders.Orders">
+		<jaxws:inInterceptors>
+			<ref bean="loggingInInterceptor" />
+		</jaxws:inInterceptors>
+		<jaxws:outInterceptors>
+			<ref bean="loggingOutInterceptor" />
+		</jaxws:outInterceptors>
+	</jaxws:client>
+ </beans>

@@ -1,13 +1,15 @@
 package no.book.order.contractorders;
 
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-import javax.xml.bind.annotation.XmlSeeAlso;
+
+//import javax.jws.soap.SOAPBinding;
+//import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.bookcontract.schema.order.AccountType;
-import com.bookcontract.schema.order.ObjectFactory;
+//import com.bookcontract.schema.order.AccountType;
+//import com.bookcontract.schema.order.ObjectFactory;
+
 import com.bookcontract.schema.order.OrderInquiryResponseType;
 import com.bookcontract.schema.order.OrderInquiryType;
 import com.bookcontract.service.orders.Orders;
@@ -37,12 +39,10 @@ public class DefaultOrdersEndpoint implements Orders {
 		OrderInquiryResponseType response = orderService.processOrder(
 				orderInquiry.getUniqueOrderId(),
 				orderInquiry.getOrderQuantity(),
-				orderInquiry.getUniqueOrderId(),
+				orderInquiry.getAccountId(),
 				orderInquiry.getEan13());
 		
 		return  response;
-				
-		
 		
 	}
 
