@@ -22,9 +22,9 @@
 	<!-- Custom interceptors for handling the outbound client soap header enhancement and 
 		reading the inbound soap header on the server -->
 	<bean id="orderServiceSoapHeaderInInterceptor"
-		class="no.book.order.contractorders.OrderServiceSoapHeaderInInterceptor" />
+		class="com.bookcontract.service.orders.OrderServiceSoapHeaderInInterceptor" />
 	<bean id="orderServiceSoapHeaderOutInterceptor"
-		class="no.book.order.contractorders.OrderServiceSoapHeaderOutInterceptor" />
+		class="com.bookcontract.service.orders.OrderServiceSoapHeaderOutInterceptor" />
 
 	<!-- CXF JAX-WS server configuration -->
 	<jaxws:server id="testOrdersServer"
@@ -33,7 +33,6 @@
 	serviceClass="com.bookcontract.service.orders.Orders">
 		<jaxws:inInterceptors>
 			<ref bean="loggingInInterceptor" />
-			<ref bean="orderServiceSoapHeaderInInterceptor" />
 		</jaxws:inInterceptors>
 		<jaxws:outInterceptors>
 			<ref bean="loggingOutInterceptor" />
@@ -56,7 +55,6 @@
 		</jaxws:inInterceptors>
 		<jaxws:outInterceptors>
 			<ref bean="loggingOutInterceptor" />
-			<ref bean="orderServiceSoapHeaderOutInterceptor" />
 		</jaxws:outInterceptors>
 	</jaxws:client>
  </beans>

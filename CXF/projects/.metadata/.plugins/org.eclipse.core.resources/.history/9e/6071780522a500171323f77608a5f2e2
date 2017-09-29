@@ -21,13 +21,7 @@
           
         <jaxws:endpoint id="orders"
 			implementor="no.book.order.contractorders.DefaultOrdersEndpoint"
-			address="/services/orders">
-			
-			<jaxws:inInterceptors>
-				<ref bean="orderServiceSoapHeaderInInterceptor" />
-			</jaxws:inInterceptors>
-			
-		</jaxws:endpoint>
+			address="/services/orders"></jaxws:endpoint>
 	
 		<!-- Custom interceptor for reading the inbound soap header on the server -->
 		<bean id="orderServiceSoapHeaderInInterceptor"
