@@ -26,7 +26,7 @@
 $  mvn archetype:generate -Dfilter=org.apache.cxf.archetype:
 ```
 Note: Includes Java-first web service
-## Deploy the prosject to Toomcat
+## Deploy the project to TomCat
 ## Execute the web service in Eclipse
 
 # CXF Archetype Project Structure
