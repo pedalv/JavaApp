@@ -9,8 +9,16 @@ import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.phase.Phase;
 import org.w3c.dom.Element;
 
+/**
+ * Interceptor for processing requests in to the server. As part of message
+ * handling, this interceptor will retrieve the API key from the SOAP header
+ * using the namespace of the orders web service.
+ */
 public class OrderServiceSoapHeaderInInterceptor extends AbstractSoapInterceptor {
 
+	/**
+    * Set the phase for this interceptor to USER_PROTOCOL
+    */
 	public OrderServiceSoapHeaderInInterceptor() {
 		super(Phase.USER_PROTOCOL);
 	}
@@ -32,8 +40,6 @@ public class OrderServiceSoapHeaderInInterceptor extends AbstractSoapInterceptor
 
       // Output the api key.
       System.err.println("API Key = " + apikey);
-
-
 	}
 
 }

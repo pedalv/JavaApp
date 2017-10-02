@@ -10,6 +10,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
+	<!-- Import CXF and initialize the Bus -->
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
              
 	<!-- Spring's component scan for identifying beans to be managed by the 

@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="/book-order/services/orders" key="selection"/>
+		<item value="http://localhost:9000/book-order/services/orders" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="http://localhost:9000/book-order/services/orders"/>
+			<item value="http://localhost:9090/book-order/services/orders"/>
 			<item value="/book-order/services/orders"/>
 			<item value="testOrdersServer"/>
 			<item value="org.springframework"/>
 			<item value="spring"/>
 			<item value="orders"/>
 			<item value="id=&quot;orders&quot;"/>
-			<item value="com.sun.xml.bind"/>
-			<item value="PlacementRequest"/>
 		</list>
 		<list key="replacehistory">
 		</list>

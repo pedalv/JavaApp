@@ -10,8 +10,17 @@ import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.apache.cxf.phase.Phase;
 
+/**
+ * Interceptor for processing outbound client requests. Enhances the soap
+ * message by adding a header for an API key.
+ */
 public class OrderServiceSoapHeaderOutInterceptor extends AbstractSoapInterceptor {
 
+	/**
+    * Constructor to set this interceptor phase as WRITE and to add the
+    * interceptor before the SoapOutInterceptor class; otherwise, the soap
+    * message will not be available in the state we need.
+    */
 	public OrderServiceSoapHeaderOutInterceptor() {
 		super(Phase.WRITE);
 	    this.addBefore(SoapOutInterceptor.class.getName());
@@ -20,7 +29,7 @@ public class OrderServiceSoapHeaderOutInterceptor extends AbstractSoapIntercepto
 	@Override
 	public void handleMessage(SoapMessage message) throws Fault {
 
-		// Create a qualified name using the orders web service namespace and the
+		  // Create a qualified name using the orders web service namespace and the
 	      // local part name of apikey.
 	      QName qname = new QName("http://www.bookcontract.com/service/Orders/",
 	            "apikey");

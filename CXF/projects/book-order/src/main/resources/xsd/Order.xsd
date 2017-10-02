@@ -4,6 +4,16 @@
 			targetNamespace="http://www.bookcontract.com/schema/Order"
 			xmlns:tns="http://www.bookcontract.com/schema/Order"
 			elementFormDefault="qualified">
+	<!-- 
+		This is the schema for Orders. It contains two global element declarations and 
+		several types, both simple and complex.  A complex type allows you to add other 
+		elements and attributes within the type definition while a simple type has text-based 
+		content, but no child elements or attributes. As a general practice, types are suffixed 
+		with the word Type. Setting minOccurs and maxOccurs to 1 indicates the element is required 
+		once and only once in the order inquiry type. Setting minOccurs to 0 and maxOccurs to 1 
+		indicates the element is optional. Setting minOccurs and then maxOccurs to unbounded indicates 
+		n to many and will bind to a list in Java. 
+	-->
 
 	<xsd:element name="orderInquiry" 
 				type="tns:OrderInquiryType">
@@ -63,6 +73,11 @@
 		</xsd:sequence>
 	</xsd:complexType>
 	
+	<!--  
+	The simple type created will restrict the text that can be used for this type. 
+	I used an enumeration as this provides a restricted, yet consistent list of 
+	order statuses that are available. This will map to an enumeration class in Java.
+	-->
 	<xsd:complexType name="OrderType">
 		<xsd:sequence>
 			<xsd:element name="orderItems" minOccurs="1" 
@@ -87,10 +102,5 @@
 
 	<xsd:element name="orderInquiryResponse" 
 			type="tns:OrderInquiryResponseType"></xsd:element>
-	
-			
-		
-			
-			
-			
+				
 </xsd:schema>

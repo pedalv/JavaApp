@@ -17,9 +17,14 @@ import com.bookcontract.schema.order.OrderInquiryResponseType;
 import com.bookcontract.schema.order.OrderInquiryType;
 import com.bookcontract.service.orders.Orders;
 
-
-//The @RunWith annotation tells jUnit to use the Spring jUnit 4 test runner for
-//exection of the tests.
+/**
+ * This is a test case for the DefaultOrdersEndpoint web service. The test case
+ * contains two test methods. The first is a success scenario that executes a
+ * happy path test of the orders web service. The second is an exception test.
+ * It tests the failure scenario when a null input is passed by the client.
+ */
+// The @RunWith annotation tells jUnit to use the Spring jUnit 4 test runner for
+// exection of the tests.
 @RunWith(SpringJUnit4ClassRunner.class)
 //The @ContextConfiguration annotation provides the classpath to the test
 //spring configuration file.
