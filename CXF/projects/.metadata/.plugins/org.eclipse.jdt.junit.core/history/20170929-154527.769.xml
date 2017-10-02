@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="DefaultOrdersEndpointTest" project="book-order" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="no.book.order.orders.DefaultOrdersEndpointTest" time="0.599">
-    <testcase name="testProcessOrderPlacementFailureInvalidParameter" classname="no.book.order.orders.DefaultOrdersEndpointTest" time="0.516"/>
-    <testcase name="testProcessOrderPlacementSuccess" classname="no.book.order.orders.DefaultOrdersEndpointTest" time="0.083"/>
-  </testsuite>
-</testrun>

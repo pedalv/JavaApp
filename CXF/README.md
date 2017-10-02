@@ -14,9 +14,11 @@
 ```bash
 $  mvn archetype:generate -Dfilter=org.apache.cxf.archetype:
 ```
-- [Open book-order](http://localhost:8080/book-order) and [open HelloWorld](http://localhost:8080/book-order/HelloWorld?wsdl)
-
+- [Open book-order](http://localhost:8080/book-order) and 
+- [Open HelloWorld](http://localhost:8080/book-order/HelloWorld?wsdl)
+- [Open HelloWorld](http://localhost:8080/book-order/services/orders?wsdl)
 - [http://www.bookcontract.com/service/Orders/](http://www.bookcontract.com/service/Orders/)
+- [Open Client](http://localhost:8080/book-order-theclient/processOrderPlacement)
 - ProcessorderPlacement
 
 # [Web Services Tutorial](https://www.javatpoint.com/web-services-tutorial)
