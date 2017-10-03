@@ -38,10 +38,10 @@ Note: Includes Java-first web service
 # CXF Architecture Overview
 1. Bus
 2. Transports
-- Frontends
-- Data Bindings
-- Protocol Bindings
-- WS-*
+3. Frontends
+4. Data Bindings
+5. Protocol Bindings
+6. WS-*
 
 1.1 Introduction to the CXF Bus
 - Spring-based registry of components
@@ -58,24 +58,35 @@ Note: Includes Java-first web service
 - Incomming chains
 - Outgoing chains
 - Post-processing chains
+1.3.2 Requirements for a Custom Interceptor
+- Add additional processing to a chained
+> Auditing
+> SOAP message enhancement
+- Skip a processing step
+> Non-standard web services
+1.3.3 Designing a Custom Interceptor
+- Determine inbound or outbound
+- Select a phase
+- Determine where it fits in the order of phase processing
+- Implement message and fault handling
 1.4 Messages
 - Container for data to be passed through interceptor chains
+1.4.1 Message state
+- Stream, marshalled, un-marshalled...
+
 2.1 CXF Transport Options
 - HTTP 
 - JMS
 - Local
 - UDP
 - Apache Camel
-
 2.1.1 HTTP Transport Options
 - Deploy web services to a web container
 - Deploy web services with an embedded web container
-
 2.1.2 CXF Servlets
 - Request processing for web service endpoints
 - Available in the cxf-rt-transports-http library
 - Supports the creation of Spring's application context
-
 2.2.3 CXF Web Container Supports
 - Apache Tomcat
 - Jetty
@@ -84,30 +95,235 @@ Note: Includes Java-first web service
 - WebSphere Application Server
 - Glassfish Application Server
 
-2.2.4 CXF Frontr End Options
+3 CXF Front End Options
 - JAX-WS
 - JAX-RS
 - JavaScript
+3.1.1 JAX-WS
+- Specification for Java XML-based web services
+- Typically implemented using a WSDL with SOAP over HTTP
+- CXF provides full support for JAX-WS
+3.1.2 Implementing JAX-WS
+- Availablle in the cxf-rt-frontend-jaxws library
+- Supported by a variety of transports
+- Configured through Spring application context
+3.1.2.1 JAX-WS Endpoint Bean Configuration
+```bash
+<jaxws:endpoint 
+	id="" 
+	implementor="" 
+	address=""
+	bindingUri=""
+	bus=""
+	endpointName=""
+	implementorClass=""
+	publish=""
+	publishedEndpointUrl=""
+	serviceName=""
+	transportId=""
+	wsdlLocation="" >
+	
+	<jaxws:databinding />
+	<jaxws:features />
+	<jaxws:handlers />
+	<jaxws:inInterceptors />
+	<jaxws:inFaultInterceptors />
+	<jaxws:outInterceptors />
+	<jaxws:outFaultInterceptors />
+	<jaxws:properties />
+	
+</jaxws:endpoint>
+```
+3.2.1 JAX-RS
+- Specification for Java RESTful web services
+> Supports plain old Java objects (POJO) through URIs
+- CXF Support for JAX-RS versionss
+> JAX-RS 2.0 2.0: CXF 2.x mostly supports, CXF 3.x fully supports
+> JAX-RS 1.1: CXF 2.x+ fully supports
+3.2.2 Implementing JAX-RS
+- Available in the cxf-rt-frontend-jaxrs library
+- Supported by the HTTP transport and CXF Servlet
+- Configured through Spring application context
+```bash
+<jaxrs:server id="" address"" >
+	<jaxrs:serviceBeans>
+		<bean class="" />
+	</jaxrs:serviceBeans>
+	<jaxrs:providers>
+		<bean class="" />
+	</jaxrs:providers>
+</jaxrs:server>
+```
+3.3 JAX-WS  vs JAX-RS
+| Distributed component integrarion | Mobile and web view integration 	|  
+| Complex operations 				| Simple transactions 				|
+| Standars-based  					| Limited constrainsts  			|  
+| Multiple transports  				| HTTP transport  					|  
 
-2.2.4.1 JAX-WS
--
--
--
+4. Data Binding
+- JAXB
+- Aegis
+- SDO
+- XMLBeans
+4.1.1 JAXB
+- Java architecture for XML binding
+- Binding based on XLM schema definition
+- Unmarshal and marshal
+4.1.2 JAXB Configuration
+```bash
+<jaxws:endpoint id="" implementor="" address"">
+	<jaxws:dataBinding>
+		<bean class="" />
+	</jaxws:dataBinding>
+</jaxws:endpoint>
+```
+4.2 CXF XJC Maven Plugin
+- XJC is a binding compiler executed through a command prompt
+- Generates Java code based on an XSD
+- CXF supports XJC through a Maven plug-in
 
+5. CXF Protocol Binding Options
+- SOAP 
+- MTOM
+- Pure XML
+5.1.1 SOAP Protocol Binding
+- Language that defines service message format
+- Data is passed in an envelope that contains a header and body
+- Configured as part of the WSDL binding section
+5.1.2 SOAP Protocol Configuration
+```bash
+<wsdl:binding name="" type="">
+	<soap:binding transport=""" style="" />
+	<wsdl:operation name="">
+		<soap:operation soapAction=""" style="" />
+		<wsdl:input name="">
+			<soap:body use="">
+		</wsdl:input>
+		<wsdl:output name="">
+			<soap:body use="">
+		</wsdl:output>
+	</wsdl:operation>
+</wsdl:binding>
+```
 
+6. WS-* Specification Options
+- Addressing
+- Discovery
+- Metadata Exchange
+- Policy
+- Reliable Messaging
+- Secure Conversation
+- Security
+- Security Policy
+- Trust
+6.1 WS-Addressing
+- Provides a standard way of adding address information to a SOAP header
+- Intended to support more complex enterprise-level solutions
+- Include an endpoint reference and endpoint reference properties
+- CXF supports as part of the JAX-WS endpoint schema
+6.2 WS-Discovery
+- Provides support for a multicast protocol that auto-discovers services on a local network
+- Leverages the UDP protocol for communication
+- CXF supports discovery through an API
+- Available across two dependencies, cxf-services-ws-discovery-service and cxf-services-ws-discovery-api
+6.3 WS-MetadataExchange
+- Defines how metadata is represented for a web service endpoint
+- Configured in the SOAP header
+- Available through the dependency cxf-rt-ws-mex
+6.4 WS-Policy
+- A framework and model for web service policies
+> Domain-specific capabilities
+> Requirements
+> General characteristics
+- Configured in CXF through WSDL, Spring or API
+- Available through the dependency cxf-rs-ws-policy
+6.5 WS-ReliableMessaging
+- Defines a protocol for reliable message delivery between distributed systems
+- Available through the dependency cxf-rt-ws-mex
+6.6 WS-Security
+- Provides security features beyond the transport level protocol
+- Available through the dependency cxf-rt-ws-security
+6.7 WS-SecurityPolicy
+- Provides an easier, Standars-bases way to configure security
+- Uses policies based on the web service policy framework
+- Available through the dependency cxf-rt-ws-security
+6.8 WS-SecureConversation
+- Part of the WS-SecurityPolicy specification
+- Provides a better performing approach for encrypted communication
+- Available through the dependency cxf-rs-ws-security
+6.9 - WS-Trust
+- Part of the WS-SecurityPolicy specification
+- Supports the issuing, renewing and validation of security tokens
+- Available through the dependency cxf-rt-ws-security
 
+## [Why Contract First Web Service?](https://docs.spring.io/spring-ws/site/reference/html/why-contract-first.html)
+- Inventory of services and schemas defined early in a design phase
+- Condidered best practice
+> Schema types are portable
+> Supports logic-to-contract coupling
 
+## Contract-First Design Considerations
+- Contract granularity
+> Breadth of business context
+> Amount of work
+> Amount of data
+> Amount of constraints
+- Re-usability
+- Transparency
 
+# Case study: Order Web Service
+- Central place where their clients can place orders
+- Each request requires three inputs
+> Account
+> Book
+> Order Inquiry
+- Each response provide two outputs
+> Account information
+> order information
 
-# Links with some examples
+# Documentation for fix some problems
+- [Adding maven dependencies in the project's web deployment assembly](https://stackoverflow.com/questions/6210757/java-lang-classnotfoundexception-org-springframework-web-context-contextloaderl)
+
+# Links to case study - Bokk Order Placement
 - [Open book-order](http://localhost:8080/book-order)
 - [Open HelloWorld wsdl](http://localhost:8080/book-order/HelloWorld?wsdl)
 - [Open Service Orders wsdl](http://localhost:8080/book-order/services/orders?wsdl)
 - [Open Service Orders](http://www.bookcontract.com/service/Orders/)
 - [Open Client](http://localhost:8080/book-order-theclient/processOrderPlacement)
 
-# Documentation for fix some problems
-- [Adding maven dependencies in the project's web deployment assembly](https://stackoverflow.com/questions/6210757/java-lang-classnotfoundexception-org-springframework-web-context-contextloaderl)
+# Testing a CXF Web Service
+- CXF™
+- jUnit
+> common framework for supporting Java testing
+> Full support in IDEs and frameworks
+> Supports testing at the unit and integration test level
+- Spring
+> Supports loading Spring's application context
+> Framework agnostic
+> Annotations for test case support
+- JAX-WS Server Bean Configuration
+```bash
+<jaxws:server 
+	id="" 
+	address=""
+	serviceBean=""
+	serviceClass="" >
+</jaxws:server>
+```
+- JAX-WS Client Bean Configuration
+```bash
+<jaxws:client 
+	id="" 
+	address=""
+	serviceClass="" >
+</jaxws:client>
+```
+
+## SOAP Fault
+- Contains errors and status information in a standard format
+> Fault code tells the nature of the errors
+> Fault string tells the description of the errors
+- Wrapped by CXF into an exception
 
 # [Web Services Tutorial](https://www.javatpoint.com/web-services-tutorial)
 ## Web Service components
