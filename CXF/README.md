@@ -154,13 +154,14 @@ Note: Includes Java-first web service
 	</jaxrs:providers>
 </jaxrs:server>
 ```
-3.3 JAX-WS  vs JAX-RS
+
+# JAX-WS  vs JAX-RS
 | JAX-WS | JAX-RS |
-| ------ | ------ |
-| Distributed component integrarion | Mobile and web view integration |  
+| -------------- | -------------- |
+| Distributed component integrarion | Mobile and web view integration |
 | Complex operations | Simple transactions |
-| Standars-based | Limited constrainsts |  
-| Multiple transports | HTTP transport | 
+| Standars-based | Limited constrainsts |
+| Multiple transports | HTTP transport |
 
 4. Data Binding
 - JAXB
