@@ -5,6 +5,11 @@ Java projects to build competence.
 ```bash
 git clone https://github.com/pedalv/JavaApp.git
 ```
+
+# Project 10: Space
+- Project for '????'
+- Space project is located on [https://github.com/pedalv/JavaApp/tree/master/Space](https://github.com/pedalv/JavaApp/tree/master/Space)
+
 # Project 9: Apache CXF
 - Project for understand Apache CXF
 - CXF project is located on [https://github.com/pedalv/JavaApp/tree/master/CXF](https://github.com/pedalv/JavaApp/tree/master/CXF)
