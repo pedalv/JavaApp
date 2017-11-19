@@ -23,3 +23,24 @@
 | 4 | POST | Pay | /api/v1/coffeemachine/payment |
 | 5 | GET | Product Selected | /api/v1/coffeemachine/product |
 | 6 | GET | Cancel order | /api/v1/coffeemachine/product-options |
+
+## Create coffee machine project with Spring Boot
+- [Start Spring Boot](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#getting-started)
+- [Create pom file](http://start.spring.io/)
+> Group: no.space.coffeemachine 
+
+> Artifact: coffeemachine
+
+> Name: coffeemachine 
+
+> Description: REST-grensesnitt for en kaffeautomat 
+
+> Package Name: no.space.coffeemachine
+
+> Packaging: Jar
+
+> Java Version: 1.8
+
+> Dependencies: Web 
+
+- Compile project and create jar file
