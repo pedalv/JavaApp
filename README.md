@@ -7,7 +7,7 @@ git clone https://github.com/pedalv/JavaApp.git
 ```
 
 # Project 10: Space
-- Project for '????'
+- Project for coffee machine 
 - Space project is located on [https://github.com/pedalv/JavaApp/tree/master/Space](https://github.com/pedalv/JavaApp/tree/master/Space)
 
 # Project 9: Apache CXF
