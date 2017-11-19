@@ -21,4 +21,18 @@ public class HomeControllerTest {
         assertEquals( expected, actual );
     }
 
+    @Test
+    public void testCoffeemachine() throws Exception {
+        String actual = "index.html: AMERICANO";
+
+        HomeController hc = new HomeController();
+        String expected = hc.coffeemachine();
+
+        assertEquals( expected, actual );
+    }
+
+
+
+
+
 }
