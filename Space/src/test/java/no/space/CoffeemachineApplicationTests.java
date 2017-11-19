@@ -1,4 +1,4 @@
-package no.space.coffeemachine;
+package no.space;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
