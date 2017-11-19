@@ -43,13 +43,14 @@
 
 > Dependencies: Web 
 
-- Compile project and create jar file
+
+# Compile project and create jar file
 ```bash
 $ mvn clean compile package
 ```
 Building jar: ../Space/target/coffeemachine-0.0.1-SNAPSHOT.jar
 
-- Run project from IntelliJ IDEA or from command line (below)
+# Run project from IntelliJ IDEA or from command line (below)
 ```bash
 $  java -jar target/coffeemachine-0.0.1-SNAPSHOT.jar 
 ```
@@ -57,6 +58,8 @@ $  java -jar target/coffeemachine-0.0.1-SNAPSHOT.jar
 ```bash
 $ mvn dependency:tree
 ```
-- Open [home - '/'](http://localhost:8080/#) in a browser
-- Open index.html page [/coffeemachine](http://localhost:8080/coffeemachine/#) in a browser
+
+# Open link below
+- [home - '/'](http://localhost:8080/#) in a browser
+- [index.html page - '/coffeemachine'](http://localhost:8080/coffeemachine/#) in a browser
 - Get all [Products](http://localhost:8080/api/v1/product)
