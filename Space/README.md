@@ -44,3 +44,19 @@
 > Dependencies: Web 
 
 - Compile project and create jar file
+```bash
+$ mvn clean compile package
+```
+Building jar: ../Space/target/coffeemachine-0.0.1-SNAPSHOT.jar
+
+- Run project from IntelliJ IDEA or from command line (below)
+```bash
+$  java -jar target/coffeemachine-0.0.1-SNAPSHOT.jar 
+```
+- See all dependencies
+```bash
+$ mvn dependency:tree
+```
+- Open the projet [coffeemachine](http://localhost:8080/#) in a browser
+
+
