@@ -74,7 +74,7 @@ $ mvn dependency:tree
 
 ## Oppgave 2: Vær i Svalbalen via web
 1. [RESTful Web Service to return Json weather](http://localhost:8080/api/weather)
-2. [vær-side](http://localhost:8080/index.html)
+2. [være-side](http://localhost:8080)
 
 ## Dokumentasjon front-end
 - [package.json](https://docs.npmjs.com/getting-started/using-a-package.json)
