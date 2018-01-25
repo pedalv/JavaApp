@@ -31,6 +31,8 @@ Weather prosjekt
 - [What Are the Gmail SMTP Settings?](https://www.lifewire.com/what-are-the-gmail-smtp-settings-1170854)
 - [javax.mail.AuthenticationFailedException is thrown while sending email in java](http://stackoverflow.com/questions/25341198/javax-mail-authenticationfailedexception-is-thrown-while-sending-email-in-java)
 - [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
+- [Scheduling Tasks](https://spring.io/guides/gs/scheduling-tasks/)
+- [Internal Commands Listed by Category](https://jpsoft.com/help/commandcategories.htm)
 
 ## Yr.no
 1. [yr.no API](http://api.met.no/weatherapi/documentation)

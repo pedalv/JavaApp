@@ -50,7 +50,8 @@ public class ForecastFromYr {
                 "Regn: " + precipitationValue + " \n " +
                 "Vind kommer fra " + windDirectionName + " med " + windSpeedMps + "mps - " + windSpeedName + " \n " +
                 "Temperature: " + temperatureValue + " " + temperatureUnit + " \n " +
-                "Trykk: " + pressureValue + " " + pressureUnit;
+                "Trykk: " + pressureValue + " " + pressureUnit + " \n " + " \n " +
+                "ved Pedro Alves via yr.no";
     }
 
     public static String fetchReportTest(String forecastFile) {

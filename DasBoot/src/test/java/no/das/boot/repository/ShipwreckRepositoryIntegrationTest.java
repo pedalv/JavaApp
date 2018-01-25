@@ -1,11 +1,13 @@
 package no.das.boot.repository;
 
+import no.das.boot.Das;
 import no.das.boot.model.Shipwreck;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -19,7 +21,7 @@ import static org.hamcrest.Matchers.is;
  * Created by p on 14/09/2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@SpringApplicationConfiguration(Das.class)
+@SpringApplicationConfiguration(Das.class)
 @SpringBootTest
 public class ShipwreckRepositoryIntegrationTest {
 

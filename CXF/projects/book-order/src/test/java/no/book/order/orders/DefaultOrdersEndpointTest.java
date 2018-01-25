@@ -24,7 +24,7 @@ import com.bookcontract.service.orders.Orders;
  * It tests the failure scenario when a null input is passed by the client.
  */
 // The @RunWith annotation tells jUnit to use the Spring jUnit 4 test runner for
-// exection of the tests.
+// execution of the tests.
 @RunWith(SpringJUnit4ClassRunner.class)
 //The @ContextConfiguration annotation provides the classpath to the test
 //spring configuration file.
@@ -47,12 +47,12 @@ public class DefaultOrdersEndpointTest {
 	   // class.
 	   @Before
 	   public void setUp() throws Exception {
-	      // Initialize the orders web service using the JaxWsProxyFactoryBean
+	      // Initialise the orders web service using the JaxWsProxyFactoryBean
 	      // class's create method. Pass in the Orders class to avoid having to cast
 	      // the resulting object.
 	      ordersService = testOrdersClient.create(Orders.class);
 
-	      // Initialize the request type
+	      // Initialise the request type
 	      ObjectFactory factory = new ObjectFactory();
 	      orderInquiryType = factory.createOrderInquiryType();
 	      orderInquiryType.setUniqueOrderId(12345);

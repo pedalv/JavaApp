@@ -54,7 +54,8 @@ public class ForecastFromYrFileTest {
                 " Regn: 0 \n" +
                 " Vind kommer fra Nord-nordvest med 13.8mps - Liten kuling \n" +
                 " Temperature: 4 celsius \n" +
-                " Trykk: 990.3 hPa";
+                " Trykk: 990.3 hPa" + " \n " + " \n " +
+                "ved Pedro Alves via yr.no";
         String actual = ForecastFromYr.createForecastReport();
         int lenActual = actual.length();
         Assert.assertNotNull(ForecastFromYr.createForecastReport());

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password"></property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/protein_tracker?autoReconnect=true&useSSL=false</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.default_schema">protein_tracker</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="hibernate.jdbc.batch_size">20</property>
+  <property name="connection.autocommit">true</property>
+  <!--  not use in production  -->
+  <property name="hibernate.show_sql">true</property>
+  <mapping resource="no/domain/User.hbm.xml"/>
+  <mapping resource="no/domain/UserHistory.hbm.xml"/>
+  <mapping resource="no/domain/ProteinData.hbm.xml"/>
+  <mapping resource="no/domain/GoalAlert.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

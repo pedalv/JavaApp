@@ -23,6 +23,7 @@ public class FileWordData {
             list = stream
                     .filter(line -> !line.isEmpty())
                     .map(String::trim)
+                    .filter(line -> !line.isEmpty())
                     .collect(Collectors.toList());
 
         } catch (IOException e) {

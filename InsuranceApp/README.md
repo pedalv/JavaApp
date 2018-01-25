@@ -8,13 +8,15 @@ Insurance contract project via one request through many services
 - RESTfull, JSON
 
 ## How To Run it
-1. [Run](https://github.com/pedalv/InsuranceApp/blob/master/src/main/java/no/insurance/InsuranceAppApplication.java) from IntelliJ IDEA 
+1. [Run](https://github.com/pedalv/JavaApp/blob/master/InsuranceApp/src/main/java/no/insurance/InsuranceAppApplication.java) from IntelliJ IDEA 
 2. [Open database](http://localhost:8080/h2/)
-2.1 [application.properties](https://github.com/pedalv/InsuranceApp/blob/master/src/main/resources/application.properties)
-2.1 [Create database](https://github.com/pedalv/InsuranceApp/tree/master/src/main/resources/db.migration)
+> 2.1 [application.properties](https://github.com/pedalv/JavaApp/blob/master/InsuranceApp/src/main/resources/application.properties)
+
+> 2.2 [Create database](https://github.com/pedalv/JavaApp/tree/master/InsuranceApp/src/main/resources/db.migration)
 3. Open [http://localhost:8080/insurance](http://localhost:8080/insurance) 
-3.1 Output will be: Product_id: <nnn>, State: 4
-3.1.1 Code located on [insurance method](https://github.com/pedalv/InsuranceApp/blob/master/src/main/java/no/insurance/controller/HomeController.java)
+> 3.1 Output will be: Product_id: <nnn>, State: 4
+
+> 3.1.1 Code located on [insurance method](https://github.com/pedalv/JavaApp/blob/master/InsuranceApp/src/main/java/no/insurance/controller/HomeController.java)
 
 ## Tools
 - [Apache Maven](https://maven.apache.org/download.cgi) version: 3.3.9
@@ -38,7 +40,7 @@ $ java -jar InsuranceApp-0.0.1-SNAPSHOT.jar
 ```bash
 $ mvn dependency:tree
 ```
-- Open the projet [InsuranceApp](http://localhost:8080) in a browser
+- Open the projet [InsuranceApp](http://localhost:8080/insurance) in a browser
 
 ## Config application properties
 - [§ Appendix A. Common application properties](http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
@@ -46,7 +48,7 @@ $ mvn dependency:tree
 ## Documentation
 - [Testing the Web Layer](https://spring.io/guides/gs/testing-web/)
 - [Building an Application with Spring Boot](https://spring.io/guides/gs/spring-boot/)
-- [Getting started with Spring Data JPA](https://github.com/pedalv/InsuranceApp)
+- [Getting started with Spring Data JPA](https://spring.io/blog/2011/02/10/getting-started-with-spring-data-jpa/)
 - [Embedding H2 in an Application](http://h2database.com/html/quickstart.html)
 - [Flyway](https://github.com/flyway/flyway)
 -- [Flyway First steps](https://flywaydb.org/getstarted/firststeps/maven)

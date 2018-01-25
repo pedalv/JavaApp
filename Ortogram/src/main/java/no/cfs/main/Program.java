@@ -35,7 +35,7 @@ public class Program {
         Ortogram ortogram = new Ortogram();
 
         run.setWordList(FileWordData.ReadFile(run.fileName));
-        run.populateWordList();
+        //run.populateWordList();
 
         ortogram.sortPopulateList(run.getWordList());
         run.setSortwordList(ortogram.getSortWordList());

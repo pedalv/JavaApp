@@ -1,7 +1,7 @@
 # Apache CXF
 - Apache CXF™ is an open source services framework. 
 - CXF helps you build and develop services using frontend programming APIs, like JAX-WS and JAX-RS. 
-- These services can speak a variety of protocols such as SOAP, XML/HTTP, RESTful HTTP, or CORBA and work over a variety of transports such as HTTP, JMS or JBI.
+- These services can speak a variety of protocols such as SOAP(service-oriented architecture protocol), XML/HTTP, RESTful HTTP, or CORBA (Common Object Request Broker Architecture) and work over a variety of transports such as HTTP, JMS (Java Message Service) or JBI (Java Business Integration).
 
 # History - Defining Web Services - SOAP
 - In 2002, Sun released their first web service specification, JSR 101 -> JAX-RCP SOAP
@@ -61,6 +61,7 @@ Note: Includes Java-first web service
 1.3.2 Requirements for a Custom Interceptor
 - Add additional processing to a chained
 > Auditing
+
 > SOAP message enhancement
 - Skip a processing step
 > Non-standard web services
@@ -137,8 +138,9 @@ Note: Includes Java-first web service
 3.2.1 JAX-RS
 - Specification for Java RESTful web services
 > Supports plain old Java objects (POJO) through URIs
-- CXF Support for JAX-RS versionss
+- CXF Support for JAX-RS versions
 > JAX-RS 2.0 2.0: CXF 2.x mostly supports, CXF 3.x fully supports
+
 > JAX-RS 1.1: CXF 2.x+ fully supports
 3.2.2 Implementing JAX-RS
 - Available in the cxf-rt-frontend-jaxrs library
@@ -158,7 +160,7 @@ Note: Includes Java-first web service
 # JAX-WS  vs JAX-RS
 | JAX-WS | JAX-RS |
 | -------------- | -------------- |
-| Distributed component integrarion | Mobile and web view integration |
+| Distributed component integration | Mobile and web view integration |
 | Complex operations | Simple transactions |
 | Standars-based | Limited constrainsts |
 | Multiple transports | HTTP transport |
@@ -236,7 +238,9 @@ Note: Includes Java-first web service
 6.4 WS-Policy
 - A framework and model for web service policies
 > Domain-specific capabilities
+
 > Requirements
+
 > General characteristics
 - Configured in CXF through WSDL, Spring or API
 - Available through the dependency cxf-rs-ws-policy
@@ -263,13 +267,17 @@ Note: Includes Java-first web service
 - Inventory of services and schemas defined early in a design phase
 - Condidered best practice
 > Schema types are portable
+
 > Supports logic-to-contract coupling
 
 ## Contract-First Design Considerations
 - Contract granularity
 > Breadth of business context
+
 > Amount of work
+
 > Amount of data
+
 > Amount of constraints
 - Re-usability
 - Transparency
@@ -278,10 +286,13 @@ Note: Includes Java-first web service
 - Central place where their clients can place orders
 - Each request requires three inputs
 > Account
+
 > Book
+
 > Order Inquiry
 - Each response provide two outputs
 > Account information
+
 > order information
 
 # Documentation for fix some problems
@@ -298,11 +309,15 @@ Note: Includes Java-first web service
 - CXF™
 - jUnit
 > common framework for supporting Java testing
+
 > Full support in IDEs and frameworks
+
 > Supports testing at the unit and integration test level
 - Spring
 > Supports loading Spring's application context
+
 > Framework agnostic
+
 > Annotations for test case support
 - JAX-WS Server Bean Configuration
 ```bash
@@ -325,6 +340,7 @@ Note: Includes Java-first web service
 ## SOAP Fault
 - Contains errors and status information in a standard format
 > Fault code tells the nature of the errors
+
 > Fault string tells the description of the errors
 - Wrapped by CXF into an exception
 

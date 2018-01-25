@@ -17,17 +17,26 @@ public class EhCacheConfig {
 	public synchronized static Cache<Long, String> getMyCacheInstance() {
        if (mycache == null) {
     	   CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder() 
-   			    .withCache("preConfigured", CacheConfigurationBuilder
-   			    		.newCacheConfigurationBuilder(Long.class, String.class, ResourcePoolsBuilder.heap(10)))
+   			    .withCache(
+   			    		"preConfigured", 
+   			    		CacheConfigurationBuilder
+   			    			.newCacheConfigurationBuilder( 
+   			    					Long.class, 
+   			    					String.class, 
+   			    					ResourcePoolsBuilder.heap(10)))
    			    .build(); 
    			cacheManager.init(); 
 
    			Cache<Long, String> preConfigured =
    			    cacheManager.getCache("preConfigured", Long.class, String.class); 
 
-   			mycache = cacheManager.createCache("myCache", 
-   			    CacheConfigurationBuilder
-   			    	.newCacheConfigurationBuilder(Long.class, String.class, ResourcePoolsBuilder.heap(10)));
+   			mycache = cacheManager.createCache(
+   					"myCache",
+   					CacheConfigurationBuilder
+   			    		.newCacheConfigurationBuilder(
+   			    				Long.class, 
+   			    				String.class, 
+   			    				ResourcePoolsBuilder.heap(10) ) );
    			
           System.out.println("ehcache created!");
        } 

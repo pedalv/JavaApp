@@ -3,6 +3,7 @@ package no.space.controller;
 import no.space.model.Product;
 import no.space.repository.ProductRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

@@ -39,7 +39,9 @@ public class WeatherComponent {
     @Value("${send.to.email}")
     private String toEmail;
 
-    @Scheduled(fixedRate = 1000 * 60 * 5) // 1 hour (1000 * 60 * 60) 5 minuter (1000 * 60 * 5)
+    @Scheduled(fixedRate = 1000 * 60 * 5)
+    // 1 hour (1000 * 60 * 60) CreateTime.hours(1);
+    // 5 minuter (1000 * 60 * 5) CreateTime.minutes(5);
     public String startSendWeatherReportEmail() {
 
         if(!Validation.isValidString(forecastUrl) || !Validation.isValidURL(forecastUrl)) {
