@@ -1,4 +1,7 @@
 # Oracle Certified Professional (OCP)
+- The Oracle Certified Professional (OCP) credential builds upon the fundamental skills demonstrated by the OCA. 
+- The Oracle Certified Professional has a command of a specific area of Oracle technology and demonstrates a high level of knowledge and skills. 
+- IT managers often use the OCP credential to evaluate the qualifications of employees and job candidates.
 
 > Solid understanding of Java, and some of its SE APIs, and is a prerequisite to a number of the other Java certificates
 
@@ -73,7 +76,7 @@ newer NIO.2 API. It includes techniques for reading and writing fi le attributes
 traversing and searching for fi les using lambdas and streams.
 
 - Chapter 10 : JDBC This chapter provides the basics of working with databases in Java
-including different types of ResultSet s.
+including different types of ResultSet.
 
 - Appendix A: Answers to Review Questions This appendix lists the answers to the Review
 Questions along with explanations.
@@ -180,7 +183,7 @@ Questions along with explanations.
 - Chapter 4 covers the Streams API in detail
 
 ## Comprehensive Online Learning Environment
-- [select the exam category to study](http://sybextestbanks.wiley.com/)
+- [Select the exam category to study](http://sybextestbanks.wiley.com/)
 - [Welcome to Sybex.com](https://www.wiley.com/WileyCDA/Section/id-420431.html)
 - [WILEY END USER LICENSE AGREEMENT](https://www.wiley.com/WileyCDA/Section/id-819533.html)
 
