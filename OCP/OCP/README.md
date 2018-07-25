@@ -192,3 +192,11 @@ Questions along with explanations.
 - [Oracle Certification Program - Sign in](https://wsr.pearsonvue.com/testtaker/signin/SignInPage/ORACLE)
 - [Java, Oracle Solaris, MySQL and Other Former Sun Certification Exams Now Being Delivered At Pearson VUE](https://blogs.oracle.com/certification/java%2c-oracle-solaris%2c-mysql-and-other-former-sun-certification-exams-now-being-delivered-at-pearson-vue)
 - [Opprett konto](https://login.oracle.com/oaam_server/login.do)
+- [Java SE 8 Programmer II](http://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=5001&get_params=p_exam_id:1Z0-809)
+
+## From mock exam
+- [OCA/OCP Java SE 7 Programmer I & II Study Guide (Exams 1Z0-803 & 1Z0-804) (Certification Press) 1st Edition ]()
+- [The Java™ Tutorials ](https://docs.oracle.com/javase/tutorial/java/)
+- [Java Language and Virtual Machine Specifications](https://docs.oracle.com/javase/specs/)
+- [The Java® Language Specification Java SE 8 Edition](https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf)
+- [Ocjp Faq ](https://www.coderanch.com/wiki/659883/Ocjp-Faq)
