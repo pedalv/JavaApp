@@ -6,6 +6,10 @@ Java projects to build competence.
 git clone https://github.com/pedalv/JavaApp.git
 ```
 
+# Project 11: OCP
+- Project for certifies candidates on skills and knowledge related to Oracle products and technologies
+- OCP project is located on [https://github.com/pedalv/JavaApp/tree/master/OCP](https://github.com/pedalv/JavaApp/tree/master/OCP)
+
 # Project 10: Space
 - Project for coffee machine 
 - Space project is located on [https://github.com/pedalv/JavaApp/tree/master/Space](https://github.com/pedalv/JavaApp/tree/master/Space)
