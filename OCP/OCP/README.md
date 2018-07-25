@@ -200,3 +200,4 @@ Questions along with explanations.
 - [Java Language and Virtual Machine Specifications](https://docs.oracle.com/javase/specs/)
 - [The Java® Language Specification Java SE 8 Edition](https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf)
 - [Ocjp Faq ](https://www.coderanch.com/wiki/659883/Ocjp-Faq)
+- [Java OCP 8 Programmer II Study Guide](https://www.selikoff.net/java-ocp-8-programmer-ii-study-guide/)
