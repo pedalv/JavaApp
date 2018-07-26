@@ -15,7 +15,7 @@ it will instead call the visitFileFailed() method.
  */
 
 /*
-TODO: Not find any txt fil !!!!!!!!!!!!!!!!!!!!!!
+TODO: Does not find txt file !!!!!!!!!!!!!!!!!!!!!!
  */
 public class FindTextFilesSampleNIO2API {
 
