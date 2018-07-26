@@ -27,6 +27,27 @@ Overview of WatchService API
 If it seems like a lot of steps, don’t worry! In this section, we start with the first step and
 build out from there—one step at a time.
  */
+
+
+/*
+Limitations of the WatchService API
+
+Even though the WatchService API allows us to monitor a directory for changes, it does
+    so with a number of known drawbacks.
+First off, it is possible to miss directory change events, hence the need for the OVERFLOW event
+    to tell the application that a set of changes was discarded.
+Second, when events are lost, we do not get any information about the lost events, other than
+    we know that something was lost. Receiving no information about precisely which events
+    were lost might make some people refrain from using the WatchService API altogether.
+Finally, some JVMs implementations of the WatchService API are inefficient, with significant
+    delays between the time that the directory is modified and the moment that the
+    application is notified about the change. Some developers have even reported delays of
+    up to five seconds.
+
+This may not seem like a significant amount of time to you, but for
+    someone writing an application that continuously monitors a directory for changes, this
+    may have a drastic impact on their application.
+ */
 public class WatchServiceSampleNIO2API {
 
 
