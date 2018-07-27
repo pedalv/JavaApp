@@ -13,7 +13,7 @@ abstract class Animal {
 
 
     //Variable
-    String name = "???";
+    String name = "???"; // -----> *** IMPORTANT IMPORTANT IMPORTANT ***
 
     public void printName() {
         System.out.println(name);

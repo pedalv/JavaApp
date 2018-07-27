@@ -49,7 +49,7 @@ public class UnderstandingVirtualMethod {
 
         Lion lion = new Lion();
         lion.printName();
-        // This outputs ???
+        // This outputs ???  // -----> *** IMPORTANT IMPORTANT IMPORTANT ***
 
 
         animal.careFor();
