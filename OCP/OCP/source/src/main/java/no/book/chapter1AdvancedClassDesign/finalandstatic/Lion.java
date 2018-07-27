@@ -1,4 +1,4 @@
-package no.book.chapter1AdvancedClassDesign.finalandsttaic;
+package no.book.chapter1AdvancedClassDesign.finalandstatic;
 
 /*
 The tricky one is that you could leave it
