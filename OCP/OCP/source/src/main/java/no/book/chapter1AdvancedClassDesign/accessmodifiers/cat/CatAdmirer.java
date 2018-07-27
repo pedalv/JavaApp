@@ -1,4 +1,4 @@
-package no.book.chapter1AdvancedClassDesign.cat;
+package no.book.chapter1AdvancedClassDesign.accessmodifiers.cat;
 
 public class CatAdmirer {
 
@@ -8,7 +8,7 @@ public class CatAdmirer {
         System. out .println(cat.hasFur);
         System. out .println(cat.hasPaws);
         //System. out .println(cat.id); // Does not compile
-        // Error: java: id has private access in no.book.chapter1AdvancedClassDesign.cat.BigCat
+        // Error: java: id has private access in no.book.chapter1AdvancedClassDesign.accessmodifiers.cat.BigCat
     }
 
 }

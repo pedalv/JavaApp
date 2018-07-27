@@ -1,4 +1,4 @@
-package no.book.chapter1AdvancedClassDesign.cat;
+package no.book.chapter1AdvancedClassDesign.accessmodifiers.cat;
 
 /*
 The line with cat.name compiles in all four classes because any code can access public members.
