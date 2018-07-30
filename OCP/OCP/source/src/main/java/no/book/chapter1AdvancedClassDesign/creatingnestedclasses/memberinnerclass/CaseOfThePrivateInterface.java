@@ -19,5 +19,5 @@ public class CaseOfThePrivateInterface {
     class DontTell implements Secret {
         public void shh() { }
     }
-    
+
 }
