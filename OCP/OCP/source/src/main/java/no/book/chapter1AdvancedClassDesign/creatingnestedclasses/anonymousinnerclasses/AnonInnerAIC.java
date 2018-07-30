@@ -9,10 +9,16 @@ Remember that an anonymous inner class is just an unnamed local inner class.
 
 You can write a local inner class and give it a name if you have this problem.
 Then you can extend a class and implement as many interfaces as you like.
- */
-public class AnonInnerAI {
 
-    abstract class SaleTodayOnly implements Pedro  { // Line 2
+Note:
+Class Pedro2
+
+java.lang.Object
+    no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.Pedro2
+ */
+public class AnonInnerAIC {
+
+    abstract class SaleTodayOnly extends Pedro2 implements Pedro  { // Line 2
         abstract int dollarsOff();
     } // Line 4
 
@@ -28,7 +34,7 @@ public class AnonInnerAI {
             int dollarsOff() { return 3; } // Line 7
         }; // Line 8
 
-        return sale.workForAchieveOCP() + " with admission: " + (basePrice - sale.dollarsOff());
+        return sale.workForAchieveOCP() + ", and " +SaleTodayOnly.workForAchieveOCPclass() + " with admission: " + (basePrice - sale.dollarsOff());
     }
 
 }

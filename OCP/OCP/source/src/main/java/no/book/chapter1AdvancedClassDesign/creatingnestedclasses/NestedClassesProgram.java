@@ -1,9 +1,6 @@
 package no.book.chapter1AdvancedClassDesign.creatingnestedclasses;
 
-import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.AnonInnerA;
-import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.AnonInnerAI;
-import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.AnonInnerI;
-import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.AnonInnerIs;
+import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.*;
 import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.localinnerclasses.FinalVariable;
 import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.localinnerclasses.Outer;
 import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.A;
@@ -94,6 +91,15 @@ public class NestedClassesProgram {
         AnonInnerAI anonInner2AI = new AnonInnerAI();
         admissionI = anonInner2AI.admission(baseprise);
         System.out.println("abstract class SaleTodayOnly implements Pedro --> " + admissionI);
+
+        AnonInnerAIC anonInnerAIC = new AnonInnerAIC();
+        admissionI = anonInnerAIC.admission(baseprise);
+        System.out.println("abstract class SaleTodayOnly extends Pedro2 implements Pedro --> " + admissionI);
+
+        AnonInnerAICsolution anonInnerAICsolution = new AnonInnerAICsolution();
+        admission = anonInnerAICsolution.pay();
+        System.out.println("interface SaleTodayOnly (Solution) --> baseprise: " + baseprise + ", admission: " + admission);
+
     }
 
     private static void localInnerClasses() {
