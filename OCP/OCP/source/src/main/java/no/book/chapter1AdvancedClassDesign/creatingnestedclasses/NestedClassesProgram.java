@@ -26,5 +26,5 @@ public class NestedClassesProgram {
     ■■ 3. An anonymous inner class
     ■■ 4. A static nested class
      */
-    
+
 }

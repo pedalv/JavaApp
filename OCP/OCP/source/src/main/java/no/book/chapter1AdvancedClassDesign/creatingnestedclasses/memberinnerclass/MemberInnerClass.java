@@ -1,4 +1,4 @@
-package no.book.chapter1AdvancedClassDesign.creatingnestedclasses.MemberInnerClass;
+package no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass;
 
 public class MemberInnerClass {
 
