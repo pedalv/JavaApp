@@ -17,7 +17,16 @@ public class CaseOfThePrivateInterface {
     A class that implements the interface must define that method as public.
      */
     class DontTell implements Secret {
-        public void shh() { }
+        public void shh() {
+            System.out.println("shh method called");
+        }
+    }
+
+    public static void main(String ... args) {
+
+        CaseOfThePrivateInterface caseOfThePrivateInterface = new CaseOfThePrivateInterface();
+        caseOfThePrivateInterface.new DontTell().shh();
+
     }
 
 }

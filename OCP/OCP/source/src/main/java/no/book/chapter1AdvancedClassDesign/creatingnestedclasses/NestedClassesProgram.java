@@ -1,5 +1,14 @@
 package no.book.chapter1AdvancedClassDesign.creatingnestedclasses;
 
+import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.AnonInnerA;
+import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.AnonInnerAI;
+import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.AnonInnerI;
+import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.anonymousinnerclasses.AnonInnerIs;
+import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.localinnerclasses.FinalVariable;
+import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.localinnerclasses.Outer;
+import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.A;
+import no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.CaseOfThePrivateInterface;
+
 /*
 A nested class is a class that is defined within another class.
 A nested class that is not static is called an inner class.
@@ -26,5 +35,73 @@ public class NestedClassesProgram {
     ■■ 3. An anonymous inner class
     ■■ 4. A static nested class
      */
+
+    public static void main(String ... args) {
+
+        localInnerClasses();
+
+        anonymousInnerClasses();
+
+        memberInnerClass();
+    }
+
+    private static void memberInnerClass() {
+       /*
+        Error:(52, 10) java: no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.A.B
+            is not public in no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.A;
+            cannot be accessed from outside package
+        Error:(52, 23) java: no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.A.B
+            is not public in no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.A;
+            cannot be accessed from outside package
+        Error:(53, 10) java: no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.A.B
+            is not public in no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.A;
+            cannot be accessed from outside package
+        TODO: Need change classes B and C  from default to public to work
+
+        A a = new A();
+        A.B b = a.new B();
+        A.B.C c = b.new C();
+        c.allTheX();
+        */
+
+       /*
+       Error: java: no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.CaseOfThePrivateInterface.DontTell
+        is not public in no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.CaseOfThePrivateInterface;
+        cannot be accessed from outside package
+
+       CaseOfThePrivateInterface caseOfThePrivateInterface = new CaseOfThePrivateInterface();
+       caseOfThePrivateInterface.new DontTell().shh();
+        */
+
+       no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.Outer outer = new no.book.chapter1AdvancedClassDesign.creatingnestedclasses.memberinnerclass.Outer();
+       outer.callInner();
+    }
+
+    private static void anonymousInnerClasses() {
+        AnonInnerA anonInnerA = new AnonInnerA();
+        int baseprise = 99;
+        int admission = anonInnerA.admission(baseprise);
+        System.out.println("abstract class SaleTodayOnly --> baseprise: " + baseprise + ", admission: " + admission);
+
+        AnonInnerI anonInnerI = new AnonInnerI();
+        admission = anonInnerI.admission(baseprise);
+        System.out.println("interface SaleTodayOnly --> baseprise: " + baseprise + ", admission: " + admission);
+
+        AnonInnerIs anonInner2Is = new AnonInnerIs();
+        String admissionI = anonInner2Is.admission(baseprise);
+        System.out.println("interface SaleTodayOnly extends Pedro --> " + admissionI);
+
+        AnonInnerAI anonInner2AI = new AnonInnerAI();
+        admissionI = anonInner2AI.admission(baseprise);
+        System.out.println("abstract class SaleTodayOnly implements Pedro --> " + admissionI);
+    }
+
+    private static void localInnerClasses() {
+        FinalVariable fvar = new FinalVariable();
+        fvar.isItFinal();
+
+        Outer outer = new Outer();
+        outer.calculate();
+    }
 
 }
