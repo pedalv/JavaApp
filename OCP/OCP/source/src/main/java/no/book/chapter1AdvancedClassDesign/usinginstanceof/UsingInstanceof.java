@@ -6,7 +6,6 @@ In a instanceof B, the expression returns true if
 - a subclass of B (directly or indirectly),
 - or a class that implements the B interface (directly or indirectly).
 
-
  */
 public class UsingInstanceof {
 
