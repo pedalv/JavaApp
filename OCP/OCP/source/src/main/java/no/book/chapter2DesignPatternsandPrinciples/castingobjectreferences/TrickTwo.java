@@ -5,7 +5,7 @@ Casting is not without its limitations.
 Even though two classes share a related hierarchy,
     that doesn’t mean an instance of one can automatically be cast to another.
 
-Here’s an example:
+DesignPrinciples’s an example:
  */
 public class TrickTwo {
 

@@ -3,7 +3,7 @@ package no.book.chapter2DesignPatternsandPrinciples.castingobjectreferences;
 public class TrickOne {
 
     /*
-    Here are some basic rules to keep in mind when casting variables:
+    DesignPrinciples are some basic rules to keep in mind when casting variables:
         ...
         3. The compiler will not allow casts to unrelated types.
 

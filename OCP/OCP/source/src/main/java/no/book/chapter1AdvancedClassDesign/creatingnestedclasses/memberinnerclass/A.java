@@ -7,7 +7,7 @@ Inner classes can have the same variable names as outer classes.
 There is a special way of calling this to say which class you want to access.
 You also aren’t limited to just one inner class.
 Please never do this in code you write.
-Here is how to nest multiple classes and access a variable with the same name in each:
+DesignPrinciples is how to nest multiple classes and access a variable with the same name in each:
 
 Yes, this code makes us cringe too.
 It has two nested classes.

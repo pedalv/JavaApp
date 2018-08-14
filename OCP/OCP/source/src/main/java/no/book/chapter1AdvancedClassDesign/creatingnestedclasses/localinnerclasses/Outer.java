@@ -2,7 +2,7 @@ package no.book.chapter1AdvancedClassDesign.creatingnestedclasses.localinnerclas
 
 /*
 Ready for an example?
-Here’s a complicated way to multiply two numbers:
+DesignPrinciples’s a complicated way to multiply two numbers:
 
 Lines 5 through 9 are the local inner class.
 That class’s scope ends on line 12 where the method ends.

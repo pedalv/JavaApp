@@ -8,7 +8,7 @@ Anonymous inner classes are required to extend an existing class or implement
 They are useful when you have a short implementation that will not be
     used anywhere else.
 
-Here’s an example:
+DesignPrinciples’s an example:
  */
 public class AnonInnerA {
 

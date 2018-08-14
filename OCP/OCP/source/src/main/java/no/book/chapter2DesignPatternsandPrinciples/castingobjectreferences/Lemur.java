@@ -24,7 +24,7 @@ public class Lemur extends Primate {
         In the second example, though, we explicitly cast the object to a subclass of the object Primate,
             and we gain access to all the methods available to the Lemur class.
 
-        Here are some basic rules to keep in mind when casting variables:
+        DesignPrinciples are some basic rules to keep in mind when casting variables:
         1. Casting an object from a subclass to a superclass doesn’t require an explicit cast.
         2. Casting an object from a superclass to a subclass requires an explicit cast.
         3. The compiler will not allow casts to unrelated types.
