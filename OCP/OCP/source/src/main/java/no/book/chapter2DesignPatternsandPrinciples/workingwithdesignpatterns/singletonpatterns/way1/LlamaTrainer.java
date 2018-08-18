@@ -1,4 +1,4 @@
-package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns;
+package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.singletonpatterns.way1;
 
 /*
 One thing to keep in mind is that there might be multiple llama trainers at the zoo

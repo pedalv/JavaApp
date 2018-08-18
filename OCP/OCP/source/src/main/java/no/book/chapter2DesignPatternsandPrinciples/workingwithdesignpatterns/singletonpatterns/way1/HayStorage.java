@@ -1,4 +1,4 @@
-package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns;
+package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.singletonpatterns.way1;
 
 /*
 We present a simple implementation of our HayManager class as a singleton and discuss

@@ -1,4 +1,4 @@
-package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns;
+package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.singletonpatterns;
 
 /*
 The first 'creational pattern' we will discuss is the singleton pattern.

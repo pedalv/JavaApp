@@ -1,4 +1,4 @@
-package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns;
+package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.singletonpatterns.way2;
 
 /*
 We can also instantiate a singleton in two other ways.
