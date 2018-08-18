@@ -9,6 +9,13 @@ public class CatAdmirer {
         System. out .println(cat.hasPaws);
         //System. out .println(cat.id); // Does not compile
         // Error: java: id has private access in no.book.chapter1AdvancedClassDesign.accessmodifiers.cat.BigCat
+
+        cat.publicMethod();
+        cat.protectedMethod();
+        cat.defaultMethod();
+        //cat.privateMethod(); // Does not compile
+        // Error: java: privateMethod() has private access in no.book.chapter1AdvancedClassDesign.accessmodifiers.cat.BigCat
+
     }
 
 }

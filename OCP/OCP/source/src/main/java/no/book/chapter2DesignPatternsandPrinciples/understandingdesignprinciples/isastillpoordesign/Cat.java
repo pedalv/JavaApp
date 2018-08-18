@@ -7,6 +7,4 @@ The parent class, Pet, has commonly used fields such as name and age.
 
 public class Cat extends Pet {
 
-
-
 }

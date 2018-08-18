@@ -24,4 +24,10 @@ public class BigCat {
     boolean hasPaws = true; //default
     private int id;
 
+    public void publicMethod() {}
+    protected void protectedMethod() {}
+    void defaultMethod() {}
+    private void privateMethod() {}
+
+
 }
