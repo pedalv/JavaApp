@@ -135,6 +135,12 @@ final class AnimalImmutable {
     public String getFavoriteFood(int index) {
         return favoriteFoods.get(index);
     }
+
+
+    public List<String> getFavoriteFoods() { // MAKES CLASS IMMUTABLE!
+        return Collections.unmodifiableList(favoriteFoods); // IMPORTANT IMPORTANT IMPORTANT
+    }
+
 }
 
 /*
