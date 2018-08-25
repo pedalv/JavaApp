@@ -1,4 +1,4 @@
-package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.creatingimmutableobjects;
+package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.immutablepattern;
 
 import java.util.ArrayList;
 import java.util.Arrays;

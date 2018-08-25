@@ -1,7 +1,7 @@
 package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.builderpattern;
 
 
-import no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.creatingimmutableobjects.AnimalImmutable;
+import no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.immutablepattern.AnimalImmutable;
 
 import java.util.Arrays;
 import java.util.List;
