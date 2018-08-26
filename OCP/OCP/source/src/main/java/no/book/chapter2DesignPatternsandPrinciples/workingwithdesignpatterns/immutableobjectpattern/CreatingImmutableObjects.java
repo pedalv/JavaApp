@@ -1,4 +1,4 @@
-package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.immutablepattern;
+package no.book.chapter2DesignPatternsandPrinciples.workingwithdesignpatterns.immutableobjectpattern;
 
 /*
 Problem
