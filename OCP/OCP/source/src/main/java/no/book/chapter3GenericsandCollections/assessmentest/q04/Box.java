@@ -1,4 +1,4 @@
-package no.book.chapter3GenericsandCollections.assessmentest.q04;
+package no.book.chapter3GenericsandCollections.assessmenTest.q04;
 
 public class Box<T> {
     T value;
