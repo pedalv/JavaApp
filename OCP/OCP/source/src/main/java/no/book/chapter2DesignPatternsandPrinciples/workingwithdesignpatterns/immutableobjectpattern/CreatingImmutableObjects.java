@@ -30,11 +30,13 @@ public class CreatingImmutableObjects {
     Although there are a variety of techniques for writing an immutable class,
         you should be familiar with a common strategy for making a class immutable for the exam:
     1. Use a constructor to set all properties of the object.
-    The fi rst rule defines how we create the immutable object, by passing the information
-        to the constructor, so that all of the data is set upon creation.
+    The first rule defines how we create the immutable object,
+        by passing the information to the constructor,
+        so that all of the data is set upon creation.
     2. Mark all of the instance variables private and final.
     3. Don’t define any setter methods.
-    The second and third rules are straightforward, as they stem from proper encapsulation.
+    The second and third rules are straightforward,
+        as they stem from proper encapsulation.
     If the instance variables are private and final, and there are no setter methods,
         then there is no direct way to change the property of an object.
     All references and primitive values contained in the object are set at creation and cannot be modified.
