@@ -1,4 +1,4 @@
-package no.book.AssessmenTest.q01;
+package no.book.AssessmentTest.q01;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

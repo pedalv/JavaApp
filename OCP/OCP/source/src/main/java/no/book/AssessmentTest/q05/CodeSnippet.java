@@ -1,4 +1,4 @@
-package no.book.AssessmenTest.q05;
+package no.book.AssessmentTest.q05;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentSkipListSet;

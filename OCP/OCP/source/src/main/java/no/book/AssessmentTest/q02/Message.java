@@ -1,4 +1,4 @@
-package no.book.AssessmenTest.q02;
+package no.book.AssessmentTest.q02;
 
 public abstract class Message { //Line 1
     public String recipient;

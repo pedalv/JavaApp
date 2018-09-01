@@ -1,4 +1,4 @@
-package no.book.AssessmenTest.q03;
+package no.book.AssessmentTest.q03;
 
 
 import java.io.*;
@@ -6,6 +6,10 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static no.book.helper.Directories.GettingCurrentWorkingDirectory;
+import static no.book.helper.Directories.getAbsolutePathFile;
+import static no.book.helper.Directories.getURLFile;
 
 public class Bird implements Serializable { // Line 3
 
@@ -22,41 +26,25 @@ public class Bird implements Serializable { // Line 3
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
 
-    public static Path getResourcePath(Class<?> resourceClass, String resourceName) throws URISyntaxException {
-        URL url = resourceClass.getResource(resourceName);
-        return Paths.get(url.toURI());
-    }
-
-    public static URL getURLFile() {
-        InputStream inputStream =  ClassLoader.getSystemResourceAsStream("no/book/AssessmentTest/q03/birds.dat");
-        System.out.println(inputStream);
-        URL url = ClassLoader.getSystemResource("no/book/AssessmentTest/q03/birds.dat");
-        System.out.println(url);
-
-        return url;
-    }
-
-    public static String getAbsolutePathFile() {
-        File openFile = new File("no/book/AssessmentTest/q03/birds.dat");
-        System.out.println(openFile.getAbsolutePath());
-        try {
-            System.out.println(openFile.getCanonicalPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(openFile.getName());
-        System.out.println(openFile.length());
-
-        return openFile.getAbsolutePath();
-    }
     public static void main(String[] args) {
-        String filepath = getAbsolutePathFile();
-        URL url = getURLFile();
+
+        String current = GettingCurrentWorkingDirectory();
+        System.out.println(String.format("Current: %s",current));
+        // C:\Space2\JavaApp\OCP\OCP\source
+
+        String filepath = getAbsolutePathFile("src/main/resources/no/book/AssessmentTest/q03/birds.dat");
+        System.out.println(String.format("Filepath: %s", filepath));
+        // C:\Space2\JavaApp\OCP\OCP\source\src\main\resources\no\book\AssessmentTest\q03\birds.dat
+
+        URL url = getURLFile("no/book/AssessmentTest/q03/birds.dat");
+        System.out.println(String.format("URL: %s", url));
+        //file:/C:/Space2/JavaApp/OCP/OCP/source/target/classes/no/book/AssessmentTest/q03/birds.dat
 
 
-        File initialFile = new File("no/book/AssessmentTest/q03/birds.dat");
+        File initialFile = new File("src/main/resources/no/book/AssessmentTest/q03/birds.dat");
         try(InputStream targetStream = new FileInputStream(initialFile)) {
             System.out.println(targetStream);
+            //java.io.FileInputStream@50675690
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -65,16 +53,26 @@ public class Bird implements Serializable { // Line 3
 
 
         try(InputStream is = new ObjectInputStream( // Lina 16
-            new BufferedInputStream(new FileInputStream("no/book/AssessmentTest/q03/birds.dat")))) { // Line 17
-            System.out.println(is);
+            new BufferedInputStream(new FileInputStream("src/main/resources/no/book/AssessmentTest/q03/birds.dat")))) { // Line 17
+            System.out.println(is.toString());
             //Bird bird = (Bird) is.readObject(); // Line 18
         } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         } catch (IOException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
+            /*
+            invalid stream header: 66657766
+            java.io.StreamCorruptedException: invalid stream header: 66657766
+                at java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:866)
+                at java.io.ObjectInputStream.<init>(ObjectInputStream.java:358)
+                at no.book.AssessmentTest.q03.Bird.main(Bird.java:50)
+             */
         }
     }
- }
+
+}
 
  /*
  Question 3

@@ -1,4 +1,4 @@
-package no.book.AssessmenTest.q06;
+package no.book.AssessmentTest.q06;
 
 import java.util.ArrayList;
 import java.util.Collections;

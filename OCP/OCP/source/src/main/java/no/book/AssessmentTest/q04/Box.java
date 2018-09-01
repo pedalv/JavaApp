@@ -1,4 +1,4 @@
-package no.book.AssessmenTest.q04;
+package no.book.AssessmentTest.q04;
 
 public class Box<T> {
     T value;
