@@ -9,7 +9,7 @@ public class StreamMagic {
         Optional o = s
                 .filter(x -> x < 5)
                 .limit(3)
-                .max((x, y) -> x-y);
+                .max((x, y) -> x-y); // .max(Comparator.comparingInt(x -> x));
 
         System.out.println(o.get());
     }
