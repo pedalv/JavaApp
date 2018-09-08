@@ -7,17 +7,22 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 public class Directories {
-    public static Path getResourcePath(Class<?> resourceClass, String resourceName) throws URISyntaxException {
-        URL url = resourceClass.getResource(resourceName);
+
+    public static Path getResourcePath(String name) throws URISyntaxException {
+        URL url = ClassLoader.getSystemResource(name);
+        System.out.println(url);
+        Objects.requireNonNull(url, "Resource URL cannot be null");
         return Paths.get(url.toURI());
     }
 
     public static URL getURLFile(String name) {
+        //name: "no/book/AssessmentTest/q03/birds.dat" for exemple
         InputStream inputStream =  ClassLoader.getSystemResourceAsStream(name);
         System.out.println(inputStream);
-        URL url = ClassLoader.getSystemResource("no/book/AssessmentTest/q03/birds.dat");
+        URL url = ClassLoader.getSystemResource(name);
         System.out.println(url);
 
         return url;

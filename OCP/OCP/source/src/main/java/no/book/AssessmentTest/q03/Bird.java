@@ -2,11 +2,7 @@ package no.book.AssessmentTest.q03;
 
 
 import java.io.*;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import static no.book.helper.Directories.GettingCurrentWorkingDirectory;
 import static no.book.helper.Directories.getAbsolutePathFile;
 import static no.book.helper.Directories.getURLFile;
