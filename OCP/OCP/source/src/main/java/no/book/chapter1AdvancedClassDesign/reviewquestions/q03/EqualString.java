@@ -16,12 +16,12 @@ public class EqualString {
 /*
 What is the result of the following code?
 
-A. There is no output.
-B. s1 == s2
+    A. There is no output.
+    B. s1 == s2
 C. s1.equals(s2)
-D. Both B and C.
-E. The code does not compile.
-F. The code throws a runtime exception.
+    D. Both B and C.
+    E. The code does not compile.
+    F. The code throws a runtime exception.
 
 Answer
 C

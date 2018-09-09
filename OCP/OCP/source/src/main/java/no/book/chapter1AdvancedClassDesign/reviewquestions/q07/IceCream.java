@@ -73,12 +73,12 @@ public class IceCream {
 /*
 What is the result of the following code? (Choose all that apply.)
 
-A. vanilla
-B. chocolate
-C. strawberry
-D. missing flavor
+    A. vanilla
+    B. chocolate
+        C. strawberry
+    D. missing flavor
 E. The code does not compile.
-F. An exception is thrown.
+    F. An exception is thrown.
 
 ANSWER
 E
