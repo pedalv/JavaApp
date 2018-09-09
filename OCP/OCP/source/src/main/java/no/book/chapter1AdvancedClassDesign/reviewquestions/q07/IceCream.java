@@ -47,9 +47,9 @@ public class IceCream {
         */
         final int zero = 0;
         switch (0) {
-            case zero : System.out.println("vanilla");
+            case zero : System.out.println("int int - OKAY");
                 // Error:(32, 18) java: an enum switch case label must be the unqualified name of an enumeration constant
-            default: System.out.println("missing flavor");
+            default: System.out.println("int int - Example");
         }
 
 
@@ -82,6 +82,8 @@ F. An exception is thrown.
 
 ANSWER
 E
+After fix
+C
 
 switch can only work with primitives, enum values and (since Java 7) strings.
  */
