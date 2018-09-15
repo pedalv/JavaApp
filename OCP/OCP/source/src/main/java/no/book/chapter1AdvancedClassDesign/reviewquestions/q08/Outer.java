@@ -37,6 +37,11 @@ C
 after fix
 B
 
+C.
+Inner is a member inner class.
+Inner classes are not allowed to contain static methods or static variables.
+Only nested static classes are permitted to contain statics.
+
 
 
  */

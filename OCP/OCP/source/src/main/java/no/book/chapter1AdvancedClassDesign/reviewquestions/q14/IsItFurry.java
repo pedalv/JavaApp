@@ -34,5 +34,12 @@ Which is a true statement about the following code? (Choose all that apply.)
 E. l instanceof Chipmunk does not compile.
         F. r instanceof Chipmunk does not compile.
 
+ANSWER
+E.
+Code involving instanceof does not compile when there is no way for it to evaluate true.
+D not only compiles but it is always true.
+E does not compile because ArrayList is a concrete class that does not extend Chipmunk.
+F does compile because Runnable is an interface.
+  In theory, someone could subclass Chipmunk and have the subclass implement Runnable.
 
  */

@@ -25,4 +25,7 @@ B. 1
 
 ANSWER
 B
+The ordinal() method of an enum returns its corresponding int value.
+Like arrays, enums are zero based.
+Remember that the index of an enum may change when you recompile the code and should not be used for comparison.
  */

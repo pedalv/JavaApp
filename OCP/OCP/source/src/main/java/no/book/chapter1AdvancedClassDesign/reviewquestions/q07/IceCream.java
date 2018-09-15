@@ -86,4 +86,11 @@ After fix
 C
 
 switch can only work with primitives, enum values and (since Java 7) strings.
+
+
+E.
+A case statement on an enum data type must be the unqualified name of an enumeration constant.
+For example, case VANILLA would be valid.
+You cannot use the ordinal equivalents.
+Therefore, the code does not compile
  */

@@ -32,4 +32,8 @@ A. The code compiles.
 
 Answer
 A
+hashCode() is correct and perfectly reasonable given that equals() also checks that field.
+ClassCastException is a runtime exception and therefore does not need to be handled or declared.
+The override in equals() is correct. It is common for equals() to refer to a private instance variable.
+This is legal because it is within the same class, even if it is referring to a different object of the same class.
  */

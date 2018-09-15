@@ -2,8 +2,51 @@ package no.book.chapter1AdvancedClassDesign.reviewquestions.q16;
 
 public class Outer {
 
-    class Inner { }
-    static class InnerStatic { }
+    private int x = 5;
+
+    class Inner {
+        public /*static*/ int x = 10; // Line 4
+        /*
+        Error: java: Illegal static declaration in inner
+            class no.book.chapter1AdvancedClassDesign.reviewquestions.q16.Outer.Inner
+            modifier 'static' is only allowed in constant variable declarations
+         */
+
+        //static int i = 0;
+        /*
+        Error:java: Illegal static declaration in inner class
+            no.book.chapter1AdvancedClassDesign.reviewquestions.q16.Outer.Inner
+            modifier 'static' is only allowed in constant variable declarations
+         */
+
+        //static public void m() {}
+        //public static void m2() {}
+        /*
+        Error: java: Illegal static declaration in inner
+            class no.book.chapter1AdvancedClassDesign.reviewquestions.q16.Outer.Inner
+            modifier 'static' is only allowed in constant variable declarations
+         */
+
+
+        /*
+        Inner is a member inner Outer class.
+        Inner classes are not allowed to contain static methods or static variables. (above)
+        Only nested static classes are permitted to contain statics. (down)
+         */
+
+    }
+
+
+    static class InnerStatic {
+
+        static int i = 0;
+        static public void m() {}
+        public static void m2() {}
+
+    }
+
+
+
     public static void main(String[] args) {
         // INSERT CODE HERE
 
@@ -45,6 +88,8 @@ public class Outer {
         InnerStatic innerStatic = new InnerStatic();
         Outer outer = new Outer();
 
+
+
     }
 
 }
@@ -59,5 +104,12 @@ Which of the following can be inserted in main?
 E. Outer.Inner in = new Outer().new Inner();
     F. Outer.Inner in = Outer.new Inner();
 
+ANSWER
+E.
+This is a member inner class.
+It needs to be created using an instance of the outer class.
+The syntax looks weird,
+    but it creates an object of the outer class
+    and then an object of the inner class from it.
 
  */

@@ -43,4 +43,17 @@ Book$1.class
 Book$BookReader.class
 Book.class
 
+C.
+The code compiles fine.
+A member inner class is allowed to be private, and it is
+    allowed to refer to instance variables from the outer class.
+Two .class files are generated.
+Book.class matches the name of the outer class.
+The inner class does not compile to BookReader.class.
+That would introduce the possibility of a naming conflict.
+Book$BookReader.class is correct because it shows the scope of the class is limited to Book.
+You don’t need to know that $ is the syntax,
+    but you do need to know the number of classes
+    and that BookReader is not a top-level class.
+
  */

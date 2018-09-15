@@ -25,4 +25,12 @@ C. s1.equals(s2)
 
 Answer
 C
+s1 points to the string pool.
+s2 points to an object on the heap, since it is created at runtime.
+== checks for reference equality.
+These are different references, making B incorrect.
+String overrides equals() so the actual values are the same, making C correct.
+And yes, this question could have appeared on the OCA.
+Remember that the OCP is cumulative.
+A question may appear to be about one thing and actually be about a simpler concept.
  */

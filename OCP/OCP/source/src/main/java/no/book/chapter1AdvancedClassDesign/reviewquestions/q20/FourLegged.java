@@ -27,4 +27,14 @@ C. walk,toddle,
         E. The code does not compile.
         F. A runtime exception is thrown.
 
+ANSWER
+C.
+Both objects are BabyRhino objects.
+Virtual method invocation says that the subclass method gets called
+    at runtime rather than the type in the variable reference.
+However, we are not calling methods here.
+We are referring to instance variables.
+With instance variables,
+    the reference type does matter.
+
  */

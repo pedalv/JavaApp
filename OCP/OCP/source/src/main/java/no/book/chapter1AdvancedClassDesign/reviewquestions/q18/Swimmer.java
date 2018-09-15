@@ -72,4 +72,13 @@ FISH
 1
 true
 false
+
+
+ANSWER
+G.
+This question appears to be about enums but is really about abstract methods.
+Just as an abstract superclass requires concrete subclasses to have an implementation,
+    abstract enum methods require each enum type to implement the method.
+
+
  */

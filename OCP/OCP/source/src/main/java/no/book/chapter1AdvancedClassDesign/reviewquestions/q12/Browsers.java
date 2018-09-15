@@ -51,4 +51,11 @@ What is the result of the following code?
     C. Inside IE
         D. The code does not compile.
 E. A runtime exception is thrown.
+
+
+ANSWER:
+
+E.
+The main method tries to cast a Firefox instance to IE.
+Since IE is not a subclass of Firefox, this throws a ClassCastException.
  */
