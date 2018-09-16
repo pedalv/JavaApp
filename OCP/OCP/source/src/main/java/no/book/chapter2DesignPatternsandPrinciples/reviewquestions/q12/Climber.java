@@ -4,7 +4,7 @@ public class Climber {
 
     public static void main(String[] args) {
 
-        check((h, l) -> h.toString(), 5); // x1
+        //check((h, l) -> h.toString(), 5); // x1
         /*
         Error: java: int cannot be dereferenced
          */
