@@ -13,7 +13,7 @@ public class ImmutableClass {
     F. All getter methods are marked synchronized.
 
     ANSWER
-    
+
 
 
 
