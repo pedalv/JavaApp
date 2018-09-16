@@ -36,6 +36,14 @@ E. Object
     F. Long
 
 ANSWER
-
+A, B, D, E.
+The blank can be filled with any class or interface that is a supertype of TurtleFrog.
+A is a superclass of TurtleFrog, and B is the same class, so both are correct.
+BrazilianHornedFrog is not a superclass of TurtleFrog, so C is incorrect.
+TurtleFrog inherits the CanHop interface, so D is correct.
+All classes inherit Object, so E is correct.
+Finally,
+    Long is an unrelated class that is not a superclass of TurtleFrog,
+    and it is therefore incorrect.
 
  */
