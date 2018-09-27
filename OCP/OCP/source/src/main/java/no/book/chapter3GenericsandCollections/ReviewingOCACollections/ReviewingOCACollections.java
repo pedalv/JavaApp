@@ -1,4 +1,4 @@
-package no.book.chapter3GenericsandCollections;
+package no.book.chapter3GenericsandCollections.ReviewingOCACollections;
 
 
 public class ReviewingOCACollections {

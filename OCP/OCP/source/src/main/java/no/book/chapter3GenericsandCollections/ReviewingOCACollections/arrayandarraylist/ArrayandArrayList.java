@@ -1,4 +1,4 @@
-package no.book.chapter3GenericsandCollections.arrayandarraylist;
+package no.book.chapter3GenericsandCollections.ReviewingOCACollections.arrayandarraylist;
 
 import java.util.ArrayList;
 import java.util.Arrays;
