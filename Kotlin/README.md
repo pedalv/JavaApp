@@ -8,7 +8,8 @@
 - [The beauty and elegance of testing in Kotlin](https://2018.javazone.no/program/5b95ae2c-41de-489b-bf44-1260d8b0f12b)
 - [Kotlin på Android = <3](https://2018.javazone.no/program/82eff0c6-6d24-4531-90f6-3a7577f013d5)
 
-# [Kotlin for Java Developers](https://www.udemy.com/kotlin-for-java-developers/learn/v4/content) - Lectures: 91 and Video: 16.5 hours
+# [Kotlin for Java Developers](https://www.udemy.com/kotlin-for-java-developers/learn/v4/content)
+Lectures: 91 and Video: 16.5 hours
 - Section 1: Introduction to the course
 - Section 2: Introduction to Kotlin
 - Section 3: Basic Differences Between Kotlin and Java
