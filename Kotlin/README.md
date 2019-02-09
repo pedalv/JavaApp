@@ -52,7 +52,7 @@ Java is a statically typed language that including the primitive types like int 
 
 # Prerequisites
 
-'''
+```
 Pedro Alves@DESKTOP-TC6U1JA MINGW64 /c/Space2/JavaApp/Kotlin (master)
 $ java -version
 java version "11.0.2" 2019-01-15 LTS
@@ -66,7 +66,7 @@ Maven home: C:\JavaTools\apache-maven-3.6.0
 Java version: 11.0.2, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-11.0.2
 Default locale: no_NO, platform encoding: Cp1252
 OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
-'''
+```
 
 - Install JDK on Windows/MAC/Linux, [Java SE Downloads](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 
 - Install JDK version, [Java Early Access Downloads](https://www.oracle.com/technetwork/articles/java/ea-jsp-142245.html) - [Oracle Java Archive](https://www.oracle.com/technetwork/java/archive-139210.html) - [jdk.java.net - JDK 13 Early-Access Builds](https://jdk.java.net/13/)
@@ -75,7 +75,8 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 - Config Kotlin on IDE
 
 
-# Created 'kotlin' project from [SPRING INITIALIZR bootstrap your application now](https://start.spring.io/)
+# Created 'kotlin' project 
+[SPRING INITIALIZR bootstrap your application now](https://start.spring.io/)
 - Group: no.agitec.fagaften.2019.januar
 - Artifact: kotlin
 - Name: kotlin
