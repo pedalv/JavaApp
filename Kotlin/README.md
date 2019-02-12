@@ -1,16 +1,34 @@
 # Kotlin
-- For Java programmers wanting to be prepared for future project work on web side.
+- For Java programmers wanting to be prepared for future project.
 - For Android app developer who knows Java well, but we want to be able to move forward with Kotlin for new Android development work.
 
-# Kotlin in JZ2018
+# Kotlin in [JZ2018](https://vimeo.com/javazone)
 - [Asynchronous Programming with Kotlin](https://2018.javazone.no/program/05be4d7b-ccce-4b9f-8a86-a51d033fb5a3)
 - [Springing into Kotlin: How to Make the Magic even more Magical](https://2018.javazone.no/program/c76d33ef-665a-48bb-a939-32b7087975a8)
 - [The beauty and elegance of testing in Kotlin](https://2018.javazone.no/program/5b95ae2c-41de-489b-bf44-1260d8b0f12b)
 - [Kotlin på Android = <3](https://2018.javazone.no/program/82eff0c6-6d24-4531-90f6-3a7577f013d5)
 
+# Kotlin in Pluralsight
+- [Kotlin Fundamentals](https://www.pluralsight.com/courses/kotlin-fundamentals)
+- [Getting Started with Kotlin](https://www.pluralsight.com/courses/kotlin-getting-started)
+- [Switch to Kotlin from Java for Android Development](https://www.pluralsight.com/courses/android-development-kotlin-from-java)
+- [Android Apps with Kotlin: Build Your First App](https://www.pluralsight.com/courses/android-apps-kotlin-build-first-app)
+- [Building Android Apps with Kotlin: Getting Started](https://www.pluralsight.com/courses/building-android-apps-kotlin-getting-started)
+- [Android Apps with Kotlin: Notifications and App Widgets](https://www.pluralsight.com/courses/android-apps-kotlin-notifications-app-widgets)
+- [Android Apps with Kotlin: Tools and Testing](https://www.pluralsight.com/courses/android-apps-kotlin-tools-testing)
+- [Kotlin Fundamentals: Domain Specific Languages](https://www.pluralsight.com/courses/kotlin-fundamentals-domain-specific-languages)
+- [Android Apps with Kotlin: RecyclerView and Navigation Drawer](https://www.pluralsight.com/courses/android-apps-kotlin-recyclerview-navigation-drawer)
+- [Kotlin: Using Coroutines](https://www.pluralsight.com/courses/kotlin-using-coroutines)
+- [Kotlin on Android: Managing Preferences and Settings](https://www.pluralsight.com/courses/kotlin-android-managing-preferences-settings)
+- [Reactive Programming with RxAndroid and Kotlin](https://www.pluralsight.com/courses/rxandroid-kotlin-reactive-programming)
+- [Android Apps with Kotlin: ViewModel and Lifecycle](https://www.pluralsight.com/courses/android-apps-kotlin-viewmodel-lifecycle)
+- [Android Apps with Kotlin: Resources, Styles, and Themes](https://www.pluralsight.com/courses/android-kotlin-apps-resources-styles-themes)
+
 # [Kotlin for Java Developers](https://www.udemy.com/kotlin-for-java-developers/learn/v4/content)
 Lectures: 91 and Video: 16.5 hours
 - Section 1: Introduction to the course
+- Section 1.1: [Java Interoperability](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_1_1.md)
+- Section 1.2: [Prerequisites](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_1_2.md)
 - Section 2: Introduction to Kotlin
 - Section 3: Basic Differences Between Kotlin and Java
 - Section 4: Data Types and Null Reference Handling
@@ -21,107 +39,3 @@ Lectures: 91 and Video: 16.5 hours
 - Section 9: Java Interoperability
 - Section 10: Course Wrap Up
 - Section 11: Bonus Material
-
-# [Java Interoperability](https://docs.oracle.com/javase/tutorial/collections/interoperability/index.html)
-- Interoperability tells us how the Collections Framework interoperates with older APIs that predate the addition of Collections to Java. Also, it tells you how to design new APIs so that they'll interoperate seamlessly with other new APIs.
-
-1. [Compatibility](https://docs.oracle.com/javase/tutorial/collections/interoperability/compatibility.html): Describes how collections can be made to work with older APIs that predate the addition of Collections to the Java platform.
-
-2. [API Design](https://docs.oracle.com/javase/tutorial/collections/interoperability/api-design.html): Describes how to design new APIs so that they will interoperate seamlessly with one another.
-
-Java is a statically typed language that including the primitive types like int or boolean, arrays and all the Java classes, interfaces, enums and annotations that reside on the class path.  Java Generics allow define type parameters on methods and classes and pass type arguments to generic types just as you are used to from Java. The type system and its conformance and casting rules are implemented as defined in the Java Language Specification.
-
-# Java collection framework: 
-- Course: 
-1. [From Collections to Streams in Java 8 Using Lambda Expressions](https://www.pluralsight.com/courses/java-8-lambda-expressions-collections-streams?clickid=WIiUwpWDFWpZSjkRjB1xvwA%3AUkgXgVV2LxHx2w0&irgwc=1&mpid=1193463&utm_source=impactradius&utm_medium=digital_affiliate&utm_campaign=1193463&aid=7010a000001xAKZAA2)
-
-2. [Java Fundamentals: Collections](https://www.pluralsight.com/courses/java-fundamentals-collections?clickid=WIiUwpWDFWpZSjkRjB1xvwA%3AUkgXgkzmLxHx2w0&irgwc=1&mpid=1193463&utm_source=impactradius&utm_medium=digital_affiliate&utm_campaign=1193463&aid=7010a000001xAKZAA2)
-
-- Set, List and Map are three important interfaces of Java collection framework
-- List in Java provides ordered and indexed collection which may contain duplicates.
-1. If you need to access elements frequently by using the index than List is a way to go. Its implementation e.g. ArrayList provides faster access if you know index.
-
-2. If you want to store elements and want them to maintain an order on which they are inserted into a collection then go for List again, as List is an ordered collection and maintain insertion order.
-
-- The Set interface provides an unordered collection of unique objects.
-1.  If you want to create a collection of unique elements and don't want any duplicate than choosing any Set implementation e.g. HashSet, LinkedHashSet or TreeSet. All Set implementation follow there general contract e.g. uniqueness but also add addition feature e.g. TreeSet is a SortedSet and elements stored on TreeSet can be sorted by using Comparator or Comparable in Java. LinkedHashSet also maintains insertion order.
-
-- Map provides a data structure based on key-value pair and hashing.
-1. If you store data in form of key and value than Map is the way to go. You can choose from Hashtable, HashMap, TreeMap based upon your subsequent need. In order to choose between first two see the difference between HashSet and HashMap in Java.
-
-![Java Collection Framework](https://github.com/pedalv/JavaApp/blob/master/Kotlin/JavaCollectionFramework.PNG)
-
-# Prerequisites
-
-```
-Pedro Alves@DESKTOP-TC6U1JA MINGW64 /c/Space2/JavaApp/Kotlin (master)
-$ java -version
-java version "11.0.2" 2019-01-15 LTS
-Java(TM) SE Runtime Environment 18.9 (build 11.0.2+9-LTS)
-Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.2+9-LTS, mixed mode)
-
-Pedro Alves@DESKTOP-TC6U1JA MINGW64 /c/Space2/JavaApp/Kotlin (master)
-$ mvn -version
-Apache Maven 3.6.0 (97c98ec64a1fdfee7767ce5ffb20918da4f719f3; 2018-10-24T20:41:47+02:00)
-Maven home: C:\JavaTools\apache-maven-3.6.0
-Java version: 11.0.2, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-11.0.2
-Default locale: no_NO, platform encoding: Cp1252
-OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
-```
-
-- Install JDK on Windows/MAC/Linux ([Ubuntu](https://www.ubuntu.com/)Ibunto), [Java SE Downloads](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 
-
-* Linux
-```
-sudo apt-get update
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java8-installer(*)
-- accept instalation of java
-sudo update-alternatives --config java
-- java version when there are others
-java -version
-javac
-```
-(*) [How To Install Oracle Java 11 In Ubuntu, Linux Mint Or Debian (From PPA Repository)](https://www.linuxuprising.com/2018/10/how-to-install-oracle-java-11-in-ubuntu.html)
-
-- Install JDK version, [Java Early Access Downloads](https://www.oracle.com/technetwork/articles/java/ea-jsp-142245.html) - [Oracle Java Archive](https://www.oracle.com/technetwork/java/archive-139210.html) - [jdk.java.net - JDK 13 Early-Access Builds](https://jdk.java.net/13/)
-
-- Install Maven on Windows/MAC/Linux, [Downloading Apache Maven 3.6.0](https://maven.apache.org/download.cgi) 
-
-- Install/Config IDE on Windows/MAC/Linux, [Intellij Idea](https://www.jetbrains.com/idea/download/?gclid=EAIaIQobChMI4avr5pOv4AIVFc-yCh0ypg_jEAAYASABEgIWBvD_BwE&gclsrc=aw.ds#section=windows) 
-
-* Location JDK on MAC
-![Location JDK on MAC](https://github.com/pedalv/JavaApp/blob/master/Kotlin/LocationJDKMAC.PNG)
-
-* Start Intellij Idea on Linux 
-![Start Intellij Idea on Linux](https://github.com/pedalv/JavaApp/blob/master/Kotlin/StartIntellijIdeaLinux.PNG)
-
-* Location JDK on Linux
-![Location JDK on Linux](https://github.com/pedalv/JavaApp/blob/master/Kotlin/LocationJDKLinux.PNG)
-
-- Config Kotlin on IDE
-Download [Kotlin plugin for Intellij Idea](https://plugins.jetbrains.com/plugin/6954-kotlin)and copy kotlin plugint to 'C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2018.2.5\plugins'
-
-![Kotlin plugin for Intellij Idea](https://github.com/pedalv/JavaApp/blob/master/Kotlin/KotlinPluginIntellijIdea.PNG)
-
-![Selected 'Show parameter name hints](https://github.com/pedalv/JavaApp/blob/master/Kotlin/ShowParameterNameHints.PNG)
-
-![Result of selected 'Show parameter name hints](https://github.com/pedalv/JavaApp/blob/master/Kotlin/ShowParameterNameHints-Result.PNG)
-
-![Code Style for Kotlin](https://github.com/pedalv/JavaApp/blob/master/Kotlin/CodeStyle-Kotlin.PNG)
-
-![Amart Keys for Kotlin](https://github.com/pedalv/JavaApp/blob/master/Kotlin/SmartKeys-Kotlin.PNG)
-
-# Created 'kotlin' project 
-[SPRING INITIALIZR bootstrap your application now](https://start.spring.io/)
-- Group: no.agitec.fagaften.2019.januar
-- Artifact: kotlin
-- Name: kotlin
-- Description: Kotlin for Java Developers 
-- Packaging: Jar
-- Java version: 11
-
-# The Future of the Kotlin For Java Developers Course 
-- The course will be updated by Tim from 1st februar 2019 because it come several versions of kotlin as coroutines have become an official part of the language since this course was concluded. 
-- [Kotlin For Java Developers course - Let me know what you would like changed or added!](https://docs.google.com/forms/d/e/1FAIpQLSezgcVw67uTsI5a2sXetLdSLO83guecEa9ctPciYPYpF8HjUw/viewform)
