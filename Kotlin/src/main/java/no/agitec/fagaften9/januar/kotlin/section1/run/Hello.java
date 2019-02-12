@@ -1,6 +1,6 @@
-package no.agitec.fagaften9.januar.kotlin.run;
+package no.agitec.fagaften9.januar.kotlin.section1.run;
 
-import no.agitec.fagaften9.januar.kotlin.help.Message;
+import no.agitec.fagaften9.januar.kotlin.section1.help.Message;
 
 public class Hello {
 

@@ -1,6 +1,6 @@
-package no.agitec.fagaften9.januar.kotlin.controller;
+package no.agitec.fagaften9.januar.kotlin.section1.controller;
 
-import no.agitec.fagaften9.januar.kotlin.help.Message;
+import no.agitec.fagaften9.januar.kotlin.section1.help.Message;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

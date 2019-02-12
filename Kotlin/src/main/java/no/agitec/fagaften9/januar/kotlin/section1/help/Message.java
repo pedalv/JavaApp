@@ -1,4 +1,4 @@
-package no.agitec.fagaften9.januar.kotlin.help;
+package no.agitec.fagaften9.januar.kotlin.section1.help;
 
 public class Message {
 
