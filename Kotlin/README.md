@@ -30,16 +30,16 @@ Lectures: 91 and Video: 16.5 hours
 - Section 1.1: [Java Interoperability](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_1_1.md)
 - Section 1.2: [Prerequisites](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_1_2.md)
 - Section 1.3: [Created 'kotlin' project](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_1_3.md)
-- Section 2: Introduction to Kotlin
-- Section 3: Basic Differences Between Kotlin and Java
-- Section 4: Data Types and Null Reference Handling
-- Section 5: OO and Kotlin: Classes, Functions, Inheritace
-- Section 6: Loops, and the if, When, and Try/Catch Expressions
-- Section 7: Lambda Expressions, Collections, and Generics
-- Section 8: File I/O
-- Section 9: Java Interoperability
-- Section 10: Course Wrap Up
-- Section 11: Bonus Material
+- Section 2: [Introduction to Kotlin](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_2.md)
+- Section 3: [Basic Differences Between Kotlin and Java](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_3.md)
+- Section 4: [Data Types and Null Reference Handling](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_4.md)
+- Section 5: [OO and Kotlin: Classes, Functions, Inheritace](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_5.md)
+- Section 6: [Loops, and the if, When, and Try/Catch Expressions](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_6.md)
+- Section 7: [Lambda Expressions, Collections, and Generics](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_7.md)
+- Section 8: [File I/O](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_8.md)
+- Section 9: [Java Interoperability](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_9.md)
+- Section 10: [Course Wrap Up](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_10.md)
+- Section 11: [Bonus Material](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_11.md)
 
 ## The Future of the Kotlin For Java Developers Course 
 - The course will be updated by Tim from 1st februar 2019 because it come several versions of kotlin as coroutines become an official part of the language since this course was concluded. 
