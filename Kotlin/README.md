@@ -29,6 +29,7 @@ Lectures: 91 and Video: 16.5 hours
 - Section 1: Introduction to the course
 - Section 1.1: [Java Interoperability](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_1_1.md)
 - Section 1.2: [Prerequisites](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_1_2.md)
+- Section 1.3: [Created 'kotlin' project](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_1_3.md)
 - Section 2: Introduction to Kotlin
 - Section 3: Basic Differences Between Kotlin and Java
 - Section 4: Data Types and Null Reference Handling
@@ -39,3 +40,7 @@ Lectures: 91 and Video: 16.5 hours
 - Section 9: Java Interoperability
 - Section 10: Course Wrap Up
 - Section 11: Bonus Material
+
+## The Future of the Kotlin For Java Developers Course 
+- The course will be updated by Tim from 1st februar 2019 because it come several versions of kotlin as coroutines become an official part of the language since this course was concluded. 
+- [Kotlin For Java Developers course - Let me know what you would like changed or added!](https://docs.google.com/forms/d/e/1FAIpQLSezgcVw67uTsI5a2sXetLdSLO83guecEa9ctPciYPYpF8HjUw/viewform)

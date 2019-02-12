@@ -59,16 +59,3 @@ Download [Kotlin plugin for Intellij Idea](https://plugins.jetbrains.com/plugin/
 ![Code Style for Kotlin](https://github.com/pedalv/JavaApp/blob/master/Kotlin/CodeStyle-Kotlin.PNG)
 
 ![Amart Keys for Kotlin](https://github.com/pedalv/JavaApp/blob/master/Kotlin/SmartKeys-Kotlin.PNG)
-
-# Created 'kotlin' project 
-[SPRING INITIALIZR bootstrap your application now](https://start.spring.io/)
-- Group: no.agitec.fagaften.2019.januar
-- Artifact: kotlin
-- Name: kotlin
-- Description: Kotlin for Java Developers 
-- Packaging: Jar
-- Java version: 11
-
-# The Future of the Kotlin For Java Developers Course 
-- The course will be updated by Tim from 1st februar 2019 because it come several versions of kotlin as coroutines become an official part of the language since this course was concluded. 
-- [Kotlin For Java Developers course - Let me know what you would like changed or added!](https://docs.google.com/forms/d/e/1FAIpQLSezgcVw67uTsI5a2sXetLdSLO83guecEa9ctPciYPYpF8HjUw/viewform)

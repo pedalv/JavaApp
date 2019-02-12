@@ -11,7 +11,7 @@ public class MessageTest {
 
     @Before
     public void setUp() throws Exception {
-        expected = "Hei - Hello - Hallo - Olá - ...";;
+        expected = "Hei - Hello - Hallo - Bonjour - Olá ... Kotlin";
     }
 
     @After

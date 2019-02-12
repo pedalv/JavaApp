@@ -1,4 +1,4 @@
-package no.agitec.fagaften9.januar.kotlin.run;
+package no.agitec.fagaften9.januar.kotlin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
