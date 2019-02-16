@@ -1,7 +1,12 @@
-package no.agitec.fagaften.mars.kotlin.section2.textadventuregame;
+package no.agitec.fagaften.mars.kotlin.section2.convert.textadventuregamekotlin.java;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Locations {
 
@@ -59,6 +64,10 @@ public class Locations {
     private static String getFilePath() {
         String filePath = new File("").getAbsolutePath();
         //System.out.println("** " + filePath + " **");
-        return  filePath + "/src/files-section2/";
+        String path = filePath + "/src/files-section2/";
+        //System.out.println("** " + path + " **");
+        path = filePath + "\\src\\main\\java\\no\\agitec\\fagaften\\mars\\kotlin\\section2\\textadventuregamejava\\files-java\\";
+        //System.out.println("** " + path + " **");
+        return path;
     }
 }

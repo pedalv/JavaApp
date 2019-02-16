@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mars.kotlin.section2.textadventuregame;
+package no.agitec.fagaften.mars.kotlin.section2.textadventuregamejava;
 
 import java.util.HashMap;
 import java.util.Map;
