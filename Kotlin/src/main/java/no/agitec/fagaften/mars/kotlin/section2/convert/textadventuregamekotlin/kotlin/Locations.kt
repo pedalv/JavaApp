@@ -26,10 +26,7 @@ fun readLocationInfo() : Map<Int, Location> {
 
 private fun getFilePath(): String {
     val filePath = File("").absolutePath
-    //System.out.println("** " + filePath + " **");
-    var path = "$filePath/src/files-section2/"
-    //System.out.println("** " + path + " **");
-    path = "$filePath\\src\\main\\java\\no\\agitec\\fagaften\\mars\\kotlin\\section2\\convert\\textadventuregamekotlin\\files-kotlin\\"
+    var path = "$filePath\\src\\main\\java\\no\\agitec\\fagaften\\mars\\kotlin\\section2\\convert\\textadventuregamekotlin\\files-kotlin\\"
     //System.out.println("** " + path + " **");
     return path
 }

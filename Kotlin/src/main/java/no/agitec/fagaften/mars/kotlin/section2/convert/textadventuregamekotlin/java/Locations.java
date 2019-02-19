@@ -63,11 +63,6 @@ public class Locations {
 
     private static String getFilePath() {
         String filePath = new File("").getAbsolutePath();
-        //System.out.println("** " + filePath + " **");
-        String path = filePath + "/src/files-section2/";
-        //System.out.println("** " + path + " **");
-        path = filePath + "\\src\\main\\java\\no\\agitec\\fagaften\\mars\\kotlin\\section2\\textadventuregamejava\\files-java\\";
-        //System.out.println("** " + path + " **");
-        return path;
+        return filePath + "\\src\\main\\java\\no\\agitec\\fagaften\\mars\\kotlin\\section2\\textadventuregamejava\\files-java\\";
     }
 }

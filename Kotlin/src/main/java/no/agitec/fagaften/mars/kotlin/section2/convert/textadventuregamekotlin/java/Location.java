@@ -6,7 +6,7 @@ import java.util.Map;
 public class Location {
     private final int locationID;
     private final String description;
-    private final Map<String, Integer> exits;
+    private final HashMap exits;
 
     public Location(int locationID, String description) {
         this.locationID = locationID;
@@ -27,7 +27,7 @@ public class Location {
         return new HashMap(exits);
     }
 
-    protected void addExit(String direction, int location) {
+    void addExit(String direction, int location) {
         exits.put(direction, location);
     }
 }
