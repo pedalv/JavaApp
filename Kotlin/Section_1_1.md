@@ -25,4 +25,4 @@ Java is a statically typed language that including the primitive types like int 
 - Map provides a data structure based on key-value pair and hashing.
 1. If you store data in form of key and value than Map is the way to go. You can choose from Hashtable, HashMap, TreeMap based upon your subsequent need. In order to choose between first two see the difference between HashSet and HashMap in Java.
 
-![Java Collection Framework](https://github.com/pedalv/JavaApp/blob/master/Kotlin/JavaCollectionFramework.PNG)
+![Java Collection Framework](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/JavaCollectionFramework.PNG)
