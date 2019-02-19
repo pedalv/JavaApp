@@ -39,23 +39,23 @@ javac
 - Install/Config IDE on Windows/MAC/Linux, [Intellij Idea](https://www.jetbrains.com/idea/download/?gclid=EAIaIQobChMI4avr5pOv4AIVFc-yCh0ypg_jEAAYASABEgIWBvD_BwE&gclsrc=aw.ds#section=windows) 
 
 * Location JDK on MAC
-![Location JDK on MAC](https://github.com/pedalv/JavaApp/blob/master/Kotlin/LocationJDKMAC.PNG)
+![Location JDK on MAC](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/LocationJDKMAC.PNG)
 
 * Start Intellij Idea on Linux 
-![Start Intellij Idea on Linux](https://github.com/pedalv/JavaApp/blob/master/Kotlin/StartIntellijIdeaLinux.PNG)
+![Start Intellij Idea on Linux](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/StartIntellijIdeaLinux.PNG)
 
 * Location JDK on Linux
-![Location JDK on Linux](https://github.com/pedalv/JavaApp/blob/master/Kotlin/LocationJDKLinux.PNG)
+![Location JDK on Linux](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/LocationJDKLinux.PNG)
 
 - Config Kotlin on IDE
 Download [Kotlin plugin for Intellij Idea](https://plugins.jetbrains.com/plugin/6954-kotlin)and copy kotlin plugint to 'C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2018.2.5\plugins'
 
-![Kotlin plugin for Intellij Idea](https://github.com/pedalv/JavaApp/blob/master/Kotlin/KotlinPluginIntellijIdea.PNG)
+![Kotlin plugin for Intellij Idea](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/KotlinPluginIntellijIdea.PNG)
 
-![Selected 'Show parameter name hints](https://github.com/pedalv/JavaApp/blob/master/Kotlin/ShowParameterNameHints.PNG)
+![Selected 'Show parameter name hints](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/ShowParameterNameHints.PNG)
 
-![Result of selected 'Show parameter name hints](https://github.com/pedalv/JavaApp/blob/master/Kotlin/ShowParameterNameHints-Result.PNG)
+![Result of selected 'Show parameter name hints](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/ShowParameterNameHints-Result.PNG)
 
-![Code Style for Kotlin](https://github.com/pedalv/JavaApp/blob/master/Kotlin/CodeStyle-Kotlin.PNG)
+![Code Style for Kotlin](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/CodeStyle-Kotlin.PNG)
 
-![Amart Keys for Kotlin](https://github.com/pedalv/JavaApp/blob/master/Kotlin/SmartKeys-Kotlin.PNG)
+![Amart Keys for Kotlin](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/SmartKeys-Kotlin.PNG)
