@@ -21,13 +21,13 @@
 
 ## Java to Kotlin of Text Adventure Game
 - Location.java to Location.kt
-![Start Intellij Idea on Linux](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Location-Java-to-Kotlin.PNG)
+![Start Intellij Idea on Linux](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/Location-Java-to-Kotlin.PNG)
 
 - Locations.java to Locations.kt
-![Start Intellij Idea on Linux](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Locations-Java-to-Kotlin.PNG)
+![Start Intellij Idea on Linux](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/Locations-Java-to-Kotlin.PNG)
 
 - Main.java to Main.kt
-![Start Intellij Idea on Linux](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Main-Java-to-Kotlin.PNG)
+![Start Intellij Idea on Linux](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/Main-Java-to-Kotlin.PNG)
 
 
 ## Convert Text Adventure Game from Java to Kotlin
