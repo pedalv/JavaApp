@@ -17,6 +17,7 @@ So, the Kotlin compiler compiles .kt into -class files, which contain nytecode.
 
 ## Declaration
 - val: The variable is immutable as final in Java, can be assigned only one time
+
 ```
 val number: Int
 val number = 1
@@ -25,15 +26,15 @@ val number: Short = 1 (It is OKAY)
 ```
 
 - var: The variable can be assigned more than one time, keep same reference
+
 ```
 var number: Int
 ```
 
 - class
-```
-class Employee(var name: String, val id : Int) {
 
-}
+```
+class Employee(var name: String, val id : Int) { ... }
 
 val employee15 = Employee("Pedro Alves", 15)
 employee15.name = "PA"
@@ -47,6 +48,7 @@ employee15 = Employee("Bjørn", 1) (It is not OKAY because employee15 is final)
 ## Kotlin String class
 - [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/)
 - lenght is a property 
+
 ```
 employee15.name.length
 ```
@@ -57,18 +59,28 @@ employee15.name.length
 ## Not exist
 - Ternary operation (val q = x ? true : false) 	-> use if else as in Java
 - for (int i = 0; i < 20, i++) {...}			-> many forms to loop  
+
 ```
-	employees.forEach { e -> println(e.name) }
+employees.forEach { e -> println(e.name) }
 
-	File(getFilePath() + "locations_big.txt").reader().forEachLine {
-        val tokens = it.split("`")
+File(getFilePath() + "locations_big.txt").reader().forEachLine {
+	val tokens = it.split("`")
 
-        val location = Location(tokens[0].toInt(), tokens[1])
-        locations[location.locationID] = location
-    }
-	
-	...
+	val location = Location(tokens[0].toInt(), tokens[1])
+	locations[location.locationID] = location
+}
+...
 ```
 
 - static is not need 							-> fun main(args: Array<String>)  { ... }
 - new key word (new Employee("PA", 15)) 		->  Employee("PA", 15)
+
+## Equality
+- JAVA: == 		-> Kotlin: === referencial 	//REFERENCIAL
+- JAVA: equals 	-> Kotlin: == or equals 	//STRUCTURAL EQUALITY
+
+## Bit operator and casting
+- JAVA: |, &, ^												-> Kotlin: or, and, xor
+- JAVA: Employeej newEmployee = (Employeej) employeeOne; 	-> Kotlin: val newEmployee = employeeOne as Employee
+
+

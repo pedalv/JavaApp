@@ -18,6 +18,7 @@ fun main(args: Array<String>)  {
 
     println("$employees.size")
     //[no.agitec.fagaften.mars.kotlin.section3.learnprograming.helloworld.declarations.Employee@3c09711b, no.agitec.fagaften.mars.kotlin.section3.learnprograming.helloworld.declarations.Employee@5cc7c2a6].size
+    println("${employees.size}") //2
 
     val name = employees . iterator ().next().name;
     println(name) //Lynn Jones
