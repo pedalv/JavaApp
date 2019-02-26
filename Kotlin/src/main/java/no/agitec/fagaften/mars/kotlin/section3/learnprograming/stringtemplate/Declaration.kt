@@ -5,7 +5,7 @@ fun main(args: Array<String>)  {
     val employee1 = Employeek("Lynn Jones", 500)
     employee1.name = "Lynn Smith"
 
-    println(employee1)
+    println(employee1) //Employeek(name='Lynn Smith', id=500)
 
     val change = 4.22
     println("Your change is $") //Your change is $
