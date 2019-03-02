@@ -36,8 +36,8 @@ var number: Int
 ```
 class Employee(var name: String, val id : Int) { ... }
 
-val employee15 = Employee("Pedro Alves", 15)
-employee15.name = "PA"
+val employee15 = Employee("Agitec AS", 21)
+employee15.name = "Agitec"
 employee15 = Employee("Bjørn", 1) (It is not OKAY because employee15 is final)
 ```
 
@@ -130,4 +130,20 @@ println("The value of $numerator divided by $denominator is ${numerator/denomina
 //The value of 10.99 divided by 20.0 is 0.5495
 
 println("The employee's id is ${employee1.id}") //The employee's id is 500
+```
+
+## Raw Strings 
+trimMargin()
+
+```
+val nurseryRhyme2 = """$eggName Dumpty sat on the wall
+                        *$eggName Dumpty had a great fall
+                        *All the king's horses and all the king's men
+                        *Couldn't put $eggName together again.""".trimMargin("*")
+    println(nurseryRhyme2)
+OUTPUT:
+Humpty Dumpty sat on the wall
+Humpty Dumpty had a great fall
+All the king's horses and all the king's men
+Couldn't put Humpty together again.
 ```
