@@ -85,7 +85,7 @@ File(getFilePath() + "locations_big.txt").reader().forEachLine {
 
 | Java | Kotlin |
 | ----- | ----- |
-| |, &, ^ | or, and, xor |
+| &^| | and, xor, or |
 | Employeej newEmployee = (Employeej) employeeOne; | val newEmployee = employeeOne as Employee |
 
 
