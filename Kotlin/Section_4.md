@@ -185,8 +185,18 @@ EXCEPTION IS IN LINE 2 (NOT IN LINE 3)
 
 ```
 
+Note: 
+- verbose is need for check many variables are not null to do some thing as in Java.
+- ?. Save operator 
+- or ?: Elvis oparator does not help here 
 
+```    
+if( str1 != null && str2 != null ... && strn != null) {
+	//Do some thing
+}
+```    
 
+##
 
 
 
