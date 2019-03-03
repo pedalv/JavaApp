@@ -114,6 +114,26 @@ DummyClass().printNumbers(convertedIntArray.toIntArray())
 
 ## Null Refrences
 
+```
+val str: String? = "This is not null"
+```
+
+| Java | kotlin |
+| ----- | ----- |
+| if(str != null) { str.toUpperCase() } | str?.toUpperCase() |
+| if( bankBranch != null ) {
+            Address address = bankBranch.getAddress();
+            if( address != null ) {
+                Country country = address.getCountry();
+                if( country != null) {
+                    String countryCode = country.getCountryCode();
+                }
+            }
+        } | val countryCode : String? = bankBranch?.address?.country?.countryCode |
+|  | val whatever = bankBranch?.address?.country ?: "US" |
+
+?: - Elvis operator
+
 
 
 
