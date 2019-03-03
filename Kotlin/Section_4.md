@@ -50,3 +50,43 @@ fun fail(message: String) : Nothing { throw IllegalArgumentException(message)
 
 fun infinitLoop() :  Nothing { for (;;) }
 ```
+
+- Arrays
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

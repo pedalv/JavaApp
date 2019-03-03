@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mars.kotlin.section4.datatypes
+package no.agitec.fagaften.mars.kotlin.section4.datatypes.primitive
 
 import no.agitec.fagaften.mars.kotlin.section3.learnprograming.stringtemplate.Employeek
 import no.agitec.fagaften.mars.kotlin.section4.javacode.DummyClass
@@ -69,6 +69,13 @@ fun main(args: Array<String>) {
     val s1 = employee.name ?: throw IllegalArgumentException("Name required")
 
     val person = Person("Agitec As" as Nothing)
+    /*
+    Exception in thread "main" java.lang.ClassCastException:
+    class java.lang.String cannot be cast to class java.lang.Void
+    (java.lang.String and java.lang.Void are in module java.base of loader 'bootstrap')
+	at no.agitec.fagaften.mars.kotlin.section4.datatypes.primitive.DataTypesKt.main(DataTypes.kt:71)
+     */
+
     val s2 = person.name ?: throw IllegalArgumentException("Name required")
 
 }
