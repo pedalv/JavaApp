@@ -87,7 +87,7 @@ File(getFilePath() + "locations_big.txt").reader().forEachLine {
 | ----- | ----- |
 | Employeej newEmployee = (Employeej) employeeOne; | val newEmployee = employeeOne as Employee |
 
-|, &, ^													or, and, xor
+|, &, ^ <=> or, and, xor
 
 ## String template
 
