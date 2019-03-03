@@ -140,7 +140,7 @@ Kotlin:
 
 ```
 val countryCode : String? = bankBranch?.address?.country?.countryCode |
-val whatever = bankBranch?.address?.country ?: "US" |
+val whatever = bankBranch?.address?.country ?: "US"
 ```
 
 ?: - Elvis operator
