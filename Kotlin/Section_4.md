@@ -121,6 +121,16 @@ val str: String? = "This is not null"
 | Java | kotlin |
 | ----- | ----- |
 | if(str != null) { str.toUpperCase() } | str?.toUpperCase() |
+| if ( str != null ) { printText(str) } | str?.let { printText(it) } |
+
+?. - Save operator as == (equal)
+
+```
+val str : String? = null
+val anotherStr = "This isn't nullable"
+println(str == anotherStr) //false
+```
+
 
 Java: 
 
@@ -144,6 +154,37 @@ val whatever = bankBranch?.address?.country ?: "US"
 ```
 
 ?: - Elvis operator
+
+
+Kotlin:	
+
+```
+val str5: String? = "This isn't null"
+val str51 = str5!!.toUpperCase() // !! : val will not be null for sure
+if( str5 == null) {
+	throw Exception()
+} else {
+	str5.toUpperCase()
+}
+```
+
+!! - assertion 
+!! - val will not be null for sure
+
+```
+val str1 : String? = null 		//Line 1
+val str2  = str1!!				//Line 2
+val str3 = str2.toUpperCase()	//Line 3
+/*
+Exception in thread "main" kotlin.KotlinNullPointerException
+at
+no.agitec.fagaften.mars.kotlin.section4.datatypes.nullreferences.kotlincode.NullReferencesKt.main(NullReferences.kt:2)
+
+EXCEPTION IS IN LINE 2 (NOT IN LINE 3)
+ */
+
+```
+
 
 
 

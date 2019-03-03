@@ -65,4 +65,51 @@ fun main(args: Array<String>) {
 
     println(str3?.toUpperCase())
     println(" -4- ") //null
+
+
+    val str5: String? = "This isn't null"
+    val str51 = str5!!.toUpperCase() // !! : val will not be null for sure
+    if( str5 == null) {
+        throw Exception()
+    } else {
+        str5.toUpperCase()
+    }
+
+    str5?.let { printText(it) }
+    /*
+    if ( str5 != null ) {
+     printText(str5)
+     */
+    println(" -5- ") //This isn't nul
+
+    val str6 : String? = null
+    val anotherStr = "This isn't nullable"
+    println(str6 == anotherStr)
+    println(" -6- ") //false
+
+    //val str7 = str!!
+    /*
+    Exception in thread "main" kotlin.KotlinNullPointerException
+	at no.agitec.fagaften.mars.kotlin.section4.datatypes.nullreferences.kotlincode.NullReferencesKt.main(NullReferences.kt:79)
+     */
+    val str8 = str2.toUpperCase()
+
+
+    val str9 : String? = null
+    val str10  = str9!!
+    val str11 = str10.toUpperCase()
+    /*
+    Exception in thread "main" kotlin.KotlinNullPointerException
+	at
+	no.agitec.fagaften.mars.kotlin.section4.datatypes.nullreferences.kotlincode.NullReferencesKt.main(NullReferences.kt:95)
+     */
+
+
+
+
+}
+
+
+fun printText(text: String) {
+    println(text)
 }
