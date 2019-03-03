@@ -23,7 +23,7 @@
 |  |  |
 |  | fun fail(message: String): Nothing { throw IllegalArgumentException(message) } |
 
-- Any
+## Any
 
 ```
 public open class Any public constructor() {
@@ -37,7 +37,7 @@ public open class Any public constructor() {
 fun myMethod() {}
 ```
 
-- Nothing
+## Nothing
 Use for a method return a infinit loop for exemple
 
 ```
@@ -51,7 +51,7 @@ fun fail(message: String) : Nothing { throw IllegalArgumentException(message)
 fun infinitLoop() :  Nothing { for (;;) }
 ```
 
-- Arrays
+## Arrays
 
 ```
 val names = arrayOf("John", "Jane", "Jill", "Joe")
@@ -112,6 +112,7 @@ DummyClass().printNumbers(convertedIntArray.toIntArray())
 //3 9 434 2 33
 ```
 
+## Null Refrences
 
 
 
