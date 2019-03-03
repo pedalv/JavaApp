@@ -17,7 +17,6 @@ So, the Kotlin compiler compiles .kt into -class files, which contain nytecode.
 
 ## Declaration
 - val: The variable is immutable as final in Java, can be assigned only one time
-
 ```
 val number: Int
 val number = 1
@@ -76,12 +75,19 @@ File(getFilePath() + "locations_big.txt").reader().forEachLine {
 - new key word (new Employee("PA", 15)) 		->  Employee("PA", 15)
 
 ## Equality
-- JAVA: == 		-> Kotlin: === referencial 	//REFERENCIAL
-- JAVA: equals 	-> Kotlin: == or equals 	//STRUCTURAL EQUALITY
+
+| Java | Kotlin |
+| ----- | ----- |
+| == | === referencial 	//REFERENCIAL |
+| equals | == or equals 	//STRUCTURAL EQUALITY |
 
 ## Bit operator and casting
-- JAVA: |, &, ^												-> Kotlin: or, and, xor
-- JAVA: Employeej newEmployee = (Employeej) employeeOne; 	-> Kotlin: val newEmployee = employeeOne as Employee
+
+| Java | Kotlin |
+| ----- | ----- |
+| |, &, ^ | or, and, xor |
+| Employeej newEmployee = (Employeej) employeeOne; | val newEmployee = employeeOne as Employee |
+
 
 ## String template
 
