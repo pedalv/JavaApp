@@ -23,21 +23,21 @@ Note:  JVM
 - public, protected, private
 - if a class A is public and has a property B declared intern => it mean the property B is visible in the same model 
 
-'''
+```
 public class A {
 	internal int b;
 }
-'''
+```
 
 - if a class A is private and has a property B declared intern => it mean the property B is visible in the same file 
 
-'''
+```
 private class A {
 	internal int b; 
 	//Internal is use for other items/models see the property outside the file. 
 	// So it is not make any sence declare property internal when the class is private.
 }
-'''
+```
 
 - [Class Thread in Java has 8 constuctors](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html)
 - Classes in kotlin are public and final by default
@@ -47,7 +47,7 @@ private class A {
 - Primary constuctor: constructor with one parameters declare outside
 - Secondary constructor: all contructores that is not declared outside
 
-'''
+```
 class EmployeeVerbose constructor(firstName: String) {
 
     //Long way
@@ -64,4 +64,4 @@ class EmployeeVerbose constructor(firstName: String) {
     //val firstName: String = firstName
 
 }
-'''
+```
