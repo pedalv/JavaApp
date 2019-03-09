@@ -9,10 +9,9 @@
 | ----- | ----- |
 | Only class a top level | class, function and properties |
 | class name must match with file name and only allow one public class | can have several public class and file name can be different from class name |
-| class can not be private | class can be private beacause refere to file |
-| - | internal is visible on the same model |
-| - | model is a group of files that compile together and is only possible have a model in project |
-| classes can not see privete members belong to inner classes | classes can see privete members belong to inner classes |
+| class can not be private | class can be private because refere to file |
+| - | internal is visible on the same model. The model: is a group of files that compile together and is only possible have a model in project |
+| classes can not see private members belong to inner classes | classes can see private members belong to inner classes |
 | private field has get and set | private property(field) has not get and set |
 
 Note:  JVM 
@@ -21,7 +20,7 @@ Note:  JVM
 
 #### Class member level
 - public, protected, private
-- if a class A is public and has a property B declared intern => it mean the property B is visible in the same model 
+- if a class A is public and has a field b declared intern => it mean the field B is visible in the same model 
 
 ```
 public class A {
@@ -29,7 +28,7 @@ public class A {
 }
 ```
 
-- if a class A is private and has a property B declared intern => it mean the property B is visible in the same file 
+- if a class A is private and has a field b declared intern => it mean the field B is visible in the same file 
 
 ```
 private class A {
@@ -39,7 +38,7 @@ private class A {
 }
 ```
 
-- [Class Thread in Java has 8 constuctors](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html)
+- [Class Thread in Java has 8 constuctors however in kotlin can has only one](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html)
 - Classes in kotlin are public and final by default
 
 #### Class
