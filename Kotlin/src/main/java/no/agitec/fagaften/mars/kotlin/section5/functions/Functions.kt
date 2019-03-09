@@ -13,8 +13,6 @@ fun main(args: Array<String>) {
     //The answer is: 12
     println(" -1- ")
 
-
-
     val emp = Employee("Jane")
     println(emp.upperCaseFirstName())
     //JANE
@@ -64,6 +62,30 @@ fun main(args: Array<String>) {
     //[Lno.agitec.fagaften.mars.kotlin.section5.functions.Car;@7225790e
     //Car(color=red, model=Ford, year=2016)
     println(" -6- ")
+
+    val s = "this is all in lowercase"
+    println(Utils().upperFirstAndLast(s))
+    println(upperFirstAndLast(s))
+    //extended functions
+    println(s.upperFirstAndLast1())
+    println(s.upperFirstAndLast2())
+    //This is all in lowercasE
+    println(" -7- ")
+
+}
+
+//extended functions
+fun String.upperFirstAndLast1(): String {
+    val upperFirst = this.substring(0, 1).toUpperCase() + this.substring(1)
+    return upperFirst.substring(0, upperFirst.length - 1) +
+            upperFirst.substring(upperFirst.length - 1, upperFirst.length).toUpperCase()
+}
+
+//extended functions
+fun String.upperFirstAndLast2(): String {
+    val upperFirst = substring(0, 1).toUpperCase() + substring(1)
+    return upperFirst.substring(0, upperFirst.length - 1) +
+            upperFirst.substring(upperFirst.length - 1, upperFirst.length).toUpperCase()
 }
 
 
