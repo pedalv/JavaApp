@@ -16,7 +16,7 @@ Default locale: no_NO, platform encoding: Cp1252
 OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 ```
 
-- Install JDK on Windows/MAC/Linux ([Ubuntu](https://www.ubuntu.com/)Ibunto), [Java SE Downloads](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 
+- Install JDK on Windows/MAC/Linux ([Ubuntu](https://www.ubuntu.com/), [Java SE Downloads](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 
 
 * Linux
 ```
