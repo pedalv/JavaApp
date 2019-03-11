@@ -34,13 +34,13 @@
 - by hand
 
 ``` 
-	is less verbose (+) - because we use functions instead of class declaration
+	is less verbose (+) => because we use functions instead of class declaration
 ```
 - by Intellij Idea 
 
 ``` 
 	is more verbose (%)
-	some times we have compilation errors (%) - because we use class declaration
+	some times we have compilation errors (%) => because we use class declaration
 	
 	but it is a good start point (+)
 ``` 

@@ -34,6 +34,8 @@ javac
 
 - Install JDK version, [Java Early Access Downloads](https://www.oracle.com/technetwork/articles/java/ea-jsp-142245.html) - [Oracle Java Archive](https://www.oracle.com/technetwork/java/archive-139210.html) - [jdk.java.net - JDK 13 Early-Access Builds](https://jdk.java.net/13/)
 
+![IDEs for Kotlin](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/kotlin-ides.PNG)
+
 - Install Maven on Windows/MAC/Linux, [Downloading Apache Maven 3.6.0](https://maven.apache.org/download.cgi) 
 
 - Install/Config IDE on Windows/MAC/Linux, [Intellij Idea](https://www.jetbrains.com/idea/download/?gclid=EAIaIQobChMI4avr5pOv4AIVFc-yCh0ypg_jEAAYASABEgIWBvD_BwE&gclsrc=aw.ds#section=windows) 

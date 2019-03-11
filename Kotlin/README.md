@@ -1,4 +1,4 @@
-# Kotlin
+# [Kotlin](https://kotlinlang.org/)
 - For Java programmers wanting to be prepared for future project.
 - For Android app developer who knows Java well, but we want to be able to move forward with Kotlin for new Android development work.
 
@@ -9,6 +9,7 @@
 - [Kotlin på Android = <3](https://2018.javazone.no/program/82eff0c6-6d24-4531-90f6-3a7577f013d5)
 
 # Kotlin in [Pluralsight](https://www.pluralsight.com/search?q=kotlin)
+
 - [Kotlin Fundamentals](https://www.pluralsight.com/courses/kotlin-fundamentals)
 - [Getting Started with Kotlin](https://www.pluralsight.com/courses/kotlin-getting-started)
 - [Switch to Kotlin from Java for Android Development](https://www.pluralsight.com/courses/android-development-kotlin-from-java)
