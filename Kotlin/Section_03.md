@@ -2,9 +2,9 @@
 
 ## Compile a Kotlin application
 - The Kotlin compiler (kotlinc) takes files with the .kt extendion as input and generates bytecode as .class files.
-- At this point, the .class files are quivalent to Java .class files, and the JVM can run them.
+- At this point, the .class files are equivalent to Java .class files, and the JVM can run them.
 - However, when running Kotlin applications, you need the KOTLIN RUNTIME LIBRARY, in addition to JRE.
-So, the Kotlin compiler compiles .kt into -class files, which contain nytecode.
+So, the Kotlin compiler compiles .kt into -class files, which contain bytecode.
 - The .class files can be on the JVM, exactly like class files generated from Java code.
 - When distributing a Kotlin application, you have to distribute the Kotlin runtime library and the JRE for application run.
 
