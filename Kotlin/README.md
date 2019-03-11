@@ -24,7 +24,7 @@
 - [Android Apps with Kotlin: ViewModel and Lifecycle](https://www.pluralsight.com/courses/android-apps-kotlin-viewmodel-lifecycle)
 - [Android Apps with Kotlin: Resources, Styles, and Themes](https://www.pluralsight.com/courses/android-kotlin-apps-resources-styles-themes)
 
-# [Kotlin for Java Developers](https://www.udemy.com/kotlin-for-java-developers/learn/v4/content)
+# [Kotlin for Java Developers](https://www.udemy.com/kotlin-for-java-developers/learn/v4/content) in [Udemy](https://www.udemy.com/)
 Lectures: 91 and Video: 16.5 hours
 - Section 1: Introduction to the course
 - Section 1.1: [Java Interoperability](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_1_1.md)
