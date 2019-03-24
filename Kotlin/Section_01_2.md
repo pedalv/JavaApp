@@ -21,9 +21,9 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 1. [Java Early Access Downloads](https://www.oracle.com/technetwork/articles/java/ea-jsp-142245.html) 
 2. [Oracle Java Archive](https://www.oracle.com/technetwork/java/archive-139210.html) 
 3. [jdk.java.net - JDK 13 Early-Access Builds](https://jdk.java.net/13/)
+4.  [Java SE Downloads](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 
 
-- Install JDK on Windows/MAC/Linux ([Ubuntu](https://www.ubuntu.com/), [Java SE Downloads](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 
-
+- Install JDK on Windows/MAC/Linux ([Ubuntu](https://www.ubuntu.com/)
 * Linux
 
 ```
