@@ -23,7 +23,7 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 3. [jdk.java.net - JDK 13 Early-Access Builds](https://jdk.java.net/13/)
 4.  [Java SE Downloads](https://www.oracle.com/technetwork/java/javase/downloads/index.html) 
 
-- Install JDK on Windows/MAC/Linux ([Ubuntu](https://www.ubuntu.com/)
+- Install JDK on Windows/MAC/Linux ([Ubuntu](https://www.ubuntu.com/))
 * Linux
 
 ```
@@ -42,6 +42,7 @@ javac
 
 - Install Maven on Windows/MAC/Linux, [Downloading Apache Maven 3.6.0](https://maven.apache.org/download.cgi) 
 
+- IDE for Kotlin
 ![IDEs for Kotlin](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/kotlin-ides.PNG)
 
 - Install/Config IDE on Windows/MAC/Linux, [Intellij Idea](https://www.jetbrains.com/idea/download/?gclid=EAIaIQobChMI4avr5pOv4AIVFc-yCh0ypg_jEAAYASABEgIWBvD_BwE&gclsrc=aw.ds#section=windows) 
@@ -56,7 +57,9 @@ javac
 ![Location JDK on Linux](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/LocationJDKLinux.PNG)
 
 - Config Kotlin on IDE
-Download [Kotlin plugin for Intellij Idea](https://plugins.jetbrains.com/plugin/6954-kotlin)and copy kotlin plugint to 'C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2018.2.5\plugins'
+
+1. Download [Kotlin plugin for Intellij Idea](https://plugins.jetbrains.com/plugin/6954-kotlin) and 
+2. Copy kotlin plugint to 'C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2018.2.5\plugins'
 
 ![Kotlin plugin for Intellij Idea](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/KotlinPluginIntellijIdea.PNG)
 
