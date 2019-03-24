@@ -1,6 +1,6 @@
 # Section 4: Data Types and Null Reference Handling
 - Everthing is a class 
-- => So primitives as in Java do not exist as
+- => So primitives as in Java do not exist
 - => boolean , byte , char , short , int , long , float and double. 
 - There is no lower case in Kotlin
 - => so data types is represent by wrapper classes. 
@@ -9,6 +9,7 @@
 
 ![Primitive Data Types](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/primitive-data-types.PNG)
 
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section04/datatypes)
 
 | Java | kotlin |
 | ----- | ----- |
@@ -33,6 +34,8 @@
 
 ## Any
 
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section04/datatypes/nullreferences) og [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section04/datatypes/primitive/DataTypes.kt)
+
 ```
 public open class Any public constructor() {
     public open operator fun equals(other: kotlin.Any?): kotlin.Boolean { /* compiled code */ }
@@ -46,6 +49,9 @@ fun myMethod() {}
 ```
 
 ## Nothing
+
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section04/datatypes/primitive/DataTypes.kt)
+
 Use for a method return a infinit loop for exemple
 
 ```
@@ -60,6 +66,8 @@ fun infinitLoop() :  Nothing { for (;;) }
 ```
 
 ## Arrays
+
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section04/datatypes/arrays/DataTypes.kt) og [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section04/datatypes/arraysnullreferences/Nullreferences.kt)
 
 ```
 val names = arrayOf("John", "Jane", "Jill", "Joe")
@@ -121,6 +129,8 @@ DummyClass().printNumbers(convertedIntArray.toIntArray())
 ```
 
 ## Null Refrences
+
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section04/datatypes/nullreferences)
 
 ```
 val str: String? = "This is not null"
