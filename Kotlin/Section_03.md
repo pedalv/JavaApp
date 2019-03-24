@@ -8,6 +8,8 @@ So, the Kotlin compiler compiles .kt into -class files, which contain bytecode.
 - The .class files can be on the JVM, exactly like class files generated from Java code.
 - When distributing a Kotlin application, you have to distribute the Kotlin runtime library and the JRE for application run.
 
+![Default Imports](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/java-kotlin-compile.png)
+
 ## The Kotlin Standard LIBRARY
 - [Kotlin](https://kotlinlang.org/)
 - [Kotlin 1.3 Released](https://kotlinlang.org/docs/reference/whatsnew13.html)
