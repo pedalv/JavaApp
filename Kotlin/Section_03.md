@@ -10,11 +10,33 @@ So, the Kotlin compiler compiles .kt into -class files, which contain bytecode.
 
 ![Default Imports](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/java-kotlin-compile.png)
 
-## The Kotlin Standard LIBRARY
+
+## [The Kotlin Standard LIBRARY](https://kotlinlang.org/api/latest/jvm/stdlib/index.html)
+
+The Kotlin Standard Library provides living essentials for everyday work with Kotlin. These include:
+
+- Higher-order functions implementing idiomatic patterns (let, apply, use, synchronized, etc).
+- Extension functions providing querying operations for collections (eager) and sequences (lazy).
+- Various utilities for working with strings and char sequences.
+- Extensions for JDK classes making it convenient to work with files, IO, and threading.
+
+Packages
+
+| Name | Description |
+| [Package kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/index.html) | Core functions and types, available on all supported platforms. |
+| [Package kotlin.annotation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/index.html) | Library support for the Kotlin annotation facility. | 
+| [Package kotlin.collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html) | Collection types, such as Iterable, Collection, List, Set, Map and related top-level and extension functions.
+ |
+| [Package kotlin.comparisons](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.comparisons/index.html) | Helper functions for creating Comparator instances. |
+| [Package kotlin.concurrent](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.concurrent/index.html) | Utility functions for concurrent programming. |
+| ... | ... |
+| [Package kotlin.io](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/index.html) | IO API for working with files and streams. |
+| [Package kotlin.js](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/index.html) | Functions and other APIs specific to the JavaScript platform. |
+
+![Default Imports](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/defaultimports.PNG)
+
 - [Kotlin](https://kotlinlang.org/)
 - [Kotlin 1.3 Released](https://kotlinlang.org/docs/reference/whatsnew13.html)
-- [Kotlin Standard Library](https://kotlinlang.org/api/latest/jvm/stdlib/index.html)
-![Default Imports](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/defaultimports.PNG)
 - [Introducing Kotlin support in Spring Framework 5.0](https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0)
 
 ## Declaration
