@@ -130,24 +130,38 @@ DummyClass().printNumbers(convertedIntArray.toIntArray())
 
 ## Null Refrences
 
+| Symbol | Name | Exemple |
+| ----- | ----- | ----- |
+| ?. | Save operator as == (equal) | str?.toUpperCase() |
+|  |  | str?.let { printText(it) } |
+| ?: | Elvis operator | val str2 = str ?: "This is the default value" |
+| !! | assertion | val str51 = "This isn't null"!!.toUpperCase() // will not be null for sure |
+
 Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section04/datatypes/nullreferences)
+
+
+- ?
 
 ```
 val str: String? = "This is not null"
 ```
 
+```
+val str : String? = null
+val anotherStr = "This isn't nullable"
+println(str == anotherStr) //false 
+```
+
+```
+val strnull: String = null // Error:(139, 27) Kotlin: Null can not be a value of a non-null type String
+```
+
+- ?. => Save operator as == (equal)
+	 
 | Java | kotlin |
 | ----- | ----- |
 | if(str != null) { str.toUpperCase() } | str?.toUpperCase() |
 | if ( str != null ) { printText(str) } | str?.let { printText(it) } |
-
-?. - Save operator as == (equal)
-
-```
-val str : String? = null
-val anotherStr = "This isn't nullable"
-println(str == anotherStr) //false
-```
 
 
 Java: 
@@ -171,7 +185,7 @@ val countryCode : String? = bankBranch?.address?.country?.countryCode |
 val whatever = bankBranch?.address?.country ?: "US"
 ```
 
-?: - Elvis operator
+- ?: => Elvis operator
 
 
 Kotlin:	
@@ -186,8 +200,16 @@ if( str5 == null) {
 }
 ```
 
-!! - assertion 
-!! - val will not be null for sure
+```
+val str : String? = null
+val str41 = str!!.toUpperCase()
+/*
+Exception in thread "main" kotlin.KotlinNullPointerException
+at no.agitec.fagaften.mars.kotlin.section4.datatypes.nullreferences.kotlincode.NullReferencesKt.main(NullReferences.kt:7)
+ */
+```
+
+- !! => assertion, val will not be null for sure
 
 ```
 val str1 : String? = null 		//Line 1
@@ -203,6 +225,15 @@ EXCEPTION IS IN LINE 2 (NOT IN LINE 3)
 
 ```
 
+```
+ val str: String? = null
+ val str41 = str!!.toUpperCase()
+/*
+Exception in thread "main" kotlin.KotlinNullPointerException
+at no.agitec.fagaften.mars.kotlin.section4.datatypes.nullreferences.kotlincode.NullReferencesKt.main(NullReferences.kt:7)
+ */
+```   
+
 Note: 
 - verbose is need for check many variables are not null to do some thing as in Java.
 - ?. Save operator 
@@ -213,35 +244,3 @@ if( str1 != null && str2 != null ... && strn != null) {
 	//Do some thing
 }
 ```    
-
-##
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

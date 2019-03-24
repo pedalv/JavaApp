@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
      */
 
     val str: String? = null
-    //val str4 = str!!.toUpperCase()
+    //val str41 = str!!.toUpperCase()
     /*
     Exception in thread "main" kotlin.KotlinNullPointerException
 	at no.agitec.fagaften.mars.kotlin.section4.datatypes.nullreferences.kotlincode.NullReferencesKt.main(NullReferences.kt:7)
