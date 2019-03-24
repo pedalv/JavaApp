@@ -1,6 +1,14 @@
 # Section 4: Data Types and Null Reference Handling
-- Everthing is a class. 
-- There is no lower case in Kotlin.
+- Everthing is a class 
+- => So primitives as in Java do not exist as
+- => boolean , byte , char , short , int , long , float and double. 
+- There is no lower case in Kotlin
+- => so data types is represent by wrapper classes. 
+- => In the java.lang package java provides a separate class for each of the primitive data types namely 
+- => Boolean, Byte, Character, Short, Integer, Long, Float, and Double.
+
+![Primitive Data Types](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/primitive-data-types.PNG)
+
 
 | Java | kotlin |
 | ----- | ----- |
