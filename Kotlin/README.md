@@ -25,7 +25,7 @@
 - The name comes from Kotlin Island, near St. Petersburg. 
 - Andrey Breslav mentioned that the team decided to name it after an island just like Java was named after the Indonesian island of Java (though the programming language Java was perhaps named after the coffee).
 
-- JetBrains hopes that the new language will drive IntelliJ IDEA sales.[9]
+- JetBrains hopes that the new language will drive IntelliJ IDEA sales.
 
 - Kotlin v1.0 was released on February 15, 2016.
 - This is considered to be the first officially stable release and JetBrains has committed to long-term backwards compatibility starting with this version.
