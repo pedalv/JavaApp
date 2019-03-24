@@ -1,5 +1,5 @@
 # Created 'kotlin' project 
-[SPRING INITIALIZR bootstrap your application now](https://start.spring.io/)
+[SPRING INITIALIZR](https://start.spring.io/)
 - Group: no.agitec.fagaften.2019.januar
 - Artifact: kotlin
 - Name: kotlin
@@ -7,6 +7,8 @@
 - Packaging: Jar
 - Java version: 11
 - Dependencies: Web
+
+![Created 'kotlin' project](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/created-kotlon-pom-file.PNG)
 
 ## Build  'kotlin' project 
 
