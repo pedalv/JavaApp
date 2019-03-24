@@ -59,6 +59,7 @@ var number: Int
 ```
 
 - class
+
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/declarations/Declaration.kt)
 
 ```
