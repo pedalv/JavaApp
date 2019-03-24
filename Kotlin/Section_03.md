@@ -21,17 +21,14 @@ The Kotlin Standard Library provides living essentials for everyday work with Ko
 - Extensions for JDK classes making it convenient to work with files, IO, and threading.
 
 Packages
-
-| Name | Description |
-| [Package kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/index.html) | Core functions and types, available on all supported platforms. |
-| [Package kotlin.annotation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/index.html) | Library support for the Kotlin annotation facility. | 
-| [Package kotlin.collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html) | Collection types, such as Iterable, Collection, List, Set, Map and related top-level and extension functions.
- |
-| [Package kotlin.comparisons](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.comparisons/index.html) | Helper functions for creating Comparator instances. |
-| [Package kotlin.concurrent](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.concurrent/index.html) | Utility functions for concurrent programming. |
-| ... | ... |
-| [Package kotlin.io](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/index.html) | IO API for working with files and streams. |
-| [Package kotlin.js](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/index.html) | Functions and other APIs specific to the JavaScript platform. |
+- [Package kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/index.html) : Core functions and types, available on all supported platforms. 
+- [Package kotlin.annotation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/index.html) : Library support for the Kotlin annotation facility. | 
+- [Package kotlin.collections](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html) : Collection types, such as [Iterable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html#kotlin.collections.Iterable), [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html#kotlin.collections.Collection), [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html#kotlin.collections.List), [Set](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html#kotlin.collections.Set), [Map](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html#kotlin.collections.Map) and related top-level and extension functions.
+- [Package kotlin.comparisons](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.comparisons/index.html) : Helper functions for creating Comparator instances.
+- [Package kotlin.concurrent](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.concurrent/index.html) : Utility functions for concurrent programming.
+- ...
+- [Package kotlin.io](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/index.html) : IO API for working with files and streams.
+- [Package kotlin.js](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/index.html) : Functions and other APIs specific to the JavaScript platform.
 
 ![Default Imports](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/defaultimports.PNG)
 
