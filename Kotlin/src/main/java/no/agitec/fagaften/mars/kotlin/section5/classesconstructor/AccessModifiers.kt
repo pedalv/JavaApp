@@ -2,6 +2,31 @@ package no.agitec.fagaften.mars.kotlin.section5.classesconstructor
 
 fun main(args: Array<String>) {
 
+    val empVerbose31 = EmployeeKotlin3("Agitec AS")
+    println(empVerbose31) // EmployeeKotlin3(firstName=Agitec AS)
+    println(empVerbose31.firstName) // Agitec AS
+    println(empVerbose31.lastName) // default-name
+    println(empVerbose31.fulltime) // true
+    println(" -0.1- ")
+    val empVerbose32 = EmployeeKotlin3(fulltime = false)
+    println(empVerbose32) // EmployeeKotlin3(firstName=Agitec AS)
+    println(empVerbose32.firstName) // Agitec AS
+    println(empVerbose32.lastName) // default-name
+    println(empVerbose32.fulltime) // false
+    println(" -0.2- ")
+    val empVerbose33 = EmployeeKotlin3("first-name", fulltime = false)
+    println(empVerbose33) // EmployeeKotlin3(firstName=first-name)
+    println(empVerbose33.firstName) // first-name
+    println(empVerbose33.lastName) // default-name
+    println(empVerbose33.fulltime) // false
+    println(" -0.3- ")
+    val empVerbose34 = EmployeeKotlin3(firstName = "first-name",lastName = "last-name", fulltime = false)
+    println(empVerbose34) // EmployeeKotlin3(firstName=first-name)
+    println(empVerbose34.firstName) // first-name
+    println(empVerbose34.lastName) // last-name
+    println(empVerbose34.fulltime) // false
+    println(" -0.4- ")
+
     val empVerbose = EmployeeLong("Long way to create 'primary' constructor. There are secundaries constructors :-).")
     println(empVerbose.firstName) //Long way to create 'primary' constructor. There are secundaries constructors :-).
     println(" -1- ")
@@ -74,11 +99,11 @@ class EmployeeKotlin2 protected constructor(firstName: String) {
     val firstName: String = firstName
 }
 
-
-class EmployeeKotlin3(val firstName: String) {
+data class EmployeeKotlin3(var firstName: String) {
     //Declaration must be on the first line
     //val fulltime: Boolean? = true // it will be always true
     var fulltime: Boolean = true
+    var lastName : String = "default-name"
 
 
     /*
@@ -88,9 +113,17 @@ class EmployeeKotlin3(val firstName: String) {
      */
     //constructor(val firstName: String, val fulltime: Boolean) { }
 
-    constructor(firstName: String, fulltime: Boolean) : this(firstName) {
+    constructor(firstName: String = "Agitec AS", fulltime: Boolean) : this(firstName) {
         this.fulltime = fulltime // need assign to change the value
     }
+
+    constructor(firstName: String, fulltime: Boolean, lastName: String) : this(firstName) {
+        this.lastName = lastName // need assign to change the value
+        this.fulltime = fulltime // need assign to change the value
+    }
+
+
+
 
 }
 

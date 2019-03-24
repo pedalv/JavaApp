@@ -53,7 +53,18 @@ fun main(args: Array<String>) {
     //Car(color=red, model=Ford, year=2016)
     //Car(color=grey, model=Ford, year=2017)
     //Car(color=red, model=Ford, year=2016)
-    println(" -5- ")
+    println(" -5.1- ")
+    for (c in lotsOfCars) {
+        println(c.model)
+    }
+    println(" -5.2- ")
+    //Toyota
+    //Ford
+    //Ford
+    //Ford
+    //Ford
+    //Ford
+
     val lotsOfCars2 = arrayOf(manyCars, moreCars, car4)
     for (c in lotsOfCars2) {
         println(c)

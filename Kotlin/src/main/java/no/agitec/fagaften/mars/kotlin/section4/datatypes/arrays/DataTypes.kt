@@ -31,12 +31,20 @@ fun main(args: Array<String>) {
     val allZeroes = Array(100) { 0 } // i -> 0
 
     var someArray: Array<Int>
-    someArray = arrayOf(1, 2, 3, 4)
+    someArray = arrayOf(1, 2, 3, 4, 5)
     for (number in someArray) {
         print(" " + number)
     }
-    // 1 2 3 4
-    println(" -4- ")
+    // 1 2 3 4 5
+    println(" -4.1- ")
+
+    someArray = someArray.plus(6)
+    for (number in someArray) {
+        print(" " + number)
+    }
+    // 1 2 3 4 5 6
+    println(" -4.2- ")
+
 
     someArray = Array(6) { i -> (i + 1) * 10 }
     for (number in someArray) {

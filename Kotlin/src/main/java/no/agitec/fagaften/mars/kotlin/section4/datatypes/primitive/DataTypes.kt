@@ -7,7 +7,7 @@ import no.agitec.fagaften.mars.kotlin.section4.javacode.DummyClass
  * The myMethod() function in the above code doesn't accept any argument.
  * Also, the function doesn't return any value (return type is Unit).
  */
-fun myMethod() {}
+fun myMethod(){}
 
 /**
  * The type of the throw expression is the special type Nothing.
@@ -28,8 +28,13 @@ fun main(args: Array<String>) {
     int myInt = 10;
     Long myLong = myInt
      */
-
     myLong = myInt.toLong()
+
+    /*
+    int myInt = 10 + 1;
+    Long myLong = myInt
+     */
+    myLong = (+myInt).toLong()
 
     val myByte: Byte = 111
     var myShort: Short
