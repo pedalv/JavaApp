@@ -3,6 +3,8 @@
 ## Access Modifiers
 
 #### Top-Levels Items
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/accessmodifiers/AccessModifiers.kt)
+
 ![Access Modifiers](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/toplevels.PNG)
 
 | Java | kotlin |
@@ -42,6 +44,8 @@ private class A {
 - Classes in kotlin are public and final by default
 
 #### Class
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/classesconstructor)
+
 - Code below is very verbose
 - Primary constuctor: constructor with one parameters declare outside
 - Secondary constructor: all contructores that is not declared outside
@@ -71,6 +75,8 @@ class EmployeeVerbose constructor(firstName: String) {
 - data class can be abstract, seal or inner classes
 
 #### Functions
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/functions)
+
 - functions with {...}: block body
 
 ```
@@ -88,29 +94,69 @@ fun main(args: Array<String>) : Unit =
 - parameters must have type annotation always 
 
 ```
-fun labelMultiply(operand1: Int, operand2: Int,
-                  label: String = "The answer is:") =
+fun labelMultiply(operand1: Int, operand2: Int, label: String = "The answer is:") =
         "$label ${operand1 * operand2}"
 
 fun main(args: Array<String>) = 
-	println(labelMultiply(operand1 = 3, operand2 = 4))
+	println( labelMultiply(operand1 = 3, operand2 = 4) )
 	//The answer is: 12
+```
 
--
-
-//name arguments
+```
+// name arguments
 fun labelMultiplyLong2(operand1: Int, operand2: Int, label: String) =
         "$label ${operand1 * operand2}"
 		
 fun main(args: Array<String>) {
-    println(labelMultiply(label = "Here's the result:", operand2 = 3, operand1 = 4))
+    println( labelMultiply(label = "Here's the result:", operand2 = 3, operand1 = 4) )
 	//Here's the result: 12
 }
 ```
 
+- Extended functions
 
-#### varargs
-- varargs parameter_name : type (Ony one vararg per method)
+```
+=> Kotlin with Extended functions
+
+fun String.upperFirstAndLast2(): String {
+    val upperFirst = substring(0, 1).toUpperCase() + substring(1)
+    return upperFirst.substring(0, upperFirst.length - 1) +
+            upperFirst.substring(upperFirst.length - 1, upperFirst.length).toUpperCase()
+}
+
+val s = "this is all in lowercase"
+println(s.upperFirstAndLast2()) //This is all in lowercasE
+```
+
+```
+=> Java does not have Extended functions
+
+val s = "this is all in lowercase"
+println(Utils().upperFirstAndLast(s)) //This is all in lowercasE
+println(upperFirstAndLast(s)) //This is all in lowercasE
+
+fun upperFirstAndLast(str: String): String {
+    val upperFirst = str.substring(0, 1).toUpperCase() + str.substring(1)
+    return upperFirst.substring(0, upperFirst.length - 1) +
+            upperFirst.substring(upperFirst.length - 1, upperFirst.length).toUpperCase()
+}
+
+class Utils {
+
+    fun upperFirstAndLast(str: String): String {
+        val upperFirst = str.substring(0, 1).toUpperCase() + str.substring(1)
+        return upperFirst.substring(0, upperFirst.length - 1) +
+                upperFirst.substring(upperFirst.length - 1, upperFirst.length).toUpperCase()
+    }
+
+}
+```
+
+
+#### vararg
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/functions/Functions.kt)
+
+- vararg parameter_name : type (Ony one vararg per method)
 
 ```
 data class Car(val color: String, val model: String, val year: Int) {
