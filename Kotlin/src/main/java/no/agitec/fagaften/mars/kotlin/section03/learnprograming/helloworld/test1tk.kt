@@ -1,10 +1,10 @@
-package no.agitec.fagaften.mars.kotlin.section03.learnprograming.mainmethod
+package no.agitec.fagaften.mars.kotlin.section03.learnprograming.helloworld
 
 object Test1tk {
 
     @JvmStatic
     fun main(args: Array<String>) {
-
+        println("Hello World from class") // Hello World from class
     }
 }
 
@@ -13,5 +13,5 @@ object Test1tk {
 //https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-static/index.html
 
 fun main(args: Array<String>) {
-
+    println("Hello World from method") // Hello World from method
 }

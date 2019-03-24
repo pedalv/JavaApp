@@ -10,6 +10,13 @@ So, the Kotlin compiler compiles .kt into -class files, which contain bytecode.
 
 ![Default Imports](https://raw.githubusercontent.com/pedalv/JavaApp/master/Kotlin/java-kotlin-compile.png)
 
+- [Does the Kotlin compiler compile java files?](https://stackoverflow.com/questions/49602284/does-the-kotlin-compiler-compile-java-files)
+
+Scala and Kotlin do not get compiled to Java, that would, in that case, need three phases of compilation to be able to run the program, 
+first - compile to Java, 
+second - compile to bytecode, 
+third - JIT compile to machine code.
+
 
 ## [The Kotlin Standard LIBRARY](https://kotlinlang.org/api/latest/jvm/stdlib/index.html)
 
@@ -52,6 +59,7 @@ var number: Int
 ```
 
 - class
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/declarations/Declaration.kt)
 
 ```
 class Employee(var name: String, val id : Int) { ... }
@@ -62,10 +70,14 @@ employee15 = Employee("Bjørn", 1) (It is not OKAY because employee15 is final)
 ```
 
 ## Type Aliases
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/declarations/alias/Declaration.kt)
+
 - Use for [generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html) types
 - @kotlin.SinceKotlin public typealias StringBuilder = java.lang.StringBuilder
 
 ## Kotlin String class
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/declarations/Declaration.kt)
+
 - [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/)
 - lenght is a property 
 
@@ -96,6 +108,7 @@ File(getFilePath() + "locations_big.txt").reader().forEachLine {
 - new key word (new Employee("PA", 15)) 		->  Employee("PA", 15)
 
 ## Equality
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/equality)
 
 | Java | Kotlin |
 | ----- | ----- |
@@ -103,6 +116,7 @@ File(getFilePath() + "locations_big.txt").reader().forEachLine {
 | equals | == or equals 	//STRUCTURAL EQUALITY |
 
 ## Bit operator and casting
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/bitoperatorcasting)
 
 | Java | Kotlin |
 | ----- | ----- |
@@ -111,6 +125,7 @@ File(getFilePath() + "locations_big.txt").reader().forEachLine {
 Java: |, &, ^ 		<=>		Kotlin: or, and, xor
 
 ## String template
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/stringtemplate/Declaration.kt)
 
 ```
 val employee1 = Employeek("Lynn Jones", 500)
@@ -160,6 +175,9 @@ println("The employee's id is ${employee1.id}") //The employee's id is 500
 ```
 
 ## Raw Strings 
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/rowstrings/Declaration.kt)
+
+
 trimMargin()
 
 ```
@@ -173,4 +191,64 @@ Humpty Dumpty sat on the wall
 Humpty Dumpty had a great fall
 All the king's horses and all the king's men
 Couldn't put Humpty together again.
+```
+
+## @JvmStatic annotation
+kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/helloworld)
+
+- @JvmStatic annotation can also be applied on 
+1. a property of an object or 
+2. a companion object making its getter and setter methods be static members in that object or the class containing the companion object.
+2.1 [Companion object in Kotlin](https://medium.com/@agrawalsuneet/companion-object-in-kotlin-5251e03d6423)
+2.2 [Calling Kotlin from Java](https://kotlinlang.org/docs/reference/java-to-kotlin-interop.html#static-methods)
+
+```
+@Target([AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER]) annotation class JvmStatic
+```
+
+- Specifies that an additional static method needs to be generated from this element if it's a function. 
+- If this element is a property, additional static getter/setter methods should be generated.
+
+#### Static Methods
+- [Why and when to use @JvmStatic with companion objects?](https://stackoverflow.com/questions/48780003/why-and-when-to-use-jvmstatic-with-companion-objects)
+- As mentioned above, Kotlin represents package-level functions as static methods. 
+- Kotlin can also generate static methods for functions defined in named objects or companion objects if you annotate those functions as @JvmStatic. 
+- If you use this annotation, the compiler will generate both a static method in the enclosing class of the object and an instance method in the object itself. 
+
+For example:
+
+```
+class C {
+    companion object {
+        @JvmStatic fun foo() {}
+        fun bar() {}
+    }
+}
+```
+
+Now, foo() is static in Java, while bar() is not:
+
+```
+C.foo(); // works fine
+C.bar(); // error: not a static method
+C.Companion.foo(); // instance method remains
+C.Companion.bar(); // the only way it works
+```
+
+Same for named objects:
+
+```
+object Obj {
+    @JvmStatic fun foo() {}
+    fun bar() {}
+}
+```
+
+In Java:
+
+```
+Obj.foo(); // works fine
+Obj.bar(); // error
+Obj.INSTANCE.bar(); // works, a call through the singleton instance
+Obj.INSTANCE.foo(); // works too
 ```
