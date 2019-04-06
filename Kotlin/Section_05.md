@@ -231,6 +231,6 @@ Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/
 
 - open
 - abstract
-- overwrite
+- override
 
 
