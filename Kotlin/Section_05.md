@@ -211,3 +211,16 @@ fun main(args: Array<String>) {
     //Car(color=red, model=Ford, year=2016)   
 }
 ```
+
+- Inline functions
+Inlining works better for functions with parameters of functional types as lambda expression.
+
+Inlining for regulat functions has not impact in performances.
+
+
+
+
+
+
+
+####

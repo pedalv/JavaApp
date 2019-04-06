@@ -1,6 +1,9 @@
 package no.agitec.fagaften.mars.kotlin.section05.functions
 
 fun main(args: Array<String>) {
+    println(labelMultiply2Inline(label = "Here's the result:", operand2 = 3, operand1 = 4))
+    //Here's the result: 12
+    println(" -0- ")
     println(labelMultiply(3, 4, "Here's the result:"))
     //Here's the result: 12
     println(" -1- ")
@@ -84,6 +87,7 @@ fun main(args: Array<String>) {
     println(" -7- ")
 
 }
+// End main fun
 
 //extended functions
 fun String.upperFirstAndLast1(): String {
@@ -145,3 +149,16 @@ class Employee(val firstName: String) {
 data class Car(val color: String, val model: String, val year: Int) {
 
 }
+
+
+// Inline function
+/*
+Inlining works better for functions with parameters of functional types as lambda expression, or refined parameters with generics.
+
+Inlining for regulat functions has not impact in performances.
+
+function body will be directed generated into the byte code rader the function is call.
+ */
+inline fun labelMultiply2Inline(operand1: Int, operand2: Int,
+                         label: String = "The answer is:") =
+        "$label ${operand1 * operand2}"
