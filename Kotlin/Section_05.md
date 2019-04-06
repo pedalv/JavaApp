@@ -213,14 +213,24 @@ fun main(args: Array<String>) {
 ```
 
 - Inline functions
-Inlining works better for functions with parameters of functional types as lambda expression.
+Inlining works better for functions with parameters of functional types as lambda expression, or refined parameters with generics.
 
 Inlining for regulat functions has not impact in performances.
 
+function body will be directed generated into the byte code rader the function is call.
+
+```
+inline fun labelMultiply2Inline(operand1: Int, 
+								operand2: Int,
+								label: String = "The answer is:") =
+								"$label ${operand1 * operand2}"
+```
+
+#### inheritance
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/inheritance/Printer.kt)
+
+- open
+- abstract
+- overwrite
 
 
-
-
-
-
-####
