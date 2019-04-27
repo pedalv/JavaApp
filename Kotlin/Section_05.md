@@ -285,3 +285,6 @@ open class LaserPrinter(modelName: String): Printer(modelName) {
 | open | for inheritance |
 | open abstract | Modifier 'open' is redundant because 'abstract' is present |
 | override | 'printModel()' hides member of supertype 'Printer' and needs 'overide' modifier |
+| open data | modifier 'open/data' is incompatible with 'data/open' |
+
+#### interfaces
