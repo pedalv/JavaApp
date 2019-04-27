@@ -231,7 +231,7 @@ inline fun labelMultiply2Inline(operand1: Int,
 | inline | Expected performance impact of inlining 'inline fun labelMultiply2Inline(operand1: Int, operand2: Int, label: String = "The answer is"): String defined in  no.agitec.fagaften.mars.kotlin.section05.functions' can be insignificant. Inlining works best for functions with lambda parameters.  |
 
 
-#### inheritance
+#### Inheritance
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/inheritance/Printer.kt)
 
 | Java | Kotlin |
@@ -296,8 +296,52 @@ Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/
 | val number2 : Int  get() = 50 | WORKS |
 | val number2 : Int  get() = field * 100 | Property in an interface cannot have a backing field |
 
-## Singletons
+```
+interface MyInterface {
 
+    val number: Int
+    val number2: Int
+        get() = number * 100
 
+    fun myFunction(str: String): String
+
+}
+
+interface MySubInterface: MyInterface {
+
+    fun mySubFunction(num: Int): String
+
+}
+
+open class Printer {
+
+}
+
+class LaserPrinter : Printer, MyInterface {
+
+    constructor() : super()
+
+    override val number: Int = 25
+    override val number2: Int = 25
+
+    override fun myFunction(str: String): String {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+```
+
+#### Singletons
+
+```
+object CompanyCommunications {
+
+    val currentYear = Year.now().value
+
+    fun getTagLine() = "Our company rocks!"
+    fun getCopyrightLine() = "Copyright \u00A9 $currentYear Our Company. All rights reserved."
+}
+```
+
+#### Objects
 
 
