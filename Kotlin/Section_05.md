@@ -342,6 +342,4 @@ object CompanyCommunications {
 }
 ```
 
-#### Objects
-
 
