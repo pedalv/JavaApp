@@ -122,9 +122,6 @@ data class EmployeeKotlin3(var firstName: String) {
         this.fulltime = fulltime // need assign to change the value
     }
 
-
-
-
 }
 
 

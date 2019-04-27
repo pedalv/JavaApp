@@ -13,8 +13,8 @@ fun main(args: Array<String>) {
 
 // Step 1: Errors
 /*
-Kotlin: This type is final, so it cannot be inherited from
-Kotlin: This type has a constructor, and thus must be initialized here
+Kotlin: This type is final, so it cannot be inherited from => Solution: Added open keyword
+Kotlin: This type has a constructor, and thus must be initialized here => ... : Printer1() {...}
  */
 /*
 class Printer1 {
@@ -31,16 +31,16 @@ class LaserPrinter1 : Printer1 {
 Kotlin: This type has a constructor, and thus must be initialized here
 */
 /*
-open class Printer1 {
+open class Printer2 {
 
 }
-class LaserPrinter1 : Printer1 {
+class LaserPrinter2 : Printer2 {
 }
 */
 
 // Step 3: Solution 2.1 - Works
 //open class for inheritance
-open class Printer321 {
+open class Printer321() {
 
 }
 class LaserPrinter321() : Printer321() {
@@ -56,7 +56,7 @@ class LaserPrinter322 : Printer322 {
 }
 
 //Step 4: open abstract class, it is redundant => abstract class
-abstract class Printer4() {
+abstract class Printer4 {
 
 }
 class LaserPrinter4 : Printer4() {

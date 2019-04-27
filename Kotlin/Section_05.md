@@ -221,16 +221,67 @@ function body will be directed generated into the byte code rader the function i
 
 ```
 inline fun labelMultiply2Inline(operand1: Int, 
-								operand2: Int,
-								label: String = "The answer is:") =
-								"$label ${operand1 * operand2}"
+				operand2: Int,
+				label: String = "The answer is:") =
+				"$label ${operand1 * operand2}"
 ```
+
+| keyword | description |
+| -------| ------- |
+| inline | Expected performance impact of inlining 'inline fun labelMultiply2Inline(operand1: Int, operand2: Int, label: String = "The answer is"): String defined in  no.agitec.fagaften.mars.kotlin.section05.functions' can be insignificant. Inlining works best for functions with lambda parameters.  |
+
 
 #### inheritance
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/inheritance/Printer.kt)
+
+| Java | Kotlin |
+| -------| ------- |
+| public (by default) | public final (by default for classes, top level functions, member functions and properties)  |
+
 
 - open
 - abstract
 - override
 
+```
+fun main(args: Array<String>) {
+    val laserPrinter = LaserPrinter("Brother 1234")
+    laserPrinter.printModel()
+    // The model name of this 'laser printer' is Brother 1234
 
+    //Step 6:
+    val laserPrinter6 = LaserPrinter6("Brother 1234")
+    laserPrinter6.printModel()
+    //The model name of this 'printer' is Brother 1234
+}
+
+//Step 6:
+/*open*/ abstract class Printer6(val modelName: String) {
+    fun printModel() = println("The model name of this 'printer' is $modelName")
+}
+// Kotlin: 'modelName' hides member of supertype 'Printer5' and needs 'override' modifier
+class LaserPrinter6(modelName: String) : Printer6(modelName) {
+
+}
+
+// Step final:
+/*open*/ abstract class Printer(val modelName: String) {
+
+    open fun printModel() = println("The model name of this 'printer' is $modelName")
+    abstract fun bestSellingPrice(): Double
+
+}
+
+open class LaserPrinter(modelName: String): Printer(modelName) {
+
+    final override fun printModel() = println("The model name of this 'laser printer' is $modelName")
+    override fun bestSellingPrice(): Double = 129.99
+
+}
+```
+
+| keyword | description |
+| -------| ------- |
+| open | for inheritance |
+| open abstract | Modifier 'open' is redundant because 'abstract' is present |
+| override | 'printModel()' hides member of supertype 'Printer' and needs 'overide' modifier |
