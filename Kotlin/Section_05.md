@@ -287,4 +287,17 @@ open class LaserPrinter(modelName: String): Printer(modelName) {
 | override | 'printModel()' hides member of supertype 'Printer' and needs 'overide' modifier |
 | open data | modifier 'open/data' is incompatible with 'data/open' |
 
-#### interfaces
+#### Interfaces
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/interfaces/PrinterInterfaces.kt)
+
+| case | description |
+| -------| ------- |
+| val number2 : Int = 50 | Property initializers are not allowed in interfaces |
+| val number2 : Int  get() = 50 | WORKS |
+| val number2 : Int  get() = field * 100 | Property in an interface cannot have a backing field |
+
+## Singletons
+
+
+
+
