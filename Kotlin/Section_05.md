@@ -212,7 +212,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-- Inline functions
+#### Inline functions
 Inlining works better for functions with parameters of functional types as lambda expression, or refined parameters with generics.
 
 Inlining for regulat functions has not impact in performances.
@@ -331,6 +331,7 @@ class LaserPrinter : Printer, MyInterface {
 ```
 
 #### Singletons
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/singletons/CompanyCommunications.kt)
 
 ```
 object CompanyCommunications {
