@@ -423,6 +423,10 @@ fun wantsSomeInterface(si: SomeInterface) {
 ```
 
 #### Enum
+
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/enums/CompanyCommunications.kt)
+
+
 ```
 fun main(args: Array<String>) {
     println(Department.ACCOUNTING.getDeptInfo())
