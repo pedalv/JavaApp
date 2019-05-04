@@ -444,7 +444,7 @@ enum class Department(val fullName: String, val numEmployees: Int) {
 
 #### Imports
 
-Kode: [here]()
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/imports)
 
 - Since the file name does not match the class file name so we do not need follow the directory structure.
 - It means that the package is not need for prevent the same file name is located on same location/directory.
