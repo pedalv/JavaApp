@@ -396,7 +396,7 @@ object SomeClassKotlinFix2 {
 
 3. Object expressions (Anonyimous objects)
 
-Kode: [here]()
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/object/expressions/AnonymousObjects.kt)
 
 
 
