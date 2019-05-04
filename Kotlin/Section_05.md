@@ -330,8 +330,20 @@ class LaserPrinter : Printer, MyInterface {
 }
 ```
 
-#### Singletons
-Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/singletons/CompanyCommunications.kt)
+#### Object keyword
+For define a class and a final instance at the same time 
+
+| Kotlin | description |
+| -------| ------- |
+| class | public final |
+| object | public static final |
+
+The three user cases for Object keyword are:
+1. Singletons
+
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/object/singletons/CompanyCommunications.kt)
+
+- A single instance of the class exists and we get that instance using getInstance static method. 
 
 ```
 object CompanyCommunications {
@@ -342,5 +354,50 @@ object CompanyCommunications {
     fun getCopyrightLine() = "Copyright \u00A9 $currentYear Our Company. All rights reserved."
 }
 ```
+
+2. Companion object
+
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/object/companion)
+
+- The same class in the Kotlin, the private static instance and the managerInstance property, will be moved to companion object.
+
+- It is not possible access privateVar outside the class.
+| Kotlin | Java |
+| -------| ------- |
+| get and set is not available | implements get and set |
+|
+
+NB:
+- for have the same behaviour as in Kotlin like in JAVA it is need change CLASS to OBJECT to have only one instance
+
+| Kotlin | description |
+| -------| ------- |
+| class | public final |
+| object | public static final |
+
+
+3. Object expressions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
