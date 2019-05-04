@@ -448,8 +448,22 @@ Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/
 
 - Since the file name does not match the class file name so we do not need follow the directory structure.
 - It means that the package is not need for prevent the same file name is located on same location/directory.
- 
 
+``` 
+package world.scandinavia.norge.no.oslo.nationalteatret.gata.blablablabla.agitec.fagaften.mai.kotlin.imports
+
+/**
+ * File is located in
+ * C:\Space2\JavaApp\Kotlin\src\main\java\no\agitec\fagaften\mars\kotlin\section05\imports\communications
+ *
+ * package no.agitec.fagaften.mars.kotlin.section05.imports.communications
+ * C:\Space2\JavaApp\Kotlin\src\main\java\
+ *         no\agitec\fagaften\mars\kotlin\section05\imports\communications
+ */
+fun main(args: Array<String>) {
+    println("My package doesn't match!")
+}
+```
 
 
 
