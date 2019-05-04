@@ -398,6 +398,29 @@ object SomeClassKotlinFix2 {
 
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/object/expressions/AnonymousObjects.kt)
 
+```
+
+fun main(args: Array<String>) {
+
+    var thisIsMutable = 45
+
+    /**
+     * SomeInterface is not singletons
+     */
+    wantsSomeInterface(object: SomeInterface {
+        override fun mustImplement(num: Int)  = "This is from mustImplement: ${num * 100}"
+    })
+    println(thisIsMutable)
+}
+
+interface SomeInterface {
+    fun mustImplement(num: Int): String
+}
+
+fun wantsSomeInterface(si: SomeInterface) {
+    println("Printing from wantsSomeInterface ${si.mustImplement(22)}")
+}
+```
 
 
 
