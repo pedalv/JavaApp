@@ -396,6 +396,10 @@ object SomeClassKotlinFix2 {
 
 3. Object expressions (Anonyimous objects)
 
+Kode: [here]()
+
+
+
 
 
 
