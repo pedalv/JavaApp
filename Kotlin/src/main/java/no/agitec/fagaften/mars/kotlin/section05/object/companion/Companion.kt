@@ -1,9 +1,15 @@
 package academy.learnprogramming.inheritance
 
+import no.agitec.fagaften.mars.kotlin.section05.`object`.companion.SomeClassKotlinFix
 import no.agitec.fagaften.mars.kotlin.section05.`object`.companion.javacode.SomeOtherClass
 
 
 fun main(args: Array<String>) {
+
+    println(SomeClassKotlinFix.accessPrivateVar())
+    //I'm accessing privateVar: 6
+    //kotlin.Unit
+    println(" --0-- ")
 
     println(SomeClassJavaToKotlin.accessPrivateVar())
     //I'm accessing privateVar: 6
@@ -41,13 +47,13 @@ object OutSideCompanionClass {
     //println(SomeClassJavaToKotlin.accessPrivateVarKotlin())
     // Kotlin: Expecting member declaration
     // Object SomeClassJavaToKotlin { ... }
-    // TODO : From main metthod it WORKS - SHOW example 1.1 and 1.1.1
+    // TODO : From main method it WORKS - SHOW example 1.1 and 1.1.1
 
     //println(SomeClassKotlin.accessPrivateVar())
     // Kotlin: Unresolved reference: accessPrivateVar
     // Class SomeClassKotlin { ... }
 
-
+    //SE solution in CompanionSample46.kt
 }
 
 object SomeClassJavaToKotlin {
@@ -73,9 +79,16 @@ class SomeClassKotlin {
     fun main(args: Array<String>) = SomeOtherClass().someOtherMethod()
 
     fun accessPrivateVar() = println("I'm accessing privateVar: $privateVar")
-
 }
 
+object SomeClassKotlinObject {
+
+    private val privateVar = 6
+
+    fun main(args: Array<String>) = SomeOtherClass().someOtherMethod()
+
+    fun accessPrivateVar() = println("I'm accessing privateVar: $privateVar")
+}
 
 
 class SomeClassSample private constructor(val someString: String) {

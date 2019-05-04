@@ -374,9 +374,27 @@ NB:
 | -------| ------- |
 | class | public final |
 | object | public static final |
+| companion object | public static final |
 
 
-3. Object expressions
+```
+object SomeClassKotlinFix2 {
+    /*
+    companion object {
+        private var privateVar = 6
+
+        fun accessPrivateVar() = println("I'm accessing privateVar: $privateVar")
+    }
+   */
+    companion object SomeCompanion { // Modifier 'companion' is not applicable inside 'object'
+        private var privateVar = 6
+
+        fun accessPrivateVar() = println("I'm accessing privateVar: $privateVar")
+    }
+}
+```
+
+3. Object expressions (Anonyimous objects)
 
 
 
