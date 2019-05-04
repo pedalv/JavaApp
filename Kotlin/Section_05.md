@@ -426,7 +426,6 @@ fun wantsSomeInterface(si: SomeInterface) {
 
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/enums/CompanyCommunications.kt)
 
-
 ```
 fun main(args: Array<String>) {
     println(Department.ACCOUNTING.getDeptInfo())
@@ -443,16 +442,13 @@ enum class Department(val fullName: String, val numEmployees: Int) {
 }
 ```
 
+#### Imports
 
+Kode: [here]()
 
-
-
-
-
-
-
-
-
+- Since the file name does not match the class file name so we do not need follow the directory structure.
+- It means that the package is not need for prevent the same file name is located on same location/directory.
+ 
 
 
 
