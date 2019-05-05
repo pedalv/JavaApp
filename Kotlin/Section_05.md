@@ -446,6 +446,37 @@ enum class Department(val fullName: String, val numEmployees: Int) {
 
 Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/imports) and [here]()
 
+- Import module will be need add module for recognize top level functions, enum, class, Extended functions, osv.
+
+```
+//ENUM
+//import no.agitec.fagaften.mars.kotlin.section05.imports.communications.Department.*
+import no.agitec.fagaften.mars.kotlin.section05.imports.communications.Department.IT
+import no.agitec.fagaften.mars.kotlin.section05.imports.communications.Department.SALES
+// top level function
+import no.agitec.fagaften.mars.kotlin.section05.imports.communications.topLevel as tp
+import no.agitec.fagaften.mars.kotlin.section05.imports.communications.topLevel
+// extended function
+import no.agitec.fagaften.mars.kotlin.section05.imports.communications.upperFirstAndLast as ufal
+// class
+import no.agitec.fagaften.mars.kotlin.section05.imports.communications.CompanyCommunications as Comm
+
+fun main(args: Array<String>) {
+    topLevel("Hello from AnotherFile")
+    println(" --1.1-- ")
+    tp("Hello from AnotherFile")
+    println(" --1.2-- ")
+    println(Comm.getCopyrightLine())
+    println(" --2-- ")
+    println(IT.getDeptInfo())
+    println(" --3-- ")
+    println(SALES.getDeptInfo())
+    println(" --4-- ")
+    println("some string".ufal())
+    println(" --5-- ")
+}
+```
+
 - Since the file name does not match the class file name so we do not need follow the directory structure.
 - It means that the package is not need for prevent the same file name is located on same location/directory.
 
@@ -465,6 +496,4 @@ fun main(args: Array<String>) {
 }
 ```
 
-NB: Import module will be need add module for recognize top level functions
-
-TODO: 40 - Video: from 10m
+####

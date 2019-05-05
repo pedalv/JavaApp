@@ -1,12 +1,16 @@
 package no.agitec.fagaften.mars.kotlin.section05.imports.anotherpackage
 
+//ENUM
+//import no.agitec.fagaften.mars.kotlin.section05.imports.communications.Department.*
 import no.agitec.fagaften.mars.kotlin.section05.imports.communications.Department.IT
 import no.agitec.fagaften.mars.kotlin.section05.imports.communications.Department.SALES
-import no.agitec.fagaften.mars.kotlin.section05.imports.communications.topLevel
-import no.agitec.fagaften.mars.kotlin.section05.imports.communications.CompanyCommunications as Comm
+// top level function
 import no.agitec.fagaften.mars.kotlin.section05.imports.communications.topLevel as tp
+import no.agitec.fagaften.mars.kotlin.section05.imports.communications.topLevel
+// extended function
 import no.agitec.fagaften.mars.kotlin.section05.imports.communications.upperFirstAndLast as ufal
-
+// class
+import no.agitec.fagaften.mars.kotlin.section05.imports.communications.CompanyCommunications as Comm
 
 fun main(args: Array<String>) {
     topLevel("Hello from AnotherFile")

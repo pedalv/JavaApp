@@ -1,7 +1,7 @@
 package no.agitec.fagaften.mai.kotlin.section05.imports.othermodule
 
 import no.agitec.fagaften.mars.kotlin.section05.imports.communications.topLevel
-import no.agitec.fagaften.mars.kotlin.section05.imports.communications.topLevel as tp
+import no.agitec.fagaften.mars.kotlin.section05.imports.communications.topLevel as tp //top level function
 
 /**
  * TODO:
