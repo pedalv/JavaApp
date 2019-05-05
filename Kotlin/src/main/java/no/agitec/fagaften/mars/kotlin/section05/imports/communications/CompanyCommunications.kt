@@ -3,15 +3,26 @@ package no.agitec.fagaften.mars.kotlin.section05.imports.communications
 import java.time.Year
 
 fun main(args: Array<String>) {
-    topLevel("I'm private!")
+    println(" --1-- ")
     println(Department.ACCOUNTING.getDeptInfo())
-
+    println(" --2-- ")
     println(CompanyCommunications.getTagline())
+    println(" --3-- ")
     println(CompanyCommunications.getCopyrightLine())
+    println(" --4-- ")
+
+    println("___The access level visible in the same file___")
+    println(CompanyCommunications.getCopyrightLineInternal())
+    println(" --5-- ")
+    topLevelPrivate("I'm private!")
+    println(" --6-- ")
+    println(PrivateClass.nonono())
+    println(" --7-- ")
 }
 
 //1
 fun topLevel(str: String) = println("Top level function: $str")
+private fun topLevelPrivate(str: String) = println("Top level function: $str")
 
 //2
 object CompanyCommunications {
@@ -20,7 +31,14 @@ object CompanyCommunications {
 
     fun getTagline() = "Our company rocks!"
     fun getCopyrightLine() = "Copyright \u00A9 $currentYear Our Company. All rights reserved."
+    internal fun getCopyrightLineInternal() = "Copyright \u00A9 $currentYear Our Company. All rights reserved."
+}
 
+/**
+ * internal is not need because the class in only visibel in the same file
+ */
+private object PrivateClass {
+    internal fun nonono() : Unit = println("Remove internal keyword because nonono method is only visible in this file")
 }
 
 //3

@@ -446,6 +446,7 @@ enum class Department(val fullName: String, val numEmployees: Int) {
 
 Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/imports) and [here]()
 
+- Intellij Idea: Code -> Optimize Imports <=> Ctrl + Alt + o (imports optimized=
 - Import module will be need add module for recognize top level functions, enum, class, Extended functions, osv.
 
 ```
@@ -495,5 +496,12 @@ fun main(args: Array<String>) {
     println("My package doesn't match!")
 }
 ```
+
+| Kotlin | description |
+| -------| ------- |
+| private | Code is visible in the same file |
+| internal | Code is visible in same module only |
+| class/data/object is private and declare one of the functions as internal | internal is not need because the class in only visibel in the same file |
+
 
 ####
