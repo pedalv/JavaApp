@@ -503,5 +503,11 @@ fun main(args: Array<String>) {
 | internal | Code is visible in same module only |
 | class/data/object is private and declare one of the functions as internal | internal is not need because the class in only visibel in the same file |
 
-
 ####
+
+
+
+
+
+
+
