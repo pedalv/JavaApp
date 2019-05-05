@@ -497,17 +497,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-| Kotlin | description |
+| Kotlin | description | automatic generate |
 | -------| ------- |
-| private | Code is visible in the same file |
-| internal | Code is visible in same module only |
-| class/data/object is private and declare one of the functions as internal | internal is not need because the class/data/object in only visibel in the same file |
-
-####
-
-
-
-
-
-
-
+| val | The variable is immutable as final in Java, can be assigned only one time | get |
+| var | The variable can change many times its value | only get |

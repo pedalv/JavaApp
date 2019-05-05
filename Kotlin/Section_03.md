@@ -44,17 +44,18 @@ Packages
 - [Introducing Kotlin support in Spring Framework 5.0](https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0)
 
 ## Declaration
-- val: The variable is immutable as final in Java, can be assigned only one time
+
+| Kotlin | description | automatic generate |
+| -------| ------- |
+| val | The variable is immutable as final in Java, can be assigned only one time | get |
+| var | The variable can be assigned more than one time, keep same reference | only get |
+
 ```
 val number: Int
 val number = 1
 val number: Int = 1 (It is not normal in Kotlin)
 val number: Short = 1 (It is OKAY)
-```
 
-- var: The variable can be assigned more than one time, keep same reference
-
-```
 var number: Int
 ```
 
@@ -252,4 +253,53 @@ Obj.foo(); // works fine
 Obj.bar(); // error
 Obj.INSTANCE.bar(); // works, a call through the singleton instance
 Obj.INSTANCE.foo(); // works too
+```
+
+##### Exercise
+1. Declare two immutable String variables called hello1 and hello2. Assign "Hello" to both variables.
+
+```
+    val hello1 = "Hello"
+    val hello2 = "Hello"
+```
+
+2. Using one line of code, test whether hello1 and hello2 are referentially equal and print the result
+
+```
+    println("hello1 is referentially equal to hello2: ${hello1 === hello2}")
+```
+
+3. Using one line of code, test whether hello1 and hello2 are structurally equal and print the result.
+
+```
+    println("hello2 is structurally equal to hello2: ${hello1 == hello2}")
+```
+
+4. Declare a mutable variable of type Int and assign it the value 2988.
+
+```
+    var num = 2988
+```
+
+5. Declare an immutable variable of type Any and assign to it the string "The Any type is the root of the Kotlin class hierarchy". Then, using a smart cast, print out the uppercased string.
+
+```
+    val text: Any = "The Any type is the root of the Kotlin class hierarchy"
+    if (text is String) {
+        println(text.toUpperCase())
+    }
+```
+
+6. Using one line of code, print out the following. Make sure your code is nicely indented:
+
+```
+    //    1
+    //   11
+    //  111
+    // 1111
+	
+    println("""   1
+             |  11
+             | 111
+             |1111""".trimMargin())
 ```
