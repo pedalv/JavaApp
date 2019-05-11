@@ -29,6 +29,26 @@ fun main(args: Array<String>) {
     //9
     //13
     //17
+    println(" --01.3-- ")
+    for (i in 20 downTo 5) {
+        println(i)
+    }
+    //20
+    //19
+    //18
+    //17
+    //16
+    //15
+    //14
+    //13
+    //12
+    //11
+    //10
+    //9
+    //8
+    //7
+    //6
+    //5
     println(" --02-- ")
     for (i in 1 until 10) {
         println(i)

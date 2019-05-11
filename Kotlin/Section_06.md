@@ -5,9 +5,7 @@
 | loop | Java vs kotlin |
 | ----- | ----- |
 | for | different |
-| when |  |
-|  |  |
-|  |  |
+| when | same |
 
 - this form of 'for( int i = 0; i < 10; i++) {...}' does not exist in Kotlin
 - for loops in Kotling use a [ranges](https://kotlinlang.org/docs/reference/ranges.html#ranges)
@@ -63,16 +61,63 @@ for (s in stringRange) {
 - [stringRange -closed-range](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-closed-range/index.html) => has less options
 - [Loops on ranges](https://kotlinlang.org/docs/reference/coding-conventions.html#loops-on-ranges)
 
+
+######## for loop with ranges
+
 ```
-for (num in 1..20 step 4) {
-	println(num)
+for (i in 1..20 step 4) {
+	println(i)
 }
 //1
 //5
 //9
 //13
 //17
+
+for (i in 20 downTo 5) {
+	println(i)
+}
+//20
+//19
+//18
+//17
+//16
+//15
+//14
+//13
+//12
+//11
+//10
+//9
+//8
+//7
+//6
+//5
+
+for (i in 20 downTo 10 step 5) {
+	println(i)
+}
+//20
+//15
+//10
+
+for (i in 1 until 4) {
+ println (i) 
+}
+//1
+//2
+//3
+
+val s = "goodbye"
+val sRange = 0..s.length
+println(s) //goodbye
+println(sRange) //0..7
+println(sRange.first) //0
+println(sRange.last) //7
 ```
+
+######## for loop with arrays
+
 
 #### if loop
 
