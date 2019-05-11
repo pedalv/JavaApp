@@ -501,3 +501,7 @@ fun main(args: Array<String>) {
 | -------| ------- |
 | val | The variable is immutable as final in Java, can be assigned only one time | get |
 | var | The variable can change many times its value | only get |
+
+- [Project Lombok](https://projectlombok.org/)
+- [Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
+
