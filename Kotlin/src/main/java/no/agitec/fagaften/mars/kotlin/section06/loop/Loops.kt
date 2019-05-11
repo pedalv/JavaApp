@@ -61,6 +61,10 @@ fun main(args: Array<String>) {
     val charRange = 'a'..'z'
     println(charRange) // a..z
     val stringRange = "ABD".."XYZ"
+    /**
+     *Error:(67, 15) Kotlin: For-loop range must have an 'iterator()' method
+     */
+    //for (s in stringRange) { println(s) }
     println(stringRange) // ABD..XYZ
     println(" --06-- ")
     val str = "Hello"
