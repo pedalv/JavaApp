@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mars.kotlin.section06.loop
+package no.agitec.fagaften.mars.kotlin.section06.forloop
 
 fun main(args: Array<String>) {
 
@@ -225,5 +225,32 @@ fun main(args: Array<String>) {
     //k = 6
     //k = 7
     println(" --17-- ")
-
+    for (i in 1..3) {
+        println("i = $i")
+        jloop@ for (j in 1..4) {
+            println("j = $j")
+            for (k in 5..10) {
+                println("k = $k")
+                if (k == 7) {
+                    break@jloop
+                }
+            }
+        }
+    }
+    //i = 1
+    //j = 1
+    //k = 5
+    //k = 6
+    //k = 7
+    //i = 2
+    //j = 1
+    //k = 5
+    //k = 6
+    //k = 7
+    //i = 3
+    //j = 1
+    //k = 5
+    //k = 6
+    //k = 7
+    println(" --18-- ")
 }
