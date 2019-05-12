@@ -244,6 +244,7 @@ Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/
 
 ```
 int num = 200;
+//JAVA
 switch(num) {
 	case 100:
 		System.out.println("100");
@@ -258,10 +259,8 @@ switch(num) {
 		System.out.println("Didn't match anything");
 }
 //200
-```
 
-```
-val num = 200
+//KOTLIN
 when (num) {
 	100 -> println("100")
 	200 -> println("200")
@@ -288,9 +287,8 @@ else if (something is Int) {
 	println("${something - 22}")
 }
 //4.199999999999999289457264239899814128875732421875
-```
 
-```
+//(1) KOTLIN
 val z = when (something) {
 	is String -> {
 		println(something.toUpperCase())
@@ -311,6 +309,7 @@ val z = when (something) {
 }
 //4.199999999999999289457264239899814128875732421875
 //2
+```
       
 - Error:(304, 18) Kotlin: 'when' expression must be exhaustive, add necessary 'else' branch
 
@@ -331,9 +330,8 @@ else {
 	println("num = num2")
 }
 //num is greater than num2
-```
 
-```
+
 //(2) IS BEST SOLUTION FOR KOTLIN BECAUSE IS LESS VERBOSE
 when {
 	num < num2 -> println("num is less than num2")
