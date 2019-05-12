@@ -344,3 +344,68 @@ when {
 	
 ## try/catch expressions
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section06/)
+
+- Kotlin do not distinct between chech and uncheck exceptions so we do not need catch them. 
+- However for catch an exception with try/catch/finally block is equal as Java, so there is nathing new, but in Kotlin try/catch block can be use as an expression as if expression for example.
+- finally block do not return anything
+
+```
+println(getNumber3("22"))
+//I'm in the finally block
+//22
+
+println(getNumber3("22.5"))
+//I'm in the finally block
+//0
+
+-
+
+getNumber3(str: String): Int {
+return try {
+	Integer.parseInt(str)
+}
+catch(e: NumberFormatException) {
+	0
+}
+finally {
+	println("I'm in the finally block")
+}
+```
+
+```
+println(getNumber5Exception("22.5")) //Linje 29
+//I'm in the finally block
+//Exception in thread "main" java.lang.NumberFormatException: For input string: "22.5"
+//	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+//	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+//	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+//	at no.agitec.fagaften.mars.kotlin.section06.trycatch.TryCatchKt.getNumber5Exception(TryCatch.kt:105)
+//	at no.agitec.fagaften.mars.kotlin.section06.trycatch.TryCatchKt.main(TryCatch.kt:29)
+
+-
+
+fun getNumber5Exception(str: String): Int {
+    return try { //
+        Integer.parseInt(str) //linje 105
+    }
+//    catch(e: NumberFormatException) {
+//        0
+//    }
+    finally {
+        println("I'm in the finally block")
+    }
+}
+```
+
+```
+notImplementedYet("string") //Linje 56
+//Exception in thread "main" java.lang.IllegalArgumentException: Implement me!
+//	at no.agitec.fagaften.mars.kotlin.section06.trycatch.TryCatchKt.notImplementedYet(TryCatch.kt:64)
+//	at no.agitec.fagaften.mars.kotlin.section06.trycatch.TryCatchKt.main(TryCatch.kt:56)
+
+-
+
+fun notImplementedYet(something: String): Nothing {
+    throw IllegalArgumentException("Implement me!") //Linje 64
+}
+```
