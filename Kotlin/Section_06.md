@@ -192,6 +192,7 @@ else {
 	100
 }
 println(num2) //50
+```
 
 ```    
 Error: Kotlin: 'if' must have both main and 'else' branches if used as an expression
@@ -232,9 +233,9 @@ println(num2) //50
 println(num2.javaClass) //int
 ```
 
-
 #### when loop
-Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section06/)
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section06/whenexpression/WhenExpression.kt)
+
 
 
 ## try/catch expressions
