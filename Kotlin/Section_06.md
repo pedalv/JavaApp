@@ -147,7 +147,8 @@ Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/
 
 | Java | kotlin |
 | ----- |----- |
-| int num = someCondition ? 50 : 592; | val num = if(someCondition) 50 else 592 |
+| int num = someCondition ? 50 : 592; | var num = if(someCondition) 50 else 592 |
+| final int num = someCondition ? 50 : 592; | val num = if(someCondition) 50 else 592 |
 
 ```
 val someCondition = 20 < 22
@@ -236,7 +237,112 @@ println(num2.javaClass) //int
 #### when loop
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section06/whenexpression/WhenExpression.kt)
 
+| Java | kotlin |
+| ----- |----- |
+| SWITCH | WHEN(condition) == SWITCH  |
+| IF | WHEN == SWITCH  |
+
+```
+int num = 200;
+switch(num) {
+	case 100:
+		System.out.println("100");
+		break;
+	case 200:
+		System.out.println("200");
+		break;
+	case 300:
+		System.out.println("300");
+		break;
+	default:
+		System.out.println("Didn't match anything");
+}
+//200
+```
+
+```
+val num = 200
+when (num) {
+	100 -> println("100")
+	200 -> println("200")
+	300 -> println("300")
+	else -> println("Didn't match anything")
+}
+//200
+```
+
+```
+val obj: Any = "I'm a string"
+val obj2: Any = BigDecimal(25.2)
+val obj3: Any = 45
+
+//IT IS VERBOSE FOR KOTLIN SO USE WHEN FOR REDUCE VERBOSE - SE BELOW SOLUTION (1)
+val something: Any = obj2
+if (something is String) {
+	println(something.toUpperCase())
+}
+else if (something is BigDecimal) {
+	println(something.remainder(BigDecimal(10.5)))
+}
+else if (something is Int) {
+	println("${something - 22}")
+}
+//4.199999999999999289457264239899814128875732421875
+```
+
+```
+val z = when (something) {
+	is String -> {
+		println(something.toUpperCase())
+		1
+	}
+	is BigDecimal -> {
+		println(something.remainder(BigDecimal(10.5)))
+		2
+	}
+	is Int -> {
+		println("${something - 22}")
+		3
+	}
+	else -> { //Linje 304
+		println("I have no idea what type this is")
+		-1
+	}
+}
+//4.199999999999999289457264239899814128875732421875
+//2
+      
+- Error:(304, 18) Kotlin: 'when' expression must be exhaustive, add necessary 'else' branch
+
+NB:
+- Error: Kotlin: 'if' must have both main and 'else' branches if used as an expression
 
 
+```
+//IT IS VERY VERBOSE IN KOTLIN SO USE WHEN (2)
+val num2 = -50
+if (num < num2) {
+	println("num is less than num2")
+}
+else if (num > num2) {
+	println("num is greater than num2")
+}
+else {
+	println("num = num2")
+}
+//num is greater than num2
+```
+
+```
+//(2) IS BEST SOLUTION FOR KOTLIN BECAUSE IS LESS VERBOSE
+when {
+	num < num2 -> println("num is less than num2")
+	num > num2 -> println("num is greater than num2")
+	else -> println("num = num2")
+}
+//num is greater than num2
+```
+
+	
 ## try/catch expressions
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section06/)

@@ -83,6 +83,7 @@ fun main(args: Array<String>) {
         50
     }
     */
+    println(" --4.1-SHOW ERROR EXAMPLE- ")
 
     if (someCondition) {
         println("something")
