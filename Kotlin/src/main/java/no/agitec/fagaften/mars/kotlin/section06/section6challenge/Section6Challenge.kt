@@ -59,7 +59,7 @@ fun main(args: Array<String>) {
     // Then print the value of dnum - separate statement
 
     val num = 101
-    println(" --5.1-- ")
+    println(" --5.1-- IF way down")
     println(if (num < 100) {
                         -234.567
                     }
@@ -69,14 +69,11 @@ fun main(args: Array<String>) {
                     else {
                         0.0
                     })
-    println(" --5.2-- ")
+    println(" --5.2-- WHEN way down")
     val dnum = when {
         num < 100 -> -234.567
         num > 100 -> 4444.555
         else -> 0.0
     }
-    println(" --5.2.1-- ")
     println(dnum)
-    println(" --5.3-- ")
-
 }

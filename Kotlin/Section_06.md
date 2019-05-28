@@ -5,8 +5,8 @@ Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/
 
 | loop | Java vs kotlin |
 | ----- | ----- |
-| for | different |
-| when | same |
+| FOR | different |
+| SWITCH | WHEN (it will be a switch and if at same time)  |
 
 - this form of 'for( int i = 0; i < 10; i++) {...}' does not exist in Kotlin
 - for loops in Kotling use a [ranges](https://kotlinlang.org/docs/reference/ranges.html#ranges)
