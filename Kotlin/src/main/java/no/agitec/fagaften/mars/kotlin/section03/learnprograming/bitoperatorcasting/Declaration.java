@@ -1,6 +1,5 @@
 package no.agitec.fagaften.mars.kotlin.section03.learnprograming.bitoperatorcasting;
 
-import no.agitec.fagaften.mars.kotlin.section03.learnprograming.equality.Employee;
 import no.agitec.fagaften.mars.kotlin.section03.learnprograming.equality.Employeej;
 
 public class Declaration {
@@ -20,7 +19,7 @@ public class Declaration {
         Employeej employeeFour = new Employeej("John", 2);
 
         Object something = employeeFour;
-        if (something instanceof  Employee) {
+        if (something instanceof  Employeej) {
             //val newEmployee = something as Employee
             Employeej somethingj = (Employeej) employeeOne;
             System.out.println(somethingj.getName());
