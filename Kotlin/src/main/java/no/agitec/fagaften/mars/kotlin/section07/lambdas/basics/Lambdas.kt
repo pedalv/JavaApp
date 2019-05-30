@@ -1,6 +1,6 @@
 package no.agitec.fagaften.mars.kotlin.section07.lambdas.basics
 
-import no.agitec.fagaften.mars.kotlin.section07.lambdas.receivers.Employee
+import no.agitec.fagaften.mars.kotlin.section07.lambdas.withreceivers.Employee
 
 fun main(args: Array<String>) {
     run { println("I'm in a lambda!") }
