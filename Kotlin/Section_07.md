@@ -54,7 +54,7 @@ fun useParameter(employees: List<Employee>, num: Int) {
 }
 ```
 
-- Lambda Expressions and Collections
+## Lambda Expressions and Collections
 
 ```
 val employees = listOf(
@@ -131,7 +131,6 @@ fun countTo100() =
 ```	
 
 ```	
-- 
 "Some String".apply somestring@ {
 	"Another String".apply {
 		println(toLowerCase())
@@ -172,6 +171,7 @@ fun findByLastName2(employees: List<Employee>, lastName: String) {
 
     println("Nope, there's no employee with the last name $lastName")
 }
+
 findByLastName2(employees, "Wilson")
 //Yes, there's an employee with the last name Wilson
 ```	
@@ -187,6 +187,109 @@ fun findByLastName1(employees: List<Employee>, lastName: String) {
 
     println("Nope, there's no employee with the last name $lastName")
 }
+
 findByLastName1(employees, "Wilson")
 //Yes, there's an employee with the last name Wilson
 ```	
+
+## Collections
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/collections)
+
+- [Kotlin Collections Overview](https://kotlinlang.org/docs/reference/collections-overview.html)
+
+- Collection: Read - Allows to sequentially access the elements, ie, an immutable object (unchangeable object) is an object whose state cannot be modified after it is created.
+
+```	
+public interface Collection<out E> : Iterable<E> { ... }
+```	
+
+- MutableCollection: Read/Write - Provides the ability to add, modify and remove elements while iterating (mutable).
+
+```	
+public interface MutableCollection<E> : Collection<E>, MutableIterable<E> { ... }
+```	
+
+## LIST is immutable in Kotlin (class java.util.Arrays$ArrayList), ie, an immutable object (unchangeable object) is an object whose state cannot be modified after it is created.
+    
+```
+val emptyList = emptyList<String>()
+println(emptyList.javaClass) //class kotlin.collections.EmptyList
+
+val notNullList = listOfNotNull("hello", null, "goodbye")
+println(notNullList) //[hello, goodbye]
+
+val arraylist = arrayListOf(1, 2, 4)
+println(arraylist.javaClass) //class java.util.ArrayList
+
+val mutableList = mutableListOf<Int>(1, 2, 3)
+println(mutableList.javaClass) //class java.util.ArrayList
+
+println(mutableList[2]) //3
+mutableList[1] = 20
+println(mutableList) //[1, 20, 3]
+
+val array = arrayOf("black", "white", "green")
+println(array.toList()) //[black, white, green]
+println(listOf(array)) //[[Ljava.lang.String;@29ee9faa]
+println(listOf(*array)) //[black, white, green]
+
+val ints = intArrayOf(1, 2, 3)
+println(ints.toList()) //[1, 2, 3]
+```
+
+## Kotlin Collections Functions
+
+```
+val strings = listOf("spring", "summer", "fall", "summer", "winter")
+val colorList = listOf("black", "white", "red", "black", "red")
+
+println(strings.last()) //winter
+println(strings.asReversed()) //[winter, summer, fall, summer, spring]
+
+val ints = listOf(1, 2, 3, 4, 5)
+println(ints.max())//5
+println(colorList.zip(strings)) //[(black, spring), (white, summer), (red, fall), (black, summer), (red, winter)]
+
+val mergedLists = listOf(colorList, strings)
+println(mergedLists) //[[black, white, red, black, red], [spring, summer, fall, summer, winter]]
+
+val combinedList = colorList + strings
+println(combinedList) //[black, white, red, black, red, spring, summer, fall, summer, winter]
+
+val noDupsList = colorList.union(strings)
+println(noDupsList) //[black, white, red, spring, summer, fall, winter]
+
+val noDupColors = colorList.distinct()
+println(noDupColors) //[black, white, red]
+```
+
+## Maps and Destructuring Declarations
+
+```
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
