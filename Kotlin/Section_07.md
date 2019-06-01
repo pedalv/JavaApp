@@ -425,8 +425,100 @@ println(immutableMap.map { it.value.year }) //[2015, 2016, 2013, 2015, 2010]
 
 ## Sequences
 
+- Sequences is like Streams in Java
+- Filter return a collections of objects
+- When you do not know how big is the collections will return is a good pattern use sequences
+
+```
+val immutableMap = mapOf<Int, Car>(
+	1 to Car("green", "Toyota", 2015),
+	2 to Car("red", "Ford", 2016),
+	3 to Car("silver", "Honda", 2013),
+	17 to Car("red", "BMW", 2015),
+	8 to Car("green", "Ford", 2010))
+//[red, green]
+println(  immutableMap
+	.filter { it.value.model == "Ford"}
+	.map { it.value.color })
+
+println(  immutableMap
+	.asSequence()
+	.filter { it.value.model == "Ford"}
+	.map { it.value.color })
+//kotlin.sequences.TransformingSequence@4f933fd1
 
 
+println(  immutableMap.asSequence()
+	.filter { it.value.model == "Ford"}
+	.map { it.value.color }
+	.toList())
+//[red, green]
+```
+
+- Streams was introduced in Java 8, however Android do not support Java 8 yet
+- Kotlin introduced Sequences and as result of it, kotlin is very used in Android (, server side, database, ...)
+- asSequences is only use for large collections
+-- Intermedia sequence return other sequence
+-- Terminal operation not return a sequence
+- filter -> map -> terminate => order matter if it is not a sequence
+
+## Generics
+
+```
+fun main(args: Array<String>) {
+
+    //val list2: MutableList = mutableListOf("Hello")
+    /*
+    Kotlin: One type argument expected for interface MutableList<E>
+     */
+
+    val list = mutableListOf("Hello")
+    list.add("another string")
+    printCollectionS(list)
+    printCollectionG(list)
+    list.printCollection()
+    //Hello
+    //another string
+   
+    val bdList = mutableListOf(
+            BigDecimal(-33.45),
+            BigDecimal(3503.99),
+            BigDecimal(0.329))
+    printCollectionG(bdList)
+    bdList.printCollection()
+    //-33.4500000000000028421709430404007434844970703125
+    //3503.989999999999781721271574497222900390625
+    //0.329000000000000014654943925052066333591938018798828125
+}
+```
+
+```
+//Extended function
+fun <T> List<T>.printCollection() {
+    for (item in this) {
+        println(item)
+    }
+}
+
+//Top leval function
+fun <T> printCollectionG(collection: List<T>) {
+    for (item in collection) {
+        println(item)
+    }
+}
+
+fun printCollectionS(collection: List<String>) {
+    for (item in collection) {
+        println(item)
+    }
+}
+```
+
+## Generics: Functions and Erasure
+
+
+ 
+ 
 
 
 
