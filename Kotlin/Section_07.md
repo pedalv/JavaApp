@@ -264,10 +264,166 @@ println(noDupColors) //[black, white, red]
 ```
 
 ## Maps and Destructuring Declarations
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/maps)
 
+```
+val immutableMap = mapOf<Int, Car>(
+		1 to Car("green", "Toyota", 2015),
+		2 to Car("red", "Ford", 2016),
+		3 to Car("silver", "Honda", 2013))
+
+println(immutableMap.javaClass) //class java.util.LinkedHashMap
+
+
+val immutableMap2 = mutableMapOf<String, Car>(
+		"John's car" to Car("red", "Range Rover", 2010),
+		"Jane's car" to Car("blue", "Hyundai", 2012))
+println(immutableMap2.javaClass) //class java.util.LinkedHashMap
+
+val mutableMap = hashMapOf<String, Car>(
+		"John's car" to Car("red", "Range Rover", 2010),
+		"Jane's car" to Car("blue", "Hyundai", 2012))
+println(mutableMap.javaClass) //class java.util.HashMap
+println(mutableMap)
+//{
+// John's car=no.agitec.fagaften.mars.kotlin.section07.maps.Car@7f560810,
+// Jane's car=no.agitec.fagaften.mars.kotlin.section07.maps.Car@69d9c55
+// }
+mutableMap.put("Mary's car", Car("red", "Corvette", 1965))
+
+for ((k, v) in mutableMap) {
+	println(k)
+	//Mary's car
+	//...
+	println(v)
+	//no.agitec.fagaften.mars.kotlin.section07.maps.Car@7f560810
+	//...
+}
+```
+
+- Destructuring declaration
+```
+val pair = Pair(10, "ten")
+- Two Declarations
+//val firstValue = pair.first
+//val secondValue = pair.second
+- Destructuring declaration
+    val (firstValue, secondValue) = pair
+println(firstValue) // 10
+println(secondValue) // ten
 ```
 
 ```
+val car = Car("blue", "Corvette", 1959)
+val (color, model, year) = car
+//color = blue, model = Corvette, and year = 1959
+println("color = $color, model = $model, and year = $year")
+}
+
+class Car(val color: String, val model: String, val year: Int) {
+
+    operator fun component1() = color
+    operator fun component2() = model
+    operator fun component3() = year
+}
+//variables must be public
+```
+
+## Sets
+
+```
+val setInts = setOf(10, 15, 19, 5, 3, -22) //immutable
+println(setInts.plus(20)) //[10, 15, 19, 5, 3, -22, 20]
+println(setInts.plus(10)) //[10, 15, 19, 5, 3, -22]
+println(setInts.minus(19)) //[10, 15, 5, 3, -22]
+println(setInts.minus(100)) //[10, 15, 19, 5, 3, -22]
+println(setInts.average()) //5.0
+println(setInts.drop(3)) //[5, 3, -22] // drop the 3 first elements from the set
+
+val mutableInts = mutableSetOf(1, 2, 3, 4, 5)
+mutableInts.plus(10)
+println(mutableInts) //[1, 2, 3, 4, 5]
+}
+```
+
+## Collections Functions
+
+```
+val setInts = setOf(10, 15, 19, 5, 3, -22) //immutable
+println(setInts.filter { it % 2 != 0 }) //odds: [15, 19, 5, 3]
+
+val ints = arrayOf(1, 2, 3, 4, 5)
+val add10List = ints.map { it + 10 } // map function
+println(add10List.javaClass) // class java.util.ArrayList
+println(add10List) //[11, 12, 13, 14, 15]
+```
+
+```
+val mutableMap = mutableMapOf<Int, Car>(
+	1 to Car("green", "Toyota", 2015),
+	2 to Car("red", "Ford", 2016),
+	3 to Car("silver", "Honda", 2013))
+
+mutableMap.filter { it.value.color == "silver"}
+println("The filters map is $mutableMap") //do nothing
+//The filters map is {
+// 1=Car(color=green, model=Toyota, year=2015),
+// 2=Car(color=red, model=Ford, year=2016),
+// 3=Car(color=silver, model=Honda, year=2013)
+// }
+```
+
+```
+val immutableMap = mapOf<Int, Car>(
+	1 to Car("green", "Toyota", 2015),
+	2 to Car("red", "Ford", 2016),
+	3 to Car("silver", "Honda", 2013),
+	17 to Car("red", "BMW", 2015),
+	8 to Car("green", "Ford", 2010))
+
+println(immutableMap.filter { it.value.year == 2016 }) //{2=Car(color=red, model=Ford, year=2016)}
+println(immutableMap.toSortedMap()) //Sorted by key
+//{
+// 1=Car(color=green, model=Toyota, year=2015),
+// 2=Car(color=red, model=Ford, year=2016),
+// 3=Car(color=silver, model=Honda, year=2013),
+// 8=Car(color=green, model=Ford, year=2010),
+// 17=Car(color=red, model=BMW, year=2015)
+// }
+
+println(immutableMap.all { it.value.year > 2014 }) //false
+println(immutableMap.any { it.value.year > 2014 }) //true
+println(immutableMap.count { it.value.year > 2014 }) //3
+
+val cars = immutableMap.values
+println(cars.find { it.year > 2014 }) //Car(color=green, model=Toyota, year=2015)
+println(cars.groupBy { it.color })
+//{
+// green=[
+// Car(color=green, model=Toyota, year=2015),
+// Car(color=green, model=Ford, year=2010)
+// ],
+// red=[
+// Car(color=red, model=Ford, year=2016),
+// Car(color=red, model=BMW, year=2015)
+// ],
+// silver=[Car(color=silver, model=Honda, year=2013)
+// ]
+// }
+println(cars.sortedBy { it.year })
+//[
+// Car(color=green, model=Ford, year=2010),
+// Car(color=silver, model=Honda, year=2013),
+// Car(color=green, model=Toyota, year=2015),
+// Car(color=red, model=BMW, year=2015),
+// Car(color=red, model=Ford, year=2016)
+// ]
+
+println(immutableMap.filter { it.value.model == "Ford"}.map { it.value.color }) //[red, green]
+println(immutableMap.map { it.value.year }) //[2015, 2016, 2013, 2015, 2010]
+```
+
+## Sequences
 
 
 

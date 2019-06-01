@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mars.kotlin.section07.collections
+package no.agitec.fagaften.mars.kotlin.section07.lists
 
 
 fun main(args: Array<String>) {
