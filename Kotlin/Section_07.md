@@ -611,7 +611,9 @@ Solution:
 ```
 
 ```
-fun main(args: Array<String>) {
+NOTE: vararg args: String <=> args: Array<String> 
+
+fun main(vararg args: String) {
 
     val mixedList: List<Any> = listOf(
             "string",
@@ -633,17 +635,63 @@ fun main(args: Array<String>) {
 
 Note:
 - reified is only use to verifiy a type of T in a function and it is only works for inline functions
-
-| Code | Error | 
-| ---- | ---- |
-|  class samethings<reified T> | Kotlin: Only type parameters of inline functions can be reified |
-| val c = T() | Kotlin: Type parameter T cannot be called as function |
-
+- class samethings<reified T>, ERROR: Kotlin: Only type parameters of inline functions can be reified
+- val c = T(), ERROR: Kotlin: Type parameter T cannot be called as function 
 
 ## Generics: Covariance
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/covariance/Covariance.kt)
 
 
- 
+- Works with immutable list, it is not need 'out' in parameter for mutable collections
+
+```
+fun convertToInt(collection: List<Number>) {
+    for (num in collection) {
+        println("${num.toInt()}")
+    }
+    //1
+    //2
+    //3
+    //4
+    //5
+}
+
+fun main(vararg args: String) {
+   val shortList: List<Short> = listOf(1, 2, 3, 4, 5)
+    convertToInt(shortList)
+}
+```
+NOTE:
+- Covariance : list of short as a list of number like subtype
+- can only be used as return type <=> out
+- Type and subtype and supertype = class and subclass and superclass
+
+
+- It does not work with mutable list, it is need 'out' in parameter for immutable collections works
+
+```
+fun convertToInt(collection: MutableList<Number>) {
+    for (num in collection) {
+        println("${num.toInt()}")
+    }
+}
+
+fun main(vararg args: String) {
+   val shortListM: MutableList<Short> = mutableListOf(1, 2, 3, 4, 5)
+   convertToIntM(shortList)
+   /*
+    Error:Kotlin: Type mismatch: inferred type is MutableList<Short> but MutableList<Number> was expected
+   */
+}
+
+NOTE:
+- Invariante <=> Not Covariance : list of short is not  list of number.
+- Subtype is not perserve
+- Type and subtype and supertype != class and subclass and superclass
+
+## Generics: contravariance
+
+
  
 
 
