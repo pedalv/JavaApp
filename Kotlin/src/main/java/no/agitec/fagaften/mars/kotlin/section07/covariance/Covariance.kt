@@ -129,7 +129,7 @@ class GardenC<out T: Flower> {
  * Error:Kotlin: Type parameter T is declared as 'out' but occurs in 'invariant' position in type T
  * val : set is not generate and it is not possible pass rose, or other type flowers
  */
-class Garden3<out T: Flower>(var something: T)
+//class Garden3<out T: Flower>(var something: T)
 
 /**
  * No body outside the class can change something property
