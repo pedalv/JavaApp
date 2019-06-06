@@ -1,4 +1,4 @@
-package academy.learnprogramming.collectionsstuff
+package no.agitec.fagaften.mars.kotlin.section07.collectionsfunctions
 
 
 fun main(args: Array<String>) {

@@ -193,7 +193,7 @@ findByLastName1(employees, "Wilson")
 ```	
 
 ## Collections
-Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/collections)
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/collections/Collections.kt)
 
 - [Kotlin Collections Overview](https://kotlinlang.org/docs/reference/collections-overview.html)
 
@@ -210,6 +210,8 @@ public interface MutableCollection<E> : Collection<E>, MutableIterable<E> { ... 
 ```	
 
 ## LIST is immutable in Kotlin (class java.util.Arrays$ArrayList), ie, an immutable object (unchangeable object) is an object whose state cannot be modified after it is created.
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/lists/lists.kt)
+
     
 ```
 val emptyList = emptyList<String>()
@@ -237,7 +239,7 @@ val ints = intArrayOf(1, 2, 3)
 println(ints.toList()) //[1, 2, 3]
 ```
 
-## Kotlin Collections Functions
+#### Kotlin Collections Functions
 
 ```
 val strings = listOf("spring", "summer", "fall", "summer", "winter")
@@ -264,7 +266,7 @@ println(noDupColors) //[black, white, red]
 ```
 
 ## Maps and Destructuring Declarations
-Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/maps)
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/maps/maps.Maps.kt)
 
 ```
 val immutableMap = mapOf<Int, Car>(
@@ -330,6 +332,7 @@ class Car(val color: String, val model: String, val year: Int) {
 ```
 
 ## Sets
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/sets/Sets.kt)
 
 ```
 val setInts = setOf(10, 15, 19, 5, 3, -22) //immutable
@@ -347,6 +350,8 @@ println(mutableInts) //[1, 2, 3, 4, 5]
 ```
 
 ## Collections Functions
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/collectionsfunctions/collectionsfunctions.kt)
+
 
 ```
 val setInts = setOf(10, 15, 19, 5, 3, -22) //immutable
@@ -424,6 +429,7 @@ println(immutableMap.map { it.value.year }) //[2015, 2016, 2013, 2015, 2010]
 ```
 
 ## Sequences
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/sequences/Sequences.kt)
 
 - Sequences is like Streams in Java
 - Filter return a collections of objects
@@ -463,6 +469,7 @@ println(  immutableMap.asSequence()
 - filter -> map -> terminate => order matter if it is not a sequence
 
 ## Generics
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/generics)
 
 ```
 fun main(args: Array<String>) {
@@ -515,6 +522,76 @@ fun printCollectionS(collection: List<String>) {
 ```
 
 ## Generics: Functions and Erasure
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/functionsanderasure)
+
+- Generics are compiled time feature
+
+```
+List<String> strings = new ArrayList<>();
+strings.add("hello");
+//strings.add(new BigDecimal(10.5));
+/*
+java: incompatible types: java.math.BigDecimal cannot be converted to java.lang.String
+*/
+
+//boolean b_error = strings instanceof List<String>;
+/*
+java: illegal generic type for instanceof
+*/
+```
+
+```
+val strings = listOf("1", "2", "3") //non nullable
+if (strings is List<String>) {
+	println("This list contains strings")
+}
+//This list contains strings
+
+var listAny: Any = listOf("str1", "str2")
+//if (listAny is List<String>) { }
+/*
+Kotlin: Cannot check for instance of erased type: List<String>
+*/
+//if (listAny is List) { }
+/*
+ Kotlin: One type argument expected. Use 'List<*>' if you don't want to pass type arguments
+*/
+if (listAny is List<*>) {
+	println("Yes, this is a list. Thank you star projection!")
+}
+//Yes, this is a list. Thank you star projection!
+if (listAny is List<*>) {
+	println("This list contains strings")
+	//This list contains strings
+	val strList = listAny as List<String>
+	println(strList[1].replace("str", "string"))
+	//string2
+} 
+```
+
+```
+listAny = listOf(1, 2, 3)
+if (listAny is List<*>) {
+	println("This list contains strings")
+	//This list contains strings	
+	val strList = listAny as List<String>
+	//Warning:(43, 31) Kotlin: Unchecked cast: Any to List<String>
+	println(strList[1].replace("str", "string"))
+	/*
+	Exception in thread "main" java.lang.ClassCastException:
+		class java.lang.Integer cannot be cast to class java.lang.String
+		(java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')
+			at no.agitec.fagaften.mars.kotlin.section07.upperbound.UpperBoundKt.main(UpperBound.kt:45)
+	 */
+}
+```
+
+## Generics: Reified Parameters
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/reifiedparameters)
+
+
+
+
 
 
  
