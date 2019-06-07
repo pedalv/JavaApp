@@ -3,7 +3,7 @@
 ## Lambda Expressions Basics
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/lambdas)
 
--(Standard.kt)[https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/src/kotlin/util/Standard.kt]
+- (Standard.kt)[https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/src/kotlin/util/Standard.kt]
 - The brand function
 
 ```
@@ -103,9 +103,9 @@ public inline fun <T, R> with(receiver: T, block: T.() -> R): R {
 }
 ```
 
-```
 - Expression body: when the function return only a value
 
+```
 fun countTo100() =
 	with(StringBuilder()) {
 		for (i in 1..99) {
@@ -117,9 +117,9 @@ fun countTo100() =
 	}
 ```
 
-```
 - Apply
 
+```
 fun countTo100() =
     StringBuilder().apply() {
         for (i in 1..99) {
@@ -128,21 +128,22 @@ fun countTo100() =
         }
         append(100)
     }.toString()
-```	
+```
 
-```	
+```
 "Some String".apply somestring@ {
 	"Another String".apply {
 		println(toLowerCase())
 		println(this@somestring.toUpperCase())
 	}
 }
-//another string
+// another string
 //SOME STRING
-```	
+```
 
-```	
 - No local return : return from lambda and function at same time
+
+```
 fun findByLastName(employees: List<Employee>, lastName: String) {
     employees.forEach returnBlock@ {
         if (it.lastName == lastName) {
@@ -157,10 +158,11 @@ fun findByLastName(employees: List<Employee>, lastName: String) {
 findByLastName(employees, "Wilson")
 //Yes, there's an employee with the last name Wilson
 //Nope, there's no employee with the last name Wilson
-```	
+```
 
-```	
 - Local return : Return from lambda or function
+
+```
 fun findByLastName2(employees: List<Employee>, lastName: String) {
     employees.forEach {
         if (it.lastName == lastName) {
@@ -174,9 +176,9 @@ fun findByLastName2(employees: List<Employee>, lastName: String) {
 
 findByLastName2(employees, "Wilson")
 //Yes, there's an employee with the last name Wilson
-```	
+```
 
-```	
+```
 fun findByLastName1(employees: List<Employee>, lastName: String) {
     for(employee in employees) {
         if (employee.lastName == lastName) {
@@ -190,24 +192,22 @@ fun findByLastName1(employees: List<Employee>, lastName: String) {
 
 findByLastName1(employees, "Wilson")
 //Yes, there's an employee with the last name Wilson
-```	
+```
 
 ## Collections
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/collections/Collections.kt)
 
 - [Kotlin Collections Overview](https://kotlinlang.org/docs/reference/collections-overview.html)
 
+
 - Collection: Read - Allows to sequentially access the elements, ie, an immutable object (unchangeable object) is an object whose state cannot be modified after it is created.
 
-```	
-public interface Collection<out E> : Iterable<E> { ... }
-```	
+public interface Collection<out E> : Iterable<E> {  }
 
 - MutableCollection: Read/Write - Provides the ability to add, modify and remove elements while iterating (mutable).
 
-```	
-public interface MutableCollection<E> : Collection<E>, MutableIterable<E> { ... }
-```	
+public interface MutableCollection<E> : Collection<E>, MutableIterable<E> {  }
+
 
 ## LIST is immutable in Kotlin (class java.util.Arrays$ArrayList), ie, an immutable object (unchangeable object) is an object whose state cannot be modified after it is created.
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/lists/lists.kt)
@@ -240,6 +240,7 @@ println(ints.toList()) //[1, 2, 3]
 ```
 
 #### Kotlin Collections Functions
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/lists/lists.kt)
 
 ```
 val strings = listOf("spring", "summer", "fall", "summer", "winter")
@@ -266,7 +267,7 @@ println(noDupColors) //[black, white, red]
 ```
 
 ## Maps and Destructuring Declarations
-Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/maps/maps.Maps.kt)
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/maps/Maps.kt)
 
 ```
 val immutableMap = mapOf<Int, Car>(
@@ -462,7 +463,7 @@ println(  immutableMap.asSequence()
 ```
 
 - Streams was introduced in Java 8, however Android do not support Java 8 yet
-- Kotlin introduced Sequences and as result of it, kotlin is very used in Android (, server side, database, ...)
+- Kotlin introduced Sequences and as result of it, kotlin is very used in Android, server side, database, ... .
 - asSequences is only use for large collections
 -- Intermedia sequence return other sequence
 -- Terminal operation not return a sequence
