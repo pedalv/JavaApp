@@ -641,7 +641,6 @@ Note:
 ## Generics: Covariance
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/covariance/Covariance.kt)
 
-
 - Works with immutable list, it is not need 'out' in parameter for mutable collections
 
 ```
@@ -683,18 +682,81 @@ fun main(vararg args: String) {
     Error:Kotlin: Type mismatch: inferred type is MutableList<Short> but MutableList<Number> was expected
    */
 }
+```
 
 NOTE:
 - Invariante <=> Not Covariance : list of short is not  list of number.
 - Subtype is not perserve
 - Type and subtype and supertype != class and subclass and superclass
 
-## Generics: contravariance
+## Generics: Contravariance
 
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/contravariance/Contravariance.kt)
 
+Covariante
+- Down in heritance
+- Preserve subtyping
+- Start at superclass and we want accept instance of that class or any of subclasses 
+- T match T and all subclasses 
+- use 'out' position
+- return types 
+  
+Contravariance
+- Up in heritance
+- Not preserve subtyping
+- It is opposite of covariante
+- we go in opposite direction
+- Start at subclass and we want accept instance of that class or any of super classes
+- T match T and any of superclasses
+- rose turn a super type of flower 
+- use 'in' position
+- parameters 
+
+```
+val flowerTender = object: FlowerCare<Flower> {
+	override fun prune(flower: Flower) = println("I'm tending a ${flower.name}!")
+}
  
+/*
+'in' will fix: Error: Kotlin: Type mismatch: inferred type is <no name provided> but FlowerCare<Rose> was expected
+*/
 
+val roseGardenFlower = Garden<Rose>(listOf(Rose(), Rose()), flowerTender)
+roseGardenFlower.tendFlower(0)
 
+/*
+'in' will fix: Error: Kotlin: Type mismatch: inferred type is <no name provided> but FlowerCare<Daffodil> was expected
+*/
+val daffodilGarden = Garden<Daffodil>(listOf(Daffodil(), Daffodil(), Daffodil()),flowerTender)
+daffodilGarden.tendFlower(2)
+
+/*
+in will fix: Error: Kotlin: Type mismatch: inferred type is <no name provided> but FlowerCare<Rose> was expected
+ */
+val roseGarden2 = Garden<Rose>(listOf(Rose()), flowerTender2)
+roseGarden2.pickFlower(0)
+
+class Garden<T: Flower>(val flowers: List<T>, val flowerCare: FlowerCare<T>) {
+    fun pickFlower(i: Int) = flowers[i]
+
+    //fun pickFlower(i: Int) = flowerCare.pick(i)
+    fun tendFlower(i: Int) {
+        flowerCare.prune(flowers[i])
+    }
+}
+
+open class Flower(val name: String)
+
+class Rose: Flower("Rose")
+
+class Daffodil: Flower("Daffodil")
+```
+
+##Generics: Use-Site Variance
+
+- It is when we use:
+- 'in' as parameter to turn a interface contravariance
+- 'out' as return type to turn a function covariance
 
 
 
