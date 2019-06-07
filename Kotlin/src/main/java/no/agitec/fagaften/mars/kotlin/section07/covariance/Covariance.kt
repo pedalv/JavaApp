@@ -1,4 +1,4 @@
-package academy.learnprogramming.covariance
+package no.agitec.fagaften.mars.kotlin.section07.covariance
 
 
 fun main(vararg args: String) {
