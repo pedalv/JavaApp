@@ -1,4 +1,4 @@
-package academy.learnprogramming.binaryio
+package no.agitec.fagaften.mars.kotlin.section08.binaryio
 
 import java.io.DataInputStream
 import java.io.EOFException
