@@ -526,6 +526,7 @@ fun printCollectionS(collection: List<String>) {
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/functionsanderasure)
 
 - Generics are compiled time feature
+- Generics are invariant <=> Not Covariance
 
 ```
 List<String> strings = new ArrayList<>();
@@ -691,7 +692,6 @@ NOTE:
 - Type and subtype and supertype != class and subclass and superclass
 
 ## Generics: Contravariance
-
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/contravariance/Contravariance.kt)
 
 Covariante
@@ -754,27 +754,39 @@ class Daffodil: Flower("Daffodil")
 ```
 
 ## Generics: Use-Site Variance
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/usesitevariance/UseSiteVariance.kt)
 
 - It is when we use:
-- 'in' as parameter to turn a interface contravariance
-- 'out' as return type to turn a function covariance
+- 'in' as parameter to turn a interface contravariance, for java List<? extends Car> <=> Covariance
+- 'out' as return type to turn a function covariance, for java List<? super Car> <=> contravariance
+- read <=> Covariance : out => It is not possible write
+- write <=> Contravariance : in => It is not possible read
+- Covariance and Contravariance is use in methods declarations
+
+```
+//                    read <=> Covariance : out, write <=> Contravariance : in
+fun <T: Car> copyCars(source: MutableList<out T>, destination: MutableList</*in*/ T>) {
+    for (car in source) {
+        destination.add(car)
+    }
+}
+
+open class Car 
+class Toyota: Car() 
+class Ford: Car() 
 
 
+fun main(vararg args: String) {
 
+    val cars1 = mutableListOf(Car(), Car())
+    val cars2: MutableList<Car> = mutableListOf()
+    copyCars(cars1, cars2)
 
+    val fords1 = mutableListOf(Ford(), Ford())
+    val fords2: MutableList<Ford> = mutableListOf()
+    copyCars(fords2, fords2)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    copyCars(fords2, cars2)
+    val cars3 = mutableListOf(Ford(), Ford())
+}
+```
