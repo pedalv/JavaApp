@@ -1,4 +1,4 @@
-package academy.learnprogramming.challenge7
+package no.agitec.fagaften.mars.kotlin.section07.challenge7
 
 import java.awt.print.Paper
 

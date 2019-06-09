@@ -1,4 +1,4 @@
-package academy.learnprogramming.section6challenge
+package no.agitec.fagaften.mars.kotlin.section06.section6challenge
 
 
 fun main(args: Array<String>) {

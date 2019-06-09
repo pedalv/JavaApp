@@ -1,6 +1,5 @@
-package academy.learnprogramming.inheritance
+package no.agitec.fagaften.mars.kotlin.section05.`object`.companion
 
-import no.agitec.fagaften.mars.kotlin.section05.`object`.companion.SomeClassKotlinFix
 import no.agitec.fagaften.mars.kotlin.section05.`object`.companion.javacode.SomeOtherClass
 
 
