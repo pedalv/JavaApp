@@ -3,7 +3,7 @@
 ## Lambda Expressions Basics
 Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/lambdas)
 
-- (Standard.kt)[https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/src/kotlin/util/Standard.kt]
+- [Standard.kt](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/src/kotlin/util/Standard.kt)
 - The brand function
 
 ```
@@ -210,7 +210,7 @@ public interface MutableCollection<E> : Collection<E>, MutableIterable<E> {  }
 
 
 ## LIST is immutable in Kotlin (class java.util.Arrays$ArrayList), ie, an immutable object (unchangeable object) is an object whose state cannot be modified after it is created.
-Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/lists/lists.kt)
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/lists/Lists.kt)
 
     
 ```
@@ -351,8 +351,7 @@ println(mutableInts) //[1, 2, 3, 4, 5]
 ```
 
 ## Collections Functions
-Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/collectionsfunctions/collectionsfunctions.kt)
-
+Kode: [here](https://github.com/pedalv/JavaApp/blob/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section07/collectionsfunctions/CollectionsFunctions.kt)
 
 ```
 val setInts = setOf(10, 15, 19, 5, 3, -22) //immutable
