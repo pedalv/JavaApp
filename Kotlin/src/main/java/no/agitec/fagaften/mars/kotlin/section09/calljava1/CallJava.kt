@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mars.kotlin.section09.`1`
+package no.agitec.fagaften.mars.kotlin.section09.calljava1
 
 import no.agitec.fagaften.mars.kotlin.section09.calljava1.javacode.Car
 import kotlin.jvm.javaClass as javaClass1
