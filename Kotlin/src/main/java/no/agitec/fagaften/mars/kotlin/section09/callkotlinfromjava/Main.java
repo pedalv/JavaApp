@@ -45,6 +45,8 @@ public class Main {
 	        at no.agitec.fagaften.mars.kotlin.section09.callkotlinfromjava.kotlincode.Employee.takesDefault(KotlinCode.kt)
 	        at no.agitec.fagaften.mars.kotlin.section09.callkotlinfromjava.Main.main(Main.java:34)
          */
+        employee.takesDefault2(null);
+        //null and default
 
         //4 K
         employee.takesDefault("arg1");
