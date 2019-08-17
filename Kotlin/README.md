@@ -42,8 +42,12 @@
 - [The beauty and elegance of testing in Kotlin](https://2018.javazone.no/program/5b95ae2c-41de-489b-bf44-1260d8b0f12b)
 - [Kotlin på Android = <3](https://2018.javazone.no/program/82eff0c6-6d24-4531-90f6-3a7577f013d5)
 
-# Kotlin in [Pluralsight](https://www.pluralsight.com/search?q=kotlin)
+# Kotlin in [JZ2019](https://2019.javazone.no/program)
+- [Beat the high-score: build a game using libGDX and Kotlin](https://2019.javazone.no/program/06f7fa10-3a81-4f92-a312-c0bffb3cc12c)
+- [Hvorfor vi valgte Kotlin!](https://2019.javazone.no/program/39dc2310-54a9-4207-a500-98ec016badd4)
+- [Kotlinify existing Java classes](https://2019.javazone.no/program/30c74534-6393-4b23-8afb-b29a52f43013)
 
+# Kotlin in [Pluralsight](https://www.pluralsight.com/search?q=kotlin)
 - [Kotlin Fundamentals](https://www.pluralsight.com/courses/kotlin-fundamentals)
 - [Getting Started with Kotlin](https://www.pluralsight.com/courses/kotlin-getting-started)
 - [Switch to Kotlin from Java for Android Development](https://www.pluralsight.com/courses/android-development-kotlin-from-java)
@@ -58,6 +62,12 @@
 - [Reactive Programming with RxAndroid and Kotlin](https://www.pluralsight.com/courses/rxandroid-kotlin-reactive-programming)
 - [Android Apps with Kotlin: ViewModel and Lifecycle](https://www.pluralsight.com/courses/android-apps-kotlin-viewmodel-lifecycle)
 - [Android Apps with Kotlin: Resources, Styles, and Themes](https://www.pluralsight.com/courses/android-kotlin-apps-resources-styles-themes)
+- ...
+
+# Kotlin in [Udemy](https://www.udemy.com/courses/search/?src=ukw&q=kotlin)
+- [Android App Development using Kotlin](https://www.udemy.com/course/android-app-development-using-kotlin/)
+- [The Complete Android Kotlin Developer Course](https://www.udemy.com/the-complete-kotlin-developer-course/)
+- [Kotlin for Beginners: Learn Programming With Kotlin](https://www.udemy.com/kotlin-course/)
 
 # [Kotlin for Java Developers](https://www.udemy.com/kotlin-for-java-developers/learn/v4/content) in [Udemy](https://www.udemy.com/)
 Lectures: 91 and Video: 16.5 hours
