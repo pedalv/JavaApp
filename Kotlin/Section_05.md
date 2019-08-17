@@ -362,6 +362,7 @@ Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/
 - The same class in the Kotlin, the private static instance and the managerInstance property, will be moved to companion object.
 
 - It is not possible access privateVar outside the class.
+
 | Kotlin | Java |
 | -------| ------- |
 | get and set is not available | implements get and set |
