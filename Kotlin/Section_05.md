@@ -444,7 +444,7 @@ enum class Department(val fullName: String, val numEmployees: Int) {
 
 #### Imports
 
-Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/imports) and [here]()
+Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section05/imports)
 
 - Intellij Idea: Code -> Optimize Imports <=> Ctrl + Alt + o (imports optimized=
 - Import module will be need add module for recognize top level functions, enum, class, Extended functions, osv.
