@@ -10,7 +10,7 @@ Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/
 ## Calling Kotlin Functions from Java
 Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section09/kotlincode1)
 
-## Annottaions when calling Kotlin from Java
+## Annotations when calling Kotlin from Java
 Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section09/kotlincode2)
 
 ## Kotlin chanllenges (Round Six)
