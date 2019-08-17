@@ -498,7 +498,7 @@ fun main(args: Array<String>) {
 ```
 
 | Kotlin | description | automatic generate |
-| -------| ------- |
+| ------- | ------- | ------- |
 | val | The variable is immutable as final in Java, can be assigned only one time | get |
 | var | The variable can change many times its value | only get |
 
