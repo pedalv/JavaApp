@@ -35,6 +35,9 @@
 - Sharing code between JVM and Javascript platforms feature was newly added to this release.
 - Kotlin v1.3 was released on October 29, 2018, bringing coroutines for asynchronous programming.
 
+- Kotlin 1.3.40 released 
+- [KOTLIN BLOG](https://blog.jetbrains.com/kotlin/category/releases/)
+
 
 # Kotlin in [JZ2018](https://vimeo.com/javazone)
 - [Asynchronous Programming with Kotlin](https://2018.javazone.no/program/05be4d7b-ccce-4b9f-8a86-a51d033fb5a3)
