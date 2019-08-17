@@ -69,7 +69,7 @@
 - [The Complete Android Kotlin Developer Course](https://www.udemy.com/the-complete-kotlin-developer-course/)
 - [Kotlin for Beginners: Learn Programming With Kotlin](https://www.udemy.com/kotlin-course/)
 
-# [Kotlin for Java Developers](https://www.udemy.com/kotlin-for-java-developers/learn/v4/content) in [Udemy](https://www.udemy.com/)
+# Workshop about [Kotlin for Java Developers](https://github.com/pedalv/JavaApp/blob/master/Kotlin/Section_intro.md)
 Lectures: 91 and Video: 16.5 hours
 
 - Section 1: Introduction to the course
