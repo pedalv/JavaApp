@@ -199,9 +199,11 @@ Couldn't put Humpty together again.
 kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/no/agitec/fagaften/mars/kotlin/section03/learnprograming/helloworld)
 
 - @JvmStatic annotation can also be applied on 
-1. a property of an object or 
-2. a companion object making its getter and setter methods be static members in that object or the class containing the companion object.
+1. a property of an object,  
+2. a companion object making its getter and setter methods be static members in that object or the class containing the companion object
+
 2.1 [Companion object in Kotlin](https://medium.com/@agrawalsuneet/companion-object-in-kotlin-5251e03d6423)
+
 2.2 [Calling Kotlin from Java](https://kotlinlang.org/docs/reference/java-to-kotlin-interop.html#static-methods)
 
 ```
