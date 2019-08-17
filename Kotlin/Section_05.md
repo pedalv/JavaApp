@@ -366,7 +366,6 @@ Kode: [here](https://github.com/pedalv/JavaApp/tree/master/Kotlin/src/main/java/
 | Kotlin | Java |
 | -------| ------- |
 | get and set is not available | implements get and set |
-|
 
 NB:
 - for have the same behaviour as in Kotlin like in JAVA it is need change CLASS to OBJECT to have only one instance
