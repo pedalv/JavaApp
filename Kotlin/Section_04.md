@@ -132,6 +132,8 @@ DummyClass().printNumbers(convertedIntArray.toIntArray())
 
 | Symbol | Name | Exemple |
 | ----- | ----- | ----- |
+| ? |  | val str: String? = "This is not null" |
+|  |  | val strnull: String = null // Error:(139, 27) Kotlin: Null can not be a value of a non-null type String |
 | ?. | Save operator as == (equal) | str?.toUpperCase() |
 |  |  | str?.let { printText(it) } |
 | ?: | Elvis operator | val str2 = str ?: "This is the default value" |
