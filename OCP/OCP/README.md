@@ -166,6 +166,7 @@ Questions along with explanations.
 
 - and one has to answer 65% of the questions to clear it. 
 
+
 ## If you have an older version of Java Programmer certification 
 
 > (such as SCJP/OCPJP 6), you can take the upgrade exam (1Z0-805) to get your OCPJP 7.
@@ -182,22 +183,29 @@ Questions along with explanations.
 
 - Chapter 4 covers the Streams API in detail
 
-## Comprehensive Online Learning Environment
-- [Select the exam category to study](http://sybextestbanks.wiley.com/)
-- [Welcome to Sybex.com](https://www.wiley.com/WileyCDA/Section/id-420431.html)
-- [WILEY END USER LICENSE AGREEMENT](https://www.wiley.com/WileyCDA/Section/id-819533.html)
+## Upgrade Certifications
+- [Java Certification](https://education.oracle.com/java-certification-benefits#javaUpgrades)
+- [Java SE Certifications](https://education.oracle.com/java/java-se/product_267?certPage=true)
+- [Upgrade OCP Java 6, 7 & 8 to Java SE 11 Developer](https://education.oracle.com/upgrade-ocp-java-6-7-8-to-java-se-11-developer/pexam_1Z0-817)
+- [Oracle Certified Professional, Java SE 8 Programmer](https://education.oracle.com/oracle-certified-professional-java-se-8-programmer/trackp_357)
 
-## Exam
-- [Oracle Certification Testing](http://pearsonvue.com/oracle/)
-- [Oracle Certification Program - Sign in](https://wsr.pearsonvue.com/testtaker/signin/SignInPage/ORACLE)
-- [Java, Oracle Solaris, MySQL and Other Former Sun Certification Exams Now Being Delivered At Pearson VUE](https://blogs.oracle.com/certification/java%2c-oracle-solaris%2c-mysql-and-other-former-sun-certification-exams-now-being-delivered-at-pearson-vue)
-- [Opprett konto](https://login.oracle.com/oaam_server/login.do)
-- [Java SE 8 Programmer II](http://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=5001&get_params=p_exam_id:1Z0-809)
-
-## From mock exam
-- [OCA/OCP Java SE 7 Programmer I & II Study Guide (Exams 1Z0-803 & 1Z0-804) (Certification Press) 1st Edition ]()
+## Material
+- [Java OCP 8 Programmer II Study Guide](https://www.selikoff.net/java-ocp-8-programmer-ii-study-guide/)
+- [The Java® Language Specification Java SE 8 Edition](https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf)
 - [The Java™ Tutorials ](https://docs.oracle.com/javase/tutorial/java/)
 - [Java Language and Virtual Machine Specifications](https://docs.oracle.com/javase/specs/)
-- [The Java® Language Specification Java SE 8 Edition](https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf)
+- [All Titles in Java SE (4)](https://www.wiley.com/WileyCDA/Section/id-814298.html?sort=DATE&sortDirection=DESC)
+
+> [How to Register Your Book for Online Access](https://www.wiley.com/WileyCDA/Section/id-827755.html)
+
+- [OCA/OCP Java SE 7 Programmer I & II Study Guide (Exams 1Z0-803 & 1Z0-804) (Certification Press) 1st Edition ]()
 - [Ocjp Faq ](https://www.coderanch.com/wiki/659883/Ocjp-Faq)
-- [Java OCP 8 Programmer II Study Guide](https://www.selikoff.net/java-ocp-8-programmer-ii-study-guide/)
+
+## Exam registration
+- [Java SE 8 Programmer I | 1Z0-808](https://education.oracle.com/java-se-8-programmer-i/pexam_1Z0-808)
+- [Java SE 8 Programmer II, Exam Number: 1Z0-809](https://education.oracle.com/java-se-8-programmer-ii/pexam_1Z0-809)
+- [Upgrade OCP Java 6, 7 & 8 to Java SE 11 Developer | 1Z0-817](https://education.oracle.com/upgrade/pexam_1Z0-817)
+- [Register for this exam](https://home.pearsonvue.com/oracle)
+
+## Pearson VUE
+- [Java, Oracle Solaris, MySQL and Other Former Sun Certification Exams Now Being Delivered At Pearson VUE](https://blogs.oracle.com/certification/java%2c-oracle-solaris%2c-mysql-and-other-former-sun-certification-exams-now-being-delivered-at-pearson-vue)
