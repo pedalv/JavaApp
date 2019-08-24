@@ -18,7 +18,7 @@
 6. and Oracle Certified Specialist (OCS)
 
 
-## Certification
+## Upgrade Certifications
 - [Java Certification](https://education.oracle.com/java-certification-benefits#javaUpgrades)
 - [Java SE Certifications](https://education.oracle.com/java/java-se/product_267?certPage=true)
 - [Upgrade OCP Java 6, 7 & 8 to Java SE 11 Developer](https://education.oracle.com/upgrade-ocp-java-6-7-8-to-java-se-11-developer/pexam_1Z0-817)
