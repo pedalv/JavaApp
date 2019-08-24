@@ -207,5 +207,7 @@ Questions along with explanations.
 - [Upgrade OCP Java 6, 7 & 8 to Java SE 11 Developer | 1Z0-817](https://education.oracle.com/upgrade/pexam_1Z0-817)
 - [Register for this exam](https://home.pearsonvue.com/oracle)
 
-## Pearson VUE
+## [Pearson VUE](https://home.pearsonvue.com/)
 - [Java, Oracle Solaris, MySQL and Other Former Sun Certification Exams Now Being Delivered At Pearson VUE](https://blogs.oracle.com/certification/java%2c-oracle-solaris%2c-mysql-and-other-former-sun-certification-exams-now-being-delivered-at-pearson-vue)
+- [Pearson | Vue](https://home.pearsonvue.com)
+- [Pearson | Vue - Oracle](https://home.pearsonvue.com/oracle)
