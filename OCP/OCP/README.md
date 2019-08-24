@@ -1,6 +1,8 @@
 # Oracle Certified Professional (OCP)
 - The Oracle Certified Professional (OCP) credential builds upon the fundamental skills demonstrated by the OCA. 
+
 - The Oracle Certified Professional has a command of a specific area of Oracle technology and demonstrates a high level of knowledge and skills. 
+
 - IT managers often use the OCP credential to evaluate the qualifications of employees and job candidates.
 
 > Solid understanding of Java, and some of its SE APIs, and is a prerequisite to a number of the other Java certificates
@@ -18,6 +20,7 @@
 > Book: OCP Oracle Certified Professional Java SE 8 Programmer II Study Guide (1Z1-809)
 
 > Innhold:
+
 1. Java Class Design
 
 2. Advanced Java Class Design
@@ -103,13 +106,18 @@ Questions along with explanations.
 
 - In June 2011, Oracle moved from Prometric to Pearson VUE as their test provider.
 
-- and consists of 60 questions.
+- and consists of 85 questions.
 
 - which the candidate has 150 minutes to answer.
 
-- At least 37 questions are needed to be correct to pass (around 61%).
+- At least 55 questions are needed to be correct to pass (Passing Score:	65%).
 
-- To take the test a candidate must buy a voucher from Oracle (approximately US$300 in the US, £150 (excluding VAT) in the UK, AUD 316 plus tax in Australia, Rs. 8000 plus taxes in India) and book the test at least a week in advance.
+- To take the test a candidate must buy a voucher from Oracle (approximately kr 2,146.00) and book the test at least a week in advance.
+
+- Exam Title:	Java SE 8 Programmer II
+
+- Exam Number:	1Z0-809
+
 
 ## The OCPJP 6 exam 
 
