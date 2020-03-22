@@ -2,11 +2,11 @@
 
 - [Java SE - java SE 8 Programmer II - Exam Number: 1Z0-809](https://education.oracle.com/java-se-8-programmer-ii/pexam_1Z0-809)
 
-> OCP project SE 8 is located on [https://github.com/pedalv/JavaApp/tree/master/OCP/OCP/SE8](https://github.com/pedalv/JavaApp/tree/master/OCP/Professional/SE8-1Z0-809)
+> OCP project SE 8 is located on [OCP/Professional/SE8-1Z0-809](https://github.com/pedalv/JavaApp/tree/master/OCP/Professional/SE8-1Z0-809)
 
 - [Java Platform, Standard Edition 11 - Java SE 11 Programmer II - Exam Number: 1Z0-816](https://education.oracle.com/java-se-11-programmer-ii/pexam_1Z0-816)
 
-> OCP project SE 11 is located on [https://github.com/pedalv/JavaApp/tree/master/OCP/OCP/SE11](https://github.com/pedalv/JavaApp/tree/master/OCP/Professional/SE11-1Z0-816)
+> OCP project SE 11 is located on [OCP/Professional/SE11-1Z0-816](https://github.com/pedalv/JavaApp/tree/master/OCP/Professional/SE11-1Z0-816)
 
 
 # Oracle Certified Professional (OCP)

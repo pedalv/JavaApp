@@ -76,8 +76,8 @@
 
 ## About Oracle Certified Associate (OCA)
 
-> OCA project is located on [https://github.com/pedalv/JavaApp/tree/master/OCP/OCA](https://github.com/pedalv/JavaApp/tree/master/OCP/Associate)
+> OCA project is located on [OCP/Associate](https://github.com/pedalv/JavaApp/tree/master/OCP/Associate)
 
 ## About Oracle Certified Professional (OCP)
 
-> OCP project is located on [https://github.com/pedalv/JavaApp/tree/master/OCP/OCP](https://github.com/pedalv/JavaApp/tree/master/OCP/Professional)
+> OCP project is located on [OCP/Professional](https://github.com/pedalv/JavaApp/tree/master/OCP/Professional)
