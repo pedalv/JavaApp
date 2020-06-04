@@ -8,4 +8,4 @@
 - [kafka-clients](https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
 
 ## Bevis for konsept (poc) prosjekt for [Getting Started with Apache Kafka](https://app.pluralsight.com/library/courses/apache-kafka-getting-started/table-of-contents)
-- [Kafka-POC](https://github.com/pedalv/JavaApp/tree/master/Kafka)
+- [Kafka](https://github.com/pedalv/JavaApp/tree/master/Kafka)
