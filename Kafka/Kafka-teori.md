@@ -1,6 +1,6 @@
 ## [Getting Started with Apache Kafka](https://app.pluralsight.com/library/courses/apache-kafka-getting-started/table-of-contents)
 
-- [kafka-clients](https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
+- [kafka-clients](https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients) | [kafka-streams-test-utils](https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams-test-utils)
 
 ```
 	<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
