@@ -1,4 +1,4 @@
-# [Oracle Certification Program](https://en.wikipedia.org/wiki/Oracle_Certification_Program)
+	# [Oracle Certification Program](https://en.wikipedia.org/wiki/Oracle_Certification_Program)
 - [List of Java Certification Exams - JavaShelf](https://sites.google.com/site/javashelf/java-certification-exams)
 
 - [What are you looking for?](https://education.oracle.com/)
@@ -66,13 +66,47 @@
 
 > [Java SE 5.0 Downloads](https://www.oracle.com/java/technologies/java-archive-javase5-downloads.html)
 
-## [OpenJDK](http://openjdk.java.net/projects/jdk/)
+## Looking for Oracle OpenJDK builds?
+
+#### Oracle Customers and ISVs targeting Oracle LTS releases: 
+
+> [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html) is Oracle's supported Java SE version 
+
+> for customers and 
+
+> for developing, testing, prototyping or 
+
+> demonstrating your Java applications.
+
+#### End users and developers looking for free JDK versions: 
+
+> Oracle [OpenJDK](https://openjdk.java.net/) offers 
+
+> Long-term support (LTS)
+
+> the same features and 
+
+> performance as [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html) under the GPL license.
+
+> [OpenJDK Project Releases](http://openjdk.java.net/projects/jdk/)
+
+> [How to download and install prebuilt OpenJDK packages](http://openjdk.java.net/install/index.html)
+
+> [jdk.java.net, Java Development Kit builds, from Oracle](https://jdk.java.net/)
+
+> [JDK 15 Early-Access Builds](http://jdk.java.net/15/)
+
+> [JDK 14 General-Availability Release](http://jdk.java.net/14/)
+
+> [JDK 13.0.2 Early-Access Builds](http://jdk.java.net/13/)
 
 ## [Java SE Downloads Java Platform, Standard Edition](https://www.oracle.com/java/technologies/javase-downloads.html)
 
 - [Java Early Access Downloads](http://www.oracle.com/technetwork/articles/java/ea-jsp-142245.html)
 
 - [Oracle Technology Network / Java / Java SE / Overview](https://www.oracle.com/technetwork/java/javase/overview/index.html)
+
+- [JDK 14 Documentation](https://docs.oracle.com/en/java/javase/14/index.html)
 
 ## About Oracle Certified Associate (OCA)
 
