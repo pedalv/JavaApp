@@ -32,7 +32,7 @@
 
 #### The Course
 - Understanding of Apache Kafka's architecture and 
-- how it has adopted proven distributed systems design principles that enable it to scale and perform reliably. 
+- How it has adopted proven distributed systems design principles that enable it to scale and perform reliably. 
 - Then, you will breakdown this architecture into individual components and learn about each in great detail. 
 - Finally, use the components in action with common scenarios and walkthough how Apache Kafka solutions can be developed in Java. 
 
@@ -47,6 +47,10 @@ growth issues common to many enterprises
 
 #### Arkitecture
 ![Kafka Architecture](https://github.com/pedalv/JavaApp/blob/master/Kafka/kafka-architecture-1.PNG)
+
+![Spring Boot + Kafka](https://github.com/pedalv/JavaApp/blob/master/Kafka/boot-kafka_1.png)
+
+![Spring Boot + Kafka](https://github.com/pedalv/JavaApp/blob/master/Kafka/kafka_concepts.PNG)
 
 
 - Distributed Systems: 
@@ -84,6 +88,8 @@ growth issues common to many enterprises
 > Consensus-based communication
 
 - Role of Apache Zookeeper
+
+> [ZooKeeper: Because coordinating distributed systems is a Zoo](https://cwiki.apache.org/confluence/display/ZOOKEEPER/Index)
 
 > Centralized service for maintaining
 metadata about a cluster of distributed nodes
@@ -165,7 +171,7 @@ An architectural style or approach to maintaining an application’s state by ca
 > Physical storage resources can constrain message retention
 
 
-#### DEMO
+#### [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)
 - Kafka Partitions
 
 > Each topic has one or more partitions
