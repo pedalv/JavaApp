@@ -3,12 +3,9 @@
 - [Getting Started with Apache Kafka](https://app.pluralsight.com/library/courses/apache-kafka-getting-started/table-of-contents)
 - [Apache Kafka: Build, Deploy, and Monitor Your First Real-world Application](https://app.pluralsight.com/library/courses/kafka-build-deploy-monitor-real-world-application/table-of-contents)
 - [Spring Boot + Apache Kafka Hello World Example](https://www.javainuse.com/spring/spring-boot-apache-kafka-hello-world)
-- [javaBin Online : Apache Kafka and ksqlDB in Action with Robin Moffatt](https://www.meetup.com/javaBin/events/270058786/)
-
-> [confluentinc / demo-scene](https://github.com/confluentinc/demo-scene)
-
+- [javaBin Online : Apache Kafka and ksqlDB in Action with Robin Moffatt](https://www.meetup.com/javaBin/events/270058786/) , [confluentinc / demo-scene](https://github.com/confluentinc/demo-scene)
 - [Documentation](http://kafka.apache.org/documentation.html)
-- [kafka-clients](https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients) - [Kafka Clients - Producers | Consumers](https://jaceklaskowski.gitbooks.io/apache-kafka/kafka-clients.html) - [Kafka Clients](https://docs.confluent.io/current/clients/index.html) - [clients 2.5.0 API](https://javadoc.io/doc/org.apache.kafka/kafka-clients/latest/index.html)
+- [kafka-clients](https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients) , [Kafka Clients - Producers | Consumers](https://jaceklaskowski.gitbooks.io/apache-kafka/kafka-clients.html) , [Kafka Clients](https://docs.confluent.io/current/clients/index.html) , [clients 2.5.0 API](https://javadoc.io/doc/org.apache.kafka/kafka-clients/latest/index.html)
 - [kafka-streams-test-utils](https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams-test-utils) - [Testing Kafka Streams](https://kafka.apache.org/22/documentation/streams/developer-guide/testing.html)
 - [Spring for Apache Kafka](https://spring.io/projects/spring-kafka)
 - [ZooKeeper: Because coordinating distributed systems is a Zoo](https://cwiki.apache.org/confluence/display/ZOOKEEPER/Index)
