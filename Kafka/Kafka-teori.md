@@ -45,6 +45,24 @@ growth issues common to many enterprises
 - Open-sourced under Apache Software Foundation in 2012
 - First-choice adoption for data movement for hundreds of enterprise and internet-scale companies
 
+![Stream Processing with Apache kafka and DB](https://github.com/pedalv/JavaApp/blob/master/Kafka/StreamProcessingWithKafkaAndDB.png)
+
+Kafka 
+
+> The truth is the log.
+
+> The database is a cache of a subset of the log.
+
+> is an Event Streaming Platform
+
+> Event Streaming Platform <=> The Log
+
+> Immutable Event Log
+
+> Topics are similar in concept to tables in a database
+
+> Messages are guaranteed to be strictly ordered within a partition
+
 #### Arkitecture
 ![Kafka Architecture](https://github.com/pedalv/JavaApp/blob/master/Kafka/kafka-architecture-1.PNG)
 
