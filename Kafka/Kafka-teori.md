@@ -45,7 +45,7 @@ growth issues common to many enterprises
 - Open-sourced under Apache Software Foundation in 2012
 - First-choice adoption for data movement for hundreds of enterprise and internet-scale companies
 
-![Stream Processing with Apache kafka and DB](https://github.com/pedalv/JavaApp/blob/master/Kafka/StreamProcessingWithKafkaAndDB.png)
+![Stream Processing with Apache kafka and DB](https://github.com/pedalv/JavaApp/blob/master/Kafka/StreamProcessingWithKafkaAndDB.PNG)
 
 Kafka 
 
