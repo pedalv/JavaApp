@@ -31,4 +31,5 @@ Dependencies: Lombok, Spring Web, Thymeleaf, Spring Boot DevTools
 - [Spring Getting Started](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html)
 - [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 - [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
+- [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture/)
 - Prosjekt: [eksempel-app](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app)
