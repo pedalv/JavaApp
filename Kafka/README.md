@@ -12,24 +12,34 @@
 - [Enterprise Plans](https://www.cloudkarafka.com/plans.html)
 
 ## Bevis for konsept (poc) prosjekt for [Getting Started with Apache Kafka](https://app.pluralsight.com/library/courses/apache-kafka-getting-started/table-of-contents)
-- [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
-- [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)
 - Opprett prosjekt: [spring initializr](https://start.spring.io/)
 
 ```
-Project: Maven
+Project: Maven Project
 Language: Java
 Spring Boot: 2.3.0
-Prosjekt Matadata:
+Project Matadata:
 - Group: no.agitec.fagaften
 Artifact og Name: eksempel-app
 Java: 14
-Dependencies: Lombok, Spring Web, Thymeleaf, Spring Boot DevTools
+Packaging: Jar
+Dependencies: 
+Lombok, 
+Spring Web, 
+Thymeleaf, 
+Spring Boot DevTools,
+Spring for Apache Kafka
+Spring for Apache kafka Streams
 ```
-- [Spring Boot 2.3.0](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.3-Release-Notes)
-- [Spring Boot 2.3.0 available now](https://spring.io/blog/2020/05/15/spring-boot-2-3-0-available-now)
-- [Spring Getting Started](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html)
-- [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-- [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
-- [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture/)
+
 - Prosjekt: [eksempel-app](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app)
+
+> [Spring Boot 2.3.0](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.3-Release-Notes)
+> [Spring Boot 2.3.0 available now](https://spring.io/blog/2020/05/15/spring-boot-2-3-0-available-now)
+> [Spring Getting Started](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html)
+> [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+> [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
+> [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture/)
+
+- [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
+- [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)
