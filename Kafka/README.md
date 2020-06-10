@@ -30,4 +30,5 @@ Dependencies: Lombok, Spring Web, Thymeleaf, Spring Boot DevTools
 - [Spring Boot 2.3.0 available now](https://spring.io/blog/2020/05/15/spring-boot-2-3-0-available-now)
 - [Spring Getting Started](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html)
 - [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+- [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
 - Prosjekt: [eksempel-app](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app)

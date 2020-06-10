@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Page Title</title>
+    <title>Greeting</title>
 </head>
 <body>
 
-<h1>Welcome to home page!</h1>
+<h1>Welcome to greeting page!</h1>
+
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+
 <h1>This is a Heading</h1>
 <p>This is a paragraph.</p>
 

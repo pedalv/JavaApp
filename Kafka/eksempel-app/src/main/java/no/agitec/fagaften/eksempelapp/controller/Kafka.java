@@ -16,15 +16,4 @@ public class Kafka {
         return "greeting";
     }
 
-    /*
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello";
-    }
-
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
-*/
 }
