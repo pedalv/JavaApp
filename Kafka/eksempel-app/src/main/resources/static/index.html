@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Welcome to "/" index page!</h1>
+
+<p>Get your greeting <a href="/greeting">here</a></p>
+<p>Click <a th:href="@{/hello}">here</a> to see a "/hello" greeting.</p>
+<p>Click <a href="/hello">here</a> to see a "/hello" greeting.</p>
+<p>Get your "/hello" greeting <a href="/hello">here</a></p>
+<p>Go to "/home" <a href="/home">here</a></p>
+</body>
+</html>

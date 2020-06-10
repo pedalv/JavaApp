@@ -15,4 +15,19 @@
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)
 - Opprett prosjekt: [spring initializr](https://start.spring.io/)
-- TODO: [KAFKA APP PROSJEKT]()
+
+```
+Project: Maven
+Language: Java
+Spring Boot: 2.3.0
+Prosjekt Matadata:
+- Group: no.agitec.fagaften
+Artifact og Name: eksempel-app
+Java: 14
+Dependencies: Lombok, Spring Web, Thymeleaf, Spring Boot DevTools
+```
+- [Spring Boot 2.3.0](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.3-Release-Notes)
+- [Spring Boot 2.3.0 available now](https://spring.io/blog/2020/05/15/spring-boot-2-3-0-available-now)
+- [Spring Getting Started](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html)
+- [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+- Prosjekt: [eksempel-app](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app)
