@@ -50,5 +50,9 @@ Spring for Apache kafka Streams
 
 > [Accessing Data in Pivotal GemFire](https://spring.io/guides/gs/accessing-data-gemfire/)
 
+> [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+
+> [Building an Application with Spring Boot](https://spring.io/guides/gs/spring-boot/)
+
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)

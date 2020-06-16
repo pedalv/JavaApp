@@ -3,6 +3,8 @@ package no.agitec.fagaften.eksempelapp;
 import no.agitec.fagaften.eksempelapp.domain.Person;
 import no.agitec.fagaften.eksempelapp.repository.PersonRepository;
 import org.apache.geode.cache.client.ClientRegionShortcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.gemfire.config.annotation.ClientCacheApplication;
@@ -16,7 +18,9 @@ import static java.util.Arrays.asList;
 @EnableGemfireRepositories
 public class AccessingDataJpaInPivotalGemFireApplication {
 
-    @Bean
+    private static final Logger log = LoggerFactory.getLogger(AccessingDataJpaInPivotalGemFireApplication.class);
+
+    @Bean(name = "person")
     ApplicationRunner run(PersonRepository personRepository) {
 
         return args -> {
@@ -25,31 +29,43 @@ public class AccessingDataJpaInPivotalGemFireApplication {
             Person bob = new Person("Baby Bob", 1);
             Person carol = new Person("Teen Carol", 13);
 
-            System.out.println("Before accessing data in Pivotal GemFire...");
-
+            log.info("== Before accessing data in Pivotal GemFire...");
+            log.info("-------------------------------");
             asList(alice, bob, carol).forEach(person -> System.out.println("\t" + person));
 
-            System.out.println("Saving Alice, Bob and Carol to Pivotal GemFire...");
+            log.info("");
 
+            log.info("== Saving Alice, Bob and Carol to Pivotal GemFire...");
             personRepository.save(alice);
             personRepository.save(bob);
             personRepository.save(carol);
-
-            System.out.println("Lookup each person by name...");
-
+            log.info("== Lookup each person by name...");
+            log.info("-------------------------------");
             asList(alice.getName(), bob.getName(), carol.getName())
                     .forEach(name -> System.out.println("\t" + personRepository.findByName(name)));
 
-            System.out.println("Query adults (over 18):");
+            log.info("");
+
+            log.info("== Query adults (over 18):");
+            log.info("-------------------------------");
             personRepository.findByAgeGreaterThan(18).forEach(person -> System.out.println("\t" + person));
 
-            System.out.println("Query babies (less than 5):");
+            log.info("");
+
+            log.info("== Query babies (less than 5):");
+            log.info("-------------------------------");
             personRepository.findByAgeLessThan(5).forEach(person -> System.out.println("\t" + person));
 
-            System.out.println("Query teens (between 12 and 20):");
+            log.info("");
+
+            log.info("== Query teens (between 12 and 20):");
+            log.info("-------------------------------");
             personRepository.findByAgeGreaterThanAndAgeLessThan(12, 20).forEach(person -> System.out.println("\t" + person));
 
-            System.out.println("Query all persons:");
+            log.info("");
+
+            log.info("== Query all persons:");
+            log.info("-------------------------------");
             personRepository.findAll().forEach(person -> System.out.println("\t" + person.toString()));
 
         };
