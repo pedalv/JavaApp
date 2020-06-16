@@ -1,4 +1,4 @@
-package no.agitec.fagaften.eksempelapp.controller;
+package no.agitec.fagaften.eksempelapp.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class KafkaController {
 
     @GetMapping("/greeting")
-    public String greeting( @RequestParam(name="name", required = false, defaultValue = "World") String name,
+    public String greeting( @RequestParam(name="name", required = false, defaultValue = "Kafka") String name,
                             Model model) {
 
         model.addAttribute("name", name);

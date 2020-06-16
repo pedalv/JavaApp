@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Person</title>
+</head>
+<body>
+
+<h1>Welcome to person page!</h1>
+
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+
+<h1 th:text="'Hello, ' + ${name} + '!'" />
+
+<table>
+    <thead>
+    <tr>
+        <th> Name </th>
+        <th> Age </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${personer.empty}">
+        <td colspan="2"> Ingen Personer </td>
+    </tr>
+    <tr th:each="person : ${personer}">
+        <td><span th:text="${person.name}"> Name </span></td>
+        <td><span th:text="${person.age}"> Age </span></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

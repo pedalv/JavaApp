@@ -49,6 +49,9 @@ public class AccessingDataJpaInPivotalGemFireApplication {
             System.out.println("Query teens (between 12 and 20):");
             personRepository.findByAgeGreaterThanAndAgeLessThan(12, 20).forEach(person -> System.out.println("\t" + person));
 
+            System.out.println("Query all persons:");
+            personRepository.findAll().forEach(person -> System.out.println("\t" + person.toString()));
+
         };
     }
 
