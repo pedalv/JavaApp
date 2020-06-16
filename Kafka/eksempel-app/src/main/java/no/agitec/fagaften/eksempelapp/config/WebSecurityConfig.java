@@ -1,4 +1,4 @@
-package no.agitec.fagaften.eksempelapp.securingweb;
+package no.agitec.fagaften.eksempelapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

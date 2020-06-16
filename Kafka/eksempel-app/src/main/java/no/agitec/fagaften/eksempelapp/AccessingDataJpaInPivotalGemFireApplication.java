@@ -4,8 +4,6 @@ import no.agitec.fagaften.eksempelapp.domain.Person;
 import no.agitec.fagaften.eksempelapp.repository.PersonRepository;
 import org.apache.geode.cache.client.ClientRegionShortcut;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.gemfire.config.annotation.ClientCacheApplication;
 import org.springframework.data.gemfire.config.annotation.EnableEntityDefinedRegions;
@@ -13,19 +11,10 @@ import org.springframework.data.gemfire.repository.config.EnableGemfireRepositor
 
 import static java.util.Arrays.asList;
 
-@SpringBootApplication
 @ClientCacheApplication(name = "AccessingDataGemFireApplication", logLevel = "error")
 @EnableEntityDefinedRegions(basePackageClasses = Person.class, clientRegionShortcut = ClientRegionShortcut.LOCAL)
 @EnableGemfireRepositories
 public class AccessingDataJpaInPivotalGemFireApplication {
-
-    public static void main(String... args) {
-        //SpringApplication.run(EksempelAppApplication.class, args);
-
-        SpringApplication application = new SpringApplication(EksempelAppApplication.class);
-        application.run(args);
-
-    }
 
     @Bean
     ApplicationRunner run(PersonRepository personRepository) {
@@ -62,6 +51,5 @@ public class AccessingDataJpaInPivotalGemFireApplication {
 
         };
     }
-
 
 }
