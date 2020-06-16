@@ -27,6 +27,8 @@ Dependencies:
 Lombok, 
 Spring Web, 
 Thymeleaf, 
+Spring Data JPA,
+H2 Database
 Spring Boot DevTools,
 Spring for Apache Kafka
 Spring for Apache kafka Streams
@@ -45,6 +47,8 @@ Spring for Apache kafka Streams
 > [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
 
 > [Spring Security Architecture](https://spring.io/guides/topicals/spring-security-architecture/)
+
+> [Accessing Data in Pivotal GemFire](https://spring.io/guides/gs/accessing-data-gemfire/)
 
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)

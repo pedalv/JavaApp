@@ -16,6 +16,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //System.out.println("**** configure");
+
         http
                 .authorizeRequests()
                     .antMatchers("/", "/home").permitAll()
@@ -32,6 +34,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
+        //System.out.println("**** userDetailsService");
+
         UserDetails user =
                 User.withDefaultPasswordEncoder()
                         .username("user")
