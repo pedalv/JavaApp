@@ -1,12 +1,11 @@
 package no.agitec.fagaften.eksempelapp.domain;
 
 import lombok.Getter;
-
-import java.io.Serializable;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.gemfire.mapping.annotation.Region;
+
+import java.io.Serializable;
 
 @Region(value = "People")
 public class Person implements Serializable {
