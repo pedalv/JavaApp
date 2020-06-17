@@ -29,6 +29,7 @@ Spring Web,
 Thymeleaf, 
 Spring Data JPA,
 H2 Database
+Rest Repositories
 Spring Boot DevTools,
 Spring for Apache Kafka
 Spring for Apache kafka Streams
@@ -53,6 +54,8 @@ Spring for Apache kafka Streams
 > [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
 
 > [Building an Application with Spring Boot](https://spring.io/guides/gs/spring-boot/)
+
+> [Accessing JPA Data with REST](https://spring.io/guides/gs/accessing-data-rest/)
 
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)

@@ -1,12 +1,16 @@
 package no.agitec.fagaften.eksempelapp;
 
 import no.agitec.fagaften.eksempelapp.domain.Customer;
+import no.agitec.fagaften.eksempelapp.domain.Partner;
 import no.agitec.fagaften.eksempelapp.repository.CustomerRepository;
+import no.agitec.fagaften.eksempelapp.repository.PartnerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Optional;
 
 @Configuration
 public class AccessingDataJpaApplication {
@@ -14,7 +18,7 @@ public class AccessingDataJpaApplication {
     private static final Logger log = LoggerFactory.getLogger(AccessingDataJpaApplication.class);
 
     @Bean(name = "customer")
-    public CommandLineRunner demo(CustomerRepository repository) {
+    public CommandLineRunner customer(CustomerRepository repository) {
         return (args) -> {
             // save a few customers
             repository.save(new Customer("Jack", "Bauer"));
@@ -46,6 +50,44 @@ public class AccessingDataJpaApplication {
             });
             // for (Customer bauer : repository.findByLastName("Bauer")) {
             //  log.info(bauer.toString());
+            // }
+            log.info("");
+        };
+    }
+
+    @Bean(name = "partner")
+    public CommandLineRunner partner(PartnerRepository repository) {
+        return (args) -> {
+            // save a few partners
+            repository.save(new Partner("Agitec"));
+            repository.save(new Partner("Decisive"));
+            repository.save(new Partner("Experis"));
+
+            // fetch all partners
+            log.info("== Partners found with findAll():");
+            log.info("-------------------------------");
+            for (Partner partner : repository.findAll()) {
+                log.info(partner.toString());
+            }
+            log.info("");
+
+            // fetch an individual partner by ID
+            Optional<Partner> partner = repository.findById(1L);
+            log.info("== Customer found with findById(1L):");
+            log.info("--------------------------------");
+            if(partner.isPresent()) {
+                log.info(partner.get().toString());
+            }
+            log.info("");
+
+            // fetch partners by last name
+            log.info("== Partner found with findByName('Agitec'):");
+            log.info("--------------------------------------------");
+            repository.findByName("Agitec").forEach(agitec -> {
+                log.info(agitec.toString());
+            });
+            // for (Partner agitec : repository.findByName("agitec")) {
+            //  log.info(agitec.toString());
             // }
             log.info("");
         };
