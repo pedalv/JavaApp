@@ -23,10 +23,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:if="${personer.empty}">
+    <tr th:if="${persons.empty}">
         <td colspan="2"> Ingen Personer </td>
     </tr>
-    <tr th:each="person : ${personer}">
+    <tr th:each="person : ${persons}">
         <td><span th:text="${person.name}"> Name </span></td>
         <td><span th:text="${person.age}"> Age </span></td>
     </tr>

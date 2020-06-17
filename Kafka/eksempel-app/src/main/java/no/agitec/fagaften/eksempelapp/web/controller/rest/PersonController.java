@@ -25,8 +25,8 @@ public class PersonController {
     }
 
     @ModelAttribute
-    public void leggTilSkjermbildenavnPaaModel(Model model) {
-        model.addAttribute("personer", personService.hentPersoner());
+    public void addPersonModel(Model model) {
+        model.addAttribute("persons", personService.hentPersoner());
         model.addAttribute("name", "Pedro");
     }
 
