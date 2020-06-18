@@ -15,24 +15,31 @@
 - Opprett prosjekt: [spring initializr](https://start.spring.io/)
 
 ```
-Project: Maven Project
-Language: Java
-Spring Boot: 2.3.0
-Project Matadata:
-- Group: no.agitec.fagaften
-Artifact og Name: eksempel-app
-Java: 14
-Packaging: Jar
-Dependencies: 
+https://start.spring.io/#!type=maven-project
+&language=java
+&platformVersion=2.3.1.RELEASE
+&groupId=no.agitec.fagaften
+&artifactId=eksempel-app
+&name=eksempel-app
+&description=Demo%20project%20for%20Spring%20Boot
+&packageName=no.agitec.fagaften.eksempel-app
+&packaging=jar
+&jvmVersion=14
+&dependencies=
 Lombok, 
 Spring Web, 
 Thymeleaf, 
 Spring Data JPA,
-H2 Database
-Rest Repositories
+H2 Database,
+Rest Repositories,
 Spring Boot DevTools,
-Spring for Apache Kafka
+Spring HATEOAS,
+Spring for Apache Kafka,
 Spring for Apache kafka Streams
+-
+Spring Data Neo4j
+MySQL Driver
+Spring Data MongoDB
 ```
 
 - Prosjekt: [eksempel-app](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app)
@@ -60,6 +67,8 @@ Spring for Apache kafka Streams
 > [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/s)
 
 > [MySQL Community Downloads](https://dev.mysql.com/downloads/)
+
+> [Building a Hypermedia-Driven RESTful Web Service](https://spring.io/guides/gs/rest-hateoas/)
 
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)

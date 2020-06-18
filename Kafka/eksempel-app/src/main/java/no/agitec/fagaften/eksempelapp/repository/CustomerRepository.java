@@ -14,7 +14,7 @@ public interface CustomerRepository  extends JpaRepository<Customer, Long> {
 }
 
 /*
-CrudRepository mainly provides CRUD functions.
+CrudRepository mainly provides CRUD functions: Create, Read, Update, Delete
 
 PagingAndSortingRepository provides methods to do pagination and sorting records.
 
