@@ -1,10 +1,9 @@
 package no.agitec.fagaften.eksempelapp;
 
+import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.eksempelapp.domain.Person;
 import no.agitec.fagaften.eksempelapp.repository.PersonRepository;
 import org.apache.geode.cache.client.ClientRegionShortcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.gemfire.config.annotation.ClientCacheApplication;
@@ -16,9 +15,8 @@ import static java.util.Arrays.asList;
 @ClientCacheApplication(name = "AccessingDataGemFireApplication", logLevel = "error")
 @EnableEntityDefinedRegions(basePackageClasses = Person.class, clientRegionShortcut = ClientRegionShortcut.LOCAL)
 @EnableGemfireRepositories
+@Slf4j
 public class AccessingDataJpaInPivotalGemFireApplication {
-
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Bean(name = "person")
     ApplicationRunner run(PersonRepository personRepository) {

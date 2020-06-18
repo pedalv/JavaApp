@@ -1,11 +1,10 @@
 package no.agitec.fagaften.eksempelapp;
 
+import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.eksempelapp.domain.Customer;
 import no.agitec.fagaften.eksempelapp.domain.Partner;
 import no.agitec.fagaften.eksempelapp.repository.CustomerRepository;
 import no.agitec.fagaften.eksempelapp.repository.PartnerRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Optional;
 
 @Configuration
+@Slf4j
 public class AccessingDataJpaApplication {
-
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Bean(name = "customer")
     public CommandLineRunner customer(CustomerRepository repository) {
