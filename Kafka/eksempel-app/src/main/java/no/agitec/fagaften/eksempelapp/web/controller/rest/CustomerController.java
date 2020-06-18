@@ -33,3 +33,31 @@ public class CustomerController {
     }
 
 }
+
+/*
+ @RequestMapping(method = RequestMethod.GET, value = "/" , path = "/", name = "", produces = "", consumes = "", headers = "" , params = )
+
+public @interface RequestMapping {
+    java.lang.String name() default "";
+
+    - value === path
+    @org.springframework.core.annotation.AliasFor("path")
+    java.lang.String[] value() default {};
+
+    @org.springframework.core.annotation.AliasFor("value")
+    java.lang.String[] path() default {};
+
+
+    org.springframework.web.bind.annotation.RequestMethod[] method() default {};
+
+    java.lang.String[] params() default {};
+
+    java.lang.String[] headers() default {};
+
+    - accept application/json ( @Consumes ) and
+    java.lang.String[] consumes() default {};
+
+    - return text/plain ( @Produces )
+    java.lang.String[] produces() default {};
+}
+ */

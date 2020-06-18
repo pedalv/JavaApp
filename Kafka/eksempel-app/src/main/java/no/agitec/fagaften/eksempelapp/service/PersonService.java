@@ -20,10 +20,15 @@ public class PersonService {
     }
 
     @Transactional
-    public List<Person> hentPersoner(){
+    public List<Person> hentPersons(){
         List<Person> result = new ArrayList<>();
         personRepository.findAll().forEach(result::add);
         return result;
+    }
+
+    @Transactional
+    public Person createPerson(Person p){
+        return personRepository.save(p);
     }
 
 }

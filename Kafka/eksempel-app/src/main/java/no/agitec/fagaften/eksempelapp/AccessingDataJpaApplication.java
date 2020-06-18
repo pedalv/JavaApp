@@ -15,7 +15,7 @@ import java.util.Optional;
 @Configuration
 public class AccessingDataJpaApplication {
 
-    private static final Logger log = LoggerFactory.getLogger(AccessingDataJpaApplication.class);
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Bean(name = "customer")
     public CommandLineRunner customer(CustomerRepository repository) {
@@ -23,7 +23,7 @@ public class AccessingDataJpaApplication {
             // save a few customers
             repository.save(new Customer("NAV", "Bauer"));
             repository.save(new Customer("Apotek 1", "O'Brian"));
-            repository.save(new Customer("Direktoratet for e-helse", "Bauer"));
+            repository.save(new Customer("Direktoratet for e-helse ", "Bauer"));
             repository.save(new Customer("David", "Palmer"));
             repository.save(new Customer("Michelle", "Dessler"));
 
@@ -45,9 +45,7 @@ public class AccessingDataJpaApplication {
             // fetch customers by last name
             log.info("== Customer found with findByLastName('Bauer'):");
             log.info("--------------------------------------------");
-            repository.findByLastName("Bauer").forEach(bauer -> {
-                log.info(bauer.toString());
-            });
+            repository.findByLastName("Bauer").forEach(bauer -> log.info(bauer.toString()));
             // for (Customer bauer : repository.findByLastName("Bauer")) {
             //  log.info(bauer.toString());
             // }
@@ -75,17 +73,13 @@ public class AccessingDataJpaApplication {
             Optional<Partner> partner = repository.findById(1L);
             log.info("== Customer found with findById(1L):");
             log.info("--------------------------------");
-            if(partner.isPresent()) {
-                log.info(partner.get().toString());
-            }
+            partner.ifPresent(value -> log.info(value.toString()));
             log.info("");
 
             // fetch partners by last name
             log.info("== Partner found with findByName('Agitec'):");
             log.info("--------------------------------------------");
-            repository.findByName("Agitec").forEach(agitec -> {
-                log.info(agitec.toString());
-            });
+            repository.findByName("Agitec").forEach(agitec -> log.info(agitec.toString()));
             // for (Partner agitec : repository.findByName("agitec")) {
             //  log.info(agitec.toString());
             // }

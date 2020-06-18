@@ -5,6 +5,9 @@ import no.agitec.fagaften.eksempelapp.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,19 +29,31 @@ public class PersonController {
 
     @ModelAttribute
     public void addPersonModel(Model model) {
-        model.addAttribute("persons", personService.hentPersoner());
+        model.addAttribute("persons", personService.hentPersons());
         model.addAttribute("name", "Pedro");
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping()
     public String mainPerson() {
         return "person";
     }
 
-    @RequestMapping(value = "/hent", method = RequestMethod.GET)
+    @GetMapping(path = "/hentPerson")
     @ResponseBody
-    public List<Person> hentPersoner() {
-        return personService.hentPersoner();
+    public /*ResponseEntity<Person>*/ List<Person> hentPersoner() {
+        return personService.hentPersons();
+    }
+
+    @PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<Person> createPerson(@RequestBody Person p) {
+        p = personService.createPerson(p);
+        return new ResponseEntity<>(p, HttpStatus.CREATED);
     }
 
 }
+
+ /*
+    - accept application/json ( @Consumes ) and
+    - return text/plain ( @Produces )
+ */

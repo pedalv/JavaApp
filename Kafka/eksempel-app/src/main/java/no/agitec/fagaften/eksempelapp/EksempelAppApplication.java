@@ -13,7 +13,7 @@ import java.util.Arrays;
 @SpringBootApplication
 public class EksempelAppApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(EksempelAppApplication.class);
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public static void main(String... args) {
 		//SpringApplication.run(EksempelAppApplication.class, args);
@@ -37,6 +37,5 @@ public class EksempelAppApplication {
 
 		};
 	}
-
 
 }

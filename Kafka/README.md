@@ -57,5 +57,9 @@ Spring for Apache kafka Streams
 
 > [Accessing JPA Data with REST](https://spring.io/guides/gs/accessing-data-rest/)
 
+> [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/s)
+
+> [MySQL Community Downloads](https://dev.mysql.com/downloads/)
+
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)

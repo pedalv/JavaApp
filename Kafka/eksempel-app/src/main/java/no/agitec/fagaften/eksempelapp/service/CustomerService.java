@@ -1,9 +1,7 @@
 package no.agitec.fagaften.eksempelapp.service;
 
 import no.agitec.fagaften.eksempelapp.domain.Customer;
-import no.agitec.fagaften.eksempelapp.domain.Person;
 import no.agitec.fagaften.eksempelapp.repository.CustomerRepository;
-import no.agitec.fagaften.eksempelapp.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +22,24 @@ public class CustomerService {
     @Transactional
     public List<Customer> hentCustomer(){
         List<Customer> result = new ArrayList<>();
-        customerRepository.findAll().forEach(result::add);
+        result.addAll(customerRepository.findAll());
         return result;
     }
 
 }
+
+/*
+https://dzone.com/articles/how-does-spring-transactional
+
+- JPA and Transaction Management
+UserTransaction utx = entityManager.getTransaction();
+
+try {
+    utx.begin();
+    businessLogic();
+    utx.commit();
+} catch(Exception ex) {
+    utx.rollback();
+    throw ex;
+}
+ */

@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public UserDetailsService userDetailsService() {
         //System.out.println("**** userDetailsService");
+        //Spring Security, OAuth2 Clinet, OAuth2 Resource Server, Apring LDAP, Okta
 
         UserDetails user =
                 User.withDefaultPasswordEncoder()

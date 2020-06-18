@@ -18,7 +18,7 @@ import static java.util.Arrays.asList;
 @EnableGemfireRepositories
 public class AccessingDataJpaInPivotalGemFireApplication {
 
-    private static final Logger log = LoggerFactory.getLogger(AccessingDataJpaInPivotalGemFireApplication.class);
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Bean(name = "person")
     ApplicationRunner run(PersonRepository personRepository) {
