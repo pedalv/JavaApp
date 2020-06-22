@@ -130,4 +130,9 @@ public class EmployeeRestController {
         It's a convenience annotation that combines @Controller and @ResponseBody
         – which eliminates the need to annotate every request handling method of the controller class
             with the @ResponseBody annotation.
+
+
+    PUT overwrites the entire entity if it already exists, and creates a new resource if it doesn’t exist.
+
+    PATCH need only required data to update.
  */
