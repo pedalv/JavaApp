@@ -105,6 +105,8 @@ public class EmployeeRestController {
             @RequestHeader(value = "exempel-version") Long version,
             @RequestBody Employee replaceEmployee) {
 
+        //If Employee not exist will create
+
         Employee replaced = employeeService.replace(id, version, replaceEmployee);
         if(null == replaced) {
             return new EmployeeResponseEntityBuilder()
