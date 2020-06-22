@@ -2,6 +2,7 @@ package no.agitec.fagaften.eksempelapp.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.eksempelapp.service.PartnerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ public class PartnerController {
 
     private final PartnerService partnerService;
 
+    @Autowired
     public PartnerController(PartnerService partnerService) {
         this.partnerService = partnerService;
     }

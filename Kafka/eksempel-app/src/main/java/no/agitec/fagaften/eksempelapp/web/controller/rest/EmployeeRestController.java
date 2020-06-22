@@ -5,8 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.eksempelapp.common.EmployeeResponseEntityBuilder;
 import no.agitec.fagaften.eksempelapp.domain.Employee;
-import no.agitec.fagaften.eksempelapp.repository.EmployeeRepository;
 import no.agitec.fagaften.eksempelapp.exception.EmployeeNotFoundException;
+import no.agitec.fagaften.eksempelapp.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,51 +17,69 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-//TODO Service, PRoduct , objectreturn
-
 @RestController
 @RequestMapping("api/employee")
 @Slf4j
 public class EmployeeRestController {
 
-    private final EmployeeRepository repository;
+    private final EmployeeService employeeService;
     private final ObjectMapper objectMapper;
 
-
-    public EmployeeRestController(EmployeeRepository repository, ObjectMapper objectMapper) {
-        this.repository = repository;
+    @Autowired
+    public EmployeeRestController( EmployeeService employeeService, ObjectMapper objectMapper) {
+        this.employeeService = employeeService;
         this.objectMapper = objectMapper;
     }
 
-    // Aggregate root
+    // All items
 
     @GetMapping(path = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
-    public  ResponseEntity<List<Employee>> /*List<Employee>*/ all() {
-        List<Employee> employees = repository.findAll(); //TODO SERVICE
-        return new ResponseEntity<>(employees, HttpStatus.OK);
-        //return repository.findAll();
+    public  ResponseEntity<?>  all() {
+        List<Employee> employees = employeeService.all();
+        try {
+            return ResponseEntity.ok(objectMapper.writeValueAsString(employees));
+        } catch (JsonProcessingException e) {
+            return new EmployeeResponseEntityBuilder()
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("An error occurred while retrieving all employees about " + e.getMessage())
+                    .build();
+        }
     }
 
-    @PostMapping("/created")
-    public  ResponseEntity<?> /*Employee*/ create(@RequestBody Employee newEmployee) {
-        Employee saved = repository.save(newEmployee); //TODO SERVICE
+    // Add item
+
+    @PostMapping(path = "/created", produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<?> create(@RequestBody Employee newEmployee) {
+
+        //Check mandatory parameters
+
+        Employee saved = employeeService.create(newEmployee);
         if(null == saved) {
             return new EmployeeResponseEntityBuilder()
                     .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .message("Feil create employee")
+                    .message("Feil to create employee")
                     .build();
-            //return new ResponseEntity<>("Feil create employee", null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>(saved, HttpStatus.CREATED);
 
-        //return repository.save(newEmployee);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+        return new ResponseEntity<>(saved, responseHeaders, HttpStatus.CREATED);
     }
 
     // Single item
 
-    @GetMapping("/employees/{id}")
-    public  ResponseEntity<?>  /*Employee*/ fetchEmployee(@PathVariable Long id) throws EmployeeNotFoundException {
-        Optional<Employee> employee = repository.findById(id); //TODO SERVICE
+    @GetMapping(path = "/employees/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<?> fetch(@PathVariable Long id) {
+
+        if(id == null || id <= 0) {
+            return new EmployeeResponseEntityBuilder()
+                    .httpStatus(HttpStatus.BAD_REQUEST)
+                    .message("ID must have a value")
+                    .build();
+        }
+
+        Optional<Employee> employee = employeeService.fetch(id);
         if(employee.isPresent()) {
             try {
                 return ResponseEntity.ok(objectMapper.writeValueAsString(employee.get()));
@@ -75,42 +95,32 @@ public class EmployeeRestController {
                 .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
                 .message(new EmployeeNotFoundException(id).getMessage())
                 .build();
-
-        //return repository.findById(id)
-        //      .orElseThrow(() -> new EmployeeNotFoundException(id));
-
     }
 
+    // Update item
+
     @PutMapping("/employees/{id}")
-    public  ResponseEntity<?> /*Employee*/ replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
+    public  ResponseEntity<?> replaceEmployee(
+            @PathVariable Long id,
+            @RequestHeader(value = "exempel-version") Long version,
+            @RequestBody Employee replaceEmployee) {
 
-        Employee replaced = repository.findById(id) //TODO SERVICE
-                .map(employee -> {
-                    employee.setFirstName(newEmployee.getFirstName());
-                    employee.setLastName(newEmployee.getLastName());
-                    employee.setRole(newEmployee.getRole());
-                    return repository.save(employee);
-                })
-                .orElseGet(() -> {
-                    newEmployee.setId(id);
-                    return repository.save(newEmployee);
-                });
-
+        Employee replaced = employeeService.replace(id, version, replaceEmployee);
         if(null == replaced) {
             return new EmployeeResponseEntityBuilder()
                     .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .message("Feil replaced employee")
+                    .message("Feil replaced employee ID " + id)
                     .build();
-            //return new ResponseEntity<>("Feil replaced employee", null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>(replaced, HttpStatus.OK);
 
-        //return replaced;
+        return ResponseEntity.noContent().build();
     }
 
+    //Delete item
+
     @DeleteMapping("/employees/{id}")
-    void deleteEmployee(@PathVariable Long id) {
-        repository.deleteById(id);
+    public Boolean deleteEmployee(@PathVariable Long id) {
+        return employeeService.hasDelete(id);
     }
 }
 
