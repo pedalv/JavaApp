@@ -1,9 +1,8 @@
 package no.agitec.fagaften.eksempelapp.web.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.eksempelapp.domain.Person;
 import no.agitec.fagaften.eksempelapp.service.PersonService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,9 +15,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/person")
+@Slf4j
 public class PersonController {
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final PersonService personService;
 
@@ -29,6 +27,7 @@ public class PersonController {
 
     @ModelAttribute
     public void addPersonModel(Model model) {
+        log.info("== addPersonModel");
         model.addAttribute("persons", personService.hentPersons());
         model.addAttribute("name", "Pedro");
     }

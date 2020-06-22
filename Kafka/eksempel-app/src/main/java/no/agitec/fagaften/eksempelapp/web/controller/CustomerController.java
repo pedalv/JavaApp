@@ -1,8 +1,7 @@
 package no.agitec.fagaften.eksempelapp.web.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.eksempelapp.service.CustomerService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,9 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/customer")
+@Slf4j
 public class CustomerController {
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final CustomerService customerService;
 
@@ -23,6 +21,7 @@ public class CustomerController {
 
     @ModelAttribute
     public void addCustomerModel(Model model) {
+        log.info("== addCustomerModel");
         model.addAttribute("customers", customerService.hentCustomer());
         model.addAttribute("name", "NAV");
     }
