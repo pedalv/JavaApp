@@ -1,4 +1,4 @@
-package no.agitec.fagaften.eksempelapp.web.controller.rest;
+package no.agitec.fagaften.eksempelapp.web.controller;
 
 import no.agitec.fagaften.eksempelapp.domain.Person;
 import no.agitec.fagaften.eksempelapp.service.PersonService;
@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@RestController
 @Controller
-@RequestMapping("/api/person")
+@RequestMapping("/person")
 public class PersonController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

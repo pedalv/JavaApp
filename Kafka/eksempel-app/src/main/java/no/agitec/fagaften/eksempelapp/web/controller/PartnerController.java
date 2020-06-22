@@ -1,4 +1,4 @@
-package no.agitec.fagaften.eksempelapp.web.controller.rest;
+package no.agitec.fagaften.eksempelapp.web.controller;
 
 import no.agitec.fagaften.eksempelapp.service.PartnerService;
 import org.slf4j.Logger;
@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//@RestController
 @Controller
-@RequestMapping("/api/partner")
+@RequestMapping("/partner")
 public class PartnerController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

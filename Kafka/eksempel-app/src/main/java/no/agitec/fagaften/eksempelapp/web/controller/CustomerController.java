@@ -1,4 +1,4 @@
-package no.agitec.fagaften.eksempelapp.web.controller.rest;
+package no.agitec.fagaften.eksempelapp.web.controller;
 
 import no.agitec.fagaften.eksempelapp.service.CustomerService;
 import org.slf4j.Logger;
@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-//@RestController
 @Controller
-@RequestMapping("/api/customer")
+@RequestMapping("/customer")
 public class CustomerController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

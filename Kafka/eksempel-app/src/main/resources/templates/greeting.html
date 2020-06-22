@@ -5,18 +5,19 @@
 </head>
 <body>
 
-<h1>Welcome to greeting page!</h1>
+    <p>Temporary view page with will use REACT later</p>
+    <h1>Welcome to greeting page!</h1>
 
-<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+    <h1>This is a Heading</h1>
+    <p>This is a paragraph.</p>
 
-<p th:text="'Hello, ' + ${name} + '!'" />
+    <p th:text="'Hello, ' + ${name} + '!'" />
 
 </body>
 </html>

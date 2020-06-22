@@ -70,5 +70,7 @@ Spring Data MongoDB
 
 > [Building a Hypermedia-Driven RESTful Web Service](https://spring.io/guides/gs/rest-hateoas/)
 
+> [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)
