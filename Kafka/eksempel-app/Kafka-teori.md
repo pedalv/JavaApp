@@ -20,7 +20,7 @@
 		<scope>test</scope>
 	</dependency>
 ```
-- [Kafka Download](https://kafka.apache.org/downloads.html)
+- [Kafka Download](https://kafka.apache.org/downloads.html), tar -xvzf kafka_2.12-2.5.0.tgz
 - [Scala Download](https://www.scala-lang.org/download/)
 - [How to enable the Telnet Client in Windows 10](https://www.rootusers.com/how-to-enable-the-telnet-client-in-windows-10/)
 - [quickstart](https://kafka.apache.org/quickstart)
@@ -105,9 +105,11 @@ Kafka
 
 > Consensus-based communication
 
-- Role of Apache Zookeeper
+- Role of Apache Zookeeper - Apache ZooKeeper 3.6.1
 
 > [ZooKeeper: Because coordinating distributed systems is a Zoo](https://cwiki.apache.org/confluence/display/ZOOKEEPER/Index)
+
+> [Apache ZooKeeper? Releases](https://zookeeper.apache.org/releases.html)
 
 > Centralized service for maintaining
 metadata about a cluster of distributed nodes
@@ -189,7 +191,7 @@ An architectural style or approach to maintaining an application’s state by ca
 > Physical storage resources can constrain message retention
 
 
-#### [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)
+## [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)
 - Kafka Partitions
 
 > Each topic has one or more partitions

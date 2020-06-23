@@ -75,7 +75,6 @@ Spring Data MongoDB
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app/Kafka-demo.md)
 
-
 ## REST API build on top of HTTP
 - Suitable actions (GET, POST, PUT, DELETE, …​)
 - Caching
