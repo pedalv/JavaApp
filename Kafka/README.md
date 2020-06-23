@@ -72,5 +72,15 @@ Spring Data MongoDB
 
 > [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 
-- [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-teori.md)
-- [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)
+- [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app/Kafka-teori.md)
+- [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app/Kafka-demo.md)
+
+
+## REST API build on top of HTTP
+- Suitable actions (GET, POST, PUT, DELETE, …​)
+- Caching
+- Redirection and forwarding -> Support backward compatibility
+- Security (encryption and authentication) -> Securable services
+- Evolvable APIs
+- Scaleable services
+- A spectrum of stateless to stateful services -> RESTful
