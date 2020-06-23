@@ -3,7 +3,7 @@
 
 > Step 1: 
 - kafka_2.12-2.5.0: /d/Workspace/JavaApp/Kafka/kafka_2.12-2.5.0/bin
-- Kafka WIN Path: D:\kafka_2.12-2.5.0   -> \bin\windows
+- Kafka WIN Path (Important): D:\kafka_2.12-2.5.0   -> \bin\windows
 
 > Step 2: Start the server on PowerShell
 - Zookeeper Server: Port 2181
