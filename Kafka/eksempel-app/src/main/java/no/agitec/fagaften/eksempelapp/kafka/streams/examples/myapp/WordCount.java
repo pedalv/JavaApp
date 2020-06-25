@@ -1,5 +1,6 @@
 package no.agitec.fagaften.eksempelapp.kafka.streams.examples.myapp;
 
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
@@ -14,24 +15,46 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * (works)
+ */
 public class WordCount {
 
-    public static void main(String[] args)  {
+    public static final String INPUT_TOPIC = "streams-plaintext-input";
+    public static final String OUTPUT_TOPIC = "streams-wordcount-output";
 
-        Properties props = new Properties();
+    static Properties getStreamsConfig() {
+        final Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-linesplit");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
-        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        props.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
 
-        //https://kafka.apache.org/25/documentation/#streamsconfigs
-        final StreamsBuilder builder = new StreamsBuilder();
+        // setting offset reset to earliest so that we can re-run the demo code with the same pre-loaded data
+        // Note: To re-run the demo, you need to use the offset reset tool:
+        // https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Streams+Application+Reset+Tool
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        return props;
+    }
 
-        KStream<String, String> source = builder.stream("streams-plaintext-input");
+    static void createWordCountStream(final StreamsBuilder builder) {
+       /*
+
+        final KTable<String, Long> counts = source
+                .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split(" ")))
+                .groupBy((key, value) -> value)
+                .count();
+
+        // need to override value serde to Long type
+        counts.toStream().to(OUTPUT_TOPIC, Produced.with(Serdes.String(), Serdes.Long()));
+        */
+
+        final KStream<String, String> source = builder.stream(INPUT_TOPIC);
 
         /*
-        KStream<String, String> words =
-            source.flatMapValues(new ValueMapper<String, Iterable<String>>() {
+        KStream<String, String> words = source
+            .flatMapValues(new ValueMapper<String, Iterable<String>>() {
                 @Override
                 public Iterable<String> apply(String value) {
                     return Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+"));
@@ -41,8 +64,8 @@ public class WordCount {
         */
         // Refactoring 1:
         /*
-        KStream<String, String> words =
-            source.flatMapValues(value -> Arrays.asList(value.split("\\W+")));
+        KStream<String, String> words = source
+            .flatMapValues(value -> Arrays.asList(value.split("\\W+")));
         words.to("streams-linesplit-output");
         ===
          */
@@ -54,8 +77,8 @@ public class WordCount {
 
         // Refactoring 3:
         /*
-        KTable<String, Long> counts =
-                source.flatMapValues(new ValueMapper<String, Iterable<String>>() {
+        KTable<String, Long> counts = source
+                .flatMapValues(new ValueMapper<String, Iterable<String>>() {
                     @Override
                     public Iterable<String> apply(String value) {
                         return Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+"));
@@ -72,12 +95,21 @@ public class WordCount {
                 .count(Materialized.<String, Long, KeyValueStore<Bytes, byte[]>> as("counts-store"));
         counts.toStream().to("streams-wordcount-output", Produced.with(Serdes.String(), Serdes.Long()));
         */
-        source.flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+")))
+        //final KTable<String, Long> (se WorldCountDemo)
+        source
+                .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+")))
                 .groupBy((key, value) -> value)
                 .count(Materialized.as("counts-store"))
                 .toStream()
-                .to("streams-wordcount-output", Produced.with(Serdes.String(), Serdes.Long()));
+                .to(OUTPUT_TOPIC, Produced.with(Serdes.String(), Serdes.Long()));
+    }
 
+    public static void main(String[] args)  {
+        final Properties props = getStreamsConfig();
+
+        //https://kafka.apache.org/25/documentation/#streamsconfigs
+        final StreamsBuilder builder = new StreamsBuilder();
+        createWordCountStream(builder);
         final Topology topology = builder.build();
         System.out.println(topology.describe());
         /*
@@ -110,7 +142,6 @@ public class WordCount {
                             <-- KTABLE-TOSTREAM-0000000007
 
          */
-
         final KafkaStreams streams = new KafkaStreams(topology, props);
         final CountDownLatch latch = new CountDownLatch(1);
 
@@ -126,13 +157,11 @@ public class WordCount {
         try {
             streams.start();
             latch.await();
-        } catch (Throwable e) {
+        } catch (final Throwable e) {
             System.exit(1);
         }
         System.exit(0);
-
     }
-
 }
 
 /*

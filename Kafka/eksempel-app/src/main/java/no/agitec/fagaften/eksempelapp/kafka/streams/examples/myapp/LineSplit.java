@@ -1,5 +1,6 @@
 package no.agitec.fagaften.eksempelapp.kafka.streams.examples.myapp;
 
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
@@ -8,26 +9,35 @@ import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.KStream;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * how to construct a Streams client with its two key components: the StreamsConfig and Topology.
+ * how to construct a Streams client with its two key components: the StreamsConfig and Topology. (not work)
  */
 public class LineSplit {
 
-    public static void main(String[] args)  {
+    public static final String INPUT_TOPIC = "streams-plaintext-input";
+    public static final String OUTPUT_TOPIC = "streams-wordcount-output";
 
-        Properties props = new Properties();
+    static Properties getStreamsConfig() {
+        final Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-linesplit");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
-        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        props.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
 
-        //https://kafka.apache.org/25/documentation/#streamsconfigs
-        final StreamsBuilder builder = new StreamsBuilder();
+        // setting offset reset to earliest so that we can re-run the demo code with the same pre-loaded data
+        // Note: To re-run the demo, you need to use the offset reset tool:
+        // https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Streams+Application+Reset+Tool
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        return props;
+    }
 
-        KStream<String, String> source = builder.stream("streams-plaintext-input");
+    static void createWordCountStream(final StreamsBuilder builder) {
+        KStream<String, String> source = builder.stream(INPUT_TOPIC);
 
         /*
         KStream<String, String> words =
@@ -47,9 +57,18 @@ public class LineSplit {
         ===
          */
         // Refactoring 2:
-        source.flatMapValues(value -> Arrays.asList(value.split("\\W+")))
-                .to("streams-linesplit-output");
+        source
+                .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+")))
+                .to(OUTPUT_TOPIC);
 
+    }
+
+    public static void main(String[] args)  {
+
+        final Properties props = getStreamsConfig();
+        //https://kafka.apache.org/25/documentation/#streamsconfigs
+        final StreamsBuilder builder = new StreamsBuilder();
+        createWordCountStream(builder);
         final Topology topology = builder.build();
         System.out.println(topology.describe());
         /*
@@ -63,12 +82,11 @@ public class LineSplit {
             (the --> and <-- arrows dictates the downstream and upstream processor nodes of this node,
                 i.e. "children" and "parents" within the topology graph)
          */
-
         final KafkaStreams streams = new KafkaStreams(topology, props);
         final CountDownLatch latch = new CountDownLatch(1);
 
         // attach shutdown handler to catch control-c
-        Runtime.getRuntime().addShutdownHook(new Thread("streams-shutdown-hook") {
+        Runtime.getRuntime().addShutdownHook(new Thread("streams-linesplit-shutdown-hook") {
             @Override
             public void run() {
                 streams.close();
@@ -79,13 +97,11 @@ public class LineSplit {
         try {
             streams.start();
             latch.await();
-        } catch (Throwable e) {
+        } catch (final Throwable e) {
             System.exit(1);
         }
         System.exit(0);
-
     }
-
 }
 
 /*
