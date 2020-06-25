@@ -79,6 +79,8 @@ kafka_2.12-2.5.0> .\bin\windows\kafka-console-producer.bat --bootstrap-server lo
 
 - Consumer: to receive message
 kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic streams-wordcount-output --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer (works)
+kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic streams-wordcount-output --from-beginning (works)
+
 ```
 
 - Step 5: Process some data
@@ -92,3 +94,6 @@ kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server lo
 | pils          | b´┐¢k   1     |
 | øl            |               |
 | bøk           |               |
+
+## Documentation
+- [3.6 Kafka Streams Configs](https://kafka.apache.org/25/documentation/#streamsconfigs)
