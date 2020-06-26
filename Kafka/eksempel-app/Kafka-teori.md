@@ -160,7 +160,7 @@ Prerequisites:
 
 > Apache Kafka is publish-subscribe messaging rethought as a distributed commit log.
 
-- Event Sourcing
+- [Event Sourcing](https://www.youtube.com/watch?v=zyp9pZ7jeK8&list=PL-nSd-yeckKh7Ts5EKChek7iXcgyUGDHa)
 
 An architectural style or approach to maintaining an application’s state by capturing all changes as a sequence of time-ordered, immutable events.
 
