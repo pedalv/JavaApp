@@ -209,5 +209,23 @@ kafka_2.12-2.5.0> bin/connect-standalone.sh config/connect-standalone.properties
 
 > Sink Processor: A sink processor is a special type of stream processor that does not have down-stream processors. It sends any received records from its up-stream processors to a specified Kafka topic.
 
+- Kafka Streams offers two ways to define the stream processing topology: 
 
+> the [Kafka Streams DSL](https://kafka.apache.org/25/documentation/streams/developer-guide/dsl-api.html) provides the most common data transformation operations 
+    such as map, filter, join and aggregations out of the box; 
+ 
+> the lower-level [Processor API](https://kafka.apache.org/25/documentation/streams/developer-guide/processor-api.html) allows developers define and connect custom processors 
+    as well as to interact with [state stores](https://kafka.apache.org/25/documentation/streams/core-concepts#streams_state).
+  
+- A processor topology 
+> Time: Event time, Processing time, and Ingestion time
+> Aggregations: takes one input stream or table, and yields a new table by combining multiple input records into a single output record. An input stream of an aggregation can be a KStream or a KTable, but the output stream will always be a KTable
+> Windowing:  lets you control how to group records that have the same key for stateful operations such as aggregations or joins into so-called windows.
+> Duality of Streams and Tables
+> States
 
+#### Documentation
+- [Streams DSL](https://kafka.apache.org/25/documentation/streams/developer-guide/dsl-api.html)
+- [Processor API](https://kafka.apache.org/25/documentation/streams/developer-guide/processor-api.html)
+- [Running Streams Applications (elastic-scaling-of-your-application)](https://kafka.apache.org/25/documentation/streams/developer-guide/running-app#elastic-scaling-of-your-application)
+- [Interactive Queries](https://kafka.apache.org/25/documentation/streams/developer-guide/interactive-queries#interactive-queries)
