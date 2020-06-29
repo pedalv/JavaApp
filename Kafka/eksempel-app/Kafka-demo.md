@@ -211,13 +211,26 @@ kafka_2.12-2.5.0> bin/connect-standalone.sh config/connect-standalone.properties
 
 - Kafka Streams offers two ways to define the stream processing topology: 
 
+The computational logic of a Kafka Streams application is defined as a processor topology, which is a graph of stream processors (nodes) and streams (edges).
+
 > the [Kafka Streams DSL](https://kafka.apache.org/25/documentation/streams/developer-guide/dsl-api.html) provides the most common data transformation operations 
     such as map, filter, join and aggregations out of the box; 
+
+           Kafka Streams DSL
+                A high-level API that provides the most common data transformation operations such as
+                    map, filter, join, and aggregations out of the box. The DSL is the recommended starting
+                    point for developers new to Kafka Streams, and should cover many use cases and
  
 > the lower-level [Processor API](https://kafka.apache.org/25/documentation/streams/developer-guide/processor-api.html) allows developers define and connect custom processors 
     as well as to interact with [state stores](https://kafka.apache.org/25/documentation/streams/core-concepts#streams_state).
+
+            Processor API
+                A low-level API that lets you add and connect processors as well as interact directly
+                    with state stores. The Processor API provides you with even more flexibility
+                    than the DSL but at the expense of requiring more manual work
+                    on the side of the application developer (e.g., more lines of code).
   
-- A processor topology 
+- A processor topology *
 > Time: Event time, Processing time, and Ingestion time
 > Aggregations: takes one input stream or table, and yields a new table by combining multiple input records into a single output record. An input stream of an aggregation can be a KStream or a KTable, but the output stream will always be a KTable
 > Windowing:  lets you control how to group records that have the same key for stateful operations such as aggregations or joins into so-called windows.
@@ -225,7 +238,7 @@ kafka_2.12-2.5.0> bin/connect-standalone.sh config/connect-standalone.properties
 > States
 
 #### Documentation
-- [Streams DSL](https://kafka.apache.org/25/documentation/streams/developer-guide/dsl-api.html)
+- [* Streams DSL](https://kafka.apache.org/25/documentation/streams/developer-guide/dsl-api.html)
 - [Processor API](https://kafka.apache.org/25/documentation/streams/developer-guide/processor-api.html)
 - [Running Streams Applications (elastic-scaling-of-your-application)](https://kafka.apache.org/25/documentation/streams/developer-guide/running-app#elastic-scaling-of-your-application)
 - [Interactive Queries](https://kafka.apache.org/25/documentation/streams/developer-guide/interactive-queries#interactive-queries)
