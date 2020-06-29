@@ -35,6 +35,19 @@ public class Pipe {
 
     static void createWordCountStream(final StreamsBuilder builder) {
         /*
+        Kilde: WordCountDemo
+        final KStream<String, String> source = builder.stream(INPUT_TOPIC);
+
+        final KTable<String, Long> counts = source
+            .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split(" ")))
+            .groupBy((key, value) -> value)
+            .count();
+
+        // need to override value serde to Long type
+        counts.toStream().to(OUTPUT_TOPIC, Produced.with(Serdes.String(), Serdes.Long()));
+        */
+
+        /*
         final KStream<String, String> source = builder.stream(INPUT_TOPIC);
         === Refactoring 1
         */

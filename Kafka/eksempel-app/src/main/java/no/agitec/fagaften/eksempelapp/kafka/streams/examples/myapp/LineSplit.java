@@ -37,6 +37,19 @@ public class LineSplit {
     }
 
     static void createWordCountStream(final StreamsBuilder builder) {
+        /*
+        Kilde: WordCountDemo
+        final KStream<String, String> source = builder.stream(INPUT_TOPIC);
+
+        final KTable<String, Long> counts = source
+            .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split(" ")))
+            .groupBy((key, value) -> value)
+            .count();
+
+        // need to override value serde to Long type
+        counts.toStream().to(OUTPUT_TOPIC, Produced.with(Serdes.String(), Serdes.Long()));
+        */
+
         KStream<String, String> source = builder.stream(INPUT_TOPIC);
 
         /*
