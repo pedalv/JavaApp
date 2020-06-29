@@ -234,4 +234,9 @@ kafka_2.12-2.5.0> bin/connect-standalone.sh config/connect-standalone.properties
 > [4.6 Message Delivery Semantics](https://kafka.apache.org/documentation/#semantics)
 > [KIP-129: Streams Exactly-Once Semantics](https://cwiki.apache.org/confluence/display/KAFKA/KIP-129%3A+Streams+Exactly-Once+Semantics)
 > [3.6 Kafka Streams Configs](https://kafka.apache.org/25/documentation/#streamsconfigs)
+- [KAFKA TUTORIALS](https://kafka-tutorials.confluent.io/)
+- [The Complete Event Streaming Platform for Apache Kafka®](https://www.confluent.io/)
+- [Apache Kafka 2.4 – Overview of Latest Features, Updates, and KIPs](https://www.youtube.com/watch?v=Ipzc--mbvzg&feature=emb_rel_pause)
+- [8. KAFKA CONNECT](https://kafka.apache.org/documentation/#connect)
+
 

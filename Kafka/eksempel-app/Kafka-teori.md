@@ -47,7 +47,7 @@ growth issues common to many enterprises
 
 ![Stream Processing with Apache kafka and DB](https://github.com/pedalv/JavaApp/blob/master/Kafka/StreamProcessingWithKafkaAndDB.PNG)
 
-Kafka 
+[Kafka](https://www.youtube.com/watch?v=06iRM1Ghr1k&feature=emb_rel_pause) 
 
 > The truth is the log.
 
