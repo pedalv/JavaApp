@@ -229,3 +229,9 @@ kafka_2.12-2.5.0> bin/connect-standalone.sh config/connect-standalone.properties
 - [Processor API](https://kafka.apache.org/25/documentation/streams/developer-guide/processor-api.html)
 - [Running Streams Applications (elastic-scaling-of-your-application)](https://kafka.apache.org/25/documentation/streams/developer-guide/running-app#elastic-scaling-of-your-application)
 - [Interactive Queries](https://kafka.apache.org/25/documentation/streams/developer-guide/interactive-queries#interactive-queries)
+- PROCESSING GUARANTEES
+> [Lambda Architecture](http://lambda-architecture.net/)
+> [4.6 Message Delivery Semantics](https://kafka.apache.org/documentation/#semantics)
+> [KIP-129: Streams Exactly-Once Semantics](https://cwiki.apache.org/confluence/display/KAFKA/KIP-129%3A+Streams+Exactly-Once+Semantics)
+> [3.6 Kafka Streams Configs](https://kafka.apache.org/25/documentation/#streamsconfigs)
+
