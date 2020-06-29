@@ -85,15 +85,30 @@ public class LineSplit {
         final Topology topology = builder.build();
         System.out.println(topology.describe());
         /*
-        Topologies:
-           Sub-topology: 0
-            Source: KSTREAM-SOURCE-0000000000 (topics: [streams-plaintext-input]) --> KSTREAM-FLATMAPVALUES-0000000002, KSTREAM-FLATMAPVALUES-0000000001
-            Processor: KSTREAM-FLATMAPVALUES-0000000002 (stores: [])              --> KSTREAM-SINK-0000000003 <-- KSTREAM-SOURCE-0000000000
-            Processor: KSTREAM-FLATMAPVALUES-0000000001 (stores: [])              --> none <-- KSTREAM-SOURCE-0000000000
-            Sink: KSTREAM-SINK-0000000003 (topic: streams-linesplit-output)       <-- KSTREAM-FLATMAPVALUES-0000000002
+            Topologies:
+               Sub-topology: 0
+                Source: KSTREAM-SOURCE-0000000000 (topics: [streams-plaintext-input]) --> KSTREAM-FLATMAPVALUES-0000000002, KSTREAM-FLATMAPVALUES-0000000001
+                Processor: KSTREAM-FLATMAPVALUES-0000000002 (stores: [])              --> KSTREAM-SINK-0000000003 <-- KSTREAM-SOURCE-0000000000
+                Processor: KSTREAM-FLATMAPVALUES-0000000001 (stores: [])              --> none <-- KSTREAM-SOURCE-0000000000
+                Sink: KSTREAM-SINK-0000000003 (topic: streams-linesplit-output)       <-- KSTREAM-FLATMAPVALUES-0000000002
 
-            (the --> and <-- arrows dictates the downstream and upstream processor nodes of this node,
-                i.e. "children" and "parents" within the topology graph)
+                (the --> and <-- arrows dictates the downstream and upstream processor nodes of this node,
+                    i.e. "children" and "parents" within the topology graph)
+
+             A stream processor
+                is a node in the processor topology;
+                it represents a processing step to transform data in streams by receiving one input record
+                    at a time from its upstream processors in the topology, applying its operation to it,
+                    and may subsequently produce one or more output records to its downstream processors.
+
+            There are two special processors in the topology:
+            - Source Processor: A source processor is a special type of stream processor
+                that does not have any upstream processors. It produces an input stream to its topology
+                from one or multiple Kafka topics by consuming records from these topics
+                and forwarding them to its down-stream processors.
+            - Sink Processor: A sink processor is a special type of stream processor
+                that does not have down-stream processors. It sends any received records
+                from its up-stream processors to a specified Kafka topic.
          */
         final KafkaStreams streams = new KafkaStreams(topology, props);
         final CountDownLatch latch = new CountDownLatch(1);

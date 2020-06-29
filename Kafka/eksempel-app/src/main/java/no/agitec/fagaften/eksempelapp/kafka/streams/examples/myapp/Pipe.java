@@ -76,6 +76,22 @@ public class Pipe {
 
             (the --> and <-- arrows dictates the downstream and upstream processor nodes of this node,
                 i.e. "children" and "parents" within the topology graph)
+
+
+        A stream processor
+            is a node in the processor topology;
+            it represents a processing step to transform data in streams by receiving one input record
+                at a time from its upstream processors in the topology, applying its operation to it,
+                and may subsequently produce one or more output records to its downstream processors.
+
+        There are two special processors in the topology:
+        - Source Processor: A source processor is a special type of stream processor
+            that does not have any upstream processors. It produces an input stream to its topology
+            from one or multiple Kafka topics by consuming records from these topics
+            and forwarding them to its down-stream processors.
+        - Sink Processor: A sink processor is a special type of stream processor
+            that does not have down-stream processors. It sends any received records
+            from its up-stream processors to a specified Kafka topic.
          */
 
         final KafkaStreams streams = new KafkaStreams(topology, props);

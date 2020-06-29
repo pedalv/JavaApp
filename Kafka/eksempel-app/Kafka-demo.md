@@ -199,3 +199,15 @@ kafka_2.12-2.5.0> bin/connect-standalone.sh config/connect-standalone.properties
 - Kafka Streams combines the simplicity of writing and deploying standard Java and Scala applications on the client side with the benefits of Kafka's server-side cluster technology to  make these applications highly scalable, elastic, fault-tolerant, distributed, and much more. 
 - The Kafka Treams API transforms and enriches data 
 - [Mirror of Apache Kafka](https://github.com/apache/kafka)
+
+#### [Stream Processing Topology](https://kafka.apache.org/25/documentation/streams/core-concepts)
+- A stream processor is a node in the processor topology; it represents a processing step to transform data in streams by receiving one input record at a time from its upstream processors in the topology, applying its operation to it, and may subsequently produce one or more output records to its downstream processors.
+
+- There are two special processors in the topology:
+
+> Source Processor: A source processor is a special type of stream processor that does not have any upstream processors. It produces an input stream to its topology from one or multiple Kafka topics by consuming records from these topics and forwarding them to its down-stream processors.
+
+> Sink Processor: A sink processor is a special type of stream processor that does not have down-stream processors. It sends any received records from its up-stream processors to a specified Kafka topic.
+
+
+
