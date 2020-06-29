@@ -19,7 +19,7 @@ import java.util.concurrent.CountDownLatch;
 public class LineSplit {
 
     public static final String INPUT_TOPIC = "streams-plaintext-input";
-    public static final String OUTPUT_TOPIC = "streams-wordcount-output";
+    public static final String OUTPUT_TOPIC = "streams-linesplit-output";
 
     static Properties getStreamsConfig() {
         final Properties props = new Properties();
