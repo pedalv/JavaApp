@@ -232,9 +232,13 @@ The computational logic of a Kafka Streams application is defined as a processor
   
 - A processor topology *
 > Time: Event time, Processing time, and Ingestion time
+
 > Aggregations: takes one input stream or table, and yields a new table by combining multiple input records into a single output record. An input stream of an aggregation can be a KStream or a KTable, but the output stream will always be a KTable
+
 > Windowing:  lets you control how to group records that have the same key for stateful operations such as aggregations or joins into so-called windows.
+
 > Duality of Streams and Tables
+
 > States
 
 #### Documentation
@@ -244,10 +248,15 @@ The computational logic of a Kafka Streams application is defined as a processor
 - [Interactive Queries](https://kafka.apache.org/25/documentation/streams/developer-guide/interactive-queries#interactive-queries)
 - PROCESSING GUARANTEES
 > [Lambda Architecture](http://lambda-architecture.net/)
+
 > [4.6 Message Delivery Semantics](https://kafka.apache.org/documentation/#semantics)
+
 > [KIP-129: Streams Exactly-Once Semantics](https://cwiki.apache.org/confluence/display/KAFKA/KIP-129%3A+Streams+Exactly-Once+Semantics)
+
 > [3.6 Kafka Streams Configs](https://kafka.apache.org/25/documentation/#streamsconfigs)
+
 > [Kafka Client-side Assignment Proposal](https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Client-side+Assignment+Proposal)
+
 - [KAFKA TUTORIALS](https://kafka-tutorials.confluent.io/)
 - [DEVELOPER GUIDE](https://kafka.apache.org/25/documentation/streams/developer-guide/)
 - [The Complete Event Streaming Platform for Apache Kafka®](https://www.confluent.io/)
