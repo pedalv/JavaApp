@@ -48,6 +48,7 @@ public final class WordCountDemo {
     public static final String OUTPUT_TOPIC = "streams-wordcount-output";
 
     static Properties getStreamsConfig() {
+        // Configuring a Streams Application: https://kafka.apache.org/25/documentation/streams/developer-guide/config-streams.html
         final Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-wordcount");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -62,8 +63,38 @@ public final class WordCountDemo {
         return props;
     }
 
+    /**
+     * The Kafka Streams DSL (Domain Specific Language) is built on top of the Streams Processor API.
+     *
+     * Built-in abstractions for streams and tables in the form of KStream, KTable, and GlobalKTable.
+     *
+     * Declarative, functional programming style with
+     *  stateless transformations (e.g. map and filter)
+     *  as well as stateful transformations such as
+     *  aggregations (e.g. count and reduce),
+     *  joins (e.g. leftJoin),
+     *  and windowing (e.g. session windows).
+     *
+     * See examples about:
+     * Stateless transformations
+     * Stateful transformations
+     *
+     * Streams DSL: https://kafka.apache.org/25/documentation/streams/developer-guide/dsl-api.html
+     *
+     * Package org.apache.kafka.streams: https://kafka.apache.org/25/javadoc/org/apache/kafka/streams/package-summary.html
+     *
+     * KStream  === INSERT => input
+     * KTable  === UPDATE (not exist INSERT) => output
+     * GlobalKTable === output from all partitions of the topic
+     *
+     * @param builder
+     */
     static void createWordCountStream(final StreamsBuilder builder) {
         final KStream<String, String> source = builder.stream(INPUT_TOPIC);
+
+        // for write produce values in a database
+        source.foreach((key, value) -> System.out.println("For write produce values in a database (key => vale): " + key + " => " + value));
+
 
         final KTable<String, Long> counts = source
             .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split(" ")))
@@ -72,6 +103,10 @@ public final class WordCountDemo {
 
         // need to override value serde to Long type
         counts.toStream().to(OUTPUT_TOPIC, Produced.with(Serdes.String(), Serdes.Long()));
+
+        // for write consumer values in a database
+        counts.toStream().foreach((key, value) -> System.out.println("For write consumer values in a database (key_word => count_key_word): " + key + " => " + value));
+
     }
 
     public static void main(final String[] args) {
@@ -79,6 +114,7 @@ public final class WordCountDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
         createWordCountStream(builder);
+        // Writing a Streams Application: https://kafka.apache.org/25/documentation/streams/developer-guide/write-streams.html
         final KafkaStreams streams = new KafkaStreams(builder.build(), props);
         final CountDownLatch latch = new CountDownLatch(1);
 
@@ -89,6 +125,12 @@ public final class WordCountDemo {
                 streams.close();
                 latch.countDown();
             }
+        });
+
+        // To catch any unexpected exceptions, you can set an java.lang.Thread.UncaughtExceptionHandler
+        // before you start the application. This handler is called whenever a stream thread is terminated by an unexpected exception:
+        streams.setUncaughtExceptionHandler((Thread thread, Throwable throwable) -> {
+            // here you should examine the throwable/exception and perform an appropriate action!
         });
 
         try {

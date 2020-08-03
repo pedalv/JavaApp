@@ -58,7 +58,7 @@ public class DeveloperGuideTesting {
 
     @Before
     public void setup() {
-        final Topology topology = new Topology();
+        final Topology topology = new Topology(); // when using the Processor API
         topology.addSource("sourceProcessor", "input-topic");
         topology.addProcessor("aggregator", new CustomMaxAggregatorSupplier(), "sourceProcessor");
         topology.addStateStore(

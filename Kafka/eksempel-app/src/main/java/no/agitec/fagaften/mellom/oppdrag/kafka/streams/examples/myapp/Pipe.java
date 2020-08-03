@@ -66,7 +66,7 @@ public class Pipe {
         //https://kafka.apache.org/25/documentation/#streamsconfigs
         final StreamsBuilder builder = new StreamsBuilder();
         createWordCountStream(builder);
-        final Topology topology = builder.build();
+        final Topology topology = builder.build(); // when using the DSL
         System.out.println(topology.describe());
         /*
         Topologies:
