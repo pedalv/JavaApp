@@ -69,7 +69,7 @@ kafka_2.12-2.5.0> .\bin\windows\kafka-topics.bat --describe --zookeeper localhos
 
 ```
 
-- Step 4: Start the Pipe - LieSplit - WorldCount Application
+- Step 4: Start the Pipe - LineSplit - WorldCount Application
 
 ```
 kafka_2.12-2.5.0> .\bin\windows\kafka-run-class.bat  ..\Workspace\JavaApp\Kafka\eksempel-app\src\main\java\no\agitec\fagaften\eksempelapp\kafka\streams\examples\myapp\Line.java (work)
