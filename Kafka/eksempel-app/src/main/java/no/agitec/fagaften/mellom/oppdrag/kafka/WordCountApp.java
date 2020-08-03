@@ -14,6 +14,9 @@ import org.apache.kafka.streams.state.KeyValueStore;
 import java.util.Arrays;
 import java.util.Properties;
 
+/**
+ * See KafkaStreams.java for moe detail
+ */
 public class WordCountApp {
 
     public static void main(final String[] args) throws Exception {
