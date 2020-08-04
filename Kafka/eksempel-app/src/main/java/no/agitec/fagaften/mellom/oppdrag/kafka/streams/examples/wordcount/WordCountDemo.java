@@ -87,6 +87,17 @@ public final class WordCountDemo {
      * KTable  === UPDATE (not exist INSERT) => output
      * GlobalKTable === output from all partitions of the topic
      *
+     * Stateless transformations: do not require state for processing and they do not require a state store associated with the stream processor.
+     *  stream.toTable(), table.toStream(), stream.selectKey(...), stream.print(), stream.peek(...), stream1.merge(stream2),
+     *  stream.mapValues(...), stream.map(...), stream.groupBy(...), stream.groupByKey(), stream.foreach(...),
+     *  sentences.flatMapValues(...), stream.flatMap(...), stream.filterNot(...), stream.filter(...), stream.filter(...)
+     *
+     * Stateful transformations: depend on state for processing inputs and producing outputs and require a state store associated with the stream processor.
+     * ... see examples ...
+     *
+     * Exemple of Querying local key-value stores:
+     * https://kafka.apache.org/25/documentation/streams/developer-guide/interactive-queries.html#streams-developer-guide-interactive-queries-local-key-value-stores
+     *
      * @param builder
      */
     static void createWordCountStream(final StreamsBuilder builder) {
