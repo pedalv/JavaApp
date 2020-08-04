@@ -79,7 +79,7 @@ public class TemperatureDemo {
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
 
-        final StreamsBuilder builder = new StreamsBuilder();
+        final StreamsBuilder builder = new StreamsBuilder(); // using DSL
 
         final KStream<String, String> source = builder.stream("iot-temperature");
 

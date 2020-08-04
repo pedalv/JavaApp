@@ -44,6 +44,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 /**
+ * Testing Kafka Streams: https://kafka.apache.org/25/documentation/streams/developer-guide/testing.html
+ *
  * This is code sample in docs/streams/developer-guide/testing.html
  */
 

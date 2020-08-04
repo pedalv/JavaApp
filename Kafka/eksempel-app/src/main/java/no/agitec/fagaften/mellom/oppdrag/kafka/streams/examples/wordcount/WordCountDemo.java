@@ -95,8 +95,16 @@ public final class WordCountDemo {
      * Stateful transformations: depend on state for processing inputs and producing outputs and require a state store associated with the stream processor.
      * ... see examples ...
      *
+     * Windowing: lets you control how to group records that have the same key for stateful operations such as aggregations or joins into so-called windows.
+     *
      * Exemple of Querying local key-value stores:
      * https://kafka.apache.org/25/documentation/streams/developer-guide/interactive-queries.html#streams-developer-guide-interactive-queries-local-key-value-stores
+     *
+     * -----------------------------
+     * Processor API: https://kafka.apache.org/25/documentation/streams/developer-guide/processor-api.html
+     * Data Types and Serialization: https://kafka.apache.org/25/documentation/streams/developer-guide/datatypes.html
+     *          (https://github.com/apache/kafka/tree/2.5/clients/src/main/java/org/apache/kafka/common/serialization)
+     *      JSON: https://github.com/apache/kafka/blob/2.5/streams/examples/src/main/java/org/apache/kafka/streams/examples/pageview/PageViewTypedDemo.java#L83
      *
      * @param builder
      */
@@ -123,7 +131,7 @@ public final class WordCountDemo {
     public static void main(final String[] args) {
         final Properties props = getStreamsConfig();
 
-        final StreamsBuilder builder = new StreamsBuilder();
+        final StreamsBuilder builder = new StreamsBuilder(); // using DSL
         createWordCountStream(builder);
         // Writing a Streams Application: https://kafka.apache.org/25/documentation/streams/developer-guide/write-streams.html
         final KafkaStreams streams = new KafkaStreams(builder.build(), props);

@@ -48,7 +48,7 @@ public class WordCountDemoTest {
 
     @Before
     public void setup() {
-        final StreamsBuilder builder = new StreamsBuilder();
+        final StreamsBuilder builder = new StreamsBuilder(); // using DSL
         //Create Actual Stream Processing pipeline
         WordCountDemo.createWordCountStream(builder);
         testDriver = new TopologyTestDriver(builder.build(), WordCountDemo.getStreamsConfig());

@@ -27,7 +27,7 @@ public class WordCountApp {
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
-        StreamsBuilder builder = new StreamsBuilder();
+        StreamsBuilder builder = new StreamsBuilder(); // using DSL
         KStream<String, String> textLines = builder.stream("TextLinesTopic");
         KTable<String, Long> wordCounts = textLines
                 .flatMapValues(textLine -> Arrays.asList(textLine.toLowerCase().split("\\W+")))

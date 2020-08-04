@@ -131,7 +131,7 @@ public final class WordCountTransformerDemo {
         // setting offset reset to earliest so that we can re-run the demo code with the same pre-loaded data
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
-        final StreamsBuilder builder = new StreamsBuilder();
+        final StreamsBuilder builder = new StreamsBuilder(); // using DSL
 
         builder.<String, String>stream("streams-plaintext-input")
             .transform(new MyTransformerSupplier())
