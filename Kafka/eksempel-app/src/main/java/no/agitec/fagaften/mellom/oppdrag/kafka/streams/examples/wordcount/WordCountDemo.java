@@ -16,7 +16,9 @@
  */
 package no.agitec.fagaften.mellom.oppdrag.kafka.streams.examples.wordcount;
 
+import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.config.SslConfigs;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
@@ -25,9 +27,7 @@ import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.Produced;
 
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -60,6 +60,17 @@ public final class WordCountDemo {
         // Note: To re-run the demo, you need to use the offset reset tool:
         // https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Streams+Application+Reset+Tool
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+
+        // * @deprecated Streams Security: https://kafka.apache.org/25/documentation/streams/developer-guide/security.html
+        /*
+        props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SSL");
+        props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "/etc/security/tls/kafka.client.truststore.jks");
+        props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, "test1234");
+        props.put(SslConfigs.SSL_KEYSTORE_LOCATION_CONFIG, "/etc/security/tls/kafka.client.keystore.jks");
+        props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, "test1234");
+        props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, "test1234");
+        */
+
         return props;
     }
 
@@ -87,6 +98,10 @@ public final class WordCountDemo {
      * KTable  === UPDATE (not exist INSERT) => output
      * GlobalKTable === output from all partitions of the topic
      *
+     * Input topics: StreamsBuilder#stream(), StreamsBuilder#table() and Topology#addSource().
+     * Output topics: KStream#to(), KTable.to() and Topology#addSink().
+     * Intermediate (input and output) topics: KStream#through().
+     *
      * Stateless transformations: do not require state for processing and they do not require a state store associated with the stream processor.
      *  stream.toTable(), table.toStream(), stream.selectKey(...), stream.print(), stream.peek(...), stream1.merge(stream2),
      *  stream.mapValues(...), stream.map(...), stream.groupBy(...), stream.groupByKey(), stream.foreach(...),
@@ -105,6 +120,7 @@ public final class WordCountDemo {
      * Data Types and Serialization: https://kafka.apache.org/25/documentation/streams/developer-guide/datatypes.html
      *          (https://github.com/apache/kafka/tree/2.5/clients/src/main/java/org/apache/kafka/common/serialization)
      *      JSON: https://github.com/apache/kafka/blob/2.5/streams/examples/src/main/java/org/apache/kafka/streams/examples/pageview/PageViewTypedDemo.java#L83
+     * Interactive Queries: https://kafka.apache.org/25/documentation/streams/developer-guide/interactive-queries.html#streams-developer-guide-interactive-queries-custom-stores
      *
      * @param builder
      */

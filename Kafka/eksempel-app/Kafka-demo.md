@@ -197,7 +197,7 @@ kafka_2.12-2.5.0> bin/connect-standalone.sh config/connect-standalone.properties
 
 - Kafka Streams is a client library for building mission-critical real-time applications and microservices, where the input and/or output data is stored in Kafka clusters. 
 - Kafka Streams combines the simplicity of writing and deploying standard Java and Scala applications on the client side with the benefits of Kafka's server-side cluster technology to  make these applications highly scalable, elastic, fault-tolerant, distributed, and much more. 
-- The Kafka Treams API transforms and enriches data 
+- The Kafka Streams API transforms and enriches data 
 - [Mirror of Apache Kafka](https://github.com/apache/kafka)
 
 #### [Stream Processing Topology](https://kafka.apache.org/25/documentation/streams/core-concepts)
