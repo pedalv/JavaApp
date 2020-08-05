@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Slf4j
-public class LoadDatabase {
+public class LoadDatabaseConfig {
 
     @Bean(name = "employee")
     CommandLineRunner initDatabase(EmployeeRepository employ) {
