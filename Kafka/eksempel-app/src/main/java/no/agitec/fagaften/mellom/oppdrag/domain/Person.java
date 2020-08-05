@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 @Region(value = "People")
 public class Person implements Serializable {
+
     @Id
     @Getter
     private final String name;
@@ -26,4 +27,5 @@ public class Person implements Serializable {
     public String toString() {
         return String.format("%s is %d years old", getName(), getAge());
     }
+
 }
