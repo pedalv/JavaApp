@@ -1,5 +1,6 @@
 package no.agitec.fagaften.mellom.oppdrag.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,8 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Entity
 public class Customer {
@@ -20,6 +20,8 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
+    //private String name;
+    //private String prosjekt;
 
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;

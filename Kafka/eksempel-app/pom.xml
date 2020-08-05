@@ -69,7 +69,7 @@
 			<artifactId>kafka-streams</artifactId>
 			<version>${kafka.version}</version>
 		</dependency>
-		<dependency>
+   		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
