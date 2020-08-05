@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.rest.controller;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.controller.rest;
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1;
@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *  sample-01 - simple producer/consumer with dead-letter topic
+ *  topics = { "topic1", "topic1.DLT" } === @KafkaListener(id = "fooGroup", topics = "topic1")
+ *                                      === @KafkaListener(id = "dltGroup", topics = "topic1.DLT")
  */
 @RestController
-@RequestMapping("/kafka")
+@RequestMapping("/kafka/sample1")
 @Slf4j
 public class Sample1Controller {
 

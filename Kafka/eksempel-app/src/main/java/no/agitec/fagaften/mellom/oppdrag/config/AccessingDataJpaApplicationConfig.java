@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mellom.oppdrag;
+package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.domain.Customer;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Configuration
 @Slf4j
-public class AccessingDataJpaApplication {
+public class AccessingDataJpaApplicationConfig {
 
     @Bean(name = "customer")
     public CommandLineRunner customer(CustomerRepository repository) {
