@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/employee")
+@RequestMapping("/api/employee")
 @Slf4j
 public class EmployeeRestController {
 

@@ -20,7 +20,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/home", "/partner").permitAll()
+                    .antMatchers("/",
+                            "/home",
+                            "/hello",
+                            "/greeting",
+                            "/person",
+                            //"/partner",
+                            "/customer",
+                            "/employee",
+                            "/kafka/send/foo/*").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
