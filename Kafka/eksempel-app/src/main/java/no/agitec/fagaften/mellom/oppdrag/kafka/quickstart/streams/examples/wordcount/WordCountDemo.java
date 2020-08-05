@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package no.agitec.fagaften.mellom.oppdrag.kafka.streams.examples.wordcount;
+package no.agitec.fagaften.mellom.oppdrag.kafka.quickstart.streams.examples.wordcount;
 
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package no.agitec.fagaften.mellom.oppdrag.kafka.streams.examples.pageview;
+package no.agitec.fagaften.mellom.oppdrag.kafka.quickstart.streams.examples.pageview;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;

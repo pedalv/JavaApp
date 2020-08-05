@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.streams.examples.myapp;
+package no.agitec.fagaften.mellom.oppdrag.kafka.quickstart.streams.examples.myapp;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;

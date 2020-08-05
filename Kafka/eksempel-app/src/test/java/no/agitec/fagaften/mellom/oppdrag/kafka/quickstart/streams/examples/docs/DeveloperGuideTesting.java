@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package no.agitec.fagaften.mellom.oppdrag.kafka.streams.examples.docs;
+package no.agitec.fagaften.mellom.oppdrag.kafka.quickstart.streams.examples.docs;
 
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;

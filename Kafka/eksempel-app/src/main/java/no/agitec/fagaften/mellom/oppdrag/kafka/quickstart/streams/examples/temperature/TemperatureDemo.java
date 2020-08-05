@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package no.agitec.fagaften.mellom.oppdrag.kafka.streams.examples.temperature;
+package no.agitec.fagaften.mellom.oppdrag.kafka.quickstart.streams.examples.temperature;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serde;
