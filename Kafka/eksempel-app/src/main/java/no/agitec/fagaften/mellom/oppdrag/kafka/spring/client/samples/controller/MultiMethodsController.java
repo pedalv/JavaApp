@@ -6,6 +6,9 @@ import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * Sample 2
+ */
 @Component
 @KafkaListener(id = "multiGroup", topics = { "foos", "bars" })
 public class MultiMethodsController {

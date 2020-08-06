@@ -1,6 +1,7 @@
 package no.agitec.fagaften.mellom.oppdrag.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import no.agitec.fagaften.mellom.oppdrag.domain.Customer;
 import no.agitec.fagaften.mellom.oppdrag.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/customer")
@@ -24,6 +27,10 @@ public class CustomerController {
     @ModelAttribute
     public void addCustomerModel(Model model) {
         log.info("== addCustomerModel");
+
+        List<Customer> customers = customerService.hentCustomer();
+        log.info("Custommers size: " + customers.size());
+
         model.addAttribute("customers", customerService.hentCustomer());
         model.addAttribute("name", "NAV");
     }

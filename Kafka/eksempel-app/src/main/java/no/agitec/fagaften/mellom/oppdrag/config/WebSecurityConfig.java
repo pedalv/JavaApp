@@ -20,26 +20,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                    .antMatchers("/",
-                            "/home",
-                            "/hello",
-                            "/greeting",
-                            "/person",
-                            //"/partner",
-                            "/customer",
-                            "/employee",
-                            "/kafka/sample1/send/foo/*",
-                            "/kafka/sample2/send/foo/*",
-                            "/kafka/sample2/send/bar/*",
-                            "/kafka/sample2/send/unknown/*").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
+                .antMatchers("/",
+                        "/home",
+                        "/hello",
+                        "/greeting",
+                        "/person",
+                        //"/partner",
+                        "/customer",
+                        "/employee",
+                        "/kafka/sample1/send/foo/*",
+                        "/kafka/sample2/send/foo/*",
+                        "/kafka/sample2/send/bar/*",
+                        "/kafka/sample2/send/unknown/*",
+                        "/kafka/sample3/send/foos/*").permitAll()
+                .anyRequest().authenticated()
+                .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                    .and()
+                .loginPage("/login")
+                .permitAll()
+                .and()
                 .logout()
-                    .permitAll();
+                .permitAll();
     }
 
     @Bean
