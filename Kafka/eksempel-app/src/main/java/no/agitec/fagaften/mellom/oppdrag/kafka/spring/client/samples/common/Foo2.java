@@ -1,9 +1,14 @@
 package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class Foo2 {
 
     private String foo;
-
+/*
     public Foo2() {
     }
 
@@ -23,5 +28,5 @@ public class Foo2 {
     public String toString() {
         return "Foo2 [foo=" + this.foo + "]";
     }
-
+*/
 }

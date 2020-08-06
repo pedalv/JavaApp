@@ -67,7 +67,7 @@ public class ProducerSample1Controller {
         // String String : Default - Serdes.String() Serdes.String()
         // String Integer: Serdes.String() Serdes.Long()
         // String Object (Foo1) : Serdes.String() Serdes.serdeFrom(Foo1.class)
-        // How to change it????????
+        // How to change it(???): Java Configuration - https://docs.spring.io/spring-kafka/docs/2.5.4.RELEASE/reference/html/#java-configuration
 
         // java.lang.ClassCastException: class no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1
         // cannot be cast to class java.lang.String

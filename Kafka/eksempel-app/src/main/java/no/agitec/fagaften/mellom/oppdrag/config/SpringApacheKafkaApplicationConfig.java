@@ -26,6 +26,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 5. Tips, Tricks and Examples: https://docs.spring.io/spring-kafka/docs/2.5.4.RELEASE/reference/html/#tips-n-tricks
+ */
 @Configuration
 @Slf4j
 public class SpringApacheKafkaApplicationConfig {
@@ -152,7 +155,7 @@ public class SpringApacheKafkaApplicationConfig {
      * @throws IOException
      */
     @KafkaListener(id = "fooGroup2", topics = "topic2")
-    public void listen1(List<Foo2> foos) throws IOException {
+    public void listen1(List<Foo2> foos) /*throws IOException*/ {
         log.info("Received: " + foos);
         foos.forEach(f -> kafkaTemplate.send("topic3", f.getFoo().toUpperCase()));
         log.info("Messages sent, hit Enter to commit tx topic2");
@@ -210,3 +213,4 @@ public class SpringApacheKafkaApplicationConfig {
     }
 
 }
+
