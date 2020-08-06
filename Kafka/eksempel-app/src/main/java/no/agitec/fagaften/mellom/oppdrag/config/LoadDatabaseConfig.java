@@ -84,10 +84,10 @@ public class LoadDatabaseConfig {
             log.info("");
 
             // fetch customers by last name
-            log.info("== Customer found with findByName('Nagara'):");
+            log.info("== Customer found with findByProject('Nagara'):");
             log.info("--------------------------------------------");
-            customers.findByName("Nagara").forEach(c -> log.info(c.toString()));
-            for (Customer c : customers.findByName("Nagara")) {
+            customers.findByProject("Nagara").forEach(c -> log.info(c.toString()));
+            for (Customer c : customers.findByProject("Nagara")) {
               log.info(c.toString());
             }
             log.info("");
