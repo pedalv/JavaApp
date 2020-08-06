@@ -2,12 +2,12 @@ package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.controller
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.streams.kstream.Produced;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *  sample-01 - simple producer/consumer with dead-letter topic
@@ -51,15 +51,36 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/kafka/sample1")
 @Slf4j
-public class Sample1Controller {
+public class ProducerSample1Controller {
 
     @Autowired
-    private KafkaTemplate<Object, Object> template;
+    //private KafkaTemplate<Object, Object> template;
+    private KafkaTemplate<String, Object> template;
+
+    private String kafkaTopic = "topic1";
 
     @GetMapping(path = "/send/foo/{what}")
     //@PostMapping(path = "/send/foo/{what}")
-    public void sendFoo(@PathVariable String what) {
-        this.template.send("topic1", new Foo1(what));
+    public String sendFoo(@PathVariable String what) {
+
+        this.template.send(kafkaTopic, new Foo1(what));
+        // String String : Default - Serdes.String() Serdes.String()
+        // String Integer: Serdes.String() Serdes.Long()
+        // String Object (Foo1) : Serdes.String() Serdes.serdeFrom(Foo1.class)
+        // How to change it????????
+
+        // java.lang.ClassCastException: class no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1
+        // cannot be cast to class java.lang.String
+
+        //ProducerRecord record = new ProducerRecord(kafkaTopic, new Foo1(what));
+        //this.template.send(record);
+
+        return "Message sent to the Kafka Topic topic1 Successfully";
     }
 
 }
+
+
+
+
+

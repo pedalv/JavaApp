@@ -47,27 +47,36 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/kafka/sample2")
 @Slf4j
-public class Sample2Controller {
+public class ProducerSample2Controller {
 
     @Autowired
     private KafkaTemplate<Object, Object> template;
 
+    private String kafkaFoosTopic = "foos";
+    private String kafkaBarsTopic = "bars";
+
     @GetMapping(path = "/send/foo/{what}")
     //@PostMapping(path = "/send/foo/{what}")
-    public void sendFoo(@PathVariable String what) {
-        this.template.send("foos", new Foo1(what));
+    public String sendFoo(@PathVariable String what) {
+        this.template.send(kafkaFoosTopic, new Foo1(what));
+
+        return "Message sent to the Kafka Topic foos Successfully";
     }
 
     @GetMapping(path = "/send/bar/{what}")
     //@PostMapping(path = "/send/foo/{what}")
-    public void sendBar(@PathVariable String what) {
-        this.template.send("bars", new Bar1(what));
+    public String sendBar(@PathVariable String what) {
+        this.template.send(kafkaBarsTopic, new Bar1(what));
+
+        return "Message sent to the Kafka Topic bars Successfully";
     }
 
     @GetMapping(path = "/send/unknown/{what}")
     //@PostMapping(path = "/send/foo/{what}")
-    public void sendUnknown(@PathVariable String what) {
-        this.template.send("bars", what);
+    public String sendUnknown(@PathVariable String what) {
+        this.template.send(kafkaBarsTopic, what);
+
+        return "Message sent to the Kafka Topic bars Successfully";
     }
 
 }

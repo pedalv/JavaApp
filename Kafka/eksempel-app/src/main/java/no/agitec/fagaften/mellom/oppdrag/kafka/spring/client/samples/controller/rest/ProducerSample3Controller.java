@@ -32,20 +32,25 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/kafka/sample3")
-public class Sample3Controller {
+public class ProducerSample3Controller {
 
     @Autowired
     private KafkaTemplate<Object, Object> template;
 
+    private String kafkaTopic = "topic2";
+
     @GetMapping(path = "/send/foos/{what}")
     //@PostMapping(path = "/send/foos/{what}")
-    public void sendFoo(@PathVariable String what) {
-        this.template.executeInTransaction(kafkaTemplate -> {
-            StringUtils.commaDelimitedListToSet(what).stream()
-                    .map(Foo1::new) // === .map(s -> new Foo1(s))
-                    .forEach(foo -> kafkaTemplate.send("topic2", foo));
-            return null;
-        });
+    public String sendFoo(@PathVariable String what) {
+        this.template.executeInTransaction(
+                kafkaTemplate -> {
+                    StringUtils.commaDelimitedListToSet(what)
+                            .stream()
+                            .map(Foo1::new) // === .map(s -> new Foo1(s))
+                            .forEach(foo -> kafkaTemplate.send(kafkaTopic, foo));
+                    return "Message sent to the Kafka Topic topic2 Successfully";
+                });
+        return "Message sent to the Kafka Topic topic2 Successfully";
     }
 
 }

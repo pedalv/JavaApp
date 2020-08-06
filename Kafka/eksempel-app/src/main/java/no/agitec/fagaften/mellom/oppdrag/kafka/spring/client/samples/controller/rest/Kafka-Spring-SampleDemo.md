@@ -11,7 +11,7 @@ kafka_2.12-2.5.0> .\bin\windows\kafka-server-start.bat .\config\server.propertie
 
 ```
 
-- Description (Vis)
+- Step 2: Topic created automatic - Description topic (Vis)
 ```
 kafka_2.12-2.5.0> .\bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 (works)
 
@@ -54,7 +54,24 @@ Topic: topic3   PartitionCount: 1       ReplicationFactor: 1    Configs:
 
 ```
 
-- Step 5: Process some data
+
+- Step 3: Start the consumer listening to <topic_name>
+
+```
+// Sample 1
+kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic topic1 --from-beginning
+kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic topic1.DLT --from-beginning
+
+// Sample 2
+kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic foos --from-beginning
+kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic bars --from-beginning
+
+// Sample 3
+kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic topic2 --from-beginning
+kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic topic3 --from-beginning
+```
+
+- Step 3: Process some data
 
 ```
 // Sample 1
@@ -70,5 +87,4 @@ curl -X GET http://localhost:8080/kafka/sample2/send/unknown/xxx
 
 // Sample 3
 curl -X GET http://localhost:8080/kafka/sample3/send/foos/a,b,c,d,e
-
 ```

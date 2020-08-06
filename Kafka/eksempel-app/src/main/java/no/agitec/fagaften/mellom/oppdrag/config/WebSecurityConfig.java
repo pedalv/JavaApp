@@ -32,7 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/kafka/sample2/send/foo/*",
                         "/kafka/sample2/send/bar/*",
                         "/kafka/sample2/send/unknown/*",
-                        "/kafka/sample3/send/foos/*").permitAll()
+                        "/kafka/sample3/send/foos/*",
+                        "/javainuse-kafka/producer").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
