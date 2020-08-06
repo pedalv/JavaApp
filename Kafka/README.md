@@ -72,6 +72,14 @@ Spring Data MongoDB
 
 > [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 
+> [14. Messaging](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-messaging)
+
+> [4.1. Using Spring for Apache Kafka](https://docs.spring.io/spring-kafka/docs/2.5.4.RELEASE/reference/html/#reference)
+
+> [10. Security](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-security)
+
+> [Spring Segurity](https://spring.io/projects/spring-security)
+
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app/Kafka-demo.md)
 
