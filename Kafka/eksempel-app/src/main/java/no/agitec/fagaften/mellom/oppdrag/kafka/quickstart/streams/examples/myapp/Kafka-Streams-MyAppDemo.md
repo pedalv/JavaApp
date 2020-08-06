@@ -60,7 +60,7 @@ kafka_2.12-2.5.0> .\bin\windows\kafka-topics.bat --create --bootstrap-server loc
 
 kafka_2.12-2.5.0> .\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic streams-wordcount-output --config cleanup.policy=compact
 
-- Descripe (Vis)
+- Description (Vis)
 kafka_2.12-2.5.0> .\bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 (works)
 kafka_2.12-2.5.0> .\bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 --topic streams-plaintext-input (works)
 kafka_2.12-2.5.0> .\bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 --topic streams-pipe-output (works)
