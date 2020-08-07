@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Root</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+    <p>Temporary view page with will use REACT later</p>
+    <h1>Welcome to "/" index page!</h1>
+
+    <p>-</p>
+    <p>Clik <a href="/home">here</a> to go to "/home".</p>
+    <p>-</p>
+    <p>Click <a href="/hello">here</a> to get your "/hello" greeting.</p>
+    <p>Click <a th:href="@{/hello}">here</a> to see a "/hello" greeting.</p>
+    <p>-</p>
+    <p>Click <a href="/greeting">here</a> to get your greeting.</p>
+    <p>-</p>
+    <p>Click <a href="/person">here</a> to see person page.</p>
+    <p>-</p>
+    <p>Click <a href="/partner">here</a> to see partner page.</p>
+    <p>-</p>
+    <p>Click <a href="/customer">here</a> to see customer page.</p>
+    <p>-</p>
+    <p>Click <a href="/employee">here</a> to see employee page.</p>
+
+</body>
+</html>
