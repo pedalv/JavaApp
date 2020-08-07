@@ -2,8 +2,14 @@ package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Bar2;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo2;
+import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.config.TopicConfig;
+import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.streams.StreamsConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +20,7 @@ import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.TopicBuilder;
+import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
 import org.springframework.kafka.listener.SeekToCurrentErrorHandler;
@@ -24,6 +31,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -80,6 +88,13 @@ public class SpringApacheKafkaApplicationConfig {
     //@Bean
     public NewTopic bars() {
         return new NewTopic("bars", 1, (short) 1);
+        /*
+        return TopicBuilder.name("bars")
+                    .partitions(1)
+                    .replicas(1)
+                    .config(TopicConfig.COMPRESSION_TYPE_CONFIG, "zstd")
+                    .build();
+        */
     }
 
     /**
@@ -214,3 +229,24 @@ public class SpringApacheKafkaApplicationConfig {
 
 }
 
+/*
+    // OTHERS EXEMPLES: 4. Reference - https://docs.spring.io/spring-kafka/docs/2.5.4.RELEASE/reference/html/#reference
+
+    @Bean
+    public KafkaAdmin admin() {
+        Map<String, Object> configs = new HashMap<>();
+        configs.put(StreamsConfig.APPLICATION_ID_CONFIG, "blabla");
+        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        configs.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
+        configs.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        configs.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.serdeFrom(Foo1.class).getClass().getName());
+        configs.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        return new KafkaAdmin(configs);
+    }
+
+
+
+
+
+
+ */
