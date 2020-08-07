@@ -20,7 +20,7 @@ public class LoadDatabaseConfig {
     @Bean(name = "employee")
     CommandLineRunner initDatabase(EmployeeRepository employ) {
         return (args) -> {
-            log.info("Preloading " + employ.save(new Employee("Carl", "Kristian Eriksen", "Senior utvikler")));
+            log.info("Preloading " + employ.save(new Employee("Carl", "Kristian Eriksen", "Seniorutvikler")));
             log.info("Preloading " + employ.save(new Employee("Francois", "Allix", "Seniorutvikler")));
             log.info("Preloading " + employ.save(new Employee("Frode", "Johansen", "Seniorutvikler")));
             log.info("Preloading " + employ.save(new Employee("Maria", "Selivanova", "Seniorutvikler")));
@@ -99,6 +99,7 @@ public class LoadDatabaseConfig {
     CommandLineRunner partner(PartnerRepository partners) {
         return (args) -> {
             // save a few partners
+            partners.save(new Partner("Verama"));
             partners.save(new Partner("Centric"));
             partners.save(new Partner("Know IT"));
             partners.save(new Partner("EPICO-IT A/S"));
