@@ -54,8 +54,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProducerSample1Controller {
 
     @Autowired
-    //private KafkaTemplate<Object, Object> template;
-    private KafkaTemplate<String, Object> template;
+    KafkaObjectSender kafkaObjectSender;
+
+    @Autowired
+    //private KafkaTemplate<Object, Object> template; //okay
+    private KafkaTemplate<String, Object> template; //okay
+    //private KafkaTemplate<String, Foo1> template;
 
     private String kafkaTopic = "topic1";
 
@@ -63,19 +67,50 @@ public class ProducerSample1Controller {
     //@PostMapping(path = "/send/foo/{what}")
     public String sendFoo(@PathVariable String what) {
 
-        this.template.send(kafkaTopic, new Foo1(what));
-        // String String : Default - Serdes.String() Serdes.String()
-        // String Integer: Serdes.String() Serdes.Long()
-        // String Object (Foo1) : Serdes.String() Serdes.serdeFrom(Foo1.class)
-        // How to change it(???): Java Configuration - https://docs.spring.io/spring-kafka/docs/2.5.4.RELEASE/reference/html/#java-configuration
+        kafkaObjectSender.sendOkay(what); //OKAY in consumer
+        kafkaObjectSender.sendFail(new Foo1(what));
+        //return "Message sent to the Kafka Topic topic1 Successfully";
 
-        // java.lang.ClassCastException: class no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1
-        // cannot be cast to class java.lang.String
+        try {
+            //ProducerRecord record = new ProducerRecord(kafkaTopic, new Foo1(what));
+            //this.template.send(record);
 
-        //ProducerRecord record = new ProducerRecord(kafkaTopic, new Foo1(what));
-        //this.template.send(record);
+            this.template.send(kafkaTopic, new Foo1(what));
 
+            return "Message sent to the Kafka Topic topic1 Successfully";
+        } catch (Exception e)  {
+            log.error(e.getMessage());
+            e.getStackTrace();
+
+            //Can't convert value of class no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1
+            // to class org.apache.kafka.common.serialization.StringSerializer specified in value.serializer
+            // String String : Default - Serdes.String() Serdes.String()
+            // String Integer: Serdes.String() Serdes.Long()
+            // String Object: Serdes.String() Serdes.serdeFrom(Foo1.class) - How to change it(???)
+            // String Foo1: Serdes.String() Serdes.serdeFrom(Foo1.class) - How to change it(???)
+        }
+
+        return "Message did not sent to the Kafka Topic topic1!?!";
+    }
+
+    @GetMapping(path = "/send/foo2/{what}")
+    public String sendFoo2(@PathVariable String what) {
+
+        this.template.send(kafkaTopic, what); //OKAY in consumer but errors in console med @Bean
         return "Message sent to the Kafka Topic topic1 Successfully";
+
+        /*
+            //Error in console
+            2020-08-07 13:11:56.826 ERROR 15820 --- [ fooGroup-0-C-1] essageListenerContainer$ListenerConsumer : Error handler threw an exception
+
+            org.springframework.kafka.KafkaException: Seek to current after exception;
+                nested exception is org.springframework.kafka.listener.ListenerExecutionFailedException:
+                    Listener failed; nested exception is org.springframework.kafka.support.converter.ConversionException:
+                        Failed to convert from JSON; nested exception is com.fasterxml.jackson.core.JsonParseException:
+                            Unrecognized token 'bar5':
+                                was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+                                    at [Source: (String)"bar5"; line: 1, column: 5]
+         */
     }
 
 }

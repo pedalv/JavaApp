@@ -2,14 +2,8 @@ package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Bar2;
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo2;
-import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.common.config.TopicConfig;
-import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.streams.StreamsConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +14,6 @@ import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.TopicBuilder;
-import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
 import org.springframework.kafka.listener.SeekToCurrentErrorHandler;
@@ -31,7 +24,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -225,24 +217,80 @@ public class SpringApacheKafkaApplicationConfig {
         typeMapper.setIdClassMapping(mappings);
         converter.setTypeMapper(typeMapper);
         return converter;
+
     }
+
+
+
+
+
+
 
 }
 
-/*
+ /*
     // OTHERS EXEMPLES: 4. Reference - https://docs.spring.io/spring-kafka/docs/2.5.4.RELEASE/reference/html/#reference
+
 
     @Bean
     public KafkaAdmin admin() {
         Map<String, Object> configs = new HashMap<>();
-        configs.put(StreamsConfig.APPLICATION_ID_CONFIG, "blabla");
         configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         configs.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
         configs.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
-        configs.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.serdeFrom(Foo1.class).getClass().getName());
+        //Caused by: java.lang.IllegalArgumentException: Unknown class for built-in serializer. Supported types are: String, Short, Integer, Long, Float, Double, ByteArray, ByteBuffer, Bytes, UUID
+        //  public static <T> org.apache.kafka.common.serialization.Serde<T> serdeFrom(java.lang.Class<T> type) { ... }
+        //  public static <T> org.apache.kafka.common.serialization.Serde<T> serdeFrom(org.apache.kafka.common.serialization.Serializer<T> serializer, org.apache.kafka.common.serialization.Deserializer<T> deserializer) { ... }
+        //  public static org.apache.kafka.common.serialization.Serde<java.lang.Long> Long() { ... }
+        //  public static org.apache.kafka.common.serialization.Serde<java.lang.String> String() { ... }
+        configs.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.serdeFrom(Foo1.class));
         configs.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         return new KafkaAdmin(configs);
+        }
+
+    // AdminClient client = AdminClient.create(admin.getConfigurationProperties());
+
+    @Bean
+    public ProducerFactory<Integer, String> producerFactory() {
+        return new DefaultKafkaProducerFactory<>(producerConfigs());
     }
+
+    @Bean
+    public Map<String, Object> producerConfigs() {
+        Map<String, Object> props = new HashMap<>();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, Serdes.String().getClass().getName()); //StringSerializer.class
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, Serdes.Long().getClass().getName()); //LongSerializer.class
+        // See https://kafka.apache.org/documentation/#producerconfigs for more properties
+        return props;
+    }
+
+   @Bean
+   public KafkaTemplate<Integer, String> kafkaTemplate() {
+        return new KafkaTemplate<Integer, String>(producerFactory());
+   }
+
+   //--
+
+    @Bean
+    public KafkaTemplate<String, String> stringTemplate(ProducerFactory<String, String> pf) {
+        return new KafkaTemplate<>(pf);
+    }
+
+    @Bean
+    public KafkaTemplate<String, Foo1> bytesTemplate(ProducerFactory<String, Foo1> pf) {
+        return new KafkaTemplate<>(pf,
+                Collections.singletonMap(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, Foo1.class));
+    }
+
+
+ */
+
+
+
+/*
+
 
 
 

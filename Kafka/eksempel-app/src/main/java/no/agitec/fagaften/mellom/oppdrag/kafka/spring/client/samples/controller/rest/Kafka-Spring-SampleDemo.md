@@ -56,7 +56,6 @@ Topic: topic3   PartitionCount: 1       ReplicationFactor: 1    Configs:
 
 
 - Step 3: Start the consumer listening to <topic_name>
-
 ```
 ===   @KafkaListener(id = "fooGroup", topics = "topic1")
 kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic topic1 --from-beginning

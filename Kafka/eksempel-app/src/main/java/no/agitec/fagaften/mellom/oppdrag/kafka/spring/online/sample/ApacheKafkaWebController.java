@@ -16,7 +16,8 @@ public class ApacheKafkaWebController {
 
     @GetMapping(value = "/producer")
     public String producer(@RequestParam("message") String message) {
-        kafkaSender.send(message);
+        kafkaSender.send(message); //OKAY
+        //kafkaSender.send(new String(message)); //OKAY
 
         return "Message sent to the Kafka Topic java_in_use_topic Successfully";
     }
