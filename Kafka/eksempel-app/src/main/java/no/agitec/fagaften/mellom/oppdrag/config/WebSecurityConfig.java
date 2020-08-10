@@ -1,5 +1,6 @@
 package no.agitec.fagaften.mellom.oppdrag.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +13,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
+@Slf4j
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -20,7 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/",
+                .antMatchers(
+                        //"/css/**",
+                        "/",
                         "/home",
                         "/hello",
                         "/greeting",
@@ -39,6 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                //.failureUrl("/login-error")
                 .permitAll()
                 .and()
                 .logout()
@@ -57,6 +62,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .password("password")
                         .roles("USER")
                         .build();
+
+        log.info(user.toString());
 
         return new InMemoryUserDetailsManager(user);
     }

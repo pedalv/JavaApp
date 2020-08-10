@@ -10,18 +10,20 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 class HomeComponentTest {
 
     @Autowired
-    private MockMvc mvc;
+    private MockMvc mockMvc;
 
 
     @Test
     public void getHome() throws Exception {
-        MvcResult result = mvc.perform(MockMvcRequestBuilders.get("/home")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/home")
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 
@@ -29,6 +31,14 @@ class HomeComponentTest {
         assertNotNull(result.getResponse());
         assertEquals(200, result.getResponse().getStatus());
         assertTrue(result.getResponse().getContentAsString().contains("Welcome home page"));
+    }
+
+    @Test
+    public void accessUnprotected() throws Exception {
+        // @formatter:off
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/home"))
+                .andExpect(status().isOk());
+        // @formatter:on
     }
 
 }
