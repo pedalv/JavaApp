@@ -30,7 +30,7 @@ class HomeComponentTest {
         assertNotNull(result);
         assertNotNull(result.getResponse());
         assertEquals(200, result.getResponse().getStatus());
-        assertTrue(result.getResponse().getContentAsString().contains("Welcome home page"));
+        assertTrue(result.getResponse().getContentAsString().contains("Welcome to home page!"));
     }
 
     @Test
