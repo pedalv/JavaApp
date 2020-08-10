@@ -44,11 +44,22 @@ public class SpringApacheKafkaApplicationConfig {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     /**
+     * Online
+     * Run one time only to create topic
+     * @return
+     */
+    @Bean
+    public NewTopic online() {
+        return new NewTopic("java_in_use_topic", 1, (short) 1);
+    }
+
+
+    /**
      * Sample 1
      * Run one time only to create topic
      * @return
      */
-    //@Bean
+    @Bean
     public NewTopic topic() {
         return new NewTopic("topic1", 1, (short) 1);
     }
@@ -58,7 +69,7 @@ public class SpringApacheKafkaApplicationConfig {
      * Run one time only to create topic
      * @return
      */
-    //@Bean
+    @Bean
     public NewTopic dlt() {
         return new NewTopic("topic1.DLT", 1, (short) 1);
     }
@@ -68,7 +79,7 @@ public class SpringApacheKafkaApplicationConfig {
      * Run one time only to create topic
      * @return
      */
-    //@Bean
+    @Bean
     public NewTopic foos() {
         return new NewTopic("foos", 1, (short) 1);
     }
@@ -77,7 +88,7 @@ public class SpringApacheKafkaApplicationConfig {
      * Sample 2
      * @return
      */
-    //@Bean
+    @Bean
     public NewTopic bars() {
         return new NewTopic("bars", 1, (short) 1);
         /*
@@ -94,7 +105,7 @@ public class SpringApacheKafkaApplicationConfig {
      * Run one time only to create topic
      * @return
      */
-    //@Bean
+    @Bean
     public NewTopic topic2() {
         return TopicBuilder.name("topic2").partitions(1).replicas(1).build();
     }
@@ -104,7 +115,7 @@ public class SpringApacheKafkaApplicationConfig {
      * Run one time only to create topic
      * @return
      */
-    //@Bean
+    @Bean
     public NewTopic topic3() {
         return TopicBuilder.name("topic3").partitions(1).replicas(1).build();
     }
