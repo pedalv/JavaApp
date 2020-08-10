@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+</head>
+<body>
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+<p>Temporary view page for now. (Use REACT later)</p>
+
+<!-- Header -->
+<header class="header">
+    <div layout:insert="~{../fragments/header}" />
+</header>
+<!-- Main Navigation -->
+<nav class="navbar">
+    <div class="navbar-list" id="navbar">
+        <ul class="">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/}">Example APP</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/person}">Person</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/partner}">Partner</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/customer}">Customer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employee}">Employee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/home}">Home (Remove later)</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/hello}">Hello (Remove later)</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/greeting}">Greeting (Remove later)</a>
+            </li>
+        </ul>
+    </div>
+    <hr />
+</nav>
+<!-- Optional Section -->
+<th:block layout:fragment="optional" />
+<!--
+https://www.google.com/search?q=htm5+examples&source=lnms&tbm=isch&sa=X&ved=2ahUKEwilt8ydppDrAhWrxIsKHc5RCcUQ_AUoAXoECA0QAw&biw=2038&bih=1055#imgrc=pafXmXtGdiJ-WM
+
+<article>
+    <h1>This is a article heading</h1>
+    <p> Article information</p>
+</article>
+<aside>
+    <figure>
+        image
+    </figure>
+    <p> Aside information</p>
+</aside>
+-->
+<!-- Content Section -->
+<section layout:fragment="content">
+    <p>This is filled by the content template.</p>
+</section>
+<!-- Footer -->
+<footer class="footer">
+    <div layout:insert="~{../fragments/footer}" />
+</footer>
+</body>
+</html>
