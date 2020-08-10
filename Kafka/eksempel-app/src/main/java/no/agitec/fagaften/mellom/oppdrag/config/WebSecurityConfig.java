@@ -22,7 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/",
+                .antMatchers(
+                        //"/css/**",
+                        "/",
                         "/home",
                         "/hello",
                         "/greeting",
@@ -41,6 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                //.failureUrl("/login-error")
                 .permitAll()
                 .and()
                 .logout()
