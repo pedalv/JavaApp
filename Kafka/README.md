@@ -80,6 +80,8 @@ Spring Data MongoDB
 
 > [Spring Segurity](https://spring.io/projects/spring-security)
 
+> [9.5. Security Filters](https://docs.spring.io/spring-security/site/docs/5.3.5.BUILD-SNAPSHOT/reference/html5/#features)
+
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/eksempel-app/Kafka-demo.md)
 

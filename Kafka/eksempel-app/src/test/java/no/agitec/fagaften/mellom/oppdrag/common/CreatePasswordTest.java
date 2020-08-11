@@ -7,8 +7,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
+/**
+ *
+ * You should not use Digest Authentication in modern applications because it is not considered secure.
+ * The most obvious problem is that you must store your passwords in plaintext, encrypted, or an MD5 format.
+ * All of these storage formats are considered insecure.
+ *
+ * Instead, you should store credentials using a one way adaptive password hash
+ * (i.e. bCrypt, PBKDF2, SCrypt, etc) which is not supported by Digest Authentication.
+ */
 @Slf4j
 public class CreatePasswordTest {
 

@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 @Slf4j
@@ -19,8 +21,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //System.out.println("**** configure");
-
         http
+                .httpBasic(withDefaults())
                 .authorizeRequests()
                 .antMatchers(
                         //"/css/**",
@@ -56,16 +58,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //System.out.println("**** userDetailsService");
         //Spring Security, OAuth2 Clinet, OAuth2 Resource Server, Apring LDAP, Okta
 
+
         UserDetails user =
                 User.withDefaultPasswordEncoder()
+                        //User.builder()
                         .username("user")
                         .password("password")
+                        //.password(CreatePassword.bCryptPasswordEncoder("password"))
+                        //BCryptPasswordEncoder: password => $2a$16$ahqFCpOXttJlTd9cq8of6uc7tr/Ak8kcDqOfDY/W.cPxOUL1Cfl9K
                         .roles("USER")
                         .build();
 
         log.info(user.toString());
 
-        return new InMemoryUserDetailsManager(user);
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password("password")
+                .roles("USER", "ADMIN")
+                .build();
+
+        log.info(admin.toString());
+
+        return new InMemoryUserDetailsManager(user, admin);
+        //return new InMemoryUserDetailsManager(user);
     }
 
 }

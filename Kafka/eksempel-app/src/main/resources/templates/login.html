@@ -4,10 +4,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{../layouts/main}">
 <head>
-    <title>Login</title>
+    <title>Please Log In</title>
 </head>
 <body>
 <section layout:fragment="content">
+    <h1>Please Log In</h1>
+
     <div>
         <div th:if="${param.error}">
             Invalid username and password.
@@ -16,8 +18,8 @@
             You have been logged out.
         </div>
         <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
+            <div><label> User Name : <input type="text" name="username" placeholder="Username"/> </label></div>
+            <div><label> Password: <input type="password" name="password" placeholder="Password"/> </label></div>
             <div><input type="submit" value="Sign In"/></div>
         </form>
     </div>
