@@ -37,7 +37,10 @@ public class User {
     private Boolean accountNonLocked;
 
 
-    //https://www.baeldung.com/jpa-many-to-many
+    /**
+     * https://www.baeldung.com/jpa-many-to-many
+     * https://www.yawintutor.com/multiple-login-pages-using-spring-boot-security-with-database-authentication/
+     */
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "UserRole",
             joinColumns = @JoinColumn(name = "userId"),
