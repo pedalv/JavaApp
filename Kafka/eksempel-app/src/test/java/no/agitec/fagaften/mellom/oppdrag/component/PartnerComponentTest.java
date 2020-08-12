@@ -28,77 +28,74 @@ public class PartnerComponentTest {
     private MockMvc mockMvc;
 
     @Test
-    public void getPartner_MovedTemporarily() throws Exception {
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/partner")
+    public void getPartnerAccessProtected() throws Exception {
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.get("/partner")
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 
         assertNotNull(result);
         assertNotNull(result.getResponse());
-        assertEquals(302, result.getResponse().getStatus());
+        assertEquals(401, result.getResponse().getStatus());
+        assertEquals(result.getResponse().getErrorMessage(), "Unauthorized"); //Need login
     }
 
     @Test
-    public void accessProtectedRedirectsToLogin() throws Exception {
-        // @formatter:off
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/partner"))
-                .andExpect(status().is3xxRedirection())
+    public void accessProtected_Login_RedirectsToRoot() throws Exception {
+        MvcResult mvcResult = mockMvc
+                .perform(MockMvcRequestBuilders.get("/partner"))
+                .andExpect(status().is4xxClientError()) // Unauthorized
                 .andReturn();
-        // @formatter:on
 
-        assertThat(mvcResult.getResponse().getRedirectedUrl()).endsWith("/login");
+        assertEquals(mvcResult.getResponse().getErrorMessage(), "Unauthorized");
+
+        mvcResult = this.mockMvc.perform(formLogin().user("user").password("password"))
+                .andExpect(authenticated()).andReturn();
+
+        assertEquals(302, mvcResult.getResponse().getStatus());
+        assertEquals(mvcResult.getResponse().getErrorMessage(), null);
+        assertThat(mvcResult.getResponse().getRedirectedUrl()).endsWith("/");
     }
 
     @Test
     public void loginUser() throws Exception {
-        // @formatter:off
         this.mockMvc.perform(formLogin().user("user").password("password"))
                 .andExpect(authenticated());
-        // @formatter:on
     }
 
     @Test
     public void loginInvalidUser() throws Exception {
-        // @formatter:off
         this.mockMvc.perform(formLogin().user("invalid").password("invalid"))
                 .andExpect(unauthenticated())
                 .andExpect(status().is3xxRedirection());
-        // @formatter:on
     }
 
     @Test
     public void loginUserAccessProtected() throws Exception {
-        // @formatter:off
         MvcResult mvcResult = this.mockMvc.perform(formLogin().user("user").password("password"))
                 .andExpect(authenticated()).andReturn();
-        // @formatter:on
 
         MockHttpSession httpSession = (MockHttpSession) mvcResult.getRequest().getSession(false);
 
-        // @formatter:off
         assert httpSession != null;
         this.mockMvc.perform(get("/partner").session(httpSession))
                 .andExpect(status().isOk());
-        // @formatter:on
     }
 
     @Test
     public void loginUserValidateLogout() throws Exception {
-        // @formatter:off
         MvcResult mvcResult = this.mockMvc.perform(formLogin().user("user").password("password"))
                 .andExpect(authenticated()).andReturn();
-        // @formatter:on
 
         MockHttpSession httpSession = (MockHttpSession) mvcResult.getRequest().getSession(false);
 
-        // @formatter:off
         assert httpSession != null;
         this.mockMvc.perform(post("/logout").with(csrf()).session(httpSession))
                 .andExpect(unauthenticated());
-        this.mockMvc.perform(get("/partner").session(httpSession))
+        //login?logout
+        this.mockMvc.perform(get("/login").session(httpSession))
                 .andExpect(unauthenticated())
-                .andExpect(status().is3xxRedirection());
-        // @formatter:on
+                .andExpect(status().isOk()); // is3xxRedirection()
     }
 
 }
