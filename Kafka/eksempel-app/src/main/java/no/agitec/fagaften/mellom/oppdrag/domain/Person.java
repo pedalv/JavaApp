@@ -15,7 +15,7 @@ public class Person implements Serializable {
     private final String name;
 
     @Getter
-    private final int age;
+    private final Integer age;
 
     @PersistenceConstructor
     public Person(String name, int age) {
