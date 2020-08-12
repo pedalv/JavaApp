@@ -3,18 +3,16 @@ package no.agitec.fagaften.mellom.oppdrag.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @Entity
+@SequenceGenerator(name = "Employee_Gen", sequenceName = "Employee_Gen",  initialValue = 0)
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO, generator = "Employee_Gen")
     private Long id;
 
     private String firstName;

@@ -6,7 +6,9 @@ import no.agitec.fagaften.mellom.oppdrag.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
+import java.util.List;
 import java.util.Optional;
 
 @Configuration
@@ -71,9 +73,9 @@ public class LoadDatabaseConfig {
             log.info("");
 
             // fetch an individual customer by ID
-            Optional<Customer> customer = customers.findById(26L);
-            //Customer customer = customers.findById(26L);
-            log.info("== Customer found with findById(26L):");
+            Optional<Customer> customer = customers.findById(0L);
+            //Customer customer = customers.findById(0L);
+            log.info("== Customer found with findById(0L):");
             log.info("--------------------------------");
             customer.ifPresent(value -> log.info(value.toString()));
             //log.info(customer.toString());
@@ -84,7 +86,7 @@ public class LoadDatabaseConfig {
             log.info("--------------------------------------------");
             customers.findByProject("Nagara").forEach(c -> log.info(c.toString()));
             for (Customer c : customers.findByProject("Nagara")) {
-              log.info(c.toString());
+                log.info(c.toString());
             }
             log.info("");
         };
@@ -122,13 +124,14 @@ public class LoadDatabaseConfig {
             log.info("--------------------------------------------");
             partners.findByName("Centric").forEach(centric -> log.info(centric.toString()));
             for (Partner p : partners.findByName("Centric")) {
-              log.info(p.toString());
+                log.info(p.toString());
             }
             log.info("");
         };
     }
 
     @Bean(name = "role")
+    @Order(1)
     CommandLineRunner roles(RoleRepository roles) {
         return (args) -> {
             // save a few roles
@@ -142,16 +145,28 @@ public class LoadDatabaseConfig {
                 log.info(role.toString());
             }
             log.info("");
-
+            // fetch roles by name
+            log.info("== Role found with findByRoleName('USER'):");
+            log.info("-------------------------------");
+            for (Role role : roles.findByRoleName("USER")) {
+                log.info(role.toString());
+            }
+            log.info("");
         };
     }
 
     @Bean(name = "user")
-    CommandLineRunner user(UserRepository users) {
+    @Order(2)
+    CommandLineRunner user(UserRepository users, RoleRepository roles, UserRoleRepository userroles) {
         return (args) -> {
+            User u;
+
             // save a few users
-            users.save(new User("user", "password"));
-            users.save(new User("admin", "password"));
+            u = new User("user", "password");
+            u = users.save(u);
+
+            u = users.save(new User("admin", "password"));
+            u = users.save(u);
 
             // fetch all users
             log.info("== User found with findAll():");
@@ -165,3 +180,16 @@ public class LoadDatabaseConfig {
     }
 
 }
+
+
+/*
+
+            //List<Role> roleUser = roles.findByRoleName("USER");
+            //userroles.save(new UserRole(u.getUserId(), roleUser.get(0).getRoleId()));
+
+            //List<Role> roleAdmin = roles.findByRoleName("ADMIN");
+            //userroles.save(new UserRole(u.getUserId(), roleAdmin.get(0).getRoleId()));
+
+            // users.save(new User("user", "password", roleUser));
+            //users.save(new User("admin", "password", roleAdmin));
+ */
