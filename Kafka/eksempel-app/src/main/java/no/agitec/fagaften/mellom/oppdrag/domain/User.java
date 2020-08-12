@@ -22,7 +22,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator = "User_Gen")
-    private long userId;
+    private Long userId;
 
     private String username;
 

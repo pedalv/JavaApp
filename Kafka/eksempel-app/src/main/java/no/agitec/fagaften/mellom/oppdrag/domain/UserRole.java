@@ -14,15 +14,14 @@ public class UserRole {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator = "UserRole_Gen")
-    private Long id = 0L;
+    private Long id;
 
-    private Long userId = 0L;
+    private Long userId;
 
-    private Long roleId = 0L;
+    private Long roleId;
 
     public UserRole(Long userId, Long roleId) {
         this.userId = userId;
         this.roleId = roleId;
     }
-
 }
