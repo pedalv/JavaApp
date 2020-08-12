@@ -1,12 +1,8 @@
 package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
-import no.agitec.fagaften.mellom.oppdrag.domain.Customer;
-import no.agitec.fagaften.mellom.oppdrag.domain.Employee;
-import no.agitec.fagaften.mellom.oppdrag.domain.Partner;
-import no.agitec.fagaften.mellom.oppdrag.repository.CustomerRepository;
-import no.agitec.fagaften.mellom.oppdrag.repository.EmployeeRepository;
-import no.agitec.fagaften.mellom.oppdrag.repository.PartnerRepository;
+import no.agitec.fagaften.mellom.oppdrag.domain.*;
+import no.agitec.fagaften.mellom.oppdrag.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -129,6 +125,24 @@ public class LoadDatabaseConfig {
               log.info(p.toString());
             }
             log.info("");
+        };
+    }
+
+    @Bean(name = "role")
+    CommandLineRunner roles(RoleRepository roles) {
+        return (args) -> {
+            // save a few roles
+            roles.save(new Role("USER"));
+            roles.save(new Role("ADMIN"));
+
+            // fetch all roles
+            log.info("== Role found with findAll():");
+            log.info("-------------------------------");
+            for (Role role : roles.findAll()) {
+                log.info(role.toString());
+            }
+            log.info("");
+
         };
     }
 
