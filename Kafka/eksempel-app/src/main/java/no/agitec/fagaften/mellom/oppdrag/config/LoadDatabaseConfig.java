@@ -146,4 +146,22 @@ public class LoadDatabaseConfig {
         };
     }
 
+    @Bean(name = "user")
+    CommandLineRunner user(UserRepository users) {
+        return (args) -> {
+            // save a few users
+            users.save(new User("user", "password"));
+            users.save(new User("admin", "password"));
+
+            // fetch all users
+            log.info("== User found with findAll():");
+            log.info("-------------------------------");
+            for (User user : users.findAll()) {
+                log.info(user.toString());
+            }
+            log.info("");
+
+        };
+    }
+
 }
