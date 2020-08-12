@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -160,13 +161,31 @@ public class LoadDatabaseConfig {
     CommandLineRunner user(UserRepository users, RoleRepository roles, UserRoleRepository userroles) {
         return (args) -> {
             User u;
+            UserRole ur;
+            Long userId;
+            Long rolerId;
 
             // save a few users
-            u = new User("user", "password");
-            u = users.save(u);
 
-            u = users.save(new User("admin", "password"));
-            u = users.save(u);
+            //u = new User("user", "password", roleUser);
+            u = new User("user", "password");
+            u = users.saveAndFlush(u);
+            userId = u.getUserId();
+            List<Role> roleUser = roles.findByRoleName("USER");
+            rolerId = roleUser.get(0).getRoleId();
+            log.info("userId: " + userId + ", rolerId: " + rolerId);
+            ur = new UserRole(userId, rolerId);
+            userroles.save(ur);
+
+            //u = new User("admin", "password", roleAdmin);
+            u = new User("admin", "password");
+            u = users.saveAndFlush(u);
+            userId = u.getUserId();
+            List<Role> roleAdmin = roles.findByRoleName("ADMIN");
+            rolerId = roleAdmin.get(0).getRoleId();
+            log.info("userId: " + userId + ", rolerId: " + rolerId);
+            ur = new UserRole(userId, rolerId);
+            userroles.save(ur);
 
             // fetch all users
             log.info("== User found with findAll():");
@@ -176,20 +195,15 @@ public class LoadDatabaseConfig {
             }
             log.info("");
 
+            // fetch all UserRole
+            log.info("== UserRole found with findAll():");
+            log.info("-------------------------------");
+            for (UserRole userroler : userroles.findAll()) {
+                log.info(userroler.toString());
+            }
+            log.info("");
+
         };
     }
 
 }
-
-
-/*
-
-            //List<Role> roleUser = roles.findByRoleName("USER");
-            //userroles.save(new UserRole(u.getUserId(), roleUser.get(0).getRoleId()));
-
-            //List<Role> roleAdmin = roles.findByRoleName("ADMIN");
-            //userroles.save(new UserRole(u.getUserId(), roleAdmin.get(0).getRoleId()));
-
-            // users.save(new User("user", "password", roleUser));
-            //users.save(new User("admin", "password", roleAdmin));
- */
