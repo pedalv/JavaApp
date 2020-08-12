@@ -19,31 +19,31 @@ public class LoadDatabaseConfig {
     @Bean(name = "employee")
     CommandLineRunner initDatabase(EmployeeRepository employ) {
         return (args) -> {
-            log.info("Preloading " + employ.save(new Employee("Carl", "Kristian Eriksen", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Francois", "Allix", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Frode", "Johansen", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Maria", "Selivanova", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Pedro", "Alves", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Runar", "Opsahl", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Steinar", "Haug", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Ståle", "Sannerud", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Torfinn", "Lie", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Thorleif", "Stene", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Andre", "Aubert", "Seniorutvikler")));
-            log.info("Preloading " + employ.save(new Employee("Fred", "Inge Henden", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Carl", "Kristian Eriksen", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Francois", "Allix", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Frode", "Johansen", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Maria", "Selivanova", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Pedro", "Alves", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Runar", "Opsahl", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Steinar", "Haug", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Ståle", "Sannerud", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Torfinn", "Lie", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Thorleif", "Stene", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Andre", "Aubert", "Seniorutvikler")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Fred", "Inge Henden", "Seniorutvikler")));
 
-            log.info("Preloading " + employ.save(new Employee("Bjørn", "Jåsund", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Aneela", "Liaquat", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Beatriz", "Perez", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Bjarne", "Stensrød", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Ingvild", "Frogner", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Nicholas", "Larsson", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Silje", "Eidsli", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Wenche", "Skavnes", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Lene", "Bråtesveen", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Kjell", "Nybråthen", "Leader")));
-            log.info("Preloading " + employ.save(new Employee("Nina", "Olsen", "Administrasjon")));
-            log.info("Preloading " + employ.save(new Employee("Stig", "Falste", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Bjørn", "Jåsund", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Aneela", "Liaquat", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Beatriz", "Perez", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Bjarne", "Stensrød", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Ingvild", "Frogner", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Nicholas", "Larsson", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Silje", "Eidsli", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Wenche", "Skavnes", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Lene", "Bråtesveen", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Kjell", "Nybråthen", "Leader")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Nina", "Olsen", "Administrasjon")));
+            log.info("Preloading " + employ.saveAndFlush(new Employee("Stig", "Falste", "Leader")));
 
         };
     }
@@ -52,18 +52,18 @@ public class LoadDatabaseConfig {
     CommandLineRunner customer(CustomerRepository customers) {
         return (args) -> {
             // save a few customers
-            customers.save(new Customer("NAV", "Automastisk Frikort"));
-            customers.save(new Customer("Apotek 1", "Nagara"));
-            customers.save(new Customer("Direktoratet for e-helse ", "Digital skjema RØF, TOD"));
-            customers.save(new Customer("Garantikassen for fiskere", "GFF ELSAM 2015"));
-            customers.save(new Customer("NAV/Helsedirektoratet", "KUKR/SAPO"));
-            customers.save(new Customer("Senter for pasientmedvirkning og samhandlingsforskning (SPS)", "SpsWebPage, ReConnect-App og -Web"));
-            customers.save(new Customer("Statnett", "Responsive desegn av internettløsning"));
-            customers.save(new Customer("Norges Forskningsråd", "Forvaltning av nettsider prosjekter"));
-            customers.save(new Customer("Gjensidige Forsikring", "Forvaltning"));
-            customers.save(new Customer("A-Pressen Digital Medier (Amedia)", "Nettaviser, Zett.no"));
-            customers.save(new Customer("More Software Solutions", "Digital Skjema"));
-            customers.save(new Customer("UDP AS", "Involvert i et internt prosjekt"));
+            customers.saveAndFlush(new Customer("NAV", "Automastisk Frikort"));
+            customers.saveAndFlush(new Customer("Apotek 1", "Nagara"));
+            customers.saveAndFlush(new Customer("Direktoratet for e-helse ", "Digital skjema RØF, TOD"));
+            customers.saveAndFlush(new Customer("Garantikassen for fiskere", "GFF ELSAM 2015"));
+            customers.saveAndFlush(new Customer("NAV/Helsedirektoratet", "KUKR/SAPO"));
+            customers.saveAndFlush(new Customer("Senter for pasientmedvirkning og samhandlingsforskning (SPS)", "SpsWebPage, ReConnect-App og -Web"));
+            customers.saveAndFlush(new Customer("Statnett", "Responsive desegn av internettløsning"));
+            customers.saveAndFlush(new Customer("Norges Forskningsråd", "Forvaltning av nettsider prosjekter"));
+            customers.saveAndFlush(new Customer("Gjensidige Forsikring", "Forvaltning"));
+            customers.saveAndFlush(new Customer("A-Pressen Digital Medier (Amedia)", "Nettaviser, Zett.no"));
+            customers.saveAndFlush(new Customer("More Software Solutions", "Digital Skjema"));
+            customers.saveAndFlush(new Customer("UDP AS", "Involvert i et internt prosjekt"));
 
             // fetch all customers
             log.info("== Customers found with findAll():");
@@ -136,8 +136,8 @@ public class LoadDatabaseConfig {
     CommandLineRunner roles(RoleRepository roles) {
         return (args) -> {
             // save a few roles
-            roles.save(new Role("USER"));
-            roles.save(new Role("ADMIN"));
+            roles.saveAndFlush(new Role("USER"));
+            roles.saveAndFlush(new Role("ADMIN"));
 
             // fetch all roles
             log.info("== Role found with findAll():");
@@ -175,17 +175,20 @@ public class LoadDatabaseConfig {
             rolerId = roleUser.get(0).getRoleId();
             log.info("userId: " + userId + ", rolerId: " + rolerId);
             ur = new UserRole(userId, rolerId);
-            userroles.save(ur);
+            userroles.saveAndFlush(ur);
 
             //u = new User("admin", "password", roleAdmin);
             u = new User("admin", "password");
             u = users.saveAndFlush(u);
             userId = u.getUserId();
+                log.info("userId: " + userId + ", rolerId: " + rolerId);
+                ur = new UserRole(userId, rolerId);
+                userroles.saveAndFlush(ur);
             List<Role> roleAdmin = roles.findByRoleName("ADMIN");
             rolerId = roleAdmin.get(0).getRoleId();
             log.info("userId: " + userId + ", rolerId: " + rolerId);
             ur = new UserRole(userId, rolerId);
-            userroles.save(ur);
+            userroles.saveAndFlush(ur);
 
             // fetch all users
             log.info("== User found with findAll():");
