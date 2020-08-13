@@ -28,6 +28,21 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 5. Tips, Tricks and Examples: https://docs.spring.io/spring-kafka/docs/2.5.4.RELEASE/reference/html/#tips-n-tricks
+ * ---
+ * IMPORTANT TO RUN APPLICATION Zookeeper OG Kafka SERVER MUST BE RUNN
+ * - kafka_2.12-2.5.0> .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+ * - kafka_2.12-2.5.0> .\bin\windows\kafka-server-start.bat .\config\server.properties
+ * ---
+ * log.dirs=/tmp/kafka-logs-online ==== server.properties
+ *
+ * FEIL:
+ *  [2020-08-13 13:33:35,262] WARN [ReplicaManager broker=0] Broker 0 stopped fetcher for partitions
+ *   and stopped moving logs for partitions  because they are in the failed log directory
+ *   D:\tmp\kafka-logs-online. (kafka.server.ReplicaManager)
+ *
+ * SOLUTION:
+ *  https://stackoverflow.com/questions/51644409/kafka-broker-fails-because-all-log-dirs-have-failed/57036581
+ *
  */
 @Configuration
 @Slf4j
@@ -46,14 +61,6 @@ public class SpringApacheKafkaApplicationConfig {
     /**
      * Online
      * Run one time only to create topic
-     *
-     * [2020-08-13 13:33:35,262] WARN [ReplicaManager broker=0] Broker 0 stopped fetcher for partitions
-     *  and stopped moving logs for partitions  because they are in the failed log directory
-     *  D:\tmp\kafka-logs-online. (kafka.server.ReplicaManager)
-     *
-     *  log.dirs=/tmp/kafka-logs-online ==== server.properties
-     *  Løsning: https://stackoverflow.com/questions/51644409/kafka-broker-fails-because-all-log-dirs-have-failed/57036581
-     *
      * @return
      */
     @Bean
