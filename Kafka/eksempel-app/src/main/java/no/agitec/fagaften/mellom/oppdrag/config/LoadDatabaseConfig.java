@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -181,9 +180,9 @@ public class LoadDatabaseConfig {
             u = new User("admin", "password");
             u = users.saveAndFlush(u);
             userId = u.getUserId();
-                log.info("userId: " + userId + ", rolerId: " + rolerId);
-                ur = new UserRole(userId, rolerId);
-                userroles.saveAndFlush(ur);
+            log.info("userId: " + userId + ", rolerId: " + rolerId);
+            ur = new UserRole(userId, rolerId);
+            userroles.saveAndFlush(ur);
             List<Role> roleAdmin = roles.findByRoleName("ADMIN");
             rolerId = roleAdmin.get(0).getRoleId();
             log.info("userId: " + userId + ", rolerId: " + rolerId);
@@ -203,6 +202,50 @@ public class LoadDatabaseConfig {
             log.info("-------------------------------");
             for (UserRole userroler : userroles.findAll()) {
                 log.info(userroler.toString());
+            }
+            log.info("");
+
+            // fetch user by methods
+            log.info("==  findByUsername(username):");
+            log.info("-------------------------------");
+            for (User user : users.findByUsername("user")) {
+                log.info(user.toString());
+            }
+            log.info("");
+            log.info("==  findByEnable(enable):");
+            log.info("-------------------------------");
+            for (User user : users.findByEnable(true)) {
+                log.info(user.toString());
+            }
+            log.info("");
+            log.info("==  findByAccountNonExpired(accountNonExpired):");
+            log.info("-------------------------------");
+            for (User user : users.findByAccountNonExpired(true)) {
+                log.info(user.toString());
+            }
+            log.info("");
+            log.info("==  findByEnableAndAccountNonExpired(enable, accountNonExpired):");
+            log.info("-------------------------------");
+            for (User user : users.findByEnableAndAccountNonExpired(true,  true)) {
+                log.info(user.toString());
+            }
+            log.info("");
+            log.info("==  findQueryEnableAndAccountNonExpired(enable, accountNonExpired):");
+            log.info("-------------------------------");
+            for (User user : users.findQueryEnableAndAccountNonExpired(true,  true)) {
+                log.info(user.toString());
+            }
+            log.info("");
+            log.info("==  findUser(userName):");
+            log.info("-------------------------------");
+            for (User user : users.findUser("user")) {
+                log.info(user.toString());
+            }
+            log.info("");
+            log.info("==  findAdmin(userName):");
+            log.info("-------------------------------");
+            for (User user : users.findAdmin("admin")) {
+                log.info(user.toString());
             }
             log.info("");
 
