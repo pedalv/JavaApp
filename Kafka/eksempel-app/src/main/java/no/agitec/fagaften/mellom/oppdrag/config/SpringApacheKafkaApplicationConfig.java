@@ -46,6 +46,14 @@ public class SpringApacheKafkaApplicationConfig {
     /**
      * Online
      * Run one time only to create topic
+     *
+     * [2020-08-13 13:33:35,262] WARN [ReplicaManager broker=0] Broker 0 stopped fetcher for partitions
+     *  and stopped moving logs for partitions  because they are in the failed log directory
+     *  D:\tmp\kafka-logs-online. (kafka.server.ReplicaManager)
+     *
+     *  log.dirs=/tmp/kafka-logs-online ==== server.properties
+     *  Løsning: https://stackoverflow.com/questions/51644409/kafka-broker-fails-because-all-log-dirs-have-failed/57036581
+     *
      * @return
      */
     @Bean
