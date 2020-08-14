@@ -19,6 +19,9 @@ import java.util.Set;
  *  ArrayList
  *  LinkedList
  *
+ * Having most of the associations defined as LAZY requires us to use the “join fetch” JPQL operator
+ *  and retrieve only the associations we need to fulfill a given request.
+ *
  */
 public interface UserRepository extends JpaRepository<User, Long> {
 
@@ -36,14 +39,20 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "and u.accountNonExpired = :accountNonExpired ")
     Set<User> findQueryEnableAndAccountNonExpired(@Param("enable") Boolean enable, @Param("accountNonExpired") Boolean accountNonExpired);
 
-
-    //https://www.w3schools.com/sql/sql_join.asp
-    //https://www.dofactory.com/sql/join
+    /**
+     * for test:
+     * https://www.w3schools.com/sql/sql_join.asp
+     * https://www.dofactory.com/sql/join
+     *
+     * @param username
+     * @return
+     */
     @Query("SELECT u FROM User u " +
-            "join UserRole ur " + //2
-            //"INNER JOIN UserRole ur " + //2
-            //"LEFT JOIN UserRole ur " + //2
-            //"RIGHT JOIN UserRole ur " + //2
+            "join fetch UserRole ur " + //2 for admin og 1 for user
+            //"join UserRole ur " + //2 for admin og 1 for user
+            //"INNER JOIN UserRole ur " + //2 for admin og 1 for user
+            //"LEFT JOIN UserRole ur " + //2 for admin og 1 for user
+            //"RIGHT JOIN UserRole ur " + //2 for admin og 1 for user
             "on u.userId=ur.userId " +
             "WHERE u.username=:username " +
             //"and ur.roleName='USER' " +

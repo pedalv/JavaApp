@@ -212,6 +212,12 @@ public class LoadDatabaseConfig {
                 log.info(user.toString());
             }
             log.info("");
+            log.info("==  findUserByUsername(username):");
+            log.info("-------------------------------");
+            for (User user : users.findUserByUsername("admin")) {
+                log.info(user.toString());
+            }
+            log.info("");
             log.info("==  findByEnable(enable):");
             log.info("-------------------------------");
             for (User user : users.findByEnable(true)) {
