@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.*;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 
+import java.util.Base64;
 import java.util.HashMap;
 
 
@@ -24,8 +25,50 @@ public class CreatePassword {
     private static CharSequence cs = "myPassword";
 
     public static void main(String ... args) {
+
         createCustomDelegatingPasswordEncoder();
 
+        //How to fix: Encode on Server and Client - password
+        //https://www.baeldung.com/spring-security-registration-password-encoding-bcrypt
+        //https://www.baeldung.com/spring-security-5-default-password-encoder
+        //https://stackoverflow.com/questions/246801/how-can-you-encode-a-string-to-base64-in-javascript
+        passwordDBBase64Str();
+        passwordDBBbCryptPasswordEncoderStr();
+
+    }
+
+    private static void passwordDBBbCryptPasswordEncoderStr() {
+
+        String plainTextPassword = "password";
+        String encodedString = new BCryptPasswordEncoder().encode(plainTextPassword); //The generated password are salted and therefore different.
+        log.info("originalInput: " + plainTextPassword + ", encodedString: " + encodedString);
+        //originalInput: password, encodedString: $2a$10$.Su.0yl8Hl1vyDgiCBU1xei4vG0Wtdt03TFdeZoSulv79i/ntAR3G
+        //originalInput: password, encodedString: $2a$10$Hcc2GlIea8tTTNB4mNpl1exDol5YWjL0DOotUS8e00XWLRgG/bKbq
+
+    }
+
+    private static void passwordDBBase64Str() {
+        String plainTextPassword = "password";
+        String encodedString = Base64.getEncoder().encodeToString(plainTextPassword.getBytes());
+        byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+        String decodedString = new String(decodedBytes);
+        log.info("originalInput: " + plainTextPassword + ", encodedString: " + encodedString + ", decodedString: " +decodedString);
+        //originalInput: password, encodedString: cGFzc3dvcmQ=, decodedString: password
+        //originalInput: password, encodedString: cGFzc3dvcmQ=, decodedString: password
+
+
+        /*
+            // Define the string
+            var string = 'Hello World!';
+
+            // Encode the String
+            var encodedString = btoa(string);
+            console.log(encodedString); // Outputs: "SGVsbG8gV29ybGQh"
+
+            // Decode the String
+            var decodedString = atob(encodedString);
+            console.log(decodedString); // Outputs: "Hello World!"
+         */
     }
 
     private static void createCustomDelegatingPasswordEncoder() {
@@ -98,7 +141,5 @@ public class CreatePassword {
         String result = encoder.encode(cs);
         log.info("SCryptPasswordEncoder: " + cs.toString() + " => " + result);
     }
-
-
 
 }

@@ -1,6 +1,7 @@
 package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
+import no.agitec.fagaften.mellom.oppdrag.service.UserDetailsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +9,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -22,7 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    UserDetailsService userDetailsServiceImpl;
+    //UserDetailsService userDetailsServiceImpl;
+    UserDetailsServiceImp userDetailsServiceImpl;
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -85,6 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 /*
+TODO
 Bean - BCryptPasswordEncoder
 Cinfig - AuthenticationManagerBuilder
  */

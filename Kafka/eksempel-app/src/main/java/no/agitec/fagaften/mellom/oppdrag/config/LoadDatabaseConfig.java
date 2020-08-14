@@ -92,7 +92,6 @@ public class LoadDatabaseConfig {
         };
     }
 
-
     @Bean(name = "partner")
     CommandLineRunner partner(PartnerRepository partners) {
         return (args) -> {
@@ -161,14 +160,16 @@ public class LoadDatabaseConfig {
     @Order(2)
     CommandLineRunner user(UserRepository users, RoleRepository roles, UserRoleRepository userroles) {
         return (args) -> {
+
+            // save a few users
+
             User u;
             UserRole ur;
             Long userId;
             Long rolerId;
 
-            // save a few users
-
             u = new User("guest", "password");
+            //u = new User("guest", encodedString); // Base64.getEncoder().encodeToString("password".getBytes()) => cGFzc3dvcmQ=
             u = users.saveAndFlush(u);
             userId = u.getUserId();
             List<Role> roleGuest = roles.findByRoleName("GUEST");
