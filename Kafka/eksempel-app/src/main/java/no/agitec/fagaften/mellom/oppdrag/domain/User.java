@@ -93,6 +93,7 @@ public class User {
         this.accountNonLocked = true;
     }
 
+    /*
     public User(String username, String password, List<Role> roles) {
         this.username = username;
         this.password = password;
@@ -102,5 +103,6 @@ public class User {
         this.credentialsNonExpired = true;
         this.accountNonLocked = true;
     }
+     */
 
 }
