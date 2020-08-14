@@ -135,7 +135,9 @@ public class LoadDatabaseConfig {
     CommandLineRunner roles(RoleRepository roles) {
         return (args) -> {
             // save a few roles
+            roles.saveAndFlush(new Role("GUEST"));
             roles.saveAndFlush(new Role("USER"));
+            roles.saveAndFlush(new Role("STAFF"));
             roles.saveAndFlush(new Role("ADMIN"));
 
             // fetch all roles
@@ -166,7 +168,15 @@ public class LoadDatabaseConfig {
 
             // save a few users
 
-            //u = new User("user", "password", roleUser);
+            u = new User("guest", "password");
+            u = users.saveAndFlush(u);
+            userId = u.getUserId();
+            List<Role> roleGuest = roles.findByRoleName("GUEST");
+            rolerId = roleGuest.get(0).getRoleId();
+            log.info("userId: " + userId + ", rolerId: " + rolerId);
+            ur = new UserRole(userId, rolerId);
+            userroles.saveAndFlush(ur);
+
             u = new User("user", "password");
             u = users.saveAndFlush(u);
             userId = u.getUserId();
@@ -176,18 +186,42 @@ public class LoadDatabaseConfig {
             ur = new UserRole(userId, rolerId);
             userroles.saveAndFlush(ur);
 
-            //u = new User("admin", "password", roleAdmin);
-            u = new User("admin", "password");
+            u = new User("staff", "password");
             u = users.saveAndFlush(u);
             userId = u.getUserId();
+            List<Role> roleStaff = roles.findByRoleName("STAFF");
+            rolerId = roleStaff.get(0).getRoleId();
             log.info("userId: " + userId + ", rolerId: " + rolerId);
             ur = new UserRole(userId, rolerId);
             userroles.saveAndFlush(ur);
+
+            u = new User("admin", "password");
+            u = users.saveAndFlush(u);
+            userId = u.getUserId();
             List<Role> roleAdmin = roles.findByRoleName("ADMIN");
             rolerId = roleAdmin.get(0).getRoleId();
             log.info("userId: " + userId + ", rolerId: " + rolerId);
             ur = new UserRole(userId, rolerId);
             userroles.saveAndFlush(ur);
+
+            u = new User("fake", "password");
+            u = users.saveAndFlush(u);
+            userId = u.getUserId();
+            Long roleGuestId = roles.findByRoleName("GUEST").get(0).getRoleId();
+            ur = new UserRole(userId, roleGuestId);
+            userroles.saveAndFlush(ur);
+            Long roleUserId = roles.findByRoleName("USER").get(0).getRoleId();
+            ur = new UserRole(userId, roleUserId);
+            userroles.saveAndFlush(ur);
+            Long roleStaffId = roles.findByRoleName("STAFF").get(0).getRoleId();
+            ur = new UserRole(userId, roleStaffId);
+            userroles.saveAndFlush(ur);
+            Long roleAdminId = roles.findByRoleName("ADMIN").get(0).getRoleId();
+            ur = new UserRole(userId, roleAdminId);
+            userroles.saveAndFlush(ur);
+            log.info("userId: " + userId +
+                    ", roleGuestId: " + roleGuestId + ", roleUserId: " + roleUserId +
+                    ", roleStaffId: " + roleStaffId + ", roleAdminId: " + roleAdminId);
 
             // fetch all users
             log.info("== User found with findAll():");

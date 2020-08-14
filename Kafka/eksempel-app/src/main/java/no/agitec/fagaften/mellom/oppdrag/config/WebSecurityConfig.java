@@ -1,15 +1,15 @@
 package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -17,6 +17,17 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 @Slf4j
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    UserDetailsService userDetailsServiceImpl;
+
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder);
+    }
 
     /**
      * 12.1. OAuth 2.0 Login
@@ -65,12 +76,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
-    /**
-     * ROLE_ADMIN ⇒ ROLE_STAFF ⇒ ROLE_USER ⇒ ROLE_GUEST.
-     * A user who is authenticated with ROLE_ADMIN, will behave as if they have all four roles
-     *
-     * @return
-     */
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+}
+
+
+/*
+Bean - BCryptPasswordEncoder
+Cinfig - AuthenticationManagerBuilder
+ */
+
+
+/*
+    //Before
+    //WebSecurityConfigurerAdapter -> userDetailsService() === Bean Override
+
+    //Now
+    //class UserDetailsServiceImp implements UserDetailsService -> loadUserByUsername() === Override
+
+
+    //Not user anymore
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
@@ -106,5 +134,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new InMemoryUserDetailsManager(user, admin);
         //return new InMemoryUserDetailsManager(user);
     }
-
-}
+ */
