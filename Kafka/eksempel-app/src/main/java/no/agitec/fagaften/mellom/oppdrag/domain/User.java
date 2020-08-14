@@ -6,19 +6,33 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * org.springframework.security.core.userdetails.User
+ *  Username: user;
+ *  Password: [PROTECTED];
+ *  Enabled: true;
+ *  AccountNonExpired: true;
+ *  credentialsNonExpired: true;
+ *  AccountNonLocked: true;
+ *  Granted Authorities: ROLE_USER,ROLE_dro,ROLE_pe
+ *
+ * org.springframework.security.core.userdetails.User.UserBuilder
+ *  username;
+ *  password;
+ *  authorities;
+ *  accountExpired;
+ *  accountLocked;
+ *  credentialsExpired;
+ *  disabled;
+ *  passwordEncoder;
+ *
+ *  Users = User + UserBuilder
+ */
 @Data
 @NoArgsConstructor
 @Entity
 @SequenceGenerator(name = "User_Gen", sequenceName = "User_Gen",  initialValue = 0)
 public class User {
-
-    //Username: user;
-    // Password: [PROTECTED];
-    // Enabled: true;
-    // AccountNonExpired: true;
-    // credentialsNonExpired: true;
-    // AccountNonLocked: true;
-    // Granted Authorities: ROLE_USER,ROLE_dro,ROLE_pe
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator = "User_Gen")
@@ -29,12 +43,16 @@ public class User {
     private String password;
 
     private Boolean enable;
+    private boolean disabled;
 
     private Boolean accountNonExpired;
+    private boolean accountExpired;
 
     private Boolean credentialsNonExpired;
+    private boolean credentialsExpired;
 
     private Boolean accountNonLocked;
+    private boolean accountLocked;
 
     /**
      * https://www.baeldung.com/jpa-many-to-many
@@ -92,17 +110,5 @@ public class User {
         this.credentialsNonExpired = true;
         this.accountNonLocked = true;
     }
-
-    /*
-    public User(String username, String password, List<Role> roles) {
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
-        this.enable = true;
-        this.accountNonExpired = true;
-        this.credentialsNonExpired = true;
-        this.accountNonLocked = true;
-    }
-     */
 
 }
