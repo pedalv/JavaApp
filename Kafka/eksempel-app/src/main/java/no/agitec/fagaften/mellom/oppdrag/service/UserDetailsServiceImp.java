@@ -40,7 +40,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
         usersList.forEach( u -> log.info(u.toString())  );
         //User(userId=1, username=user, password=password, enable=true, disabled=false, accountNonExpired=true, accountExpired=false, credentialsNonExpired=true, credentialsExpired=false, accountNonLocked=true, accountLocked=false, roles=[Role(roleId=1, roleName=USER)])
         //Username: user; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_USER,ROLE_dro,ROLE_pe
-        //How to fix: Encode on Server and Client - password
+        //TODO: Encode password in database on Server and Client side. See passwordDBBase64Str() method in CreatePassword class
 
         if (usersList != null && !usersList.isEmpty()) {
             User user = usersList.iterator().next();
@@ -54,7 +54,8 @@ public class UserDetailsServiceImp implements UserDetailsService {
                     .builder()
                     .username(user.getUsername())
                     .password( bCryptPasswordEncoder.encode(user.getPassword()) ) //password value store in database
-//TODO: How compare password web and db? The generated password are salted and therefore different
+//TODO: How compare password web and db? Implement in Spring Segurity inside index action.
+// The generated password are salted and therefore different.
                     .disabled(!user.getEnable())
                     .accountExpired(!user.getAccountNonExpired())
                     .accountLocked(!user.getAccountNonLocked())
