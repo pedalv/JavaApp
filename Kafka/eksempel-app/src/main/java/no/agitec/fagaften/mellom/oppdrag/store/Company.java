@@ -18,4 +18,7 @@ public class Company {
     @Column(unique = true, updatable = false)
     private String name;
 
+    public Company(String name) {
+        this.name = name;
+    }
 }

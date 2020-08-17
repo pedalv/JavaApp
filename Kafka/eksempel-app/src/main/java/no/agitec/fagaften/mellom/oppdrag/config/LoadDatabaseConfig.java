@@ -3,6 +3,8 @@ package no.agitec.fagaften.mellom.oppdrag.config;
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.domain.*;
 import no.agitec.fagaften.mellom.oppdrag.repository.*;
+import no.agitec.fagaften.mellom.oppdrag.repository.store.*;
+import no.agitec.fagaften.mellom.oppdrag.store.Company;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -289,6 +291,34 @@ public class LoadDatabaseConfig {
                 log.info(user.toString());
             }
             log.info("");
+
+        };
+    }
+
+    @Bean(name = "store")
+    CommandLineRunner store(CompanyRepository companies, ImageRepository images, ImporterRepository importers,
+                           ProductRepsitory products, WarehouseProductInforRepository warehouseProducts) {
+        return (args) -> {
+
+            companies.saveAndFlush(new Company("Agitec AS"));
+            companies.saveAndFlush(new Company("Scienta AS"));
+            companies.saveAndFlush(new Company("Mattilsynet, Oslo"));
+            companies.saveAndFlush(new Company("NAV"));
+            // fetch all companies
+            log.info("== Company found with findAll():");
+            log.info("-------------------------------");
+            for (Company company : companies.findAll()) {
+                log.info(company.toString());
+            }
+            log.info("");
+
+
+
+
+
+
+
+            log.info("Todo");
 
         };
     }
