@@ -3,6 +3,7 @@ package no.agitec.fagaften.mellom.oppdrag.web.controller;
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.service.PartnerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ public class PartnerController {
 
     //@RequestMapping(method = RequestMethod.GET)
     @GetMapping()
+    @Secured("ROLE_USER")
     public String mainPartner() {
         return "partner";
     }

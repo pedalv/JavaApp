@@ -8,20 +8,35 @@
 </head>
 <body>
 <section layout:fragment="content">
-    <h1>Please Log In</h1>
+    <div class="container">
+        <h1>Please Log In</h1>
 
-    <div>
-        <div th:if="${param.error}">
-            Invalid username and password.
+        <div>
+            <p th:if="${param.error}">
+                Invalid username and password.
+            </p>
+            <P th:if="${param.logout}">
+                You have been logged out.
+            </P>
         </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
+
         <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username" placeholder="Username"/> </label></div>
-            <div><label> Password: <input type="password" name="password" placeholder="Password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+            <p>
+                <label for="username" >Username</label>
+                <input type="text" id="username" name="username" placeholder="Username" />
+            </p>
+
+            <p>
+                <label for="password" >Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" />
+            </p>
+
+
+            <p>
+                <input type="submit" class="btn btn-lg btn-primary" value="Sign In"/>
+            </p>
         </form>
+
     </div>
 </section>
 </body>

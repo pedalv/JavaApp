@@ -86,9 +86,70 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 /*
+=== https://github.com/spring-guides/top-spring-security-architecture
+
+Authentication and Access Control: authentication (who are you?) and authorization (what are you allowed to do?)
+- Authentication
+- Customizing Authentication Managers
+- Authorization or Access Control
+Web Security: Client -> Filter -> Filter -> Filter -> Servlet
+- Creating and Customizing Filter Chains
+- Request Matching for Dispatch and Authorization
+- Combining Application Security Rules with Actuator Rules
+Method Security
+Working with Threads
+- Processing Secure Methods Asynchronously
+
+
+
+1. SecurityContextHolder
+1.1 SecurityContext
+1.2 Authentication
+1.2.1 Principal - Credentials - Authorities
+
+SecurityContextHolder: authenticated -> SecurityContext
+Authentication: GrantedAuthority
+
+1. AuthenticationManager
+1.1 ProviderManager
+1.1.1 AuthenticationProvider
+
+AuthenticationManager(Authentication): the API that defines how Spring Security's Filters perform authentication
+ProviderManager: the most commom implementation of AuthenticationManager
+AuthenticationProvider: used by ProviderManager to perform a specific type of authentication
+
+Request Credentials with AuthenticationEntryPoint: used for requesting credentials from a client
+
+AbstractAuthenticationProcessingFilter - a base Fikter used for authentication
+
+1. AbstractAuthenticationProcessingFilter
+2. Authentication - AuthenticationManager
+3 Failure
+- SecurityContextHolder
+- RememberMeServices
+- Authenication FailureHandler
+4 Success
+- SessionAuthenticationStrategy
+- SecurityContextHolder
+- RememberMeServices
+- ApplicationEventPublisher
+- AuthenticationSuccessHandler
+
+
+
+
+
+
+
+
+
+
+
+
+
 TODO
 Bean - BCryptPasswordEncoder
-Cinfig - AuthenticationManagerBuilder
+Config - AuthenticationManagerBuilder
  */
 
 
