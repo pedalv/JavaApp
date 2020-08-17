@@ -24,3 +24,13 @@ public class KafkaSender {
     }
 
 }
+
+
+/*
+TIPS
+
+ConnectionFactory - speak with Broker
+ProducerFactory - see Sending Messages
+ConsumerFactory - see Receiving Messages
+KafkaAdmin - see Configuring Topics
+ */
