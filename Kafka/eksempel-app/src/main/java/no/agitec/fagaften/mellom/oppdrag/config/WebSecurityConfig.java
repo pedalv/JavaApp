@@ -101,7 +101,6 @@ Working with Threads
 - Processing Secure Methods Asynchronously
 
 
-
 1. SecurityContextHolder
 1.1 SecurityContext
 1.2 Authentication
@@ -134,22 +133,47 @@ AbstractAuthenticationProcessingFilter - a base Fikter used for authentication
 - RememberMeServices
 - ApplicationEventPublisher
 - AuthenticationSuccessHandler
+*/
 
+/*
+TIPS
 
+@RequestMapping("/foo")
+public String foo(@AuthenticationPrincipal User user) {
+  ... // do stuff with user
+}
 
+@RequestMapping("/foo")
+public String foo(Principal principal) {
+  Authentication authentication = (Authentication) principal;
+  User = (User) authentication.getPrincipal();
+  ... // do stuff with user
+}
 
+Authentication auth = httpServletRequest.getUserPrincipal();
+// assume integrated custom UserDetails called MyCustomUserDetails
+// by default, typically instance of UserDetails
+MyCustomUserDetails userDetails = (MyCustomUserDetails) auth.getPrincipal();
+String firstName = userDetails.getFirstName();
+String lastName = userDetails.getLastName();
 
+KOTLIN
+https://github.com/spring-projects/spring-security/tree/master/samples/boot/kotlin
+*/
 
+/*
+=== https://docs.spring.io/spring-security/site/docs/5.3.5.BUILD-SNAPSHOT/reference/html5/#jackson
+Jackson Support
 
+ObjectMapper mapper = new ObjectMapper();
+ClassLoader loader = getClass().getClassLoader();
+List<Module> modules = SecurityJackson2Modules.getModules(loader);
+mapper.registerModules(modules);
 
-
-
-
-
-
-TODO
-Bean - BCryptPasswordEncoder
-Config - AuthenticationManagerBuilder
+// ... use ObjectMapper as normally ...
+SecurityContext context = new SecurityContextImpl();
+// ...
+String json = mapper.writeValueAsString(context);
  */
 
 
