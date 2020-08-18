@@ -2,7 +2,15 @@ package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.domain.*;
+import no.agitec.fagaften.mellom.oppdrag.domain.comment.Post;
+import no.agitec.fagaften.mellom.oppdrag.domain.comment.PostComment;
+import no.agitec.fagaften.mellom.oppdrag.domain.comment.PostDetail;
+import no.agitec.fagaften.mellom.oppdrag.domain.comment.PostTag;
 import no.agitec.fagaften.mellom.oppdrag.repository.*;
+import no.agitec.fagaften.mellom.oppdrag.repository.comment.PostCommentRepository;
+import no.agitec.fagaften.mellom.oppdrag.repository.comment.PostDetailRepository;
+import no.agitec.fagaften.mellom.oppdrag.repository.comment.PostRepository;
+import no.agitec.fagaften.mellom.oppdrag.repository.comment.PostTagRepository;
 import no.agitec.fagaften.mellom.oppdrag.repository.store.*;
 import no.agitec.fagaften.mellom.oppdrag.store.*;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
+import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
@@ -297,6 +306,90 @@ public class LoadDatabaseConfig {
         };
     }
 
+    @Bean(name = "comment")
+    CommandLineRunner comment(PostRepository posts, PostCommentRepository postcomments,
+                              PostDetailRepository postdetails, PostTagRepository posttags) {
+        return (args) -> {
+
+            Post post;
+            PostComment postcomment;
+            PostDetail postdetail;
+            PostTag postTag;
+
+        //Create Post 1
+            post = new Post("Post 1 - Mellom oppdrag");
+            post = posts.saveAndFlush(post);
+
+        //PostComment save automatic in database
+            postcomment = new PostComment("review1");
+            //postcomment.setPost(post);
+            post.getComments().add(postcomment);
+        //PostComment save in database via Post
+            post = posts.saveAndFlush(post);
+        //Save PostDetail in database
+            postdetail = new PostDetail("Pedro");
+            //postdetail.setPost(post);
+            //postdetails.saveAndFlush(postdetail); //detached entity passed to persist
+
+
+
+
+        //PostComment save automatic in database
+            postcomment = new PostComment("review2");
+            //postcomment.setPost(post);
+            post.getComments().add(postcomment);
+        //PostComment and PostDetail save in database via Post
+            post = posts.saveAndFlush(post);
+        //Save PostDetail in database
+            postdetail = new PostDetail("Pedro2");
+            //postdetail.setPost(post);
+            //postdetails.saveAndFlush(postdetail); //detached entity passed to persist
+
+
+        //Create PostTag
+            Set<Post> postset = new LinkedHashSet<>();
+            postset.add(post);
+            postTag = new PostTag("Develop", postset);
+            postTag = posttags.saveAndFlush(postTag);
+
+
+            List<PostTag> tags = posttags.findAll(); //comments is null??????
+
+
+
+            // fetch all posts
+            log.info("== Post found with findAll():");
+            log.info("-------------------------------");
+            for (Post p : posts.findAll()) {
+                log.info(p.toString());
+            }
+            log.info("");
+            // fetch all postcomments
+            log.info("== PostComment found with findAll():");
+            log.info("-------------------------------");
+            for (PostComment pc3 : postcomments.findAll()) {
+                log.info(pc3.toString());
+            }
+            log.info("");
+            // fetch all postdetails
+            log.info("== PostDetail found with findAll():");
+            log.info("-------------------------------");
+            for (PostDetail pd : postdetails.findAll()) {
+                log.info(pd.toString());
+            }
+            log.info("");
+            // fetch all posttags
+            log.info("== PostTags found with findAll():");
+            log.info("-------------------------------");
+            for (PostTag pt : posttags.findAll()) {
+                log.info("PostTag: " + pt.toString());
+                //Caused by: org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: no.agitec.fagaften.mellom.oppdrag.domain.comment.PostTag.posts, could not initialize proxy - no Session
+            }
+            log.info("");
+
+        };
+    }
+
     @Bean(name = "store")
     CommandLineRunner store(CompanyRepository companies, ImageRepository images, ImporterRepository importers,
                            ProductRepsitory products, WarehouseProductInforRepository warehouseProducts) {
@@ -329,41 +422,41 @@ public class LoadDatabaseConfig {
             //Problems
             Set<Long> versions = new LinkedHashSet<>();
             versions.add(1L);
-            Optional<Company> company = companies.findById(0L);
-            Optional<Importer> importer = importers.findById(0L);
+            Optional<Company> company = companies.findById(1L);
+            Optional<Importer> importer = importers.findById(1L);
             /*
             Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: NULL not allowed for column "COMPANY_ID"; SQL statement:
             insert into product (code, company_id, importer_id, name, quantity, version, id) values (?, ?, ?, ?, ?, ?, ?) [23502-200]
             Product product = products.saveAndFlush(new Product("code-0", "product-0", 1, 1));
             */
-            Product product = products.saveAndFlush(new Product("code-0", company.get(), importer.get(), "product-0", 1, 1));
+            Product product = products.saveAndFlush(new Product("code-1", company.get(), importer.get(), "product-1", 1, 1));
             //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.store.Product.toString()
             WarehouseProductInfo warehouseProductInfo = warehouseProducts.save(new WarehouseProductInfo(1, product));
             //http://www.agitec.no/css/agitec.svg
-            Image image = images.save(new Image("agitec.svg", 0, product, versions));
+            Image image = images.save(new Image("agitec.svg", 1, product, versions));
             products.flush();
 
 
-            company = companies.findById(1L);
-            importer = importers.findById(1L);
-            product = products.saveAndFlush(new Product("code-1", company.get(), importer.get(), "product-1", 2, 1));
-            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(2, product));
-            //https://scienta.no/wp-content/uploads/2017/03/scienta_logo.png
-            image = images.saveAndFlush(new Image("scienta_logo.png", 1, product, versions));
-
             company = companies.findById(2L);
             importer = importers.findById(2L);
-            product = products.saveAndFlush(new Product("code-2", company.get(), importer.get(), "product-2", 3, 1));
-            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(3, product));
-            //https://vaganavisa.no/media/cache/frontend_article_lg/bundles/global/uploads/articles/6/Mattilsynet.4089.jpg
-            image = images.saveAndFlush(new Image("Mattilsynet.4089.jpg", 2, product, versions));
+            product = products.saveAndFlush(new Product("code-2", company.get(), importer.get(), "product-2", 2, 1));
+            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(2, product));
+            //https://scienta.no/wp-content/uploads/2017/03/scienta_logo.png
+            image = images.saveAndFlush(new Image("scienta_logo.png", 2, product, versions));
 
             company = companies.findById(3L);
             importer = importers.findById(3L);
-            product = products.saveAndFlush(new Product("code-3", company.get(), importer.get(), "product-3", 4, 1));
+            product = products.saveAndFlush(new Product("code-3", company.get(), importer.get(), "product-3", 3, 1));
+            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(3, product));
+            //https://vaganavisa.no/media/cache/frontend_article_lg/bundles/global/uploads/articles/6/Mattilsynet.4089.jpg
+            image = images.saveAndFlush(new Image("Mattilsynet.4089.jpg", 3, product, versions));
+
+            company = companies.findById(4L);
+            importer = importers.findById(4L);
+            product = products.saveAndFlush(new Product("code-4", company.get(), importer.get(), "product-4", 4, 1));
             warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(4, product));
             //https://www.nav.no/dekoratoren/media/nav-logo-red.svg
-            image = images.saveAndFlush(new Image("nav-logo-red.svg", 3, product, versions));
+            image = images.saveAndFlush(new Image("nav-logo-red.svg", 4, product, versions));
 
             /*
             log.info("== Product found with findAll():");

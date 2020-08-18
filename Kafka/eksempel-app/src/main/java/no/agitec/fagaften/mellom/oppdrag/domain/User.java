@@ -31,7 +31,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "User_Gen", sequenceName = "User_Gen",  initialValue = 0)
+@SequenceGenerator(name = "User_Gen", sequenceName = "User_Gen",  initialValue = 1)
 public class User {
 
     @Id

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "Partner_Gen", sequenceName = "Partner_Gen",  initialValue = 0)
+@SequenceGenerator(name = "Partner_Gen", sequenceName = "Partner_Gen",  initialValue = 1)
 public class Partner {
 
     @Id

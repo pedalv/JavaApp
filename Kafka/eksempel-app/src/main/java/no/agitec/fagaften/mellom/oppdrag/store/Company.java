@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "Company_Gen", sequenceName = "Company_Gen",  initialValue = 0)
+@SequenceGenerator(name = "Company_Gen", sequenceName = "Company_Gen",  initialValue = 1)
 public class Company {
 
     @Id

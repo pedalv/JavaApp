@@ -2,11 +2,9 @@ package no.agitec.fagaften.mellom.oppdrag.store;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import no.agitec.fagaften.mellom.oppdrag.domain.Role;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,7 +13,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "Product_Gen", sequenceName = "Product_Gen",  initialValue = 0)
+@SequenceGenerator(name = "Product_Gen", sequenceName = "Product_Gen",  initialValue = 1)
 public class Product {
 
     @Id

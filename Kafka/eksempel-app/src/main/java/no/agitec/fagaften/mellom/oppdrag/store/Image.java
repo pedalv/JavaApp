@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "Image_Gen", sequenceName = "Image_Gen",  initialValue = 0)
+@SequenceGenerator(name = "Image_Gen", sequenceName = "Image_Gen",  initialValue = 1)
 public class Image {
 
     @Id
