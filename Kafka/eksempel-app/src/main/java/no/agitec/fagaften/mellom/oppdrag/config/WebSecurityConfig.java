@@ -13,6 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+/**
+ * https://www.yawintutor.com/multiple-login-pages-using-spring-boot-security-with-database-authentication/
+ */
 @Configuration
 @EnableWebSecurity
 @Slf4j

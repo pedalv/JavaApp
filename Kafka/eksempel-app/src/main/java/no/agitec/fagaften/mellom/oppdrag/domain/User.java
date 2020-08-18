@@ -56,7 +56,6 @@ public class User {
 
     /**
      * https://www.baeldung.com/jpa-many-to-many
-     * https://www.yawintutor.com/multiple-login-pages-using-spring-boot-security-with-database-authentication/
      *
      * Store package for exemple:
      * https://vladmihalcea.com/hibernate-facts-the-importance-of-fetch-strategy/
