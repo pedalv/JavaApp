@@ -2,11 +2,16 @@ package no.agitec.fagaften.mellom.oppdrag.store;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import no.agitec.fagaften.mellom.oppdrag.domain.Role;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
+/**
+ * https://vladmihalcea.com/hibernate-facts-the-importance-of-fetch-strategy/
+ */
 @Data
 @NoArgsConstructor
 @Entity
@@ -24,12 +29,15 @@ public class Product {
 
     private Integer quantity;
 
+    @Version
+    private Integer version;
+
     /**
      * Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotations
      */
     @ManyToOne(fetch = FetchType.EAGER)
     //@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id", nullable = false)
+    @JoinColumn(name = "company_id", nullable = false) //company_id
     private Company company;
 
     /**
@@ -42,7 +50,7 @@ public class Product {
      * Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotations
      */
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "importer_id")
+    @JoinColumn(name = "importer_id") //importer_id
     private Importer importer;
 
     /**
@@ -53,29 +61,25 @@ public class Product {
     @OrderBy("index")
     private Set<Image> images = new LinkedHashSet<Image>();
 
-    @Version
-    private int version;
-
-}
-
-
-
-
-
-
-
-
-/*
-
-    public Product(String name, String code, Integer quantity, Company company, WarehouseProductInfo warehouseProductInfo, Importer importer, Set<Image> images, int version) {
-        this.name = name;
+    /**
+     * Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: NULL not allowed for column "COMPANY_ID"; SQL statement:
+     * insert into product (code, company_id, importer_id, name, quantity, version, id) values (?, ?, ?, ?, ?, ?, ?) [23502-200]
+     */
+    public Product(String code, Company company, Importer importer, String name, int quantity, int version) {
         this.code = code;
-        this.quantity = quantity;
         this.company = company;
-        this.warehouseProductInfo = warehouseProductInfo;
         this.importer = importer;
-        this.images = images;
+        this.name = name;
+        this.quantity = quantity;
         this.version = version;
     }
 
-*/
+
+    public Product(String code, String name, int quantity, int version) {
+        this.code = code;
+        this.name = name;
+        this.quantity = quantity;
+        this.version = version;
+    }
+
+}

@@ -45,7 +45,7 @@ public class Image {
      * }
      */
     @Column(unique = true)
-    private int index;
+    private Integer index;
 
     /**
      * Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotations
@@ -58,6 +58,7 @@ public class Image {
      */
     //Caused by: org.hibernate.MappingException: Could not determine type for: javax.persistence.Version, at table: image_versions, for columns: [org.hibernate.mapping.Column(versions)]
     //@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "image", orphanRemoval = true)
+    //@ElementCollection
     //@OrderBy("type")
     //private Set<Version> versions = new LinkedHashSet<Version>();
 
@@ -67,8 +68,14 @@ public class Image {
     //@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "image", orphanRemoval = true)
     @ElementCollection
     @OrderBy
-    private Set<Long> versions = new LinkedHashSet<Long>();
+    private Set<Long> versions = new LinkedHashSet<>();
 
+    public Image(String name, int index, Product product, Set<Long> versions) {
+        this.name = name;
+        this.index = index;
+        this.product = product;
+        this.versions = versions;
+    }
 }
 
 

@@ -4,14 +4,16 @@ import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.domain.*;
 import no.agitec.fagaften.mellom.oppdrag.repository.*;
 import no.agitec.fagaften.mellom.oppdrag.repository.store.*;
-import no.agitec.fagaften.mellom.oppdrag.store.Company;
+import no.agitec.fagaften.mellom.oppdrag.store.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Configuration
 @Slf4j
@@ -312,14 +314,80 @@ public class LoadDatabaseConfig {
             }
             log.info("");
 
+            importers.saveAndFlush(new Importer("importer-1"));
+            importers.saveAndFlush(new Importer("importer-2"));
+            importers.saveAndFlush(new Importer("importer-3"));
+            importers.saveAndFlush(new Importer("importer-4"));
+            // fetch all images
+            log.info("== Importer found with findAll():");
+            log.info("-------------------------------");
+            for (Importer importer : importers.findAll()) {
+                log.info(importer.toString());
+            }
 
 
+            //Problems
+            Set<Long> versions = new LinkedHashSet<>();
+            versions.add(1L);
+            Optional<Company> company = companies.findById(0L);
+            Optional<Importer> importer = importers.findById(0L);
+            /*
+            Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: NULL not allowed for column "COMPANY_ID"; SQL statement:
+            insert into product (code, company_id, importer_id, name, quantity, version, id) values (?, ?, ?, ?, ?, ?, ?) [23502-200]
+            Product product = products.saveAndFlush(new Product("code-0", "product-0", 1, 1));
+            */
+            Product product = products.saveAndFlush(new Product("code-0", company.get(), importer.get(), "product-0", 1, 1));
+            //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.store.Product.toString()
+            WarehouseProductInfo warehouseProductInfo = warehouseProducts.save(new WarehouseProductInfo(1, product));
+            //http://www.agitec.no/css/agitec.svg
+            Image image = images.save(new Image("agitec.svg", 0, product, versions));
+            products.flush();
 
 
+            company = companies.findById(1L);
+            importer = importers.findById(1L);
+            product = products.saveAndFlush(new Product("code-1", company.get(), importer.get(), "product-1", 2, 1));
+            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(2, product));
+            //https://scienta.no/wp-content/uploads/2017/03/scienta_logo.png
+            image = images.saveAndFlush(new Image("scienta_logo.png", 1, product, versions));
 
+            company = companies.findById(2L);
+            importer = importers.findById(2L);
+            product = products.saveAndFlush(new Product("code-2", company.get(), importer.get(), "product-2", 3, 1));
+            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(3, product));
+            //https://vaganavisa.no/media/cache/frontend_article_lg/bundles/global/uploads/articles/6/Mattilsynet.4089.jpg
+            image = images.saveAndFlush(new Image("Mattilsynet.4089.jpg", 2, product, versions));
 
-            log.info("Todo");
+            company = companies.findById(3L);
+            importer = importers.findById(3L);
+            product = products.saveAndFlush(new Product("code-3", company.get(), importer.get(), "product-3", 4, 1));
+            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(4, product));
+            //https://www.nav.no/dekoratoren/media/nav-logo-red.svg
+            image = images.saveAndFlush(new Image("nav-logo-red.svg", 3, product, versions));
 
+            /*
+            log.info("== Product found with findAll():");
+            log.info("-------------------------------");
+            for (Product p : products.findAll()) {
+                //log.info(p.toString());
+            }
+            log.info("");
+
+            // fetch all images
+            log.info("== WarehouseProductInfo found with findAll():");
+            log.info("-------------------------------");
+            for (WarehouseProductInfo wpinfo : warehouseProducts.findAll()) {
+                //log.info(wpinfo.toString());
+            }
+
+            // fetch all images
+            log.info("== Image found with findAll():");
+            log.info("-------------------------------");
+            for (Image i : images.findAll()) {
+                //log.info(i.toString());
+            }
+            log.info("");
+            */
         };
     }
 

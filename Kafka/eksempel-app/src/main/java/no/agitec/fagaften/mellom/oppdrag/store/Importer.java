@@ -17,4 +17,7 @@ public class Importer {
 
     private String name;
 
+    public Importer(String name) {
+        this.name = name;
+    }
 }

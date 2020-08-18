@@ -15,14 +15,21 @@ public class WarehouseProductInfo {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "WarehouseProductInfo_Gen")
     private Long id;
 
-    private int quantity;
+    private Integer quantity;
 
     /**
      * Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotations
      */
-    @OneToOne(fetch = FetchType.LAZY)
-    //@OneToOne(fetch = FetchType.EAGER)
+    //Caused by: org.hibernate.LazyInitializationException: could not initialize proxy [no.agitec.fagaften.mellom.oppdrag.store.WarehouseProductInfo#0] - no Session
+    //@OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn
     private Product product;
+
+
+    public WarehouseProductInfo(Integer quantity, Product product) {
+        this.quantity = quantity;
+        this.product = product;
+    }
 
 }
