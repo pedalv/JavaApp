@@ -10,7 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
@@ -29,33 +28,27 @@ public class PartnerComponentTest {
     private MockMvc mockMvc;
 
     @Test
-    public void getPartnerAccessProtected() throws Exception {
-        MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/partner")
-                        .accept(MediaType.APPLICATION_JSON))
+    public void getPartner_Unauthorized() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/partner")
+                .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 
         assertNotNull(result);
         assertNotNull(result.getResponse());
         assertEquals(401, result.getResponse().getStatus());
-        assertEquals(result.getResponse().getErrorMessage(), "Unauthorized"); //Need login
     }
 
     @Test
-    public void accessProtected_Login_RedirectsToRoot() throws Exception {
-        MvcResult mvcResult = mockMvc
-                .perform(MockMvcRequestBuilders.get("/partner"))
-                .andExpect(status().is4xxClientError()) // Unauthorized
+    public void accessUnauthorizedLoginPageShow() throws Exception {
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/partner"))
+                .andExpect(status().is4xxClientError())
                 .andReturn();
 
-        assertEquals(mvcResult.getResponse().getErrorMessage(), "Unauthorized");
+        MockHttpSession httpSession = (MockHttpSession) mvcResult.getRequest().getSession(false);
 
-        mvcResult = this.mockMvc.perform(formLogin().user("user").password("password"))
-                .andExpect(authenticated()).andReturn();
-
-        assertEquals(302, mvcResult.getResponse().getStatus());
-        assertEquals(mvcResult.getResponse().getErrorMessage(), null);
-        assertThat(mvcResult.getResponse().getRedirectedUrl()).endsWith("/");
+        assert httpSession != null;
+        this.mockMvc.perform(get("/login").session(httpSession))
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -93,10 +86,9 @@ public class PartnerComponentTest {
         assert httpSession != null;
         this.mockMvc.perform(post("/logout").with(csrf()).session(httpSession))
                 .andExpect(unauthenticated());
-        //login?logout
-        this.mockMvc.perform(get("/login").session(httpSession))
+        this.mockMvc.perform(get("/partner").session(httpSession))
                 .andExpect(unauthenticated())
-                .andExpect(status().isOk()); // is3xxRedirection()
+                .andExpect(status().is4xxClientError());
     }
 
 }
