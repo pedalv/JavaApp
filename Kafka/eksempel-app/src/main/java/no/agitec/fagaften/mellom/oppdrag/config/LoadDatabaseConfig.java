@@ -6,13 +6,13 @@ import no.agitec.fagaften.mellom.oppdrag.domain.comment.Post;
 import no.agitec.fagaften.mellom.oppdrag.domain.comment.PostComment;
 import no.agitec.fagaften.mellom.oppdrag.domain.comment.PostDetail;
 import no.agitec.fagaften.mellom.oppdrag.domain.comment.PostTag;
+import no.agitec.fagaften.mellom.oppdrag.domain.store.*;
 import no.agitec.fagaften.mellom.oppdrag.repository.*;
 import no.agitec.fagaften.mellom.oppdrag.repository.comment.PostCommentRepository;
 import no.agitec.fagaften.mellom.oppdrag.repository.comment.PostDetailRepository;
 import no.agitec.fagaften.mellom.oppdrag.repository.comment.PostRepository;
 import no.agitec.fagaften.mellom.oppdrag.repository.comment.PostTagRepository;
 import no.agitec.fagaften.mellom.oppdrag.repository.store.*;
-import no.agitec.fagaften.mellom.oppdrag.store.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -357,7 +357,7 @@ public class LoadDatabaseConfig {
             //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
             postcomments.saveAndFlush(postcomment);
 
-        //Update PostDetail
+            //Update PostDetail
             // postdetail OKAY
             postdetail = postdetails.findAll().get(0);
             // after fetch got LazyInitializationException
@@ -367,7 +367,7 @@ public class LoadDatabaseConfig {
             postdetail = postdetails.saveAndFlush(postdetail);
             //post: Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Post$HibernateProxy$Ri8lvYf2.toString()
 
-        //Update PostTag - Comments are
+            //Update PostTag - Comments are
             postset = new HashSet();
             postset.add(post);
             postTag.setPosts(postset);
@@ -416,95 +416,168 @@ public class LoadDatabaseConfig {
 
     @Bean(name = "store")
     CommandLineRunner store(CompanyRepository companies, ImageRepository images, ImporterRepository importers,
-                            ProductRepsitory products, WarehouseProductInforRepository warehouseProducts) {
+                            ProductRepsitory products, WarehouseProductInforRepository warehouseProducts,
+                            SubVersionRepository subversions, VersionRepository versions) {
         return (args) -> {
 
-            companies.saveAndFlush(new Company("Agitec AS"));
-            companies.saveAndFlush(new Company("Scienta AS"));
-            companies.saveAndFlush(new Company("Mattilsynet, Oslo"));
-            companies.saveAndFlush(new Company("NAV"));
+            Optional<Company> company;
+            Optional<Importer> importer;
+            Product product;
+            Image image;
+            Version version;
+            SubVersion subversion;
+            WarehouseProductInfo warehouseProductInfo;
+
+            company = Optional.of(new Company("Agitec AS"));
+            companies.saveAndFlush(company.get());
+            company = Optional.of(new Company("Scienta AS"));
+            companies.saveAndFlush(company.get());
+            company = Optional.of(new Company("Mattilsynet, Oslo"));
+            companies.saveAndFlush(company.get());
+            company = Optional.of(new Company("NAV"));
+            companies.saveAndFlush(company.get());
             // fetch all companies
             log.info("== Company found with findAll():");
             log.info("-------------------------------");
-            for (Company company : companies.findAll()) {
-                log.info(company.toString());
+            for (Company c : companies.findAll()) {
+                log.info(c.toString());
             }
             log.info("");
 
-            importers.saveAndFlush(new Importer("importer-1"));
-            importers.saveAndFlush(new Importer("importer-2"));
-            importers.saveAndFlush(new Importer("importer-3"));
-            importers.saveAndFlush(new Importer("importer-4"));
-            // fetch all images
+            importer = Optional.of(new Importer("importer-1"));
+            importers.saveAndFlush(importer.get());
+            importer = Optional.of(new Importer("importer-2"));
+            importers.saveAndFlush(importer.get());
+            importer = Optional.of(new Importer("importer-3"));
+            importers.saveAndFlush(importer.get());
+            importer = Optional.of(new Importer("importer-4"));
+            importers.saveAndFlush(importer.get());
+            // fetch all importers
             log.info("== Importer found with findAll():");
             log.info("-------------------------------");
-            for (Importer importer : importers.findAll()) {
-                log.info(importer.toString());
+            for (Importer i : importers.findAll()) {
+                log.info(i.toString());
             }
 
-
-            //Problems
-            Set<Long> versions = new LinkedHashSet<>();
-            versions.add(1L);
-            Optional<Company> company = companies.findById(1L);
-            Optional<Importer> importer = importers.findById(1L);
-            /*
-            Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: NULL not allowed for column "COMPANY_ID"; SQL statement:
-            insert into product (code, company_id, importer_id, name, quantity, version, id) values (?, ?, ?, ?, ?, ?, ?) [23502-200]
-            Product product = products.saveAndFlush(new Product("code-0", "product-0", 1, 1));
-            */
-            Product product = products.saveAndFlush(new Product("code-1", company.get(), importer.get(), "product-1", 1, 1));
-            //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.store.Product.toString()
-            WarehouseProductInfo warehouseProductInfo = warehouseProducts.save(new WarehouseProductInfo(1, product));
+            company = companies.findById(1L);
+            importer = importers.findById(1L);
             //http://www.agitec.no/css/agitec.svg
-            Image image = images.save(new Image("agitec.svg", 1, product, versions));
-            products.flush();
-
+            image = new Image("agitec.svg", 1);
+            subversion = new SubVersion("image-code-agitec");
+            version = new Version();
+            version.addSubVersion(subversion);
+            image.addVersion(version);
+            warehouseProductInfo = new WarehouseProductInfo(1);
+            product = new Product("code-1");
+            product.setCompany(company.get());
+            product.setImporter(importer.get());
+            product.addImage(image);
+            product.addWarehouse(warehouseProductInfo);
+            product = products.saveAndFlush(product);
 
             company = companies.findById(2L);
             importer = importers.findById(2L);
-            product = products.saveAndFlush(new Product("code-2", company.get(), importer.get(), "product-2", 2, 1));
-            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(2, product));
             //https://scienta.no/wp-content/uploads/2017/03/scienta_logo.png
-            image = images.saveAndFlush(new Image("scienta_logo.png", 2, product, versions));
+            image = new Image("scienta_logo.png", 2);
+            subversion = new SubVersion("image-code-sciente");
+            version = new Version();
+            version.addSubVersion(subversion);
+            image.addVersion(version);
+            warehouseProductInfo = new WarehouseProductInfo(2);
+            product = new Product("code-2");
+            product.setCompany(company.get());
+            product.setImporter(importer.get());
+            product.addImage(image);
+            product.addWarehouse(warehouseProductInfo);
+            product = products.saveAndFlush(product);
 
             company = companies.findById(3L);
             importer = importers.findById(3L);
-            product = products.saveAndFlush(new Product("code-3", company.get(), importer.get(), "product-3", 3, 1));
-            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(3, product));
             //https://vaganavisa.no/media/cache/frontend_article_lg/bundles/global/uploads/articles/6/Mattilsynet.4089.jpg
-            image = images.saveAndFlush(new Image("Mattilsynet.4089.jpg", 3, product, versions));
+            image = new Image("Mattilsynet.4089.jpg", 3);
+            subversion = new SubVersion("image-code-mattilsynet");
+            version = new Version();
+            version.addSubVersion(subversion);
+            image.addVersion(version);
+            warehouseProductInfo = new WarehouseProductInfo(3);
+            product = new Product("code-3");
+            product.setCompany(company.get());
+            product.setImporter(importer.get());
+            product.addImage(image);
+            product.addWarehouse(warehouseProductInfo);
+            product = products.saveAndFlush(product);
 
             company = companies.findById(4L);
             importer = importers.findById(4L);
-            product = products.saveAndFlush(new Product("code-4", company.get(), importer.get(), "product-4", 4, 1));
-            warehouseProductInfo = warehouseProducts.saveAndFlush(new WarehouseProductInfo(4, product));
             //https://www.nav.no/dekoratoren/media/nav-logo-red.svg
-            image = images.saveAndFlush(new Image("nav-logo-red.svg", 4, product, versions));
+            image = new Image("nav-logo-red.svg", 4);
+            subversion = new SubVersion("image-code-nav");
+            version = new Version();
+            version.addSubVersion(subversion);
+            image.addVersion(version);
+            warehouseProductInfo = new WarehouseProductInfo(4);
+            product = new Product("code-4");
+            product.setCompany(company.get());
+            product.setImporter(importer.get());
+            product.addImage(image);
+            product.addWarehouse(warehouseProductInfo);
+            product = products.saveAndFlush(product);
 
-            /*
+
+            // fetch all companies
+            log.info("== Company found with findAll():");
+            log.info("-------------------------------");
+            for (Company c : companies.findAll()) {
+                log.info(c.toString());
+            }
+            log.info("");
+            // fetch all importers
+            log.info("== Importer found with findAll():");
+            log.info("-------------------------------");
+            for (Importer i : importers.findAll()) {
+                log.info(i.toString());
+            }
+            log.info("");
+            // fetch all products
             log.info("== Product found with findAll():");
             log.info("-------------------------------");
             for (Product p : products.findAll()) {
                 //log.info(p.toString());
+                //Caused by: org.hibernate.LazyInitializationException: could not initialize proxy [no.agitec.fagaften.mellom.oppdrag.domain.store.WarehouseProductInfo#1] - no Session
             }
             log.info("");
-
-            // fetch all images
+            // fetch all warehouseProductsInfo
             log.info("== WarehouseProductInfo found with findAll():");
             log.info("-------------------------------");
             for (WarehouseProductInfo wpinfo : warehouseProducts.findAll()) {
                 //log.info(wpinfo.toString());
+                //Method threw 'java.lang.StackOverflowError' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.store.WarehouseProductInfo.toString()
             }
-
+            log.info("");
             // fetch all images
             log.info("== Image found with findAll():");
             log.info("-------------------------------");
             for (Image i : images.findAll()) {
                 //log.info(i.toString());
+                //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.store.Image.toString()
             }
             log.info("");
-            */
+            // fetch all versions
+            log.info("== Version found with findAll():");
+            log.info("-------------------------------");
+            for (Version v : versions.findAll()) {
+                //log.info(v.toString());
+                //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.store.Version.toString()
+            }
+            log.info("");
+            // fetch all subversions
+            log.info("== SubVersion found with findAll():");
+            log.info("-------------------------------");
+            for (SubVersion subv : subversions.findAll()) {
+                log.info(subv.toString());
+            }
+            log.info("");
+
         };
     }
 

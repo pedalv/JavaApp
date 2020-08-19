@@ -68,14 +68,19 @@ public class Image {
         this.versions = versions;
     }
 
+    public Image(String name, int index) {
+        this.name = name;
+        this.index = index;
+    }
+
     public void addVersion(Version version) {
         versions.add(version);
-        version.setImage(this);
+        //version.setImage(this);
     }
 
     public void removeVersion(Version version) {
         versions.remove(version);
-        version.setImage(null);
+        //version.setImage(null);
     }
 }
 

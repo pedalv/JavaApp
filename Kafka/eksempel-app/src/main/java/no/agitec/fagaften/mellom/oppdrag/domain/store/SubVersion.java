@@ -20,6 +20,11 @@ public class SubVersion {
     //Many SubVersionI has a version
     @ManyToOne(fetch = FetchType.EAGER)
     private Version version;
+
+
+    public SubVersion(String code) {
+        this.code = code;
+    }
 }
 
 /*

@@ -87,6 +87,7 @@ public class Product {
         this.code = code;
     }
 
+
     public Product(String code, String name, int quantity, int version) {
         this.code = code;
         this.name = name;
@@ -96,16 +97,16 @@ public class Product {
 
     public void addImage(Image image) {
         images.add(image);
-        image.setProduct(this);
+        //image.setProduct(this);
     }
 
     public void removeImage(Image image) {
         images.remove(image);
-        image.setProduct(null);
+        //image.setProduct(null);
     }
 
     public void addWarehouse(WarehouseProductInfo warehouseProductInfo) {
-        warehouseProductInfo.setProduct(this);
+        //warehouseProductInfo.setProduct(this);
         this.setWarehouseProductInfo(warehouseProductInfo);
     }
 

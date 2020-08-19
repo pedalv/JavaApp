@@ -30,12 +30,12 @@ public class Version {
 
     public void addSubVersion(SubVersion subVersion) {
         subVersions.add(subVersion);
-        subVersion.setVersion(this);
+        //subVersion.setVersion(this);
     }
 
     public void removeSubVersion(SubVersion subVersion) {
         subVersions.remove(subVersion);
-        subVersion.setVersion(null);
+        //subVersion.setVersion(null);
     }
 
 }

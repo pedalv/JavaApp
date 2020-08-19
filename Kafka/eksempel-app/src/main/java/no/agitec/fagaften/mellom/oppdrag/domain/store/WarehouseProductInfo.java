@@ -33,6 +33,10 @@ public class WarehouseProductInfo {
         this.product = product;
     }
 
+    public WarehouseProductInfo(Integer quantity) {
+        this.quantity = quantity;
+    }
+
 }
 
 /*
