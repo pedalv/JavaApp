@@ -11,7 +11,14 @@ import javax.persistence.*;
  * https://github.com/vladmihalcea/vladmihalcea.wordpress.com/tree/master/hibernate-facts
  * https://github.com/vladmihalcea/vladmihalcea.wordpress.com/tree/master/hibernate-facts/src/main/java/com/vladmihalcea/hibernate/model/store
  *
- *
+ * TODO
+ * https://stackoverflow.com/questions/35997541/getting-org-hibernate-lazyinitializationexception-exceptions-after-retrieving/36168024
+ * https://arnoldgalovics.com/lazyinitializationexception-demystified/
+ * https://dev.to/jhonifaber/hibernate-onetoone-onetomany-manytoone-and-manytomany-8ba
+ * https://www.baeldung.com/jpa-one-to-one
+ * https://stackoverflow.com/questions/3113885/difference-between-one-to-many-many-to-one-and-many-to-many
+ * https://vladmihalcea.com/database-table-relationships/
+ * https://thorben-janssen.com/best-practices-many-one-one-many-associations-mappings/
  *
  */
 @Data

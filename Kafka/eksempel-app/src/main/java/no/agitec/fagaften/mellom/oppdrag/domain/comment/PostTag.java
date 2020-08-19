@@ -13,6 +13,7 @@ import java.util.Set;
 /**
  *  Tutorial Relationship in JPA:
  *  https://www.baeldung.com/jpa-many-to-many
+ *  https://vladmihalcea.com/database-table-relationships/
  *  https://stackoverflow.com/questions/3113885/difference-between-one-to-many-many-to-one-and-many-to-many
  *
  *
