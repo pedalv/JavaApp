@@ -18,11 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
-import java.time.LocalDateTime;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Configuration
 @Slf4j
@@ -316,45 +312,67 @@ public class LoadDatabaseConfig {
             PostDetail postdetail;
             PostTag postTag;
 
-        //Create Post 1
+            //Create Post 1 - @OneToMany: One Post has many PostComments
             post = new Post("Post 1 - Mellom oppdrag");
-            post = posts.saveAndFlush(post);
-
-        //PostComment save automatic in database
+            //Create PostComment 1 - @ManyToOne: Many PostComments has one Post
             postcomment = new PostComment("review1");
-            //postcomment.setPost(post);
+            //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
             post.getComments().add(postcomment);
-        //PostComment save in database via Post
-            post = posts.saveAndFlush(post);
-        //Save PostDetail in database
-            postdetail = new PostDetail("Pedro");
-            //postdetail.setPost(post);
-            //postdetails.saveAndFlush(postdetail); //detached entity passed to persist
-
-
-
-
-        //PostComment save automatic in database
+            //Create PostComment 2
             postcomment = new PostComment("review2");
-            //postcomment.setPost(post);
+            //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
             post.getComments().add(postcomment);
-        //PostComment and PostDetail save in database via Post
-            post = posts.saveAndFlush(post);
-        //Save PostDetail in database
-            postdetail = new PostDetail("Pedro2");
-            //postdetail.setPost(post);
-            //postdetails.saveAndFlush(postdetail); //detached entity passed to persist
+            //...
+            //Create PostDetail - @OneToOne: One PostDetail has one Post - save in database automatic Post, PostComment n
+            postdetail = new PostDetail("Pedro");
+            postdetail.setPost(post);
+            postdetail = postdetails.saveAndFlush(postdetail);
 
-
-        //Create PostTag
-            Set<Post> postset = new LinkedHashSet<>();
+            //Create PostTag - @ManyToMany: Many PostTag has many Post (Post can belong to same TAG)
+            //Set<Post> postset = new LinkedHashSet<>();
+            Set<Post> postset = new HashSet();
             postset.add(post);
             postTag = new PostTag("Develop", postset);
+            //Save PostTag
             postTag = posttags.saveAndFlush(postTag);
-
-
+            //PostTag(id=1, name=Develop, posts=[
+            // Post(id=1, title=Post 1 - Mellom oppdrag,
+            // comments=[PostComment(id=1, review=review1, post=null), PostComment(id=2, review=review2, post=null)]
+            // )])
             List<PostTag> tags = posttags.findAll(); //comments is null??????
+            //PostTag(id=1, name=Develop, posts=[
+            // Post(id=1, title=Post 1 - Mellom oppdrag,
+            // comments=[]
+            // )])
 
+
+            //CREATE MORE POSTCOMMENT IN SAME POST AND POSTDETAIL
+            post = posts.findAll().get(0); //"Post 1 - Mellom oppdrag"
+            //Create PostComment n+1
+            postcomment = new PostComment("review3");
+            //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
+            postcomments.saveAndFlush(postcomment);
+            //Create PostComment n+2
+            postcomment = new PostComment("review4");
+            //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
+            postcomments.saveAndFlush(postcomment);
+
+        //Update PostDetail
+            // postdetail OKAY
+            postdetail = postdetails.findAll().get(0);
+            // after fetch got LazyInitializationException
+            //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.PostDetail.toString()
+            post.setComments(postcomments.findAll());
+            postdetail.setPost(post);
+            postdetail = postdetails.saveAndFlush(postdetail);
+            //post: Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Post$HibernateProxy$Ri8lvYf2.toString()
+
+        //Update PostTag - Comments are
+            postset = new HashSet();
+            postset.add(post);
+            postTag.setPosts(postset);
+            postTag = posttags.saveAndFlush(postTag);
+            // Post(id=1, title=Post 1 - Mellom oppdrag, comments=[])
 
 
             // fetch all posts
@@ -362,6 +380,7 @@ public class LoadDatabaseConfig {
             log.info("-------------------------------");
             for (Post p : posts.findAll()) {
                 log.info(p.toString());
+                //Post(id=1, title=Post 1 - Mellom oppdrag, comments=[])
             }
             log.info("");
             // fetch all postcomments
@@ -369,13 +388,18 @@ public class LoadDatabaseConfig {
             log.info("-------------------------------");
             for (PostComment pc3 : postcomments.findAll()) {
                 log.info(pc3.toString());
+                //PostComment(id=1, review=review1, post=null)
+                //PostComment(id=2, review=review2, post=null)
+                //PostComment(id=3, review=review3, post=null)
+                //PostComment(id=4, review=review4, post=null)
             }
             log.info("");
             // fetch all postdetails
             log.info("== PostDetail found with findAll():");
             log.info("-------------------------------");
             for (PostDetail pd : postdetails.findAll()) {
-                log.info(pd.toString());
+                //log.info(pd.toString());
+                //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.PostDetail.toString()
             }
             log.info("");
             // fetch all posttags
@@ -383,7 +407,7 @@ public class LoadDatabaseConfig {
             log.info("-------------------------------");
             for (PostTag pt : posttags.findAll()) {
                 log.info("PostTag: " + pt.toString());
-                //Caused by: org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: no.agitec.fagaften.mellom.oppdrag.domain.comment.PostTag.posts, could not initialize proxy - no Session
+                //PostTag: PostTag(id=1, name=Develop, posts=[Post(id=1, title=Post 1 - Mellom oppdrag, comments=[])])
             }
             log.info("");
 
@@ -392,7 +416,7 @@ public class LoadDatabaseConfig {
 
     @Bean(name = "store")
     CommandLineRunner store(CompanyRepository companies, ImageRepository images, ImporterRepository importers,
-                           ProductRepsitory products, WarehouseProductInforRepository warehouseProducts) {
+                            ProductRepsitory products, WarehouseProductInforRepository warehouseProducts) {
         return (args) -> {
 
             companies.saveAndFlush(new Company("Agitec AS"));

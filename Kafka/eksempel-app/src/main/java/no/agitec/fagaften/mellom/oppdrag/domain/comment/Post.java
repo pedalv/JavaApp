@@ -45,8 +45,11 @@ public class Post {
 
 }
 
-
 /*
+OneToMany   - Post
+ManyToOne   - PostComment
+OneToOne    - PostDetail
+ManyToMany  - PostTag
 
 Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
 
