@@ -26,16 +26,16 @@ public class Version {
 
     //One Version has many SubVersions
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "version", orphanRemoval = true)
-    private Set<SubVersionI> subVersionIS = new LinkedHashSet<SubVersionI>();
+    private Set<SubVersion> subVersions = new LinkedHashSet<SubVersion>();
 
-    public void addSubVersion(SubVersionI subVersionI) {
-        subVersionIS.add(subVersionI);
-        subVersionI.setVersion(this);
+    public void addSubVersion(SubVersion subVersion) {
+        subVersions.add(subVersion);
+        subVersion.setVersion(this);
     }
 
-    public void removeSubVersion(SubVersionI subVersionI) {
-        subVersionIS.remove(subVersionI);
-        subVersionI.setVersion(null);
+    public void removeSubVersion(SubVersion subVersion) {
+        subVersions.remove(subVersion);
+        subVersion.setVersion(null);
     }
 
 }

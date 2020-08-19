@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @SequenceGenerator(name = "SubVersion_Gen", sequenceName = "SubVersion_Gen",  initialValue = 1)
-public class SubVersionI {
+public class SubVersion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SubVersion_Gen")
