@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Configuration
@@ -302,6 +303,22 @@ public class LoadDatabaseConfig {
         };
     }
 
+    /**
+     * OneToMany   - Post          - @OneToMany: One Post has many PostComments
+     * ManyToOne   - PostComment   - @ManyToOne: Many PostComments has one Post
+     * OneToOne    - PostDetail    - @OneToOne: One PostDetail has one Post - save in database automatic Post, PostComment n
+     * ManyToMany  - PostTag       - @ManyToMany: Many PostTag has many Post (Post can belong to same TAG)
+     *
+     * Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
+     *
+     * Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany annotations
+     *
+     * @param posts
+     * @param postcomments
+     * @param postdetails
+     * @param posttags
+     * @return
+     */
     @Bean(name = "comment")
     CommandLineRunner comment(PostRepository posts, PostCommentRepository postcomments,
                               PostDetailRepository postdetails, PostTagRepository posttags) {
@@ -313,19 +330,24 @@ public class LoadDatabaseConfig {
             PostTag postTag;
 
             //Create Post 1 - @OneToMany: One Post has many PostComments
-            post = new Post("Post 1 - Mellom oppdrag");
+            post = new Post(
+                    "Post 1 - Mellom oppdrag",
+                    "Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.");
             //Create PostComment 1 - @ManyToOne: Many PostComments has one Post
             postcomment = new PostComment("review1");
             //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
             post.getComments().add(postcomment);
+            //post.addComment(postcomment);
             //Create PostComment 2
             postcomment = new PostComment("review2");
             //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
             post.getComments().add(postcomment);
+            //post.addComment(postcomment);
             //...
-            //Create PostDetail - @OneToOne: One PostDetail has one Post - save in database automatic Post, PostComment n
+            //Create PostDetail - @OneToOne: One PostDetail has one Post
             postdetail = new PostDetail("Pedro");
             postdetail.setPost(post);
+            //Save in database automatic Post, PostComment n
             postdetail = postdetails.saveAndFlush(postdetail);
 
             //Create PostTag - @ManyToMany: Many PostTag has many Post (Post can belong to same TAG)
@@ -365,7 +387,16 @@ public class LoadDatabaseConfig {
             post.setComments(postcomments.findAll());
             postdetail.setPost(post);
             postdetail = postdetails.saveAndFlush(postdetail);
-            //post: Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Post$HibernateProxy$Ri8lvYf2.toString()
+            Long id = postdetail.getId();
+            LocalDateTime createdOn = postdetail.getCreatedOn();
+            String createdBy = postdetail.getCreatedBy();
+            Post post1 = postdetail.getPost();
+//System.out.println(post1.toString());
+//Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Post$HibernateProxy$NgEWEShs.toString()
+            //https://stackoverflow.com/questions/40266770/spring-jpa-bi-directional-cannot-evaluate-tostring
+            //https://stackoverflow.com/questions/42632648/lazyinitializationexception-trying-to-get-lazy-initialized-instance
+            //https://stackoverflow.com/questions/47442454/how-to-avoid-initializing-hibernateproxy-when-invoking-tostring-on-it
+
 
             //Update PostTag - Comments are
             postset = new HashSet();
@@ -380,7 +411,7 @@ public class LoadDatabaseConfig {
             log.info("-------------------------------");
             for (Post p : posts.findAll()) {
                 log.info(p.toString());
-                //Post(id=1, title=Post 1 - Mellom oppdrag, comments=[])
+                //Post(id=1, title=Post 1 - Mellom oppdrag, content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving., comments=[])
             }
             log.info("");
             // fetch all postcomments
@@ -407,7 +438,7 @@ public class LoadDatabaseConfig {
             log.info("-------------------------------");
             for (PostTag pt : posttags.findAll()) {
                 log.info("PostTag: " + pt.toString());
-                //PostTag: PostTag(id=1, name=Develop, posts=[Post(id=1, title=Post 1 - Mellom oppdrag, comments=[])])
+                //PostTag: PostTag(id=1, name=Develop, posts=[Post(id=1, title=Post 1 - Mellom oppdrag, content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving., comments=[])])
             }
             log.info("");
 

@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -33,6 +34,19 @@ public class PostDetail {
         this.createdBy = createdBy;
     }
 
+    public PostDetail(String createdBy, Post post) {
+        this.createdOn = LocalDateTime.now();
+        this.createdBy = createdBy;
+        this.post = post;
+    }
+
+
+    /*
+    @Override
+    public final String toString() {
+        return "PEDRO-PostDetail";
+    }
+     */
 
 }
 
