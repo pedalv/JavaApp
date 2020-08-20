@@ -445,6 +445,31 @@ System.out.println(post1.toString());
         };
     }
 
+
+
+    /**
+     *
+     * OneToMany   - Product               - @OneToMany: One Product has many images
+     *             - Image                 - @OneToMany: One Image has many versions
+     *             - VersionI              - OneToMany: One Version has many SubVersions
+     * ManyToOne   - Product               - @ManyToOne: Many Products has a company
+     *                                     - @ManyToOne: Many Products has a importer
+     *             - Image                 - @ManyToOne: Many Images has a product
+     *             - SubVersionI           - @ManyToOne: Many SubVersionI has a version
+     *             - VersionI              - @ManyToOne: Many Versions has one image
+     * OneToOne    - Product               - @OneToOne: One Product has a warehouseProductInfo
+     *             - WarehouseProductInfo  - @OneToOne: One WarehouseProductInfos has a product
+     * ManyToMany  - none
+     *
+     * @param companies
+     * @param images
+     * @param importers
+     * @param products
+     * @param warehouseProducts
+     * @param subversions
+     * @param versions
+     * @return
+     */
     @Bean(name = "store")
     CommandLineRunner store(CompanyRepository companies, ImageRepository images, ImporterRepository importers,
                             ProductRepsitory products, WarehouseProductInforRepository warehouseProducts,
@@ -472,6 +497,10 @@ System.out.println(post1.toString());
             log.info("-------------------------------");
             for (Company c : companies.findAll()) {
                 log.info(c.toString());
+                //Company(id=1, name=Agitec AS)
+                //Company(id=2, name=Scienta AS)
+                //Company(id=3, name=Mattilsynet, Oslo)
+                //Company(id=4, name=NAV)
             }
             log.info("");
 
@@ -488,6 +517,10 @@ System.out.println(post1.toString());
             log.info("-------------------------------");
             for (Importer i : importers.findAll()) {
                 log.info(i.toString());
+                //Importer(id=1, name=importer-1)
+                //Importer(id=2, name=importer-2)
+                //Importer(id=3, name=importer-3)
+                //Importer(id=4, name=importer-4)
             }
 
             company = companies.findById(1L);
@@ -560,6 +593,10 @@ System.out.println(post1.toString());
             log.info("-------------------------------");
             for (Company c : companies.findAll()) {
                 log.info(c.toString());
+                //Company(id=1, name=Agitec AS)
+                //Company(id=2, name=Scienta AS)
+                //Company(id=3, name=Mattilsynet, Oslo)
+                //Company(id=4, name=NAV)
             }
             log.info("");
             // fetch all importers
@@ -567,38 +604,55 @@ System.out.println(post1.toString());
             log.info("-------------------------------");
             for (Importer i : importers.findAll()) {
                 log.info(i.toString());
+                //Importer(id=1, name=importer-1)
+                //Importer(id=2, name=importer-2)
+                //Importer(id=3, name=importer-3)
+                //Importer(id=4, name=importer-4)
             }
             log.info("");
             // fetch all products
             log.info("== Product found with findAll():");
             log.info("-------------------------------");
             for (Product p : products.findAll()) {
-                //log.info(p.toString());
-                //Caused by: org.hibernate.LazyInitializationException: could not initialize proxy [no.agitec.fagaften.mellom.oppdrag.domain.store.WarehouseProductInfo#1] - no Session
+                log.info(p.toString());
+                //Product(id=1, name=null, code=code-1, quantity=null, version=0, company=Company(id=1, name=Agitec AS), warehouseProductInfo=WarehouseProductInfo(id=1, quantity=1, product_id=1), importer=Importer(id=1, name=importer-1), images=[])
+                //Product(id=2, name=null, code=code-2, quantity=null, version=0, company=Company(id=2, name=Scienta AS), warehouseProductInfo=WarehouseProductInfo(id=2, quantity=2, product_id=2), importer=Importer(id=2, name=importer-2), images=[])
+                //Product(id=3, name=null, code=code-3, quantity=null, version=0, company=Company(id=3, name=Mattilsynet, Oslo), warehouseProductInfo=WarehouseProductInfo(id=3, quantity=3, product_id=3), importer=Importer(id=3, name=importer-3), images=[])
+                //Product(id=4, name=null, code=code-4, quantity=null, version=0, company=Company(id=4, name=NAV), warehouseProductInfo=WarehouseProductInfo(id=4, quantity=4, product_id=4), importer=Importer(id=4, name=importer-4), images=[])
             }
             log.info("");
             // fetch all warehouseProductsInfo
             log.info("== WarehouseProductInfo found with findAll():");
             log.info("-------------------------------");
             for (WarehouseProductInfo wpinfo : warehouseProducts.findAll()) {
-                //log.info(wpinfo.toString());
-                //Method threw 'java.lang.StackOverflowError' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.store.WarehouseProductInfo.toString()
+                log.info(wpinfo.toString());
+                //WarehouseProductInfo(id=1, quantity=1, product_id=1)
+                //WarehouseProductInfo(id=2, quantity=2, product_id=2)
+                //WarehouseProductInfo(id=3, quantity=3, product_id=3)
+                //WarehouseProductInfo(id=4, quantity=4, product_id=4)
             }
             log.info("");
             // fetch all images
             log.info("== Image found with findAll():");
             log.info("-------------------------------");
             for (Image i : images.findAll()) {
-                //log.info(i.toString());
-                //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.store.Image.toString()
+                log.info(i.toString());
+                //Image(id=1, name=agitec.svg, index=1, product=null, versions=[])
+                //Image(id=2, name=scienta_logo.png, index=2, product=null, versions=[])
+                //Image(id=3, name=Mattilsynet.4089.jpg, index=3, product=null, versions=[])
+                //Image(id=4, name=nav-logo-red.svg, index=4, product=null, versions=[])
+
             }
             log.info("");
             // fetch all versions
             log.info("== Version found with findAll():");
             log.info("-------------------------------");
             for (Version v : versions.findAll()) {
-                //log.info(v.toString());
-                //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.store.Version.toString()
+                log.info(v.toString());
+                //Version(id=1, type=null, image=null, subVersions=[])
+                //Version(id=2, type=null, image=null, subVersions=[])
+                //Version(id=3, type=null, image=null, subVersions=[])
+                //Version(id=4, type=null, image=null, subVersions=[])
             }
             log.info("");
             // fetch all subversions
@@ -606,6 +660,10 @@ System.out.println(post1.toString());
             log.info("-------------------------------");
             for (SubVersion subv : subversions.findAll()) {
                 log.info(subv.toString());
+                //SubVersion(id=1, code=image-code-agitec, version=null)
+                //SubVersion(id=2, code=image-code-sciente, version=null)
+                //SubVersion(id=3, code=image-code-mattilsynet, version=null)
+                //SubVersion(id=4, code=image-code-nav, version=null)
             }
             log.info("");
 

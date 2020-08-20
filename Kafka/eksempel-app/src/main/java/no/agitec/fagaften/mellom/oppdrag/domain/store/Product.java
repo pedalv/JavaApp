@@ -43,7 +43,7 @@ public class Product {
      * Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotations
      */
     @OneToOne(
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER, //.LAZY: Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.store.WarehouseProductInfo$HibernateProxy$1CAUELoR.toString()
             cascade = CascadeType.ALL,
             mappedBy = "product",
             optional = false)
@@ -53,8 +53,8 @@ public class Product {
     /**
      * Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotations
      */
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "importer_id") //importer_id
+    @ManyToOne(fetch = FetchType.EAGER) // .LAZY:Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.store.Importer$HibernateProxy$7Ch5UEub.toString()
+    @JoinColumn(name = "importer_id")
     private Importer importer;
 
     //One Product has many images
@@ -65,7 +65,11 @@ public class Product {
      * The Importer is used in certain displays only, and we will fetch it when necessary.
      * The images are lazy since not all views require displaying those images.
      */
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product", orphanRemoval = true)
+    @OneToMany(
+            fetch = FetchType.EAGER, //LAZY: Unable to evaluate the expression Method threw 'org.hibernate.LazyInitializationException' exception.
+            cascade = CascadeType.ALL,
+            mappedBy = "product",
+            orphanRemoval = true)
     //@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "product", orphanRemoval = true)
     @OrderBy("index")
     private Set<Image> images = new LinkedHashSet<Image>();
@@ -109,6 +113,25 @@ public class Product {
         //warehouseProductInfo.setProduct(this);
         this.setWarehouseProductInfo(warehouseProductInfo);
     }
+
+/*
+    @Override
+    public final String toString() {
+        long p1 = this.getId();
+        String p2 = this.getName();
+        String p3 = this.getCode();
+        Integer p4 = this.getQuantity();
+        Company p5 = this.getCompany();
+        Integer p6 = this.getVersion();
+        WarehouseProductInfo p7 = this.getWarehouseProductInfo();
+
+        Set<Image> p8 = this.getImages(); //Method threw 'org.hibernate.LazyInitializationException' exception.
+        Importer p9 = this.getImporter(); //Method threw 'org.hibernate.LazyInitializationException' exception.
+
+
+        return "Pedro-Product";
+    }
+*/
 
 }
 

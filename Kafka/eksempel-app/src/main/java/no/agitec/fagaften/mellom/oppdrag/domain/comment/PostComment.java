@@ -18,7 +18,7 @@ public class PostComment {
     private String review;
 
     // Many PostComments has one Post
-    @ManyToOne(fetch = FetchType.EAGER) // LAZY: //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.PostDetail.toString()
+    @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
     public PostComment(String review, Post post) {

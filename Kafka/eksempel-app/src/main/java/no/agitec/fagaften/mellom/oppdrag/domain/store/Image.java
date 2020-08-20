@@ -56,7 +56,11 @@ public class Image {
     private Product product;
 
     //One Image has many versions
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "image", orphanRemoval = true)
+    @OneToMany(
+            fetch = FetchType.EAGER, //.LAZY: Unable to evaluate the expression Method threw 'org.hibernate.LazyInitializationException' exception.
+            cascade = CascadeType.ALL,
+            mappedBy = "image",
+            orphanRemoval = true)
     @ElementCollection
     @OrderBy("type")
     private Set<Version> versions = new LinkedHashSet<Version>();
@@ -82,6 +86,19 @@ public class Image {
         versions.remove(version);
         //version.setImage(null);
     }
+
+/*
+    @Override
+    public final String toString() {
+        long p1 = this.getId();
+        Product p2 = this.getProduct();
+        String p3 = this.getName();
+        Integer p4 = this.getIndex();
+        Set<Version> p5 = this.getVersions(); //Method threw 'org.hibernate.LazyInitializationException' exception.
+
+        return "Pedro-Image";
+    }
+*/
 }
 
 /*
