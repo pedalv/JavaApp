@@ -391,7 +391,7 @@ public class LoadDatabaseConfig {
             LocalDateTime createdOn = postdetail.getCreatedOn();
             String createdBy = postdetail.getCreatedBy();
             Post post1 = postdetail.getPost();
-//System.out.println(post1.toString());
+System.out.println(post1.toString());
 //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Post$HibernateProxy$NgEWEShs.toString()
             //https://stackoverflow.com/questions/40266770/spring-jpa-bi-directional-cannot-evaluate-tostring
             //https://stackoverflow.com/questions/42632648/lazyinitializationexception-trying-to-get-lazy-initialized-instance
@@ -429,7 +429,7 @@ public class LoadDatabaseConfig {
             log.info("== PostDetail found with findAll():");
             log.info("-------------------------------");
             for (PostDetail pd : postdetails.findAll()) {
-                //log.info(pd.toString());
+                log.info(pd.toString());
                 //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.PostDetail.toString()
             }
             log.info("");

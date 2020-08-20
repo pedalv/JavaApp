@@ -24,7 +24,7 @@ public class PostDetail {
     private String createdBy;
 
     //One PostDetail has one Post
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER) // .LAZY: //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.PostDetail.toString()
     @MapsId
     @JoinColumn(name = "id")
     private Post post;
