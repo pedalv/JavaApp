@@ -191,7 +191,7 @@ An architectural style or approach to maintaining an application’s state by ca
 > Physical storage resources can constrain message retention
 
 
-## [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/Kafka-demo.md)
+## [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/Kafka-demo.md)
 - Kafka Partitions
 
 > Each topic has one or more partitions
