@@ -72,6 +72,7 @@ public class Product {
             orphanRemoval = true)
     //@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "product", orphanRemoval = true)
     @OrderBy("index")
+    //@JoinColumn(name = "product_id")
     private Set<Image> images = new LinkedHashSet<Image>();
 
     /**

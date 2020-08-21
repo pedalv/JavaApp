@@ -394,8 +394,10 @@ public class LoadDatabaseConfig {
 System.out.println(post1.toString());
 //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Post$HibernateProxy$NgEWEShs.toString()
             //https://stackoverflow.com/questions/40266770/spring-jpa-bi-directional-cannot-evaluate-tostring
-            //https://stackoverflow.com/questions/42632648/lazyinitializationexception-trying-to-get-lazy-initialized-instance
             //https://stackoverflow.com/questions/47442454/how-to-avoid-initializing-hibernateproxy-when-invoking-tostring-on-it
+            //https://stackoverflow.com/questions/42632648/lazyinitializationexception-trying-to-get-lazy-initialized-instance
+            //https://arnoldgalovics.com/lazyinitializationexception-demystified/
+            //https://stackoverflow.com/questions/35997541/getting-org-hibernate-lazyinitializationexception-exceptions-after-retrieving/36168024
 
 
             //Update PostTag - Comments are

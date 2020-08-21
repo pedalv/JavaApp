@@ -30,6 +30,7 @@ public class Version {
             cascade = CascadeType.ALL,
             mappedBy = "version",
             orphanRemoval = true)
+    //@JoinColumn(name = "version_id")
     private Set<SubVersion> subVersions = new LinkedHashSet<SubVersion>();
 
     public void addSubVersion(SubVersion subVersion) {
@@ -98,4 +99,5 @@ targetEntity
 java.lang.Class
 
 Defines the set of cascadable operations that are propagated to the associated entity.
-The value cascade=ALL is equivalent to cascade={PERSIST, MERGE, REMOVE, REFRESH, DETACH}. */
+The value cascade=ALL is equivalent to cascade={PERSIST, MERGE, REMOVE, REFRESH, DETACH}.
+*/

@@ -6,9 +6,9 @@ Java projects to build competence.
 git clone https://github.com/pedalv/JavaApp.git
 ```
 
-# Project 13: Kafka 
-- Kafka
-- Kafka project is located on [https://github.com/pedalv/JavaApp/tree/master/Kafka](https://github.com/pedalv/JavaApp/tree/master/Kafka)
+# Project 13: MellomOppdrag 
+- MellomOppdrag
+- MellomOppdrag project is located on [https://github.com/pedalv/JavaApp/tree/master/MellomOppdrag](https://github.com/pedalv/JavaApp/tree/master/MellomOppdrag)
 
 # Project 12: Kotlin for Java Developers
 - Kotlin for Java Developers

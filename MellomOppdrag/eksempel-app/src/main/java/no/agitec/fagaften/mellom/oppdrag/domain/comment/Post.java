@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +26,9 @@ public class Post {
             fetch = FetchType.EAGER,
             mappedBy = "post",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true //To remove child also
     )
+    //@JoinColumn(name = "post_id")
     private List<PostComment> comments = new ArrayList<>();
 
     public Post(String title, String content) {
@@ -78,5 +78,42 @@ ManyToMany  - PostTag       - @ManyToMany: Many PostTag has many Post (Post can 
 Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
 
 Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany annotations
+
+ */
+
+/*
+one-to-many is the most common relationship, and it associates a row from a parent table (Post) to multiple rows in a child table (PostComment).
+    //Post - @OneToMany: One Post has many PostComments
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            mappedBy = "post",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true //To remove child also
+    )
+    //@JoinColumn(name = "post_id")
+    private List<PostComment> comments = new ArrayList<>();
+
+
+one-to-one requires the child table Primary Key (PostDetail) to be associated via a Foreign Key with the parent table Primary Key column (Post).
+    //PostDetail - @OneToOne: One PostDetail has one Post - save in database automatic Post, PostComment n
+    @OneToOne(fetch = FetchType.EAGER)
+    @MapsId
+    @JoinColumn(name = "id")
+    private Post post;
+
+many-to-many requires a link table containing two Foreign Key columns that reference the two different parent tables.
+    //PostTag - @ManyToMany: Many PostTag has many Post (Post can belong to same TAG)
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            mappedBy = "tagposts")
+    @ElementCollection
+    private Set<Post> posts = new HashSet<>();
+
+    //Role - @ManyToMany: Many users has many roles
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "UserRole",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "roleId"))
+    List<Role> roles;
 
  */

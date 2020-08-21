@@ -63,6 +63,7 @@ public class Image {
             orphanRemoval = true)
     @ElementCollection
     @OrderBy("type")
+    //@JoinColumn(name = "image_id")
     private Set<Version> versions = new LinkedHashSet<Version>();
 
     public Image(String name, int index, Product product, Set<Version> versions) {
