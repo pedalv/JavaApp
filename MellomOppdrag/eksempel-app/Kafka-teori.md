@@ -45,7 +45,7 @@ growth issues common to many enterprises
 - Open-sourced under Apache Software Foundation in 2012
 - First-choice adoption for data movement for hundreds of enterprise and internet-scale companies
 
-![Stream Processing with Apache kafka and DB](https://github.com/pedalv/JavaApp/blob/master/Kafka/StreamProcessingWithKafkaAndDB.PNG)
+![Stream Processing with Apache kafka and DB](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/StreamProcessingWithKafkaAndDB.PNG)
 
 [Kafka](https://www.youtube.com/watch?v=06iRM1Ghr1k&feature=emb_rel_pause) 
 
@@ -64,11 +64,11 @@ growth issues common to many enterprises
 > Messages are guaranteed to be strictly ordered within a partition
 
 #### Arkitecture
-![Kafka Architecture](https://github.com/pedalv/JavaApp/blob/master/Kafka/kafka-architecture-1.PNG)
+![Kafka Architecture](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kafka-architecture-1.PNG)
 
-![Spring Boot + Kafka](https://github.com/pedalv/JavaApp/blob/master/Kafka/boot-kafka_1.png)
+![Spring Boot + Kafka](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/boot-kafka_1.png)
 
-![Spring Boot + Kafka](https://github.com/pedalv/JavaApp/blob/master/Kafka/kafka_concepts.PNG)
+![Spring Boot + Kafka](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kafka_concepts.PNG)
 
 
 - Distributed Systems: 
@@ -191,7 +191,7 @@ An architectural style or approach to maintaining an application’s state by ca
 > Physical storage resources can constrain message retention
 
 
-## [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/Kafka/Kafka-demo.md)
+## [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/Kafka-demo.md)
 - Kafka Partitions
 
 > Each topic has one or more partitions

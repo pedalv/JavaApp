@@ -2,7 +2,7 @@
 Agitec AS er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.
 
 ## Prosjekt: [eksempel-app](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app)
-Bygg kompetanse for bevis for konsept POC med Spring, Apache Kafka, React, ...  
+Bygg kompetanse for bevis for konsept POC med Spring, Apache Kafka, Java, Kotlin, React, ...  
 
 ## Spring 
 
@@ -66,7 +66,7 @@ Spring Data MongoDB
 
 > [Accessing JPA Data with REST](https://spring.io/guides/gs/accessing-data-rest/)
 
-> [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/s)
+> [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql)
 
 > [MySQL Community Downloads](https://dev.mysql.com/downloads/)
 
