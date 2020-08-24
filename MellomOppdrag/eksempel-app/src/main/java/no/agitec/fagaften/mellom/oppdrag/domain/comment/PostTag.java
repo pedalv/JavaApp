@@ -56,11 +56,10 @@ public class PostTag {
 }
 
 /*
-OneToMany   - Post          - @OneToMany: One Post has many Comments
-ManyToOne   - Comment   - @ManyToOne: Many Comments has one Post
 OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, Comment n
-ManyToMany  - Tag           - @ManyToMany: Many Tags has many Posts
-            - Post          - @ManyToMany: Many Posts has many Tags
+OneToMany   - Post      - @OneToMany: One Post has many Comments
+ManyToMany  - Post      - @ManyToMany: Many Posts has many Tags
+
 
 Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
 

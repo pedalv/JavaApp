@@ -2,11 +2,7 @@ package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.domain.*;
-import no.agitec.fagaften.mellom.oppdrag.domain.comment.Post;
-import no.agitec.fagaften.mellom.oppdrag.domain.comment.Tag;
-import no.agitec.fagaften.mellom.oppdrag.domain.comment.Comment;
-import no.agitec.fagaften.mellom.oppdrag.domain.comment.Detail;
-import no.agitec.fagaften.mellom.oppdrag.domain.comment.PostTag;
+import no.agitec.fagaften.mellom.oppdrag.domain.comment.*;
 import no.agitec.fagaften.mellom.oppdrag.domain.store.*;
 import no.agitec.fagaften.mellom.oppdrag.repository.*;
 import no.agitec.fagaften.mellom.oppdrag.repository.comment.*;
@@ -17,7 +13,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @Configuration
 @Slf4j
@@ -319,7 +316,9 @@ public class LoadDatabaseConfig {
      * @return
      */
     @Bean(name = "comment")
-    CommandLineRunner comment(PostRepository posts, CommentRepository comments, DetailRepository details,
+    CommandLineRunner comment(PostRepository posts,
+                              DetailRepository details,
+                              CommentRepository comments, PostCommentRepository postcomments,
                               TagRepository tags, PostTagRepository posttags) {
         return (args) -> {
 
@@ -328,12 +327,13 @@ public class LoadDatabaseConfig {
             Tag tag;
             Detail detail;
             PostTag postTag;
+            PostComment postComment;
 
         // Create Tag - developer
             tag = new Tag("Developer");
         //Save in database
             tag = tags.save(tag);
-        // Create Tag - Leder
+            // Create Tag - Leder
             tag = new Tag("Leder");
         //Save in database
             tag = tags.save(tag);
@@ -351,26 +351,10 @@ public class LoadDatabaseConfig {
             Optional<Tag> tagLeder = tags.findById(2L); //Developer
 
 
-            //Create Post 1 - @OneToMany: One Post has many Comments
+        //Create Post 1 - @OneToMany: One Post has many Comments
             post = new Post(
                     "Post 1 - Mellom oppdrag",
                     "Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.");
-        //Create Comment 1 - @ManyToOne: Many Comments has one Post
-            comment = new Comment("review1");
-            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
-            post.getComments().add(comment);
-            //post.addComment(comment);
-        //Create Comment 2
-            comment = new Comment("review2");
-            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
-            post.getComments().add(comment);
-            //post.addComment(comment);
-       //Create Comment 3
-            comment = new Comment("review3");
-            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
-            post.getComments().add(comment);
-            //post.addComment(comment);
-        //...
         //Create Detail - @OneToOne: One Detail has one Post
             detail = new Detail("Pedro");
             detail.setPost(post);
@@ -394,25 +378,75 @@ public class LoadDatabaseConfig {
                 // tags=[Tag(id=1, name=Developer)])
             }
 
+        //Create and save Comment 1 - @ManyToOne: Many Comments has one Post
+            comment = new Comment("review1");
+            comment = comments.saveAndFlush(comment);
+        //Create and save PostComment 1
+            postComment = new PostComment(post.getId(), comment.getId());
+            postcomments.saveAndFlush(postComment);
+        //Create and save Comment 2
+            comment = new Comment("review2");
+            comment = comments.saveAndFlush(comment);
+        //Create and save PostComment 2
+            postComment = new PostComment(post.getId(), comment.getId());
+            postcomments.saveAndFlush(postComment);
+        //Create and save Comment 3
+            comment = new Comment("review3");
+            comment = comments.saveAndFlush(comment);
+        //Create and save PostComment 3
+            postComment = new PostComment(post.getId(), comment.getId());
+            postcomments.saveAndFlush(postComment);
+        //...
 
-        //CREATE MORE COMMENT IN SAME POST AND DETAIL
+        // fetch all posts
+            log.info("== Post found with findAll():");
+            log.info("-------------------------------");
+            for (Post p : posts.findAll()) {
+                log.info(p.toString());
+                //Post(
+                // id=1,
+                // title=Post 1 - Mellom oppdrag,
+                // content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.,
+                // comments=[Comment(id=1, review=review1), Comment(id=2, review=review2), Comment(id=3, review=review3)],
+                // tags=[Tag(id=1, name=Developer)])
+            }
+
+
+       //CREATE MORE COMMENT IN SAME POST AND DETAIL
             post = posts.findAll().get(0); //"Post 1 - Mellom oppdrag"
-        //Create Comment n+1
+        //Create and save Comment n+1 - @ManyToOne: Many Comments has one Post
             comment = new Comment("review4");
-            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
-            comments.saveAndFlush(comment);
-            //Create Comment n+2
+            comment = comments.saveAndFlush(comment);
+        //Create and save PostComment 4
+            postComment = new PostComment(post.getId(), comment.getId());
+            postcomments.saveAndFlush(postComment);
+        //Create and save Comment 5 - @ManyToOne: Many Comments has one Post
             comment = new Comment("review5");
-            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
-            comments.saveAndFlush(comment);
-        //Update Detail
-            // detail OKAY
+            comment = comments.saveAndFlush(comment);
+        //Create and save PostComment 5
+            postComment = new PostComment(post.getId(), comment.getId());
+            postcomments.saveAndFlush(postComment);
+
+       //TIPS OG RÅD
+            //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Post$HibernateProxy$NgEWEShs.toString()
+            //https://stackoverflow.com/questions/40266770/spring-jpa-bi-directional-cannot-evaluate-tostring
+            //https://stackoverflow.com/questions/47442454/how-to-avoid-initializing-hibernateproxy-when-invoking-tostring-on-it
+            //https://stackoverflow.com/questions/42632648/lazyinitializationexception-trying-to-get-lazy-initialized-instance
+            //https://arnoldgalovics.com/lazyinitializationexception-demystified/
+            //https://stackoverflow.com/questions/35997541/getting-org-hibernate-lazyinitializationexception-exceptions-after-retrieving/36168024
+
+
+         //Create Tag - Customer
+            tag = new Tag("Customer");
+         //Save in database
+            tag = tags.save(tag);
+        //Create PostTag
+            postTag = new PostTag(post.getId(), tags.findByName("Customer").get().getId());
+        //Save PostTag
+            postTag = posttags.saveAndFlush(postTag);
+        //fetch post updated
+            post = posts.findAll().get(0); //"Post 1 - Mellom oppdrag"
             detail = details.findAll().get(0);
-            // after fetch got LazyInitializationException
-            //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Detail.toString()
-            post.setComments(comments.findAll()); //post_id like 1
-            detail.setPost(post);
-            detail = details.saveAndFlush(detail);
             Long id = detail.getId();
             LocalDateTime createdOn = detail.getCreatedOn();
             String createdBy = detail.getCreatedBy();
@@ -423,32 +457,62 @@ System.out.println("Ptitle:" + post1.getTitle());
 System.out.println("Pcontent:" + post1.getContent());
 System.out.println("Pcomments:" + post1.getComments().toString());
 System.out.println("Ptags:" + post1.getTags().toString());
-            //TIPS OG RÅD
-            //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Post$HibernateProxy$NgEWEShs.toString()
-            //https://stackoverflow.com/questions/40266770/spring-jpa-bi-directional-cannot-evaluate-tostring
-            //https://stackoverflow.com/questions/47442454/how-to-avoid-initializing-hibernateproxy-when-invoking-tostring-on-it
-            //https://stackoverflow.com/questions/42632648/lazyinitializationexception-trying-to-get-lazy-initialized-instance
-            //https://arnoldgalovics.com/lazyinitializationexception-demystified/
-            //https://stackoverflow.com/questions/35997541/getting-org-hibernate-lazyinitializationexception-exceptions-after-retrieving/36168024
 
-
-        //Create Tag - Customer
-            tag = new Tag("Customer");
-        //Save in database
-            tag = tags.save(tag);
-        //Create PostTag
-            postTag = new PostTag(post.getId(), tags.findByName("Customer").get().getId());
-        //Save PostTag
-            postTag = posttags.saveAndFlush(postTag);
-        //fetch post updated
-            post = posts.findAll().get(0); //"Post 1 - Mellom oppdrag"
-System.out.println("Pcontent:" + post1.getComments().toString()); //comments er null
-            post.setComments(comments.findAll()); //post_id like 1
-System.out.println("Pcontent:" + post1.getContent().toString()); //comments er null
-
-
+            // fetch all posts
+            log.info("== Post found with findAll():");
+            log.info("-------------------------------");
+            for (Post p : posts.findAll()) {
+                log.info(p.toString());
+                //Post(
+                // id=1,
+                // title=Post 1 - Mellom oppdrag, content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.,
+                // comments=[Comment(id=1, review=review1), Comment(id=2, review=review2), Comment(id=3, review=review3), Comment(id=4, review=review4), Comment(id=5, review=review5)],
+                // tags=[Tag(id=3, name=Customer), Tag(id=1, name=Developer)])
+            }
+            log.info("");
+            // fetch all comments
+            log.info("== Comment found with findAll():");
+            log.info("-------------------------------");
+            for (Comment c : comments.findAll()) {
+                log.info(c.toString());
+                //Comment(id=1, review=review1)
+                //Comment(id=2, review=review2)
+                //Comment(id=3, review=review3)
+                //Comment(id=4, review=review4)
+                //Comment(id=5, review=review5)
+            }
+            log.info("");
+            // fetch all postcomments
+            log.info("== PostComment found with findAll():");
+            log.info("-------------------------------");
+            for (PostComment pc : postcomments.findAll()) {
+                log.info(pc.toString());
+                //PostComment(id=1, postId=1, commentId=1)
+                //PostComment(id=2, postId=1, commentId=2)
+                //PostComment(id=3, postId=1, commentId=3)
+                //PostComment(id=4, postId=1, commentId=4)
+                //PostComment(id=5, postId=1, commentId=5)
+            }
+            log.info("");
+            // fetch all details
+            log.info("== Detail found with findAll():");
+            log.info("-------------------------------");
+            for (Detail d : details.findAll()) {
+                log.info(d.toString());
+                // Detail(
+                // id=1,
+                // createdOn=2020-08-24T14:07:43.789564,
+                // createdBy=Pedro,
+                // post=Post(
+                // id=1,
+                // title=Post 1 - Mellom oppdrag,
+                // content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.,
+                // comments=[Comment(id=1, review=review1), Comment(id=1, review=review1), Comment(id=2, review=review2), Comment(id=2, review=review2), Comment(id=3, review=review3), Comment(id=3, review=review3), Comment(id=4, review=review4), Comment(id=4, review=review4), Comment(id=5, review=review5), Comment(id=5, review=review5)],
+                // tags=[Tag(id=3, name=Customer), Tag(id=1, name=Developer)]))
+            }
+            log.info("");
             // fetch all tags
-            log.info("== tAG found with findAll():");
+            log.info("== Tag found with findAll():");
             log.info("-------------------------------");
             for (Tag t : tags.findAll()) {
                 log.info(t.toString());
@@ -457,58 +521,8 @@ System.out.println("Pcontent:" + post1.getContent().toString()); //comments er n
                 //Tag(id=3, name=Customer)
             }
             log.info("");
-            // fetch all posts
-            log.info("== Post found with findAll():");
-            log.info("-------------------------------");
-            for (Post p : posts.findAll()) {
-                log.info(p.toString());
-                //Post(id=1, title=Post 1 - Mellom oppdrag, content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving., comments=[], tags=[Tag(id=3, name=Customer), Tag(id=1, name=Developer)])
-
-                //Post(
-                // id=1,
-                // title=Post 1 - Mellom oppdrag,
-                // content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.,
-                // comments=[],
-                // tags=[Tag(id=3, name=Customer), Tag(id=1, name=Developer)]
-                // )
-            }
-            log.info("");
-            // fetch all comments
-            log.info("== Comment found with findAll():");
-            log.info("-------------------------------");
-            for (Comment c : comments.findAll()) {
-                log.info(c.toString());
-                //Comment(id=1, review=review1, post=null)
-                //Comment(id=2, review=review2, post=null)
-                //Comment(id=3, review=review3, post=null)
-                //Comment(id=4, review=review4, post=null)
-                //Comment(id=5, review=review5, post=null)
-            }
-            log.info("");
-            // fetch all details
-            log.info("== Detail found with findAll():");
-            log.info("-------------------------------");
-            for (Detail d : details.findAll()) {
-                log.info(d.toString());
-                //Detail(id=1, createdOn=2020-08-24T10:40:02.312020, createdBy=Pedro, post=Post(id=1, title=Post 1 - Mellom oppdrag, content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving., comments=[], tags=[Tag(id=3, name=Customer), Tag(id=1, name=Developer)]))
-
-                //Detail(
-                // id=1,
-                // createdOn=2020-08-24T10:40:02.312020,
-                // createdBy=Pedro,
-                // post=Post(
-                //      id=1,
-                //      title=Post 1 - Mellom oppdrag,
-                //      content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.,
-                //      comments=[],
-                //      tags=[Tag(id=3, name=Customer), Tag(id=1, name=Developer)]
-                //      )
-                //  )
-
-            }
-            log.info("");
             // fetch all posttags
-            log.info("== PostTags found with findAll():");
+            log.info("== PostTag found with findAll():");
             log.info("-------------------------------");
             for (PostTag pt : posttags.findAll()) {
                 log.info("PostTag: " + pt.toString());
@@ -516,21 +530,6 @@ System.out.println("Pcontent:" + post1.getContent().toString()); //comments er n
                 //PostTag: PostTag(id=2, postId=1, tagId=3)
             }
             log.info("");
-
-
-
-            //TODO
-            List<Comment> comments2 = comments.findAll();
-            Optional<Comment> comments3 = comments.findByPost(post);
-            List<Comment> comments4 = comments.findQueryPostId(post.getId());
-            System.out.println(post.toString());
-            //Post(
-            // id=1,
-            // title=Post 1 - Mellom oppdrag,
-            // content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.,
-            // comments=[Comment(id=1, review=review1, post=null), Comment(id=2, review=review2, post=null), Comment(id=3, review=review3, post=null), Comment(id=4, review=review4, post=null), Comment(id=5, review=review5, post=null)],
-            // tags=[Tag(id=3, name=Customer), Tag(id=1, name=Developer)])
-
         };
     }
 

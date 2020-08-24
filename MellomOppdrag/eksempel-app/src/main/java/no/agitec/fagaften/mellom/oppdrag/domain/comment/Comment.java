@@ -17,30 +17,19 @@ public class Comment {
 
     private String review;
 
-    //private Long postId;
-
-    // Many Comments has one Post
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Post post;
-
-    public Comment(String review, Post post) {
-        this.review = review;
-        this.post = post;
-    }
-
     public Comment(String review) {
         this.review = review;
     }
 }
 
 /*
-OneToMany   - Post          - @OneToMany: One Post has many Comments
-ManyToOne   - Comment   - @ManyToOne: Many Comments has one Post
 OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, Comment n
-ManyToMany  - Tag           - @ManyToMany: Many Tags has many Posts
-            - Post          - @ManyToMany: Many Posts has many Tags
+OneToMany   - Post      - @OneToMany: One Post has many Comments
+ManyToMany  - Post      - @ManyToMany: Many Posts has many Tags
+
 
 Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
 
 Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany annotations
  */
+

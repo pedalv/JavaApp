@@ -2,26 +2,26 @@ package no.agitec.fagaften.mellom.oppdrag.domain.comment;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "Tag_Gen", sequenceName = "Tag_Gen",  initialValue = 1)
-
-public class Tag {
+@SequenceGenerator(name = "PostComment_Gen", sequenceName = "PostComment_Gen",  initialValue = 1)
+public class PostComment {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO, generator = "Tag_Gen")
+    @GeneratedValue(strategy= GenerationType.AUTO, generator = "PostComment_Gen")
     private Long id;
 
-    @NaturalId
-    private String name;
+    private Long postId;
 
-    public Tag(String name) {
-        this.name = name;
+    private Long commentId;
+
+    public PostComment(Long postId, Long commentId) {
+        this.postId = postId;
+        this.commentId = commentId;
     }
 
 }
@@ -35,13 +35,4 @@ ManyToMany  - Post      - @ManyToMany: Many Posts has many Tags
 Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
 
 Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany annotations
- */
-
-
-/*
-    //OLD KODE
-    //USE THIS SOLUTION TO SHOW COMMENTS (post_id)
-    //Many Tags has many Posts
-    //@ManyToMany(mappedBy = "tags")
-    //private Set<Post> posts = new HashSet<>();
  */
