@@ -23,7 +23,7 @@ public class Post {
 
     private String content;
 
-    // One Post has many PostComments
+    // One Post has many Comments
     @OneToMany(
             fetch = FetchType.EAGER,
             mappedBy = "post",
@@ -31,7 +31,7 @@ public class Post {
             orphanRemoval = true //To remove child also
     )
     //@JoinColumn(name = "post_id")
-    private List<PostComment> comments = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
 
 
     //Many Posts has many Tags
@@ -53,12 +53,12 @@ public class Post {
         this.content = content;
     }
 
-    public void addComment(PostComment comment) {
+    public void addComment(Comment comment) {
         comments.add(comment);
         comment.setPost(this);
     }
 
-    public void removeComment(PostComment comment) {
+    public void removeComment(Comment comment) {
         comments.remove(comment);
         comment.setPost(null);
     }
@@ -80,11 +80,11 @@ public class Post {
     public final String toString() {
         long ID = this.getId();
         //String CONTENT = this.getContent(); //Method threw 'org.hibernate.LazyInitializationException' exception.
-        //List<PostComment> COMMENTS = this.getComments(); //Method threw 'org.hibernate.LazyInitializationException' exception.
+        //List<Comment> COMMENTS = this.getComments(); //Method threw 'org.hibernate.LazyInitializationException' exception.
 
         String str = "";
-        for (PostComment pc : this.getComments()) {
-            str += "PostComment(id="+pc.getId()+", review="+pc.getReview()+", post="+pc.getPost()+")";
+        for (Comment pc : this.getComments()) {
+            str += "Comment(id="+pc.getId()+", review="+pc.getReview()+", post="+pc.getPost()+")";
             System.out.println(str);
         }
 
@@ -93,15 +93,15 @@ public class Post {
         //return "Post(id="+this.id+", title="+"this.content"+", comments=["+ "this.getComments()"+"])";
         //return "PEDRO-Post";
 
-        //return "Post(id=1, title=title, content=content, comments=[PostComment(id=1, review=review1, post=null),PostComment(id=2, review=review2, post=null)])";
+        //return "Post(id=1, title=title, content=content, comments=[Comment(id=1, review=review1, post=null),Comment(id=2, review=review2, post=null)])";
     }
  */
 }
 
 /*
-OneToMany   - Post          - @OneToMany: One Post has many PostComments
-ManyToOne   - PostComment   - @ManyToOne: Many PostComments has one Post
-OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, PostComment n
+OneToMany   - Post          - @OneToMany: One Post has many Comments
+ManyToOne   - Comment   - @ManyToOne: Many Comments has one Post
+OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, Comment n
 ManyToMany  - Tag           - @ManyToMany: Many Tags has many Posts
             - Post          - @ManyToMany: Many Posts has many Tags
 
@@ -112,8 +112,8 @@ Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany an
 
 
 /*
-one-to-many is the most common relationship, and it associates a row from a parent table (Post) to multiple rows in a child table (PostComment).
-    //Post - @OneToMany: One Post has many PostComments
+one-to-many is the most common relationship, and it associates a row from a parent table (Post) to multiple rows in a child table (Comment).
+    //Post - @OneToMany: One Post has many Comments
     @OneToMany(
             fetch = FetchType.EAGER,
             mappedBy = "post",
@@ -121,11 +121,11 @@ one-to-many is the most common relationship, and it associates a row from a pare
             orphanRemoval = true //To remove child also
     )
     //@JoinColumn(name = "post_id")
-    private List<PostComment> comments = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
 
 
 one-to-one requires the child table Primary Key (Detail) to be associated via a Foreign Key with the parent table Primary Key column (Post).
-    //Detail - @OneToOne: One Detail has one Post - save in database automatic Post, PostComment n
+    //Detail - @OneToOne: One Detail has one Post - save in database automatic Post, Comment n
     @OneToOne(fetch = FetchType.EAGER)
     @MapsId
     @JoinColumn(name = "id")

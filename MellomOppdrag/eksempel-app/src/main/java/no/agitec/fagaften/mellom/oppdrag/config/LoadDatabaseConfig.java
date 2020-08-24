@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.domain.*;
 import no.agitec.fagaften.mellom.oppdrag.domain.comment.Post;
 import no.agitec.fagaften.mellom.oppdrag.domain.comment.Tag;
-import no.agitec.fagaften.mellom.oppdrag.domain.comment.PostComment;
+import no.agitec.fagaften.mellom.oppdrag.domain.comment.Comment;
 import no.agitec.fagaften.mellom.oppdrag.domain.comment.Detail;
 import no.agitec.fagaften.mellom.oppdrag.domain.comment.PostTag;
 import no.agitec.fagaften.mellom.oppdrag.domain.store.*;
@@ -302,9 +302,9 @@ public class LoadDatabaseConfig {
     }
 
     /**
-     * OneToMany   - Post          - @OneToMany: One Post has many PostComments
-     * ManyToOne   - PostComment   - @ManyToOne: Many PostComments has one Post
-     * OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, PostComment n
+     * OneToMany   - Post          - @OneToMany: One Post has many Comments
+     * ManyToOne   - Comment   - @ManyToOne: Many Comments has one Post
+     * OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, Comment n
      * ManyToMany  - Tag           - @ManyToMany: Many Tags has many Posts
      *             - Post          - @ManyToMany: Many Posts has many Tags
      *
@@ -313,18 +313,18 @@ public class LoadDatabaseConfig {
      * Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany annotations
      *
      * @param posts
-     * @param postcomments
+     * @param comments
      * @param details
      * @param posttags
      * @return
      */
     @Bean(name = "comment")
-    CommandLineRunner comment(PostRepository posts, PostCommentRepository postcomments, DetailRepository details,
+    CommandLineRunner comment(PostRepository posts, CommentRepository comments, DetailRepository details,
                               TagRepository tags, PostTagRepository posttags) {
         return (args) -> {
 
             Post post;
-            PostComment postcomment;
+            Comment comment;
             Tag tag;
             Detail detail;
             PostTag postTag;
@@ -351,30 +351,30 @@ public class LoadDatabaseConfig {
             Optional<Tag> tagLeder = tags.findById(2L); //Developer
 
 
-            //Create Post 1 - @OneToMany: One Post has many PostComments
+            //Create Post 1 - @OneToMany: One Post has many Comments
             post = new Post(
                     "Post 1 - Mellom oppdrag",
                     "Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.");
-        //Create PostComment 1 - @ManyToOne: Many PostComments has one Post
-            postcomment = new PostComment("review1");
-            //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
-            post.getComments().add(postcomment);
-            //post.addComment(postcomment);
-        //Create PostComment 2
-            postcomment = new PostComment("review2");
-            //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
-            post.getComments().add(postcomment);
-            //post.addComment(postcomment);
-       //Create PostComment 3
-            postcomment = new PostComment("review3");
-            //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
-            post.getComments().add(postcomment);
-            //post.addComment(postcomment);
+        //Create Comment 1 - @ManyToOne: Many Comments has one Post
+            comment = new Comment("review1");
+            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
+            post.getComments().add(comment);
+            //post.addComment(comment);
+        //Create Comment 2
+            comment = new Comment("review2");
+            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
+            post.getComments().add(comment);
+            //post.addComment(comment);
+       //Create Comment 3
+            comment = new Comment("review3");
+            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
+            post.getComments().add(comment);
+            //post.addComment(comment);
         //...
         //Create Detail - @OneToOne: One Detail has one Post
             detail = new Detail("Pedro");
             detail.setPost(post);
-        //Save in database automatic Post, PostComment n
+        //Save in database automatic Post, Comment n
             detail = details.saveAndFlush(detail);
         //Create PostTag
             postTag = new PostTag(post.getId(), tagDeveloper.get().getId());
@@ -395,22 +395,22 @@ public class LoadDatabaseConfig {
             }
 
 
-        //CREATE MORE POSTCOMMENT IN SAME POST AND DETAIL
+        //CREATE MORE COMMENT IN SAME POST AND DETAIL
             post = posts.findAll().get(0); //"Post 1 - Mellom oppdrag"
-        //Create PostComment n+1
-            postcomment = new PostComment("review4");
-            //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
-            postcomments.saveAndFlush(postcomment);
-            //Create PostComment n+2
-            postcomment = new PostComment("review5");
-            //postcomment.setPost(post); //Can not sett same Post in PostComment === Collecting data...
-            postcomments.saveAndFlush(postcomment);
+        //Create Comment n+1
+            comment = new Comment("review4");
+            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
+            comments.saveAndFlush(comment);
+            //Create Comment n+2
+            comment = new Comment("review5");
+            //comment.setPost(post); //Can not sett same Post in Comment === Collecting data...
+            comments.saveAndFlush(comment);
         //Update Detail
             // detail OKAY
             detail = details.findAll().get(0);
             // after fetch got LazyInitializationException
             //Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate no.agitec.fagaften.mellom.oppdrag.domain.comment.Detail.toString()
-            post.setComments(postcomments.findAll());
+            post.setComments(comments.findAll()); //post_id like 1
             detail.setPost(post);
             detail = details.saveAndFlush(detail);
             Long id = detail.getId();
@@ -443,7 +443,7 @@ System.out.println("Ptags:" + post1.getTags().toString());
         //fetch post updated
             post = posts.findAll().get(0); //"Post 1 - Mellom oppdrag"
 System.out.println("Pcontent:" + post1.getComments().toString()); //comments er null
-            post.setComments(postcomments.findAll()); //post_id like 1
+            post.setComments(comments.findAll()); //post_id like 1
 System.out.println("Pcontent:" + post1.getContent().toString()); //comments er null
 
 
@@ -473,16 +473,16 @@ System.out.println("Pcontent:" + post1.getContent().toString()); //comments er n
                 // )
             }
             log.info("");
-            // fetch all postcomments
-            log.info("== PostComment found with findAll():");
+            // fetch all comments
+            log.info("== Comment found with findAll():");
             log.info("-------------------------------");
-            for (PostComment pc3 : postcomments.findAll()) {
-                log.info(pc3.toString());
-                //PostComment(id=1, review=review1, post=null)
-                //PostComment(id=2, review=review2, post=null)
-                //PostComment(id=3, review=review3, post=null)
-                //PostComment(id=4, review=review4, post=null)
-                //PostComment(id=5, review=review5, post=null)
+            for (Comment c : comments.findAll()) {
+                log.info(c.toString());
+                //Comment(id=1, review=review1, post=null)
+                //Comment(id=2, review=review2, post=null)
+                //Comment(id=3, review=review3, post=null)
+                //Comment(id=4, review=review4, post=null)
+                //Comment(id=5, review=review5, post=null)
             }
             log.info("");
             // fetch all details
@@ -516,6 +516,20 @@ System.out.println("Pcontent:" + post1.getContent().toString()); //comments er n
                 //PostTag: PostTag(id=2, postId=1, tagId=3)
             }
             log.info("");
+
+
+
+            //TODO
+            List<Comment> comments2 = comments.findAll();
+            Optional<Comment> comments3 = comments.findByPost(post);
+            List<Comment> comments4 = comments.findQueryPostId(post.getId());
+            System.out.println(post.toString());
+            //Post(
+            // id=1,
+            // title=Post 1 - Mellom oppdrag,
+            // content=Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.,
+            // comments=[Comment(id=1, review=review1, post=null), Comment(id=2, review=review2, post=null), Comment(id=3, review=review3, post=null), Comment(id=4, review=review4, post=null), Comment(id=5, review=review5, post=null)],
+            // tags=[Tag(id=3, name=Customer), Tag(id=1, name=Developer)])
 
         };
     }

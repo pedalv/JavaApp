@@ -51,9 +51,9 @@ public class Detail {
 }
 
 /*
-OneToMany   - Post          - @OneToMany: One Post has many PostComments
-ManyToOne   - PostComment   - @ManyToOne: Many PostComments has one Post
-OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, PostComment n
+OneToMany   - Post          - @OneToMany: One Post has many Comments
+ManyToOne   - Comment   - @ManyToOne: Many Comments has one Post
+OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, Comment n
 ManyToMany  - Tag           - @ManyToMany: Many Tags has many Posts
             - Post          - @ManyToMany: Many Posts has many Tags
 

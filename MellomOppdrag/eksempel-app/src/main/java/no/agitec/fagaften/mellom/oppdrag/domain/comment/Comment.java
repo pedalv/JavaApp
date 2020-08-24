@@ -8,34 +8,35 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "PostComment_Gen", sequenceName = "PostComment_Gen",  initialValue = 1)
-public class PostComment {
+@SequenceGenerator(name = "Comment_Gen", sequenceName = "Comment_Gen",  initialValue = 1)
+public class Comment {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO, generator = "PostComment_Gen")
+    @GeneratedValue(strategy= GenerationType.AUTO, generator = "Comment_Gen")
     private Long id;
 
     private String review;
 
-    // Many PostComments has one Post
+    //private Long postId;
+
+    // Many Comments has one Post
     @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
-    public PostComment(String review, Post post) {
+    public Comment(String review, Post post) {
         this.review = review;
         this.post = post;
     }
 
-    public PostComment(String review) {
+    public Comment(String review) {
         this.review = review;
     }
-
 }
 
 /*
-OneToMany   - Post          - @OneToMany: One Post has many PostComments
-ManyToOne   - PostComment   - @ManyToOne: Many PostComments has one Post
-OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, PostComment n
+OneToMany   - Post          - @OneToMany: One Post has many Comments
+ManyToOne   - Comment   - @ManyToOne: Many Comments has one Post
+OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, Comment n
 ManyToMany  - Tag           - @ManyToMany: Many Tags has many Posts
             - Post          - @ManyToMany: Many Posts has many Tags
 
