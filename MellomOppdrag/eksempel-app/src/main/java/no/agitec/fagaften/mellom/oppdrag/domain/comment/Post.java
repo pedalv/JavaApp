@@ -5,7 +5,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -31,6 +33,21 @@ public class Post {
     //@JoinColumn(name = "post_id")
     private List<PostComment> comments = new ArrayList<>();
 
+
+    //Many Posts has many Tags
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
+    )
+    @JoinTable(name = "PostTag",
+            joinColumns = @JoinColumn(name = "postId"),
+            inverseJoinColumns = @JoinColumn(name = "tagId")
+    )
+    private Set<Tag> tags = new HashSet<>();
+
     public Post(String title, String content) {
         this.title = title;
         this.content = content;
@@ -45,6 +62,18 @@ public class Post {
         comments.remove(comment);
         comment.setPost(null);
     }
+
+    /* USE SAME SOLUTION FOR COMMENTS
+    public void addTag(Tag tag) {
+        tags.add(tag);
+        tag.getPosts().add(this);
+    }
+
+    public void removeTag(Tag tag) {
+        tags.remove(tag);
+        tag.getPosts().remove(this);
+    }
+    */
 
 /*
     @Override
@@ -72,14 +101,15 @@ public class Post {
 /*
 OneToMany   - Post          - @OneToMany: One Post has many PostComments
 ManyToOne   - PostComment   - @ManyToOne: Many PostComments has one Post
-OneToOne    - PostDetail    - @OneToOne: One PostDetail has one Post - save in database automatic Post, PostComment n
-ManyToMany  - PostTag       - @ManyToMany: Many PostTag has many Post (Post can belong to same TAG)
+OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, PostComment n
+ManyToMany  - Tag           - @ManyToMany: Many Tags has many Posts
+            - Post          - @ManyToMany: Many Posts has many Tags
 
 Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
 
 Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany annotations
-
  */
+
 
 /*
 one-to-many is the most common relationship, and it associates a row from a parent table (Post) to multiple rows in a child table (PostComment).
@@ -94,8 +124,8 @@ one-to-many is the most common relationship, and it associates a row from a pare
     private List<PostComment> comments = new ArrayList<>();
 
 
-one-to-one requires the child table Primary Key (PostDetail) to be associated via a Foreign Key with the parent table Primary Key column (Post).
-    //PostDetail - @OneToOne: One PostDetail has one Post - save in database automatic Post, PostComment n
+one-to-one requires the child table Primary Key (Detail) to be associated via a Foreign Key with the parent table Primary Key column (Post).
+    //Detail - @OneToOne: One Detail has one Post - save in database automatic Post, PostComment n
     @OneToOne(fetch = FetchType.EAGER)
     @MapsId
     @JoinColumn(name = "id")

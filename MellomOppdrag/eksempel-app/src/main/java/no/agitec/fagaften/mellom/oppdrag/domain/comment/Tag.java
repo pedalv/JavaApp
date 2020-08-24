@@ -2,32 +2,31 @@ package no.agitec.fagaften.mellom.oppdrag.domain.comment;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @Entity
-@SequenceGenerator(name = "PostComment_Gen", sequenceName = "PostComment_Gen",  initialValue = 1)
-public class PostComment {
+@SequenceGenerator(name = "Tag_Gen", sequenceName = "Tag_Gen",  initialValue = 1)
+
+public class Tag {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO, generator = "PostComment_Gen")
+    @GeneratedValue(strategy= GenerationType.AUTO, generator = "Tag_Gen")
     private Long id;
 
-    private String review;
+    @NaturalId
+    private String name;
 
-    // Many PostComments has one Post
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Post post;
+    //USE THIS SOLUTION TO SHOW COMMENTS (post_id)
+    //Many Tags has many Posts
+    //@ManyToMany(mappedBy = "tags")
+    //private Set<Post> posts = new HashSet<>();
 
-    public PostComment(String review, Post post) {
-        this.review = review;
-        this.post = post;
-    }
-
-    public PostComment(String review) {
-        this.review = review;
+    public Tag(String name) {
+        this.name = name;
     }
 
 }

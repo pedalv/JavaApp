@@ -44,9 +44,33 @@ public class PostTag {
     @GeneratedValue(strategy= GenerationType.AUTO, generator = "PostTag_Gen")
     private Long id;
 
-    @NaturalId
-    private String name;
+    private Long postId;
 
+    private Long tagId;
+
+    public PostTag(Long postId, Long tagId) {
+        this.postId = postId;
+        this.tagId = tagId;
+    }
+
+}
+
+/*
+OneToMany   - Post          - @OneToMany: One Post has many PostComments
+ManyToOne   - PostComment   - @ManyToOne: Many PostComments has one Post
+OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, PostComment n
+ManyToMany  - Tag           - @ManyToMany: Many Tags has many Posts
+            - Post          - @ManyToMany: Many Posts has many Tags
+
+Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
+
+Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany annotations
+ */
+
+
+
+
+/* OLD SOLUTION
     //Many PostTag has many Post
     @ManyToMany(
             fetch = FetchType.EAGER,
@@ -59,17 +83,4 @@ public class PostTag {
         this.name = name;
         this.posts = posts;
     }
-
-}
-
-/*
-OneToMany   - Post          - @OneToMany: One Post has many PostComments
-ManyToOne   - PostComment   - @ManyToOne: Many PostComments has one Post
-OneToOne    - PostDetail    - @OneToOne: One PostDetail has one Post - save in database automatic Post, PostComment n
-ManyToMany  - PostTag       - @ManyToMany: Many PostTag has many Post (Post can belong to same TAG)
-
-Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
-
-Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany annotations
-
- */
+*/
