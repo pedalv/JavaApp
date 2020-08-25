@@ -91,34 +91,91 @@ Spring Data MongoDB
 - A spectrum of stateless to stateful services -> RESTful
 
 ## [Apache Kafka](https://kafka.apache.org/)
-
+- Course
 > [Quickstart](https://kafka.apache.org/quickstart)
 
-
-> Bevis for konsept (poc) prosjekt for [Getting Started with Apache Kafka](https://app.pluralsight.com/library/courses/apache-kafka-getting-started/table-of-contents)
+> Bevis av konsept (poc) prosjekt for [Getting Started with Apache Kafka](https://app.pluralsight.com/library/courses/apache-kafka-getting-started/table-of-contents)
 
 - [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/Kafka-teori.md)
 - [KAFKA DEMO](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/Kafka-demo.md)
-
 
 > [Apache Kafka: Build, Deploy, and Monitor Your First Real-world Application](https://app.pluralsight.com/library/courses/kafka-build-deploy-monitor-real-world-application/table-of-contents)
 
 > [Spring Boot + Apache Kafka Hello World Example](https://www.javainuse.com/spring/spring-boot-apache-kafka-hello-world)
 
-> [javaBin Online : Apache Kafka and ksqlDB in Action with Robin Moffatt](https://www.meetup.com/javaBin/events/270058786/) --> [confluentinc / demo-scene](https://github.com/confluentinc/demo-scene)
+> [javaBin Online  : Apache Kafka and ksqlDB in Action with Robin Moffatt](https://www.meetup.com/javaBin/events/270058786/)
+-[confluentinc / demo-scene](https://github.com/confluentinc/demo-scene)
+
+
+- Tutorial
 
 > [Documentation](http://kafka.apache.org/documentation.html)
 
-> [kafka-clients](https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients) --> [Kafka Clients - Producers | Consumers](https://jaceklaskowski.gitbooks.io/apache-kafka/kafka-clients.html) --> [Kafka Clients](https://docs.confluent.io/current/clients/index.html) --> [clients 2.5.0 API](https://javadoc.io/doc/org.apache.kafka/kafka-clients/latest/index.html)
-
-> [kafka-streams-test-utils](https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams-test-utils) --> [Testing Kafka Streams](https://kafka.apache.org/22/documentation/streams/developer-guide/testing.html)
-
-> [Spring for Apache Kafka](https://spring.io/projects/spring-kafka)
-
-> [ZooKeeper: Because coordinating distributed systems is a Zoo](https://cwiki.apache.org/confluence/display/ZOOKEEPER/Index)
+> [14. Messaging](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-messaging)
 
 > [Enterprise Plans](https://www.cloudkarafka.com/plans.html)
 
-> [14. Messaging](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-messaging)
+> [ZooKeeper: Because coordinating distributed systems is a Zoo](https://cwiki.apache.org/confluence/display/ZOOKEEPER/Index)
+
+> [Kafka Clients - Producers | Consumers](https://jaceklaskowski.gitbooks.io/apache-kafka/kafka-clients.html) 
+
+> [Kafka Clients](https://docs.confluent.io/current/clients/index.html)
+
+> [clients 2.6.0 API](https://javadoc.io/doc/org.apache.kafka/kafka-clients/latest/index.html)
+
+> [Testing Kafka Streams](https://kafka.apache.org/22/documentation/streams/developer-guide/testing.html)
+
+
+
+- Version
+
+How The Kafka Project Handles Clients
+
+> [kafka-clients](https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
+
+```
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>${kafka.version}</version>
+		</dependency>
+
+```
+
+Kakfa Streams is a client library for building applications and microservices, where the input and output data are stored in Kafka clusters 
+
+> [kafka-streams-test-utils](https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams-test-utils) 
+
+```
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-streams</artifactId>
+			<version>${kafka.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-streams-test-utils</artifactId>
+			<version>${kafka.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+```
+
+The Spring for Apache Kafka (spring-kafka) project applies core Spring concepts to the development of Kafka-based messaging solutions.
+
+> [Spring for Apache Kafka](https://spring.io/projects/spring-kafka)
+
+```
+   		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+```
 
 > [4.1. Using Spring for Apache Kafka](https://docs.spring.io/spring-kafka/docs/2.5.4.RELEASE/reference/html/#reference)
