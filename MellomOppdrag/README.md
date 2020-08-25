@@ -133,6 +133,8 @@ How The Kafka Project Handles Clients
 
 > [kafka-clients](https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
 
+Producer API and Consumer API and Admin API
+
 ```
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
@@ -145,6 +147,8 @@ How The Kafka Project Handles Clients
 Kakfa Streams is a client library for building applications and microservices, where the input and output data are stored in Kafka clusters 
 
 > [kafka-streams-test-utils](https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams-test-utils) 
+
+Streams API
 
 ```
 		<dependency>
