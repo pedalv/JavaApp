@@ -129,7 +129,8 @@ Spring Data MongoDB
 
 - Version
 
-> [STEP 1: GET KAFKA - ZooKeeper and kafka](https://kafka.apache.org/quickstart) - [DOWNLOAD KAFKA](https://kafka.apache.org/downloads.html) 
+> [STEP 1: GET ZooKeeper and kafka](https://kafka.apache.org/quickstart)
+> [DOWNLOAD KAFKA](https://kafka.apache.org/downloads.html) 
 
 
 How The Kafka Project Handles Clients
