@@ -40,7 +40,7 @@ public class WarehouseProductInfo {
     @Override
     public final String toString() {
         return "WarehouseProductInfo(id="+this.getId()+", quantity="+this.getQuantity()+", product_id="+this.getProduct().getId()+")";
-     }
+    }
 
 }
 

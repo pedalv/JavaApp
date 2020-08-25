@@ -299,11 +299,9 @@ public class LoadDatabaseConfig {
     }
 
     /**
-     * OneToMany   - Post          - @OneToMany: One Post has many Comments
-     * ManyToOne   - Comment   - @ManyToOne: Many Comments has one Post
-     * OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database automatic Post, Comment n
-     * ManyToMany  - Tag           - @ManyToMany: Many Tags has many Posts
-     *             - Post          - @ManyToMany: Many Posts has many Tags
+     * OneToOne    - Detail    - @OneToOne: One Detail has one Post
+     * OneToMany   - Post      - @OneToMany: One Post has many Comments
+     * ManyToMany  - Post      - @ManyToMany: Many Posts has many Tags
      *
      * Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
      *
@@ -329,7 +327,7 @@ public class LoadDatabaseConfig {
             PostTag postTag;
             PostComment postComment;
 
-        // Create Tag - developer
+        // Create Tag - developer - Post: @ManyToMany: Many Posts has many Tags
             tag = new Tag("Developer");
         //Save in database
             tag = tags.save(tag);
@@ -339,7 +337,7 @@ public class LoadDatabaseConfig {
             tag = tags.save(tag);
         //..
         // fetch all tags
-            log.info("== tAG found with findAll():");
+            log.info("== Tag found with findAll():");
             log.info("-------------------------------");
             for (Tag t : tags.findAll()) {
                 log.info(t.toString());
@@ -351,11 +349,11 @@ public class LoadDatabaseConfig {
             Optional<Tag> tagLeder = tags.findById(2L); //Developer
 
 
-        //Create Post 1 - @OneToMany: One Post has many Comments
+        //Create Post 1
             post = new Post(
                     "Post 1 - Mellom oppdrag",
                     "Her er det sterk fokus på å få alle ut i oppdrag og i mellomtiden jobbes det med faglig utvikling og kompetanseheving.");
-        //Create Detail - @OneToOne: One Detail has one Post
+        //Create Detail - @OneToOne: One Detail has one Post @OneToOne: One Detail has one Post
             detail = new Detail("Pedro");
             detail.setPost(post);
         //Save in database automatic Post, Comment n
@@ -378,7 +376,7 @@ public class LoadDatabaseConfig {
                 // tags=[Tag(id=1, name=Developer)])
             }
 
-        //Create and save Comment 1 - @ManyToOne: Many Comments has one Post
+        //Create and save Comment 1 - Post: @OneToMany: One Post has many Comments
             comment = new Comment("review1");
             comment = comments.saveAndFlush(comment);
         //Create and save PostComment 1

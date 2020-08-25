@@ -27,7 +27,6 @@ OneToOne    - Detail    - @OneToOne: One Detail has one Post - save in database 
 OneToMany   - Post      - @OneToMany: One Post has many Comments
 ManyToMany  - Post      - @ManyToMany: Many Posts has many Tags
 
-
 Explicitly specifying FetchType.LAZY in either @OneToOne or @ManyToOne annotation
 
 Explicitly Specifying FetchType.EAGER explicitly in @OneToMany or @ManyToMany annotations

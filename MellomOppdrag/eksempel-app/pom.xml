@@ -71,6 +71,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Kafka -->
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
 			<artifactId>kafka-streams</artifactId>
@@ -117,6 +118,7 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!--Authentication and access-control -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>

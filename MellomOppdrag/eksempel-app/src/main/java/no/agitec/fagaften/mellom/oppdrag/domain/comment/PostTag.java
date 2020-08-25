@@ -2,12 +2,8 @@ package no.agitec.fagaften.mellom.oppdrag.domain.comment;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 
 /**
