@@ -35,16 +35,26 @@ Topic: java_in_use_topic        PartitionCount: 1       ReplicationFactor: 1    
         Topic: java_in_use_topic        Partition: 0    Leader: none    Replicas: 0     Isr:
 ```
 
-- Step 3: Start the consumer listening to the java_in_use_topic
+- Step 3: Send some message (Producer)
+
+```
+.\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic java_in_use_topic 
+```
+
+- Step 4: Start the consumer listening to the java_in_use_topic
 
 ```
 kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic java_in_use_topic --from-beginning
 ```
 
-- Step 4:  Start the Spring Boot Application - EksempelAppApplication.java
+- Step 5:  Start the Spring Boot Application - EksempelAppApplication.java
 
-- Step 5:  
+- Step 6:  
 
 ```
 curl -X GET http://localhost:8080/kafka/string/producer?message=test
+
+Result:
+2020-08-26 17:01:54.543  INFO 11884 --- [nio-8080-exec-6] n.a.f.m.o.k.s.b.s.sample.KafkaSender     : #### -> Producing message -> testWeb
+2020-08-26 17:01:54.548  INFO 11884 --- [eTopic_ID-0-C-1] n.a.f.m.o.k.s.b.s.sample.KafkaConsumer   : #### -> Consumed message -> testWeb
 ```
