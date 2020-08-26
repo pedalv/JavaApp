@@ -66,7 +66,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/kafka/sample2/send/bar/*",
                         "/kafka/sample2/send/unknown/*",
                         "/kafka/sample3/send/foos/*",
-                        "/javainuse-kafka/producer").permitAll()
+                        "/kafka/string/producer").permitAll()
                 //.antMatchers("/admin/**").hasRole("ADMIN") // "ROLE_ADMIN"
                 //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA') and hasIpAddress('192.168.1.0/24')") //"ROLE_ADMIN" and "ROLE_DBA"
                 .anyRequest().authenticated()
