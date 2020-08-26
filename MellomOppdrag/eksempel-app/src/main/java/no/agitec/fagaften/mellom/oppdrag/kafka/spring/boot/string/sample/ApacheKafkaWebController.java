@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.online.sample;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.string.sample;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/javainuse-kafka/")
+@RequestMapping(value = "/kafka/string/")
 public class ApacheKafkaWebController {
 
     @Autowired

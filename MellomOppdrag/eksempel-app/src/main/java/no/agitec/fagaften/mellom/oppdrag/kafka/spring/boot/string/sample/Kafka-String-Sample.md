@@ -44,5 +44,7 @@ kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server lo
 - Step 5:  
 
 ```
-curl -X GET http://localhost:8080/javainuse-kafka/producer?message=test
+curl -X GET http://localhost:8080/kafka/string/producer?message=test
+
+
 ```

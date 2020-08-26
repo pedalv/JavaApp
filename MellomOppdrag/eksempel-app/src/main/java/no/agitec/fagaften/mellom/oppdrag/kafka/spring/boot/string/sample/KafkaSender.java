@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.online.sample;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.string.sample;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
