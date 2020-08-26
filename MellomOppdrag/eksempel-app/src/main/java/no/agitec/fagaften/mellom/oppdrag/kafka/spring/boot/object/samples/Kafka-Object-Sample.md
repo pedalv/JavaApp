@@ -1,3 +1,5 @@
+#### [Spring for Apache Kafka Samples](https://github.com/spring-projects/spring-kafka/tree/master/samples)
+
 ## [Spring for Apache Kafka](https://spring.io/projects/spring-kafka#overview)
 
 - Step 1: Start the Kafka server: Zookeeper og Kafka
