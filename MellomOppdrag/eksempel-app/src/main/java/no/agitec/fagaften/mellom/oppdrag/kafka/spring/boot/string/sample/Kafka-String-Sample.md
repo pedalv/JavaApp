@@ -1,3 +1,5 @@
+#### [How to Work with Apache Kafka in Your Spring Boot Application](https://www.confluent.io/blog/apache-kafka-spring-boot-application/?utm_medium=sem&utm_source=google&utm_campaign=ch.sem_br.nonbrand_tp.prs_tgt.kafka_mt.mbm_rgn.emea_lng.eng_dv.all&utm_term=%2Bkafka%20%2Bspring&creative=&device=c&placement=&gclid=EAIaIQobChMIlaOb5_W46wIVBNKyCh05nggiEAAYASAAEgIyjvD_BwE)
+
 ## [Spring for Apache Kafka](https://spring.io/projects/spring-kafka#overview)
 
 - Step 1: Start the Kafka server: Zookeeper og Kafka
@@ -45,6 +47,4 @@ kafka_2.12-2.5.0> .\bin\windows\kafka-console-consumer.bat --bootstrap-server lo
 
 ```
 curl -X GET http://localhost:8080/kafka/string/producer?message=test
-
-
 ```

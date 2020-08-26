@@ -1,5 +1,6 @@
 package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.string.sample;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -11,15 +12,17 @@ import org.springframework.stereotype.Service;
  * Message work okay for type string
  */
 @Service
+@Slf4j
 public class KafkaSender {
 
     @Autowired
     //private KafkaTemplate<String, String> kafkaTemplate; //OKAY
     private KafkaTemplate<String, Object> kafkaTemplate; //OKAY
 
-    String kafkaTopic = "java_in_use_topic";
+    private static final String kafkaTopic = "java_in_use_topic";
 
     public void send(String message) {
+        log.info(String.format("#### -> Producing message -> %s", message));
         kafkaTemplate.send(kafkaTopic, message);
     }
 
