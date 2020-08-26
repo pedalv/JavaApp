@@ -70,7 +70,7 @@ kafka_2.12-2.5.0> .\bin\windows\kafka-topics.bat --describe --zookeeper localhos
 - Step 4: Start the Wordcount Application
 
 ```
-kafka_2.12-2.5.0> .\bin\windows\kafka-run-class.bat  ..\Workspace\JavaApp\Kafka\eksempel-app\src\main\java\no\agitec\fagaften\eksempelapp\kafka\streams\examples\wordcount\WordCountDemo.java (work)
+kafka_2.12-2.5.0> .\bin\windows\kafka-run-class.bat  ..\Workspace\JavaApp\MellomOppdrag\eksempel-app\src\main\java\no\agitec\fagaften\eksempelapp\kafka\streams\examples\wordcount\WordCountDemo.java (work)
 kafka_2.12-2.5.0> bin/kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo
 
 
