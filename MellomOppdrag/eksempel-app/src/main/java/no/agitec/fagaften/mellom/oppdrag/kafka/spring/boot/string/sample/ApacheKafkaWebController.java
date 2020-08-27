@@ -33,7 +33,7 @@ public class ApacheKafkaWebController {
     KafkaSender kafkaSender;
 
     @GetMapping(value = "/producer")
-    public String producer(@RequestParam("message") String message) {
+    public String producer(@RequestParam(name="message", required = false, defaultValue = "Kafka") String message) {
         kafkaSender.send(message); //OKAY
         //kafkaSender.send(new String(message)); //OKAY
 

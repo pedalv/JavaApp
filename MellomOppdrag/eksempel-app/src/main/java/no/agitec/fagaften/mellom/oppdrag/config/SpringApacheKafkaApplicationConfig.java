@@ -1,8 +1,8 @@
 package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Bar2;
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo2;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Bar2;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Foo2;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
@@ -17,6 +17,7 @@ import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
 import org.springframework.kafka.listener.SeekToCurrentErrorHandler;
+import org.springframework.kafka.support.SimpleKafkaHeaderMapper;
 import org.springframework.kafka.support.converter.*;
 import org.springframework.util.backoff.FixedBackOff;
 
@@ -48,6 +49,42 @@ import java.util.concurrent.CountDownLatch;
 @Slf4j
 public class SpringApacheKafkaApplicationConfig {
 
+    /*
+        STRING SAMPLE: no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.string.sample
+     */
+
+    @Bean
+    public NewTopic javaInUseTopic() {
+        return new NewTopic("java_in_use_topic", 1, (short) 1);
+    }
+
+    /**
+     * KafkaListener
+     *
+     * @return
+     */
+    @Bean // not required if Jackson is on the classpath
+    public MessagingMessageConverter simpleMapperConverter() {
+        MessagingMessageConverter messagingMessageConverter = new MessagingMessageConverter();
+        messagingMessageConverter.setHeaderMapper(new SimpleKafkaHeaderMapper());
+        return messagingMessageConverter;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Sample 1
     private final TaskExecutor exec = new SimpleAsyncTaskExecutor();
 
@@ -58,15 +95,6 @@ public class SpringApacheKafkaApplicationConfig {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    /**
-     * Online
-     * Run one time only to create topic
-     * @return
-     */
-    @Bean
-    public NewTopic online() {
-        return new NewTopic("java_in_use_topic", 1, (short) 1);
-    }
 
 
     /**
@@ -309,18 +337,6 @@ public class SpringApacheKafkaApplicationConfig {
         return new KafkaTemplate<>(pf,
                 Collections.singletonMap(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, Foo1.class));
     }
-
-
- */
-
-
-
-/*
-
-
-
-
-
 
 
  */
