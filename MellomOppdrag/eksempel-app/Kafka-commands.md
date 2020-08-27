@@ -88,9 +88,11 @@ curl -X GET http://localhost:8080/kafka/string/producer?message=test
 - Object: not work
 curl -X GET http://localhost:8080/kafka/sample1/send/foo/bar
 curl -X GET http://localhost:8080/kafka/sample1/send/foo/fail
+
 curl -X GET http://localhost:8080/kafka/sample2/send/foo/bar
 curl -X GET http://localhost:8080/kafka/sample2/send/bar/baz
 curl -X GET http://localhost:8080/kafka/sample2/send/unknown/xxx
+
 curl -X GET http://localhost:8080/kafka/sample3/send/foos/a,b,c,d,e
 ```
 

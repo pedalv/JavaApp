@@ -17,7 +17,6 @@ import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
 import org.springframework.kafka.listener.SeekToCurrentErrorHandler;
-import org.springframework.kafka.support.SimpleKafkaHeaderMapper;
 import org.springframework.kafka.support.converter.*;
 import org.springframework.util.backoff.FixedBackOff;
 
@@ -47,43 +46,7 @@ import java.util.concurrent.CountDownLatch;
  */
 @Configuration
 @Slf4j
-public class SpringApacheKafkaApplicationConfig {
-
-    /*
-        STRING SAMPLE: no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.string.sample
-     */
-
-    @Bean
-    public NewTopic javaInUseTopic() {
-        return new NewTopic("java_in_use_topic", 1, (short) 1);
-    }
-
-    /**
-     * KafkaListener
-     *
-     * @return
-     */
-    @Bean // not required if Jackson is on the classpath
-    public MessagingMessageConverter simpleMapperConverter() {
-        MessagingMessageConverter messagingMessageConverter = new MessagingMessageConverter();
-        messagingMessageConverter.setHeaderMapper(new SimpleKafkaHeaderMapper());
-        return messagingMessageConverter;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public class KafkaObjectSamplesConfig {
 
     // Sample 1
     private final TaskExecutor exec = new SimpleAsyncTaskExecutor();
@@ -239,7 +202,7 @@ public class SpringApacheKafkaApplicationConfig {
      * @throws InterruptedException
      */
     public static void main(String[] args) throws InterruptedException {
-        ConfigurableApplicationContext context = SpringApplication.run(SpringApacheKafkaApplicationConfig.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(KafkaObjectSamplesConfig.class, args);
         LATCH.await();
         Thread.sleep(5_000);
         context.close();
@@ -273,12 +236,6 @@ public class SpringApacheKafkaApplicationConfig {
         return converter;
 
     }
-
-
-
-
-
-
 
 }
 
