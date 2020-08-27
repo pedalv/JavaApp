@@ -1,6 +1,6 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.controller.rest;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.controller.rest;
 
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Foo1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.util.StringUtils;

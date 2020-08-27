@@ -1,7 +1,7 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.controller;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.controller;
 
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Bar2;
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo2;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Bar2;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Foo2;
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;

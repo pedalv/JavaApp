@@ -1,8 +1,8 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.controller.rest;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.controller.rest;
 
 import lombok.extern.slf4j.Slf4j;
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Bar1;
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Bar1;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Foo1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;

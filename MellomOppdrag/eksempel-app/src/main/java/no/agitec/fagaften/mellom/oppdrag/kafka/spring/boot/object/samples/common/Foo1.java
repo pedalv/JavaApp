@@ -1,18 +1,20 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-public class Foo2 {
+public class Foo1 {
 
     private String foo;
+
 /*
-    public Foo2() {
+    public Foo1() {
     }
 
-    public Foo2(String foo) {
+    public Foo1(String foo) {
         this.foo = foo;
     }
 
@@ -26,7 +28,7 @@ public class Foo2 {
 
     @Override
     public String toString() {
-        return "Foo2 [foo=" + this.foo + "]";
+        return "Foo1 [foo=" + this.foo + "]";
     }
 */
 }

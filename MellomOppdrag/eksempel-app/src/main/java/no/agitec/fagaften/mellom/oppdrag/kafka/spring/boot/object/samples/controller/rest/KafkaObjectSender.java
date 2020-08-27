@@ -1,8 +1,13 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.controller.rest;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.controller.rest;
 
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1;
+import lombok.extern.slf4j.Slf4j;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Foo1;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -47,14 +52,21 @@ import org.springframework.stereotype.Service;
  *  to see information send and received with CMD (in createWordCountStream method)
  */
 @Service
+@Slf4j
 public class KafkaObjectSender {
     @Autowired
     //private KafkaTemplate<Object, Object> template; //ERROR (Foo1) - OKAY (String)
     private KafkaTemplate<String, Object> kafkaTemplate; //ERROR (Foo1) - OKAY (String)
     //private KafkaTemplate<String, Foo1> kafkaTemplate; //ERROR (Foo1)
 
-    private String kafkaTopic = "java_in_use_topic";
-    //private String kafkaTopic = "topic1";
+    @Autowired
+    private KafkaTemplate<String, Foo1> kafkaTemplateObj;
+
+    @Value("${kafka.topic.object}")
+    private String kafkaTopicObject;
+
+    //private String kafkaTopic = "java_in_use_topic";
+    private String kafkaTopic = "topic1";
 
     /**
      *  public
@@ -63,6 +75,7 @@ public class KafkaObjectSender {
      * @param message
      */
     public void sendOkay(String message) {
+        log.info(String.format("#### -> Producing String message -> %s", message));
         kafkaTemplate.send(kafkaTopic, message);
     }
 
@@ -84,7 +97,18 @@ public class KafkaObjectSender {
      *
      * @param message
      */
-    public void sendFail(Foo1 message) {
-        kafkaTemplate.send(kafkaTopic, message);
+    public void sendFail(Foo1 data) {
+        log.info("#### -> Producing object message for sending data='{}' to topic='{}'", data, kafkaTopic);
+
+        Message<Foo1> message = MessageBuilder
+                .withPayload(data)
+                .setHeader(KafkaHeaders.TOPIC, kafkaTopic)
+                .build();
+
+        kafkaTemplate.send(message);
+
+        //kafkaTemplate.send(kafkaTopic, message); //Foo1 cannot be cast to class java.lang.String
     }
+
+
 }

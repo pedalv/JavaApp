@@ -1,7 +1,7 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.controller.rest;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.controller.rest;
 
 import lombok.extern.slf4j.Slf4j;
-import no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common.Foo1;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Foo1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -68,7 +68,7 @@ public class ProducerSample1Controller {
     public String sendFoo(@PathVariable String what) {
 
         kafkaObjectSender.sendOkay(what); //OKAY in consumer
-        kafkaObjectSender.sendFail(new Foo1(what));
+        kafkaObjectSender.sendFail(new Foo1(what)); // Foo1 cannot be cast to class java.lang.String
         //return "Message sent to the Kafka Topic topic1 Successfully";
 
         try {

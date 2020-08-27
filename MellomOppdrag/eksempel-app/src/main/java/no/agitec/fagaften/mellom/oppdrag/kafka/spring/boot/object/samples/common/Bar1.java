@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.client.samples.common;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
