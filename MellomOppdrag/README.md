@@ -111,6 +111,10 @@ Spring Data MongoDB
 
 > [Documentation](http://kafka.apache.org/documentation.html)
 
+> [3.6 Kafka Streams Configs](https://kafka.apache.org/25/documentation/#streamsconfigs) 
+
+> [Topic Configurations](https://docs.confluent.io/current/installation/configuration/topic-configs.html)
+
 > [14. Messaging](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-messaging)
 
 > [Enterprise Plans](https://www.cloudkarafka.com/plans.html)
