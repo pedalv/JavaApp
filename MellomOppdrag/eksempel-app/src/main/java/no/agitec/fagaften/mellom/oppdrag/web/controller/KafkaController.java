@@ -3,6 +3,7 @@ package no.agitec.fagaften.mellom.oppdrag.web.controller;
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.string.sample.KafkaSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,9 @@ public class KafkaController {
 
     @Autowired
     KafkaSender kafkaSender;
+
+    @Value("${value.from.file}")
+    private String valueFromFile;
 
     @ModelAttribute
     public void addKafkaModel(Model model) {
