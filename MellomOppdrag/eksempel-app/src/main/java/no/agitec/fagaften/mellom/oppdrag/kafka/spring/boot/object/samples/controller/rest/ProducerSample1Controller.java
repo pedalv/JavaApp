@@ -2,6 +2,7 @@ package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.contr
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Foo1;
+import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.service.KafkaObjectSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;

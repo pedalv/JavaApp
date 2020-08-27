@@ -9,7 +9,7 @@ import org.springframework.kafka.support.converter.MessagingMessageConverter;
 
 @Configuration
 @Slf4j
-public class KafkaStringConfig {
+public class KafkaStringSampleConfig {
 
     /*******************************************************************************************************************
      STRING SAMPLE: no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.string.sample

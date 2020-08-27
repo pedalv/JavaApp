@@ -1,4 +1,4 @@
-package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.controller.rest;
+package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.service;
 
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Foo1;
