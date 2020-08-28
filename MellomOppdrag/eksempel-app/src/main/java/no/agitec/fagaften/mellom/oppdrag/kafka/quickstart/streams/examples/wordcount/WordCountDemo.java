@@ -71,6 +71,8 @@ public final class WordCountDemo {
         props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, "test1234");
         */
 
+
+
         return props;
     }
 
@@ -127,10 +129,6 @@ public final class WordCountDemo {
     static void createWordCountStream(final StreamsBuilder builder) {
         final KStream<String, String> source = builder.stream(INPUT_TOPIC);
 
-        // for write produce values in a database
-        source.foreach((key, value) -> System.out.println("For write produce values in a database (key => vale): " + key + " => " + value));
-
-
         final KTable<String, Long> counts = source
             .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split(" ")))
             .groupBy((key, value) -> value)
@@ -139,16 +137,17 @@ public final class WordCountDemo {
         // need to override value serde to Long type
         counts.toStream().to(OUTPUT_TOPIC, Produced.with(Serdes.String(), Serdes.Long()));
 
-        // for write consumer values in a database
-        counts.toStream().foreach((key, value) -> System.out.println("For write consumer values in a database (key_word => count_key_word): " + key + " => " + value));
-
     }
 
     public static void main(final String[] args) {
+        //Step 1 : Config Properties
         final Properties props = getStreamsConfig();
 
+        //Step 2 : Create StreamsBuilder
         final StreamsBuilder builder = new StreamsBuilder(); // using DSL
+        //Step 3 : Key Value - count like work => ord1 2 - ord2 5 - ...
         createWordCountStream(builder);
+        //Step 4 : Create and start KafkaStreams and CountDownLatch
         // Writing a Streams Application: https://kafka.apache.org/25/documentation/streams/developer-guide/write-streams.html
         final KafkaStreams streams = new KafkaStreams(builder.build(), props);
         final CountDownLatch latch = new CountDownLatch(1);

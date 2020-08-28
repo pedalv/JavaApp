@@ -134,3 +134,23 @@ Option (* = required)         Description
                                 (default: localhost:2181)
 ```
  
+- Check and Kill an application
+
+> WINDOWS
+
+```
+netstat -ano | findstr :<yourPortNumber>
+taskkill /PID <typeyourPIDhere> /F
+```
+> LINUX
+
+```
+sudo netstat -pnlt | grep :8080
+kill -9 19467
+```
+
+> MAC
+
+```
+netstat -vanp tcp | grep 8080
+```

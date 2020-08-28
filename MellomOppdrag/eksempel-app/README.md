@@ -48,6 +48,6 @@ Run: EksempelAppApplication
 - [KAFKA COMMANDS](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/Kafka-commands.md)
 
 #### For å Vise
-- [String Sample Demo med Spring Apache](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/src/main/java/no/agitec/fagaften/mellom/oppdrag/kafka/spring/boot/string/sample)
-- [Object Sample Demo](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/src/main/java/no/agitec/fagaften/mellom/oppdrag/kafka/spring/boot/object/samples)
 - [Word Count Sample Demo](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/src/main/java/no/agitec/fagaften/mellom/oppdrag/kafka/quickstart/streams/examples/wordcount)t
+- [String Sample Demo med Spring Apache](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/src/main/java/no/agitec/fagaften/mellom/oppdrag/kafka/spring/boot/string/sample)
+- [Object Sample Demo (Not Work)](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/src/main/java/no/agitec/fagaften/mellom/oppdrag/kafka/spring/boot/object/samples)

@@ -73,7 +73,8 @@ public class WordCount {
          */
         // Refactoring 2:
         /*
-        source.flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+")))
+        source
+            .flatMapValues(value -> Arrays.asList(value.toLowerCase(Locale.getDefault()).split("\\W+")))
                 .to("streams-linesplit-output");
         */
 
