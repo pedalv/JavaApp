@@ -9,22 +9,22 @@ import org.springframework.stereotype.Component;
 /**
  * Sample 2
  */
-@Component
-@KafkaListener(id = "multiGroup", topics = { "foos", "bars" })
+//@Component
+//@KafkaListener(id = "multiGroup", topics = { "foos", "bars" })
 public class MultiMethodsController {
 
-    @KafkaHandler
+    //@KafkaHandler
     public void foo(Foo2 foo) {
         System.out.println("Received: " + foo);
     }
 
-    @KafkaHandler
+    //@KafkaHandler
     public void bar(Bar2 bar) {
         System.out.println("Received: " + bar);
     }
 
-    @KafkaHandler(isDefault = true)
-    public void unknown(Object object) {
+    //@KafkaHandler(isDefault = true)
+     public void unknown(Object object) {
         System.out.println("Received unknown: " + object);
     }
 
