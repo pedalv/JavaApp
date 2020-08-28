@@ -119,13 +119,21 @@ public class KafkaObjectSender {
 
     ObjectMapper objectMapper = new ObjectMapper();
     Car car = new Car("yellow", "renault");
-    //Object to String
-    String carAsString = objectMapper.writeValueAsString(car); ////{"color":"yellow","type":"renault"}
+    //Java Object to Json
+    objectMapper.writeValue(new File("target/car.json"), car); //{"color":"yellow","type":"renault"}
+    //Java Object to String
+    String carAsString = objectMapper.writeValueAsString(car);
 
-    //String til Object
+    //Json to Java Object
     String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
     Car car = objectMapper.readValue(json, Car.class);
 
+    //
+    String jsonCarArray =   "[
+        { \"color\" : \"Black\", \"type\" : \"BMW\" },
+        { \"color\" : \"Red\", \"type\" : \"FIAT\" }
+    ]";
+    List<Car> listCar = objectMapper.readValue(jsonCarArray, new TypeReference<List<Car>>(){});
 
     //Spring Segurity
     private final ObjectMapper objectMapper;
