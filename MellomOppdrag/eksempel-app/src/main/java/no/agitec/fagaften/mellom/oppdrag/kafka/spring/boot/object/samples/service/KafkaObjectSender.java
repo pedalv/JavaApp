@@ -108,7 +108,29 @@ public class KafkaObjectSender {
         kafkaTemplate.send(message);
 
         //kafkaTemplate.send(kafkaTopic, message); //Foo1 cannot be cast to class java.lang.String
+
+        //Solution: https://www.baeldung.com/jackson-object-mapper-tutorial
+        //kafkaTemplate.send(kafkaTopic, objectMapper.writeValueAsString(message));
+
     }
+
+    /*
+    //https://www.baeldung.com/jackson-object-mapper-tutorial
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    Car car = new Car("yellow", "renault");
+    //Object to String
+    String carAsString = objectMapper.writeValueAsString(car); ////{"color":"yellow","type":"renault"}
+
+    //String til Object
+    String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
+    Car car = objectMapper.readValue(json, Car.class);
+
+
+    //Spring Segurity
+    private final ObjectMapper objectMapper;
+    objectMapper.writeValueAsString(message)
+     */
 
 
 }
