@@ -68,15 +68,15 @@ public class ProducerSample1Controller {
     //@PostMapping(path = "/send/foo/{what}")
     public String sendFoo(@PathVariable String what) {
 
-        kafkaObjectSender.sendOkay(what); //OKAY in consumer
-        kafkaObjectSender.sendFail(new Foo1(what)); // Foo1 cannot be cast to class java.lang.String
-        //return "Message sent to the Kafka Topic topic1 Successfully";
+        kafkaObjectSender.sendStringOkay(what); //OKAY in consumer
+        kafkaObjectSender.sendObjectOkay(new Foo1(what)); // Okay in consumer
 
+        /*
         try {
             //ProducerRecord record = new ProducerRecord(kafkaTopic, new Foo1(what));
             //this.template.send(record);
 
-            this.template.send(kafkaTopic, new Foo1(what));
+            this.template.send(kafkaTopic, new Foo1(what)); // Foo1 cannot be cast to class java.lang.String
 
             return "Message sent to the Kafka Topic topic1 Successfully";
         } catch (Exception e)  {
@@ -90,6 +90,8 @@ public class ProducerSample1Controller {
             // String Object: Serdes.String() Serdes.serdeFrom(Foo1.class) - How to change it(???)
             // String Foo1: Serdes.String() Serdes.serdeFrom(Foo1.class) - How to change it(???)
         }
+
+         */
 
         return "Message did not sent to the Kafka Topic topic1!?!";
     }

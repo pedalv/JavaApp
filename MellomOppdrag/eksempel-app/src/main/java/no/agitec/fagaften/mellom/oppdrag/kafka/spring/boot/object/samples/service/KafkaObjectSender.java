@@ -1,13 +1,12 @@
 package no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.samples.common.Foo1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.KafkaHeaders;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -54,6 +53,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class KafkaObjectSender {
+
     @Autowired
     //private KafkaTemplate<Object, Object> template; //ERROR (Foo1) - OKAY (String)
     private KafkaTemplate<String, Object> kafkaTemplate; //ERROR (Foo1) - OKAY (String)
@@ -61,6 +61,9 @@ public class KafkaObjectSender {
 
     @Autowired
     private KafkaTemplate<String, Foo1> kafkaTemplateObj;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Value("${kafka.topic.object}")
     private String kafkaTopicObject;
@@ -74,7 +77,7 @@ public class KafkaObjectSender {
      *          send(java.lang.String topic, @org.springframework.lang.Nullable V data) { ... }
      * @param message
      */
-    public void sendOkay(String message) {
+    public void sendStringOkay(String message) {
         log.info(String.format("#### -> Producing String message -> %s", message));
         kafkaTemplate.send(kafkaTopic, message);
     }
@@ -97,20 +100,29 @@ public class KafkaObjectSender {
      *
      * @param message
      */
-    public void sendFail(Foo1 data) {
+    public void sendObjectOkay(Foo1 data) {
         log.info("#### -> Producing object message for sending data='{}' to topic='{}'", data, kafkaTopic);
 
+        String foo1AsString = null;
+        try {
+            foo1AsString = objectMapper.writeValueAsString(data);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        kafkaTemplate.send(kafkaTopic, foo1AsString); //OKAY
+
+
+
+        //kafkaTemplate.send(kafkaTopic, message); //Foo1 cannot be cast to class java.lang.String
+
+        /*
         Message<Foo1> message = MessageBuilder
                 .withPayload(data)
                 .setHeader(KafkaHeaders.TOPIC, kafkaTopic)
                 .build();
-
-        kafkaTemplate.send(message);
-
-        //kafkaTemplate.send(kafkaTopic, message); //Foo1 cannot be cast to class java.lang.String
-
-        //Solution: https://www.baeldung.com/jackson-object-mapper-tutorial
-        //kafkaTemplate.send(kafkaTopic, objectMapper.writeValueAsString(message));
+        kafkaTemplate.send(message); //Foo1 cannot be cast to class java.lang.String
+         */
 
     }
 
