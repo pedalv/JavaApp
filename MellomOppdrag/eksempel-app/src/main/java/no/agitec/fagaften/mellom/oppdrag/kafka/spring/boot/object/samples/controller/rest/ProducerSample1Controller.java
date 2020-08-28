@@ -93,7 +93,7 @@ public class ProducerSample1Controller {
 
          */
 
-        return "Message did not sent to the Kafka Topic topic1!?!";
+        return "Message sent to the Kafka Topic topic1 successfully";
     }
 
     @GetMapping(path = "/send/foo2/{what}")
