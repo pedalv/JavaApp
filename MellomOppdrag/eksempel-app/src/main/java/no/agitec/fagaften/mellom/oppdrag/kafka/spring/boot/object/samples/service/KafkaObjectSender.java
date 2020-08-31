@@ -98,7 +98,7 @@ public class KafkaObjectSender {
      *          send(java.lang.String topic, @org.springframework.lang.Nullable V data) { ... }
      *
      *
-     * @param message
+     * @param data
      */
     public void sendObjectOkay(Foo1 data) {
         log.info("#### -> Producing object message for sending data='{}' to topic='{}'", data, kafkaTopic);

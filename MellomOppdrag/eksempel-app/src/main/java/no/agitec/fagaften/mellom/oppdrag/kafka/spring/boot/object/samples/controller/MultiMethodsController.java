@@ -13,6 +13,12 @@ import org.springframework.stereotype.Component;
 //@KafkaListener(id = "multiGroup", topics = { "foos", "bars" })
 public class MultiMethodsController {
 
+    /*
+    java.lang.IllegalStateException: This error handler cannot process 'org.apache.kafka.clients.consumer.CommitFailedException's; no record information is available
+     */
+
+
+
     //@KafkaHandler
     public void foo(Foo2 foo) {
         System.out.println("Received: " + foo);
@@ -24,7 +30,7 @@ public class MultiMethodsController {
     }
 
     //@KafkaHandler(isDefault = true)
-     public void unknown(Object object) {
+    public void unknown(Object object) {
         System.out.println("Received unknown: " + object);
     }
 
