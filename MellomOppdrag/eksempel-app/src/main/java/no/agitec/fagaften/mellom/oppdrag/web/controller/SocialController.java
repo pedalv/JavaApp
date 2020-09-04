@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/oauth2/social")
-public class OAuth2Controller {
+@RequestMapping("/social")
+public class SocialController {
 
     // GitHub
     // Facebook
