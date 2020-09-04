@@ -9,7 +9,6 @@
 <body>
 <section layout:fragment="content">
     <div class="container">
-        <h1>Please Log In</h1>
 
         <div>
             <p th:if="${param.error}">
@@ -40,7 +39,6 @@
         <hr />
 
         <div class="container unauthenticated">
-            With
             <a href="/oauth2/authorization/github" class="btn btn-primary"> GitHub </a>
             -
             <a href="/oauth2/authorization/facebook" class="btn btn-info disabled"> Facebook </a>
