@@ -22,6 +22,7 @@ https://start.spring.io/#!type=maven-project
 &packaging=jar
 &jvmVersion=14
 &dependencies=
+-
 Lombok, 
 Spring Web, 
 Thymeleaf, 
@@ -30,8 +31,14 @@ H2 Database,
 Rest Repositories,
 Spring Boot DevTools,
 Spring HATEOAS,
+-
 Spring for Apache Kafka,
 Spring for Apache kafka Streams
+-
+OAuth2 Client SECURITY
+OAuth2 Resource Server SECURITY
+Cloud OAuth2 SPRING CLOUD SECURITY
+Okta SECURITY
 -
 Spring Data Neo4j
 MySQL Driver
