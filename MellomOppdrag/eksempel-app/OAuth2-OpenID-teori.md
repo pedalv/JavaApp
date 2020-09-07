@@ -15,13 +15,17 @@
 - [Spring Security 5 – OAuth2 Login](https://www.baeldung.com/spring-security-5-oauth2-login)
 - [Spring Security and OpenID Connect](https://www.baeldung.com/spring-security-openid-connect)
 - [Spring Security and OpenID Connect (Legacy)](https://www.baeldung.com/spring-security-openid-connect-legacy)
+- [What is JWT authorization really about - Java Brains](https://www.youtube.com/watch?v=soGRyl9ztjI)
+- [What is the structure of a JWT - Java Brains](https://www.youtube.com/watch?v=_XbXkVdoG_0)
 
 - Pluralsight Course
 > [Effective Oauth2 with Spring Security and Spring Boot](https://www.pluralsight.com/courses/oauth2-spring-security-spring-boot)
 
 - Video Tutorial
-> [Spring Boot + Spring Security + JWT from scratch - Java Brains](https://www.youtube.com/watch?v=X80nJ5T7YpE)
 > [Implementing login with Facebook and Github from scratch - Java Brains](https://www.youtube.com/watch?v=CWiwpvpCrro)
+> [Spring Boot + Spring Security + JWT from scratch - Java Brains](https://www.youtube.com/watch?v=X80nJ5T7YpE)
+
+- [spring-security-jwt](https://github.com/koushikkothagal/spring-security-jwt) 
 
 
 1.
