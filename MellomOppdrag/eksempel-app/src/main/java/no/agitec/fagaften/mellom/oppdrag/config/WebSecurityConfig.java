@@ -92,7 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 //.and()
-                //.oauth2Login() //Redirect feil
+                //.oauth2Login() //Redirect okay - store values in database clientId and clientSecret
                 .permitAll()
                 .and()
                 .logout()
