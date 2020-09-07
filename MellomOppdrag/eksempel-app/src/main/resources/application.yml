@@ -1,0 +1,34 @@
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          github:
+#            clientId: github-client-id
+#            clientSecret: github-client-secret
+#          google:
+#            client-id: google-client-id
+#            client-secret: google-client-secret
+
+#logging:
+#  level:
+#    org.springframework.security: DEBUG
+
+#https://github.com/settings/developers
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#            clientId: 07fb437669565a36bf84
+#            clientSecret: 92785c1dfa3f2bdec5d498f0bec9954cfc3df493
+#            accessTokenUri: https://github.com/login/oauth/access_token
+#            userAuthenticationUri: https://github.com/login/oauth/authorize
+#            userAuthenticationScheme: form
+#      resource:
+#        user-info-uri: https://api.github.com/user
+#        prefer-tokem-info: false
+
+# https://github.com/login/device
+# https://github.com/login/device/code
+# https://github.com/settings/connections/applications/:client_id
