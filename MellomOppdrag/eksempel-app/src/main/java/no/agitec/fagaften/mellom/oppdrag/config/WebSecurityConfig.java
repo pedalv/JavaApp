@@ -18,6 +18,9 @@ import static org.springframework.security.config.Customizer.withDefaults;
  */
 @Configuration
 @EnableWebSecurity
+//@EnableOAuth2Sso
+//@EnableOAuth2Client
+//@EnableAuthorizationServer
 @Slf4j
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
