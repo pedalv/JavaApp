@@ -34,8 +34,14 @@ public class SocialController {
         return principal;
     }
 
+    /**
+     * Call from front-end: https://spring.io/guides/tutorials/spring-boot-oauth2/
+     * @param principal
+     * @return
+     */
     @GetMapping("/user2")
     public Map<String, Object> user2(@AuthenticationPrincipal OAuth2User principal) {
+        //Map<String, Object> users = Collections.singletonMap("name", principal.getAttribute("name"));
         return Collections.singletonMap("name", principal.getAttribute("name"));
     }
 
