@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -18,8 +19,16 @@ import static org.springframework.security.config.Customizer.withDefaults;
  */
 @Configuration
 @EnableWebSecurity
-//@EnableOAuth2Sso
 //@EnableOAuth2Client
+/*
+https://github.com/login/oauth/authorize?
+    client_id=github-client-id&
+    redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Flogin%2Foauth2%2Fcode%2Fgithub&
+    response_type=code&
+    scope=read%3Auser&
+    state=vZdi9MQInWvJkooQAqp4prj-r_TwgBRvV0FK01P0kxI%3D
+ */
+//@EnableOAuth2Sso
 //@EnableAuthorizationServer
 @Slf4j
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -30,6 +39,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     //UserDetailsService userDetailsServiceImpl;
     UserDetailsServiceImp userDetailsServiceImpl;
+
+    @Autowired
+    private ClientRegistrationRepository clientRegistrationRepository;
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
