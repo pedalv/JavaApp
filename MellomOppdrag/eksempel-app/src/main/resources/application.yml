@@ -6,9 +6,17 @@ spring:
           github:
             clientId: github-client-id
             clientSecret: github-client-secret
+            accessTokenUri: https://github.com/login/oauth/access_token
+            userAuthenticationUri: https://github.com/login/oauth/authorize
+            userAuthenticationScheme: form
+            tokenName: oauth_token
+            authenticationScheme: query
           google:
             client-id: google-client-id
             client-secret: google-client-secret
+
+#Homepage URL: http://localhost:8080/
+#Authorization callback URL: http://localhost:8080/login/oauth2/code/github
 
 #logging:
 #  level:

@@ -9,17 +9,6 @@
 <body>
 <section layout:fragment="content">
     <div>
-        <article>
-            <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        </article>
-        <aside>
-            <p> Aside information</p>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Sign Out" class="btn btn-lg btn-primary" />
-            </form>
-        </aside>
-    </div>
-    <div>
         <h1>Partner list</h1>
         <table>
             <thead>
@@ -36,6 +25,17 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div>
+        <article>
+            <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        </article>
+        <aside>
+            <p> Aside information</p>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="btn btn-lg btn-primary" />
+            </form>
+        </aside>
     </div>
 </section>
 </body>
