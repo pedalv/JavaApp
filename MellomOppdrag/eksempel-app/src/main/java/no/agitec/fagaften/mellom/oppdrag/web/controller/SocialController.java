@@ -35,7 +35,7 @@ public class SocialController {
     }
 
     /**
-     * Call from front-end: https://spring.io/guides/tutorials/spring-boot-oauth2/
+     * The /user Endpoint (front-end): https://spring.io/guides/tutorials/spring-boot-oauth2/
      * @param principal
      * @return
      */
