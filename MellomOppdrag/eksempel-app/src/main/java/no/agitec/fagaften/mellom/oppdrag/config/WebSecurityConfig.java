@@ -59,6 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/customer",
                         "/employee",
                         //"/partner",
+                        //"/oauth2/authorization/github",
                         "/person",
                         "/kafka",
                         "/kafka/string",
@@ -68,10 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/kafka/sample2/send/foo/*",
                         "/kafka/sample2/send/bar/*",
                         "/kafka/sample2/send/unknown/*",
-                        "/kafka/sample3/send/foos/*",
-                        "/oauth2/authorization/github",
-                        "/social/*"
-                ).permitAll()
+                        "/kafka/sample3/send/foos/*").permitAll()
                 //.antMatchers("/admin/**").hasRole("ADMIN") // "ROLE_ADMIN"
                 //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA') and hasIpAddress('192.168.1.0/24')") //"ROLE_ADMIN" and "ROLE_DBA"
                 .anyRequest().authenticated()
@@ -79,8 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 //.and()
-                //.oauth2Login() //TODO
-                //.failureUrl("/error") //TODO
+                //.oauth2Login() //Redirect feil
                 .permitAll()
                 .and()
                 .logout()
