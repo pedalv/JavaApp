@@ -1,6 +1,7 @@
 package no.agitec.fagaften.mellom.oppdrag.config;
 
 import lombok.extern.slf4j.Slf4j;
+import no.agitec.fagaften.mellom.oppdrag.jwt.filter.JwtRequestFilter;
 import no.agitec.fagaften.mellom.oppdrag.service.UserDetailsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 
@@ -43,6 +45,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
+
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -91,17 +96,39 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/admin/**").hasRole("ADMIN") // "ROLE_ADMIN"
                 //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA') and hasIpAddress('192.168.1.0/24')") //"ROLE_ADMIN" and "ROLE_DBA"
                 .anyRequest().authenticated()
+
+                //JWT
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
+                //LOGIN FORM
                 .and()
                 .formLogin()
                 .loginPage("/login")
+
+                //SOCIAL MEDIA LOGIN
                 //.and()
                 //.oauth2Login() //Redirect okay - store values in database clientId and clientSecret
+
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
+
+        //JWT
+        //http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
+    /**
+     *
+     * Field bCryptPasswordEncoder in no.agitec.fagaften.mellom.oppdrag.service.UserDetailsServiceImp required a bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder' that could not be found.
+     *
+     * The injection point has the following annotations:
+     * 	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+     *
+     * @return
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
