@@ -100,7 +100,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //JWT
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                //.sessionCreationPolicy(SessionCreationPolicy.STATELESS) //Uten session hvis det finnes bare loginn med JWT
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS) //Det finnes login skjemma og social loginn
 
                 //LOGIN FORM
                 .and()

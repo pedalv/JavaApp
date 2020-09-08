@@ -44,10 +44,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             username = jwtUtil.extractUsername(jwt);
         }
 
+        //Det finnes session for loginn skjemma
         boolean isNotAuthentication = SecurityContextHolder.getContext().getAuthentication() == null
                 || SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser") ;
 
-        if (username != null && isNotAuthentication) {
+        if (username != null) {
 
             UserDetails userDetails = userDetailsServiceImp.loadUserByUsername(username);
 
