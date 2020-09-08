@@ -5,6 +5,7 @@ import no.agitec.fagaften.mellom.oppdrag.service.UserDetailsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -63,12 +64,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //System.out.println("**** configure");
         http
+                .csrf().disable()
                 .httpBasic(withDefaults())
                 .authorizeRequests()
                 .antMatchers(
                         //"/css/**",
                         "/",
                         "/error",
+                        "/jwt/authenticate",
                         "/hello", //Rem later
                         "/home", //Rem later
                         "/customer",
@@ -102,6 +105,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    /**
+     * Field authenticationManager in no.agitec.fagaften.mellom.oppdrag.web.controller.rest.JwtController required a bean of type 'org.springframework.security.authentication.AuthenticationManager' that could not be found.
+     *
+     * The injection point has the following annotations:
+     * 	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+     */
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
 }
