@@ -21,6 +21,7 @@
 
 - Video Tutorial
 > [Implementing login with Facebook and Github from scratch - Java Brains](https://www.youtube.com/watch?v=CWiwpvpCrro)
+
 > [Spring Boot + Spring Security + JWT from scratch - Java Brains](https://www.youtube.com/watch?v=X80nJ5T7YpE)
 
 - [spring-security-jwt](https://github.com/koushikkothagal/spring-security-jwt) 
@@ -32,6 +33,7 @@
 - [Circular Dependencies in Spring](https://www.baeldung.com/circular-dependencies-in-spring)
 
 > [pring Boot + Spring Security with JPA authentication and MySQL from scratch - Java Brains](https://www.youtube.com/watch?v=TNt3GHuayXs)
+
 > [Spring Boot + Spring Security + LDAP from scratch - Java Brains](https://www.youtube.com/watch?v=-wDUChgvYgU)
 
 1.
