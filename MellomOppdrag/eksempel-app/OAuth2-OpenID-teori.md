@@ -31,6 +31,8 @@
 - Authorization: Bearer JWT
 - [Circular Dependencies in Spring](https://www.baeldung.com/circular-dependencies-in-spring)
 
+> [pring Boot + Spring Security with JPA authentication and MySQL from scratch - Java Brains](https://www.youtube.com/watch?v=TNt3GHuayXs)
+
 
 1.
 - could Security
