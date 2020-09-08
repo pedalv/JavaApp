@@ -29,6 +29,7 @@
 - [JWT](https://jwt.io/)
 - [Cryptii](https://cryptii.com/)
 - Authorization: Bearer JWT
+- [Circular Dependencies in Spring](https://www.baeldung.com/circular-dependencies-in-spring)
 
 
 1.
