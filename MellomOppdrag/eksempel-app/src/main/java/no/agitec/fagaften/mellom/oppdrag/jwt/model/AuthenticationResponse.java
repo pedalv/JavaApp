@@ -1,17 +1,12 @@
 package no.agitec.fagaften.mellom.oppdrag.jwt.model;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-public class AuthenticationResponse implements Serializable {
+@Data
+@AllArgsConstructor
+public class AuthenticationResponse {
 
-    private final String jwt;
-
-    public AuthenticationResponse(String jwt) {
-        this.jwt = jwt;
-    }
-
-    public String getJwt() {
-        return jwt;
-    }
+    private String jwt;
 
 }
