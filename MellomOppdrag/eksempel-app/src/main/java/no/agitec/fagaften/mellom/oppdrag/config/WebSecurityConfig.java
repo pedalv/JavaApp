@@ -95,7 +95,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/kafka/sample3/send/foos/*").permitAll()
                 //.antMatchers("/admin/**").hasRole("ADMIN") // "ROLE_ADMIN"
                 //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA') and hasIpAddress('192.168.1.0/24')") //"ROLE_ADMIN" and "ROLE_DBA"
-                .anyRequest().authenticated()
+                .antMatchers("/partner").hasAnyRole( "USER", "STAFF", "ADMIN" )
 
                 //JWT
                 .and()
@@ -116,6 +116,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
+        //.and().exceptionHandling().accessDeniedPage("/accessdenied");
 
         //JWT
         //http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
@@ -144,6 +145,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
+
+        //code for access a database not in memory as H2
+
         return super.authenticationManagerBean();
     }
 
