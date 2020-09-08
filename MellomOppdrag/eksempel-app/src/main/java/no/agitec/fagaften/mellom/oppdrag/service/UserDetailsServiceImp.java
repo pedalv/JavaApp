@@ -68,3 +68,72 @@ public class UserDetailsServiceImp implements UserDetailsService {
     }
 
 }
+
+/*
+
+class MyUserDetails implements UserDetails {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    private UserDetails getFakeUserDetails()  {
+        //TODO: java8/11 stream-filter-map-colection check later
+        Optional<User> users = userRepository.findByUsername2("userName"); //Get user from database
+        users.orElseThrow( () -> new UsernameNotFoundException("bla bla"));
+        UserDetails userDetails =  users.map(MyUserDetails::new).get();
+
+        return userDetails;
+    }
+
+
+    private String userName;
+    //... more fields
+    private List<GrantedAuthority> authorities;
+
+
+    public MyUserDetails(User user)  {
+        this.userName = user.getUsername();
+        //TODO: java8/11 stream-filter-map-colection  check later
+        this.authorities = Arrays.stream(user.getRoles().toString().split(","))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+
+
+    }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+}
+
+ */

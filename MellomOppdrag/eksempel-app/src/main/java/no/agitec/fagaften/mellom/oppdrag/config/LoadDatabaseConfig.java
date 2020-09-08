@@ -16,6 +16,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * not need: @EnableJpaRepositories(basePackageClasses = {UserRepository.class})
+ */
 @Configuration
 @Slf4j
 public class LoadDatabaseConfig {
