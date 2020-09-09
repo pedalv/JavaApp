@@ -111,7 +111,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 //SOCIAL MEDIA LOGIN
                 //.and()
-                //.oauth2Login() //Redirect okay - store values in database clientId and clientSecret
+                //.oauth2Login()
+                //First time go click partner go direct to Github, after logout in possible normal login
+                // Redirect okay
+                // TODO store values in database clientId and clientSecret for allow many users
 
                 .permitAll()
                 .and()

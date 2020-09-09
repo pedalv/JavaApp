@@ -28,8 +28,8 @@ spring:
 #    oauth2:
 #      client:
 #        registration:
-#            clientId: 07fb437449565a36bf84
-#            clientSecret: 92785c1dfa3f2bdec5d498f0bec4454cfc3df493
+#            clientId: github-client-id
+#            clientSecret: github-client-secret
 #            accessTokenUri: https://github.com/login/oauth/access_token
 #            userAuthenticationUri: https://github.com/login/oauth/authorize
 #            userAuthenticationScheme: form

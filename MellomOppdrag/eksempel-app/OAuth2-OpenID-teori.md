@@ -4,6 +4,18 @@
 
 ![OAuth2 exampke using GitHub](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/GitHub_OAuth2.PNG)
 
+1.
+- could Security
+- cloud OAuth2
+- application.yml
+2.
+- http://localhost:8080/login/oauth2/code/github
+(- http://localhost:8080/oauth2/authorization/github)
+- http://localhost:8080/login/oauth2/code/google
+(- http://localhost:8080/oauth2/authorization/google)
+
+
+
 - [YAML](https://en.wikipedia.org/wiki/YAML)
 - [GitHub Docs Building OAuth Apps](https://docs.github.com/en/developers/apps/building-oauth-apps)
 - [4.1.  Authorization Code Grant](https://tools.ietf.org/html/rfc6749#section-4.1)
@@ -36,13 +48,5 @@
 
 > [Spring Boot + Spring Security + LDAP from scratch - Java Brains](https://www.youtube.com/watch?v=-wDUChgvYgU)
 
-1.
-- could Security
-- cloud OAuth2
-- application.yml
-
-2.
-- http://localhost:8080/login/oauth2/code/google
-
-- http://localhost:8080/oauth2/authorization/github
-- http://localhost:8080/oauth2/authorization/google
+- [Lightweight Directory Access Protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol)
+- [1.1. What's LDAP ?](https://tldp.org/HOWTO/LDAP-HOWTO/whatisldap.html#:~:text=LDAP%20stands%20for%20Lightweight%20Directory,other%20connection%20oriented%20transfer%20services.)
