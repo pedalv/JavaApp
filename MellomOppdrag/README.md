@@ -64,11 +64,7 @@ Spring Data MongoDB
 
 > [9.5. Security Filters](https://docs.spring.io/spring-security/site/docs/5.3.5.BUILD-SNAPSHOT/reference/html5/#features)
 
-> [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
-
-> [Spring Security and OpenID Connect](https://www.baeldung.com/spring-security-openid-connect)
-
-> [Spring Security and OpenID Connect (Legacy)](https://www.baeldung.com/spring-security-openid-connect-legacy)
+> [OAuth2 OpenID Teori](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/OAuth2-OpenID-teori.md)
 
 #### [Spring Data](https://spring.io/projects/spring-data)
 
