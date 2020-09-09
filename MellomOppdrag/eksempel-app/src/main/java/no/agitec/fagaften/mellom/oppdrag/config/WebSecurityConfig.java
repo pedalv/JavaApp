@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -108,21 +109,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
 
-                //SOCIAL MEDIA LOGIN
+                // SOCIAL MEDIA LOGIN
+                // Først gjeng bare finnes GitHub for å logge innn.
+                // Etter logg ut finnes logg, det finnes logg inn skjemma eller GitHub.
+                // TODO: Store values in database clientId and clientSecret for allow many users
                 //.and()
                 //.oauth2Login()
-                //First time go click partner go direct to Github, after logout in possible normal login
-                // Redirect okay
-                // TODO store values in database clientId and clientSecret for allow many users
 
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
-        //.and().exceptionHandling().accessDeniedPage("/accessdenied");
 
         //JWT
-        //http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     /**
