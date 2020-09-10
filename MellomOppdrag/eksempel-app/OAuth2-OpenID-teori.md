@@ -50,3 +50,5 @@
 
 - [Lightweight Directory Access Protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol)
 - [1.1. What's LDAP ?](https://tldp.org/HOWTO/LDAP-HOWTO/whatisldap.html#:~:text=LDAP%20stands%20for%20Lightweight%20Directory,other%20connection%20oriented%20transfer%20services.)
+- [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
+
