@@ -72,7 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("USER");
 
         /**
-         * TODO: DataBase was not created and populated
+         * TODO: DataBase was not created and populated sql files not run
          * org.springframework.security.authentication.InternalAuthenticationServiceException:
          * PreparedStatementCallback; bad SQL grammar
          * [select username,password,enabled from users where username = ?];
