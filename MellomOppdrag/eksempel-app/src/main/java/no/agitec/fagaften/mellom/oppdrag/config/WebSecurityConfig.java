@@ -12,9 +12,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.sql.DataSource;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -45,17 +48,117 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsServiceImp userDetailsServiceImpl;
 
     @Autowired
+    DataSource dataSource;
+
+    @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
+    /**
+     * AUTHENTICATION
+     *
+     * @param auth
+     * @throws Exception
+     */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //#Overwriting Spring Security default authentication - way 2
+        auth.inMemoryAuthentication()
+                .withUser("bla")
+                //.password("bla") //hashed passwords! - ENCODE
+                .password(bCryptPasswordEncoder.encode("bla" ))
+                .roles("USER");
+
+        /**
+         * TODO: DataBase was not created and populated
+         * org.springframework.security.authentication.InternalAuthenticationServiceException:
+         * PreparedStatementCallback; bad SQL grammar
+         * [select username,password,enabled from users where username = ?];
+         * nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+         * select username,password,enabled from users where username = ? [42102-200]
+         *
+         * change from in mem to JDBC
+         * https://docs.spring.io/spring-security/site/docs/4.0.x/reference/html/appendix-schema.html
+         */
+        auth.jdbcAuthentication()
+                .dataSource(dataSource) //H2 //MYSQL //ORACLE //osv
+                //Change to resources.database.*
+                .withDefaultSchema()
+                .withUser(
+                        User.withUsername("user2")
+                                //.password("pass")
+                                .password( bCryptPasswordEncoder.encode("pass" ) )
+                                .roles("USER")
+                )
+                .withUser(
+                        User.withUsername("admin2")
+                                //.password("pass")
+                                .password( bCryptPasswordEncoder.encode("pass" ) )
+                                .roles("ADMIN")
+                );
+
+
+        //logg inn ved skjemma
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder);
+
+        //TODO
+        //LDAP - load the LDAP server with a data file that contains a set of users.
+        //Spring Boot provides auto-configuration for an embedded server written in pure Java,
+        // which is being used for this guide. The ldapAuthentication()
+        // method configures things so that the user name at the login form is plugged into
+        // {0} such that it searches uid={0},ou=people,dc=springframework,dc=org in the LDAP server.
+        // Also, the passwordCompare() method configures the encoder and the name of the password’s attribute.
+/*
+        auth
+                .ldapAuthentication()
+                .userDnPatterns("uid={0},ou=people")
+                .groupSearchBase("ou=groups")
+                .contextSource()
+                .url("ldap://localhost:8389/dc=springframework,dc=org")
+                .and()
+                .passwordCompare()
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .passwordAttribute("userPassword");
+*/
     }
 
     /**
+     * Field authenticationManager in no.agitec.fagaften.mellom.oppdrag.web.controller.rest.JwtController required a bean of type 'org.springframework.security.authentication.AuthenticationManager' that could not be found.
+     *
+     * The injection point has the following annotations:
+     * 	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+     */
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+
+    /**
+     *
+     * Field bCryptPasswordEncoder in no.agitec.fagaften.mellom.oppdrag.service.UserDetailsServiceImp required a bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder' that could not be found.
+     *
+     * The injection point has the following annotations:
+     * 	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+     *
+     * @return
+     */
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    public BCryptPasswordEncoder getbCryptPasswordEncoder() {
+        return bCryptPasswordEncoder;
+    }
+
+
+    /**
+     * AUTHORIZATION
+     *
      * 12.1. OAuth 2.0 Login
      * Users log in to the application by using their existing account at
      * an OAuth 2.0 Provider (e.g. GitHub) or OpenID Connect 1.0 Provider (such as Google).
@@ -65,12 +168,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * the Authentication of an End-User by an Authorization Server when used by a Client.
      * The ID Token is represented as a JSON Web Token (JWT) and MUST be signed using JSON Web Signature (JWS).
      *
+     *
+     *  Cross Site Request Forgery (CSRF)
+     *  https://docs.spring.io/spring-security/site/docs/current/reference/html5/#csrf
+     *  Løsning: token - amount=100.00&routingNumber=1234&account=9876&_csrf=4bfd1575-3ad1-4d21-96c7-4ef2d9f86721
+     *  Cross Site Scripting (XSS) - attacks are a type of injection
+     *  https://owasp.org/www-community/attacks/xss/
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //System.out.println("**** configure");
         http
-                .csrf().disable()
+                //.csrf().disable()
                 .httpBasic(withDefaults())
                 .authorizeRequests()
                 .antMatchers(
@@ -110,8 +219,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
 
                 // SOCIAL MEDIA LOGIN
-                // Først gjeng bare finnes GitHub for å logge innn.
-                // Etter logg ut finnes logg, det finnes logg inn skjemma eller GitHub.
+                // Det finnes bare GitHub for å logge innn i først gang.
+                // Etter logg ut finnes mulighet for logg inn ved skjemma eller GitHub.
                 // TODO: Store values in database clientId and clientSecret for allow many users
                 //.and()
                 //.oauth2Login()
@@ -125,35 +234,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
-    /**
-     *
-     * Field bCryptPasswordEncoder in no.agitec.fagaften.mellom.oppdrag.service.UserDetailsServiceImp required a bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder' that could not be found.
-     *
-     * The injection point has the following annotations:
-     * 	- @org.springframework.beans.factory.annotation.Autowired(required=true)
-     *
-     * @return
-     */
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    /**
-     * Field authenticationManager in no.agitec.fagaften.mellom.oppdrag.web.controller.rest.JwtController required a bean of type 'org.springframework.security.authentication.AuthenticationManager' that could not be found.
-     *
-     * The injection point has the following annotations:
-     * 	- @org.springframework.beans.factory.annotation.Autowired(required=true)
-     */
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-    public BCryptPasswordEncoder getbCryptPasswordEncoder() {
-        return bCryptPasswordEncoder;
-    }
 }
 
 
@@ -293,4 +373,12 @@ String json = mapper.writeValueAsString(context);
         return new InMemoryUserDetailsManager(user, admin);
         //return new InMemoryUserDetailsManager(user);
     }
+ */
+
+/*
+//TEXT password
+@Bean
+public PasswordEncoder getPasswordEncoder() {
+    return NoOpPasswordEncoder.getInstance();
+}
  */
