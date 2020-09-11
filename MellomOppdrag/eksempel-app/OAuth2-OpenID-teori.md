@@ -52,3 +52,13 @@
 - [1.1. What's LDAP ?](https://tldp.org/HOWTO/LDAP-HOWTO/whatisldap.html#:~:text=LDAP%20stands%20for%20Lightweight%20Directory,other%20connection%20oriented%20transfer%20services.)
 - [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
 
+## Spring Security
+- [Adding Spring Security to new Spring Boot project - Java Brains Brain Bytes](https://www.youtube.com/watch?v=PhG5p_yv0zs)
+- [How to configure Spring Security Authentication - Java Brains](https://www.youtube.com/watch?v=iyXne7dIn7U)
+- [How to configure Spring Security Authorization - Java Brains](https://www.youtube.com/watch?v=payxWrmF_0k)
+- [How Spring Security Authentication works - Java Brains](https://www.youtube.com/watch?v=caCJAJC41Rk)
+- [Spring Security: Exploring JDBC Authentication](https://www.baeldung.com/spring-security-jdbc-authentication)
+- [How to setup JDBC authentication with Spring Security from scratch - Java Brains](https://www.youtube.com/watch?v=LKvrFltAgCQ)
+
+> [User Schema](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#user-schema)
+
