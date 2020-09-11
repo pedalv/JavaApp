@@ -73,6 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         /**
          * TODO: DataBase was not created and populated sql files not run
+         * Løsning: schema.sql and data.sql and creating bean with name 'h2Console'
+         * Les: How to setup JDBC authentication with Spring Security from scratch - Java Brains
          * org.springframework.security.authentication.InternalAuthenticationServiceException:
          * PreparedStatementCallback; bad SQL grammar
          * [select username,password,enabled from users where username = ?];
@@ -86,6 +88,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource) //H2 //MYSQL //ORACLE //osv
                 //Change to resources.database.*
                 .withDefaultSchema()
+                //.usersByUsernameQuery("SELECT username, password, enable FROM my_users WHERE username = ?")
+                //.authoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username = ?")
                 .withUser(
                         User.withUsername("user2")
                                 //.password("pass")
