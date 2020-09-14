@@ -17,7 +17,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * not need: @EnableJpaRepositories(basePackageClasses = {UserRepository.class})
+ * need when use datasource for access data from a database:
+ * @EnableJpaRepositories(basePackageClasses = {UserRepository.class})
  */
 @Configuration
 @Slf4j
