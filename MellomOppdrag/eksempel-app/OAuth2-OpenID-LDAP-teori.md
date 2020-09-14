@@ -61,6 +61,12 @@
 - [How to configure Spring Security Authentication - Java Brains](https://www.youtube.com/watch?v=iyXne7dIn7U)
 - [How to configure Spring Security Authorization - Java Brains](https://www.youtube.com/watch?v=payxWrmF_0k)
 - [How Spring Security Authentication works - Java Brains](https://www.youtube.com/watch?v=caCJAJC41Rk)
+- [Spring Boot With H2 Database](https://www.baeldung.com/spring-boot-h2-database)
+
+> [h2 CONNECTION MODES](http://www.h2database.com/html/features.html#connection_modes)
+
+> [Spring Persistence Tutorial](https://www.baeldung.com/persistence-with-spring-series) 
+
 - [Spring Security: Exploring JDBC Authentication](https://www.baeldung.com/spring-security-jdbc-authentication)
 
 > [How to setup JDBC authentication with Spring Security from scratch - Java Brains](https://www.youtube.com/watch?v=LKvrFltAgCQ)
