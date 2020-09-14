@@ -52,6 +52,9 @@
 - [1.1. What's LDAP ?](https://tldp.org/HOWTO/LDAP-HOWTO/whatisldap.html#:~:text=LDAP%20stands%20for%20Lightweight%20Directory,other%20connection%20oriented%20transfer%20services.)
 - [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
 - [Spring LDAP + Spring Boot Embedded LDAP Configuration](https://memorynotfound.com/spring-ldap-spring-boot-embedded-ldap-configuration-example/)
+- [UnboundID LDAP SDK for Java](https://docs.ldap.com/ldap-sdk/docs/index.html)
+- [Testing Spring Controllers with Spring Security, Embedded LDAP, and Different Application Contexts](https://www.i-love-software-engineering.de/testing-spring-controllers-with-spring-security-embedded-ldap-and-different-application-contexts/)
+- [Setting up Spring Data LDAP Embedded for tests with base DN](https://stackoverflow.com/questions/48195840/setting-up-spring-data-ldap-embedded-for-tests-with-base-dn)
 
 ## Spring Security
 - [Adding Spring Security to new Spring Boot project - Java Brains Brain Bytes](https://www.youtube.com/watch?v=PhG5p_yv0zs)

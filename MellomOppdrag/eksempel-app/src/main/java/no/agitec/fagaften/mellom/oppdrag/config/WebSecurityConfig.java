@@ -14,6 +14,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -115,18 +117,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // {0} such that it searches uid={0},ou=people,dc=springframework,dc=org in the LDAP server.
         // Also, the passwordCompare() method configures the encoder and the name of the password’s attribute.
         //https://stackoverflow.com/questions/47291853/address-already-in-use-when-running-tests-using-spring-ldap-embedded-server
+        // org.springframework.security.authentication.InternalAuthenticationServiceException: localhost:389; nested exception is javax.naming.CommunicationException:
+        // localhost:389 [Root exception is java.net.ConnectException: Connection refused: connect]
+        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         auth
                 .ldapAuthentication()
                 .userDnPatterns("uid={0},ou=people")
                 .groupSearchBase("ou=groups")
                 .contextSource()
+                    .ldif("classpath:test-server.ldif")
+                    .root("dc=springframework,dc=org")
                 //.url("ldap://localhost:8389/dc=springframework,dc=org")
                 .url("ldap://localhost/dc=springframework,dc=org")
                 .and()
                 .passwordCompare()
-                .passwordEncoder(new BCryptPasswordEncoder())
-                .passwordAttribute("userPassword");
-
+                    .passwordEncoder(passwordEncoder)
+                //.passwordEncoder(new BCryptPasswordEncoder())
+                .passwordAttribute("userPassword")
+                .and();
+        log.info("Security configuration loaded.");
         /*
                 2020-09-14 09:56:06.344 ERROR 10792
                 --- [nio-8080-exec-2] n.a.f.m.o.service.UserDetailsServiceImp  :
@@ -245,6 +254,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Det finnes bare GitHub for å logge innn i først gang.
                 // Etter logg ut finnes mulighet for logg inn ved skjemma eller GitHub.
                 // TODO: Store values in database clientId and clientSecret for allow many users
+
                 //.and()
                 //.oauth2Login()
 
