@@ -42,7 +42,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
         //Username: user; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_USER,ROLE_dro,ROLE_pe
         //TODO: Encode password in database on Server and Client side. See passwordDBBase64Str() method in CreatePassword class
 
-        if (usersList != null && !usersList.isEmpty()) {
+        if (!usersList.isEmpty()) {
             User user = usersList.iterator().next();
 
             List<String> roleList = new ArrayList<>();
@@ -56,7 +56,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
                     .password( bCryptPasswordEncoder.encode(user.getPassword()) ) //password value store in database
 //TODO: How compare password web and db? Implement in Spring Segurity inside index action.
 // The generated password are salted and therefore different.
-                    .disabled(!user.getEnable())
+                    .disabled(!user.getEnabled())
                     .accountExpired(!user.getAccountNonExpired())
                     .accountLocked(!user.getAccountNonLocked())
                     .credentialsExpired(!user.getCredentialsNonExpired())
@@ -77,7 +77,7 @@ class MyUserDetails implements UserDetails {
     @Autowired
     private UserRepository userRepository;
 
-    private UserDetails getFakeUserDetails()  {
+    private UserDetails getFakeUserDetails()  throws UsernameNotFoundException {
         //TODO: java8/11 stream-filter-map-colection check later
         Optional<User> users = userRepository.findByUsername2("userName"); //Get user from database
         users.orElseThrow( () -> new UsernameNotFoundException("bla bla"));
