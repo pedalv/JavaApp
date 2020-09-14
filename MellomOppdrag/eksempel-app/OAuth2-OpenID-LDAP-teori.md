@@ -62,10 +62,9 @@
 - [How to configure Spring Security Authorization - Java Brains](https://www.youtube.com/watch?v=payxWrmF_0k)
 - [How Spring Security Authentication works - Java Brains](https://www.youtube.com/watch?v=caCJAJC41Rk)
 - [Spring Security: Exploring JDBC Authentication](https://www.baeldung.com/spring-security-jdbc-authentication)
-TODO Mandag
-> [pring Boot + Spring Security with JPA authentication and MySQL from scratch - Java Brains](https://www.youtube.com/watch?v=TNt3GHuayXs)
-TODO
-- [How to setup JDBC authentication with Spring Security from scratch - Java Brains](https://www.youtube.com/watch?v=LKvrFltAgCQ)
+
+> [How to setup JDBC authentication with Spring Security from scratch - Java Brains](https://www.youtube.com/watch?v=LKvrFltAgCQ)
 
 > [User Schema](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#user-schema)
 
+- [pring Boot + Spring Security with JPA authentication and MySQL from scratch - Java Brains](https://www.youtube.com/watch?v=TNt3GHuayXs)
