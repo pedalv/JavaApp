@@ -73,4 +73,6 @@
 
 > [User Schema](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#user-schema)
 
+> [Spring Boot – DataSource configuration](https://howtodoinjava.com/spring-boot2/datasource-configuration/)
+
 - [pring Boot + Spring Security with JPA authentication and MySQL from scratch - Java Brains](https://www.youtube.com/watch?v=TNt3GHuayXs)
