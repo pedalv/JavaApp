@@ -107,25 +107,42 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //logg inn ved skjemma
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder);
 
-        //TODO
+        //logg inn ved LDAP
         //LDAP - load the LDAP server with a data file that contains a set of users.
         //Spring Boot provides auto-configuration for an embedded server written in pure Java,
         // which is being used for this guide. The ldapAuthentication()
         // method configures things so that the user name at the login form is plugged into
         // {0} such that it searches uid={0},ou=people,dc=springframework,dc=org in the LDAP server.
         // Also, the passwordCompare() method configures the encoder and the name of the password’s attribute.
-/*
+        //https://stackoverflow.com/questions/47291853/address-already-in-use-when-running-tests-using-spring-ldap-embedded-server
         auth
                 .ldapAuthentication()
                 .userDnPatterns("uid={0},ou=people")
                 .groupSearchBase("ou=groups")
                 .contextSource()
-                .url("ldap://localhost:8389/dc=springframework,dc=org")
+                //.url("ldap://localhost:8389/dc=springframework,dc=org")
+                .url("ldap://localhost/dc=springframework,dc=org")
                 .and()
                 .passwordCompare()
                 .passwordEncoder(new BCryptPasswordEncoder())
                 .passwordAttribute("userPassword");
-*/
+
+        /*
+                2020-09-14 09:56:06.344 ERROR 10792
+                --- [nio-8080-exec-2] n.a.f.m.o.service.UserDetailsServiceImp  :
+                User Name 'ben' is not Found
+
+                dn: uid=ben,ou=people,dc=springframework,dc=org
+                objectclass: top
+                objectclass: person
+                objectclass: organizationalPerson
+                objectclass: inetOrgPerson
+                cn: Ben Alex
+                sn: Alex
+                uid: ben
+                userPassword: $2a$10$c6bSeWPhg06xB1lvmaWNNe4NROmZiSpYhlocU/98HNr2MhIOiSt36
+         */
+
     }
 
     /**
@@ -210,6 +227,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/admin/**").hasRole("ADMIN") // "ROLE_ADMIN"
                 //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA') and hasIpAddress('192.168.1.0/24')") //"ROLE_ADMIN" and "ROLE_DBA"
                 .antMatchers("/partner").hasAnyRole( "USER", "STAFF", "ADMIN" )
+
+                .anyRequest().fullyAuthenticated() //LDAP
 
                 //JWT
                 .and()

@@ -48,4 +48,45 @@ public class EksempelAppApplication {
 		};
 	}
 
+
+	/*
+	//name: ben and password: benspassword --- NOT WORK => name: []
+	//LADP: Ldap server does not run
+	//Caused by:
+	// org.springframework.beans.factory.UnsatisfiedDependencyException:
+	// Error creating bean with name 'eksempelAppApplication':
+	// Unsatisfied dependency expressed through field 'personLdapRepository';
+	// nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException:
+	// Error creating bean with name 'personLdapRepository':
+	// Unsatisfied dependency expressed through field 'ldapTemplate';
+	// nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException:
+	// Error creating bean with name 'ldapTemplate' defined in class path resource
+	// [org/springframework/boot/autoconfigure/ldap/LdapAutoConfiguration.class]:
+	// Unsatisfied dependency expressed through method 'ldapTemplate' parameter 0;
+	// nested exception is org.springframework.beans.factory.BeanCreationException:
+	// Error creating bean with name 'directoryServer' defined in class path resource
+	// [org/springframework/boot/autoconfigure/ldap/embedded/EmbeddedLdapAutoConfiguration.class]:
+	// Bean instantiation via factory method failed;
+	// nested exception is org.springframework.beans.BeanInstantiationException:
+	// Failed to instantiate [com.unboundid.ldap.listener.InMemoryDirectoryServer]:
+	// Factory method 'directoryServer' threw exception;
+	// nested exception is LDAPException(resultCode=82 (local error),
+	// errorMessage='An error occurred while attempting to start listener 'ldap':
+	// BindException(Address already in use: bind),
+	// ldapSDKVersion=4.0.14, revision=c0fb784eebf9d36a67c736d0428fb3577f2e25bb')
+
+	@Autowired
+	private PersonLdapRepository personLdapRepository;
+
+	@PostConstruct
+	public void setup(){
+		log.info("Spring LDAP + Spring Boot Configuration Example");
+
+		List<String> names = personLdapRepository.getAllPersonNames();
+		log.info("names: " + names);
+
+	}
+	 */
+
+
 }

@@ -34,6 +34,7 @@
 - Video Tutorial
 > [Implementing login with Facebook and Github from scratch - Java Brains](https://www.youtube.com/watch?v=CWiwpvpCrro)
 
+## OpenID - Json Web Token
 > [Spring Boot + Spring Security + JWT from scratch - Java Brains](https://www.youtube.com/watch?v=X80nJ5T7YpE)
 
 - [spring-security-jwt](https://github.com/koushikkothagal/spring-security-jwt) 
@@ -44,13 +45,13 @@
 - Authorization: Bearer JWT
 - [Circular Dependencies in Spring](https://www.baeldung.com/circular-dependencies-in-spring)
 
-> [pring Boot + Spring Security with JPA authentication and MySQL from scratch - Java Brains](https://www.youtube.com/watch?v=TNt3GHuayXs)
-
+## Lightweight Directory Access Protocol (LDAP)
 > [Spring Boot + Spring Security + LDAP from scratch - Java Brains](https://www.youtube.com/watch?v=-wDUChgvYgU)
 
 - [Lightweight Directory Access Protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol)
 - [1.1. What's LDAP ?](https://tldp.org/HOWTO/LDAP-HOWTO/whatisldap.html#:~:text=LDAP%20stands%20for%20Lightweight%20Directory,other%20connection%20oriented%20transfer%20services.)
 - [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
+- [Spring LDAP + Spring Boot Embedded LDAP Configuration](https://memorynotfound.com/spring-ldap-spring-boot-embedded-ldap-configuration-example/)
 
 ## Spring Security
 - [Adding Spring Security to new Spring Boot project - Java Brains Brain Bytes](https://www.youtube.com/watch?v=PhG5p_yv0zs)
@@ -58,6 +59,9 @@
 - [How to configure Spring Security Authorization - Java Brains](https://www.youtube.com/watch?v=payxWrmF_0k)
 - [How Spring Security Authentication works - Java Brains](https://www.youtube.com/watch?v=caCJAJC41Rk)
 - [Spring Security: Exploring JDBC Authentication](https://www.baeldung.com/spring-security-jdbc-authentication)
+TODO Mandag
+> [pring Boot + Spring Security with JPA authentication and MySQL from scratch - Java Brains](https://www.youtube.com/watch?v=TNt3GHuayXs)
+TODO
 - [How to setup JDBC authentication with Spring Security from scratch - Java Brains](https://www.youtube.com/watch?v=LKvrFltAgCQ)
 
 > [User Schema](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#user-schema)

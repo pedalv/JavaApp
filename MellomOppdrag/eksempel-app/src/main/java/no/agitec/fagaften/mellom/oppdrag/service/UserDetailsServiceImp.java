@@ -63,7 +63,8 @@ public class UserDetailsServiceImp implements UserDetailsService {
                     .roles(roleList.toArray(new String[0]))
                     .build();
         } else {
-            throw new UsernameNotFoundException("User Name is not Found");
+            log.error("User Name '"+ userName +"' is not Found");
+            throw new UsernameNotFoundException("User Name '"+ userName +"' is not Found");
         }
     }
 
