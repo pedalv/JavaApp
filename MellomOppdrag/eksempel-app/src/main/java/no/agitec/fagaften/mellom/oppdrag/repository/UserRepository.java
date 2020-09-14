@@ -29,16 +29,16 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Set<User> findByUsername(String username);
 
-    Set<User> findByEnable(Boolean enable);
+    Set<User> findByEnabled(Boolean enabled);
 
     Set<User> findByAccountNonExpired(Boolean accountNonExpired);
 
-    Set<User> findByEnableAndAccountNonExpired(Boolean enable, Boolean accountNonExpired);
+    Set<User> findByEnabledAndAccountNonExpired(Boolean enabled, Boolean accountNonExpired);
 
     @Query("select u from User u " +
-            "where u.enable = :enable " +
+            "where u.enabled = :enabled " +
             "and u.accountNonExpired = :accountNonExpired ")
-    Set<User> findQueryEnableAndAccountNonExpired(@Param("enable") Boolean enable, @Param("accountNonExpired") Boolean accountNonExpired);
+    Set<User> findQueryEnabledAndAccountNonExpired(@Param("enabled") Boolean enabled, @Param("accountNonExpired") Boolean accountNonExpired);
 
     /**
      * for test:
