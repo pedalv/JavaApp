@@ -73,8 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(bCryptPasswordEncoder.encode("bla" ))
                 .roles("USER");
 
+
         /**
-         * TODO: DataBase was not created and populated sql files not run
          * Løsning: schema.sql and data.sql and creating bean with name 'h2Console'
          * Les: How to setup JDBC authentication with Spring Security from scratch - Java Brains
          * org.springframework.security.authentication.InternalAuthenticationServiceException:
@@ -87,14 +87,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          * https://docs.spring.io/spring-security/site/docs/4.0.x/reference/html/appendix-schema.html
          */
         auth.jdbcAuthentication()
+                // for external database pass dataSource
+                // Spring Boot default: classpath:schema.sql andclasspath: data.sql
+                // (migrate for different files names as classpath:database:V1.0.0_Create_?.sql for exemple )
                 .dataSource(dataSource) //H2 //MYSQL //ORACLE //osv
+                // for different schema pass queries
+                //.usersByUsernameQuery("SELECT username, password, enabled FROM user WHERE username = ?")
+                //.authoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username = ?")
+     //           ;
+/* */
+
                 //Change to resources.database.*
                 .withDefaultSchema()
-                //.usersByUsernameQuery("SELECT username, password, enable FROM my_users WHERE username = ?")
-                //.authoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username = ?")
                 .withUser(
                         User.withUsername("user2")
                                 //.password("pass")
+                                //.password(passwordEncoder().encode("pass"))
                                 .password( bCryptPasswordEncoder.encode("pass" ) )
                                 .roles("USER")
                 )
@@ -102,6 +110,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         User.withUsername("admin2")
                                 //.password("pass")
                                 .password( bCryptPasswordEncoder.encode("pass" ) )
+                                .roles("ADMIN")
+                )
+                .withUser(
+                        User.withUsername("sa")
+                                //.password("password")
+                                .password( bCryptPasswordEncoder.encode("password" ) )
                                 .roles("ADMIN")
                 );
 
@@ -185,7 +199,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return bCryptPasswordEncoder;
     }
 
-
     /**
      * AUTHORIZATION
      *
@@ -212,6 +225,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.csrf().disable()
                 .httpBasic(withDefaults())
                 .authorizeRequests()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(
                         //"/css/**",
                         "/",
@@ -250,11 +264,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
 
-                // SOCIAL MEDIA LOGIN
+        // SOCIAL MEDIA LOGIN
                 // Det finnes bare GitHub for å logge innn i først gang.
                 // Etter logg ut finnes mulighet for logg inn ved skjemma eller GitHub.
-                // TODO: Store values in database clientId and clientSecret for allow many users
-
+                // TODO Mandag: Store values in database clientId and clientSecret for allow many users
                 //.and()
                 //.oauth2Login()
 
@@ -262,6 +275,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
+
+        http
+                .csrf()
+                .ignoringAntMatchers("/h2-console/**");
+        http
+                .headers()
+                .frameOptions()
+                .sameOrigin();
 
         //JWT
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
