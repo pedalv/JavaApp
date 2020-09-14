@@ -264,7 +264,7 @@ public class LoadDatabaseConfig {
             log.info("");
             log.info("==  findByEnable(enable):");
             log.info("-------------------------------");
-            for (User user : users.findByEnable(true)) {
+            for (User user : users.findByEnabled(true)) {
                 log.info(user.toString());
             }
             log.info("");
@@ -276,13 +276,13 @@ public class LoadDatabaseConfig {
             log.info("");
             log.info("==  findByEnableAndAccountNonExpired(enable, accountNonExpired):");
             log.info("-------------------------------");
-            for (User user : users.findByEnableAndAccountNonExpired(true,  true)) {
+            for (User user : users.findByEnabledAndAccountNonExpired(true,  true)) {
                 log.info(user.toString());
             }
             log.info("");
             log.info("==  findQueryEnableAndAccountNonExpired(enable, accountNonExpired):");
             log.info("-------------------------------");
-            for (User user : users.findQueryEnableAndAccountNonExpired(true,  true)) {
+            for (User user : users.findQueryEnabledAndAccountNonExpired(true,  true)) {
                 log.info(user.toString());
             }
             log.info("");

@@ -31,6 +31,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
+//@Table(name = "users2") //Table "USERS" already exists; SQL statement:
 @SequenceGenerator(name = "User_Gen", sequenceName = "User_Gen",  initialValue = 1)
 public class User {
 
@@ -42,7 +43,7 @@ public class User {
 
     private String password;
 
-    private Boolean enable;
+    private Boolean enabled;
     private boolean disabled;
 
     private Boolean accountNonExpired;
@@ -104,7 +105,7 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.enable = true;
+        this.enabled = true;
         this.accountNonExpired = true;
         this.credentialsNonExpired = true;
         this.accountNonLocked = true;
