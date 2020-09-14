@@ -31,7 +31,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-//@Table(name = "users2") //Table "USERS" already exists; SQL statement:
 @SequenceGenerator(name = "User_Gen", sequenceName = "User_Gen",  initialValue = 1)
 public class User {
 

@@ -94,8 +94,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // for different schema pass queries
                 //.usersByUsernameQuery("SELECT username, password, enabled FROM user WHERE username = ?")
                 //.authoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username = ?")
-     //           ;
-/* */
+                ;
+/*
 
                 //Change to resources.database.*
                 .withDefaultSchema()
@@ -118,7 +118,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .password( bCryptPasswordEncoder.encode("password" ) )
                                 .roles("ADMIN")
                 );
-
+*/
 
         //logg inn ved skjemma
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder);
