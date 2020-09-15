@@ -34,6 +34,15 @@ public class CreatePassword {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
         String result = encoder.encode(cs.toString());
         log.info("BCryptPasswordEncoder: " + cs.toString() + " => " + result);
+        //BCryptPasswordEncoder: myPassword => $2a$16$EAH7NBHEpDpRwEX3MnefIuyE1AUuGowojm5oyn3SHyhric0x/jxFG
+        //BCryptPasswordEncoder: myPassword => $2a$16$shvYwuOPmpnHbvDBMAMwdO4Cn5udpr6mYPzdiFr4GMlk/CSxtnrWq
+        //BCryptPasswordEncoder: myPassword => $2a$16$EM7zvBW.7g7SivUFTZ1soumnicWSsIFcUgEaj5O0yHEgooWruHoQW
+        //BCryptPasswordEncoder: myPassword => $2a$16$pmok.VzwxDVflk9P0l.rIeDepBLP4ZcYOh7W64CFMnYjIO6RygrNW
+        //NOTE: Password will not change when was store in database (HOW!)
+        log.info(encoder.encode("password" ));
+        //$2a$16$epJl21J/qaQw7h4BmK.AzuQDg2/kxxQdwuKv0yfPNidzAEPnVML2S
+        //$2a$16$dZROkQxKxntVDyDlmr5FcuwNOlWzFnEPCgAPJ69CLAMfiS820uCAO
+        int i = 0;
     }
     //Salt
     private static void createArgon2PasswordEncoder() {

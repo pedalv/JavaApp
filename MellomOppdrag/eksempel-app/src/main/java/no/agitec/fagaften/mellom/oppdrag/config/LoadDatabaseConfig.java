@@ -105,6 +105,7 @@ public class LoadDatabaseConfig {
     CommandLineRunner partner(PartnerRepository partners) {
         return (args) -> {
             // save a few partners
+            partners.save(new Partner("Ework"));
             partners.save(new Partner("Verama"));
             partners.save(new Partner("Centric"));
             partners.save(new Partner("Know IT"));

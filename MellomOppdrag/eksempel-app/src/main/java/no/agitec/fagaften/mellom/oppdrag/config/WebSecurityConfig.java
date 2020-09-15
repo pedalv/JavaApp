@@ -267,9 +267,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // SOCIAL MEDIA LOGIN
                 // Det finnes bare GitHub for å logge innn i først gang.
                 // Etter logg ut finnes mulighet for logg inn ved skjemma eller GitHub.
-                // TODO Mandag: Store values in database clientId and clientSecret for allow many users
-                //.and()
-                //.oauth2Login()
+                // TODO
+                //  (Udfordring ved API): Store values in database clientId and clientSecret for allow many users
+                //  NOTE: Password will not change when was store in database (HOW!)
+                .and()
+                .oauth2Login()
 
                 .permitAll()
                 .and()
