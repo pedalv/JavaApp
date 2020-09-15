@@ -75,4 +75,8 @@
 
 > [Spring Boot – DataSource configuration](https://howtodoinjava.com/spring-boot2/datasource-configuration/)
 
+> [](https://www.baeldung.com/spring-boot-configure-data-source-programmatic)
+
+> [Database Migration with Spring Boot](https://thorben-janssen.com/database-migration-with-spring-boot/)
+
 - [pring Boot + Spring Security with JPA authentication and MySQL from scratch - Java Brains](https://www.youtube.com/watch?v=TNt3GHuayXs)
