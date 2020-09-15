@@ -270,8 +270,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // TODO
                 //  (Udfordring ved API): Store values in database clientId and clientSecret for allow many users
                 //  NOTE: Password will not change when was store in database (HOW!)
-                .and()
-                .oauth2Login()
+                //.and()
+                //.oauth2Login()
 
                 .permitAll()
                 .and()
