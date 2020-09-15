@@ -64,7 +64,7 @@ Spring Data MongoDB
 
 > [9.5. Security Filters](https://docs.spring.io/spring-security/site/docs/5.3.5.BUILD-SNAPSHOT/reference/html5/#features)
 
-> [OAuth2 OpenID Teori](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/OAuth2-OpenID-teori.md)
+> [OAuth2-OpenID-LDAP-DB-teori](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/OAuth2-OpenID-LDAP-DB-teori.md)
 
 #### [Spring Data](https://spring.io/projects/spring-data)
 

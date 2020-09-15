@@ -75,7 +75,7 @@
 
 > [Spring Boot – DataSource configuration](https://howtodoinjava.com/spring-boot2/datasource-configuration/)
 
-> [](https://www.baeldung.com/spring-boot-configure-data-source-programmatic)
+> [Configuring a DataSource Programmatically in Spring Boot](https://www.baeldung.com/spring-boot-configure-data-source-programmatic)
 
 > [Database Migration with Spring Boot](https://thorben-janssen.com/database-migration-with-spring-boot/)
 
