@@ -33,4 +33,79 @@
 >./gradlew build --scan vs mvn clean install
 >./gradlew tasks
 >./gradlew run
+
+rmdir /s /q .gradle
+```
+
+```
+
+D:\Workspace\JavaApp\MellomOppdrag\eksempel-app>gradle tasks
+
+> Task :tasks
+
+------------------------------------------------------------
+Tasks runnable from root project - eksempel-app
+------------------------------------------------------------
+
+Build tasks
+-----------
+assemble - Assembles the outputs of this project.
+build - Assembles and tests this project.
+buildDependents - Assembles and tests this project and all projects that depend on it.
+buildNeeded - Assembles and tests this project and all projects it depends on.
+classes - Assembles main classes.
+clean - Deletes the build directory.
+jar - Assembles a jar archive containing the main classes.
+testClasses - Assembles test classes.
+
+Build Setup tasks
+-----------------
+init - Initializes a new Gradle build.
+wrapper - Generates Gradle wrapper files.
+
+Documentation tasks
+-------------------
+javadoc - Generates Javadoc API documentation for the main source code.
+
+Help tasks
+----------
+buildEnvironment - Displays all buildscript dependencies declared in root project 'eksempel-app'.
+components - Displays the components produced by root project 'eksempel-app'. [incubating]
+dependencies - Displays all dependencies declared in root project 'eksempel-app'.
+dependencyInsight - Displays the insight into a specific dependency in root project 'eksempel-app'.
+dependentComponents - Displays the dependent components of components in root project 'eksempel-app'. [incubating]
+help - Displays a help message.
+model - Displays the configuration model of root project 'eksempel-app'. [incubating]
+outgoingVariants - Displays the outgoing variants of root project 'eksempel-app'.
+projects - Displays the sub-projects of root project 'eksempel-app'.
+properties - Displays the properties of root project 'eksempel-app'.
+tasks - Displays the tasks runnable from root project 'eksempel-app'.
+
+Publishing tasks
+----------------
+generateMetadataFileForMavenPublication - Generates the Gradle metadata file for publication 'maven'.
+generatePomFileForMavenPublication - Generates the Maven POM file for publication 'maven'.
+publish - Publishes all publications produced by this project.
+publishMavenPublicationToMavenLocal - Publishes Maven publication 'maven' to the local Maven repository.
+publishToMavenLocal - Publishes all Maven publications produced by this project to the local Maven cache.
+
+Verification tasks
+------------------
+check - Runs all checks.
+test - Runs the unit tests.
+
+Rules
+-----
+Pattern: clean<TaskName>: Cleans the output files of a task.
+Pattern: build<ConfigurationName>: Assembles the artifacts of a configuration.
+Pattern: upload<ConfigurationName>: Assembles and uploads the artifacts belonging to a configuration.
+
+To see all tasks and more detail, run gradle tasks --all
+
+To see more detail about a task, run gradle help --task <task>
+
+BUILD SUCCESSFUL in 690ms
+1 actionable task: 1 executed
+D:\Workspace\JavaApp\MellomOppdrag\eksempel-app>
+
 ```
