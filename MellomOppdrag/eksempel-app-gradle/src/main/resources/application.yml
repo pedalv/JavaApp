@@ -1,3 +1,10 @@
+
+#https://www.baeldung.com/spring-boot-change-port
+server:
+  port : 8081
+
+
+
 spring:
 
   # Spring Boot + Spring LDAP configuration application.yml
