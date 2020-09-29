@@ -1,9 +1,55 @@
 # Front-end web development
 Front-end web development is the practice of converting data to a graphical interface, through the use of HTML, CSS, and JavaScript, so that users can view and interact with that data.
 
+##Tips og Råd
+```
+    node -v === v12.18.4 
+    npm -v === 6.14.8 
+    npx -v === 6.14.8
+
+    npm audit --force
+```
+- [npm-init](https://docs.npmjs.com/cli/init)
+
+React is a JavaScript library for building user interfaces or UI components. 
+- [react-scripts](https://www.npmjs.com/package/react-scripts)
+```
+    npm init react-app my-app
+```
+- [react-scripts-ts](https://www.npmjs.com/package/react-scripts-ts) === 
+```
+    npm init react-app my-app --template typescript
+```
+- React APP
+```
+    npm start
+    npm test
+    `npm run eject` (webpack, Babel, ESLint, etc) 
+    npm run build
+```
+
+Angular is a platform for building mobile and desktop web applications === MV (Model View).
+- Install ng
+```
+    npm install -g @angular/cli ->  install the Angular CLI globally.
+```
+- Create
+```
+    ng new my-app -> Create a new project
+    cd my-app
+```
+- Angular APP
+```
+    ng serve --open or ng serve --open --host 0.0.0.0 --port 4200
+    ng generate component xyz
+    ng add @angular/material
+    ng add @angular/pwa
+    ng add <_Dependency_>
+    ng test
+    ng build --prod       
+```
 
 ## Klient side
-
 - [ECMAScript === JavaScript standard](https://en.wikipedia.org/wiki/JavaScript)
 - [JavaScript - ECMAScript 2020](https://en.wikipedia.org/wiki/JavaScript)
 - [TypeScript: Typed JavaScript at Any Scale](https://www.typescriptlang.org/)
@@ -11,7 +57,6 @@ Front-end web development is the practice of converting data to a graphical inte
 
 
 ## Modern JavaScript frameworks
-
 - [React: A JavaScript library for building user interfaces](https://reactjs.org/)
 - [Redux:  A Predictable State Container for JS Apps](https://redux.js.org/)
 - [Flow: A Static Type Checker for JavaScript](https://flow.org/)
@@ -28,7 +73,6 @@ Front-end web development is the practice of converting data to a graphical inte
 - [WAI-ARIA Overview](https://www.w3.org/WAI/standards-guidelines/aria/)
 
 ## Universell utforming
-
 - [HTML](https://en.wikipedia.org/wiki/HTML)
 - [CSS: a style sheet language](https://en.wikipedia.org/wiki/CSS)
 - [LESS: It's CSS, with just a little more.](http://lesscss.org/)
