@@ -6,9 +6,9 @@ Front-end web development is the practice of converting data to a graphical inte
     node -v === v12.18.4 
     npm -v === 6.14.8 
     npx -v === 6.14.8
+```
 
-    ng update @angular/cli --migrate-only --from=1.6.6
-    
+```
     rm -Rf node_modules
     rm -f package-lock.json
 
@@ -19,9 +19,16 @@ Front-end web development is the practice of converting data to a graphical inte
     npm update
     npm audit fix --force
 ```
+    
 - [npm-init](https://docs.npmjs.com/cli/init)
 
 React is a JavaScript library for building user interfaces or UI components. 
+```
+    npm install -g create-react-app (not need)
+    create-react-app my-first-app
+    eller
+    npm init react-app my-first-app
+```
 - [react-scripts](https://www.npmjs.com/package/react-scripts)
 ```
     npm init react-app my-app
@@ -39,6 +46,10 @@ React is a JavaScript library for building user interfaces or UI components.
 ```
 
 Angular is a platform for building mobile and desktop web applications === MV (Model View).
+```
+    ng update @angular/cli --migrate-only --from=1.6.6
+```
+    
 - Install ng
 ```
     npm install -g @angular/cli ->  install the Angular CLI globally.
