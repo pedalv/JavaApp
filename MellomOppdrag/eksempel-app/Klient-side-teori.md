@@ -44,6 +44,7 @@ React is a JavaScript library for building user interfaces or UI components.
     `npm run eject` (webpack, Babel, ESLint, etc) 
     npm run build
 ```
+- [React And Spring Boot](https://www.youtube.com/c/AlmightyJava/search?query=React%20And%20Spring%20Boot)
 
 Angular is a platform for building mobile and desktop web applications === MV (Model View).
 ```
@@ -69,6 +70,7 @@ Angular is a platform for building mobile and desktop web applications === MV (M
     ng test
     ng build --prod       
 ```
+- [Angular 2 and Spring Boot](https://www.youtube.com/c/AlmightyJava/search?query=Angular%202%20and%20Spring%20Boot)
 
 ## Klient side
 - [ECMAScript === JavaScript standard](https://en.wikipedia.org/wiki/JavaScript)
