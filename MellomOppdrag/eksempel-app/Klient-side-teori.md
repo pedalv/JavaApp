@@ -7,7 +7,17 @@ Front-end web development is the practice of converting data to a graphical inte
     npm -v === 6.14.8 
     npx -v === 6.14.8
 
-    npm audit --force
+    ng update @angular/cli --migrate-only --from=1.6.6
+    
+    rm -Rf node_modules
+    rm -f package-lock.json
+
+    npm install --save-dev webpack
+    npm install --save-dev webpack-dev-server
+    npm install eller npm i
+    
+    npm update
+    npm audit fix --force
 ```
 - [npm-init](https://docs.npmjs.com/cli/init)
 
