@@ -71,6 +71,7 @@ Angular is a platform for building mobile and desktop web applications === MV (M
     ng build --prod       
 ```
 - [Angular 2 and Spring Boot](https://www.youtube.com/c/AlmightyJava/search?query=Angular%202%20and%20Spring%20Boot)
+- [Desktop to Web: Basic Route Navigation in Angular 9](https://www.youtube.com/watch?v=KkluJjQ4b5E)
 
 ## Klient side
 - [ECMAScript === JavaScript standard](https://en.wikipedia.org/wiki/JavaScript)
