@@ -226,11 +226,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic(withDefaults())
                 .authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/jwt/authenticate/**").permitAll()
                 .antMatchers(
                         //"/css/**",
                         "/",
                         "/error",
-                        "/jwt/authenticate",
                         "/hello", //Rem later
                         "/home", //Rem later
                         "/customer",
@@ -280,7 +280,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .csrf()
-                .ignoringAntMatchers("/h2-console/**");
+                .ignoringAntMatchers("/h2-console/**")
+                .ignoringAntMatchers("/jwt/authenticate/**");
+
         http
                 .headers()
                 .frameOptions()
