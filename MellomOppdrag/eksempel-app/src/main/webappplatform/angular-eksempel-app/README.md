@@ -70,3 +70,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [Angular GitHub](https://github.com/angular/angular)
 - [EditorConfig](https://editorconfig.org/)
 - [Ignoring files](http://help.github.com/ignore-files/)
+- [AngularJS in 10 Minutes](https://www.youtube.com/watch?v=nTuOQ8LP-rU)
+- [Learn AngularJS in 5 Minutes](https://www.youtube.com/watch?v=cEbBvAEDjrg)
+- [Angular2 in 15min](https://www.youtube.com/watch?v=U3qshbC4fLo)
+- [Angular 10 Tutorial - Interpolation](https://www.youtube.com/watch?v=Kh-9qyAxXm0)
+
