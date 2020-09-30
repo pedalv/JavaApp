@@ -66,7 +66,7 @@ public class LoadDatabaseConfig {
             customers.saveAndFlush(new Customer("Garantikassen for fiskere", "GFF ELSAM 2015"));
             customers.saveAndFlush(new Customer("NAV/Helsedirektoratet", "KUKR/SAPO"));
             customers.saveAndFlush(new Customer("Senter for pasientmedvirkning og samhandlingsforskning (SPS)", "SpsWebPage, ReConnect-App og -Web"));
-            customers.saveAndFlush(new Customer("Statnett", "Responsive desegn av internettløsning"));
+            customers.saveAndFlush(new Customer("Statnett", "Responsive design av internettløsning"));
             customers.saveAndFlush(new Customer("Norges Forskningsråd", "Forvaltning av nettsider prosjekter"));
             customers.saveAndFlush(new Customer("Gjensidige Forsikring", "Forvaltning"));
             customers.saveAndFlush(new Customer("A-Pressen Digital Medier (Amedia)", "Nettaviser, Zett.no"));
