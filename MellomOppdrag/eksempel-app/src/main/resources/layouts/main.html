@@ -51,9 +51,6 @@
                 <a class="nav-link" th:href="@{/kafka}">kafka</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/person}">Person</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" th:href="@{/partner}">Partner</a>
             </li>
             <li class="nav-item">
@@ -70,6 +67,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/hello}">Hello (Remove later)</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/person}">Person (Remove later)</a>
             </li>
             <li class="nav-item">
                 <div th:if="${#strings.isEmpty(#httpServletRequest.remoteUser)}">
