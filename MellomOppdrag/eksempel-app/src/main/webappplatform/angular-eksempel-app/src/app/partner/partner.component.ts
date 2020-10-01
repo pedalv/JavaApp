@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartnerComponent implements OnInit {
 
+  employee : {id, name, description, email} = {id: null, name: "", description: "", email: ""};
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  createEmployee(){
+    console.log("Employee created: ", this.employee);
+    this.employee = {id: null, name: "", description: "", email: ""};
   }
 
 }
