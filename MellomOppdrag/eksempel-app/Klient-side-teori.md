@@ -18,6 +18,7 @@ Front-end web development is the practice of converting data to a graphical inte
     
     npm update
     npm audit fix --force
+    npm install --save bootstrap jquery === dependencies
 ```
     
 - [npm-init](https://docs.npmjs.com/cli/init)
@@ -53,7 +54,7 @@ Angular is a platform for building mobile and desktop web applications === MV (M
     
 - Install ng
 ```
-    npm install -g @angular/cli ->  install the Angular CLI globally.
+    npm install -g @angular/cli ->  install the Angular CLI globally. @next for beta versjon
 ```
 - Create
 ```
@@ -72,6 +73,8 @@ Angular is a platform for building mobile and desktop web applications === MV (M
 ```
 - [Angular 2 and Spring Boot](https://www.youtube.com/c/AlmightyJava/search?query=Angular%202%20and%20Spring%20Boot)
 - [Desktop to Web: Basic Route Navigation in Angular 9](https://www.youtube.com/watch?v=KkluJjQ4b5E)
+- [3+ Ways to Add Bootstrap 4 to Angular 10/9 With Example & Tutorial](https://www.techiediaries.com/angular-bootstrap/)
+- [Styling An Angular 10 Example App with Bootstrap 4 Navbar, Jumbotron, Tables, Forms and Cards](https://www.techiediaries.com/angular/style-angular-10-example-bootstrap-4/)
 
 ## Klient side
 - [ECMAScript === JavaScript standard](https://en.wikipedia.org/wiki/JavaScript)
