@@ -1,7 +1,7 @@
 <p>employee works!</p>
 
-<!--
 <div class="container" style="margin-top: 70px;">
+
   <table class="table table-hover">
     <thead>
     <tr>
@@ -22,17 +22,21 @@
     </tr>
     </tbody>
   </table>
+
   <div class="card text-center" *ngIf="selectedEmployee">
     <div class="card-header">
-      #
+      # {{selectedEmployee.id}}
     </div>
     <div class="card-block">
-      <h4 class="card-title"></h4>
+      <h4 class="card-title">{{selectedEmployee.name}}</h4>
       <p class="card-text">
-
+        {{selectedEmployee.description}}
+      </p>
+      <p class="card-text">
+        {{selectedEmployee.email}}
       </p>
     </div>
 
   </div>
 </div>
--->
+

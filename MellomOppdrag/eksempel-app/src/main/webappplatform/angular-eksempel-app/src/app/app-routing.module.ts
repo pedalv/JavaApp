@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-//import { CommonModule } from '@angular/common';
-//import { FormsModule } from '@angular/forms';
+
 import { PartnerComponent } from './partner/partner.component';
 import { CustomerComponent } from './customer/customer.component';
 import { EmployeeComponent } from './employee/employee.component';
