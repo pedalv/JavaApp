@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { PartnerComponent } from './partner/partner.component';
 import { CustomerComponent } from './customer/customer.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PartnerComponent,
     CustomerComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
