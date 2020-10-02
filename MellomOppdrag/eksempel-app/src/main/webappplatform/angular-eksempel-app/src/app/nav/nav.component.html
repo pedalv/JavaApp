@@ -20,7 +20,13 @@
       <a class="nav-link" routerLink="/employee">Employee</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/login">Logg inn</a>
+      <div *ngIf="!isLogin">
+        <a class="nav-link" routerLink="/login">Logg inn</a>
+      </div>
+      <div *ngIf="isLogin">
+        <h1>Hello _navn_!</h1>
+        <button class="btn btn-primary" (click)="signOut()">Sign Out</button>
+     </div>
     </li>
   </ul>
   <hr />
