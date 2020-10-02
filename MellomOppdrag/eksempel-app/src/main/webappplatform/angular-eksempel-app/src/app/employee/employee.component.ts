@@ -21,6 +21,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   public createEmployee(e: {id, name, description, email}){
+    console.log("Employee created: ", e);
+
     this.employees.push(e);
   }
 

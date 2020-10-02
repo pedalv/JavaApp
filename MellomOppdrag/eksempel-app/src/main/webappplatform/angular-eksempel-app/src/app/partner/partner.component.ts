@@ -17,6 +17,7 @@ export class PartnerComponent implements OnInit {
   createEmployee(){
     console.log("Employee created: ", this.employee);
     this.employee = {id: null, name: "", description: "", email: ""};
+    //poc employees is not update
   }
 
 }
