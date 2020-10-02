@@ -1,1 +1,33 @@
-<p>login works!</p>
+
+<div class="alert alert-danger" id="app-error" *ngIf="hasError">
+  {{error}}
+</div>
+<div class="alert alert-danger" id="app-logout" *ngIf="hasLogout">
+  {{logout}}
+</div>
+
+<div class="container form">
+  <p>
+    <label for="username" >Username</label>
+    <input type="text" id="username" name="username" placeholder="Username" />
+  </p>
+  <p>
+    <label for="password" >Password</label>
+    <input type="password" id="password" name="password" placeholder="Password" />
+  </p>
+  <p>
+    <button class="btn btn-primary" (click)="signIn()">Sign Out</button>
+  </p>
+</div>
+
+<hr class="container pill">
+
+<div class="container social-media">
+  <a href="/oauth2/authorization/github" class="btn btn-primary"> GitHub </a>
+  -
+  <a href="/oauth2/authorization/facebook" class="btn btn-info disabled"> Facebook </a>
+  -
+  <a href="/oauth2/authorization/linkedin" class="btn btn-info disabled"> LinkedIn </a>
+  -
+  <a href="/oauth2/authorization/google" class="btn btn-info disabled"> Google </a>
+</div>
