@@ -16,7 +16,11 @@
             <form th:action="@{/kafka/string}" method="get">
                 <p>
                     <input type="text" id="message" name="message" placeholder="Write a message to send" />
-                    <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
+                    <input id="send" type="submit" class="btn btn-lg btn-primary" value="Send"/>
+                    <button id="load" class="btn btn-primary invisible" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Sending...
+                    </button>
                 </p>
                 <div class="alert alert-success" th:if="${isSend}">
                     <p>Messages sendt successfuly!</p>

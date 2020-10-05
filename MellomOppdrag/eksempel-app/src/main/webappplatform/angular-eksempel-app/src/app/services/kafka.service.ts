@@ -6,13 +6,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class KafkaService {
 
-  private url = 'http://jsonplaceholder.typicode.com/posts';
+  private url : String = 'http://localhost:8080/kafka/string?message=';
 
   constructor(private httpClient: HttpClient) { }
 
    sendMessages(message){
     console.log("message: " + message);
-    return this.httpClient.get(this.url);
+    return this.httpClient.get(this.url+message);
    }
 
 }

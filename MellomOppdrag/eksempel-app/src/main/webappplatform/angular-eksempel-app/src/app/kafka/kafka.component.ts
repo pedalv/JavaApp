@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KafkaService } from '../services/kafka.service';
+import $ from "jquery";
 
 @Component({
   selector: 'app-kafka',
@@ -24,14 +25,21 @@ export class KafkaComponent implements OnInit {
   }
 
   SendKafkaMessage(){
+    $( "#load" ).even().removeClass( "invisible" );
+    $( "#send" ).hide();
+
     this.service.sendMessages(this.message)
     .subscribe(
       data => {
+        $( "#load" ).even().addClass( "invisible" );
+        $( "#send" ).show();
         this.isSend = true;
         console.log("Send!");
         console.log(data);
       },
       error => {
+        $( "#load" ).even().addClass( "invisible" );
+        $( "#send" ).show();
         this.hasSendError = true;
         console.error("Feil! Kafka tjene er ned!");
       }
