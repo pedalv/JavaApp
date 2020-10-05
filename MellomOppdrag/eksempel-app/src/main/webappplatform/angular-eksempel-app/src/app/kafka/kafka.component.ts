@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KafkaComponent implements OnInit {
 
+  isSend : boolean = false;
+  hasSendError: boolean = false;
+  sendError: String = "Kafka tjener er ned!"
+
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  SendKafkaMessage(){
+    //TODO
+    this.hasSendError = false;
+    this.isSend = true;
+    console.log("send: " + this.isSend)
   }
 
 }

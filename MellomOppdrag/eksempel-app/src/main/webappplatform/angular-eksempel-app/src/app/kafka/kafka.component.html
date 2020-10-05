@@ -1,1 +1,18 @@
-<p>kafka works!</p>
+<div>
+  <h3>Welcome to kafka String Sample!</h3>
+  <section id="string">
+
+    <div class="alert alert-success" id="send-msg" *ngIf="isSend">
+      <p>Messages sendt successfuly!</p>
+    </div>
+    <div class="alert alert-danger" id="send-error" *ngIf="hasSendError">
+      {{sendError}}
+    </div>
+
+    <p>
+      <input type="text" id="message" name="message" placeholder="Write a message to send" />
+      <button class="btn btn-primary" (click)="SendKafkaMessage()">Send</button>
+    </p>
+
+  </section>
+</div>

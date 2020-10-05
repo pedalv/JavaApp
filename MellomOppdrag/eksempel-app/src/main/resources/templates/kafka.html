@@ -10,16 +10,15 @@
 <section layout:fragment="content">
 
     <div>
-        <h1>Welcome to kafka page!</h1>
+        <h3>Welcome to kafka String Sample!</h3>
         <section id="string">
-            <p>Kafka String Sample</p>
 
             <form th:action="@{/kafka/string}" method="get">
                 <p>
                     <input type="text" id="message" name="message" placeholder="Write a message to send" />
                     <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
                 </p>
-                <div th:if="${isSend}">
+                <div class="alert alert-success" th:if="${isSend}">
                     <p>Messages sendt successfuly!</p>
                 </div>
             </form>
