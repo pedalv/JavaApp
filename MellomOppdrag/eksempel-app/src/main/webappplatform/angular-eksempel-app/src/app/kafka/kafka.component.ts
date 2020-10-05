@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-kafka',
@@ -12,16 +13,28 @@ export class KafkaComponent implements OnInit {
   sendError: String = "Feil! Kafka tjene er ned!"
 
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   SendKafkaMessage(){
-    //TODO
-    this.hasSendError = false;
-    this.isSend = true;
-    console.log("send: " + this.isSend)
+    //TODO: Url og Service
+
+
+    this.http.get<any>('https://api.npms.io/v2/invalid-url')
+      .subscribe(
+          data => {
+            this.isSend = true;
+            console.log("send: " + this.isSend)
+          },
+          error => {
+            this.hasSendError = true;
+            console.error("Feil! Kafka tjene er ned!");
+          }
+      );
+
+
   }
 
 }
