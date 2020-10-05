@@ -10,8 +10,9 @@ export class KafkaService {
 
   constructor(private httpClient: HttpClient) { }
 
-   sendMessages(){
-     return this.httpClient.get(this.url);
+   sendMessages(message){
+    console.log("message: " + message);
+    return this.httpClient.get(this.url);
    }
 
 }

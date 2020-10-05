@@ -10,7 +10,7 @@
     </div>
 
     <p>
-      <input type="text" id="message" name="message" placeholder="Write a message to send" />
+      <input type="text" id="message" name="message" (change)="changeMsg($event)" placeholder="Write a message to send" />
       <button class="btn btn-primary" (click)="SendKafkaMessage()">Send</button>
     </p>
 
