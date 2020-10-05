@@ -9,7 +9,7 @@ export class KafkaComponent implements OnInit {
 
   isSend : boolean = false;
   hasSendError: boolean = false;
-  sendError: String = "Kafka tjener er ned!"
+  sendError: String = "Feil! Kafka tjene er ned!"
 
 
   constructor() { }
