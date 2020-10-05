@@ -26,7 +26,7 @@ import { LoginComponent } from './login/login.component';
     NavComponent,
     HomeComponent,
     KafkaComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
