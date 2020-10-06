@@ -30,6 +30,26 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUtil jwtUtil;
 
+
+    /**
+     *
+     * === MimeHeaders ===
+     * content-type = application/json
+     * authorization = Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjAxOTE2Njk4LCJpYXQiOjE2MDE4ODA2OTh9.1zt2wZczx7naT9cx6nEFXeXMzK94N5CxaI811jFy0vM
+     * user-agent = PostmanRuntime/7.26.5
+     * accept =
+     * postman-token = 516db340-e2a6-4913-a257-4d679585866c
+     * host = localhost:8080
+     * accept-encoding = gzip, deflate, br
+     * connection = keep-alive
+     * cookie = JSESSIONID=D03679A0EF5E6BF2B2CA14716BDB771C
+     *
+     * @param request
+     * @param response
+     * @param chain
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
