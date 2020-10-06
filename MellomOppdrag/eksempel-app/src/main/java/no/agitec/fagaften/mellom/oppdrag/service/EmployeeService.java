@@ -53,6 +53,25 @@ public class EmployeeService {
     }
 
     @Transactional
+    public Employee replace(Long id, Employee replaceEmployee) {
+
+        //OutputType result = yourOptional.map(yourConsumer).orElseGet(yourRunnable);
+        Employee replaced = employeeRepository.findById(id)
+                .map(employee -> {
+                    employee.setFirstName(replaceEmployee.getFirstName());
+                    employee.setLastName(replaceEmployee.getLastName());
+                    employee.setRole(replaceEmployee.getRole());
+                    return employee;
+                })
+                .orElseGet(() -> {
+                    replaceEmployee.setId(id);
+                    return replaceEmployee;
+                });
+
+        return employeeRepository.save(replaced);
+    }
+
+    @Transactional
     public Employee replace(Long id, Long version, Employee replaceEmployee) {
 
         //OutputType result = yourOptional.map(yourConsumer).orElseGet(yourRunnable);

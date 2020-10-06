@@ -33,7 +33,7 @@ public class EmployeeRestController {
 
     // All items
 
-    @GetMapping(path = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
     public  ResponseEntity<?>  all() {
         List<Employee> employees = employeeService.all();
         try {
@@ -44,27 +44,6 @@ public class EmployeeRestController {
                     .message("An error occurred while retrieving all employees about " + e.getMessage())
                     .build();
         }
-    }
-
-    // Add item
-
-    @PostMapping(path = "/created", produces = MediaType.APPLICATION_JSON_VALUE)
-    public  ResponseEntity<?> create(@RequestBody Employee newEmployee) {
-
-        //Check mandatory parameters
-
-        Employee saved = employeeService.create(newEmployee);
-        if(null == saved) {
-            return new EmployeeResponseEntityBuilder()
-                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .message("Feil to create employee")
-                    .build();
-        }
-
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.setContentType(MediaType.APPLICATION_JSON);
-
-        return new ResponseEntity<>(saved, responseHeaders, HttpStatus.CREATED);
     }
 
     // Single item
@@ -97,17 +76,39 @@ public class EmployeeRestController {
                 .build();
     }
 
+    // Add item
+
+    @PostMapping(path = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<?> create(@RequestBody Employee newEmployee) {
+
+        //Check mandatory parameters
+
+        Employee saved = employeeService.create(newEmployee);
+        if(null == saved) {
+            return new EmployeeResponseEntityBuilder()
+                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .message("Feil to create employee")
+                    .build();
+        }
+
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+        return new ResponseEntity<>(saved, responseHeaders, HttpStatus.CREATED);
+    }
+
     // Update item
 
     @PutMapping("/employees/{id}")
     public  ResponseEntity<?> replaceEmployee(
             @PathVariable Long id,
-            @RequestHeader(value = "exempel-version") Long version,
+            //@RequestHeader(value = "exempel-version") Long version,
             @RequestBody Employee replaceEmployee) {
 
         //If Employee not exist will create
 
-        Employee replaced = employeeService.replace(id, version, replaceEmployee);
+        //Employee replaced = employeeService.replace(id, version, replaceEmployee);
+        Employee replaced = employeeService.replace(id, replaceEmployee);
         if(null == replaced) {
             return new EmployeeResponseEntityBuilder()
                     .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)

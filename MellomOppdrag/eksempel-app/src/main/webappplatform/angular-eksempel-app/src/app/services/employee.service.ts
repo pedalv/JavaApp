@@ -26,13 +26,13 @@ export class EmployeeService {
     return this.httpClient.put('${this.apiURL}/employees/${Employee.id}', employee);
   }
 
-  public fetchEmployee(id: number){
+  public singleEmployee(id: number){
     return this.httpClient.get('${this.apiURL}/employees/${id}');
   }
 
-  public fetchEmployees(){
+  public allEmployees(){
     console.log("Get all employees" );
-    return this.httpClient.get<Employee[]>('${this.apiURL}/all');
+    return this.httpClient.get<Employee[]>('${this.apiURL}/employees');
   }
 
   public deleteEmployee(id: number){
