@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/jwt")
 @Slf4j
-public class JwtController {
+public class JwtRestController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
