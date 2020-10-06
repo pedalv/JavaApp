@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class EmployeeService {
 
-  private apiURL: string = '/api/employee/all';
+  private apiURL: string = '/api/employee';
   public first: string = "";
   public prev: string = "";
   public next: string = "";
@@ -19,28 +19,29 @@ export class EmployeeService {
   }
 
   public createEmployee(employee: Employee){
-    return this.httpClient.post('${this.apiURL}/employees/', employee);
+    return this.httpClient.post(this.apiURL + '/add/', employee);
   }
 
   public updateEmployee(employee: Employee){
-    return this.httpClient.put('${this.apiURL}/employees/${Employee.id}', employee);
+    return this.httpClient.put(this.apiURL + '/' + employee.id, employee);
   }
 
   public singleEmployee(id: number){
-    return this.httpClient.get('${this.apiURL}/employees/${id}');
+    return this.httpClient.get(this.apiURL + '/' + id);
   }
 
   public allEmployees(){
     console.log("Get all employees" );
-    return this.httpClient.get<Employee[]>('${this.apiURL}/employees');
+    console.log(this.apiURL + '/all');
+    return this.httpClient.get<Employee[]>(this.apiURL + '/all');
   }
 
   public deleteEmployee(id: number){
-    return this.httpClient.delete(`${this.apiURL}/employees/${id}`);
+    return this.httpClient.delete(this.apiURL + id);
   }
 
   public getFirstPage(){
-      return this.httpClient.get<Employee[]>('${this.apiURL}/employees?_page=1',{ observe: 'response' })
+      return this.httpClient.get<Employee[]>(this.apiURL + '?_page=1', { observe: 'response' })
         .pipe(tap(res => {
           const Link  = this.parse_link_header(res.headers.get('Link'));
           this.first  = Link["first"];

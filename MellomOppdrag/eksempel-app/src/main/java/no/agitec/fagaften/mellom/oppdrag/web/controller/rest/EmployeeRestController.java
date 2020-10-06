@@ -33,7 +33,7 @@ public class EmployeeRestController {
 
     // All items
 
-    @GetMapping(path = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public  ResponseEntity<?>  all() {
         List<Employee> employees = employeeService.all();
         try {
@@ -48,7 +48,7 @@ public class EmployeeRestController {
 
     // Single item
 
-    @GetMapping(path = "/employees/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public  ResponseEntity<?> fetch(@PathVariable Long id) {
 
         if(id == null || id <= 0) {
@@ -78,7 +78,7 @@ public class EmployeeRestController {
 
     // Add item
 
-    @PostMapping(path = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public  ResponseEntity<?> create(@RequestBody Employee newEmployee) {
 
         //Check mandatory parameters
@@ -99,7 +99,7 @@ public class EmployeeRestController {
 
     // Update item
 
-    @PutMapping("/employees/{id}")
+    @PutMapping("/{id}")
     public  ResponseEntity<?> replaceEmployee(
             @PathVariable Long id,
             //@RequestHeader(value = "exempel-version") Long version,
@@ -121,7 +121,7 @@ public class EmployeeRestController {
 
     //Delete item
 
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/{id}")
     public Boolean deleteEmployee(@PathVariable Long id) {
         return employeeService.hasDelete(id);
     }

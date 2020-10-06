@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -15,10 +16,30 @@ export class EmployeeComponent implements OnInit {
   ];
   selectedEmployee;
 
-  constructor() { }
+  constructor(private service: EmployeeService) { }
 
   ngOnInit(): void {
+    this.allEmployees();
   }
+
+  allEmployees(){
+
+      this.service.allEmployees()
+        .subscribe(
+          data => {
+            console.log(data);
+            //employees = data;
+          },
+          error => {
+            console.log(error);
+            console.error("Feil! Hent all ansatte!");
+          }
+      );
+    }
+
+
+
+
 
   public createEmployee(e: {id, name, description, email}){
     console.log("Employee created: ", e);

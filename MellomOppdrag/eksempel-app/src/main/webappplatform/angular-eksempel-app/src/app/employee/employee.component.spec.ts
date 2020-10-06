@@ -1,14 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { EmployeeService } from '../services/employee.service';
 import { EmployeeComponent } from './employee.component';
 
 describe('EmployeeComponent', () => {
+  let EmployeeServiceStub: Partial<EmployeeService>;
   let component: EmployeeComponent;
   let fixture: ComponentFixture<EmployeeComponent>;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
-      declarations: [ EmployeeComponent ]
+      declarations: [ EmployeeComponent ],
+      providers: [ {provide: EmployeeService, useValue: EmployeeService}]
     })
     .compileComponents();
   });
