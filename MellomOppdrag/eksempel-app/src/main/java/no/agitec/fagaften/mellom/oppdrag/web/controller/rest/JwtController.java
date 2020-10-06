@@ -53,6 +53,7 @@ public class JwtController {
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
         // "jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNTk5NTg3NjczLCJpYXQiOjE1OTk1NTE2NzN9.vv7Ce4Sxi0kUZQTn6CDG7lPyUfaKSZN9AuEZzhWFNro"
+        // "jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNjAxOTE2Njk4LCJpYXQiOjE2MDE4ODA2OTh9.1zt2wZczx7naT9cx6nEFXeXMzK94N5CxaI811jFy0vM"
     }
 
 }
