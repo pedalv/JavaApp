@@ -240,6 +240,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/person",
                         "/kafka",
                         "/kafka/string",
+                        "/api/kafka/string",
                         "/kafka/string/producer",
                         "/kafka/sample1/send/foo/*",
                         "/kafka/sample1/send/foo2/*",
