@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Employee } from '../domain/employee';
 import { tap } from 'rxjs/operators';
+import {Observable} from 'rxjs/Rx';
 
 @Injectable({
   providedIn: 'root'
@@ -18,25 +19,25 @@ export class EmployeeService {
 
   }
 
-  public createEmployee(employee: Employee){
+  public createEmployee(employee: Employee) : Observable<Object> {
     return this.httpClient.post(this.apiURL + '/add/', employee);
   }
 
-  public updateEmployee(employee: Employee){
+  public updateEmployee(employee: Employee) : Observable<Object>  {
     return this.httpClient.put(this.apiURL + '/' + employee.id, employee);
   }
 
-  public singleEmployee(id: number){
+  public singleEmployee(id: number) : Observable<Object> {
     return this.httpClient.get(this.apiURL + '/' + id);
   }
 
-  public allEmployees(){
+  public allEmployees() : Observable<Employee[]> {
     console.log("Get all employees" );
     console.log(this.apiURL + '/all');
     return this.httpClient.get<Employee[]>(this.apiURL + '/all');
   }
 
-  public deleteEmployee(id: number){
+  public deleteEmployee(id: number) : Observable<Object> {
     return this.httpClient.delete(this.apiURL + id);
   }
 

@@ -12,13 +12,17 @@ export class EmployeeComponent implements OnInit {
   employees : Employee[] = [];
   selectedEmployee : Employee;
 
+  hasError: boolean = false;
+  msgError: string = 'Feil! Rest tjene er ned!';
+  //GET http://localhost:4200/api/employee/all 504 (Gateway Timeout)
+
   constructor(private service: EmployeeService) { }
 
   ngOnInit(): void {
     this.allEmployees();
   }
 
-  allEmployees(){
+  allEmployees(): void {
     this.service.allEmployees()
         .subscribe(
           data => {
@@ -26,12 +30,13 @@ export class EmployeeComponent implements OnInit {
             this.employees = data;
           },
           error => {
+            this.hasError = true;
             console.log(error);
           }
       );
     }
 
-  public selectEmployee(e : Employee){
+  public selectEmployee(e : Employee) : void  {
       this.selectedEmployee = e;
     }
 

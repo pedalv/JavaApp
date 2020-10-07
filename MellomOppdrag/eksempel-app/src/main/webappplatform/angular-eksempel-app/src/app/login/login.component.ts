@@ -9,15 +9,15 @@ export class LoginComponent implements OnInit {
 
   hasError : boolean = false;
   hasLogout: boolean = false
-  error: String = "Invalid username and password."
-  logout: String = "You have been logged out."
+  error: string = "Invalid username and password."
+  logout: string = "You have been logged out."
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  signIn(){
+  signIn() : void {
     console.log("Todo signIn");
     //https://dzone.com/articles/angular-logging-and-log-back
 

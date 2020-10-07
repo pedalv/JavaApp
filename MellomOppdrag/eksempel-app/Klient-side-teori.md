@@ -75,6 +75,12 @@ Angular is a platform for building mobile and desktop web applications === MV (M
 - [Desktop to Web: Basic Route Navigation in Angular 9](https://www.youtube.com/watch?v=KkluJjQ4b5E)
 - [3+ Ways to Add Bootstrap 4 to Angular 10/9 With Example & Tutorial](https://www.techiediaries.com/angular-bootstrap/)
 - [Styling An Angular 10 Example App with Bootstrap 4 Navbar, Jumbotron, Tables, Forms and Cards](https://www.techiediaries.com/angular/style-angular-10-example-bootstrap-4/)
+- [Communicating with backend services using HTTP](https://angular.io/guide/http)
+- [Configure a proxy for your API calls with Angular CLI](https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/)
+
+> Prod miljø: Apache 2  or [Nginx](https://www.nginx.com/)
+
+- [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 
 ## Klient side
 - [ECMAScript === JavaScript standard](https://en.wikipedia.org/wiki/JavaScript)

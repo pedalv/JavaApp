@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartnerComponent implements OnInit {
 
+  //TODO: hent fra database late
   employee : {id, name, description, email} = {id: null, name: "", description: "", email: ""};
 
   constructor() { }

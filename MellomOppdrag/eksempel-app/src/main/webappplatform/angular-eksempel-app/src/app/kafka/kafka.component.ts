@@ -11,8 +11,8 @@ export class KafkaComponent implements OnInit {
 
   isSend : boolean = false;
   hasSendError: boolean = false;
-  sendError: String = 'Feil! Kafka tjene er ned!';
-  message: String = '';
+  sendError: string = 'Feil! Kafka tjene er ned!';
+  message: string = '';
 
   constructor(private service:KafkaService) {
   }
@@ -20,11 +20,11 @@ export class KafkaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeMsg(event) {
+  changeMsg(event: { target: HTMLInputElement }) : void {
     this.message = event.target.value;
   }
 
-  SendKafkaMessage(){
+  SendKafkaMessage() : void {
     $( "#load" ).even().removeClass( "invisible" );
     $( "#send" ).hide();
 
