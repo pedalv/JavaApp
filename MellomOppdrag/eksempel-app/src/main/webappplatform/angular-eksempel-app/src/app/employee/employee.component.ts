@@ -52,13 +52,12 @@ export class EmployeeComponent implements OnInit {
 
     //TODO: Validate
 
-    this.employees.push(employee);
-    //save: FIX-403 Forbidden (logg inn)
-      /*
+    //save
     this.service.createEmployee(employee)
       .subscribe(
           data => {
             console.log(data);
+            this.employees.push(data);
           },
           error => {
             this.createError = true;
@@ -66,8 +65,8 @@ export class EmployeeComponent implements OnInit {
           }
       );
     //fetch
-    //this.allEmployees();
-      */
+    this.allEmployees();
+
   }
 
   public selectEmployee(e : Employee) : void  {

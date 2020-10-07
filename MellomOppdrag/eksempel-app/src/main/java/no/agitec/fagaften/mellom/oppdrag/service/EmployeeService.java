@@ -30,7 +30,7 @@ public class EmployeeService {
 
     @Transactional
     public Employee create(Employee employee) {
-        return employeeRepository.save(employee);
+        return employeeRepository.saveAndFlush(employee);
     }
 
     @Transactional

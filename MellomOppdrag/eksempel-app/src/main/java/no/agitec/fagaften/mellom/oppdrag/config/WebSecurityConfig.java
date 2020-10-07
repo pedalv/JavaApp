@@ -227,7 +227,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/jwt/authenticate/**").permitAll()
-                .antMatchers("/api/**").permitAll() //TODO: LOGIN JWT LATER
+                .antMatchers("/api/**").permitAll() //TODO: LOGIN JWT LATER - 403
                 .antMatchers(
                         //"/css/**",
                         "/",
@@ -241,7 +241,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/person",
                         "/kafka",
                         "/kafka/string",
-                        "/api/kafka/string",
+                        //"/api/kafka/string",
                         "/kafka/string/producer",
                         "/kafka/sample1/send/foo/*",
                         "/kafka/sample1/send/foo2/*",
@@ -283,7 +283,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf()
                 .ignoringAntMatchers("/h2-console/**")
-                .ignoringAntMatchers("/jwt/authenticate/**");
+                .ignoringAntMatchers("/jwt/authenticate/**")
+                .ignoringAntMatchers("/api/**");
 
         http
                 .headers()

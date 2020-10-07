@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Employee } from '../domain/employee';
 import { tap } from 'rxjs/operators';
 import {Observable} from 'rxjs/Rx';
@@ -10,6 +10,11 @@ import {Observable} from 'rxjs/Rx';
 export class EmployeeService {
 
   private apiURL: string = '/api/employee';
+  private headers={
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+      })
+  };
   public first: string = "";
   public prev: string = "";
   public next: string = "";
@@ -21,13 +26,21 @@ export class EmployeeService {
 
   public createEmployee(employee: Employee) : Observable<Object> {
     console.log("Create employee" + employee);
+    /*
     const params = new URLSearchParams();
     //params.append("id", employee.id);
     params.append("firstName", employee.firstName);
     params.append("lastName", employee.lastName);
     params.append("role", employee.role);
-     console.log(this.apiURL + '/add?' + params);
-    return this.httpClient.post(this.apiURL + '/add?', params); //TODO: 403Forbidden
+    console.log(this.apiURL + '/add' + params);
+    console.log(params);
+    */
+    let obj= {
+       "firstName":employee.firstName,
+       "lastName":employee.lastName,
+       "role":employee.role
+    };
+    return this.httpClient.post(this.apiURL + '/add', obj, this.headers); //TODO: 403Forbidden
 
   }
 
