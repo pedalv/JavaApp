@@ -13,9 +13,12 @@ export class EmployeeComponent implements OnInit {
   employees : Employee[] = [];
   selectedEmployee : Employee;
 
-  hasError: boolean = false;
-  msgError: string = 'Feil! Rest tjene er ned!';
+  showError: boolean = false;
+  createError: boolean = false;
+  msgShowError: string = 'Feil! Rest tjene er ned! Inge vis ansatt!';
   //GET http://localhost:4200/api/employee/all 504 (Gateway Timeout)
+  msgCreateError: string = 'Feil! Rest tjene er ned! Inge ny ansatt!';
+
 
   rolles = [
        {id: 1, name: "Seniorutvikler"},
@@ -38,22 +41,36 @@ export class EmployeeComponent implements OnInit {
             this.employees = data;
           },
           error => {
-            this.hasError = true;
+            this.showError = true;
             console.log(error);
           }
       );
     }
 
+  createEmployee(employee: {id: number, firstName: string, lastName: string, role: string}) : void {
+    console.log("Employee created: ", employee);
+
+    //TODO: Validate
+    //this.employees.push(e);
+
+    //save: FIX-403 Forbidden (logg inn)
+    this.service.createEmployee(employee)
+      .subscribe(
+          data => {
+            console.log(data);
+          },
+          error => {
+            this.createError = true;
+            console.log(error);
+          }
+      );
+
+    //fetch
+    this.allEmployees();
+  }
+
   public selectEmployee(e : Employee) : void  {
       this.selectedEmployee = e;
     }
-
-  //TODO all update single delete
-
-  public createEmployee(e: {id: number, firstName: string, lastName: string, role: string}){
-    console.log("Employee created: ", e);
-
-    this.employees.push(e);
-  }
 
 }

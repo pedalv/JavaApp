@@ -5,8 +5,8 @@
       <!-- list employees -->
       <div class="col">
 
-        <div class="alert alert-danger" id="employees-error" *ngIf="hasError">
-          {{msgError}}
+        <div class="alert alert-danger" id="show-error" *ngIf="showError">
+          {{msgShowError}}
         </div>
 
         <table class="table table-hover">
@@ -37,6 +37,10 @@
       <!-- create employee and show employee -->
       <div class="col">
         <!-- create -->
+        <div class="alert alert-danger" id="create-error" *ngIf="createError">
+          {{msgCreateError}}
+        </div>
+
         <form>
           <div class="form-group">
             <label for="id">ID</label>
@@ -79,18 +83,6 @@
 
       </div>
 
-    </div>
-
-    <div class="row">
-      <div class="col">
-        1 of 3
-      </div>
-      <div class="col">
-        2 of 3
-      </div>
-      <div class="col">
-        3 of 3
-      </div>
     </div>
 
   </div>

@@ -20,7 +20,15 @@ export class EmployeeService {
   }
 
   public createEmployee(employee: Employee) : Observable<Object> {
-    return this.httpClient.post(this.apiURL + '/add/', employee);
+    console.log("Create employee" + employee);
+    const params = new URLSearchParams();
+    //params.append("id", employee.id);
+    params.append("firstName", employee.firstName);
+    params.append("lastName", employee.lastName);
+    params.append("role", employee.role);
+     console.log(this.apiURL + '/add?' + params);
+    return this.httpClient.post(this.apiURL + '/add?', params); //TODO: 403Forbidden
+
   }
 
   public updateEmployee(employee: Employee) : Observable<Object>  {
