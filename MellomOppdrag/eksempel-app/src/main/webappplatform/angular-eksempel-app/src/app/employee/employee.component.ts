@@ -9,12 +9,20 @@ import { Employee } from '../domain/employee';
 })
 export class EmployeeComponent implements OnInit {
 
+  employee : Employee = {id: null, firstName: "", lastName: "", role: ""};
   employees : Employee[] = [];
   selectedEmployee : Employee;
 
   hasError: boolean = false;
   msgError: string = 'Feil! Rest tjene er ned!';
   //GET http://localhost:4200/api/employee/all 504 (Gateway Timeout)
+
+  rolles = [
+       {id: 1, name: "Seniorutvikler"},
+       {id: 2, name: "Leader"},
+       {id: 3, name: "Administrasjon"}
+     ];
+
 
   constructor(private service: EmployeeService) { }
 

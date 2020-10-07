@@ -1,44 +1,100 @@
-<div class="container" style="margin-top: 70px;">
+<div class="container">
 
-  <div class="alert alert-danger" id="employees-error" *ngIf="hasError">
-    {{msgError}}
+  <div class="container">
+    <div class="row">
+      <!-- list employees -->
+      <div class="col">
+
+        <div class="alert alert-danger" id="employees-error" *ngIf="hasError">
+          {{msgError}}
+        </div>
+
+        <table class="table table-hover">
+          <caption>Listen av Agitecs ansatte</caption>
+          <thead>
+          <tr>
+            <th id="#id">#ID</th>
+            <th id="fornavn">Fornavn</th>
+            <th id="etternavn">Etternavn</th>
+            <th id="rolle">Rolle</th>
+            <th id="action">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let employee of employees">
+            <td headers="#id"> {{employee.id}} </td>
+            <td headers="fornavn"> {{employee.firstName}} </td>
+            <td headers="etternavn"> {{employee.lastName}} </td>
+            <td headers="rolle"> {{employee.role}} </td>
+            <td headers="action">
+              <button class="btn btn-primary" (click)="selectEmployee(employee)"> Select</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <!-- create employee and show employee -->
+      <div class="col">
+        <!-- create -->
+        <form>
+          <div class="form-group">
+            <label for="id">ID</label>
+            <input [(ngModel)]="employee.id" type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="Employee ID">
+            <small id="idHelp" class="form-text text-muted">Enter your employee’s ID</small>
+
+            <label for="firstName">Employee Fornavn</label>
+            <input [(ngModel)]="employee.firstName" type="text" name="firstName" class="form-control" id="firstName" aria-describedby="firstNameHelp" placeholder="Enter your employee fornavn">
+            <small id="firstNameHelp" class="form-text text-muted">Enter your employee’s name</small>
+
+            <label for="lastName">Employee Etternavn</label>
+            <input [(ngModel)]="employee.lastName" type="text" name="lastName" class="form-control" id="lastName" aria-describedby="lastNameHelp"
+                   placeholder="Enter your employee etternavn">
+            <small id="lastNameHelp" class="form-text text-muted">Enter your employee’s etternavn</small>
+
+            <label for="role">Employee Roller</label>
+            <select [(ngModel)]="employee.role" name="role" class="form-control" id="role" aria-describedby="roleHelp">
+              <option disabled>Select Roller</option>
+              <option *ngFor="let r of rolles">{{r.name}}</option>
+            </select>
+            <small id="roleHelp" class="form-text text-muted">Enter your employee’s rolle</small>
+          </div>
+          <button class="btn btn-primary" (click)="createEmployee(employee)">Create employee</button>
+        </form>
+
+        <hr />
+
+        <!-- Show -->
+        <div class="card text-center" *ngIf="selectedEmployee">
+          <div class="card-header">
+            # {{selectedEmployee.id}}
+          </div>
+          <div class="card-block">
+            <h4 class="card-title">{{selectedEmployee.firstName}} {{selectedEmployee.lastName}}</h4>
+            <p class="card-text">
+              {{selectedEmployee.role}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        1 of 3
+      </div>
+      <div class="col">
+        2 of 3
+      </div>
+      <div class="col">
+        3 of 3
+      </div>
+    </div>
+
   </div>
 
-  <table class="table table-hover">
-    <caption>Listen av Agitecs ansatte</caption>
-    <thead>
-    <tr>
-      <th id="id">#ID</th>
-      <th id="fornavn">Fornavn</th>
-      <th id="etternavn">Etternavn</th>
-      <th id="rolle">Rolle</th>
-      <th id="action">Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let employee of employees">
-      <td headers="id"> {{employee.id}} </td>
-      <td headers="fornavn"> {{employee.firstName}} </td>
-      <td headers="etternavn"> {{employee.lastName}} </td>
-      <td headers="rolle"> {{employee.role}} </td>
-      <td headers="action">
-        <button class="btn btn-primary" (click)="selectEmployee(employee)"> Select</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
 
-  <div class="card text-center" *ngIf="selectedEmployee">
-    <div class="card-header">
-      # {{selectedEmployee.id}}
-    </div>
-    <div class="card-block">
-      <h4 class="card-title">{{selectedEmployee.firstName}} {{selectedEmployee.lastName}}</h4>
-      <p class="card-text">
-        {{selectedEmployee.role}}
-      </p>
-    </div>
-
-  </div>
 </div>
 
