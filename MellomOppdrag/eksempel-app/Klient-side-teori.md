@@ -83,6 +83,7 @@ Angular is a platform for building mobile and desktop web applications === MV (M
 > Prod miljø: Apache 2  or [Nginx](https://www.nginx.com/)
 
 - [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+- [Unit Testing Angular 10/9/8 Application with Jasmine & Karma](https://www.positronx.io/angular-unit-testing-application-with-jasmine-karma/)
 
 ## Klient side
 - [ECMAScript === JavaScript standard](https://en.wikipedia.org/wiki/JavaScript)
