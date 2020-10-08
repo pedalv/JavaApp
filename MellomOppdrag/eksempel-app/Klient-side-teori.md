@@ -77,6 +77,8 @@ Angular is a platform for building mobile and desktop web applications === MV (M
 - [Styling An Angular 10 Example App with Bootstrap 4 Navbar, Jumbotron, Tables, Forms and Cards](https://www.techiediaries.com/angular/style-angular-10-example-bootstrap-4/)
 - [Communicating with backend services using HTTP](https://angular.io/guide/http)
 - [Configure a proxy for your API calls with Angular CLI](https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/)
+- [Intercepting Requests and Responses (SPRING SEGURITY)](https://angular.io/guide/http#intercepting-requests-and-responses)
+- [Pipes API list](https://angular.io/guide/architecture-components#templates-and-views)
 
 > Prod miljø: Apache 2  or [Nginx](https://www.nginx.com/)
 

@@ -5,7 +5,8 @@ import { Employee } from '../domain/employee';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.less']
+  styleUrls: ['./employee.component.less'],
+  providers: [ EmployeeService ]
 })
 export class EmployeeComponent implements OnInit {
 
@@ -47,7 +48,7 @@ export class EmployeeComponent implements OnInit {
       );
     }
 
-  createEmployee(employee: {id: number, firstName: string, lastName: string, role: string}) : void {
+  createEmployee(employee: Employee) : void {
     console.log("Employee created: ", employee);
 
     //TODO: Validate
@@ -55,7 +56,7 @@ export class EmployeeComponent implements OnInit {
     //save
     this.service.createEmployee(employee)
       .subscribe(
-          data => {
+          (data : Employee) => {
             console.log(data);
             this.employees.push(data);
           },

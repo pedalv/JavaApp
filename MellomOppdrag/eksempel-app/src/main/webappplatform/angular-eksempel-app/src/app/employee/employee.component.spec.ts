@@ -1,3 +1,12 @@
+// Http testing module and mocking controller
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+// Other imports
+//import { TestBed } from '@angular/core/testing';
+//import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmployeeService } from '../services/employee.service';
@@ -12,6 +21,7 @@ describe('EmployeeComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ EmployeeComponent ],
+      imports: [ HttpClientTestingModule ],
       providers: [ {provide: EmployeeService, useValue: EmployeeService}]
     })
     .compileComponents();
