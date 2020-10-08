@@ -30,4 +30,10 @@ describe('EmployeeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('showError is false', () => {
+      expect(component.showError).toBeFalsy(false);
+    });
+
+
 });
