@@ -20,7 +20,7 @@ https://start.spring.io/#!type=maven-project
 &description=Demo%20project%20for%20Spring%20Boot
 &packageName=no.agitec.fagaften.eksempel-app
 &packaging=jar
-&jvmVersion=14
+&jvmVersion=15
 &dependencies=
 -
 Lombok, 
