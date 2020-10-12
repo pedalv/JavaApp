@@ -10,7 +10,7 @@
           {{msgShowError}}
         </div>
 
-        <table class="table table-hover">
+        <table class="table table-striped border mt-1">
           <caption>Listen av Agitecs ansatte</caption>
           <thead>
           <tr>
@@ -86,6 +86,39 @@
       </div>
 
     </div>
+
+
+    <div style="border: 1px solid green; padding: 5px;">
+
+      <table class="table table-striped border mt-1">
+        <caption>Listen av Agitecs ansatte</caption>
+        <thead>
+        <tr>
+          <th [ngClass]="sID ? 'headerSortUp' : 'headerSortDown'" (click)="clickEvent('id')" scope="col" [appSort]="employees" data-order="desc" data-name="id">#ID</th>
+          <th [ngClass]="sFirst ? 'headerSortUp' : 'headerSortDown'" (click)="clickEvent('first')" scope="col" [appSort]="employees" data-order="desc" data-name="firstName">Fornavn</th>
+          <th [ngClass]="sLast ? 'headerSortUp' : 'headerSortDown'" (click)="clickEvent('last')" scope="col" [appSort]="employees" data-order="desc" data-name="lastName">Etternavn</th>
+          <th [ngClass]="sRoller ? 'headerSortUp' : 'headerSortDown'" (click)="clickEvent('roller')" scope="col" [appSort]="employees" data-order="desc" data-name="role">Rolle</th>
+          <!--<th scope="col" [appSort]="employees" data-order="desc" data-name="date2" data-type="date">Rolle</th>-->
+          <th scope="col" id="action2">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of employees">
+          <td> {{employee.id}} </td>
+          <td> {{employee.firstName}} </td>
+          <td> {{employee.lastName}} </td>
+          <td> {{employee.role}} </td>
+          <td>
+            <button class="btn btn-primary" (click)="selectEmployee(employee)"> Select</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+
+
+    </div>
+
 
   </div>
 

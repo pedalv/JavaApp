@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { KafkaComponent } from './kafka/kafka.component';
 import { LoginComponent } from './login/login.component';
 import { NgpSortModule } from "ngp-sort-pipe";
+import { SortDirective } from './directive/sort.directive';
 //import { SortByPipe } from "./pipe/sort-by-pipe"; //error Pipe Class Module check
 
 
@@ -29,7 +30,8 @@ import { NgpSortModule } from "ngp-sort-pipe";
     NavComponent,
     HomeComponent,
     KafkaComponent,
-    LoginComponent
+    LoginComponent,
+    SortDirective
   ],
   imports: [
     BrowserModule,

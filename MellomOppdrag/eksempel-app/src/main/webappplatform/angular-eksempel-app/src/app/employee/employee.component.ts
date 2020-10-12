@@ -13,6 +13,10 @@ export class EmployeeComponent implements OnInit {
   employee : Employee = {id: null, firstName: "", lastName: "", role: ""};
   employees : Employee[] = [];
   selectedEmployee : Employee;
+  sID: boolean= false;
+  sFirst: boolean= false;
+  sLast: boolean= false;
+   sRoller: boolean  = false;
 
   showError: boolean = false;
   createError: boolean = false;
@@ -32,6 +36,28 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.allEmployees();
+  }
+
+  clickEvent(felt: string){
+      console.log(felt);
+      switch(felt) {
+         case 'id': {
+            this.sID = !this.sID;
+            break;
+         }
+         case 'first': {
+            this.sFirst = !this.sFirst;
+            break;
+         }
+         case 'last': {
+            this.sLast = !this.sLast;
+            break;
+         }
+         case 'roller': {
+           this.sRoller = !this.sRoller;
+           break;
+         }
+      }
   }
 
   allEmployees(): void {
