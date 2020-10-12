@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from '../domain/employee';
+import $ from "jquery";
 
 @Component({
   selector: 'app-employee',
@@ -16,14 +17,14 @@ export class EmployeeComponent implements OnInit {
   sID: boolean= false;
   sFirst: boolean= false;
   sLast: boolean= false;
-   sRoller: boolean  = false;
+  sRoller: boolean  = false;
 
   showError: boolean = false;
   createError: boolean = false;
+  isCreate: boolean = true;
   msgShowError: string = 'Feil! Rest tjene er ned! Inge vis ansatt!';
   //GET http://localhost:4200/api/employee/all 504 (Gateway Timeout)
   msgCreateError: string = 'Feil! Rest tjene er ned! Inge ny ansatt!';
-
 
   rolles = [
        {id: 1, name: "Seniorutvikler"},
@@ -88,6 +89,40 @@ export class EmployeeComponent implements OnInit {
           );
   }
 
+  editEmployee(employee: Employee) : void {
+    console.log(employee);
+
+    $("#id").val(employee.id);
+    $("#firstName").val(employee.firstName);
+    $("#lastName").val(employee.lastName);
+    $("#role").val(employee.role);
+
+    this.isCreate = false;
+    this.employee = employee;
+
+  }
+
+  replaceEmployee(employee: Employee) : void {
+    console.log("Employee updated: ", employee);
+
+    //save
+    this.service.replaceEmployee(employee)
+      .subscribe(
+          () => {
+            this.isCreate = true;
+            this.employee = {id: null, firstName: "", lastName: "", role: ""};
+            //fetch
+            this.allEmployees();
+          },
+          error => {
+            this.createError = true;
+            console.log(error);
+          }
+      );
+
+
+  }
+
 
   createEmployee(employee: Employee) : void {
     console.log("Employee created: ", employee);
@@ -99,16 +134,17 @@ export class EmployeeComponent implements OnInit {
       .subscribe(
           (data : Employee) => {
             console.log(data);
-            this.employees.push(data);
+            this.isCreate = true;
+            this.employee = {id: null, firstName: "", lastName: "", role: ""};
+            //fetch
+            this.allEmployees();
+            //this.employees.push(data);
           },
           error => {
             this.createError = true;
             console.log(error);
           }
       );
-    //fetch
-    this.allEmployees();
-
   }
 
   public selectEmployee(e : Employee) : void  {

@@ -40,11 +40,12 @@ export class EmployeeService {
        "lastName":employee.lastName,
        "role":employee.role
     };
+
     return this.httpClient.post(this.apiURL + '/add', obj, this.headers); //TODO: 403Forbidden
 
   }
 
-  public updateEmployee(employee: Employee) : Observable<Object>  {
+  public replaceEmployee(employee: Employee) : Observable<Object>  {
     return this.httpClient.put(this.apiURL + '/' + employee.id, employee);
   }
 

@@ -38,7 +38,7 @@
 
       </div>
 
-      <!-- create employee and show employee -->
+      <!-- create employee and show/Edit employee -->
       <div class="col">
         <!-- create -->
         <div class="alert alert-danger" id="create-error" *ngIf="createError">
@@ -48,7 +48,7 @@
         <form>
           <div class="form-group">
             <label for="id">ID</label>
-            <input [(ngModel)]="employee.id" type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="Employee ID">
+            <input [(ngModel)]="employee.id" disabled type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="Employee ID">
             <small id="idHelp" class="form-text text-muted">Enter your employee’s ID</small>
 
             <label for="firstName">Employee Fornavn</label>
@@ -67,7 +67,8 @@
             </select>
             <small id="roleHelp" class="form-text text-muted">Enter your employee’s rolle</small>
           </div>
-          <button class="btn btn-primary" (click)="createEmployee(employee)">Create employee</button>
+          <button *ngIf="isCreate"  class="btn btn-primary" (click)="createEmployee(employee)">Create employee</button>
+          <button *ngIf="!isCreate" class="btn btn-primary" (click)="replaceEmployee(employee)">Update employee</button>
         </form>
 
         <hr />
@@ -83,6 +84,7 @@
               {{selectedEmployee.role}}
             </p>
           </div>
+          <button class="btn btn-primary" (click)="editEmployee(selectedEmployee)">Edit employee</button>
         </div>
 
       </div>
