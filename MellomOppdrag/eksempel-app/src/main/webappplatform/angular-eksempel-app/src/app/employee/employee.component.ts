@@ -74,6 +74,21 @@ export class EmployeeComponent implements OnInit {
       );
     }
 
+  deleteEmployee(employee : Employee) : void {
+    this.service.deleteEmployee(employee.id)
+          .subscribe(
+              (data : Employee) => {
+                console.log(data);
+                this.allEmployees();
+              },
+              error => {
+                this.createError = true;
+                console.log(error);
+              }
+          );
+  }
+
+
   createEmployee(employee: Employee) : void {
     console.log("Employee created: ", employee);
 

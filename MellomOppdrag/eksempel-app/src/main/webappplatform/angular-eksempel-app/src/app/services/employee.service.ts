@@ -59,7 +59,7 @@ export class EmployeeService {
   }
 
   public deleteEmployee(id: number) : Observable<Object> {
-    return this.httpClient.delete(this.apiURL + id);
+    return this.httpClient.delete(this.apiURL + "/" + id);
   }
 
   public getFirstPage(){

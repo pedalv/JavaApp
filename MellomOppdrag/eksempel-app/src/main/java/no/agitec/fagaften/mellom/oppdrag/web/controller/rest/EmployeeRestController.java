@@ -123,7 +123,13 @@ public class EmployeeRestController {
 
     @DeleteMapping("/{id}")
     public Boolean deleteEmployee(@PathVariable Long id) {
-        return employeeService.hasDelete(id);
+
+        Optional<Employee> employee = employeeService.fetch(id);
+        if(!employee.isEmpty()) {
+            return employeeService.hasDelete(id);
+        }
+
+        throw new EmployeeNotFoundException(id);
     }
 }
 
