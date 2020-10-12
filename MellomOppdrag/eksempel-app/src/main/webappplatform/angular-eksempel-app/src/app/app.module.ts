@@ -14,6 +14,9 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { KafkaComponent } from './kafka/kafka.component';
 import { LoginComponent } from './login/login.component';
+import { NgpSortModule } from "ngp-sort-pipe";
+//import { SortByPipe } from "./pipe/sort-by-pipe"; //error Pipe Class Module check
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgpSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

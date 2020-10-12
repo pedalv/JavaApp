@@ -1,10 +1,12 @@
 // Http testing module and mocking controller
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NgpSortModule } from "ngp-sort-pipe";
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeComponent } from './employee.component';
+
 
 describe('EmployeeComponent', () => {
   let EmployeeServiceStub: Partial<EmployeeService>;
@@ -15,7 +17,7 @@ describe('EmployeeComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ EmployeeComponent ],
-      imports: [ HttpClientTestingModule ],
+      imports: [ HttpClientTestingModule, NgpSortModule ],
       providers: [ {provide: EmployeeService, useValue: EmployeeService}]
     })
     .compileComponents();

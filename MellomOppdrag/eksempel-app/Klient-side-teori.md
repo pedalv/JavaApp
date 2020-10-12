@@ -79,6 +79,7 @@ Angular is a platform for building mobile and desktop web applications === MV (M
 - [Configure a proxy for your API calls with Angular CLI](https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/)
 - [Intercepting Requests and Responses (SPRING SEGURITY)](https://angular.io/guide/http#intercepting-requests-and-responses)
 - [Pipes API list](https://angular.io/guide/architecture-components#templates-and-views)
+- [Sort/OrderBy pipe in Angular 5/6/7/8/9 (updated)](https://medium.com/@Mdmoin07/sort-pipe-in-angular-6-7-f22475cc4054)
 
 > Prod miljø: Apache 2  or [Nginx](https://www.nginx.com/)
 

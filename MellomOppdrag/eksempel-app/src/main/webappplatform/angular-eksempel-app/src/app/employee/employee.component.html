@@ -1,6 +1,7 @@
 <div class="container">
 
   <div class="container">
+
     <div class="row">
       <!-- list employees -->
       <div class="col">
@@ -21,7 +22,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let employee of employees">
+          <tr *ngFor="let employee of employees | sortBy: 'asc':'firstName'">
             <td headers="#id"> {{employee.id}} </td>
             <td headers="fornavn"> {{employee.firstName}} </td>
             <td headers="etternavn"> {{employee.lastName}} </td>
@@ -34,6 +35,7 @@
         </table>
 
       </div>
+
       <!-- create employee and show employee -->
       <div class="col">
         <!-- create -->
@@ -86,7 +88,6 @@
     </div>
 
   </div>
-
 
 </div>
 
