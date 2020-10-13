@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from '../domain/employee';
 import $ from "jquery";
@@ -8,7 +8,9 @@ import $ from "jquery";
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.less'],
   providers: [ EmployeeService ]
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class EmployeeComponent implements OnInit {
 
   employee : Employee = {id: null, firstName: "", lastName: "", role: ""};

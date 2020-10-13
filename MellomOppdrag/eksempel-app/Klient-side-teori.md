@@ -93,6 +93,11 @@ Angular is a platform for building mobile and desktop web applications === MV (M
 '''
 user.classes = user.classes || []; => Object.assign({}, user, {classes: user.classes || [] });
 this.currentUser.classes.push(classId); => this.currentUser = Object.assign({}, this.currentUser, {classes: this.currentUser.classes.concat([classId])});
+
+this.visibleClasses[0].professor = "Zebraman"; => this.visibleClasses = [
+    Object.assign(this.visibleClasses[0], {professor: "Zebraman"}),
+    ...this.visibleClasses.slice(1)
+];
 '''
 
 >  [Hooking into the component lifecycle](https://angular.io/guide/lifecycle-hooks)
@@ -102,8 +107,14 @@ this.currentUser.classes.push(classId); => this.currentUser = Object.assign({}, 
 '''
 npm start -- --prod === for development (minimize blandles)
 npm run build -- --prod === for production in dist folder
+
+npm install -g source-map-explorer
+du -sh *
+npm run build  "--prod" "--sourcemaps=true" 
+source-map-explorer <file_name_in_dist_mapper>
 '''
 
+> [Understanding Change Detection Strategy in Angular](https://www.digitalocean.com/community/tutorials/angular-change-detection-strategy)
 
 
 ## Klient side
