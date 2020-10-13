@@ -86,6 +86,25 @@ Angular is a platform for building mobile and desktop web applications === MV (M
 
 - [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 - [Unit Testing Angular 10/9/8 Application with Jasmine & Karma](https://www.positronx.io/angular-unit-testing-application-with-jasmine-karma/)
+- [Angular Best Practices](https://app.pluralsight.com/library/courses/best-practices-angular/table-of-contents)
+
+> Usig Immutability
+
+'''
+user.classes = user.classes || []; => Object.assign({}, user, {classes: user.classes || [] });
+this.currentUser.classes.push(classId); => this.currentUser = Object.assign({}, this.currentUser, {classes: this.currentUser.classes.concat([classId])});
+'''
+
+>  [Hooking into the component lifecycle](https://angular.io/guide/lifecycle-hooks)
+
+> Compilation 
+
+'''
+npm start -- --prod === for development (minimize blandles)
+npm run build -- --prod === for production in dist folder
+'''
+
+
 
 ## Klient side
 - [ECMAScript === JavaScript standard](https://en.wikipedia.org/wiki/JavaScript)
