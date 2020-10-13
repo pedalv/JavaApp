@@ -17,11 +17,6 @@ import { NgpSortModule } from "ngp-sort-pipe";
 import { SortDirective } from './directive/sort.directive';
 //import { SortByPipe } from "./pipe/sort-by-pipe"; //error Pipe Class Module check
 
-
-import { LoginComponent } from './users/login/login.component';
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +28,6 @@ import { LoginComponent } from './users/login/login.component';
     NavComponent,
     HomeComponent,
     KafkaComponent,
-    LoginComponent,
     SortDirective
   ],
   imports: [

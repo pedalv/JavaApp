@@ -7,19 +7,14 @@ import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
 import { KafkaComponent } from './kafka/kafka.component';
 
-
-
-
-import { LoginComponent } from './users/login/login.component';
-
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent },
   { path: "kafka", component: KafkaComponent },
-  { path: "partner", component: PartnerComponent }, //boostrap-form
-  { path: "customer", component: CustomerComponent }, //jumbotron
-  { path: "employee", component: EmployeeComponent }, //boostrao-table
-  { path: "users/login", component: LoginComponent },
+  { path: "partner", component: PartnerComponent },
+  { path: "customer", component: CustomerComponent },
+  { path: "employee", component: EmployeeComponent },
+  { path: "users", loadChildren: () => import('./users/users.module').then(u => u.UsersModule) }
 ];
 
 @NgModule({
