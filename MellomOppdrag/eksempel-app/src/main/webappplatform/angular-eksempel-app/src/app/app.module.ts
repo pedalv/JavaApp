@@ -13,10 +13,13 @@ import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { KafkaComponent } from './kafka/kafka.component';
-import { LoginComponent } from './login/login.component';
 import { NgpSortModule } from "ngp-sort-pipe";
 import { SortDirective } from './directive/sort.directive';
 //import { SortByPipe } from "./pipe/sort-by-pipe"; //error Pipe Class Module check
+
+
+import { LoginComponent } from './users/login/login.component';
+
 
 
 @NgModule({
