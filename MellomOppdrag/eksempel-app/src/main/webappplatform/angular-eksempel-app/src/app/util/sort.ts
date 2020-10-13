@@ -8,7 +8,7 @@ export class Sort {
 
   constructor() {}
 
-  public startSort(property, order, type = ""){
+  public startSort(property : string, order : string, type : string = ""){
 
     if(order === "desc"){
       this.sortOrder = -1;

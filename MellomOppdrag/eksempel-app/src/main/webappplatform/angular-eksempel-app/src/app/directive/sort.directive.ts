@@ -13,7 +13,7 @@ export class SortDirective {
     private targetElem: ElementRef) { }
 
   @HostListener("click")
-  sortData() {
+  sortData() : void {
     // Create Object of sort class
     const sort : Sort = new Sort();
 
@@ -21,13 +21,13 @@ export class SortDirective {
     const elem = this.targetElem.nativeElement;
 
     //Get In Which Order list should be sorted by default it sould be set to desc on element attribute
-    const order = elem.getAttribute("data-order");
+    const order : string = elem.getAttribute("data-order");
 
     //Get In which Type specially set [data-type-date] if it is date field
-    const type = elem.getAttribute("data-type");
+    const type : string = elem.getAttribute("data-type");
 
     //Get The Property Name from Element Attribute
-    const property = elem.getAttribute("data-name");
+    const property : string  = elem.getAttribute("data-name");
 
 
     console.log(
