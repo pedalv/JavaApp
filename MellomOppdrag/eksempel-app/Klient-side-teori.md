@@ -116,6 +116,8 @@ source-map-explorer <file_name_in_dist_mapper>
 
 > [Understanding Change Detection Strategy in Angular](https://www.digitalocean.com/community/tutorials/angular-change-detection-strategy)
 
+> [Angular Architecture and Best Practices](https://app.pluralsight.com/library/courses/angular-architecture-best-practices/table-of-contents)
+
 
 ## Klient side
 - [ECMAScript === JavaScript standard](https://en.wikipedia.org/wiki/JavaScript)
