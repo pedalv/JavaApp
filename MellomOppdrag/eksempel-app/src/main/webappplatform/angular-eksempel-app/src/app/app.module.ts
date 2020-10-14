@@ -23,7 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { KafkaComponent } from './kafka/kafka.component';
 import { PartnerComponent } from './partner/partner.component';
 import { EmployeeComponent } from './employee/employee.component';
-//import { SortByPipe } from "./pipe/sort-by-pipe"; //error Pipe Class Module check
+
 import { CustomerComponent } from './customer/customer.component';
 import { FooterComponent } from './footer/footer.component';
 //
