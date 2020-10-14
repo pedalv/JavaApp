@@ -9,25 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
-//
-
-
-
-
-
-
-
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { KafkaComponent } from './kafka/kafka.component';
 import { PartnerComponent } from './partner/partner.component';
 import { EmployeeComponent } from './employee/employee.component';
-
 import { CustomerComponent } from './customer/customer.component';
 import { FooterComponent } from './footer/footer.component';
-//
-
 
 @NgModule({
   imports: [
@@ -36,21 +25,9 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,     // Main routes for application
     CoreModule,           // Singleton objects (services, components that are loaded only once, etc.)
     SharedModule,        // Shared (multi-instance) objects
-
-
-
-
-
-
   ],
   declarations: [
     AppComponent,
-
-
-    //
-
-
-
     HeaderComponent,
     NavComponent,
     HomeComponent,
@@ -58,7 +35,7 @@ import { FooterComponent } from './footer/footer.component';
     PartnerComponent,
     CustomerComponent,
     EmployeeComponent,
-    FooterComponent
+    FooterComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
