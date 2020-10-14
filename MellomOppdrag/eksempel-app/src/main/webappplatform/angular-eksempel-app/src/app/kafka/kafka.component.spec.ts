@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KafkaService } from '../services/kafka.service';
+import { KafkaService } from './kafka.service';
 import { KafkaComponent } from './kafka.component';
 
 describe('KafkaComponent', () => {

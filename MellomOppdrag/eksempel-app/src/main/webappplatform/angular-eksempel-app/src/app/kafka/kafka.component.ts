@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { KafkaService } from '../services/kafka.service';
+import { KafkaService } from './kafka.service';
 import $ from "jquery";
 
 @Component({

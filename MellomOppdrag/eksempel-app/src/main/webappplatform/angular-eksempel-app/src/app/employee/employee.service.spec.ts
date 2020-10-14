@@ -48,7 +48,7 @@ describe('EmployeeService', () => {
 
   it(`should fetch all employees as an Observable`, async( inject(
     [HttpTestingController, EmployeeService],
-    (httpClient: HttpTestingController, service: EmployeeService) => {
+    (httpClient: HttpTestingController, empservice: EmployeeService) => {
 
         const employeesStub = [
           {
@@ -65,7 +65,7 @@ describe('EmployeeService', () => {
           }
         ];
 
-        service.allEmployees()
+        empservice.allEmployees()
           .subscribe((employees : Employee[]) => {
             expect(employees.length).toBe(2);
           });

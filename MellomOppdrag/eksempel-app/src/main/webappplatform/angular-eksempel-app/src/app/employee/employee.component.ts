@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { EmployeeService } from '../services/employee.service';
+import { EmployeeService } from './employee.service';
 import { Employee } from '../domain/employee';
 import $ from "jquery";
 

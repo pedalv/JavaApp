@@ -4,7 +4,7 @@ import { NgpSortModule } from "ngp-sort-pipe";
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmployeeService } from '../services/employee.service';
+import { EmployeeService } from './employee.service';
 import { EmployeeComponent } from './employee.component';
 
 
