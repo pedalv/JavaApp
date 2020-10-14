@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NgpSortModule } from "ngp-sort-pipe";
 
 @NgModule({
   declarations: [], //SortByDirective //TrimPipe
@@ -10,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   exports: [
     CommonModule,
     FormsModule,
+    NgpSortModule,
     //SortByDirective
   ]
 })

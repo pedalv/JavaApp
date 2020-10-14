@@ -10,14 +10,20 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
 //
+
+
+import { SortDirective } from './directive/sort.directive';
+
+
+
+
+
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { KafkaComponent } from './kafka/kafka.component';
 import { PartnerComponent } from './partner/partner.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { NgpSortModule } from "ngp-sort-pipe";
-import { SortDirective } from './directive/sort.directive';
 //import { SortByPipe } from "./pipe/sort-by-pipe"; //error Pipe Class Module check
 import { CustomerComponent } from './customer/customer.component';
 import { FooterComponent } from './footer/footer.component';
@@ -32,10 +38,20 @@ import { FooterComponent } from './footer/footer.component';
     CoreModule,           // Singleton objects (services, components that are loaded only once, etc.)
     SharedModule,        // Shared (multi-instance) objects
 
-    NgpSortModule
+
+
+
+
+
   ],
   declarations: [
     AppComponent,
+
+
+    //
+    SortDirective,
+
+
 
     HeaderComponent,
     NavComponent,
@@ -43,7 +59,6 @@ import { FooterComponent } from './footer/footer.component';
     KafkaComponent,
     PartnerComponent,
     CustomerComponent,
-    SortDirective,
     EmployeeComponent,
     FooterComponent
   ],
