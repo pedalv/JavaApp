@@ -1,10 +1,13 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//import { FormsModule } from '@angular/forms';
-//import { HttpClientModule } from '@angular/common/http';
+
+import { HttpClientModule } from '@angular/common/http';
 //import { RouterModule } from '@angular/router';
 
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
+//import { NgpSortModule } from "ngp-sort-pipe";
+//import { SortDirective } from '../directive/sort.directive';
+
 
 //import { HeaderComponent } from './header/header.component';
 //import { NavComponent } from './nav/nav.component';
@@ -13,8 +16,6 @@ import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 //import { LoginComponent } from './users/login/login.component';
 //import { PartnerComponent } from './partner/partner.component';
 //import { EmployeeComponent } from './employee/employee.component';
-//import { NgpSortModule } from "ngp-sort-pipe";
-//import { SortDirective } from './directive/sort.directive';
 //import { SortByPipe } from "./pipe/sort-by-pipe"; //error Pipe Class Module check
 //import { CustomerComponent } from './customer/customer.component';
 //import { FooterComponent } from './footer/footer.component';
@@ -26,15 +27,18 @@ import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
   //imports: [, , , GrowlerModule, ModalModule, OverlayModule],
   //exports: [GrowlerModule, , , ModalModule, OverlayModule, NavbarComponent],
   imports: [
-    CommonModule
+    CommonModule,
     //RouterModule,
     //FormsModule,
-    //HttpClientModule,
-    //NgpSortModule
+    HttpClientModule
+
+
+
+
   ],
   exports: [
-    //HttpClientModule,
-    //RouterModule
+    //RouterModule,
+    //HttpClientModule
   ],
   declarations: [
     //HeaderComponent,
@@ -44,7 +48,6 @@ import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
     //LoginComponent,
     //PartnerComponent,
     //CustomerComponent,
-    //SortDirective,
     //EmployeeComponent,
     //FooterComponent
   ],
