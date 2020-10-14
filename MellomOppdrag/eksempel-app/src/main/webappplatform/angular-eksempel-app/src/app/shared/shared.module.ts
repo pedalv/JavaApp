@@ -2,9 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgpSortModule } from "ngp-sort-pipe";
+import { SortDirective } from './directive/sort.directive';
+
 
 @NgModule({
-  declarations: [], //SortByDirective //TrimPipe
+  declarations: [
+    SortDirective
+
+  ],
   imports: [
     CommonModule,
   ],
@@ -12,7 +17,7 @@ import { NgpSortModule } from "ngp-sort-pipe";
     CommonModule,
     FormsModule,
     NgpSortModule,
-    //SortByDirective
+    SortDirective
   ]
 })
 export class SharedModule { }

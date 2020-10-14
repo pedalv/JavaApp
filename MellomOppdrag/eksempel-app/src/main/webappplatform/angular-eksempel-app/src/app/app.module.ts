@@ -12,7 +12,6 @@ import { SharedModule } from './shared/shared.module';
 //
 
 
-import { SortDirective } from './directive/sort.directive';
 
 
 
@@ -49,7 +48,6 @@ import { FooterComponent } from './footer/footer.component';
 
 
     //
-    SortDirective,
 
 
 
