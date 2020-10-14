@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: "partner", component: PartnerComponent },
   { path: "customer", component: CustomerComponent },
   { path: "employee", component: EmployeeComponent },
-  { path: "users", loadChildren: () => import('./users/users.module').then(u => u.UsersModule) }
+  { path: "users", loadChildren: () => import('./users/users-routing.module').then(u => u.UsersModule) }
 ];
 
 @NgModule({
