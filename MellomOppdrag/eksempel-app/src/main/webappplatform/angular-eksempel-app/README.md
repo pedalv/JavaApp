@@ -33,8 +33,6 @@ this.visibleClasses[0].professor = "Zebraman"; => this.visibleClasses = [
 
 ![Angular Injectors](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularInjectors.PNG)
 
-![Child Routes and Component](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular10ChildRoutesandComponents.PNG)
-
 
 #### [Angular coding style guide](https://angular.io/guide/styleguide)
 
@@ -58,9 +56,12 @@ npm publish
 
 #### Angular Modules
 
+![Recommended Modules](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularRecommendedModules.PNG)
+
 ![Angular Organazing App Modules](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular10OrganizingAppMosules.PNG)
 
-![Recommended Modules](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularRecommendedModules.PNG)
+![Child Routes and Component](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular10ChildRoutesandComponents.PNG)
+
 
 ## Document and article
 - [Angular 2 and Spring Boot](https://www.youtube.com/c/AlmightyJava/search?query=Angular%202%20and%20Spring%20Boot)
