@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { KafkaComponent } from './kafka.component';
 
 const routes: Routes = [
-  { path: "kafka", component: KafkaComponent }
+  { path: "", component: KafkaComponent }
 ];
 
 @NgModule({
