@@ -10,8 +10,6 @@ import { SharedModule } from './shared/shared.module';
 
 import { HomeComponent } from './home/home.component';
 
-import { EmployeeComponent } from './employee/employee.component';
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -22,8 +20,7 @@ import { EmployeeComponent } from './employee/employee.component';
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
-    EmployeeComponent
+    HomeComponent
   ],
   bootstrap: [AppComponent]
 })

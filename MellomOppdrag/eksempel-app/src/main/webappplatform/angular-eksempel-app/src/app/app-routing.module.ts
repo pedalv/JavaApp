@@ -4,17 +4,13 @@ import { RouterModule, Routes, PreloadAllModules, NoPreloading } from '@angular/
 
 import { HomeComponent } from './home/home.component';
 
-import { EmployeeComponent } from './employee/employee.component';
-
 const app_routes: Routes = [
   { path: "", pathMatch: 'full', component: HomeComponent },
   { path: "home", component: HomeComponent },
   { path: "kafka", loadChildren: () => import('./kafka/kafka.module').then(m => m.KafkaModule) },
   { path: "customer", loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule) },
   { path: "partner", loadChildren: () => import('./partner/partner.module').then(m => m.PartnerModule) },
-
-  { path: "employee", component: EmployeeComponent },
-
+  { path: "employee", loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule) },
   { path: "users", loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
   { path: '**', pathMatch: 'full', component: HomeComponent } // catch any unfound routes and redirect to home page
 ];
