@@ -8,9 +8,9 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
 import { HomeComponent } from './home/home.component';
+
 import { PartnerComponent } from './partner/partner.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { CustomerComponent } from './customer/customer.component';
 
 @NgModule({
   imports: [
@@ -24,7 +24,6 @@ import { CustomerComponent } from './customer/customer.component';
     AppComponent,
     HomeComponent,
     PartnerComponent,
-    CustomerComponent,
     EmployeeComponent
   ],
   providers: [],
