@@ -2,11 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
 
-## Angular Best Practices
+# Angular Best Practices
 
 ![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular2%2B_8_Main_parts.PNG)
 
-> Usig Immutability
+#### [Usig Immutability === angular-change-detection-strategy](https://www.digitalocean.com/community/tutorials/angular-change-detection-strategy)
 
 ```
 user.classes = user.classes || []; => Object.assign({}, user, {classes: user.classes || [] });
@@ -19,9 +19,7 @@ this.visibleClasses[0].professor = "Zebraman"; => this.visibleClasses = [
 ];
 ```
 
-> https://www.digitalocean.com/community/tutorials/angular-change-detection-strategy
-
-> Architecture Planning
+#### Architecture Planning
 
 1. App Overview
 2. App Features
@@ -38,14 +36,14 @@ this.visibleClasses[0].professor = "Zebraman"; => this.visibleClasses = [
 ![Child Routes and Component](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular10ChildRoutesandComponents.PNG)
 
 
-> [Angular coding style guide](https://angular.io/guide/styleguide)
+####[Angular coding style guide](https://angular.io/guide/styleguide)
 
 - [flat](https://angular.io/guide/styleguide#flat)
 - [feature-modules](https://angular.io/guide/styleguide#feature-modules)
 - [shared-feature-module](https://angular.io/guide/styleguide#shared-feature-module)
 - [lifecycle-hooks](https://angular.io/guide/lifecycle-hooks)
 
-> [Angular Library](https://docs.npmjs.com/packages-and-modules/)
+#### [Angular Library](https://docs.npmjs.com/packages-and-modules/)
 
 - https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry
 - https://docs.npmjs.com/packages-and-modules/
@@ -58,7 +56,7 @@ cd dist/my-lib
 npm publish
 ```
 
-> Angular Modules
+#### Angular Modules
 
 ![Angular Organazing App Modules](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular10OrganizingAppMosules.PNG)
 
