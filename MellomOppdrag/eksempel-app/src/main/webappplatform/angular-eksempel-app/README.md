@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 > Usig Immutability
 
-'''
+```
 user.classes = user.classes || []; => Object.assign({}, user, {classes: user.classes || [] });
 
 this.currentUser.classes.push(classId); => this.currentUser = Object.assign({}, this.currentUser, {classes: this.currentUser.classes.concat([classId])});
@@ -17,7 +17,7 @@ this.visibleClasses[0].professor = "Zebraman"; => this.visibleClasses = [
     Object.assign(this.visibleClasses[0], {professor: "Zebraman"}),
     ...this.visibleClasses.slice(1)
 ];
-'''
+```
 
 > https://www.digitalocean.com/community/tutorials/angular-change-detection-strategy
 
