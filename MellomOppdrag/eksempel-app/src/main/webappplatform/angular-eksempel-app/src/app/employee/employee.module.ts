@@ -5,6 +5,6 @@ import { EmployeeRoutingModule } from './employee-routing.module';
 
 @NgModule({
   imports:      [ SharedModule, EmployeeRoutingModule ],
-  declarations: [ EmployeeRoutingModule.components ]
+  declarations: [ EmployeeRoutingModule.components]
 })
 export class EmployeeModule { }

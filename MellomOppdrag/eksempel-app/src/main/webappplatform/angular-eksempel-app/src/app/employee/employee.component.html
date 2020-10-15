@@ -1,6 +1,30 @@
-<div class="container">
-
+<div class="orders view">
   <div class="container">
+    <header>
+      <h3><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Employee Information</h3>
+    </header>
+    <br />
+    <nav>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/employee/list">Employees List (TODO)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/list-sort">Employees List Sort (TODO)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/create">Employee Create (TODO)</a>
+        </li>
+      </ul>
+      <router-outlet></router-outlet>
+    </nav>
+  </div>
+</div>
+
+<hr />
+
+(TODO)
+<div class="container">
 
     <div class="row">
       <!-- list employees -->
@@ -91,7 +115,6 @@
 
     </div>
 
-
     <div style="border: 1px solid green; padding: 5px;">
 
       <table class="table table-striped border mt-1">
@@ -124,9 +147,6 @@
 
 
     </div>
-
-
-  </div>
 
 </div>
 
