@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { IPartner } from '../shared/interfaces';
+
 @Component({
   selector: 'app-partner',
   templateUrl: './partner.component.html',
@@ -7,17 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartnerComponent implements OnInit {
 
-  //TODO: hent fra database late
-  employee : {id, name, description, email} = {id: null, name: "", description: "", email: ""};
+
+ //TODO: hent fra database late (see Employee)
+ partner : IPartner = {id: null, name: "", description: "", email: ""};
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  createEmployee(){
-    console.log("Employee created: ", this.employee);
-    this.employee = {id: null, name: "", description: "", email: ""};
+  createPartner(){
+    console.log("Partner created: ", this.partner);
+    this.partner = {id: null, name: "", description: "", email: ""};
     //poc employees is not update
   }
 

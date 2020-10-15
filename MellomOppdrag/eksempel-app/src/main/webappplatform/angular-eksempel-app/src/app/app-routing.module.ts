@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 //import { Routes, RouterModule } from '@angular/router';
 import { RouterModule, Routes, PreloadAllModules, NoPreloading } from '@angular/router';
 
-import { PartnerComponent } from './partner/partner.component';
-import { CustomerComponent } from './customer/customer.component';
-import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
+
+import { EmployeeComponent } from './employee/employee.component';
 
 const app_routes: Routes = [
   { path: "", pathMatch: 'full', component: HomeComponent },
