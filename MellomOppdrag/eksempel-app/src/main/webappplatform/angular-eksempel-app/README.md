@@ -36,7 +36,7 @@ this.visibleClasses[0].professor = "Zebraman"; => this.visibleClasses = [
 ![Child Routes and Component](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular10ChildRoutesandComponents.PNG)
 
 
-####[Angular coding style guide](https://angular.io/guide/styleguide)
+#### [Angular coding style guide](https://angular.io/guide/styleguide)
 
 - [flat](https://angular.io/guide/styleguide#flat)
 - [feature-modules](https://angular.io/guide/styleguide#feature-modules)
