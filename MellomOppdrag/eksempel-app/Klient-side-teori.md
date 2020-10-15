@@ -118,6 +118,15 @@ source-map-explorer <file_name_in_dist_mapper>
 
 > [Angular Architecture and Best Practices](https://app.pluralsight.com/library/courses/angular-architecture-best-practices/table-of-contents)
 
+'''
+ng new my-project
+ng generate library my-lib
+ng build my-lib
+https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry
+https://docs.npmjs.com/packages-and-modules/
+cd dist/my-lib
+npm publish
+'''
 
 ## Klient side
 - [ECMAScript === JavaScript standard](https://en.wikipedia.org/wiki/JavaScript)

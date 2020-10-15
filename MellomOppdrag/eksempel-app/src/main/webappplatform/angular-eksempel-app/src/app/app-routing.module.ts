@@ -6,15 +6,16 @@ import { PartnerComponent } from './partner/partner.component';
 import { CustomerComponent } from './customer/customer.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
-import { KafkaComponent } from './kafka/kafka.component';
 
 const app_routes: Routes = [
   { path: "", pathMatch: 'full', component: HomeComponent },
   { path: "home", component: HomeComponent },
-  { path: "kafka", component: KafkaComponent },
+  { path: "kafka", loadChildren: () => import('./kafka/kafka.module').then(m => m.KafkaModule) },
+
   { path: "partner", component: PartnerComponent },
   { path: "customer", component: CustomerComponent },
   { path: "employee", component: EmployeeComponent },
+
   { path: "users", loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
   { path: '**', pathMatch: 'full', component: HomeComponent } // catch any unfound routes and redirect to home page
 ];

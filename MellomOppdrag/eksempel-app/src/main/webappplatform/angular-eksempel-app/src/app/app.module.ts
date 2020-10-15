@@ -8,7 +8,6 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
 import { HomeComponent } from './home/home.component';
-import { KafkaComponent } from './kafka/kafka.component';
 import { PartnerComponent } from './partner/partner.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { CustomerComponent } from './customer/customer.component';
@@ -24,7 +23,6 @@ import { CustomerComponent } from './customer/customer.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    KafkaComponent,
     PartnerComponent,
     CustomerComponent,
     EmployeeComponent
