@@ -2,6 +2,136 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
 
+## Angular Best Practices
+
+![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular2%2B_8_Main_parts.PNG)
+
+> Usig Immutability
+
+'''
+user.classes = user.classes || []; => Object.assign({}, user, {classes: user.classes || [] });
+
+this.currentUser.classes.push(classId); => this.currentUser = Object.assign({}, this.currentUser, {classes: this.currentUser.classes.concat([classId])});
+
+this.visibleClasses[0].professor = "Zebraman"; => this.visibleClasses = [
+    Object.assign(this.visibleClasses[0], {professor: "Zebraman"}),
+    ...this.visibleClasses.slice(1)
+];
+'''
+
+> https://www.digitalocean.com/community/tutorials/angular-change-detection-strategy
+
+> Architecture Planning
+
+1. App Overview
+2. App Features
+3. Domain Security
+4. Domain Rules
+5. Logging
+6. Services/Communication
+7. Data Models
+8. Feature Components => Eager/Layz Load Feature
+9. Shared Functionality
+
+![Angular Injectors](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularInjectors.PNG)
+
+![Child Routes and Component](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular10ChildRoutesandComponents.PNG)
+
+
+> [Angular coding style guide](https://angular.io/guide/styleguide)
+
+- [flat](https://angular.io/guide/styleguide#flat)
+- [feature-modules](https://angular.io/guide/styleguide#feature-modules)
+- [shared-feature-module](https://angular.io/guide/styleguide#shared-feature-module)
+- [lifecycle-hooks](https://angular.io/guide/lifecycle-hooks)
+
+> [Angular Library](https://docs.npmjs.com/packages-and-modules/)
+
+- https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry
+- https://docs.npmjs.com/packages-and-modules/
+
+```
+ng new my-project
+ng generate library my-lib
+ng build my-lib
+cd dist/my-lib
+npm publish
+```
+
+> Angular Modules
+
+![Angular Organazing App Modules](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular10OrganizingAppMosules.PNG)
+
+![Recommended Modules](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularRecommendedModules.PNG)
+
+## Document and article
+- [Angular 2 and Spring Boot](https://www.youtube.com/c/AlmightyJava/search?query=Angular%202%20and%20Spring%20Boot)
+- [Desktop to Web: Basic Route Navigation in Angular 9](https://www.youtube.com/watch?v=KkluJjQ4b5E)
+- [3+ Ways to Add Bootstrap 4 to Angular 10/9 With Example & Tutorial](https://www.techiediaries.com/angular-bootstrap/)
+- [Styling An Angular 10 Example App with Bootstrap 4 Navbar, Jumbotron, Tables, Forms and Cards](https://www.techiediaries.com/angular/style-angular-10-example-bootstrap-4/)
+- [Communicating with backend services using HTTP](https://angular.io/guide/http)
+- [Configure a proxy for your API calls with Angular CLI](https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/)
+- [Intercepting Requests and Responses (SPRING SEGURITY)](https://angular.io/guide/http#intercepting-requests-and-responses)
+- [Pipes API list](https://angular.io/guide/architecture-components#templates-and-views)
+- [Sort/OrderBy pipe in Angular 5/6/7/8/9 (updated)](https://medium.com/@Mdmoin07/sort-pipe-in-angular-6-7-f22475cc4054)
+- [How to sort table rows according to a column in Angular 9](https://medium.com/nerd-for-tech/how-to-sort-table-rows-according-column-in-angular-9-b04fdafb4140)
+
+> Prod miljø: Apache 2  or [Nginx](https://www.nginx.com/)
+
+- [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+- [Unit Testing Angular 10/9/8 Application with Jasmine & Karma](https://www.positronx.io/angular-unit-testing-application-with-jasmine-karma/)
+- [Angular Best Practices](https://app.pluralsight.com/library/courses/best-practices-angular/table-of-contents)
+
+>  [Hooking into the component lifecycle](https://angular.io/guide/lifecycle-hooks)
+
+> Compilation 
+
+```
+npm start -- --prod === for development (minimize blandles)
+npm run build -- --prod === for production in dist folder
+
+npm install -g source-map-explorer
+du -sh *
+npm run build  "--prod" "--sourcemaps=true" 
+source-map-explorer <file_name_in_dist_mapper>
+```
+
+> [Understanding Change Detection Strategy in Angular](https://www.digitalocean.com/community/tutorials/angular-change-detection-strategy)
+
+> [Angular Architecture and Best Practices](https://app.pluralsight.com/library/courses/angular-architecture-best-practices/table-of-contents)
+
+```
+ng new my-project
+ng generate library my-lib
+ng build my-lib
+https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry
+https://docs.npmjs.com/packages-and-modules/
+cd dist/my-lib
+npm publish
+```
+
+- Install ng
+```
+    npm install -g @angular/cli ->  install the Angular CLI globally. @next for beta versjon
+```
+
+- Create
+```
+    ng new my-app -> Create a new project
+    cd my-app
+```
+
+- Angular APP
+```
+    ng serve --open or ng serve --open --host 0.0.0.0 --port 4200
+    ng generate component xyz
+    ng add @angular/material
+    ng add @angular/pwa
+    ng add <_Dependency_>
+    ng test
+    ng build --prod       
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
