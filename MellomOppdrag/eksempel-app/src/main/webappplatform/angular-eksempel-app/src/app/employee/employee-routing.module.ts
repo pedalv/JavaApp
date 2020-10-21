@@ -5,7 +5,7 @@ import { EmployeeComponent } from './employee.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeListSortComponent } from './employee-list-sort/employee-list-sort.component';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
-import { EmployeeCardComponent } from './employee-card/employee-card.component';
+import { EmployeeShowComponent } from './employee-show/employee-show.component';
 
 const routes: Routes = [
   {
@@ -25,5 +25,5 @@ const routes: Routes = [
   declarations: [  ]
 })
 export class EmployeeRoutingModule {
-  static components = [ EmployeeComponent, EmployeeListComponent,  EmployeeListSortComponent, EmployeeCreateComponent, EmployeeCardComponent];
+  static components = [ EmployeeComponent, EmployeeListComponent,  EmployeeListSortComponent, EmployeeCreateComponent, EmployeeShowComponent];
 }
