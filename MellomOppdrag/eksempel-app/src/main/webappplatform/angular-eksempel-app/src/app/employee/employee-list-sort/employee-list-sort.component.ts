@@ -81,9 +81,8 @@ export class EmployeeListSortComponent implements OnInit {
   }
 
   public selectEmployee(e : Employee) : void  {
+  console.log("Employee: "+ e);
     this.selectedEmployee = e;
   }
-
-
 
 }

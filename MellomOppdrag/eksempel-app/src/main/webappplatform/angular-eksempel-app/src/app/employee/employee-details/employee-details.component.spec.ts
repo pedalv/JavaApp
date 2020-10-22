@@ -5,16 +5,16 @@ import { NgpSortModule } from "ngp-sort-pipe";
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmployeeService } from '../employee.service';
-import { EmployeeShowComponent } from './employee-show.component';
+import { EmployeeDetailsComponent } from './employee-details.component';
 
 describe('EmployeeShowComponent', () => {
   let EmployeeServiceStub: Partial<EmployeeService>;
-  let component: EmployeeShowComponent;
-  let fixture: ComponentFixture<EmployeeShowComponent>;
+  let component: EmployeeDetailsComponent;
+  let fixture: ComponentFixture<EmployeeDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmployeeShowComponent ],
+      declarations: [ EmployeeDetailsComponent ],
       imports: [ HttpClientTestingModule, NgpSortModule ],
       providers: [ {provide: EmployeeService, useValue: EmployeeService}]
     })
@@ -22,7 +22,7 @@ describe('EmployeeShowComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmployeeShowComponent);
+    fixture = TestBed.createComponent(EmployeeDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

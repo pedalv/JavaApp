@@ -1,15 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../../domain/employee';
 import $ from "jquery";
 
 @Component({
-  selector: 'app-employee-show',
-  templateUrl: './employee-show.component.html',
-  styleUrls: ['./employee-show.component.less'],
+  selector: 'app-employee-details',
+  templateUrl: './employee-details.component.html',
+  styleUrls: ['./employee-details.component.less'],
   providers: [ EmployeeService ]
 })
-export class EmployeeShowComponent implements OnInit {
+export class EmployeeDetailsComponent implements OnInit {
 
   employee : Employee = {id: null, firstName: "", lastName: "", role: ""};
 
@@ -27,15 +27,20 @@ export class EmployeeShowComponent implements OnInit {
   msgEditError: string = 'Feil! Rest tjene er ned! Inge oppdatert ansatt!';
 
   @Input() selectedEmployee: Employee;
+  @Output() selectedEmployeeChanged = new EventEmitter<Employee>();
 
   constructor(private service: EmployeeService) { }
 
   ngOnInit(): void {
   }
 
-
+  change() {
+      console.log("OUTPUT-CHANGE");
+        this.selectedEmployee =  {id: 20, firstName: "Pedro20", lastName: "Alves20", role: "Seniorutvikler"}; //null editEmployee
+        this.selectedEmployeeChanged.emit(this.selectedEmployee);
+  }
  replaceEmployee(employee: Employee) : void {
-    console.log("Employee updated: ", employee);
+    console.log("replaceEmployee Employee updated: ", employee);
 
     //save
     this.service.replaceEmployee(employee)

@@ -52,7 +52,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   public selectEmployee(e : Employee) : void  {
-    console.log(e);
+    console.log("Employee: "+ e);
     this.selectedEmployee = e;
   }
 
