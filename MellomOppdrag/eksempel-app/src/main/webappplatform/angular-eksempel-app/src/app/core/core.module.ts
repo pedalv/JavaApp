@@ -9,6 +9,9 @@ import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { CloneService } from './service/clone.service';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +30,9 @@ import { FooterComponent } from './footer/footer.component';
     NavComponent,
     FooterComponent
   ],
-  providers: [ ] // these should be singleton
+  providers: [
+    CloneService
+  ] // these should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    // Ensure that CoreModule is only loaded into AppModule
 

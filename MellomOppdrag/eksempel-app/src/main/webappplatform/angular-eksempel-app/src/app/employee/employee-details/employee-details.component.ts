@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, ChangeDetectionStrategy
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../../domain/employee';
 import $ from "jquery";
+import { CloneService } from '../../core/service/clone.service';
 
 @Component({
   selector: 'app-employee-details',
@@ -30,7 +31,8 @@ export class EmployeeDetailsComponent implements OnInit {
   @Input() selectedEmployee: Employee;
   @Output() selectedEmployeeChanged = new EventEmitter<Employee>();
 
-  constructor(private service: EmployeeService) { }
+  constructor(private service: EmployeeService,
+              private cloneService: CloneService) { }
 
   ngOnInit(): void {
      //OKAY on init
@@ -100,7 +102,8 @@ export class EmployeeDetailsComponent implements OnInit {
       this.showForm = true;
       this.selectedEmployee = null;
       //this.employee = employee;
-      this.employee = JSON.parse(JSON.stringify(employee)); //Clone ref
-    }
+      //this.employee = JSON.parse(JSON.stringify(employee)); //Clone ref
+      this.employee = this.cloneService.deepClone<Employee>(employee); //Clone ref
+  }
 
 }
