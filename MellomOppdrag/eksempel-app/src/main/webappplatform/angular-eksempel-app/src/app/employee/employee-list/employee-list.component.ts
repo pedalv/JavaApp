@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../../domain/employee';
 import { CloneService } from '../../core/service/clone.service';
+import { List, Map, fromJS } from 'immutable';
 
 @Component({
   selector: 'app-employee-list',
@@ -12,6 +13,7 @@ import { CloneService } from '../../core/service/clone.service';
 export class EmployeeListComponent implements OnInit {
 
   employees : Employee[] = [];
+  immutableEmployees : List<Employee>;
 
   showError: boolean = false;
   msgShowError: string = 'Feil! Rest tjene er ned! Inge vis ansatt!';
@@ -32,7 +34,9 @@ export class EmployeeListComponent implements OnInit {
           console.log(data);
           //this.employees = data;
           //this.employees = JSON.parse(JSON.stringify(data)); // clone ref
-          this.employees = this.cloneService.deepClone<Employee[]>(data); //Clone ref
+          //this.employees = this.cloneService.deepClone<Employee[]>(data); //Clone ref
+          this.immutableEmployees = List<Employee>(data); //immutable
+          this.employees = this.immutableEmployees.toArray();
         },
         error => {
           this.showError = true;
@@ -56,10 +60,11 @@ export class EmployeeListComponent implements OnInit {
   }
 
   public selectEmployee(employee : Employee) : void  {
-    console.log("Employee-clone: "+ employee);
+    console.log("Employee-immutable: "+ employee);
     //this.selectedEmployee = employee;
     //this.selectedEmployee = JSON.parse(JSON.stringify(employee)); // clone ref
-    this.selectedEmployee = this.cloneService.deepClone<Employee>(employee); //Clone ref
+    //this.selectedEmployee = this.cloneService.deepClone<Employee>(employee); //Clone ref
+    this.selectedEmployee = fromJS(employee).toJS() as Employee //immutable
   }
 
 }
