@@ -3,6 +3,7 @@ import { EmployeeService } from '../employee.service';
 import { Employee } from '../../domain/employee';
 import $ from "jquery";
 import { CloneService } from '../../core/service/clone.service';
+import { BaseEmployeeComponent } from '../base-employee/base-employee.component'
 
 @Component({
   selector: 'app-employee-details',
@@ -11,16 +12,16 @@ import { CloneService } from '../../core/service/clone.service';
   providers: [ EmployeeService ],
   //changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmployeeDetailsComponent implements OnInit {
+export class EmployeeDetailsComponent extends BaseEmployeeComponent implements OnInit {
 
   employee : Employee = {id: null, firstName: "", lastName: "", role: ""};
-
+/*
   rolles = [
      {id: 1, name: "Seniorutvikler"},
      {id: 2, name: "Leader"},
      {id: 3, name: "Administrasjon"}
   ];
-
+*/
   showForm: boolean = false;
   isEdit: boolean = false;
   msgEdit: string = 'Okay! Ansatt oppdatert';
@@ -32,7 +33,9 @@ export class EmployeeDetailsComponent implements OnInit {
   @Output() selectedEmployeeChanged = new EventEmitter<Employee>();
 
   constructor(private service: EmployeeService,
-              private cloneService: CloneService) { }
+              private cloneService: CloneService) {
+    super();
+  }
 
   ngOnInit(): void {
      //OKAY on init

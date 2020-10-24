@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../../domain/employee';
+import { BaseEmployeeComponent } from '../base-employee/base-employee.component'
 
 @Component({
   selector: 'app-employee-create',
@@ -8,7 +9,7 @@ import { Employee } from '../../domain/employee';
   styleUrls: ['./employee-create.component.less'],
   providers: [ EmployeeService ]
 })
-export class EmployeeCreateComponent implements OnInit {
+export class EmployeeCreateComponent extends BaseEmployeeComponent implements OnInit {
 
   employee : Employee = {id: null, firstName: "", lastName: "", role: ""};
 
@@ -17,16 +18,18 @@ export class EmployeeCreateComponent implements OnInit {
 
   isCreate: boolean = false;
   msgCreated: string = 'Employee created';
-
+/*
   rolles = [
    {id: 1, name: "Seniorutvikler"},
    {id: 2, name: "Leader"},
    {id: 3, name: "Administrasjon"}
   ];
-
+*/
   //GET http://localhost:4200/api/employee/all 504 (Gateway Timeout)
 
-  constructor(private service: EmployeeService) { }
+  constructor(private service: EmployeeService) {
+    super();
+  }
 
   ngOnInit(): void {
   }
