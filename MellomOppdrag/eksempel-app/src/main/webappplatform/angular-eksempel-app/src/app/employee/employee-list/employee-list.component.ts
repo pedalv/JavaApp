@@ -28,7 +28,8 @@ export class EmployeeListComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this.employees = data;
+          //this.employees = data;
+          this.employees = JSON.parse(JSON.stringify(data)); // clone ref
         },
         error => {
           this.showError = true;
@@ -51,12 +52,10 @@ export class EmployeeListComponent implements OnInit {
           );
   }
 
-  public selectEmployee(e : Employee) : void  {
-    console.log("Employee: "+ e);
-    this.selectedEmployee = e;
+  public selectEmployee(employee : Employee) : void  {
+    console.log("Employee-clone: "+ employee);
+    //this.selectedEmployee = employee;
+    this.selectedEmployee = JSON.parse(JSON.stringify(employee)); // clone ref
   }
-
-
-
 
 }
