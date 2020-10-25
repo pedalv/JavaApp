@@ -8,7 +8,7 @@ import { EmployeeService } from '../employee.service';
 import { EmployeeDetailsComponent } from './employee-details.component';
 
 describe('EmployeeShowComponent', () => {
-  let EmployeeServiceStub: Partial<EmployeeService>;
+  //let EmployeeServiceStub: Partial<EmployeeService>;
   let component: EmployeeDetailsComponent;
   let fixture: ComponentFixture<EmployeeDetailsComponent>;
 
