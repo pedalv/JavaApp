@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../../domain/employee';
-import { CloneService } from '../../core/service/clone.service';
+import { CloneService } from '../../core/services/clone.service';
 
 @Component({
   selector: 'app-employee-list-sort',

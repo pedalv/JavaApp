@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../domain/employee';
-import { CloneService } from '../core/service/clone.service';
+import { CloneService } from '../core/services/clone.service';
 
 @Component({
   selector: 'app-employee',

@@ -11,3 +11,9 @@ export interface IPartner {
   description: string;
   email: string;
 }
+
+
+export interface ICustomer {
+  name: string;
+  city: string;
+}

@@ -12,6 +12,7 @@ const app_routes: Routes = [
   { path: "partner", loadChildren: () => import('./partner/partner.module').then(m => m.PartnerModule) },
   { path: "employee", loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule) },
   { path: "users", loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+  { path: "subjects", loadChildren: () => import('./subjects/subjects.module').then(m => m.SubjectsModule) },
   { path: '**', pathMatch: 'full', component: HomeComponent } // catch any unfound routes and redirect to home page
 ];
 

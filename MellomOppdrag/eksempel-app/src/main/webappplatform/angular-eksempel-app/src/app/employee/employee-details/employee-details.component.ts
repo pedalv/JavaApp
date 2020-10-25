@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, ChangeDetectionStrategy
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../../domain/employee';
 import $ from "jquery";
-import { CloneService } from '../../core/service/clone.service';
+import { CloneService } from '../../core/services/clone.service';
 import { BaseEmployeeComponent } from '../base-employee/base-employee.component'
 
 @Component({
