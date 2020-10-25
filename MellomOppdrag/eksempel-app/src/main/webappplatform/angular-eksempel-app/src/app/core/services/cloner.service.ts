@@ -4,7 +4,7 @@ import * as clone from 'clone'
 @Injectable({
   providedIn: 'root'
 })
-export class CloneService {
+export class ClonerService {
 
   constructor() { }
 

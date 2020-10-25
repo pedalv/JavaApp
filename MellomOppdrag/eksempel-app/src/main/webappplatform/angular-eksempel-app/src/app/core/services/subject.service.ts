@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { ICustomer } from '../../shared/interfaces'
+import { ICustomerSubject } from '../../shared/interfaces'
 
 import {  Subject, BehaviorSubject, ReplaySubject, AsyncSubject,
           Observable } from 'rxjs/Rx';
@@ -12,17 +12,17 @@ export class SubjectService {
 
   customers = [];
   intervalIds = [];
-  private subject$: Subject<ICustomer[]>;
-  subjectObservable$: Observable<ICustomer[]>;
+  private subject$: Subject<ICustomerSubject[]>;
+  subjectObservable$: Observable<ICustomerSubject[]>;
 
   private behaviorSubject$;
-  behaviorSubjectObservable$: Observable<ICustomer[]>;
+  behaviorSubjectObservable$: Observable<ICustomerSubject[]>;
 
-  private replaySubject$: ReplaySubject<ICustomer[]>;
-  replaySubjectObservable$: Observable<ICustomer[]>;
+  private replaySubject$: ReplaySubject<ICustomerSubject[]>;
+  replaySubjectObservable$: Observable<ICustomerSubject[]>;
 
-  private asyncSubject$: AsyncSubject<ICustomer[]>;
-  asyncSubjectObservable$: Observable<ICustomer[]>;
+  private asyncSubject$: AsyncSubject<ICustomerSubject[]>;
+  asyncSubjectObservable$: Observable<ICustomerSubject[]>;
 
   constructor() { }
 
@@ -36,7 +36,7 @@ export class SubjectService {
         name: 'Customers ' + len,
         city: 'City ' + len
       });
-      let clone: ICustomer[] = JSON.parse(JSON.stringify(this.customers));
+      let clone: ICustomerSubject[] = JSON.parse(JSON.stringify(this.customers));
       this.subject$.next(clone);
       this.behaviorSubject$.next(clone);
       this.replaySubject$.next(clone);

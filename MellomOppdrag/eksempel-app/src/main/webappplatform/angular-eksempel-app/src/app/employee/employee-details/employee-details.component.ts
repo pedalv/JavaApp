@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, ChangeDetectionStrategy
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../../domain/employee';
 import $ from "jquery";
-import { CloneService } from '../../core/services/clone.service';
+import { ClonerService } from '../../core/services/cloner.service';
 import { BaseEmployeeComponent } from '../base-employee/base-employee.component'
 
 @Component({
@@ -33,7 +33,7 @@ export class EmployeeDetailsComponent extends BaseEmployeeComponent implements O
   @Output() selectedEmployeeChanged = new EventEmitter<Employee>();
 
   constructor(private service: EmployeeService,
-              private cloneService: CloneService) {
+              private clonerService: ClonerService) {
     super();
   }
 
@@ -106,7 +106,7 @@ export class EmployeeDetailsComponent extends BaseEmployeeComponent implements O
       this.selectedEmployee = null;
       //this.employee = employee;
       //this.employee = JSON.parse(JSON.stringify(employee)); //Clone ref
-      this.employee = this.cloneService.deepClone<Employee>(employee); //Clone ref
+      this.employee = this.clonerService.deepClone<Employee>(employee); //Clone ref
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../domain/employee';
-import { CloneService } from '../core/services/clone.service';
+import { ClonerService } from '../core/services/cloner.service';
 
 @Component({
   selector: 'app-employee',
@@ -12,20 +12,20 @@ export class EmployeeComponent implements OnInit {
 
   selectedEmployee: Employee;
 
-  constructor(private cloneService: CloneService) { }
+  constructor(private clonerService: ClonerService) { }
 
   ngOnInit(): void {
   }
 
   changed(employee: Employee) {
-      console.log("CHANGED-clone");
+      console.log("CHANGED-cloner");
       console.log(employee);
       //this.selectedEmployee = employee;
       //this.selectedEmployee = JSON.parse(JSON.stringify(employee)); //Clone ref
-      this.selectedEmployee = this.cloneService.deepClone<Employee>(employee); //Clone ref
+      this.selectedEmployee = this.clonerService.deepClone<Employee>(employee); //Clone ref
 
       console.log(JSON.parse(JSON.stringify(employee)));
-      console.log(this.cloneService.deepClone<Employee>(employee));
+      console.log(this.clonerService.deepClone<Employee>(employee));
 
   }
 

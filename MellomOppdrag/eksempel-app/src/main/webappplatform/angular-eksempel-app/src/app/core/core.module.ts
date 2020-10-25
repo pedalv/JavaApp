@@ -11,7 +11,7 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 
 //import { CloneService } from './services/clone.service';
-// import { DataService } from './services/data.service';
+import { DataService } from './services/data.service';
 // import { ClonerService } from './services/cloner.service';
 // import { EventBusService } from './services/event-bus.service';
 // import { HttpClientRxJSService } from './services/httpClientRxJS.service';
@@ -36,7 +36,8 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   providers: [
-    /* DataService, ClonerService, EventBusService, HttpClientRxJSService, */
+    DataService
+    /* ClonerService, EventBusService, HttpClientRxJSService, */
   ] // these should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    // Ensure that CoreModule is only loaded into AppModule

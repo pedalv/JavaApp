@@ -15,7 +15,7 @@ describe('HttpClient testing', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
-       providers: [ EmployeeService]
+      providers: [ EmployeeService]
     });
 
     // Inject the http service and test controller for each test
