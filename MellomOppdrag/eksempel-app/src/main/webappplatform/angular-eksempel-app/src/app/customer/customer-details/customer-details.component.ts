@@ -10,7 +10,7 @@ import { ICustomer2 } from '../../shared/interfaces';
 })
 export class CustomerDetailsComponent implements OnInit {
 
-  @Input() customer: ICustomer2;
+  @Input() customer: ICustomer2; //Send
 
   ngOnInit() {}
 

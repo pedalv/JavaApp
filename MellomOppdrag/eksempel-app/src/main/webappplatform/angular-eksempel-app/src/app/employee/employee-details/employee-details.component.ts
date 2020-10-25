@@ -29,8 +29,8 @@ export class EmployeeDetailsComponent extends BaseEmployeeComponent implements O
   editError: boolean = false;
   msgEditError: string = 'Feil! Rest tjene er ned! Inge oppdatert ansatt!';
 
-  @Input() selectedEmployee: Employee;
-  @Output() selectedEmployeeChanged = new EventEmitter<Employee>();
+  @Input() selectedEmployee: Employee; //Send
+  @Output() selectedEmployeeChanged = new EventEmitter<Employee>(); //subscribe
 
   constructor(private service: EmployeeService,
               private clonerService: ClonerService) {
@@ -65,10 +65,11 @@ export class EmployeeDetailsComponent extends BaseEmployeeComponent implements O
 
   }
 
+  //Subscribe
   change() {
       console.log("OUTPUT-CHANGE");
         this.selectedEmployee =  {id: 20, firstName: "Pedro20", lastName: "Alves20", role: "Seniorutvikler"}; //null editEmployee
-        this.selectedEmployeeChanged.emit(this.selectedEmployee);
+        this.selectedEmployeeChanged.emit(this.selectedEmployee); //To send an event
   }
  replaceEmployee(employee: Employee) : void {
     console.log("replaceEmployee Employee updated: ", employee);

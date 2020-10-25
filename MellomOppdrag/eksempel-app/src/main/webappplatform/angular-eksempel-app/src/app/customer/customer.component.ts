@@ -39,6 +39,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
           .subscribe((custs: ICustomer2[]) => this.customers = custs);
     }
 
+    //Event-Bus
     ngOnDestroy() {
       this.subs.unsubscribe();
     }

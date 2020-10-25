@@ -77,6 +77,7 @@ export class SubjectsComponent implements OnInit, OnDestroy {
     this.timeoutIds.push(timeoutId);
   }
 
+  //Event-Bus
   ngOnDestroy() {
     this.subsink.unsubscribe();
     for (let id of this.timeoutIds) {

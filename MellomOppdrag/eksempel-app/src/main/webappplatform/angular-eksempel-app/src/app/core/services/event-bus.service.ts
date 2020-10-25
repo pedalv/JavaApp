@@ -11,6 +11,7 @@ export class EventBusService {
 
   constructor() { }
 
+  //Subscribe to an event
   on(event: Events, action: any): Subscription {
        return this.subject$
             .pipe(
@@ -20,6 +21,7 @@ export class EventBusService {
             .subscribe(action);
   }
 
+  //Send an event
   emit(event: EmitEvent) {
       this.subject$.next(event);
   }
