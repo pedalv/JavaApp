@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Customer } from '../../../core/model/customer';
+import { Customer } from '../../../../core/model/customer';
 import { DataServiceError } from '../services';
 import { DataAction, DataErrorAction } from './data.actions';
 
@@ -114,7 +114,7 @@ export type AllCustomerActions =
   | UpdateCustomerSuccess
   | UpdateCustomerError
   | GetCustomers
-  | GetCustomersSuccess
+  //| GetCustomersSuccess
   | GetCustomersError
   | AddCustomer
   | AddCustomerSuccess

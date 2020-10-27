@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Order } from '../../../core/model/order';
+import { Order } from '../../../../core/model/order';
 import { DataServiceError } from '../services';
 import { DataAction, DataErrorAction } from './data.actions';
 

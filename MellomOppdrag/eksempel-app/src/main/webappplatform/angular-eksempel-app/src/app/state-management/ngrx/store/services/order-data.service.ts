@@ -2,9 +2,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Order } from '../../core/model/order';
+import { Order } from '../../../../core/model/order';
 import { DataServiceError } from './data-error.service';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable()
 export class OrderDataService {

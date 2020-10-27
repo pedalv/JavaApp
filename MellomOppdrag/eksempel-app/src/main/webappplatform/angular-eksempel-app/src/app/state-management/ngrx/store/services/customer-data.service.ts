@@ -2,9 +2,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
-import { Customer } from '../../core/model/customer';
+import { Customer } from '../../../../core/model/customer';
 import { DataServiceError } from './data-error.service';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable()
 export class CustomerDataService {

@@ -1,4 +1,4 @@
-import { Order } from '../../../core/model/order';
+import { Order } from '../../../../core/model/order';
 import * as OrderActions from '../actions';
 
 export interface OrderState {

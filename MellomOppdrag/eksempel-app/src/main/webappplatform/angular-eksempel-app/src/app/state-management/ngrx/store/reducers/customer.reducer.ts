@@ -1,4 +1,4 @@
-import { Customer } from '../../../core/model/customer';
+import { Customer } from '../../../../core/model/customer';
 import * as CustomerActions from '../actions';
 
 export interface CustomerState {
