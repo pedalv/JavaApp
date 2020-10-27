@@ -6,18 +6,39 @@ import { Customer } from '../../../../core/model/customer';
 import { DataServiceError } from './data-error.service';
 import { environment } from '../../../../../environments/environment';
 
+import { DataService } from '../../../../core/services/data.service';
+import { ICustomer2 } from '../../../../shared/interfaces';
+
 @Injectable()
 export class CustomerDataService {
 
   apiUrlBase = environment.apiUrlBase;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private dataService: DataService) {}
 
   getCustomers(): Observable<Customer[]> {
+
+    //TODO
+    console.log("HERE");
+    this.dataService.getCustomers()
+            .subscribe((custs: ICustomer2[]) =>{
+
+              console.log("custs");
+              console.log(custs);
+
+              //return custs;
+              //return;
+            });
+
+
+    //Det finnes ikke : ${this.apiUrlBase}/customers
+    /* */
     return this.http.get<Customer[]>(`${this.apiUrlBase}/customers`)
     .pipe(
       catchError(this.handleError())
     );
+
   }
 
   getCustomer(id: number): Observable<Customer> {
