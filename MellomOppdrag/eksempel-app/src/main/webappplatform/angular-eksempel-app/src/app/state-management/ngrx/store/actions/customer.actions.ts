@@ -40,11 +40,10 @@ export class GetCustomers implements Action {
   readonly type = GET_CUSTOMERS;
 }
 
-// Add GetCustomersSuccess action here
-
-
-
-
+export class GetCustomersSuccess implements Action {
+  readonly type = GET_CUSTOMERS_SUCCESS;
+  constructor(public readonly payload: Customer[]) {}
+}
 
 export class GetCustomersError implements Action {
   readonly type = GET_CUSTOMERS_ERROR;
@@ -114,7 +113,7 @@ export type AllCustomerActions =
   | UpdateCustomerSuccess
   | UpdateCustomerError
   | GetCustomers
-  //| GetCustomersSuccess
+  | GetCustomersSuccess
   | GetCustomersError
   | AddCustomer
   | AddCustomerSuccess
