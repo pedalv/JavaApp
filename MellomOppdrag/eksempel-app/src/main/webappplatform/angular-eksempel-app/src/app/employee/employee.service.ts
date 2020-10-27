@@ -2,8 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Employee } from '../domain/employee';
 import { tap } from 'rxjs/operators';
-import {Observable} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
+/*
+NgRx Store provides reactive state management for Angular apps inspired by Redux.
+Unify the events in your application and derive state using RxJs.
+
+- Redux + RxJs = NgRx
+- Single source of truth for state
+- Immutable data
+- Provide consistency across a team
+- Diagnostic tool to watch store
+
+Store
+- Action (input component => Effects => Server => Effects === GetEmployees)
+- Reducers => State
+- Selectors (output component)
+
+*/
+
+/*
+A service is tyically a class with a narrow, well.defined purpose.
+It should do something specific and do it well.
+*/
 @Injectable({
   providedIn: 'root'
 })
@@ -41,7 +62,7 @@ export class EmployeeService {
        "role":employee.role
     };
 
-    return this.httpClient.post(this.apiURL + '/add', obj, this.headers); //TODO: 403Forbidden
+    return this.httpClient.post(this.apiURL + '/add', obj, this.headers);
 
   }
 
