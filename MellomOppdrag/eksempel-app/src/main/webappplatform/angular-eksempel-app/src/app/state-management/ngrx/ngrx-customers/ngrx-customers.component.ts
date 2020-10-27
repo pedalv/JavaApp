@@ -28,6 +28,8 @@ export class NgrxCustomersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // Add getCustomers() function here
+  getCustomers() {
+    this.store.dispatch(new CustomerAction.GetCustomers());
+  }
 
 }
