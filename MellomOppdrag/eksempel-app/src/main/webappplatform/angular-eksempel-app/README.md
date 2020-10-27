@@ -74,6 +74,8 @@ npm publish
 - [Pipes API list](https://angular.io/guide/architecture-components#templates-and-views)
 - [Sort/OrderBy pipe in Angular 5/6/7/8/9 (updated)](https://medium.com/@Mdmoin07/sort-pipe-in-angular-6-7-f22475cc4054)
 - [How to sort table rows according to a column in Angular 9](https://medium.com/nerd-for-tech/how-to-sort-table-rows-according-column-in-angular-9-b04fdafb4140)
+- [Introduction to services and dependency injection](https://angular.io/guide/architecture-services)
+- [NGRX](https://ngrx.io/)
 
 > Prod miljø: Apache 2  or [Nginx](https://www.nginx.com/)
 
