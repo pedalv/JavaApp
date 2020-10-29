@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { Customer } from '../../core/model/customer';
 import { ICustomer2, IProduct } from '../../shared/interfaces';
 import { ClonerService } from './cloner.service';
 import { List } from 'immutable';
@@ -11,6 +11,27 @@ import { List } from 'immutable';
   providedIn: 'root'
 })
 export class DataService {
+
+  customers2: Customer[] = [
+      {
+        id: 1,
+        name: 'John Doe',
+        city: 'Phoenix',
+        orderTotal: 42
+      },
+      {
+        id: 2,
+        name: 'Jane Doe',
+        city: 'Seattle',
+        orderTotal: 30
+      },
+      {
+        id: 3,
+        name: 'Michelle Thompson',
+        city: 'Orlando',
+        orderTotal: 22
+      }
+    ];
 
   customers: ICustomer2[] = [
     {
@@ -100,6 +121,13 @@ export class DataService {
 
     return of(this.customers);
   }
+
+  getCustomers2() : Observable<Customer[]> {
+      // Use the following code if using immutable.js
+      // return of(this.immutableCustomers.toJS());
+
+      return of(this.customers2);
+    }
 
   getProducts() : Observable<IProduct[]> {
     // Use this for immutable.js

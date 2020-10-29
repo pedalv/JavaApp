@@ -21,23 +21,15 @@ export class CustomerDataService {
 
     //TODO
     console.log("HERE");
-    this.dataService.getCustomers()
-            .subscribe((custs: ICustomer2[]) =>{
-
-              console.log("custs");
-              console.log(custs);
-
-              //return custs;
-              //return;
-            });
-
+    return this.dataService.getCustomers2();
 
     //Det finnes ikke : ${this.apiUrlBase}/customers
-    /* */
+    /*
     return this.http.get<Customer[]>(`${this.apiUrlBase}/customers`)
     .pipe(
       catchError(this.handleError())
     );
+    */
 
   }
 

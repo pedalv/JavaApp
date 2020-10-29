@@ -14,8 +14,3 @@ import { NgrxCustomersRoutingModule } from './ngrx-customers-routing.module';
 })
 
 export class NgrxCustomersModule { }
-
---
-
-
-export class CustomersModule { }
