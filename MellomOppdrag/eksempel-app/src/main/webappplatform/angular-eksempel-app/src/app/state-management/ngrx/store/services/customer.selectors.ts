@@ -10,7 +10,7 @@ const getCustomerState = createSelector(
   getEntityState,
   (state: EntityState) => state.customers
 );
-
+//9
 const getAllCustomers = createSelector(
   getCustomerState,
   (state: CustomerState) => state.customers

@@ -13,13 +13,14 @@ type GetCustomerAction = CustomerActions.GetCustomer;
 @Injectable()
 export class CustomerEffects {
 
+  //3 - 5
   @Effect()
   getCustomers$: Observable<Action> = this.actions$
     .pipe(
       ofType(CustomerActions.GET_CUSTOMERS),
       switchMap(() =>
         toAction(
-          this.customerDataService.getCustomers(),
+          this.customerDataService.getCustomers2(),
           CustomerActions.GetCustomersSuccess,
           CustomerActions.GetCustomersError
         )

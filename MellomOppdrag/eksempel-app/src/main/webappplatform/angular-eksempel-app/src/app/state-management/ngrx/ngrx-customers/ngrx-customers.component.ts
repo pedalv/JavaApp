@@ -32,7 +32,23 @@ export class NgrxCustomersComponent implements OnInit {
   }
 
   getCustomers() {
-    this.store.dispatch(new CustomerAction.GetCustomers());
+    //1 - 10
+    this.store.dispatch(new CustomerAction.GetCustomers()); //1
+
+    /*
+    1 component: GetCustomers()
+    2 actions
+    3 effects
+    4 server
+    5 effects
+    6 actions
+    7 reducers
+    8 state (store)
+    9 selectors$
+    10 component
+    */
+
+
   }
 
 }

@@ -15,6 +15,7 @@ export const initialState: CustomerState = {
   error: false
 };
 
+//3 take state og action to perform
 export function reducer(
   state = initialState,
   action: CustomerActions.AllCustomerActions
@@ -36,11 +37,11 @@ export function reducer(
     case CustomerActions.ADD_CUSTOMER_ERROR: {
       return { ...state, loading: false };
     }
-
+    //3 hereeeeeeeeee
     case CustomerActions.GET_CUSTOMERS: {
       return { ...state, loading: true };
     }
-
+    //3
     case CustomerActions.GET_CUSTOMERS_ERROR: {
       return {
         ...state,
@@ -64,7 +65,7 @@ export function reducer(
         loading: false
       };
     }
-
+    //7 8
     case CustomerActions.GET_CUSTOMER_SUCCESS: {
       return {
         ...state,

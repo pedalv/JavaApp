@@ -36,6 +36,7 @@ export abstract class CustomerErrorAction implements DataErrorAction<Customer> {
   constructor(public readonly payload: DataServiceError<Customer>) {}
 }
 
+//2 - 6
 export class GetCustomers implements Action {
   readonly type = GET_CUSTOMERS;
 }

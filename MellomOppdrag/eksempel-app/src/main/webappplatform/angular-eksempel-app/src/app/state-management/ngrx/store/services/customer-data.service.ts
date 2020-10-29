@@ -20,6 +20,7 @@ export class CustomerDataService {
   getCustomers(): Observable<Customer[]> {
 
     //TODO
+    //4
     console.log("HERE");
     return this.dataService.getCustomers2();
 
