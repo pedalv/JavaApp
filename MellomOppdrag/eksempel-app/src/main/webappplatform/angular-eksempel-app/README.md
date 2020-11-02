@@ -206,3 +206,146 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [Angular2 in 15min](https://www.youtube.com/watch?v=U3qshbC4fLo)
 - [Angular 10 Tutorial - Interpolation](https://www.youtube.com/watch?v=Kh-9qyAxXm0)
 
+##HttpClient and RxJS Operators
+
+- switchMap: merge observable into other observable
+
+```
+people : [{
+    felt1: 'blabla',
+    homeworld: 'https://...',
+    felt3:  'blabla',
+    ...
+}]
+
+import { map, switchMap } from 'rxjs/operators';
+
+getCharacterAndHomeworld() {
+    const url = this.baseUrl + 'people/1';
+    return this.http.get(url)
+      .pipe(
+        switchMap(character => {
+          return this.http.get(character['homeworld'])
+            .pipe(
+              map(hw => {
+                character['homeworld'] = hw;
+                return character;
+              })
+            )
+        })
+      );
+  }
+```
+
+- mergeMap: merge data into a observable
+
+```
+import { switchMap, mergeMap, concatMap, toArray } from 'rxjs/operators';
+
+//get all 10 persons with a link to homeworld => results
+getCharactersAndHomeworlds() {
+    return this.http.get(this.baseUrl + 'people') //1 get array of 10 persons
+      .pipe(
+        switchMap(res => {
+          // convert array to observable
+          return from(res['results']); //2 convert to Observable (concatMap for keep order)
+        }),
+        // concatMap((person: any) => {
+        mergeMap((person: any) => { 
+            return this.http.get(person['homeworld']) //3 pass each one to fetch homeworld data
+              .pipe(
+                map(hw => {
+                  person['homeworld'] = hw;
+                  return person;
+                })
+              );
+        }),
+        toArray()
+      );
+  }
+```
+
+- forkJoin: many calls and notify when last value/result is return 
+
+```
+import { forkJoin, of} from 'rxjs';
+import { tap, map } from 'rxjs/operators';
+
+getCharacters() {
+    return this.http.get(this.baseUrl + 'people')
+      .pipe(
+        tap(res => {
+          console.log('Before getCharacters map');
+        }),
+        map(res => {
+          return res['results'];
+        }),
+        tap(res => {
+          console.log('After getCharacters map');
+        })
+      );
+  }
+
+getPlanets() {
+    return this.http.get(this.baseUrl + 'planets')
+      .pipe(
+        tap(res => {
+          console.log('Before getPlanets map');
+        }),
+        map(res => {
+          return res['results'];
+        }),
+        tap(res => {
+          console.log('After getPlanets map');
+        })
+      );
+  }
+
+getCharactersAndPlanets() {
+    return forkJoin(
+      this.getCharacters(), //res[0]
+      this.getPlanets() //res[1]
+    )
+    .pipe(
+      map((res) => {
+        return { characters: res[0], planets: res[1] };
+      }),
+      catchError(error => of(error))
+    );
+  }
+```
+
+- Component
+
+```
+@Component({
+  selector: 'app-httpclientrxjs',
+  templateUrl: './httpClientRxJS.component.html',
+  styleUrls: [ './httpClientRxJS.component.css' ]
+})
+export class HttpClientRxJSComponent implements OnInit  {
+
+  charactersWithHomeworld$: Observable<any>;
+  characterWithHomeworld$: Observable<{}>;
+  charactersAndPlanets: { characters: any[], planets: any[]};
+  characters$: Observable<any[]>;
+  planets$: Observable<any[]>;
+  ...
+  constructor(private dataService: HttpClientRxJSService) { }
+  ...
+  ngOnInit() {
+    // Get both characters and planets at same time
+    // Uses forkJoin
+    this.dataService.getCharactersAndPlanets()
+      .subscribe(data => this.charactersAndPlanets = data);
+
+    // Get character and its homeworld
+    // Uses switchMap
+    this.characterWithHomeworld$ = 
+      this.dataService.getCharacterAndHomeworld();
+
+    this.charactersWithHomeworld$ = this.dataService.getCharactersAndHomeworlds();
+    ...
+  }
+  ...
+```
