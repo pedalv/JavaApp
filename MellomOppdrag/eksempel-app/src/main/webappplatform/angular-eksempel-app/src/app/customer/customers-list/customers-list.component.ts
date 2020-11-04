@@ -3,11 +3,11 @@ import { ICustomer } from '../../shared/interfaces';
 import { EventBusService, EmitEvent, Events } from '../../core/services/event-bus.service';
 
 import { DataService } from '../../core/services/data.service';
-//import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
-//import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
-//@AutoUnsubscribe()
+@AutoUnsubscribe()
 @Component({
   selector: 'app-customers-list',
   templateUrl: './customers-list.component.html',
@@ -23,15 +23,15 @@ export class CustomersListComponent implements OnInit, OnDestroy {
   eventbusSub: Subscription;
   customersChangedSub: Subscription;
 
-  constructor(private eventbus: EventBusService/*, private dataService: DataService*/) {}
+  constructor(private eventbus: EventBusService, private dataService: DataService) {}
   //constructor(private eventbus: EventBusService) { }
 
   ngOnInit() {
     console.log("ngOnInit");
     //Example of using BehaviorSubject to be notified when a service changes
-    //this.customersChangedSub = this.dataService.customersChanged$.subscribe(custs => (this.customers = custs)); //Subscribe
+    this.customersChangedSub = this.dataService.customersChanged$.subscribe(custs => (this.customers = custs)); //Subscribe
 
-    //Example of using an event bus to provide loosely coupled communication (mediator pattern)
+    //Example of using an event bus to provide loosely coupled communication (mediator pattern) - Feil etter flere customer
     //this.eventbusSub = this.eventbus.on(Events.Customer_Selected, cust => (this.customerSelected = cust)); //Subscribe
 
   }
