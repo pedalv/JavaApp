@@ -3,7 +3,7 @@
   <tr>
     <th>Name</th>
   </tr>
-  <tr *ngFor="let cust of customers" (click)="selectCustomer(cust)">
+  <tr *ngFor="let cust of customers" (click)="select(cust)">
     <td>{{ cust.name }}</td>
   </tr>
 </table>

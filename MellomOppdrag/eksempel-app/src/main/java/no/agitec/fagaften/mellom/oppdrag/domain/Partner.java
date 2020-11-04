@@ -18,6 +18,11 @@ public class Partner {
 
     private String name;
 
+    private String description;
+
+    private String email;
+
+
     public Partner(String firstName) {
         this.name = firstName;
     }

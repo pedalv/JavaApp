@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { ICustomer2 } from '../../shared/interfaces';
+import { ICustomer } from '../../shared/interfaces';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { ICustomer2 } from '../../shared/interfaces';
 })
 export class CustomerDetailsComponent implements OnInit {
 
-  @Input() customer: ICustomer2; //Send
+  @Input() customer: ICustomer; //Send
 
   ngOnInit() {}
 

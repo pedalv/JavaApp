@@ -205,6 +205,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [Learn AngularJS in 5 Minutes](https://www.youtube.com/watch?v=cEbBvAEDjrg)
 - [Angular2 in 15min](https://www.youtube.com/watch?v=U3qshbC4fLo)
 - [Angular 10 Tutorial - Interpolation](https://www.youtube.com/watch?v=Kh-9qyAxXm0)
+- [What is NgRx? === Redux Pattern + Angular](https://ngrx.io/docs)
+- [Angular in-memory-web-api](https://github.com/angular/in-memory-web-api)
 
 ##HttpClient and RxJS Operators
 

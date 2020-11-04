@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Customer } from '../../core/model/customer';
-import { ICustomer2, IProduct } from '../../shared/interfaces';
+//import { Customer } from '../../core/model/customer';
+import { ICustomer } from '../../shared/interfaces';
 import { ClonerService } from './cloner.service';
 import { List } from 'immutable';
 
@@ -11,7 +11,7 @@ import { List } from 'immutable';
   providedIn: 'root'
 })
 export class DataService {
-
+/*
   customers2: Customer[] = [
       {
         id: 1,
@@ -32,28 +32,38 @@ export class DataService {
         orderTotal: 22
       }
     ];
+*/
 
-  customers: ICustomer2[] = [
+
+/*
+Garantikassen for fiskere	GFF ELSAM 2015
+NAV/Helsedirektoratet	KUKR/SAPO
+Senter for pasientmedvirkning og samhandlingsforskning (SPS)	SpsWebPage, ReConnect-App og -Web
+Statnett	Responsive design av internettløsning
+Norges Forskningsråd	Forvaltning av nettsider prosjekter
+Gjensidige Forsikring	Forvaltning
+A-Pressen Digital Medier (Amedia)	Nettaviser, Zett.no
+More Software Solutions	Digital Skjema
+UDP AS	Involvert i et internt prosjekt
+*/
+  customers: ICustomer[] = [
     {
       id: 1,
-      name: 'John Doe',
-      city: 'Phoenix',
-      age: 42
+      name: 'NAV',
+      project: 'Automastisk Frikort'
     },
     {
       id: 2,
-      name: 'Jane Doe',
-      city: 'Seattle',
-      age: 30
+      name: 'Apotek 1',
+      project: 'Nagara'
     },
     {
       id: 3,
-      name: 'Michelle Thompson',
-      city: 'Orlando',
-      age: 22
+      name: 'Direktoratet for e-helse',
+      project: 'Digital skjema RØF, TOD'
     }
   ];
-
+/*
   products: IProduct[] =  [
     {
       id: 1,
@@ -106,75 +116,55 @@ export class DataService {
       price: 1599.99
     }
   ];
+*/
+  immutableCustomers = List<ICustomer>();
 
-  immutableCustomers = List<ICustomer2>();
-  immutableProducts = List<IProduct>();
-
-  private customersSubject$ = new BehaviorSubject<ICustomer2[]>(this.customers);
+  private customersSubject$ = new BehaviorSubject<ICustomer[]>(this.customers);
   customersChanged$ = this.customersSubject$.asObservable();
 
   constructor(private cloner: ClonerService) { }
 
-  getCustomers() : Observable<ICustomer2[]> {
+  getCustomers() : Observable<ICustomer[]> {
     // Use the following code if using immutable.js
     // return of(this.immutableCustomers.toJS());
 
     return of(this.customers);
   }
 
-  getCustomers2() : Observable<Customer[]> {
-      // Use the following code if using immutable.js
-      // return of(this.immutableCustomers.toJS());
-
-      return of(this.customers2);
-    }
-
-  getProducts() : Observable<IProduct[]> {
-    // Use this for immutable.js
-    // return of(this.immutableProducts.toJS());
-
-    return of(this.products);
-  }
-
-  addCustomer() : Observable<ICustomer2[]> {
+  addCustomer() : Observable<ICustomer[]> {
     let id = this.customers[this.customers.length - 1].id + 1;
     this.customers.push({
       id: id,
       name: 'New Customer ' + id,
-      city: 'Somewhere',
-      age: id * 5
+      project: 'Project ' + id
     });
+    console.log("addCustomer");
+    console.log(this.customers);
     this.customersSubject$.next(this.customers);
     return of(this.customers);
   }
 
-  addCustomerClone() : Observable<ICustomer2[]> {
+  addCustomerClone() : Observable<ICustomer[]> {
     return this.addCustomer().pipe(
       map(custs => {
+        console.log("addCustomerClone");
+        console.log(custs);
         return this.cloner.deepClone(custs);
       })
     )
   }
 
-  addCustomerImmutable() : Observable<ICustomer2[]> {
+  addCustomerImmutable() : Observable<ICustomer[]> {
     let id = this.immutableCustomers[this.immutableCustomers.size - 1].id + 1;
     this.immutableCustomers.push({
       id: id,
       name: 'New Customer ' + id,
-      city: 'Somewhere',
-      age: id * 5
+      project: 'Project ' + id
     });
+    console.log("addCustomerImmutable");
+    console.log(this.customers);
     this.customersSubject$.next(this.customers);
     return of(this.immutableCustomers.toJS());
-  }
-
-  addProduct(newProduct: IProduct) {
-    this.products.push({
-      id: this.products.length,
-      name: newProduct.name,
-      price: +newProduct.price
-    });
-    return of(this.products);
   }
 
 }

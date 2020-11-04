@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { ICustomer2 } from '../shared/interfaces';
+import { ICustomer } from '../shared/interfaces';
 import { DataService } from '../core/services/data.service';
 import { SubSink } from 'subsink';
+import { ClonerService } from '../core/services/cloner.service';
 
 @Component({
   selector: 'app-customer',
@@ -11,32 +12,36 @@ import { SubSink } from 'subsink';
 })
 export class CustomerComponent implements OnInit, OnDestroy {
 
-  customers: ICustomer2[] = [];
-  customer: ICustomer2;
+  customers: ICustomer[] = [];
+  customer: ICustomer;
   private subs = new SubSink();
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private clonerService: ClonerService) { }
 
   ngOnInit() {
     this.subs.sink = this.dataService.getCustomers()
-        .subscribe((custs: ICustomer2[]) =>{
+        .subscribe((custs: ICustomer[]) =>{
           this.customers = custs;
+          console.log("getCustomers");
           console.log(this.customers);
         });
   }
 
-    selected(cust: ICustomer2) {
-      this.customer = cust;
+    onSelect(cust: ICustomer) {
+      console.log("changed");
+      console.log(cust);
+      //this.customer = customer;
+      this.customer = this.clonerService.deepClone<ICustomer>(cust); //Clone ref
     }
 
     addCustomerPush() {
       this.dataService.addCustomer()
-          .subscribe((custs: ICustomer2[]) => this.customers = custs);
+          .subscribe((custs: ICustomer[]) => this.customers = custs);
     }
 
     addCustomerClone() {
       this.dataService.addCustomerClone()
-          .subscribe((custs: ICustomer2[]) => this.customers = custs);
+          .subscribe((custs: ICustomer[]) => this.customers = custs);
     }
 
     //Event-Bus

@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ChangeDetectionStrategy, SimpleChanges } from '@angular/core';
-import { ICustomer2 } from '../../shared/interfaces';
+import { ICustomer } from '../../shared/interfaces';
 import { EventBusService, EmitEvent, Events } from '../../core/services/event-bus.service';
+
 import { DataService } from '../../core/services/data.service';
-import { Subscription } from 'rxjs';
+//import { Subscription } from 'rxjs';
 
-import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+//import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
-@AutoUnsubscribe()
+//@AutoUnsubscribe()
 @Component({
   selector: 'app-customers-list',
   templateUrl: './customers-list.component.html',
@@ -15,22 +16,23 @@ import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 })
 export class CustomersListComponent implements OnInit, OnDestroy {
 
-  @Input() customers: ICustomer2[]; //Send
-  @Output() customerSelected = new EventEmitter<ICustomer2>(); //Subscribe
+  @Input() customers: ICustomer[]; //Send
+  @Output() customerSelected = new EventEmitter<ICustomer>(); //Subscribe
   logMessages: string[] = [];
 
   eventbusSub: Subscription;
   customersChangedSub: Subscription;
-  constructor(private eventbus: EventBusService, private dataService: DataService) {}
+
+  constructor(private eventbus: EventBusService/*, private dataService: DataService*/) {}
   //constructor(private eventbus: EventBusService) { }
 
   ngOnInit() {
-
+    console.log("ngOnInit");
     //Example of using BehaviorSubject to be notified when a service changes
-    this.customersChangedSub = this.dataService.customersChanged$.subscribe(custs => (this.customers = custs)); //Subscribe
+    //this.customersChangedSub = this.dataService.customersChanged$.subscribe(custs => (this.customers = custs)); //Subscribe
 
     //Example of using an event bus to provide loosely coupled communication (mediator pattern)
-    this.eventbusSub = this.eventbus.on(Events.CustomerSelected, cust => (this.customerSelected = cust)); //Subscribe
+    //this.eventbusSub = this.eventbus.on(Events.Customer_Selected, cust => (this.customerSelected = cust)); //Subscribe
 
   }
 
@@ -46,13 +48,19 @@ export class CustomersListComponent implements OnInit, OnDestroy {
 
   }
 
-  selectCustomer(cust: ICustomer2) {
+  select(cust: ICustomer) {
+    console.log("select - EventEmitter");
+    console.log(cust);
+
+
     // send to parent via output property
     // note: could use eventbus as well if desired but output property
     // would be the preferred method for passing data to am immediate parent
+    console.log("-1-");
     this.customerSelected.emit(cust); //To send an event
+    console.log("-2-");
     // Send customer to any eventbus listeners listening for the CustomerSelected event
-    this.eventbus.emit(new EmitEvent(Events.CustomerSelected, cust)); //To send an event
+    this.eventbus.emit(new EmitEvent(Events.Customer_Selected, cust)); //To send an event
   }
 
   ngOnDestroy() {

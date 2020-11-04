@@ -35,5 +35,5 @@ export class EmitEvent {
 }
 
 export enum Events {
-  CustomerSelected
+  Customer_Selected
 }

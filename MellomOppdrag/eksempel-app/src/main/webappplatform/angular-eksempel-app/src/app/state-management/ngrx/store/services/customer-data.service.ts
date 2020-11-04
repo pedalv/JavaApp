@@ -2,12 +2,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError, Observable } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
-import { Customer } from '../../../../core/model/customer';
+//import { Customer } from '../../../../core/model/customer';
 import { DataServiceError } from './data-error.service';
 import { environment } from '../../../../../environments/environment';
 
 import { DataService } from '../../../../core/services/data.service';
-import { ICustomer2 } from '../../../../shared/interfaces';
+import { ICustomer } from '../../../../shared/interfaces';
 
 @Injectable()
 export class CustomerDataService {
@@ -17,12 +17,12 @@ export class CustomerDataService {
   constructor(private http: HttpClient,
               private dataService: DataService) {}
 
-  getCustomers(): Observable<Customer[]> {
+  getCustomers(): Observable<ICustomer[]> {
 
     //TODO
     //4
     console.log("HERE");
-    return this.dataService.getCustomers2();
+    return this.dataService.getCustomers();
 
     //Det finnes ikke : ${this.apiUrlBase}/customers
     /*
@@ -34,21 +34,21 @@ export class CustomerDataService {
 
   }
 
-  getCustomer(id: number): Observable<Customer> {
-    return this.http.get<Customer>(`${this.apiUrlBase}/customers/${id}`)
+  getCustomer(id: number): Observable<ICustomer> {
+    return this.http.get<ICustomer>(`${this.apiUrlBase}/customers/${id}`)
     .pipe(
       catchError(this.handleError())
     );
   }
 
-  addCustomer(customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(`${this.apiUrlBase}/customers/`, customer)
+  addCustomer(customer: ICustomer): Observable<ICustomer> {
+    return this.http.post<ICustomer>(`${this.apiUrlBase}/customers/`, customer)
     .pipe(
       catchError(this.handleError(customer))
     );
   }
 
-  deleteCustomer(customer: Customer): Observable<Customer> {
+  deleteCustomer(customer: ICustomer): Observable<ICustomer> {
     return this.http.delete(`${this.apiUrlBase}/customers/${customer.id}`)
     .pipe(
       map(() => customer),
@@ -56,8 +56,8 @@ export class CustomerDataService {
     );
   }
 
-  updateCustomer(customer: Customer): Observable<Customer> {
-    return this.http.put<Customer>(`${this.apiUrlBase}/customers/${customer.id}`, customer)
+  updateCustomer(customer: ICustomer): Observable<ICustomer> {
+    return this.http.put<ICustomer>(`${this.apiUrlBase}/customers/${customer.id}`, customer)
     .pipe(
       map(() => customer),
       catchError(this.handleError(customer))
