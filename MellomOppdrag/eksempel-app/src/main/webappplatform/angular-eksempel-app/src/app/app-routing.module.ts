@@ -8,7 +8,7 @@ const app_routes: Routes = [
   { path: "", pathMatch: 'full', component: HomeComponent },
   { path: "home", component: HomeComponent },
   { path: "kafka", loadChildren: () => import('./kafka/kafka.module').then(m => m.KafkaModule) },
-  { path: "customer", loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule) },
+  { path: "customers", loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
   { path: "store", loadChildren: () => import('./store/customers/customers.module').then(m => m.CustomersModule) },
   { path: "state-management", loadChildren: () => import('./state-management/state-management.module').then(m => m.StateManagementModule) },
   { path: "partner", loadChildren: () => import('./partner/partner.module').then(m => m.PartnerModule) },

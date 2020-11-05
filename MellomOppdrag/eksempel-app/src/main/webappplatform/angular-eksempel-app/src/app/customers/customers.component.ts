@@ -7,10 +7,10 @@ import { ClonerService } from '../core/services/cloner.service';
 
 @Component({
   selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.less']
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.less']
 })
-export class CustomerComponent implements OnInit, OnDestroy {
+export class CustomersComponent implements OnInit, OnDestroy {
 
   customers: ICustomer[] = [];
   customer: ICustomer;

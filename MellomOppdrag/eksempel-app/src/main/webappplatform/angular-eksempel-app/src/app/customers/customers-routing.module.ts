@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CustomerComponent } from './customer.component';
+import { CustomersComponent } from './customers.component';
 
 const routes: Routes = [
-  { path: "", component: CustomerComponent }
+  { path: "", component: CustomersComponent }
 ];
 
 @NgModule({
@@ -12,6 +12,6 @@ const routes: Routes = [
   exports: [ RouterModule ],
   declarations: [ ]
 })
-export class CustomerRoutingModule {
-  static components = [ CustomerComponent ];
+export class CustomersRoutingModule {
+  static components = [ CustomersComponent ];
 }
