@@ -9,7 +9,7 @@ const app_routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "kafka", loadChildren: () => import('./kafka/kafka.module').then(m => m.KafkaModule) },
   { path: "customers", loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
-  { path: "store", loadChildren: () => import('./store/customers/customers.module').then(m => m.CustomersModule) },
+  { path: "state", loadChildren: () => import('./state/customers/customers.module').then(m => m.CustomersModule) },
   { path: "state-management", loadChildren: () => import('./state-management/state-management.module').then(m => m.StateManagementModule) },
   { path: "partner", loadChildren: () => import('./partner/partner.module').then(m => m.PartnerModule) },
   { path: "employee", loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule) },
