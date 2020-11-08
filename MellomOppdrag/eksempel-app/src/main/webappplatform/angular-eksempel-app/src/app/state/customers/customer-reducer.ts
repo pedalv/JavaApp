@@ -4,37 +4,44 @@ import { ICustomer } from '../../shared/interfaces';
 
 export const customerReducer = createReducer(
   {
-      showCustomersList: true,
-      //customersList: [],
-      //customerSelected: null
+      isShowCustomers: true,
+      customersList: [],
+      customerSelected: null
    }, //initialState
 
-  on(createAction('[Customers] Show Customers List'), state => {
-    console.log('original state [Customers] Show Customers List: ' + JSON.stringify(state));
-    return {
-      ...state,
-      //customers: state.customersList,
-      showCustomersList: !state.showCustomersList
-    };
-  }),
-  on(createAction('[Customer] Show Customer Selected'), state => {
-      console.log('original state [Customer] Show Customer Selected: ' + JSON.stringify(state));
+  on(createAction('[Customers] IS Show Customers'), state => {
+      console.log('original state IS: ' + JSON.stringify(state));
       return {
         ...state,
-        //customer: state.customerSelected,
-        showCustomersList: !state.showCustomersList
+        isShowCustomers: !state.isShowCustomers
       };
     }),
+
+  on(createAction('[Customers] Show Customers List'), state => {
+    console.log('original state LIST: ' + JSON.stringify(state));
+    return {
+      ...state,
+      customersList: state.customersList,
+    };
+  }),
+
+  on(createAction('[Customer] Show Customer Selected'), state => {
+      console.log('original state SELECTED: ' + JSON.stringify(state));
+      return {
+        ...state,
+        customerSelected: state.customerSelected,
+      };
+    })
+
 );
 
-
-
 /*
-    //customerReducer
+    customerReducer
+    //Store: customers Action: isShowCustomers
     //Store: customers Action: showCustomersList
     //Store: customer Action: showSelectedCustomer
     customers: {
       customerSelected | customer: [],
       customers: {}
     }
-    */
+*/

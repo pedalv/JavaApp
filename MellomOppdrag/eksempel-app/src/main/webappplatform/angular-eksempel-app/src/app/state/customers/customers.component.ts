@@ -38,8 +38,9 @@ export class CustomersComponent implements OnInit {
         // TODO: Unsubscribe
         this.store.select('customers').subscribe(
           customers => {
+
             if (customers) {
-              this.displayCustomers = customers.showCustomersList;
+              this.displayCustomers = customers.isShowCustomers;
               //this.customers = customers.customers;
               //this.customer = customers.customer;
             }
@@ -53,7 +54,7 @@ export class CustomersComponent implements OnInit {
 
   checkChanged(): void {
     this.store.dispatch(
-      { type: '[Customers] Show Customers List'}
+      { type: '[Customers] IS Show Customers'}
     );
   }
 
