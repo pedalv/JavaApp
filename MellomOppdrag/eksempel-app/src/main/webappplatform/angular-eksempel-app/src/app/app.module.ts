@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,             // Main routes for application
     CoreModule,                   // Singleton objects (services, components that are loaded only once, etc.)
     SharedModule,
-    StoreModule.forRoot({}, {})   // Shared (multi-instance) objects
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })   // Shared (multi-instance) objects
   ],
   declarations: [
     AppComponent,
