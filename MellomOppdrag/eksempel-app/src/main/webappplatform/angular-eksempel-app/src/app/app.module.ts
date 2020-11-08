@@ -23,7 +23,11 @@ import { environment } from '../environments/environment';
     CoreModule,                   // Singleton objects (services, components that are loaded only once, etc.)
     SharedModule,
     StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })   // Shared (multi-instance) objects
+    StoreDevtoolsModule.instrument({
+      name: 'AngularEksempelApp',
+      maxAge: 25,
+      logOnly: environment.production
+    })   // Shared (multi-instance) objects
   ],
   declarations: [
     AppComponent,
