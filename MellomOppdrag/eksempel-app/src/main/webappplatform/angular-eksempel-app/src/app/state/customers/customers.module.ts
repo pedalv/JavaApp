@@ -7,23 +7,26 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
-import { customerReducer } from './customer-reducer';
+import { customersReducer } from './customers.reducer';
 
 
 @NgModule({
   imports:      [
     CommonModule,
     CustomersRoutingModule,
-    StoreModule.forFeature('customers', customerReducer)
+    StoreModule.forFeature('customers', customersReducer)
     /*
-        //customerReducer
+        customerReducer
+        //Store: customers Action: isShowCustomers
         //Store: customers Action: showCustomersList
         //Store: customer Action: showSelectedCustomer
         customers: {
-          customerSelected | customer: [],
-          customers: {}
-        }
-        */
+           isShowCustomers: true,
+           customerSelected: null,
+           currentCustomerId: -1,
+           customersList: []
+         }
+    */
   ],
   declarations: [ CustomersRoutingModule.components, CustomersListComponent, CustomerDetailsComponent ]
 })

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
-
+import { State, getIsShowCustomers } from './customers.reducer';
 import { Subscription } from 'rxjs';
 
 /* NgRx */
@@ -23,7 +23,7 @@ export class CustomersComponent implements OnInit {
   displayCustomers: boolean;
   sub: Subscription;
 
-  constructor(private store: Store<any>,
+  constructor(private store: Store<State>,
               private dataService: DataService,
               private clonerService: ClonerService) { }
 
@@ -35,17 +35,18 @@ export class CustomersComponent implements OnInit {
               console.log(this.customers);
             });
 
-        // TODO: Unsubscribe
+
+        this.store.select(getIsShowCustomers).subscribe(
+          isShowCustomers => this.displayCustomers = isShowCustomers
+        );
+/*
         this.store.select('customers').subscribe(
           customers => {
-
-            if (customers) {
-              this.displayCustomers = customers.isShowCustomers;
-              //this.customers = customers.customers;
-              //this.customer = customers.customer;
-            }
-          });
-
+             this.displayCustomers = customers.isShowCustomers;
+             //this.customers = customers.customers;
+             //this.customer = customers.customer;
+        });
+*/
   }
 
   ngOnDestroy(): void {
