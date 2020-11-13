@@ -23,3 +23,20 @@ export const setCustomerSelected = createAction(
     '[Customer] Set Customer Selected',
     props<{ customer: ICustomer }>()
   );
+
+export const initializeCurrentCustomer = createAction(
+    '[Customer] Initialize Current Customer'
+  );
+
+
+export const loadCustomers = createAction(
+    '[Customer] Load'
+  );
+export const loadCustomersSucess = createAction(
+    '[Customer] Load Success',
+    props< { customers : ICustomer[] } >()
+  );
+export const loadCustomersFailure = createAction(
+    '[Customer] Load Fail',
+    props< { error: string } >()
+  );

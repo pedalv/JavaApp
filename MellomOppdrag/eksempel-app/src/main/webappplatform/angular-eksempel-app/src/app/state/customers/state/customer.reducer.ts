@@ -12,6 +12,7 @@ export interface State extends AppState.State {
 export interface CustomerState {
   isShowCustomers: boolean,
   customerSelected: ICustomer,
+  currentCustomer: ICustomer,
   currentCustomerId: number,
   customersList: ICustomer[]
 }
@@ -19,6 +20,7 @@ export interface CustomerState {
 const initialState: CustomerState = {
   isShowCustomers: true,
   customerSelected: null,
+  currentCustomer: null,
   currentCustomerId: -1,
   customersList: []
 }
@@ -28,6 +30,11 @@ const getCustomerFeatureState = createFeatureSelector<CustomerState>('customers'
 export const getIsShowCustomers = createSelector(
   getCustomerFeatureState,
   state => state.isShowCustomers
+);
+
+export const getInitializeCurrentCustomer = createSelector(
+  getCustomerFeatureState,
+  state => state.currentCustomer
 );
 
 export const getCustomerSelected = createSelector(
@@ -85,7 +92,19 @@ export const customerReducer = createReducer<CustomerState>(
         ...state,
         customerSelected: state.customerSelected,
       };
-    })
+    }),
+
+  on(CustomerActions.initializeCurrentCustomer, (state) : CustomerState => {
+        console.log('original state initializeCurrentCustomer: ' + JSON.stringify(state));
+        return {
+          ...state,
+          currentCustomer: {
+            id: -1,
+            name: 'New Customer',
+            project: 'Project'
+          }
+        };
+      })
 
 );
 

@@ -4,7 +4,9 @@ import * as CustomerActions  from './state/customer.actions';
 import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
-import { State, getIsShowCustomers, getCurrentCustomer } from './state/customer.reducer';
+import { State, getIsShowCustomers,
+        getCurrentCustomer, getCustomersList,
+        getCustomerSelected, getInitializeCurrentCustomer } from './state/customer.reducer';
 import { Subscription } from 'rxjs';
 
 /* NgRx */
@@ -29,12 +31,21 @@ export class CustomersComponent implements OnInit {
               private clonerService: ClonerService) { }
 
   ngOnInit(): void {
+
     this.sub = this.dataService.getCustomers()
             .subscribe((custs: ICustomer[]) =>{
               this.customers = custs;
               console.log("getCustomers");
               console.log(this.customers);
             });
+
+        this.store.select(getCustomerSelected).subscribe(
+          customerSelected => this.customer = customerSelected
+        ); //Store
+
+        this.store.select(getInitializeCurrentCustomer).subscribe(
+          //currentCustomer => this.customer = currentCustomer
+        ); //Store
 
 
         this.store.select(getIsShowCustomers).subscribe(
@@ -65,16 +76,19 @@ export class CustomersComponent implements OnInit {
     );
   }
 
-  onSelect(cust: ICustomer) {
+  onSelect(customer: ICustomer) {
     console.log("changed");
-    console.log(cust);
+    console.log(customer);
     //this.customer = customer;
-    this.customer = this.clonerService.deepClone<ICustomer>(cust); //Clone ref
+    //this.customer = this.clonerService.deepClone<ICustomer>(customer); //Clone ref
+
+    this.store.dispatch(CustomerActions.setCustomerSelected( { customer } )); //Store
   }
 
   addCustomerClone() {
-      this.dataService.addCustomerClone()
-          .subscribe((custs: ICustomer[]) => this.customers = custs);
+    //this.dataService.addCustomerClone().subscribe((custs: ICustomer[]) => this.customers = custs);
+
+    this.store.dispatch(CustomerActions.initializeCurrentCustomer()); //Store
   }
 
 }
@@ -91,4 +105,9 @@ export class CustomersComponent implements OnInit {
        currentCustomerId: -1,
        customersList: []
      }
+*/
+
+/*
+  input (Send)                            output (Subscribe === EventEmitter)
+  input (Send === dispatch === Action)    output (Subscribe === selector === View)
 */
