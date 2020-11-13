@@ -1,7 +1,9 @@
 /* NgRx */
 import { createReducer, on, createAction, createFeatureSelector, createSelector } from '@ngrx/store';
-import * as AppState from '../app.state';
-import { ICustomer } from '../../shared/interfaces';
+import * as AppState from './app.state';
+import * as CustomerActions  from './customer.actions';
+import { ICustomer } from '../../../shared/interfaces';
+
 
 export interface State extends AppState.State {
   customers: CustomerState;
@@ -49,11 +51,11 @@ export const getCustomersList = createSelector(
   state => state.customersList
 );
 
-export const customersReducer = createReducer<CustomerState>(
+export const customerReducer = createReducer<CustomerState>(
 
   initialState,
 
-  on(createAction('[Customers] IS Show Customers'), (state) : CustomerState => {
+  on(CustomerActions.isShowCustomers, (state) : CustomerState => {
       console.log('original state IS: ' + JSON.stringify(state));
       return {
         ...state,
@@ -61,7 +63,15 @@ export const customersReducer = createReducer<CustomerState>(
       };
     }),
 
-  on(createAction('[Customers] Show Customers List'), state => {
+  on(CustomerActions.setCustomerSelected, (state, action) : CustomerState => {
+        console.log('original state SET: ' + JSON.stringify(state));
+        return {
+          ...state,
+          customerSelected: action.customer
+        };
+      }),
+
+  on(CustomerActions.showCustomersList, state => {
     console.log('original state LIST: ' + JSON.stringify(state));
     return {
       ...state,
@@ -69,7 +79,7 @@ export const customersReducer = createReducer<CustomerState>(
     };
   }),
 
-  on(createAction('[Customer] Show Customer Selected'), state => {
+  on(CustomerActions.showCustomerSelected, state => {
       console.log('original state SELECTED: ' + JSON.stringify(state));
       return {
         ...state,
@@ -82,8 +92,8 @@ export const customersReducer = createReducer<CustomerState>(
 /*
     customerReducer
     //Store: customers Action: isShowCustomers
-    //Store: customers Action: showCustomersList
-    //Store: customer Action: showSelectedCustomer
+    //Store: customers Action: customersList
+    //Store: customer Action: customerSelected === currentCustomerId
     customers: {
        isShowCustomers: true,
        customerSelected: null,

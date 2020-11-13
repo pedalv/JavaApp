@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import * as CustomerActions  from './state/customer.actions';
 import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
-import { State, getIsShowCustomers } from './customers.reducer';
+import { State, getIsShowCustomers, getCurrentCustomer } from './state/customer.reducer';
 import { Subscription } from 'rxjs';
 
 /* NgRx */
@@ -39,6 +40,10 @@ export class CustomersComponent implements OnInit {
         this.store.select(getIsShowCustomers).subscribe(
           isShowCustomers => this.displayCustomers = isShowCustomers
         );
+
+        this.store.select(getCurrentCustomer).subscribe(
+          currentCustomerId => this.customer = currentCustomerId
+        );
 /*
         this.store.select('customers').subscribe(
           customers => {
@@ -55,7 +60,8 @@ export class CustomersComponent implements OnInit {
 
   checkChanged(): void {
     this.store.dispatch(
-      { type: '[Customers] IS Show Customers'}
+      CustomerActions.isShowCustomers()
+      //{ type: '[Customers] IS Show Customers'}
     );
   }
 
@@ -72,3 +78,17 @@ export class CustomersComponent implements OnInit {
   }
 
 }
+
+
+/*
+    customerReducer
+    //Store: customers Action: isShowCustomers
+    //Store: customers Action: customersList
+    //Store: customer Action: customerSelected === currentCustomerId
+    customers: {
+       isShowCustomers: true,
+       customerSelected: null,
+       currentCustomerId: -1,
+       customersList: []
+     }
+*/
