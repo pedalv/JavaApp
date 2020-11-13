@@ -86,7 +86,7 @@ export class CustomersComponent implements OnInit {
   }
 
   addCustomerClone() {
-    //this.dataService.addCustomerClone().subscribe((custs: ICustomer[]) => this.customers = custs);
+    this.dataService.addCustomerClone().subscribe((custs: ICustomer[]) => this.customers = custs);
 
     this.store.dispatch(CustomerActions.initializeCurrentCustomer()); //Store
   }
