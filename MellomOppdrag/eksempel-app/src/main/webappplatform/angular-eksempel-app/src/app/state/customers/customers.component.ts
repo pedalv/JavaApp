@@ -42,7 +42,7 @@ export class CustomersComponent implements OnInit {
                 });
     */
     this.customers$ = this.store.select(getCustomerList); //Store
-
+    //this.customers$ = [];
 
     this.store.select(getCustomerSelected).subscribe(
       customerSelected => this.customer = customerSelected //add TODO update list

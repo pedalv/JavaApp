@@ -1,4 +1,15 @@
+<div *ngIf="customers$ | async as customers">
+  Customers to list:
+</div>
+
+<!--
+<div *ngIf="customers?.length">
+  No customers to list
+</div>
+-->
+
 <h4>Customers</h4>
+
 <table class="table table-striped">
   <tr>
     <th>Name</th>
