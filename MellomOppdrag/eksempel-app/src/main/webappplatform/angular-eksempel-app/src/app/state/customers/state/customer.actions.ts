@@ -32,7 +32,7 @@ export const initializeCurrentCustomer = createAction(
 export const loadCustomers = createAction(
     '[Customer] Load'
   );
-export const loadCustomersSucess = createAction(
+export const loadCustomersSuccess = createAction(
     '[Customer] Load Success',
     props< { customers : ICustomer[] } >()
   );
