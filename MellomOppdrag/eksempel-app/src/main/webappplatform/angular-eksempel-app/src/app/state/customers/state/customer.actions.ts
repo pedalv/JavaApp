@@ -7,10 +7,6 @@ export const isShowCustomers = createAction(
     '[Customers] IS Show Customers'
   );
 
-export const showCustomersList = createAction(
-    '[Customers] Show Customers List'
-  );
-
 export const showCustomerSelected = createAction(
     '[Customer] Show Customer Selected'
   );

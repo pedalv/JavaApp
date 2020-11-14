@@ -5,7 +5,7 @@ import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
 import { State, getIsShowCustomers,
-        getCurrentCustomer, getCustomersList,
+        getCurrentCustomer, getCustomerList,
         getCustomerSelected, getInitializeCurrentCustomer } from './state/customer.reducer';
 import { Subscription } from 'rxjs';
 

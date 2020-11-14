@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { environment } from '../environments/environment';
       name: 'AngularEksempelApp',
       maxAge: 25,
       logOnly: environment.production
-    })   // Shared (multi-instance) objects
+    }), // Shared (multi-instance) objects
+    EffectsModule.forRoot([])
   ],
   declarations: [
     AppComponent,
