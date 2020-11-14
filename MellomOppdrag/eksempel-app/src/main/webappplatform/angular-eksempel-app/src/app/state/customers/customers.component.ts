@@ -6,7 +6,8 @@ import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
 import { State, getIsShowCustomers,
         getCurrentCustomer, getCustomerList,
-        getCustomerSelected, getInitializeCurrentCustomer } from './state/customer.reducer';
+        getCustomerSelected, getInitializeCurrentCustomer,
+         getError } from './state/customer.reducer';
 import { Subscription, Observable } from 'rxjs';
 
 /* NgRx */
@@ -26,7 +27,7 @@ export class CustomersComponent implements OnInit {
   //sub: Subscription;
   customers$: Observable<ICustomer[]>;
   customer$: Observable<ICustomer | null>;
-
+  errorMessage$: Observable<string | null>;
 
   constructor(private store: Store<State>,
               private dataService: DataService,
@@ -35,6 +36,7 @@ export class CustomersComponent implements OnInit {
   ngOnInit(): void {
 
     this.store.dispatch(CustomerActions.loadCustomers()); //Store
+    this.errorMessage$ = this.store.select(getError); //Store
     /*
     this.sub = this.dataService.getCustomers()
                 .subscribe((custs: ICustomer[]) =>{

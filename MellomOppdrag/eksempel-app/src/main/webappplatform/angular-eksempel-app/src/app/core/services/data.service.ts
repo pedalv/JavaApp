@@ -7,6 +7,8 @@ import { ICustomer } from '../../shared/interfaces';
 import { ClonerService } from './cloner.service';
 import { List } from 'immutable';
 
+import { throwError } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -127,7 +129,7 @@ UDP AS	Involvert i et internt prosjekt
   getCustomers() : Observable<ICustomer[]> {
     // Use the following code if using immutable.js
     // return of(this.immutableCustomers.toJS());
-
+    //return throwError("Feil get customers");
     return of(this.customers);
   }
 

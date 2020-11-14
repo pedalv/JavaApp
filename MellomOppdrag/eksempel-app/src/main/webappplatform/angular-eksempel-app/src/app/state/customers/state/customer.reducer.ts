@@ -60,6 +60,11 @@ export const getCustomerList = createSelector(
   state => state.customerList
 );
 
+export const getError = createSelector(
+  getCustomerFeatureState,
+  state => state.error
+);
+
 export const customerReducer = createReducer<CustomerState>(
 
   initialState,

@@ -1,43 +1,41 @@
-<div *ngIf="customer$ | async as customer">
-  Customer details:
-  {{ customer$.id }}
+<div *ngIf="customer$ | async as customer" >
+  Customers list:
 </div>
 
 <h4>Details</h4>
 
-
 <table *ngIf="customer$ | async" class="table">
-  <thead></thead>
+
   <tbody>
-    <tr>
-      <td>Id: </td>
-      <td>{{ customer$.id }}</td>
-    </tr>
-    <tr>
-      <td>Name: </td>
-      <td>{{ customer$.name }}</td>
-    </tr>
-    <tr>
-      <td>Project: </td>
-      <td>{{ customer$.project }}</td>
-    </tr>
+  <tr>
+    <td>Id: </td>
+    <td>{{ customer$.id }}</td>
+  </tr>
+  <tr>
+    <td>Name: </td>
+    <td>{{ customer$.name }}</td>
+  </tr>
+  <tr>
+    <td>Project: </td>
+    <td>{{ customer$.project }}</td>
+  </tr>
   </tbody>
-
-
-  <!--
+<!--
   <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Project</th>
-    </tr>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Project</th>
+  </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>{{ customer$.id | async }}</td>
-      <td>{{ customer$.name }}</td>
-      <td>{{ customer$.project }}</td>
-    </tr>
+  <tr>
+    <td>{{ customer$.id | async }}</td>
+    <td>{{ customer$.name }}</td>
+    <td>{{ customer$.project }}</td>
+  </tr>
   </tbody>
-  -->
+-->
 </table>
+
+
