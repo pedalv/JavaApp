@@ -4,20 +4,20 @@
 
 <h4>Details</h4>
 
-<table *ngIf="customer$ | async" class="table">
+<table *ngIf="customer$ | async as customer" class="table">
 
   <tbody>
   <tr>
     <td>Id: </td>
-    <td>{{ customer$.id }}</td>
+    <td>{{ customer.id }}</td>
   </tr>
   <tr>
     <td>Name: </td>
-    <td>{{ customer$.name }}</td>
+    <td>{{ customer.name }}</td>
   </tr>
   <tr>
     <td>Project: </td>
-    <td>{{ customer$.project }}</td>
+    <td>{{ customer.project }}</td>
   </tr>
   </tbody>
 <!--
