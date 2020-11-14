@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col-md-6">
-    <!-- <app-customers-list [customers]="customers" (customerSelected)="onSelect($event)"></app-customers-list> -->
-    <app-customers-list [customers$]="customers$" (customerSelected)="onSelect($event)"></app-customers-list>
+    <!-- <app-customers-list [customers$]="customers$" (customerSelected)="onSelect($event)"></app-customers-list> -->
+    <app-customers-list></app-customers-list>
   </div>
   <div class="col-md-6">
-    <app-customer-details [customer]="customer"></app-customer-details>
+    <!-- <app-customer-details [customer]="customer"></app-customer-details> -->
+    <app-customer-details></app-customer-details>
   </div>
 </div>
 <button (click)="addCustomerClone()" class="btn btn-primary">Add Customer (push a clone)</button>

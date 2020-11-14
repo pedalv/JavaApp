@@ -2,6 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 import { ICustomer } from '../../../shared/interfaces';
 
 import { Observable } from 'rxjs';
+import { State, getCustomerList, getCustomerSelected } from '../state/customer.reducer';
+import * as CustomerActions  from '../state/customer.actions';
+
+/* NgRx */
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-customers-list',
@@ -11,18 +16,18 @@ import { Observable } from 'rxjs';
 })
 export class CustomersListComponent implements OnInit {
 
-  //@Input() customers: ICustomer[]; //Send
-  @Input() customers$: Observable<ICustomer[]>; //Send
-  @Output() customerSelected = new EventEmitter<ICustomer>(); //Subscribe
+  customers$: Observable<ICustomer[]>; //Subscribe
 
-  constructor() {}
+  constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
+    this.customers$ = this.store.select(getCustomerList); //Store
   }
 
-  select(cust: ICustomer) {
-    console.log("select - EventEmitter");
-    this.customerSelected.emit(cust); //To send an event
+  selected(customer: ICustomer) : void {
+    console.log("customer selected");
+    console.log(customer);
+    this.store.dispatch(CustomerActions.setCustomerSelected( { customer } )); //Store
   }
 
 }

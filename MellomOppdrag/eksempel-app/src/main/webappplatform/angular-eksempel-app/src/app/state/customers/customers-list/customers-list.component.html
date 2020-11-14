@@ -1,5 +1,5 @@
 <div *ngIf="customers$ | async as customers">
-  Customers to list:
+  Customers list:
 </div>
 
 <!--
@@ -11,16 +11,19 @@
 <h4>Customers</h4>
 
 <table class="table table-striped">
-  <tr>
-    <th>Name</th>
-  </tr>
-  <!--
-  <tr *ngFor="let cust of customers" (click)="select(cust)">
-    <td>{{ cust.name }}</td>
-  </tr>
-  -->
-  <tr *ngFor="let cust of customers$ | async" (click)="select(cust)">
-    <td>{{ cust.name }}</td>
-  </tr>
-
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--
+    <tr *ngFor="let cust of customers" (click)="select(cust)">
+      <td>{{ cust.name }}</td>
+    </tr>
+    -->
+    <tr *ngFor="let cust of customers$ | async" (click)="selected(cust)">
+      <td>{{ cust.name }}</td>
+    </tr>
+  </tbody>
 </table>

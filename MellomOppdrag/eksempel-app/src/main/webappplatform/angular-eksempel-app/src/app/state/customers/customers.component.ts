@@ -19,12 +19,14 @@ import { Store } from '@ngrx/store';
 })
 export class CustomersComponent implements OnInit {
 
-  customers: ICustomer[] = [];
+  //customers: ICustomer[] = [];
   customer: ICustomer;
 
   displayCustomers: boolean;
   //sub: Subscription;
   customers$: Observable<ICustomer[]>;
+  customer$: Observable<ICustomer | null>;
+
 
   constructor(private store: Store<State>,
               private dataService: DataService,
@@ -41,12 +43,21 @@ export class CustomersComponent implements OnInit {
                   console.log(this.customers);
                 });
     */
-    this.customers$ = this.store.select(getCustomerList); //Store
-    //this.customers$ = [];
+    //this.customers$ = this.store.select(getCustomerList); //Store // changed to customers-list without input
 
+
+
+
+    /*
+     this.customer$ = this.store.select(getCustomerSelected).pipe(tap(
+          customerSelected => this.customer = customerSelected
+        ));
+
+    ????????
     this.store.select(getCustomerSelected).subscribe(
       customerSelected => this.customer = customerSelected //add TODO update list
     ); //Store
+    */
 
     this.store.select(getInitializeCurrentCustomer).subscribe(
       currentCustomer => this.customer = currentCustomer
@@ -84,6 +95,7 @@ export class CustomersComponent implements OnInit {
     );
   }
 
+  /*
   onSelect(customer: ICustomer) {
     console.log("changed");
     console.log(customer);
@@ -91,9 +103,11 @@ export class CustomersComponent implements OnInit {
     //this.customer = this.clonerService.deepClone<ICustomer>(customer); //Clone ref
 
     this.store.dispatch(CustomerActions.setCustomerSelected( { customer } )); //Store
-  }
+  } //Store // changed to customers-list without input
+  */
 
   addCustomerClone() {
+    //TODO update
     //this.dataService.addCustomerClone().subscribe((custs: ICustomer[]) => this.customers = custs);
 
     this.store.dispatch(CustomerActions.initializeCurrentCustomer()); //Store
