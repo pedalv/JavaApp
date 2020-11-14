@@ -20,11 +20,9 @@ import { Store } from '@ngrx/store';
 })
 export class CustomersComponent implements OnInit {
 
-  //customers: ICustomer[] = [];
   customer: ICustomer;
 
   displayCustomers: boolean;
-  //sub: Subscription;
   customers$: Observable<ICustomer[]>;
   customer$: Observable<ICustomer | null>;
   errorMessage$: Observable<string | null>;
@@ -35,61 +33,28 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.store.dispatch(CustomerActions.loadCustomers()); //Store
-    this.errorMessage$ = this.store.select(getError); //Store
-    /*
-    this.sub = this.dataService.getCustomers()
-                .subscribe((custs: ICustomer[]) =>{
-                  this.customers = custs;
-                  console.log("getCustomers");
-                  console.log(this.customers);
-                });
-    */
-    //this.customers$ = this.store.select(getCustomerList); //Store // changed to customers-list without input
-
-
-
-
-    /*
-     this.customer$ = this.store.select(getCustomerSelected).pipe(tap(
-          customerSelected => this.customer = customerSelected
-        ));
-
-    ????????
-    this.store.select(getCustomerSelected).subscribe(
-      customerSelected => this.customer = customerSelected //add TODO update list
-    ); //Store
-    */
-
-    this.store.select(getInitializeCurrentCustomer).subscribe(
-      currentCustomer => this.customer = currentCustomer
-    ); //Store
-
-
+    //check element
     this.store.select(getIsShowCustomers).subscribe(
       isShowCustomers => this.displayCustomers = isShowCustomers
+    ); //Store
+
+    //show list of customers Action(here) and Select(error: here and list: custumer-list)
+    this.store.dispatch(CustomerActions.loadCustomers()); //Store
+    this.errorMessage$ = this.store.select(getError); //Store
+
+
+    //add customer todo
+    this.store.select(getInitializeCurrentCustomer).subscribe(
+      currentCustomer => this.customer = currentCustomer
     ); //Store
 
     this.store.select(getCurrentCustomer).subscribe(
       currentCustomerId => this.customer = currentCustomerId
     ); //Store
 
-/*
-    this.store.select('customers').subscribe(
-      customers => {
-         this.displayCustomers = customers.isShowCustomers;
-         //this.customers = customers.customers;
-         //this.customer = customers.customer;
-    });
-*/
   }
 
-  /*
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
-  */
-
+  //check element
   checkChanged(): void {
     this.store.dispatch(
       CustomerActions.isShowCustomers()
@@ -97,17 +62,7 @@ export class CustomersComponent implements OnInit {
     );
   }
 
-  /*
-  onSelect(customer: ICustomer) {
-    console.log("changed");
-    console.log(customer);
-    //this.customer = customer;
-    //this.customer = this.clonerService.deepClone<ICustomer>(customer); //Clone ref
-
-    this.store.dispatch(CustomerActions.setCustomerSelected( { customer } )); //Store
-  } //Store // changed to customers-list without input
-  */
-
+  //add customer todo
   addCustomerClone() {
     //TODO update
     //this.dataService.addCustomerClone().subscribe((custs: ICustomer[]) => this.customers = custs);
