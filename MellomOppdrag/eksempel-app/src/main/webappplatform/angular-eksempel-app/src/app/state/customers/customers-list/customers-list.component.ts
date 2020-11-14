@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { ICustomer } from '../../../shared/interfaces';
 
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-customers-list',
   templateUrl: './customers-list.component.html',
@@ -9,7 +11,8 @@ import { ICustomer } from '../../../shared/interfaces';
 })
 export class CustomersListComponent implements OnInit {
 
-  @Input() customers: ICustomer[]; //Send
+  //@Input() customers: ICustomer[]; //Send
+  @Input() customers$: Observable<ICustomer[]>; //Send
   @Output() customerSelected = new EventEmitter<ICustomer>(); //Subscribe
 
   constructor() {}
@@ -23,3 +26,8 @@ export class CustomersListComponent implements OnInit {
   }
 
 }
+
+/*
+  input (Send)                            output (Subscribe === EventEmitter)
+  input (Send === dispatch === Action)    output (Subscribe === selector === View)
+*/

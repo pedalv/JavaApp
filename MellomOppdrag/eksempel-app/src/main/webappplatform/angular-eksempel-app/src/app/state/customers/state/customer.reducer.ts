@@ -14,7 +14,8 @@ export interface CustomerState {
   customerSelected: ICustomer,
   currentCustomer: ICustomer,
   currentCustomerId: number,
-  customerList: ICustomer[]
+  customerList: ICustomer[],
+  error: string;
 }
 
 const initialState: CustomerState = {
@@ -22,7 +23,8 @@ const initialState: CustomerState = {
   customerSelected: null,
   currentCustomer: null,
   currentCustomerId: -1,
-  customerList: []
+  customerList: [],
+  error: ''
 }
 
 const getCustomerFeatureState = createFeatureSelector<CustomerState>('customers');
@@ -99,13 +101,22 @@ export const customerReducer = createReducer<CustomerState>(
       }),
 
   on(CustomerActions.loadCustomersSuccess, (state, action) : CustomerState => {
-          console.log('original state LIST: ' + JSON.stringify(state));
+          console.log('original state LIST SUCCESS: ' + JSON.stringify(state));
           return {
             ...state,
-            customerList: action.customers
+            customerList: action.customers,
+            error: ''
           };
-        })
+        }),
 
+  on(CustomerActions.loadCustomersFailure, (state, action) : CustomerState => {
+            console.log('original state LIST ERROR: ' + JSON.stringify(state));
+            return {
+              ...state,
+              customerList: [],
+              error: action.error
+            };
+          })
 );
 
 /*

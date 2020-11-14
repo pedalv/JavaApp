@@ -3,7 +3,13 @@
   <tr>
     <th>Name</th>
   </tr>
+  <!--
   <tr *ngFor="let cust of customers" (click)="select(cust)">
     <td>{{ cust.name }}</td>
   </tr>
+  -->
+  <tr *ngFor="let cust of customers$ | async" (click)="select(cust)">
+    <td>{{ cust.name }}</td>
+  </tr>
+
 </table>

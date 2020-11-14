@@ -7,11 +7,10 @@ import { ClonerService } from '../../core/services/cloner.service';
 import { State, getIsShowCustomers,
         getCurrentCustomer, getCustomerList,
         getCustomerSelected, getInitializeCurrentCustomer } from './state/customer.reducer';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 /* NgRx */
 import { Store } from '@ngrx/store';
-
 
 @Component({
   selector: 'app-customers',
@@ -24,7 +23,8 @@ export class CustomersComponent implements OnInit {
   customer: ICustomer;
 
   displayCustomers: boolean;
-  sub: Subscription;
+  //sub: Subscription;
+  customers$: Observable<ICustomer[]>;
 
   constructor(private store: Store<State>,
               private dataService: DataService,
@@ -32,42 +32,50 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.store.dispatch(CustomerActions.loadCustomers()); //Store
+    /*
     this.sub = this.dataService.getCustomers()
-            .subscribe((custs: ICustomer[]) =>{
-              this.customers = custs;
-              console.log("getCustomers");
-              console.log(this.customers);
-            });
-
-        this.store.select(getCustomerSelected).subscribe(
-          customerSelected => this.customer = customerSelected
-        ); //Store
-
-        this.store.select(getInitializeCurrentCustomer).subscribe(
-          //currentCustomer => this.customer = currentCustomer
-        ); //Store
+                .subscribe((custs: ICustomer[]) =>{
+                  this.customers = custs;
+                  console.log("getCustomers");
+                  console.log(this.customers);
+                });
+    */
+    this.customers$ = this.store.select(getCustomerList); //Store
 
 
-        this.store.select(getIsShowCustomers).subscribe(
-          isShowCustomers => this.displayCustomers = isShowCustomers
-        );
+    this.store.select(getCustomerSelected).subscribe(
+      customerSelected => this.customer = customerSelected //add TODO update list
+    ); //Store
 
-        this.store.select(getCurrentCustomer).subscribe(
-          currentCustomerId => this.customer = currentCustomerId
-        );
+    this.store.select(getInitializeCurrentCustomer).subscribe(
+      currentCustomer => this.customer = currentCustomer
+    ); //Store
+
+
+    this.store.select(getIsShowCustomers).subscribe(
+      isShowCustomers => this.displayCustomers = isShowCustomers
+    ); //Store
+
+    this.store.select(getCurrentCustomer).subscribe(
+      currentCustomerId => this.customer = currentCustomerId
+    ); //Store
+
 /*
-        this.store.select('customers').subscribe(
-          customers => {
-             this.displayCustomers = customers.isShowCustomers;
-             //this.customers = customers.customers;
-             //this.customer = customers.customer;
-        });
+    this.store.select('customers').subscribe(
+      customers => {
+         this.displayCustomers = customers.isShowCustomers;
+         //this.customers = customers.customers;
+         //this.customer = customers.customer;
+    });
 */
   }
 
+  /*
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
+  */
 
   checkChanged(): void {
     this.store.dispatch(
@@ -86,7 +94,7 @@ export class CustomersComponent implements OnInit {
   }
 
   addCustomerClone() {
-    this.dataService.addCustomerClone().subscribe((custs: ICustomer[]) => this.customers = custs);
+    //this.dataService.addCustomerClone().subscribe((custs: ICustomer[]) => this.customers = custs);
 
     this.store.dispatch(CustomerActions.initializeCurrentCustomer()); //Store
   }
