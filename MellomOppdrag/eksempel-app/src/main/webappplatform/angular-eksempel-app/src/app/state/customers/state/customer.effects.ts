@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { DataService } from '../../core/services/data.service';
+import { DataService } from '../../../core/services/data.service';
 
 /* NgRx */
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -28,7 +28,17 @@ export class CustomerEffects {
 }
 
 /*
-- mergeMap: merge data into a observable
+- switchMap: merge observable into other observable
+=== Use for get request or cancelable request like searches
+
+- concatMap: merge data into a observable in order and is less performant
+=== Use for get, post and put request when order is important
+
+- mergeMap: merge data into a observable in parallel
+=== Use for get, put, post and delete methods when order is not important
+
+- exchaustMap: Ignores all subsequent subscriprions/requests until is completes
+=== Use for login when do not want more requests until the initial one is complete
 */
 
 /*

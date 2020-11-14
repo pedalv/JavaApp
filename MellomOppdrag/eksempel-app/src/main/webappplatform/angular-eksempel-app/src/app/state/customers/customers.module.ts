@@ -7,14 +7,16 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { customerReducer } from './state/customer.reducer';
+import { CustomerEffects } from './state/customer.effects';
 
 
 @NgModule({
   imports:      [
     CommonModule,
     CustomersRoutingModule,
-    StoreModule.forFeature('customers', customerReducer)
+    StoreModule.forFeature('customers', customerReducer),
     /*
         customerReducer
         //Store: customers Action: isShowCustomers
@@ -27,6 +29,7 @@ import { customerReducer } from './state/customer.reducer';
            customersList: []
          }
     */
+    EffectsModule.forFeature([CustomerEffects])
   ],
   declarations: [ CustomersRoutingModule.components, CustomersListComponent, CustomerDetailsComponent ]
 })
