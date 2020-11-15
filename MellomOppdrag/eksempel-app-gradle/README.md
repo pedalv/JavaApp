@@ -1,57 +1,114 @@
-## Prosjekt: eksempel-app
-Bygg kompetanse for bevis for konsept POC med Spring, Apache Kafka, Java, Kotlin, React, ...
+## Prosjekt: eksempel-app-gradle
+Bygg kompetanse for bevis for konsept POC med Gradle, Spring, Apache Kafka, Java, Kotlin, React, ...
 
-## Start App
+## [Gradle](https://gradle.org/)
+- Accelerate developer productivity
+- From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.
+- [Upcoming trainings](https://gradle.com/training/?_ga=2.252432457.1519713676.1600255208-1287073750.1600255208)
+- [Migrating Builds From Apache Maven](https://docs.gradle.org/current/userguide/migrating_from_maven.html)
+
+> [The Java Plugin](https://docs.gradle.org/current/userguide/java_plugin.html#sec:java_project_layout)
+
+> [Get started with build scans](https://scans.gradle.com/?_ga=2.172224995.1519713676.1600255208-1287073750.1600255208#maven)
+
+> [Get started with build scans](https://scans.gradle.com/?_ga=2.172224995.1519713676.1600255208-1287073750.1600255208#gradle)
+
+> [Performing an automatic conversion](https://docs.gradle.org/current/userguide/migrating_from_maven.html#migmvn:automatic_conversion)
+
+> [Migrating multi-module builds (project aggregation)](https://docs.gradle.org/current/userguide/migrating_from_maven.html#migmvn:multimodule_builds)
+
+- [Gradle vs Maven Comparison](https://gradle.org/maven-vs-gradle/)
+- [Install Gradle](https://gradle.org/install/)
+
+> [Releases](https://gradle.org/releases/)
+
+- [Get Started Guides](https://gradle.org/guides/#getting-started)
+
+> [Free Training](https://gradle.com/training/?_ga=2.145872116.1519713676.1600255208-1287073750.1600255208)
+
+> [Building Java Libraries](https://guides.gradle.org/building-java-libraries/)
+
+> [Building Java Applications](https://guides.gradle.org/building-java-applications/)
 
 ```
-kafka_2.12-2.5.0> .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
-kafka_2.12-2.5.0> .\bin\windows\kafka-server-start.bat .\config\server.properties
+> gradle init
+> gradle build
+>./gradlew build --scan vs mvn clean install
+>./gradlew tasks
+>./gradlew run
 
-eksempel-app> mvn clean install
-Run: EksempelAppApplication 
+rmdir /s /q .gradle
 ```
 
-##  WebApp - [Spring Boot](https://start.spring.io/)
-- Lombok: https://projectlombok.org/features/all 
-- Spring Web: Restful, Spring MVC, Apche Tomcat as default embedded container
-- Rest Repositories: Fetch data
-- Spring HATEOAS: RESTful APIs
-- Thymeleaf: Server-side Java template engine 
-- Spring Data JPA: Persist data in SQL
-- H2 Database: In-memory database
-- Spring Boot DevTools: config
-- Spring Segurity: Authentication and access-control
+```
 
+D:\Workspace\JavaApp\MellomOppdrag\eksempel-app>gradle tasks
 
-#### For å Vise
-- pom fil
-- MVC Config
-- JPA Examples
+> Task :tasks
 
-> Domain: Comment, Store, others
+------------------------------------------------------------
+Tasks runnable from root project - eksempel-app
+------------------------------------------------------------
 
-> Load Database Config: OneToOne, OneToMany, ManyToMany
+Build tasks
+-----------
+assemble - Assembles the outputs of this project.
+build - Assembles and tests this project.
+buildDependents - Assembles and tests this project and all projects that depend on it.
+buildNeeded - Assembles and tests this project and all projects it depends on.
+classes - Assembles main classes.
+clean - Deletes the build directory.
+jar - Assembles a jar archive containing the main classes.
+testClasses - Assembles test classes.
 
--  Web Security Config
+Build Setup tasks
+-----------------
+init - Initializes a new Gradle build.
+wrapper - Generates Gradle wrapper files.
 
-> UserDetailsServiceImp
+Documentation tasks
+-------------------
+javadoc - Generates Javadoc API documentation for the main source code.
 
-> CreatePassword
+Help tasks
+----------
+buildEnvironment - Displays all buildscript dependencies declared in root project 'eksempel-app'.
+components - Displays the components produced by root project 'eksempel-app'. [incubating]
+dependencies - Displays all dependencies declared in root project 'eksempel-app'.
+dependencyInsight - Displays the insight into a specific dependency in root project 'eksempel-app'.
+dependentComponents - Displays the dependent components of components in root project 'eksempel-app'. [incubating]
+help - Displays a help message.
+model - Displays the configuration model of root project 'eksempel-app'. [incubating]
+outgoingVariants - Displays the outgoing variants of root project 'eksempel-app'.
+projects - Displays the sub-projects of root project 'eksempel-app'.
+properties - Displays the properties of root project 'eksempel-app'.
+tasks - Displays the tasks runnable from root project 'eksempel-app'.
 
-> How Encode password on Server and Client side?
+Publishing tasks
+----------------
+generateMetadataFileForMavenPublication - Generates the Gradle metadata file for publication 'maven'.
+generatePomFileForMavenPublication - Generates the Maven POM file for publication 'maven'.
+publish - Publishes all publications produced by this project.
+publishMavenPublicationToMavenLocal - Publishes Maven publication 'maven' to the local Maven repository.
+publishToMavenLocal - Publishes all Maven publications produced by this project to the local Maven cache.
 
+Verification tasks
+------------------
+check - Runs all checks.
+test - Runs the unit tests.
 
-## Kafka Sample - [APACHE KAFKA](https://kafka.apache.org/)
-- [Index of /spring-kafka: api/ docs/ reference/](https://docs.spring.io/spring-kafka/)
-- [KAFKA TEORI](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/Kafka-teori.md)
-- [KAFKA QUICK DEMO](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/Kafka-demo.md)
-- [KAFKA COMMANDS](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/Kafka-commands.md)
+Rules
+-----
+Pattern: clean<TaskName>: Cleans the output files of a task.
+Pattern: build<ConfigurationName>: Assembles the artifacts of a configuration.
+Pattern: upload<ConfigurationName>: Assembles and uploads the artifacts belonging to a configuration.
 
-#### For å Vise
-- [Word Count Sample Demo](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/src/main/java/no/agitec/fagaften/mellom/oppdrag/kafka/quickstart/streams/examples/wordcount)t
-- [String Sample Demo med Spring Apache](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/src/main/java/no/agitec/fagaften/mellom/oppdrag/kafka/spring/boot/string/sample)
-- [Object Sample Demo (Not Work)](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/src/main/java/no/agitec/fagaften/mellom/oppdrag/kafka/spring/boot/object/samples)
+To see all tasks and more detail, run gradle tasks --all
 
+To see more detail about a task, run gradle help --task <task>
 
-## Modern JavaScript frameworks
-- [Klient Side Teori](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/Klient-side-teori.md)
+BUILD SUCCESSFUL in 690ms
+1 actionable task: 1 executed
+D:\Workspace\JavaApp\MellomOppdrag\eksempel-app>
+
+```
