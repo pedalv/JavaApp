@@ -201,4 +201,8 @@ The Spring for Apache Kafka (spring-kafka) project applies core Spring concepts 
 
 > [4.1. Using Spring for Apache Kafka](https://docs.spring.io/spring-kafka/docs/2.5.4.RELEASE/reference/html/#reference)
 
-## [Gradle Teori](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/eksempel-app/Gradle-teori.md)
+## Prosjekt: [eksempel-app-gradle](https://github.com/pedalv/JavaApp/tree/master/MellomOppdrag/eksempel-app-gradle)
+
+## Prosjekt: [eksempel-app-integrating-spring-and-jsf](https://github.com/pedalv/JavaApp/tree/master/MellomOppdrag/eksempel-app-integrating-spring-and-jsf)
+
+## Prosjekt: [angular-eksempel-app](https://github.com/pedalv/JavaApp/tree/master/MellomOppdrag/eksempel-app/src/main/webappplatform/angular-eksempel-app)
