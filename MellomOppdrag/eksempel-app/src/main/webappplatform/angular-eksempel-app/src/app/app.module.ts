@@ -23,7 +23,12 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,             // Main routes for application
     CoreModule,                   // Singleton objects (services, components that are loaded only once, etc.)
     SharedModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({}, {
+      runtimeChecks: {
+        strictStateImmutability: false,
+        strictActionImmutability: false
+      }
+    }),
     StoreDevtoolsModule.instrument({
       name: 'AngularEksempelApp',
       maxAge: 25,
