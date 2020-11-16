@@ -34,9 +34,10 @@ export class EmployeeListComponent implements OnInit {
           console.log(data);
           //this.employees = data;
           //this.employees = JSON.parse(JSON.stringify(data)); // clone ref
-          //this.employees = this.clonerService.deepClone<Employee[]>(data); //Clone ref
-          this.immutableEmployees = List<Employee>(data); //immutable
-          this.employees = this.immutableEmployees.toArray();
+          this.employees = this.clonerService.deepClone<Employee[]>(data); //Clone ref
+          //this.immutableEmployees = List<Employee>(data); //immutable
+          //this.employees = this.immutableEmployees.toArray();
+          console.log(this.employees);
         },
         error => {
           this.showError = true;
@@ -67,6 +68,18 @@ export class EmployeeListComponent implements OnInit {
     this.selectedEmployee = fromJS(employee).toJS() as Employee //immutable
     console.log(employee);
     console.log(this.selectedEmployee);
+  }
+
+  changed(employee: Employee) {
+    console.log("CHANGED-List-cloner");
+    console.log(employee);
+    //this.selectedEmployee = employee;
+    //this.selectedEmployee = JSON.parse(JSON.stringify(employee)); //Clone ref
+    this.selectedEmployee = this.clonerService.deepClone<Employee>(employee); //Clone ref
+
+    //console.log(JSON.parse(JSON.stringify(employee)));
+    //console.log(this.clonerService.deepClone<Employee>(employee));
+    this.allEmployees();
   }
 
 }

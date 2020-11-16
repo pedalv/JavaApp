@@ -47,7 +47,6 @@ export class EmployeeListSortComponent implements OnInit {
   }
 
   clickEvent(felt: string){
-      this.allEmployees();
       console.log("clickEvent");
       console.log(felt);
       switch(felt) {
@@ -89,6 +88,17 @@ export class EmployeeListSortComponent implements OnInit {
     //this.selectedEmployee = employee;
     //this.selectedEmployee = JSON.parse(JSON.stringify(employee)); // clone ref
     this.selectedEmployee = this.clonerService.deepClone<Employee>(employee); //Clone ref
+  }
+
+  changed(employee: Employee) {
+    console.log("CHANGED-List-sort-cloner");
+    console.log(employee);
+    //this.selectedEmployee = employee;
+    //this.selectedEmployee = JSON.parse(JSON.stringify(employee)); //Clone ref
+    this.selectedEmployee = this.clonerService.deepClone<Employee>(employee); //Clone ref
+    //console.log(JSON.parse(JSON.stringify(employee)));
+    //console.log(this.clonerService.deepClone<Employee>(employee));
+    this.allEmployees();
   }
 
 }

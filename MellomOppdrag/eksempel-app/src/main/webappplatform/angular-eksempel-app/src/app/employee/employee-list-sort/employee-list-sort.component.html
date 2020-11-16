@@ -3,7 +3,7 @@
 <div class="container-lg" style="border: 1px solid  orange;">
   <div class="row">
     <div class="col">
-      <app-employee-details [selectedEmployee]="selectedEmployee"></app-employee-details>
+      <app-employee-details [selectedEmployee]="selectedEmployee" (selectedEmployeeChanged)="changed($event)"></app-employee-details>
     </div>
   </div>
   <div class="row">

@@ -66,10 +66,15 @@ export class EmployeeDetailsComponent extends BaseEmployeeComponent implements O
   }
 
   //Subscribe
-  change() {
+  change(employee) {
       console.log("OUTPUT-CHANGE");
-        this.selectedEmployee =  {id: 0, firstName: "Pedro20", lastName: "Alves20", role: "Seniorutvikler"}; //null editEmployee
-        this.selectedEmployeeChanged.emit(this.selectedEmployee); //To send an event
+      this.selectedEmployee =  {id: 0, firstName: "Pedro20", lastName: "Alves20", role: "Seniorutvikler"}; //null editEmployee
+      if(employee.id!==null) {
+        this.selectedEmployee = employee;
+      }
+      console.log(this.selectedEmployee);
+      this.replaceEmployee(this.selectedEmployee);
+      this.selectedEmployeeChanged.emit(this.selectedEmployee); //To send an event
   }
 
  replaceEmployee(employee: Employee) : void {
