@@ -47,6 +47,8 @@ export class EmployeeListSortComponent implements OnInit {
   }
 
   clickEvent(felt: string){
+      this.allEmployees();
+      console.log("clickEvent");
       console.log(felt);
       switch(felt) {
          case 'id': {

@@ -60,7 +60,7 @@ export class EmployeeDetailsComponent extends BaseEmployeeComponent implements O
       any of its input properties changes, when it fires an event, or when abservable fires an event
      */
      setTimeout (() => {
-        this.selectedEmployee = {id: 20, firstName: "PE20", lastName: "AL20", role: "Seniorutvikler"};
+        this.selectedEmployee = {id: 0, firstName: "PE20", lastName: "AL20", role: "Seniorutvikler"};
      }, 2000);
 
   }
@@ -68,11 +68,13 @@ export class EmployeeDetailsComponent extends BaseEmployeeComponent implements O
   //Subscribe
   change() {
       console.log("OUTPUT-CHANGE");
-        this.selectedEmployee =  {id: 20, firstName: "Pedro20", lastName: "Alves20", role: "Seniorutvikler"}; //null editEmployee
+        this.selectedEmployee =  {id: 0, firstName: "Pedro20", lastName: "Alves20", role: "Seniorutvikler"}; //null editEmployee
         this.selectedEmployeeChanged.emit(this.selectedEmployee); //To send an event
   }
+
  replaceEmployee(employee: Employee) : void {
-    console.log("replaceEmployee Employee updated: ", employee);
+    console.log("replaceEmployee Employee updated: ");
+    console.log(employee);
 
     //save
     this.service.replaceEmployee(employee)
@@ -96,6 +98,7 @@ export class EmployeeDetailsComponent extends BaseEmployeeComponent implements O
   }
 
   editEmployee(employee: Employee) : void {
+      console.log("edit Employee");
       console.log(employee);
 
       $("#id").val(employee.id);
