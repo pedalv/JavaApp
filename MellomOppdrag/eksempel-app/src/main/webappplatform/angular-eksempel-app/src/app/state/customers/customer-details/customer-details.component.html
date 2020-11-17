@@ -1,41 +1,88 @@
 <div *ngIf="customer$ | async as customer" >
-  Customers list:
+
+
+  <!-- details -->
+  <div *ngIf="isdetails == true">
+
+      <div>Customer details:</div>
+
+      <h4>Details</h4>
+
+      <table *ngIf="customer$ | async as customer" class="table">
+
+        <tbody>
+        <tr>
+          <td>Id: </td>
+          <td>{{ customer.id }}</td>
+        </tr>
+        <tr>
+          <td>Name: </td>
+          <td>{{ customer.name }}</td>
+        </tr>
+        <tr>
+          <td>Project: </td>
+          <td>{{ customer.project }}</td>
+        </tr>
+        </tbody>
+        <!--
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Project</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{ customer$.id | async }}</td>
+            <td>{{ customer$.name }}</td>
+            <td>{{ customer$.project }}</td>
+          </tr>
+          </tbody>
+        -->
+      </table>
+      <br />
+      <button class="btn btn-primary" (click)="edit()">Edit customer</button>
+      &nbsp;&nbsp;
+      <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+
+  </div>
+
+  <!-- redigere -->
+  <div *ngIf="isdetails == false">
+
+
+    <div>Customer redigere:</div>
+
+    <h4>Redigere</h4>
+
+    <div class="form-group">
+      <label for="id">Customer Id</label>
+      <input [(ngModel)]="customer.id" disabled type="text" name="id" class="form-control" id="id" placeholder="Customer ID" value="{{ customer.id }}">
+
+      <label for="name">Customer name</label>
+      <input [(ngModel)]="customer.name" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp"
+             placeholder="Enter your customer navn" value="{{ customer.name }}">
+      <small id="nameHelp" class="form-text text-muted">Enter your customer’s name</small>
+
+      <label for="project">Customer project</label>
+      <input [(ngModel)]="customer.project" type="text" name="project" class="form-control" id="project" aria-describedby="projectHelp"
+             placeholder="Enter your customer project" value="{{ customer.project }}">
+      <small id="projectHelp" class="form-text text-muted">Enter your customer’s etternavn</small>
+    </div>
+    <button class="btn btn-primary" (click)="save(customer)">Save employee via Output</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+
+
+  </div>
+
 </div>
 
-<h4>Details</h4>
 
-<table *ngIf="customer$ | async as customer" class="table">
 
-  <tbody>
-  <tr>
-    <td>Id: </td>
-    <td>{{ customer.id }}</td>
-  </tr>
-  <tr>
-    <td>Name: </td>
-    <td>{{ customer.name }}</td>
-  </tr>
-  <tr>
-    <td>Project: </td>
-    <td>{{ customer.project }}</td>
-  </tr>
-  </tbody>
-<!--
-  <thead>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Project</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>{{ customer$.id | async }}</td>
-    <td>{{ customer$.name }}</td>
-    <td>{{ customer$.project }}</td>
-  </tr>
-  </tbody>
--->
-</table>
+
+
+
 
 

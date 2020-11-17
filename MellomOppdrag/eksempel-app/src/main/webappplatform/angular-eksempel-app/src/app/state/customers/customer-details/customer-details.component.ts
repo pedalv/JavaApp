@@ -19,10 +19,13 @@ export class CustomerDetailsComponent implements OnInit {
   customer$: Observable<ICustomer>;
   customer: ICustomer;
 
+  isdetails: boolean;
+
   constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
     console.log("customer details")
+    this.isdetails = true;
 
     this.customer$ = this.store.select(getCustomerSelected)
       .pipe(
@@ -30,7 +33,37 @@ export class CustomerDetailsComponent implements OnInit {
       );
   }
 
+  edit() : void {
+    console.log("Change");
+    console.log(this.customer);
+    this.isdetails = !this.isdetails;
+  }
+
+  save(customer:ICustomer) : void {
+    console.log("Change customer");
+    console.log(this.customer);
+    this.isdetails = !this.isdetails;
+    //send output to save
+    //Update(add) to list
+  }
+
+  cancel(): void {
+    console.log("Cancel");
+    this.customer = null;
+    //send output to reset selected customer
+  }
+
 }
+
+/*
+Cancel Action
+
+Save Action
+Save Success
+Save Feil
+
+Add Action
+*/
 
 
 /*
