@@ -70,18 +70,24 @@ export class EmployeeListSortComponent implements OnInit {
   }
 
   deleteEmployee(employee : Employee) : void {
-    this.service.deleteEmployee(employee.id)
-          .subscribe(
-              (data : Employee) => {
-                console.log(data);
-                this.allEmployees();
-              },
-              error => {
-                //this.createError = true;
-                console.log(error);
-              }
-          );
-  }
+      if (employee && employee.id) {
+        if (confirm(`Really delete the product: ${employee.firstName} ${employee.lastName}?`)) {
+
+          this.service.deleteEmployee(employee.id)
+              .subscribe(
+                  (data : Employee) => {
+                    console.log(data);
+                    this.allEmployees();
+                  },
+                  error => {
+                    //this.createError = true;
+                    console.log(error);
+                  }
+              );
+
+        }
+      }
+    }
 
   public selectEmployee(employee : Employee) : void  {
     console.log("Employee-clone: "+ employee);
