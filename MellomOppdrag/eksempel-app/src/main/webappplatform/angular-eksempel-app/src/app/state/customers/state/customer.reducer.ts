@@ -47,11 +47,12 @@ export const getCustomerSelected = createSelector(
   state => state.customerSelected
 );
 
-
+/*
 export const getCustomerSelectedId = createSelector(
   getCustomerFeatureState,
   state => state.customerSelectedId
 );
+*/
 
 /*
 export const getCustomerSelected = createSelector(
