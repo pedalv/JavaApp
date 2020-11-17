@@ -11,20 +11,14 @@ export interface State extends AppState.State {
 
 export interface CustomerState {
   isShowCustomers: boolean,
-  customerSelected: ICustomer,
-  customerSelectedId: number;
-  //currentCustomer: ICustomer,
-  //currentCustomerId: number,
+  customerSelectedId: number,
   customerList: ICustomer[],
   error: string;
 }
 
 const initialState: CustomerState = {
   isShowCustomers: true,
-  customerSelected: null,
   customerSelectedId: null,
-  //currentCustomer: null,
-  //currentCustomerId: -1,
   customerList: [],
   error: ''
 }
@@ -38,23 +32,18 @@ export const getIsShowCustomers = createSelector(
 
 export const getInitializeCustomerSelected = createSelector(
   getCustomerFeatureState,
-  state => state.customerSelected
+  state => state.customerSelectedId
 );
 
 
-export const getCustomerSelected = createSelector(
-  getCustomerFeatureState,
-  state => state.customerSelected
-);
 
-/*
+
+
 export const getCustomerSelectedId = createSelector(
   getCustomerFeatureState,
   state => state.customerSelectedId
 );
-*/
 
-/*
 export const getCustomerSelected = createSelector(
   getCustomerFeatureState,
   getCustomerSelectedId,
@@ -62,7 +51,7 @@ export const getCustomerSelected = createSelector(
     if (customerSelectedId === 0) {
       return {
         id: 0,
-        name: '',
+        name: 'New',
         project: ''
       };
     } else {
@@ -70,7 +59,14 @@ export const getCustomerSelected = createSelector(
     }
   }
 );
+
+/*
+export const getCustomerSelected = createSelector(
+  getCustomerFeatureState,
+  state => state.customerSelected
+);
 */
+
 export const getCustomerList = createSelector(
   getCustomerFeatureState,
   state => state.customerList
@@ -97,7 +93,7 @@ export const customerReducer = createReducer<CustomerState>(
         console.log('original state SET: ' + JSON.stringify(state));
         return {
           ...state,
-          customerSelected: action.customer
+          customerSelectedId: action.customerSelectedId
         };
       }),
 
@@ -105,14 +101,14 @@ export const customerReducer = createReducer<CustomerState>(
       console.log('original state SELECTED: ' + JSON.stringify(state));
       return {
         ...state,
-        customerSelected: state.customerSelected,
+        customerSelectedId: state.customerSelectedId,
       };
     }),
 
   on(CustomerActions.clearCustomer, (state): CustomerState => {
       return {
         ...state,
-        customerSelected: null
+        customerSelectedId: null
       };
     }),
 
@@ -120,11 +116,7 @@ export const customerReducer = createReducer<CustomerState>(
         console.log('original state initializeCurrentCustomer: ' + JSON.stringify(state));
         return {
           ...state,
-          customerSelected: {
-            id: 0,
-            name: '',
-            project: ''
-          }
+          customerSelectedId: 0
         };
       }),
 

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ICustomer } from '../../../shared/interfaces';
 
+import * as CustomerActions  from '../state/customer.actions';
+
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { State, getCustomerSelected } from '../state/customer.reducer';
@@ -27,10 +29,15 @@ export class CustomerDetailsComponent implements OnInit {
     console.log("customer details")
     this.isdetails = true;
 
+    // Use 5: getCustomerSelected
     this.customer$ = this.store.select(getCustomerSelected)
       .pipe(
         tap(customerSelected => this.customer = customerSelected)
       );
+
+
+    //USE 7 : clearCustomer
+    //this.store.dispatch(CustomerActions.clearCustomer()); //Store
   }
 
   edit() : void {
@@ -49,20 +56,20 @@ export class CustomerDetailsComponent implements OnInit {
 
   cancel(): void {
     console.log("Cancel");
-    this.customer = null;
-    //send output to reset selected customer
+    this.isdetails = true;
+    this.customer.id = 0;
+    this.customer.name = 'New';
+    this.customer.project = '';
   }
 
 }
 
 /*
-Cancel Action
 
 Save Action
 Save Success
 Save Feil
 
-Add Action
 */
 
 

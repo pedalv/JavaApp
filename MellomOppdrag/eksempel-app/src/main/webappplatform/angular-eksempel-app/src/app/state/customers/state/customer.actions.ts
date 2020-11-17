@@ -18,7 +18,7 @@ export const showCustomerSelectedId = createAction(
 
 export const setCustomerSelected = createAction(
     '[Customer] Set Customer Selected',
-    props<{ customer: ICustomer }>()
+    props<{ customerSelectedId: number }>()
   );
 
 export const clearCustomer = createAction(

@@ -34,20 +34,25 @@ export class CustomersComponent implements OnInit {
   ngOnInit(): void {
 
     //check element
+    // Use 1: view - getIsShowCustomers
     this.store.select(getIsShowCustomers).subscribe(
       isShowCustomers => this.displayCustomers = isShowCustomers
     ); //Store
 
     //show list of customers Action(here) and Select(error: here and list: custumer-list)
+    // Use 4: loadCustomers
     this.store.dispatch(CustomerActions.loadCustomers()); //Store
+    //Use 2: view - getError
     this.errorMessage$ = this.store.select(getError); //Store
 
 
     //add customer todo
-    this.store.select(getInitializeCustomerSelected).subscribe(
-      customerSelected => this.customer = customerSelected
-    ); //Store
+    // Use 3: view - getInitializeCustomerSelected
+   // this.store.select(getInitializeCustomerSelected).subscribe(
+     // customerSelectedId => this.customer = customerSelectedId
+    //); //Store
 
+    //Use 4: view -  getCustomerSelected
     this.store.select(getCustomerSelected).subscribe(
       customerSelectedId => this.customer = customerSelectedId
     ); //Store
@@ -56,17 +61,15 @@ export class CustomersComponent implements OnInit {
 
   //check element
   checkChanged(): void {
+    //Use 3: isShowCustomers
     this.store.dispatch(
       CustomerActions.isShowCustomers()
       //{ type: '[Customers] IS Show Customers'}
     );
   }
 
-  //add customer todo
   addCustomerClone() {
-    //TODO update
-    //this.dataService.addCustomerClone().subscribe((custs: ICustomer[]) => this.customers = custs);
-
+    //Use 2: initializeCustomer
     this.store.dispatch(CustomerActions.initializeCustomer()); //Store
   }
 
