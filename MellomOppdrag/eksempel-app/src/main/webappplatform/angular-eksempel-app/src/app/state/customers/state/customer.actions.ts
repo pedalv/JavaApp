@@ -1,3 +1,4 @@
+/* NgRx */
 import { createAction, props } from '@ngrx/store';
 
 import { ICustomer } from '../../../shared/interfaces';
@@ -20,8 +21,12 @@ export const setCustomerSelected = createAction(
     props<{ customer: ICustomer }>()
   );
 
-export const initializeCurrentCustomer = createAction(
-    '[Customer] Initialize Current Customer'
+export const clearCustomer = createAction(
+  '[Product] Clear Product'
+);
+
+export const initializeCustomer = createAction(
+    '[Customer] Initialize Customer Selected'
   );
 
 

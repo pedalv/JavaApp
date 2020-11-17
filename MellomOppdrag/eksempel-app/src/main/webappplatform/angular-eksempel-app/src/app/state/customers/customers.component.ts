@@ -5,8 +5,8 @@ import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
 import { State, getIsShowCustomers,
-        getCurrentCustomer, getCustomerList,
-        getCustomerSelected, getInitializeCurrentCustomer,
+        getCustomerSelected, getCustomerList,
+        getInitializeCustomerSelected,
          getError } from './state/customer.reducer';
 import { Subscription, Observable } from 'rxjs';
 
@@ -44,12 +44,12 @@ export class CustomersComponent implements OnInit {
 
 
     //add customer todo
-    this.store.select(getInitializeCurrentCustomer).subscribe(
-      currentCustomer => this.customer = currentCustomer
+    this.store.select(getInitializeCustomerSelected).subscribe(
+      customerSelected => this.customer = customerSelected
     ); //Store
 
-    this.store.select(getCurrentCustomer).subscribe(
-      currentCustomerId => this.customer = currentCustomerId
+    this.store.select(getCustomerSelected).subscribe(
+      customerSelectedId => this.customer = customerSelectedId
     ); //Store
 
   }
@@ -67,7 +67,7 @@ export class CustomersComponent implements OnInit {
     //TODO update
     //this.dataService.addCustomerClone().subscribe((custs: ICustomer[]) => this.customers = custs);
 
-    this.store.dispatch(CustomerActions.initializeCurrentCustomer()); //Store
+    this.store.dispatch(CustomerActions.initializeCustomer()); //Store
   }
 
 }
