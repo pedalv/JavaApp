@@ -4,9 +4,8 @@ import * as CustomerActions  from './state/customer.actions';
 import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
-import { State, getIsShowCustomers,
-        getCustomerSelected, getCustomerList,
-        getInitializeCustomerSelected,
+import { State, getShowCustomerFlag,
+        getCustomerSelected, getCustomers,
          getError } from './state/customer.reducer';
 import { Subscription, Observable } from 'rxjs';
 
@@ -34,9 +33,9 @@ export class CustomersComponent implements OnInit {
   ngOnInit(): void {
 
     //check element
-    // Use 1: view - getIsShowCustomers
-    this.store.select(getIsShowCustomers).subscribe(
-      isShowCustomers => this.displayCustomers = isShowCustomers
+    // Use 1: view - getShowCustomerFlag
+    this.store.select(getShowCustomerFlag).subscribe(
+      showCustomerFlag => this.displayCustomers = showCustomerFlag
     ); //Store
 
     //show list of customers Action(here) and Select(error: here and list: custumer-list)
@@ -46,12 +45,13 @@ export class CustomersComponent implements OnInit {
     this.errorMessage$ = this.store.select(getError); //Store
 
 
-    //add customer todo
-    // Use 3: view - getInitializeCustomerSelected
-   // this.store.select(getInitializeCustomerSelected).subscribe(
+    //add customer
+    /*DELETEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+    // Use 3: view - getInitializeSelectedCustomer
+   // this.store.select(getInitializeSelectedCustomer).subscribe(
      // customerSelectedId => this.customer = customerSelectedId
     //); //Store
-
+*/
     //Use 4: view -  getCustomerSelected
     this.store.select(getCustomerSelected).subscribe(
       customerSelectedId => this.customer = customerSelectedId
@@ -61,16 +61,16 @@ export class CustomersComponent implements OnInit {
 
   //check element
   checkChanged(): void {
-    //Use 3: isShowCustomers
+    //Use 3: showCustomerFlag
     this.store.dispatch(
-      CustomerActions.isShowCustomers()
+      CustomerActions.toggleShowCustomerFlag()
       //{ type: '[Customers] IS Show Customers'}
     );
   }
 
   addCustomerClone() {
-    //Use 2: initializeCustomer
-    this.store.dispatch(CustomerActions.initializeCustomer()); //Store
+    //Use 2: initializeSelectedCustomer
+    this.store.dispatch(CustomerActions.initializeSelectedCustomer()); //Store
   }
 
 }
@@ -78,11 +78,11 @@ export class CustomersComponent implements OnInit {
 
 /*
     customerReducer
-    //Store: customers Action: isShowCustomers
+    //Store: customers Action: toggleShowCustomerFlag
     //Store: customers Action: customersList
     //Store: customer Action: customerSelected === currentCustomerId
     customers: {
-       isShowCustomers: true,
+       showCustomerFlag: true,
        customerSelected: null,
        currentCustomerId: -1,
        customersList: []

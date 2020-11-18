@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 import { ICustomer } from '../../../shared/interfaces';
 
 import { Observable } from 'rxjs';
-import { State, getCustomerList } from '../state/customer.reducer';
+import { State, getCustomers } from '../state/customer.reducer';
 import * as CustomerActions  from '../state/customer.actions';
 
 /* NgRx */
@@ -21,15 +21,15 @@ export class CustomersListComponent implements OnInit {
   constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
-    // Use 6: view - getCustomerList
-    this.customers$ = this.store.select(getCustomerList); //Store
+    // Use 6: view - getCustomers
+    this.customers$ = this.store.select(getCustomers); //Store
   }
 
   selected(customer: ICustomer) : void {
     console.log("customer selected");
     console.log(customer);
-    //USE 1 : setCustomerSelected
-    this.store.dispatch(CustomerActions.setCustomerSelected( { customerSelectedId: customer.id } )); //Store
+    //USE 1 : setSelectedCustomer
+    this.store.dispatch(CustomerActions.setSelectedCustomer( { customerSelectedId: customer.id } )); //Store
   }
 
 }

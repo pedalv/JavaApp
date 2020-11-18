@@ -10,35 +10,31 @@ export interface State extends AppState.State {
 }
 
 export interface CustomerState {
-  isShowCustomers: boolean,
+  showCustomerFlag: boolean,
   customerSelectedId: number,
-  customerList: ICustomer[],
+  customers: ICustomer[],
   error: string;
 }
 
 const initialState: CustomerState = {
-  isShowCustomers: true,
+  showCustomerFlag: true,
   customerSelectedId: null,
-  customerList: [],
+  customers: [],
   error: ''
 }
 
 const getCustomerFeatureState = createFeatureSelector<CustomerState>('customers');
 
-export const getIsShowCustomers = createSelector(
+export const getShowCustomerFlag = createSelector(
   getCustomerFeatureState,
-  state => state.isShowCustomers
+  state => state.showCustomerFlag
 );
-
-export const getInitializeCustomerSelected = createSelector(
+/*
+export const getInitializeSelectedCustomer = createSelector(
   getCustomerFeatureState,
   state => state.customerSelectedId
 );
-
-
-
-
-
+*/
 export const getCustomerSelectedId = createSelector(
   getCustomerFeatureState,
   state => state.customerSelectedId
@@ -55,21 +51,21 @@ export const getCustomerSelected = createSelector(
         project: ''
       };
     } else {
-      return customerSelectedId ? state.customerList.find(p => p.id === customerSelectedId) : null;
+      return customerSelectedId ? state.customers.find(p => p.id === customerSelectedId) : null;
     }
   }
 );
 
-/*
+/* DELETEEEEEE
 export const getCustomerSelected = createSelector(
   getCustomerFeatureState,
   state => state.customerSelected
 );
 */
 
-export const getCustomerList = createSelector(
+export const getCustomers = createSelector(
   getCustomerFeatureState,
-  state => state.customerList
+  state => state.customers
 );
 
 export const getError = createSelector(
@@ -81,15 +77,15 @@ export const customerReducer = createReducer<CustomerState>(
 
   initialState,
 
-  on(CustomerActions.isShowCustomers, (state) : CustomerState => {
+  on(CustomerActions.toggleShowCustomerFlag, (state) : CustomerState => {
       console.log('original state IS: ' + JSON.stringify(state));
       return {
         ...state,
-        isShowCustomers: !state.isShowCustomers
+        showCustomerFlag: !state.showCustomerFlag
       };
     }),
 
-  on(CustomerActions.setCustomerSelected, (state, action) : CustomerState => {
+  on(CustomerActions.setSelectedCustomer, (state, action) : CustomerState => {
         console.log('original state SET: ' + JSON.stringify(state));
         return {
           ...state,
@@ -97,7 +93,7 @@ export const customerReducer = createReducer<CustomerState>(
         };
       }),
 
-  on(CustomerActions.showCustomerSelected, state => {
+  on(CustomerActions.setSelectedCustomer, state => {
       console.log('original state SELECTED: ' + JSON.stringify(state));
       return {
         ...state,
@@ -105,14 +101,14 @@ export const customerReducer = createReducer<CustomerState>(
       };
     }),
 
-  on(CustomerActions.clearCustomer, (state): CustomerState => {
+  on(CustomerActions.clearSelectedCustomer, (state): CustomerState => {
       return {
         ...state,
         customerSelectedId: null
       };
     }),
 
-  on(CustomerActions.initializeCustomer, (state) : CustomerState => {
+  on(CustomerActions.initializeSelectedCustomer, (state) : CustomerState => {
         console.log('original state initializeCurrentCustomer: ' + JSON.stringify(state));
         return {
           ...state,
@@ -124,7 +120,7 @@ export const customerReducer = createReducer<CustomerState>(
           console.log('original state LIST SUCCESS: ' + JSON.stringify(state));
           return {
             ...state,
-            customerList: action.customers,
+            customers: action.customers,
             error: ''
           };
         }),
@@ -133,10 +129,63 @@ export const customerReducer = createReducer<CustomerState>(
             console.log('original state LIST ERROR: ' + JSON.stringify(state));
             return {
               ...state,
-              customerList: [],
+              customers: [],
               error: action.error
             };
-          })
+          }),
+
+  on(CustomerActions.updateCustomerSuccess, (state, action): CustomerState => {
+    const updatedCustomers = state.customers.map(
+      item => action.customer.id === item.id ? action.customer : item);
+    return {
+      ...state,
+      customers: updatedCustomers,
+      customerSelectedId: action.customer.id,
+      error: ''
+    };
+  }),
+
+  on(CustomerActions.updateCustomerFailure, (state, action): CustomerState => {
+    return {
+      ...state,
+      error: action.error
+    };
+  }),
+
+  // After a create, the currentCustomer is the new customer.
+  on(CustomerActions.createCustomerSuccess, (state, action): CustomerState => {
+    return {
+      ...state,
+      customers: [...state.customers, action.customer],
+      customerSelectedId: action.customer.id,
+      error: ''
+    };
+  }),
+
+  on(CustomerActions.createCustomerFailure, (state, action): CustomerState => {
+    return {
+      ...state,
+      error: action.error
+    };
+  }),
+
+  // After a delete, the currentCustomer is null.
+  on(CustomerActions.deleteCustomerSuccess, (state, action): CustomerState => {
+    return {
+      ...state,
+      customers: state.customers.filter(customer => customer.id !== action.customerId),
+      customerSelectedId: null,
+      error: ''
+    };
+  }),
+
+  on(CustomerActions.deleteCustomerFailure, (state, action): CustomerState => {
+    return {
+      ...state,
+      error: action.error
+    };
+  })
+
 );
 
 /*
@@ -155,11 +204,11 @@ export const customerReducer = createReducer<CustomerState>(
 
 /*
     customerReducer
-    //Store: customers Action: isShowCustomers
+    //Store: customers Action: toggleShowCustomers
     //Store: customers Action: customersList
     //Store: customer Action: customerSelected === currentCustomerId
     customers: {
-       isShowCustomers: true,
+       showCustomerFlag: true,
        customerSelected: null,
        currentCustomerId: -1,
        customersList: []

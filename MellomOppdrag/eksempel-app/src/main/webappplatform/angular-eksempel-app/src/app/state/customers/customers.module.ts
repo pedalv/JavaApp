@@ -19,11 +19,11 @@ import { CustomerEffects } from './state/customer.effects';
     StoreModule.forFeature('customers', customerReducer),
     /*
         customerReducer
-        //Store: customers Action: isShowCustomers
+        //Store: customers Action: toggleShowCustomers
         //Store: customers Action: customersList
         //Store: customer Action: customerSelected === currentCustomerId
         customers: {
-           isShowCustomers: true,
+           toggleShowCustomers: true,
            customerSelected: null,
            currentCustomerId: -1,
            customersList: []

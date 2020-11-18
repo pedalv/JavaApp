@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ICustomer } from '../../../shared/interfaces';
+import { DataService } from '../../../core/services/data.service';
 
 import * as CustomerActions  from '../state/customer.actions';
 
@@ -23,7 +24,8 @@ export class CustomerDetailsComponent implements OnInit {
 
   isdetails: boolean;
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>,
+              private dataService: DataService,) {}
 
   ngOnInit(): void {
     console.log("customer details")
@@ -61,6 +63,19 @@ export class CustomerDetailsComponent implements OnInit {
     this.customer.name = 'New';
     this.customer.project = '';
   }
+
+  saveCustomer(customer: ICustomer) : void {
+    if(customer.id === 0) {
+      //Create
+      //this.store.dispatch()
+
+    } else {
+      //Update
+
+
+    }
+  }
+
 
 }
 
