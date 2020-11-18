@@ -169,4 +169,38 @@ UDP AS	Involvert i et internt prosjekt
     return of(this.immutableCustomers.toJS());
   }
 
+  updateCustomer(customer): Observable<ICustomer> {
+    console.log("updateCustomer");
+    console.log(customer);
+
+    //FIX FORM
+    customer = {
+          id: 1,
+          name: 'Update Customer ' + 1,
+          project: 'Update Project ' + 1
+        };
+
+    console.log(customer);
+    this.customersSubject$.next(this.customers);
+    this.immutableCustomers.push(customer);
+    return of(customer);
+  }
+
+  createCustomer(customer): Observable<ICustomer> {
+    console.log("updateCustomer");
+    console.log(customer);
+
+    //FIX FORM
+    customer = {
+          id: 0,
+          name: 'New Customer ' + 1,
+          project: 'New Project ' + 1
+        };
+
+    console.log(customer);
+    this.customersSubject$.next(this.customers);
+    this.immutableCustomers.push(customer);
+    return of(customer);
+  }
+
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { mergeMap, map, catchError } from 'rxjs/operators';
+import { mergeMap, map, catchError, concatMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { DataService } from '../../../core/services/data.service';
 
@@ -25,6 +25,35 @@ export class CustomerEffects {
         )
       );
   });
+
+
+  updateProducts$ = createEffect(() => {
+      return this.actions$
+        .pipe(
+          ofType(CustomerActions.updateCustomer),
+          concatMap(action => this.customerService.updateCustomer(action.customer)
+            .pipe(
+              map(customer => CustomerActions.updateCustomerSuccess({ customer })),
+              catchError(error => of(CustomerActions.updateCustomerFailure({ error })))
+            )
+          )
+        );
+    });
+
+
+  createProducts$ = createEffect(() => {
+      return this.actions$
+        .pipe(
+          ofType(CustomerActions.createCustomer),
+          concatMap(action => this.customerService.createCustomer(action.customer)
+            .pipe(
+              map(customer => CustomerActions.createCustomerSuccess({ customer })),
+              catchError(error => of(CustomerActions.createCustomerFailure({ error })))
+            )
+          )
+        );
+    });
+
 }
 
 /*
