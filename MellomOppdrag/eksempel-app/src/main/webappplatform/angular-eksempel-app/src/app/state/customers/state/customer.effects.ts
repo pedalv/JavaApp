@@ -13,7 +13,7 @@ export class CustomerEffects {
 
   constructor(private actions$: Actions, private customerService: DataService) { }
 
-  loadProducts$ = createEffect(() => {
+  loadCustomers$ = createEffect(() => {
     return this.actions$
       .pipe(
         ofType(CustomerActions.loadCustomers),
@@ -27,7 +27,7 @@ export class CustomerEffects {
   });
 
 
-  updateProducts$ = createEffect(() => {
+  updateCustomer$ = createEffect(() => {
       return this.actions$
         .pipe(
           ofType(CustomerActions.updateCustomer),
@@ -41,7 +41,7 @@ export class CustomerEffects {
     });
 
 
-  createProducts$ = createEffect(() => {
+  createCustomer$ = createEffect(() => {
       return this.actions$
         .pipe(
           ofType(CustomerActions.createCustomer),
@@ -53,6 +53,20 @@ export class CustomerEffects {
           )
         );
     });
+
+    deleteCustomer$ = createEffect(() => {
+        return this.actions$
+          .pipe(
+            ofType(CustomerActions.deleteCustomer),
+            mergeMap(action =>
+              this.customerService.deleteCustomer(action.customerId)
+              .pipe(
+                map(() => CustomerActions.deleteCustomerSuccess({ customerId: action.customerId })),
+                catchError(error => of(CustomerActions.deleteCustomerFailure({ error })))
+              )
+            )
+          );
+      });
 
 }
 

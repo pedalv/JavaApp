@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 import { ICustomer } from '../../../shared/interfaces';
 
 import * as CustomerActions  from '../state/customer.actions';
+import $ from "jquery";
 
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -32,9 +33,14 @@ export class CustomerDetailsComponent implements OnInit {
     // Use 5: getCustomerSelected
     this.customer$ = this.store.select(getCustomerSelected)
       .pipe(
-        tap(customerSelected => this.customer = customerSelected)
+        tap(customerSelected => this.customer = customerSelected),
+        tap( (c) => {
+          console.log(c);
+          if(c && c.id === 0) {
+            $("#del").prop("disabled",true);
+          }
+        })
       );
-
 
     //USE 7 : clearCustomer
     //this.store.dispatch(CustomerActions.clearCustomer()); //Store
@@ -63,10 +69,22 @@ export class CustomerDetailsComponent implements OnInit {
   cancel(): void {
     console.log("Cancel");
     this.isdetails = true;
-    this.customer.id = 0;
-    this.customer.name = 'New';
-    this.customer.project = '';
+    console.log(this.customer);
   }
+
+  delete() : void {
+    console.log("Delete");
+    console.log(this.customer);
+    if (this.customer && this.customer.id) {
+      if (confirm(`Really delete the customer: ${this.customer.name}?`)) {
+        this.store.dispatch(CustomerActions.deleteCustomer({ customerId: this.customer.id }));
+      }
+    } else {
+      // No need to delete, it was never saved
+      this.store.dispatch(CustomerActions.clearSelectedCustomer());
+    }
+  }
+
 
 }
 

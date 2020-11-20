@@ -192,10 +192,10 @@ UDP AS	Involvert i et internt prosjekt
   }
 
   createCustomer(customer): Observable<ICustomer> {
-    console.log("Service: createCustomer() - this.immutableCustomers");
+    console.log("Service: createCustomer() - this.customers");
     console.log(this.customers);
     let id = this.customers[this.customers.length - 1].id + 1;
-
+    console.log(id);
     //TODO: FIX FORM
     console.log(customer);
     customer = {
@@ -203,9 +203,30 @@ UDP AS	Involvert i et internt prosjekt
           name: 'New Customer ' + id,
           project: 'New Project ' + id
         };
-
+    this.customers.push(customer);
     this.customersSubject$.next(this.customers);
     return of(customer);
   }
+
+  deleteCustomer(id: number): Observable<{}> {
+    console.log("Service: deleteProduct() - this.immutableCustomers");
+    console.log(id);
+    console.log(this.customers);
+
+    //DELETE
+
+    this.customersSubject$.next(this.customers);
+    return of(id);
+     /*
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const url = `${this.productsUrl}/${id}`;
+      return this.http.delete<Product>(url, { headers })
+        .pipe(
+          tap(data => console.log('deleteProduct: ' + id)),
+          catchError(this.handleError)
+        );
+      */
+      this.customers
+    }
 
 }
