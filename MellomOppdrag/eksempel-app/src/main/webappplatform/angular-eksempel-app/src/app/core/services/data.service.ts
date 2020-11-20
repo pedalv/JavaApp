@@ -188,7 +188,6 @@ UDP AS	Involvert i et internt prosjekt
 
     console.log(customer);
     this.customersSubject$.next(this.customers);
-    this.immutableCustomers.push(customer);
     return of(customer);
   }
 
@@ -206,7 +205,6 @@ UDP AS	Involvert i et internt prosjekt
         };
 
     this.customersSubject$.next(this.customers);
-    this.immutableCustomers.push(customer);
     return of(customer);
   }
 
