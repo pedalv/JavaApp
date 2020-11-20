@@ -44,6 +44,7 @@ export const getCustomerSelected = createSelector(
   getCustomerFeatureState,
   getCustomerSelectedId,
   (state, customerSelectedId) => {
+  console.log("getCustomerSelected");
     if (customerSelectedId === 0) {
       return {
         id: 0,
@@ -78,7 +79,7 @@ export const customerReducer = createReducer<CustomerState>(
   initialState,
 
   on(CustomerActions.toggleShowCustomerFlag, (state) : CustomerState => {
-      console.log('original state IS: ' + JSON.stringify(state));
+      console.log('Effect CustomerActions toggleShowCustomerFlag: ' + JSON.stringify(state));
       return {
         ...state,
         showCustomerFlag: !state.showCustomerFlag
@@ -86,7 +87,7 @@ export const customerReducer = createReducer<CustomerState>(
     }),
 
   on(CustomerActions.setSelectedCustomer, (state, action) : CustomerState => {
-        console.log('original state SET: ' + JSON.stringify(state));
+        console.log('Effect CustomerActions setSelectedCustomer: ' + JSON.stringify(state));
         return {
           ...state,
           customerSelectedId: action.customerSelectedId
@@ -94,7 +95,7 @@ export const customerReducer = createReducer<CustomerState>(
       }),
 
   on(CustomerActions.setSelectedCustomer, state => {
-      console.log('original state SELECTED: ' + JSON.stringify(state));
+      console.log('Effect CustomerActions setSelectedCustomer: ' + JSON.stringify(state));
       return {
         ...state,
         customerSelectedId: state.customerSelectedId,
@@ -102,6 +103,7 @@ export const customerReducer = createReducer<CustomerState>(
     }),
 
   on(CustomerActions.clearSelectedCustomer, (state): CustomerState => {
+      console.log("Effect CustomerActions clearSelectedCustomer")
       return {
         ...state,
         customerSelectedId: null
@@ -109,7 +111,7 @@ export const customerReducer = createReducer<CustomerState>(
     }),
 
   on(CustomerActions.initializeSelectedCustomer, (state) : CustomerState => {
-        console.log('original state initializeCurrentCustomer: ' + JSON.stringify(state));
+        console.log('Effect CustomerActions initializeSelectedCustomer: ' + JSON.stringify(state));
         return {
           ...state,
           customerSelectedId: 0
@@ -117,7 +119,7 @@ export const customerReducer = createReducer<CustomerState>(
       }),
 
   on(CustomerActions.loadCustomersSuccess, (state, action) : CustomerState => {
-          console.log('original state LIST SUCCESS: ' + JSON.stringify(state));
+          console.log('Effect CustomerActions loadCustomersSuccess: ' + JSON.stringify(state));
           return {
             ...state,
             customers: action.customers,
@@ -126,7 +128,7 @@ export const customerReducer = createReducer<CustomerState>(
         }),
 
   on(CustomerActions.loadCustomersFailure, (state, action) : CustomerState => {
-            console.log('original state LIST ERROR: ' + JSON.stringify(state));
+            console.log('Effect CustomerActions loadCustomersFailure: ' + JSON.stringify(state));
             return {
               ...state,
               customers: [],
@@ -135,6 +137,7 @@ export const customerReducer = createReducer<CustomerState>(
           }),
 
   on(CustomerActions.updateCustomerSuccess, (state, action): CustomerState => {
+    console.log("Effect CustomerActions updateCustomerSuccess")
     const updatedCustomers = state.customers.map(
       item => action.customer.id === item.id ? action.customer : item);
     return {
@@ -146,6 +149,7 @@ export const customerReducer = createReducer<CustomerState>(
   }),
 
   on(CustomerActions.updateCustomerFailure, (state, action): CustomerState => {
+    console.log("Effect CustomerActions updateCustomerFailure")
     return {
       ...state,
       error: action.error
@@ -154,6 +158,7 @@ export const customerReducer = createReducer<CustomerState>(
 
   // After a create, the currentCustomer is the new customer.
   on(CustomerActions.createCustomerSuccess, (state, action): CustomerState => {
+    console.log("Effect CustomerActions createCustomerSuccess")
     return {
       ...state,
       customers: [...state.customers, action.customer],
@@ -163,6 +168,7 @@ export const customerReducer = createReducer<CustomerState>(
   }),
 
   on(CustomerActions.createCustomerFailure, (state, action): CustomerState => {
+    console.log("Effect CustomerActions createCustomerFailure")
     return {
       ...state,
       error: action.error
@@ -171,6 +177,7 @@ export const customerReducer = createReducer<CustomerState>(
 
   // After a delete, the currentCustomer is null.
   on(CustomerActions.deleteCustomerSuccess, (state, action): CustomerState => {
+    console.log("Effect CustomerActions deleteCustomerSuccess")
     return {
       ...state,
       customers: state.customers.filter(customer => customer.id !== action.customerId),
@@ -180,6 +187,7 @@ export const customerReducer = createReducer<CustomerState>(
   }),
 
   on(CustomerActions.deleteCustomerFailure, (state, action): CustomerState => {
+    console.log("Effect CustomerActions deleteCustomerFailure")
     return {
       ...state,
       error: action.error

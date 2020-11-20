@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-//import { Customer } from '../../core/model/customer';
 import { ICustomer } from '../../shared/interfaces';
 import { ClonerService } from './cloner.service';
 import { List } from 'immutable';
@@ -127,6 +126,7 @@ UDP AS	Involvert i et internt prosjekt
   constructor(private cloner: ClonerService) { }
 
   getCustomers() : Observable<ICustomer[]> {
+    console.log("Service: getCustomers() - this.customers");
     // Use the following code if using immutable.js
     // return of(this.immutableCustomers.toJS());
     //return throwError("Feil get customers");
@@ -134,19 +134,20 @@ UDP AS	Involvert i et internt prosjekt
   }
 
   addCustomer() : Observable<ICustomer[]> {
+    console.log("Service: addCustomer() - this.customers");
     let id = this.customers[this.customers.length - 1].id + 1;
     this.customers.push({
       id: id,
       name: 'New Customer ' + id,
       project: 'Project ' + id
     });
-    console.log("addCustomer");
     console.log(this.customers);
     this.customersSubject$.next(this.customers);
     return of(this.customers);
   }
 
   addCustomerClone() : Observable<ICustomer[]> {
+    console.log("Service: addCustomerClone() - this.customers CLONE");
     return this.addCustomer().pipe(
       map(custs => {
         console.log("addCustomerClone");
@@ -156,7 +157,9 @@ UDP AS	Involvert i et internt prosjekt
     )
   }
 
+  //NOT USER
   addCustomerImmutable() : Observable<ICustomer[]> {
+    console.log("Service: addCustomerImmutable() - this.immutableCustomers");
     let id = this.immutableCustomers[this.immutableCustomers.size - 1].id + 1;
     this.immutableCustomers.push({
       id: id,
@@ -165,15 +168,18 @@ UDP AS	Involvert i et internt prosjekt
     });
     console.log("addCustomerImmutable");
     console.log(this.customers);
+    console.log(this.immutableCustomers);
+    console.log("TODO");
     this.customersSubject$.next(this.customers);
     return of(this.immutableCustomers.toJS());
   }
 
   updateCustomer(customer): Observable<ICustomer> {
-    console.log("updateCustomer");
-    console.log(customer);
+    console.log("Service: updateCustomer() - this.immutableCustomers");
+    let id = this.customers[this.customers.length - 1].id + 1;
 
     //FIX FORM
+    console.log(customer);
     customer = {
           id: 1,
           name: 'Update Customer ' + 1,
@@ -187,17 +193,18 @@ UDP AS	Involvert i et internt prosjekt
   }
 
   createCustomer(customer): Observable<ICustomer> {
-    console.log("updateCustomer");
-    console.log(customer);
+    console.log("Service: createCustomer() - this.immutableCustomers");
+    console.log(this.customers);
+    let id = this.customers[this.customers.length - 1].id + 1;
 
-    //FIX FORM
+    //TODO: FIX FORM
+    console.log(customer);
     customer = {
-          id: 0,
-          name: 'New Customer ' + 1,
-          project: 'New Project ' + 1
+          id: id,
+          name: 'New Customer ' + id,
+          project: 'New Project ' + id
         };
 
-    console.log(customer);
     this.customersSubject$.next(this.customers);
     this.immutableCustomers.push(customer);
     return of(customer);
