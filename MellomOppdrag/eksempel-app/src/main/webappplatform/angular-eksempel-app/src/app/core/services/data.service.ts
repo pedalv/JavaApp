@@ -203,7 +203,7 @@ UDP AS	Involvert i et internt prosjekt
           name: 'New Customer ' + id,
           project: 'New Project ' + id
         };
-    this.customers.push(customer);
+    //this.customers.push(customer);
     this.customersSubject$.next(this.customers);
     return of(customer);
   }
@@ -212,8 +212,6 @@ UDP AS	Involvert i et internt prosjekt
     console.log("Service: deleteProduct() - this.immutableCustomers");
     console.log(id);
     console.log(this.customers);
-
-    //DELETE
 
     this.customersSubject$.next(this.customers);
     return of(id);
