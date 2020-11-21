@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
   selector: 'app-customers-list',
   templateUrl: './customers-list.component.html',
   styleUrls: ['./customers-list.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush //checkOnce: @Input or @Output only
 })
 export class CustomersListComponent implements OnInit {
 

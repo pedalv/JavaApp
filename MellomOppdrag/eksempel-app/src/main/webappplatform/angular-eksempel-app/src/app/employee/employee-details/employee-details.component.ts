@@ -10,7 +10,7 @@ import { BaseEmployeeComponent } from '../base-employee/base-employee.component'
   templateUrl: './employee-details.component.html',
   styleUrls: ['./employee-details.component.less'],
   providers: [ EmployeeService ],
-  //changeDetection: ChangeDetectionStrategy.OnPush
+  //changeDetection: ChangeDetectionStrategy.OnPush //checkOnce: @Input or @Output only
 })
 export class EmployeeDetailsComponent extends BaseEmployeeComponent implements OnInit {
 

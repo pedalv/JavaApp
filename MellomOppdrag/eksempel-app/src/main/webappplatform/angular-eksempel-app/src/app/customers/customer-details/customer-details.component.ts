@@ -6,7 +6,7 @@ import { ICustomer } from '../../shared/interfaces';
   selector: 'app-customer-details',
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush //checkOnce: @Input or @Output only
 })
 export class CustomerDetailsComponent implements OnInit {
 
