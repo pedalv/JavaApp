@@ -44,11 +44,12 @@ export const getCustomerSelected = createSelector(
   getCustomerFeatureState,
   getCustomerSelectedId,
   (state, customerSelectedId) => {
-  console.log("getCustomerSelected");
+    console.log(state.customers.length+1);
+    console.log("getCustomerSelected");
     if (customerSelectedId === 0) {
       return {
         id: 0,
-        name: 'New',
+        name: 'New-'+(state.customers.length+1),
         project: ''
       };
     } else {

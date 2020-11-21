@@ -197,15 +197,55 @@ UDP AS	Involvert i et internt prosjekt
     let id = this.customers[this.customers.length - 1].id + 1;
     console.log(id);
     //TODO: FIX FORM
+    //inc customers
     console.log(customer);
     customer = {
-          id: id,
+          id: 1000,
           name: 'New Customer ' + id,
           project: 'New Project ' + id
         };
     //this.customers.push(customer);
     this.customersSubject$.next(this.customers);
     return of(customer);
+
+    /*
+
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        // Product Id must be null for the Web API to assign an Id
+        const newProduct = { ...product, id: null };
+        return this.http.post<Product>(this.productsUrl, newProduct, { headers })
+          .pipe(
+            tap(data => console.log('createProduct: ' + JSON.stringify(data))),
+            catchError(this.handleError)
+          );
+
+
+
+          public createEmployee(employee: Employee) : Observable<Object> {
+
+              let obj= {
+                 "firstName":employee.firstName,
+                 "lastName":employee.lastName,
+                 "role":employee.role
+              };
+
+              //for REST-API
+              return this.httpClient.post(this.apiURL + '/add', obj, this.headers);
+
+              eller
+
+              //for STORE | STATE
+              return this.httpClient.post<Customer>(this.apiURL + '/add', obj, this.headers)
+                         .pipe(
+                           tap(data => console.log('createCustomer: ' + JSON.stringify(data))),
+                           catchError(this.handleError)
+                         );
+
+            }
+
+    */
+
+
   }
 
   deleteCustomer(id: number): Observable<{}> {
@@ -235,10 +275,10 @@ UDP AS	Involvert i et internt prosjekt
 
             //for STORE | STATE
             return this.httpClient.delete<Customer>(this.apiURL + "/" + id)
-              .pipe(
-                tap(data => console.log('deleteCustomer: ' + id)),
-                catchError(this.handleError)
-              );
+                      .pipe(
+                        tap(data => console.log('deleteCustomer: ' + id)),
+                        catchError(this.handleError)
+                      );
 
           }
 
