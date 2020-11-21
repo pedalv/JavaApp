@@ -54,6 +54,7 @@ export class CustomerDetailsComponent implements OnInit {
 
   save(customer:ICustomer) : void {
     console.log("Change Save customer");
+    //TODO: FIX FORM
     console.log(this.customer);
     this.isdetails = !this.isdetails;
 

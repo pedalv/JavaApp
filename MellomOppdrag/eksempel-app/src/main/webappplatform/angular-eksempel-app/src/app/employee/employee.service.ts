@@ -82,6 +82,18 @@ export class EmployeeService {
 
   public deleteEmployee(id: number) : Observable<Object> {
     return this.httpClient.delete(this.apiURL + "/" + id);
+
+
+    /*
+     return this.httpClient.delete<Customer>(this.apiURL + "/" + id)
+            .pipe(
+              tap(data => console.log('deleteCustomer: ' + id)),
+              catchError(this.handleError)
+            );
+   */
+
+
+
   }
 
   public getFirstPage(){

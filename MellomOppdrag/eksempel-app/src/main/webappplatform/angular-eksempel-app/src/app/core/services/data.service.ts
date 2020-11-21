@@ -215,14 +215,33 @@ UDP AS	Involvert i et internt prosjekt
 
     this.customersSubject$.next(this.customers);
     return of(id);
+
      /*
+
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
       const url = `${this.productsUrl}/${id}`;
-      return this.http.delete<Product>(url, { headers })
+      return this.http.delete<Customer>(url, { headers })
         .pipe(
           tap(data => console.log('deleteProduct: ' + id)),
           catchError(this.handleError)
         );
+
+
+        public deleteEmployee(id: number) : Observable<Object> {
+            //for REST-api
+            return this.httpClient.delete(this.apiURL + "/" + id);
+
+            eller
+
+            //for STORE | STATE
+            return this.httpClient.delete<Customer>(this.apiURL + "/" + id)
+              .pipe(
+                tap(data => console.log('deleteCustomer: ' + id)),
+                catchError(this.handleError)
+              );
+
+          }
+
       */
       this.customers
     }
