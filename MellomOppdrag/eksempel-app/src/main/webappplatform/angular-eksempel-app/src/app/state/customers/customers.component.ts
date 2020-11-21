@@ -6,7 +6,7 @@ import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
 import { State, getShowCustomerFlag,
         getCustomerSelected, getCustomers,
-         getError } from './state/customer.reducer';
+         getError } from './state';
 import { Subscription, Observable } from 'rxjs';
 
 /* NgRx */

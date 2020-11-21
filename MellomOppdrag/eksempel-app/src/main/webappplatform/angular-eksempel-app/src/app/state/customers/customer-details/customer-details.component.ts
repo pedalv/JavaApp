@@ -6,7 +6,7 @@ import $ from "jquery";
 
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { State, getCustomerSelected } from '../state/customer.reducer';
+import { State, getCustomerSelected } from '../state';
 
 /* NgRx */
 import { Store } from '@ngrx/store';

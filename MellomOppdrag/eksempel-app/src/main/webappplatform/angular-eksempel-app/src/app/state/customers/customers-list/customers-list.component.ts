@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 import { ICustomer } from '../../../shared/interfaces';
 
 import { Observable } from 'rxjs';
-import { State, getCustomers } from '../state/customer.reducer';
+import { State, getCustomers } from '../state';
 import * as CustomerActions  from '../state/customer.actions';
 
 /* NgRx */

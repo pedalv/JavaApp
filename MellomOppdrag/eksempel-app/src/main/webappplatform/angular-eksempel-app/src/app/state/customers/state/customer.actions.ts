@@ -50,32 +50,32 @@ export const updateCustomerFailure = createAction(
 
 // Create
 export const createCustomer = createAction(
-  '[Customer] Create Customer',
+  '[Customer Page] Create Customer',
   props<{ customer: ICustomer }>()
 );
 
 export const createCustomerSuccess = createAction(
-  '[Customer] Create Customer Success',
+  '[Customer API] Create Customer Success',
   props<{ customer: ICustomer }>()
 );
 
 export const createCustomerFailure = createAction(
-  '[Customer] Create Customer Fail',
+  '[Customer API] Create Customer Fail',
   props<{ error: string }>()
 );
 
 // Delete
 export const deleteCustomer = createAction(
-  '[Customer] Delete Customer',
+  '[Customer Page] Delete Customer',
   props<{ customerId: number }>()
 );
 
 export const deleteCustomerSuccess = createAction(
-  '[Customer] Delete Customer Success',
+  '[Customer Api] Delete Customer Success',
   props<{ customerId: number }>()
 );
 
 export const deleteCustomerFailure = createAction(
-  '[Customer] Delete Customer Fail',
+  '[Customer Api] Delete Customer Fail',
   props<{ error: string }>()
 );

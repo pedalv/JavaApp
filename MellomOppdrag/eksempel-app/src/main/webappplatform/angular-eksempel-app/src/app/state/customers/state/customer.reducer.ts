@@ -1,13 +1,6 @@
-/* NgRx */
-import { createReducer, on, createAction, createFeatureSelector, createSelector } from '@ngrx/store';
-import * as AppState from './app.state';
-import * as CustomerActions  from './customer.actions';
 import { ICustomer } from '../../../shared/interfaces';
-
-
-export interface State extends AppState.State {
-  customers: CustomerState;
-}
+import { createReducer, on} from '@ngrx/store';
+import * as CustomerActions  from './customer.actions';
 
 export interface CustomerState {
   showCustomerFlag: boolean,
@@ -23,57 +16,6 @@ const initialState: CustomerState = {
   error: ''
 }
 
-const getCustomerFeatureState = createFeatureSelector<CustomerState>('customers');
-
-export const getShowCustomerFlag = createSelector(
-  getCustomerFeatureState,
-  state => state.showCustomerFlag
-);
-/*
-export const getInitializeSelectedCustomer = createSelector(
-  getCustomerFeatureState,
-  state => state.customerSelectedId
-);
-*/
-export const getCustomerSelectedId = createSelector(
-  getCustomerFeatureState,
-  state => state.customerSelectedId
-);
-
-export const getCustomerSelected = createSelector(
-  getCustomerFeatureState,
-  getCustomerSelectedId,
-  (state, customerSelectedId) => {
-    console.log(state.customers.length+1);
-    console.log("getCustomerSelected");
-    if (customerSelectedId === 0) {
-      return {
-        id: 0,
-        name: 'New-'+(state.customers.length+1),
-        project: ''
-      };
-    } else {
-      return customerSelectedId ? state.customers.find(p => p.id === customerSelectedId) : null;
-    }
-  }
-);
-
-/* DELETEEEEEE
-export const getCustomerSelected = createSelector(
-  getCustomerFeatureState,
-  state => state.customerSelected
-);
-*/
-
-export const getCustomers = createSelector(
-  getCustomerFeatureState,
-  state => state.customers
-);
-
-export const getError = createSelector(
-  getCustomerFeatureState,
-  state => state.error
-);
 
 export const customerReducer = createReducer<CustomerState>(
 
@@ -196,6 +138,7 @@ export const customerReducer = createReducer<CustomerState>(
   })
 
 );
+
 
 /*
 - switchMap: merge observable into other observable
