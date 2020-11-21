@@ -4,7 +4,6 @@ import { KafkaService } from './kafka.service';
 import { KafkaComponent } from './kafka.component';
 
 describe('KafkaComponent', () => {
-  let kafkaServiceStub: Partial<KafkaService>;
   let component: KafkaComponent;
   let fixture: ComponentFixture<KafkaComponent>;
 

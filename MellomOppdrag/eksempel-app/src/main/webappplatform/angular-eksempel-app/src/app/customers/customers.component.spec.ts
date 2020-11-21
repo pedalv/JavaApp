@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CustomersComponent } from './customers.component';
-import { DataService } from '../core/services/data.service';
 //private dataService: DataService
 
 describe('CustomersComponent', () => {

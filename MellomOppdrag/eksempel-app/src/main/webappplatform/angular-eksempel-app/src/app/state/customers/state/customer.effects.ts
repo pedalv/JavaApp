@@ -6,7 +6,9 @@ import { DataService } from '../../../core/services/data.service';
 
 /* NgRx */
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as CustomerActions from './customer.actions';
+
+//import * as CustomerActions  from './customer.actions';
+import { CustomerApiActions, CustomerPageActions } from './actions'
 
 @Injectable()
 export class CustomerEffects {
@@ -16,11 +18,11 @@ export class CustomerEffects {
   loadCustomers$ = createEffect(() => {
     return this.actions$
       .pipe(
-        ofType(CustomerActions.loadCustomers),
+        ofType(CustomerPageActions.loadCustomers),
         mergeMap(() => this.customerService.getCustomers()
           .pipe(
-            map(customers => CustomerActions.loadCustomersSuccess({ customers })),
-            catchError(error => of(CustomerActions.loadCustomersFailure({ error })))
+            map(customers => CustomerApiActions.loadCustomersSuccess({ customers })),
+            catchError(error => of(CustomerApiActions.loadCustomersFailure({ error })))
           )
         )
       );
@@ -30,11 +32,11 @@ export class CustomerEffects {
   updateCustomer$ = createEffect(() => {
       return this.actions$
         .pipe(
-          ofType(CustomerActions.updateCustomer),
+          ofType(CustomerPageActions.updateCustomer),
           concatMap(action => this.customerService.updateCustomer(action.customer)
             .pipe(
-              map(customer => CustomerActions.updateCustomerSuccess({ customer })),
-              catchError(error => of(CustomerActions.updateCustomerFailure({ error })))
+              map(customer => CustomerApiActions.updateCustomerSuccess({ customer })),
+              catchError(error => of(CustomerApiActions.updateCustomerFailure({ error })))
             )
           )
         );
@@ -44,11 +46,11 @@ export class CustomerEffects {
   createCustomer$ = createEffect(() => {
       return this.actions$
         .pipe(
-          ofType(CustomerActions.createCustomer),
+          ofType(CustomerPageActions.createCustomer),
           concatMap(action => this.customerService.createCustomer(action.customer)
             .pipe(
-              map(customer => CustomerActions.createCustomerSuccess({ customer })),
-              catchError(error => of(CustomerActions.createCustomerFailure({ error })))
+              map(customer => CustomerApiActions.createCustomerSuccess({ customer })),
+              catchError(error => of(CustomerApiActions.createCustomerFailure({ error })))
             )
           )
         );
@@ -57,12 +59,12 @@ export class CustomerEffects {
     deleteCustomer$ = createEffect(() => {
         return this.actions$
           .pipe(
-            ofType(CustomerActions.deleteCustomer),
+            ofType(CustomerPageActions.deleteCustomer),
             mergeMap(action =>
               this.customerService.deleteCustomer(action.customerId)
               .pipe(
-                map(() => CustomerActions.deleteCustomerSuccess({ customerId: action.customerId })),
-                catchError(error => of(CustomerActions.deleteCustomerFailure({ error })))
+                map(() => CustomerApiActions.deleteCustomerSuccess({ customerId: action.customerId })),
+                catchError(error => of(CustomerApiActions.deleteCustomerFailure({ error })))
               )
             )
           );

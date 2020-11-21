@@ -1,6 +1,7 @@
 import { ICustomer } from '../../../shared/interfaces';
 import { createReducer, on} from '@ngrx/store';
-import * as CustomerActions  from './customer.actions';
+//import * as CustomerActions  from './customer.actions';
+import { CustomerApiActions, CustomerPageActions } from './actions'
 
 export interface CustomerState {
   showCustomerFlag: boolean,
@@ -21,7 +22,7 @@ export const customerReducer = createReducer<CustomerState>(
 
   initialState,
 
-  on(CustomerActions.toggleShowCustomerFlag, (state) : CustomerState => {
+  on(CustomerPageActions.toggleShowCustomerFlag, (state) : CustomerState => {
       console.log('Effect CustomerActions toggleShowCustomerFlag: ' + JSON.stringify(state));
       return {
         ...state,
@@ -29,7 +30,7 @@ export const customerReducer = createReducer<CustomerState>(
       };
     }),
 
-  on(CustomerActions.setSelectedCustomer, (state, action) : CustomerState => {
+  on(CustomerPageActions.setSelectedCustomer, (state, action) : CustomerState => {
         console.log('Effect CustomerActions setSelectedCustomer: ' + JSON.stringify(state));
         return {
           ...state,
@@ -37,7 +38,7 @@ export const customerReducer = createReducer<CustomerState>(
         };
       }),
 
-  on(CustomerActions.setSelectedCustomer, state => {
+  on(CustomerPageActions.setSelectedCustomer, state => {
       console.log('Effect CustomerActions setSelectedCustomer: ' + JSON.stringify(state));
       return {
         ...state,
@@ -45,7 +46,7 @@ export const customerReducer = createReducer<CustomerState>(
       };
     }),
 
-  on(CustomerActions.clearSelectedCustomer, (state): CustomerState => {
+  on(CustomerPageActions.clearSelectedCustomer, (state): CustomerState => {
       console.log("Effect CustomerActions clearSelectedCustomer")
       return {
         ...state,
@@ -53,7 +54,7 @@ export const customerReducer = createReducer<CustomerState>(
       };
     }),
 
-  on(CustomerActions.initializeSelectedCustomer, (state) : CustomerState => {
+  on(CustomerPageActions.initializeSelectedCustomer, (state) : CustomerState => {
         console.log('Effect CustomerActions initializeSelectedCustomer: ' + JSON.stringify(state));
         return {
           ...state,
@@ -61,7 +62,7 @@ export const customerReducer = createReducer<CustomerState>(
         };
       }),
 
-  on(CustomerActions.loadCustomersSuccess, (state, action) : CustomerState => {
+  on(CustomerApiActions.loadCustomersSuccess, (state, action) : CustomerState => {
           console.log('Effect CustomerActions loadCustomersSuccess: ' + JSON.stringify(state));
           return {
             ...state,
@@ -70,7 +71,7 @@ export const customerReducer = createReducer<CustomerState>(
           };
         }),
 
-  on(CustomerActions.loadCustomersFailure, (state, action) : CustomerState => {
+  on(CustomerApiActions.loadCustomersFailure, (state, action) : CustomerState => {
             console.log('Effect CustomerActions loadCustomersFailure: ' + JSON.stringify(state));
             return {
               ...state,
@@ -79,7 +80,7 @@ export const customerReducer = createReducer<CustomerState>(
             };
           }),
 
-  on(CustomerActions.updateCustomerSuccess, (state, action): CustomerState => {
+  on(CustomerApiActions.updateCustomerSuccess, (state, action): CustomerState => {
     console.log("Effect CustomerActions updateCustomerSuccess")
     const updatedCustomers = state.customers.map(
       item => action.customer.id === item.id ? action.customer : item);
@@ -91,7 +92,7 @@ export const customerReducer = createReducer<CustomerState>(
     };
   }),
 
-  on(CustomerActions.updateCustomerFailure, (state, action): CustomerState => {
+  on(CustomerApiActions.updateCustomerFailure, (state, action): CustomerState => {
     console.log("Effect CustomerActions updateCustomerFailure")
     return {
       ...state,
@@ -100,7 +101,7 @@ export const customerReducer = createReducer<CustomerState>(
   }),
 
   // After a create, the currentCustomer is the new customer.
-  on(CustomerActions.createCustomerSuccess, (state, action): CustomerState => {
+  on(CustomerApiActions.createCustomerSuccess, (state, action): CustomerState => {
     console.log("Effect CustomerActions createCustomerSuccess")
     return {
       ...state,
@@ -110,7 +111,7 @@ export const customerReducer = createReducer<CustomerState>(
     };
   }),
 
-  on(CustomerActions.createCustomerFailure, (state, action): CustomerState => {
+  on(CustomerApiActions.createCustomerFailure, (state, action): CustomerState => {
     console.log("Effect CustomerActions createCustomerFailure")
     return {
       ...state,
@@ -119,7 +120,7 @@ export const customerReducer = createReducer<CustomerState>(
   }),
 
   // After a delete, the currentCustomer is null.
-  on(CustomerActions.deleteCustomerSuccess, (state, action): CustomerState => {
+  on(CustomerApiActions.deleteCustomerSuccess, (state, action): CustomerState => {
     console.log("Effect CustomerActions deleteCustomerSuccess")
     return {
       ...state,
@@ -129,7 +130,7 @@ export const customerReducer = createReducer<CustomerState>(
     };
   }),
 
-  on(CustomerActions.deleteCustomerFailure, (state, action): CustomerState => {
+  on(CustomerApiActions.deleteCustomerFailure, (state, action): CustomerState => {
     console.log("Effect CustomerActions deleteCustomerFailure")
     return {
       ...state,

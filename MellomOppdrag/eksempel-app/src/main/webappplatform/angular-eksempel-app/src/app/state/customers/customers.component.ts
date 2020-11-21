@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as CustomerActions  from './state/customer.actions';
+//import * as CustomerActions  from '../state/customer.actions';
+import { CustomerPageActions } from './state/actions'
+
 import { ICustomer } from '../../shared/interfaces';
 import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
@@ -40,7 +42,7 @@ export class CustomersComponent implements OnInit {
 
     //show list of customers Action(here) and Select(error: here and list: custumer-list)
     // Use 4: loadCustomers
-    this.store.dispatch(CustomerActions.loadCustomers()); //Store
+    this.store.dispatch(CustomerPageActions.loadCustomers()); //Store
     //Use 2: view - getError
     this.errorMessage$ = this.store.select(getError); //Store
 
@@ -63,14 +65,14 @@ export class CustomersComponent implements OnInit {
   checkChanged(): void {
     //Use 3: showCustomerFlag
     this.store.dispatch(
-      CustomerActions.toggleShowCustomerFlag()
+      CustomerPageActions.toggleShowCustomerFlag()
       //{ type: '[Customers] IS Show Customers'}
     );
   }
 
   addCustomerClone() {
     //Use 2: initializeSelectedCustomer
-    this.store.dispatch(CustomerActions.initializeSelectedCustomer()); //Store
+    this.store.dispatch(CustomerPageActions.initializeSelectedCustomer()); //Store
   }
 
 }

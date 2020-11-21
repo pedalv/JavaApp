@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 //import { CustomersListComponent } from './customers-list/customers-list.component';
 //import { FilterTextboxComponent } from './customers-list/filter-textbox.component';
 import { NgrxCustomersComponent } from './ngrx-customers.component';

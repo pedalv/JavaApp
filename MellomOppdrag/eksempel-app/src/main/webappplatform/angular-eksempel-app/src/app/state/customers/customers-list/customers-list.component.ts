@@ -3,7 +3,9 @@ import { ICustomer } from '../../../shared/interfaces';
 
 import { Observable } from 'rxjs';
 import { State, getCustomers } from '../state';
-import * as CustomerActions  from '../state/customer.actions';
+
+//import * as CustomerActions  from '../state/customer.actions';
+import { CustomerPageActions } from '../state/actions'
 
 /* NgRx */
 import { Store } from '@ngrx/store';
@@ -29,7 +31,7 @@ export class CustomersListComponent implements OnInit {
     console.log("customer selected");
     console.log(customer);
     //USE 1 : setSelectedCustomer
-    this.store.dispatch(CustomerActions.setSelectedCustomer( { customerSelectedId: customer.id } )); //Store
+    this.store.dispatch(CustomerPageActions.setSelectedCustomer( { customerSelectedId: customer.id } )); //Store
   }
 
 }

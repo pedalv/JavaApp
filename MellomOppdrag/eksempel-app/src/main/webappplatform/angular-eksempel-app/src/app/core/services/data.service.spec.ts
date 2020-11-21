@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ClonerService } from './cloner.service';
 import { DataService } from './data.service';
 
 describe('DataService', () => {

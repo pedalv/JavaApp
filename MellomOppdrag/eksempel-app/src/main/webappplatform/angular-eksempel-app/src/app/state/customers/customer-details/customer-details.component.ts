@@ -1,7 +1,10 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ICustomer } from '../../../shared/interfaces';
 
-import * as CustomerActions  from '../state/customer.actions';
+//import * as CustomerActions  from '../state/customer.actions';
+import { CustomerPageActions } from '../state/actions'
+
+
 import $ from "jquery";
 
 import { Observable } from 'rxjs';
@@ -60,10 +63,10 @@ export class CustomerDetailsComponent implements OnInit {
 
     if(customer.id === 0) {
       //Create
-      this.store.dispatch(CustomerActions.createCustomer({ customer }));
+      this.store.dispatch(CustomerPageActions.createCustomer({ customer }));
     } else {
       //Update
-      this.store.dispatch(CustomerActions.updateCustomer({ customer }));
+      this.store.dispatch(CustomerPageActions.updateCustomer({ customer }));
     }
   }
 
@@ -78,11 +81,11 @@ export class CustomerDetailsComponent implements OnInit {
     console.log(this.customer);
     if (this.customer && this.customer.id) {
       if (confirm(`Really delete the customer: ${this.customer.name}?`)) {
-        this.store.dispatch(CustomerActions.deleteCustomer({ customerId: this.customer.id }));
+        this.store.dispatch(CustomerPageActions.deleteCustomer({ customerId: this.customer.id }));
       }
     } else {
       // No need to delete, it was never saved
-      this.store.dispatch(CustomerActions.clearSelectedCustomer());
+      this.store.dispatch(CustomerPageActions.clearSelectedCustomer());
     }
   }
 
