@@ -1,10 +1,9 @@
 <div *ngIf="customer$ | async as customer" >
 
-
   <!-- details -->
   <div *ngIf="isdetails == true">
 
-      <div>Customer details:</div>
+      <p>Customer details:</p>
 
       <h4>Details</h4>
 
@@ -51,27 +50,37 @@
   <div *ngIf="isdetails == false">
 
 
-    <div>Customer redigere:</div>
+    <p>Customer redigere:</p>
 
     <h4>Redigere</h4>
 
-    <div class="form-group">
-      <label for="id">Customer Id</label>
-      <input [(ngModel)]="customer.id" disabled type="text" name="id" class="form-control" id="id" placeholder="Customer ID" value="{{ customer.id }}">
-
-      <label for="name">Customer name</label>
-      <input [(ngModel)]="customer.name" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp"
-             placeholder="Enter your customer navn" value="{{ customer.name }}">
-      <small id="nameHelp" class="form-text text-muted">Enter your customer’s name</small>
-
-      <label for="project">Customer project</label>
-      <input [(ngModel)]="customer.project" type="text" name="project" class="form-control" id="project" aria-describedby="projectHelp"
-             placeholder="Enter your customer project" value="{{ customer.project }}">
-      <small id="projectHelp" class="form-text text-muted">Enter your customer’s etternavn</small>
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <label for="customerId">Customer Id</label>
+          <input [(ngModel)]="customer.id" type="text" disabled class="form-control" id="customerId" aria-describedby="customerIdHelp"
+                 placeholder="Customer ID" value="{{ customer.id }}">
+          <small id="customerIdHelp" class="form-text text-muted">Customer Id is automatic created.</small>
+        </div>
+        <div class="form-group">
+          <label for="customerName">Customer name</label>
+          <input [(ngModel)]="customer.name" type="text" class="form-control" id="customerName" aria-describedby="nameHelp"
+                 placeholder="Enter your customer navn" value="{{ customer.name }}">
+          <small id="nameHelp" class="form-text text-muted">Enter your customer’s name</small>
+        </div>
+        <div class="form-group">
+          <label for="customerProject">Customer project</label>
+          <input [(ngModel)]="customer.project" type="text" class="form-control" id="customerProject" aria-describedby="projectHelp"
+                 placeholder="Enter your customer project" value="{{ customer.project }}">
+          <small id="projectHelp" class="form-text text-muted">Enter your customer’s etternavn</small>
+        </div>
+        <button class="btn btn-primary" (click)="save(customer)">Save employee via store (todo)</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+        &nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-    <button class="btn btn-primary" (click)="save(customer)">Save employee via store (todo)</button>
-    &nbsp;&nbsp;
-    <button class="btn btn-primary" (click)="cancel()">Cancel</button>
 
 
   </div>
