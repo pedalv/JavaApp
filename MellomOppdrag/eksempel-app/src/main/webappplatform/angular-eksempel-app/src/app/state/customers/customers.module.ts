@@ -5,6 +5,8 @@ import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomersListComponent } from './customers-list/customers-list.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 
+import { SharedModule } from '../../shared/shared.module';
+
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -15,6 +17,7 @@ import { CustomerEffects } from './state/customer.effects';
 @NgModule({
   imports:      [
     CommonModule,
+    SharedModule,
     CustomersRoutingModule,
     StoreModule.forFeature('customers', customerReducer),
     /*
