@@ -55,22 +55,22 @@
     <h4>Redigere</h4>
 
     <div class="container">
-      <form>
+      <form #form="ngForm">
         <div class="form-group">
           <label for="customerId">Customer Id</label>
-          <input [(ngModel)]="customer.id" type="text" disabled class="form-control" id="customerId" aria-describedby="customerIdHelp"
+          <input [(ngModel)]="customer.id" type="text" disabled class="form-control" id="customerId" name="id" aria-describedby="customerIdHelp"
                  placeholder="Customer ID" value="{{ customer.id }}">
           <small id="customerIdHelp" class="form-text text-muted">Customer Id is automatic created.</small>
         </div>
         <div class="form-group">
           <label for="customerName">Customer name</label>
-          <input [(ngModel)]="customer.name" type="text" class="form-control" id="customerName" aria-describedby="nameHelp"
+          <input [(ngModel)]="customer.name" type="text" class="form-control" id="customerName" name="name" aria-describedby="nameHelp"
                  placeholder="Enter your customer navn" value="{{ customer.name }}">
           <small id="nameHelp" class="form-text text-muted">Enter your customer’s name</small>
         </div>
         <div class="form-group">
           <label for="customerProject">Customer project</label>
-          <input [(ngModel)]="customer.project" type="text" class="form-control" id="customerProject" aria-describedby="projectHelp"
+          <input [(ngModel)]="customer.project" type="text" class="form-control" id="customerProject" name="project" aria-describedby="projectHelp"
                  placeholder="Enter your customer project" value="{{ customer.project }}">
           <small id="projectHelp" class="form-text text-muted">Enter your customer’s etternavn</small>
         </div>
@@ -82,6 +82,10 @@
       </form>
     </div>
 
+
+    <h3>- {{ form }} -</h3>
+    <!-- -->
+    <h3>- {{ form.value | json }} -</h3>
 
   </div>
 
