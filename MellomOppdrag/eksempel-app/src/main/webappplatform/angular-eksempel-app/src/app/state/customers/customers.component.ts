@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerPageActions } from './state/actions'
 
 import { ICustomer } from '../../shared/interfaces';
-import { DataService } from '../../core/services/data.service';
 import { ClonerService } from '../../core/services/cloner.service';
 import { State, getShowCustomerFlag,
         getCustomerSelected, getCustomers,
@@ -29,7 +28,6 @@ export class CustomersComponent implements OnInit {
   errorMessage$: Observable<string | null>;
 
   constructor(private store: Store<State>,
-              private dataService: DataService,
               private clonerService: ClonerService) { }
 
   ngOnInit(): void {
