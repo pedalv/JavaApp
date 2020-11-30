@@ -7,6 +7,8 @@ import { State, getCustomers } from '../state';
 //import * as CustomerActions  from '../state/customer.actions';
 import { CustomerPageActions } from '../state/actions'
 
+import $ from "jquery";
+
 /* NgRx */
 import { Store } from '@ngrx/store';
 
@@ -29,6 +31,7 @@ export class CustomersListComponent implements OnInit {
 
   selected(customer: ICustomer) : void {
     console.log("customer selected");
+    $("#del").prop("disabled",false);
     console.log(customer);
     //USE 1 : setSelectedCustomer
     this.store.dispatch(CustomerPageActions.setSelectedCustomer( { customerSelectedId: customer.id } )); //Store
