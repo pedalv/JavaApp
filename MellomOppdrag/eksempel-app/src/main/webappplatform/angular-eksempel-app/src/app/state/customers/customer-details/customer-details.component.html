@@ -55,7 +55,46 @@
     <h4>Redigere</h4>
 
     <div class="container">
-      <form #form="ngForm">
+
+      <!--
+        HTML5 validate === ngNativeValidate
+        - required
+        - pattern (ex: B.*)
+        - min/maxlength === text
+        - min/max === number
+      -->
+
+      <!--
+        Validation Classes in Angular
+        - ng-untouched
+        - ng-touched
+        -ng-pristine (unmodify)
+        -ng-dirty
+        - ng-valid
+        - ng-invalid
+      -->
+
+      <!--
+        #classTest
+        <h3> {{ classTest.className }} </h3>
+
+        form-control ng-untouched ng-dirty ng-invalid
+        form-control ng-untouched ng-valid ng-dirty
+      -->
+
+      <!--
+        #propertyTest="ngModel"
+
+        <h3>dirty: {{ propertyTest.dirty }} </h3>
+        <h3>pristine: {{ propertyTest.pristine }} </h3>
+        <h3>touched: {{ propertyTest.touched }} </h3>
+        <h3>untouched: {{ propertyTest.untouched }} </h3>
+        <h3>valid: {{ propertyTest.valid }} </h3>
+        <h3>invalid: {{ propertyTest.invalid }} </h3>
+      -->
+
+
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <div class="form-group">
           <label for="customerId">Customer Id</label>
           <input [(ngModel)]="customer.id" type="text" disabled class="form-control" id="customerId" name="id" aria-describedby="customerIdHelp"
@@ -65,8 +104,20 @@
         <div class="form-group">
           <label for="customerName">Customer name</label>
           <input [(ngModel)]="customer.name" type="text" class="form-control" id="customerName" name="name" aria-describedby="nameHelp"
-                 placeholder="Enter your customer navn" value="{{ customer.name }}">
+                  placeholder="Enter your customer navn" value="{{ customer.name }}"
+                  required #nameField="ngModel"
+                  (blur)="onBlur(nameField)"
+                  [class.field-error]="form.submitted && nameField.invalid">
           <small id="nameHelp" class="form-text text-muted">Enter your customer’s name</small>
+          <div [hidden]="nameField.valid || nameField.untouched"
+                class="alert alert-danger">
+            Enter a name (Styling Forms)
+          </div>
+          <div [hidden]="!form.submitted || nameField.valid"
+               class="alert alert-danger">
+            Enter a name (Submitting Forms)
+          </div>
+
         </div>
         <div class="form-group">
           <label for="customerProject">Customer project</label>
@@ -78,7 +129,7 @@
         &nbsp;&nbsp;
         <button class="btn btn-primary" (click)="cancel()">Cancel</button>
         &nbsp;&nbsp;
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-primary" >Submit</button>
       </form>
     </div>
 

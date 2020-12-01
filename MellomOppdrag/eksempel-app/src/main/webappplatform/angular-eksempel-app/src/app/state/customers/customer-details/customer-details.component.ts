@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ICustomer } from '../../../shared/interfaces';
 
+import { NgForm, NgModel } from '@angular/forms';
+
 //import * as CustomerActions  from '../state/customer.actions';
 import { CustomerPageActions } from '../state/actions'
 
@@ -94,6 +96,14 @@ export class CustomerDetailsComponent implements OnInit {
       // No need to delete, it was never saved
       this.store.dispatch(CustomerPageActions.clearSelectedCustomer());
     }
+  }
+
+  onSubmit(form: NgForm) {
+    console.log('in onSubmit: ', form.valid);
+  }
+
+  onBlur(field: NgModel) {
+    console.log('in onBlur:', field.valid);
   }
 
 }
