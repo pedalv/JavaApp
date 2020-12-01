@@ -25,6 +25,9 @@ export class CustomerDetailsComponent implements OnInit {
   customer$: Observable<ICustomer>;
   customer: ICustomer;
 
+  //Create a copy
+  customerSettings : ICustomer;
+
   isdetails: boolean;
 
   constructor(private store: Store<State>) {}
@@ -39,6 +42,10 @@ export class CustomerDetailsComponent implements OnInit {
         tap(customerSelected => this.customer = customerSelected),
         tap( (c) => {
           console.log(c);
+
+          //Create a copy
+          this.customerSettings = { ...c };
+
           if(c && c.id === 0) {
             $("#del").prop("disabled",true);
           }
@@ -88,7 +95,6 @@ export class CustomerDetailsComponent implements OnInit {
       this.store.dispatch(CustomerPageActions.clearSelectedCustomer());
     }
   }
-
 
 }
 
