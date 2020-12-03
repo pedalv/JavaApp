@@ -52,6 +52,9 @@ export class CustomerDetailsComponent implements OnInit {
           if(c && c.id === 0) {
             $("#del").prop("disabled",true);
           }
+
+          this.id_db = c && c.id > 0 ? c.id : 0; //Selected
+
         })
       );
 
@@ -64,6 +67,9 @@ export class CustomerDetailsComponent implements OnInit {
     console.log(this.customer);
     this.isdetails = !this.isdetails;
     this.id_db = parseInt(this.customer.project.split('-').pop());
+    if(this.customer.id > 0){
+      this.id_db = this.customer.id;
+    }
     console.log(this.id_db);
   }
 
@@ -105,10 +111,18 @@ export class CustomerDetailsComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log('in onSubmit: ', form.valid);
 
-    //TODO
-    //this.save(customer);
+    console.log(this.id_db);
+    console.log(form.value);
+    console.log(form.value.name);
+    console.log(form.value.project);
 
-
+    this.customer = {
+      id: this.id_db,
+      name: form.value.name,
+      project: form.value.project
+    }
+    console.log(this.customer);
+    this.save(this.customer);
   }
 
   onBlur(field: NgModel) {
