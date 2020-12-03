@@ -26,6 +26,7 @@ export class CustomerDetailsComponent implements OnInit {
 
   customer$: Observable<ICustomer>;
   customer: ICustomer;
+  id_db: number;
 
   //Create a copy
   customerSettings : ICustomer;
@@ -62,16 +63,19 @@ export class CustomerDetailsComponent implements OnInit {
     console.log("Change");
     console.log(this.customer);
     this.isdetails = !this.isdetails;
+    this.id_db = parseInt(this.customer.project.split('-').pop());
+    console.log(this.id_db);
   }
 
   save(customer:ICustomer) : void {
     console.log("Change Save customer");
-    //TODO: FIX FORM
     console.log(this.customer);
     this.isdetails = !this.isdetails;
 
     if(customer.id === 0) {
       //Create
+      customer.id = this.id_db;
+      console.log(this.customer);
       this.store.dispatch(CustomerPageActions.createCustomer({ customer }));
     } else {
       //Update
@@ -100,6 +104,11 @@ export class CustomerDetailsComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log('in onSubmit: ', form.valid);
+
+    //TODO
+    //this.save(customer);
+
+
   }
 
   onBlur(field: NgModel) {

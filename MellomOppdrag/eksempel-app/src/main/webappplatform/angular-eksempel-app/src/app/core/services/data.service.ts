@@ -176,16 +176,6 @@ UDP AS	Involvert i et internt prosjekt
 
   updateCustomer(customer): Observable<ICustomer> {
     console.log("Service: updateCustomer() - this.immutableCustomers");
-    let id = this.customers[this.customers.length - 1].id + 1;
-
-    //FIX FORM
-    console.log(customer);
-    customer = {
-          id: 1,
-          name: 'Update Customer ' + 1,
-          project: 'Update Project ' + 1
-        };
-
     console.log(customer);
     this.customersSubject$.next(this.customers);
     return of(customer);
@@ -193,18 +183,10 @@ UDP AS	Involvert i et internt prosjekt
 
   createCustomer(customer): Observable<ICustomer> {
     console.log("Service: createCustomer() - this.customers");
-    console.log(this.customers);
-    let id = this.customers[this.customers.length - 1].id + 1;
-    console.log(id);
-    //TODO: FIX FORM
-    //inc customers
     console.log(customer);
-    customer = {
-          id: 1000,
-          name: 'New Customer ' + id,
-          project: 'New Project ' + id
-        };
-    //this.customers.push(customer);
+//    let id = this.customers[this.customers.length - 1].id + 1;
+//    console.log(this.customers.length + " ---- " + id);
+//    console.log("CREATED");
     this.customersSubject$.next(this.customers);
     return of(customer);
 

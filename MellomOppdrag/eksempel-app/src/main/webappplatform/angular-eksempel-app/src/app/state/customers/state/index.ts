@@ -32,9 +32,9 @@ export const getCustomerSelected = createSelector(
     console.log("getCustomerSelected");
     if (customerSelectedId === 0) {
       return {
-        id: 0,
-        name: 'New-'+(state.customers.length+1),
-        project: ''
+        id: 0, //new customer to add
+        name: 'Name-'+(state.customers.length+1),
+        project: 'Project-'+(state.customers.length+1)
       };
     } else {
       return customerSelectedId ? state.customers.find(p => p.id === customerSelectedId) : null;
