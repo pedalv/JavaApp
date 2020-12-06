@@ -12,41 +12,6 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-/*
-  customers2: Customer[] = [
-      {
-        id: 1,
-        name: 'John Doe',
-        city: 'Phoenix',
-        orderTotal: 42
-      },
-      {
-        id: 2,
-        name: 'Jane Doe',
-        city: 'Seattle',
-        orderTotal: 30
-      },
-      {
-        id: 3,
-        name: 'Michelle Thompson',
-        city: 'Orlando',
-        orderTotal: 22
-      }
-    ];
-*/
-
-
-/*
-Garantikassen for fiskere	GFF ELSAM 2015
-NAV/Helsedirektoratet	KUKR/SAPO
-Senter for pasientmedvirkning og samhandlingsforskning (SPS)	SpsWebPage, ReConnect-App og -Web
-Statnett	Responsive design av internettløsning
-Norges Forskningsråd	Forvaltning av nettsider prosjekter
-Gjensidige Forsikring	Forvaltning
-A-Pressen Digital Medier (Amedia)	Nettaviser, Zett.no
-More Software Solutions	Digital Skjema
-UDP AS	Involvert i et internt prosjekt
-*/
   customers: ICustomer[] = [
     {
       id: 1,
@@ -64,60 +29,7 @@ UDP AS	Involvert i et internt prosjekt
       project: 'Digital skjema RØF, TOD'
     }
   ];
-/*
-  products: IProduct[] =  [
-    {
-      id: 1,
-      name: 'Basketball',
-      price: 29.99
-    },
-    {
-      id: 2,
-      name: 'XBox',
-      price: 249.99
-    },
-    {
-      id: 3,
-      name: 'Nintendo Switch',
-      price: 249.99
-    },
-    {
-      id: 4,
-      name: 'Bat',
-      price: 29.99
-    },
-    {
-      id: 5,
-      name: 'Glove',
-      price: 29.99
-    },
-    {
-      id: 6,
-      name: 'Cell Phone',
-      price: 799.99
-    },
-    {
-      id: 7,
-      name: 'Cell Phone Service',
-      price: 49.99
-    },
-    {
-      id: 8,
-      name: 'Laptop',
-      price: 999.99
-    },
-    {
-      id: 9,
-      name: 'Bluetooth Speaker',
-      price: 69.99
-    },
-    {
-      id: 10,
-      name: 'TV',
-      price: 1599.99
-    }
-  ];
-*/
+
   immutableCustomers = List<ICustomer>();
 
   private customersSubject$ = new BehaviorSubject<ICustomer[]>(this.customers);
@@ -129,7 +41,7 @@ UDP AS	Involvert i et internt prosjekt
     console.log("Service: getCustomers() - this.customers");
     // Use the following code if using immutable.js
     // return of(this.immutableCustomers.toJS());
-    //return throwError("Feil get customers");
+    // return throwError("Feil get customers");
     return of(this.customers);
   }
 
@@ -184,9 +96,6 @@ UDP AS	Involvert i et internt prosjekt
   createCustomer(customer): Observable<ICustomer> {
     console.log("Service: createCustomer() - this.customers");
     console.log(customer);
-//    let id = this.customers[this.customers.length - 1].id + 1;
-//    console.log(this.customers.length + " ---- " + id);
-//    console.log("CREATED");
     this.customersSubject$.next(this.customers);
     return of(customer);
 
@@ -269,3 +178,98 @@ UDP AS	Involvert i et internt prosjekt
     }
 
 }
+
+
+
+
+
+/*
+  customers2: Customer[] = [
+      {
+        id: 1,
+        name: 'John Doe',
+        city: 'Phoenix',
+        orderTotal: 42
+      },
+      {
+        id: 2,
+        name: 'Jane Doe',
+        city: 'Seattle',
+        orderTotal: 30
+      },
+      {
+        id: 3,
+        name: 'Michelle Thompson',
+        city: 'Orlando',
+        orderTotal: 22
+      }
+    ];
+*/
+
+
+/*
+Garantikassen for fiskere	GFF ELSAM 2015
+NAV/Helsedirektoratet	KUKR/SAPO
+Senter for pasientmedvirkning og samhandlingsforskning (SPS)	SpsWebPage, ReConnect-App og -Web
+Statnett	Responsive design av internettløsning
+Norges Forskningsråd	Forvaltning av nettsider prosjekter
+Gjensidige Forsikring	Forvaltning
+A-Pressen Digital Medier (Amedia)	Nettaviser, Zett.no
+More Software Solutions	Digital Skjema
+UDP AS	Involvert i et internt prosjekt
+*/
+
+/*
+  products: IProduct[] =  [
+    {
+      id: 1,
+      name: 'Basketball',
+      price: 29.99
+    },
+    {
+      id: 2,
+      name: 'XBox',
+      price: 249.99
+    },
+    {
+      id: 3,
+      name: 'Nintendo Switch',
+      price: 249.99
+    },
+    {
+      id: 4,
+      name: 'Bat',
+      price: 29.99
+    },
+    {
+      id: 5,
+      name: 'Glove',
+      price: 29.99
+    },
+    {
+      id: 6,
+      name: 'Cell Phone',
+      price: 799.99
+    },
+    {
+      id: 7,
+      name: 'Cell Phone Service',
+      price: 49.99
+    },
+    {
+      id: 8,
+      name: 'Laptop',
+      price: 999.99
+    },
+    {
+      id: 9,
+      name: 'Bluetooth Speaker',
+      price: 69.99
+    },
+    {
+      id: 10,
+      name: 'TV',
+      price: 1599.99
+    }
+  ];
+*/

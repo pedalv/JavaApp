@@ -76,6 +76,7 @@ npm publish
 - [How to sort table rows according to a column in Angular 9](https://medium.com/nerd-for-tech/how-to-sort-table-rows-according-column-in-angular-9-b04fdafb4140)
 - [Introduction to services and dependency injection](https://angular.io/guide/architecture-services)
 - [NGRX](https://ngrx.io/)
+- [PutsReq](https://putsreq.com/)
 
 > Prod miljø: Apache 2  or [Nginx](https://www.nginx.com/)
 
