@@ -188,11 +188,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Store (State)
 
-![Angular ](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular_ServicesStore1.PNG)
-![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular_ServicesStore2.PNG)
+![Angular Services](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular_ServicesStore1.PNG)
+![Angular Service Store](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular_ServicesStore2.PNG)
 
-![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularStoreState.PNG)
-![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularReduxPrinciples.PNG)
+![Angular Store Statte](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularStoreState.PNG)
+![Angular Redux Principles](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularReduxPrinciples.PNG)
 
 ## Document and article
 - [Protractor configuration file](https://github.com/angular/protractor/blob/master/lib/config.ts)
