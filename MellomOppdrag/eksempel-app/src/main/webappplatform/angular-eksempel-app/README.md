@@ -188,7 +188,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Store (State)
 
-![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular_ServicesStore1.PNG)
+![Angular ](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular_ServicesStore1.PNG)
 ![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular_ServicesStore2.PNG)
 
 ![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularStoreState.PNG)
