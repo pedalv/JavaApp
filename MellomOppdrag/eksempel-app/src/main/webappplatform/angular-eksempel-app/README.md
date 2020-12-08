@@ -185,6 +185,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+
+## Store (State)
+
+![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular_ServicesStore1.PNG)
+![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/Angular_ServicesStore2.PNG)
+
+![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularStoreState.PNG)
+![Angular 8 Main parts](https://raw.githubusercontent.com/pedalv/JavaApp/master/MellomOppdrag/AngularReduxPrinciples.PNG)
+
 ## Document and article
 - [Protractor configuration file](https://github.com/angular/protractor/blob/master/lib/config.ts)
 - [tsconfig](https://angular.io/config/tsconfig)
