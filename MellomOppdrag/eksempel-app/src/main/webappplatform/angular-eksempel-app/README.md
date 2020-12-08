@@ -77,6 +77,8 @@ npm publish
 - [Introduction to services and dependency injection](https://angular.io/guide/architecture-services)
 - [NGRX](https://ngrx.io/)
 - [PutsReq](https://putsreq.com/)
+- [angular.io](https://angular.io/resources?category=development)
+- [awesome-angular-components](https://github.com/brillout/awesome-angular-components)
 
 > Prod miljø: Apache 2  or [Nginx](https://www.nginx.com/)
 
