@@ -111,8 +111,6 @@ describe('EmployeeService', () => {
           "role":"Seniorutvikler"
         };
 
-      //MOCK TODO return this.httpClient.post(this.apiURL + '/add', obj, this.headers);
-
       // act
       let result: Observable<Object> = empservice.createEmployee(employeeCreated);
 
@@ -132,19 +130,95 @@ describe('EmployeeService', () => {
   )));
 
 
+  it(`should replace employee`, async( inject(
+    [HttpTestingController, EmployeeService],
+    (httpClient: HttpTestingController, empservice: EmployeeService) => {
+
+      // arrange
+      const employeereplaced= {
+        "id": 10,
+        "firstName":"P",
+        "lastName":"M",
+        "role":"Seniorutvikler"
+      };
+
+      // act
+      let result: Observable<Object> = empservice.replaceEmployee(employeereplaced);
+
+      // assert
+      result.subscribe((employees : Employee) => {
+        expect(employees.id).toBe(10);
+        expect(employees.firstName).toBe('P');
+        expect(employees.lastName).toBe('M');
+        expect(employees.role).toBe('Seniorutvikler');
+      });
+
+      let req = httpMock.expectOne('/api/employee/10');
+      expect(req.request.method).toBe("PUT"); //Update — PUT/PATCH === version + minor updates/minor updates
+      req.flush(employeereplaced);
+      httpMock.verify();
+    }
+  )));
 
 
+  it(`should single employee`, async( inject(
+    [HttpTestingController, EmployeeService],
+    (httpClient: HttpTestingController, empservice: EmployeeService) => {
 
+      // arrange
+      const employeeSingle= {
+        "id": 10,
+        "firstName":"P",
+        "lastName":"M",
+        "role":"Seniorutvikler"
+      };
 
+      // act
+      let result: Observable<Object> = empservice.singleEmployee(employeeSingle.id);
 
+      // assert
+      result.subscribe((employees : Employee) => {
+        expect(employees.id).toBe(10);
+        expect(employees.firstName).toBe('P');
+        expect(employees.lastName).toBe('M');
+        expect(employees.role).toBe('Seniorutvikler');
+      });
 
-  //TODO
-  //empservice.replaceEmployee()
-  //empservice.singleEmployee()
-  //empservice.deleteEmployee()
-  //empservice.getFirstPage()
-  //empservice.getNextPage
+      let req = httpMock.expectOne('/api/employee/10');
+      expect(req.request.method).toBe("GET"); //Update — PUT/PATCH === version + minor updates/minor updates
+      req.flush(employeeSingle);
+      httpMock.verify();
+    }
+  )));
 
+  it(`should delete employee`, async( inject(
+    [HttpTestingController, EmployeeService],
+    (httpClient: HttpTestingController, empservice: EmployeeService) => {
 
+      // arrange
+      const employeeDelete= {
+        "id": 10,
+        "firstName":"P",
+        "lastName":"M",
+        "role":"Seniorutvikler"
+      };
+
+      // act
+      let result: Observable<Object> = empservice.deleteEmployee(employeeDelete.id);
+
+      // assert
+      result.subscribe((employees : Employee) => {
+        expect(employees.id).toBe(10);
+        expect(employees.firstName).toBe('P');
+        expect(employees.lastName).toBe('M');
+        expect(employees.role).toBe('Seniorutvikler');
+      });
+
+      let req = httpMock.expectOne('/api/employee/10');
+      expect(req.request.method).toBe("DELETE"); //Update — PUT/PATCH === version + minor updates/minor updates
+      req.flush(employeeDelete);
+      httpMock.verify();
+    }
+  )));
 
 });
