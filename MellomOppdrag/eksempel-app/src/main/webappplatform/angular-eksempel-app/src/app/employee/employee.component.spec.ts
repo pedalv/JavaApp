@@ -10,8 +10,8 @@ describe('EmployeeComponent', () => {
   let component: EmployeeComponent;
   let selectedEmployee: Employee;
   let mockClonerService
-  
- 
+
+
   beforeEach(async () => {
     selectedEmployee = {
       "id": 10,
@@ -56,7 +56,7 @@ describe('EmployeeComponent', () => {
     component.ngOnInit()
 
     // assert
-    expect(true).toBe(true); 
+    expect(true).toBe(true);
   });
 
   it('should show that metod changed is called with one argument', () => {
@@ -66,12 +66,13 @@ describe('EmployeeComponent', () => {
 
     // act
     component.changed(selectedEmployee);
-    
+
     // assert
-    expect(component.selectedEmployee.id).toBe(selectedEmployee.id); 
-    expect(component.selectedEmployee.firstName).toBe(selectedEmployee.firstName); 
-    expect(component.selectedEmployee.lastName).toBe(selectedEmployee.lastName); 
-    expect(component.selectedEmployee.role).toBe(selectedEmployee.role);    
+    expect(component.selectedEmployee.id).toBe(selectedEmployee.id);
+    expect(component.selectedEmployee.firstName).toBe(selectedEmployee.firstName);
+    expect(component.selectedEmployee.lastName).toBe(selectedEmployee.lastName);
+    expect(component.selectedEmployee.role).toBe(selectedEmployee.role);
+    expect(mockClonerService.deepClone).toHaveBeenCalledWith(selectedEmployee);
   });
 
 });
