@@ -24,6 +24,9 @@ export class EmployeeComponent implements OnInit {
       //this.selectedEmployee = JSON.parse(JSON.stringify(employee)); //Clone ref
       this.selectedEmployee = this.clonerService.deepClone<Employee>(employee); //Clone ref
 
+      console.log("this.selectedEmployee");
+      console.log(this.selectedEmployee);
+
       console.log(JSON.parse(JSON.stringify(employee)));
       console.log(this.clonerService.deepClone<Employee>(employee));
 
