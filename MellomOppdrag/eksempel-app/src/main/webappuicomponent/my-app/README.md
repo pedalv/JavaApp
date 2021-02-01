@@ -18,12 +18,6 @@ $ npx -v
 - Intellij Idea
 - Visual Studio Code
 
-## komandoer 
-- npm init react-app react-eksempel-app typescript
-- npx create-react-app my-app --template typescript
-- npm install --save-dev --save-exact prettier
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
