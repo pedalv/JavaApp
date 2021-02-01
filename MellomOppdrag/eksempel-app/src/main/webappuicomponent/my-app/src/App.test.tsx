@@ -48,5 +48,5 @@ test("update state when increment is called with shift", () => {
   const counter = getByRole("counter");
   expect(counter).toHaveTextContent("0");
   userEvent.click(counter, { shiftKey: true })
-  expect(counter).toHaveTextContent("1");
+  expect(counter).toHaveTextContent("10");
 });

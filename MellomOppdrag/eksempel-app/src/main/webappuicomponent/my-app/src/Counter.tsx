@@ -6,7 +6,11 @@ export type CounterProps = {
   onCounterIncrease: (isShift: boolean) => void;
 };
 
-const Counter = ({ label = "Count", count, onCounterIncrease } : CounterProps) => {
+const Counter = ({
+                     label = "Count",
+                     count,
+                     onCounterIncrease
+} : CounterProps) => {
 
     const handlerClick = (event: React.MouseEvent<HTMLElement>) => {
         onCounterIncrease(event.shiftKey);

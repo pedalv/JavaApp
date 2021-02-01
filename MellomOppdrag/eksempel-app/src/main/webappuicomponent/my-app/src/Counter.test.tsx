@@ -22,7 +22,7 @@ test("should a counter with a custom label", () => {
     expect(counter).toBeInTheDocument();
 });
 
-test("should call incrementer", () => {
+test("should call the incrementer", () => {
     const handler = jest.fn();
     const { getByRole } = render(<Counter count={0} onCounterIncrease={handler} />);
     const counter = getByRole("counter");
