@@ -1,11 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 
-export type CounterProps = { label?: string; start? : number };
+export type CounterProps = {
+  label?: string;
+  count: number;
+  onCounterIncrease: (isShift: boolean) => void;
+};
 
-const initialState = { count: 0 }
+const Counter = ({ label = "Count", count, onCounterIncrease } : CounterProps) => {
 
-export type CounterSate = Readonly<typeof initialState>;
+    const handlerClick = (event: React.MouseEvent<HTMLElement>) => {
+        onCounterIncrease(event.shiftKey);
+    };
 
+    return (
+        <div>
+            <label htmlFor="counter" aria-label={label}>{label}</label>
+            <span id="counter" role="counter" onClick={handlerClick} >
+          {count}
+        </span>
+        </div>
+    );
+}
+
+/*
 class Counter extends Component<CounterProps, CounterSate> {
   readonly state: CounterSate = initialState;
 
@@ -34,5 +51,6 @@ class Counter extends Component<CounterProps, CounterSate> {
     );
   }
 }
+*/
 
 export default Counter;

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App, { label } from "./App";
-import Counter from "./Counter";
+import userEvent from "@testing-library/user-event";
 
 test("renders 3 headers", () => {
   render(<App />);
@@ -33,4 +33,20 @@ test("should start a zero", () => {
   const { getByRole } = render(<App />);
   const counter = getByRole("counter");
   expect(counter).toHaveTextContent("0");
+});
+
+test("update state when increment is called without shift", () => {
+  const { getByRole } = render(<App />);
+  const counter = getByRole("counter");
+  expect(counter).toHaveTextContent("0");
+  userEvent.click(counter);
+  expect(counter).toHaveTextContent("1");
+});
+
+test("update state when increment is called with shift", () => {
+  const { getByRole } = render(<App />);
+  const counter = getByRole("counter");
+  expect(counter).toHaveTextContent("0");
+  userEvent.click(counter, { shiftKey: true })
+  expect(counter).toHaveTextContent("1");
 });
