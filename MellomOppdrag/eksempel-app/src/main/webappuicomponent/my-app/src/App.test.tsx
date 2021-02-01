@@ -21,3 +21,9 @@ test("generate a label", () => {
   const result = label("React");
   expect(result).toEqual("Hello REACT");
 });
+
+test("should render a label", () => {
+  const { getByLabelText } = render(<App />);
+  const label = getByLabelText("Current");
+  expect(label).toBeInTheDocument();
+});
