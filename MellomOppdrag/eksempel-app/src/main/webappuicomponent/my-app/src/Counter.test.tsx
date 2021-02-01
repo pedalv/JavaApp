@@ -17,3 +17,15 @@ test("should a counter with a custom label", () => {
     const counter = getByRole("counter");
     expect(counter).toBeInTheDocument();
 });
+
+test("should start a zero", () => {
+    const { getByRole } = render(<Counter />);
+    const counter = getByRole("counter");
+    expect(counter).toHaveTextContent("0");
+});
+
+test("should start at anothe value", () => {
+    const { getByRole } = render(<Counter start={10}/>);
+    const counter = getByRole("counter");
+    expect(counter).toHaveTextContent("10");
+});

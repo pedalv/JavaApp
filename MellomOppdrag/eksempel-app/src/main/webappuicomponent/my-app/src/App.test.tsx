@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App, { label } from "./App";
+import Counter from "./Counter";
 
 test("renders 3 headers", () => {
   render(<App />);
@@ -26,4 +27,10 @@ test("should render a label", () => {
   const { getByLabelText } = render(<App />);
   const label = getByLabelText("Current");
   expect(label).toBeInTheDocument();
+});
+
+test("should start a zero", () => {
+  const { getByRole } = render(<App />);
+  const counter = getByRole("counter");
+  expect(counter).toHaveTextContent("0");
 });
