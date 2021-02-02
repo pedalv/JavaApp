@@ -1,5 +1,6 @@
-## React, TypeScript, and TDD tutorial
-- https://www.youtube.com/user/JetBrainsTV/videos
+## [React, TypeScript, and TDD tutorial](https://www.youtube.com/user/JetBrainsTV/videos)
+
+![React_TypeScript_TDD](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/React_TypeScript_TDD.PNG)
 
 ## NodeJs
 ```
@@ -19,10 +20,12 @@ $ npx -v
 - Visual Studio Code
 
 ## Tips og råd
-- [div>h2](https://www.jetbrains.com/help/idea/using-zen-coding-support.html)
 - https://plugins.jetbrains.com/plugin/10456-prettier
+- [div>h2](https://www.jetbrains.com/help/idea/using-zen-coding-support.html)
 - https://plugins.jetbrains.com/plugin/7450-emmet-everywhere
-- https://enzymejs.github.io/enzyme/
+- [testing-library - for ny React](https://testing-library.com/docs/)
+- https://github.com/testing-library/user-event
+- [enzyme - det er gammel](https://enzymejs.github.io/enzyme/)
 
 ## komandoer 
 - npm init react-app react-eksempel-app typescript
