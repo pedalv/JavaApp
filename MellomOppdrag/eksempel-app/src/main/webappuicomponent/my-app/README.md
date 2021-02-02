@@ -26,15 +26,54 @@ $ npx -v
 - [testing-library - for ny React](https://testing-library.com/docs/)
 - https://github.com/testing-library/user-event
 - [enzyme - det er gammel](https://enzymejs.github.io/enzyme/)
+- [CodeSandbox](https://codesandbox.io/)
+- React 35k === Inferno 9k | PREACT 3k 
+- https://magic.reactjs.net/htmltojsx.htm
+- https://www.npmjs.com/package/htmltojsx
+- TypeScript | BABEL === trsndpile JSX
+- [React Starter Projects](https://www.javascriptstuff.com/react-starter-projects/)
+- State Management: Plain React (Component state) | Flux | Redux (Cebtralized state) | MobX (Observable state)
+
+> Recomendations
+
+- Dev environment: create-react-app
+- Classes or Functions: Functions
+- Types: ProTypes or TypeScript
+- State: Plain React 
+- Styling: css | less | sass | etc
+
+> Components
+
+- [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/)
+- [Material-UI](https://material-ui.com/)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+- [awesome-react](https://github.com/enaqx/awesome-react)
+
+> Ecosystem
+
+- React Router
+- Redux | Mobx
+- Jest |  Mocha | Jasmine | Tape  QUnit | AVA
+- GrapgQL
+- Next.js
 
 ## komandoer 
 - npm init react-app react-eksempel-app typescript
 - npx create-react-app my-app --template typescript
 - npm install --save-dev --save-exact prettier
 - npm install @testing-library/user-event @testing-library/dom --save-dev 
+- npm install --save-dev  @testing-library/react (browser is not need)   
 - npm i --save-dev enzyme enzyme-adapter-react-16
 - npm run-script start
 
+## React: The Big Picture
+- React (Library) | Angular | View | Ember (Framework)
+- Components for Web apps (react-dom)
+- Static sites with  Gatsby and Phenomic
+- Mobile with Recat Native (react-native)
+- Desktop with Electron for run on MAC and WINDOWS
+- Server-rendered with NEXT.js (ReactDomServer.renderToString())
+- Virtual Reality Websites and 360 experience with React VR (react-vr)
 
 # Getting Started with Create React App
 

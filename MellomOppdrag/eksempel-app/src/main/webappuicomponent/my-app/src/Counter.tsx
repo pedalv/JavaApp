@@ -1,5 +1,6 @@
 import React from "react";
 
+//Use PropTypes or TypeScript
 export type CounterProps = {
   label?: string;
   count: number;
