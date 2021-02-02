@@ -7,7 +7,7 @@ export function label(name: string) {
   return `Hello ${name.toLocaleUpperCase()}`;
 }
 
-const initialState = { count: 0 }
+const initialState = { count: 0 };
 export type CounterSate = Readonly<typeof initialState>;
 
 class App extends React.Component<object, CounterSate> {
@@ -16,7 +16,7 @@ class App extends React.Component<object, CounterSate> {
     increment = (isShift: boolean) => {
         const inc: number = isShift ? 10 : 1;
         this.setState({ count : this.state.count + inc });
-    }
+    };
 
     render() {
 

@@ -10,7 +10,7 @@ const Counter = ({
                      label = "Count",
                      count,
                      onCounterIncrease
-} : CounterProps) => {
+                 } : CounterProps) => {
 
     const handlerClick = (event: React.MouseEvent<HTMLElement>) => {
         onCounterIncrease(event.shiftKey);
@@ -24,7 +24,7 @@ const Counter = ({
         </span>
         </div>
     );
-}
+};
 
 /*
 class Counter extends Component<CounterProps, CounterSate> {
