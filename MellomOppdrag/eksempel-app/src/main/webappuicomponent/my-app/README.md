@@ -18,11 +18,20 @@ $ npx -v
 - Intellij Idea
 - Visual Studio Code
 
+## Tips og råd
+- [div>h2](https://www.jetbrains.com/help/idea/using-zen-coding-support.html)
+- https://plugins.jetbrains.com/plugin/10456-prettier
+- https://plugins.jetbrains.com/plugin/7450-emmet-everywhere
+- https://enzymejs.github.io/enzyme/
+
 ## komandoer 
 - npm init react-app react-eksempel-app typescript
 - npx create-react-app my-app --template typescript
 - npm install --save-dev --save-exact prettier
-- npm install @testing-library/user-event @testing-library/dom --save-dev
+- npm install @testing-library/user-event @testing-library/dom --save-dev 
+- npm i --save-dev enzyme enzyme-adapter-react-16
+- npm run-script start
+
 
 # Getting Started with Create React App
 
