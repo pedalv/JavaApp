@@ -1,6 +1,5 @@
 import React from "react";
-import { Heading } from "./Heading";
-import { Heading2 } from "./Heading2";
+import {Heading, Heading2} from './Heading';
 import Counter from "./Counter";
 
 export function label(name: string) {
@@ -16,6 +15,14 @@ class App extends React.Component<object, CounterSate> {
     increment = (isShift: boolean) => {
         const inc: number = isShift ? 10 : 1;
         this.setState({ count : this.state.count + inc });
+
+        /*
+        React Hook: a, b = useState() results:
+        a) state object (getter)
+        b) updater function (setter)
+
+        const [currentStateValue, functionTosetNewStateValue] = useState(initialStateValue)
+         */
     };
 
     render() {
@@ -52,3 +59,9 @@ function App() {
 */
 
 export default App;
+
+/*
+Example how React Hook and one-way Data Flow works:
+- https://jscomplete.com/playground/rgs1.6
+- https://jscomplete.com/playground/rgs1.8
+ */

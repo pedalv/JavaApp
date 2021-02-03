@@ -26,13 +26,18 @@ $ npx -v
 - [testing-library - for ny React](https://testing-library.com/docs/)
 - https://github.com/testing-library/user-event
 - [enzyme - det er gammel](https://enzymejs.github.io/enzyme/)
-- [CodeSandbox](https://codesandbox.io/)
+- [CodeSandbox](https://codesandbox.io/) or [layground](https://jscomplete.com/playground)
 - React 35k === Inferno 9k | PREACT 3k 
 - https://magic.reactjs.net/htmltojsx.htm
 - https://www.npmjs.com/package/htmltojsx
-- TypeScript | BABEL === trsndpile JSX
+- TypeScript | BABEL === tranapile JSX
+- [Babel is a JavaScript compiler](https://babeljs.io/)  
 - [React Starter Projects](https://www.javascriptstuff.com/react-starter-projects/)
 - State Management: Plain React (Component state) | Flux | Redux (Cebtralized state) | MobX (Observable state)
+- [React Commonly Faced Problems](https://jscomplete.com/learn/react-beyond-basics/react-cfp)
+- [Why React](https://jscomplete.com/learn/react-beyond-basics/why-react)
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=en)
+- [Draft: JSX Specification](http://facebook.github.io/jsx/)
 
 > Recomendations
 
