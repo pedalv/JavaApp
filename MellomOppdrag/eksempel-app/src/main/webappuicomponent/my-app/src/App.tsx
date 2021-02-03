@@ -15,14 +15,6 @@ class App extends React.Component<object, CounterSate> {
     increment = (isShift: boolean) => {
         const inc: number = isShift ? 10 : 1;
         this.setState({ count : this.state.count + inc });
-
-        /*
-        React Hook: a, b = useState() results:
-        a) state object (getter)
-        b) updater function (setter)
-
-        const [currentStateValue, functionTosetNewStateValue] = useState(initialStateValue)
-         */
     };
 
     render() {
@@ -60,8 +52,31 @@ function App() {
 
 export default App;
 
+
 /*
-Example how React Hook and one-way Data Flow works:
+React Hook: a, b = useState() results:
+a) state object (getter)
+b) updater function (setter)
+
+const [currentStateValue, functionTosetNewStateValue] = useState(initialStateValue)
+ */
+
+/*
+Example React Hook and one-way Data Flow works:
 - https://jscomplete.com/playground/rgs1.6
 - https://jscomplete.com/playground/rgs1.8
+- https://jscomplete.com/playground/rgs2.7
+*/
+
+/*
+JS ES6
+
+const PI = Math.PI;
+const E = Math.E;
+const SQRT2 = Math.SQRT2
+===
+const {PI, E, SQRT2} = Math;
+
+const {Component, Fragment, useState} = require('react');
+useState();
  */

@@ -38,6 +38,13 @@ $ npx -v
 - [Why React](https://jscomplete.com/learn/react-beyond-basics/why-react)
 - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=en)
 - [Draft: JSX Specification](http://facebook.github.io/jsx/)
+- [css-in-js](https://github.com/MicheleBertoli/css-in-js)
+- [GitHub pedalv](https://api.github.com/users/pedalv)
+- [react-axios-react](https://www.digitalocean.com/community/tutorials/react-axios-react)
+- [Handling Axios error in React](https://stackoverflow.com/questions/47005457/handling-axios-error-in-react )
+- [react-beyond-basics](https://jscomplete.com/learn/react-beyond-basics)
+
+
 
 > Recomendations
 
