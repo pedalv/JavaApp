@@ -2,10 +2,7 @@ import React, {useState} from 'react';
 import './starmatch.css';
 import utils from './utils';
 import PlayNumber from './PlayNumber';
-
-// STAR MATCH - Starting Template
-
-
+import StarsDisplay from './StarsDisplay';
 
 const StarMatch = () => {
     const [stars, setStars] = useState(utils.random(1, 9));
@@ -16,9 +13,12 @@ const StarMatch = () => {
             </div>
             <div className="body">
                 <div className="left">
+                    {/*
                     {utils.range(1, stars).map(starId =>
                         <div key={starId} className="star" />
                     )}
+                    */}
+                    <StarsDisplay count={stars}/>
                     {/*
                     <div className="star" />
                     <div className="star" />
