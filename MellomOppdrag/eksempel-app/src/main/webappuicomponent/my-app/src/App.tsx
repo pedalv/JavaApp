@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Heading2 } from "./Heading";
+import {Heading, Heading2} from './Heading';
 import Counter from "./Counter";
 
 export function label(name: string) {
