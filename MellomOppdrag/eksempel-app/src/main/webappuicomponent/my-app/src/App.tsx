@@ -1,6 +1,7 @@
 import React from "react";
 import {Heading, Heading2} from './Heading';
 import Counter from "./Counter";
+import StarMatch from './StarMatch';
 
 export function label(name: string) {
   return `Hello ${name.toLocaleUpperCase()}`;
@@ -33,6 +34,7 @@ class App extends React.Component<object, CounterSate> {
                     onCounterIncrease={this.increment}
                 />
                 <hr />
+                <StarMatch />
             </div>
         );
     }
