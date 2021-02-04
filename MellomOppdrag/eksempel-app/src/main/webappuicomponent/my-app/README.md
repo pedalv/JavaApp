@@ -44,7 +44,11 @@ $ npx -v
 - [Handling Axios error in React](https://stackoverflow.com/questions/47005457/handling-axios-error-in-react )
 - [react-beyond-basics](https://jscomplete.com/learn/react-beyond-basics)
 - [React Hooks Deep Dive](https://jscomplete.com/learn/react-beyond-basics/react-hooks-deep-dive)
-
+- [The Always-recent Guide to Creating Your Own Development Environment for Node and React](https://jscomplete.com/reactful)
+- [rgs-template](https://github.com/jscomplete/rgs-template)
+- [rgs-start-match](https://github.com/jscomplete/rgs-start-match)
+- [react-beyond-basics](http://jscomplete.com/react-beyond-basics)
+- [why-graphql](http://jscomplete.com/why-graphql)
 
 > Recomendations
 
@@ -70,8 +74,6 @@ $ npx -v
 - Next.js
 
 ## komandoer 
-- npm i -g create-react-app && create-react-app my-app --template typescript
-- npm run eject
 - npm init react-app react-eksempel-app typescript
 - npx create-react-app my-app --template typescript
 - npm install --save-dev --save-exact prettier
@@ -79,6 +81,9 @@ $ npx -v
 - npm install --save-dev  @testing-library/react (browser is not need)   
 - npm i --save-dev enzyme enzyme-adapter-react-16
 - npm run-script start
+- npm i -g create-react-app && create-react-app my-app --template typescript
+- npm run eject
+- npx reactfull start-match
 
 ## React: The Big Picture
 - React (Library) | Angular | View | Ember (Framework)
