@@ -21,8 +21,15 @@ const StarMatch = () => {
         }
     });
 
+    const calculateGameStatus = () => {
+        return availableNums.length === 0
+            ? 'won'
+            : secondsLeft === 0 ? 'lost' : 'active'
+    };
+
+    const gameStatus = calculateGameStatus();
+
     const candidatesAreWrong = utils.sum(candidateNums) > stars;
-    const gameIsDone = availableNums.length === 0;
 
     const resetGame = () => {
         setStars(utils.random(1, 9));
@@ -41,7 +48,7 @@ const StarMatch = () => {
     };
 
     const onNumberClick = (number: number, currentStatus: string) => {
-        if (currentStatus === "used") {
+        if (gameStatus !== 'active' || currentStatus === 'used') {
             return;
         }
 
@@ -63,26 +70,26 @@ const StarMatch = () => {
     };
 
     return (
-      <div className="game">
-        <div className="help">
-          Pick 1 or more numbers that sum to the number of stars
-        </div>
-        <div className="body">
-          <div className="left">
-            {gameIsDone ? (
-              <PlayAgain onClick={resetGame} />
-            ) : (
-              <StarsDisplay count={stars} />
-            )}
+        <div className="game">
+            <div className="help">
+                Pick 1 or more numbers that sum to the number of stars
+            </div>
+            <div className="body">
+                <div className="left">
+                    {gameStatus !== 'active' ? (
+                        <PlayAgain onClick={resetGame} gameStatus={gameStatus} />
+                    ) : (
+                        <StarsDisplay count={stars} />
+                    )}
 
-            {/*
+                    {/*
                     {utils.range(1, stars).map(starId =>
                         <div key={starId} className="star" />
                     )}
                     <StarsDisplay count={stars} />
                     */}
 
-            {/*
+                    {/*
                     <div className="star" />
                     <div className="star" />
                     <div className="star" />
@@ -93,18 +100,18 @@ const StarMatch = () => {
                     <div className="star" />
                     <div className="star" />
                     */}
-          </div>
-          <div className="right">
-            {/* <button key={number} className="number">{number}</button> */}
-            {utils.range(1, 9).map((number) => (
-              <PlayNumber
-                key={number}
-                status={numberStatus(number)}
-                number={number}
-                onClick={onNumberClick}
-              />
-            ))}
-            {/*
+                </div>
+                <div className="right">
+                    {/* <button key={number} className="number">{number}</button> */}
+                    {utils.range(1, 9).map((number) => (
+                        <PlayNumber
+                            key={number}
+                            status={numberStatus(number)}
+                            number={number}
+                            onClick={onNumberClick}
+                        />
+                    ))}
+                    {/*
                     <button className="number">1</button>
                     <button className="number">2</button>
                     <button className="number">3</button>
@@ -115,10 +122,10 @@ const StarMatch = () => {
                     <button className="number">8</button>
                     <button className="number">9</button>
                     */}
-          </div>
+                </div>
+            </div>
+            <div className="timer">Time Remaining: {secondsLeft}</div>
         </div>
-        <div className="timer">Time Remaining: {secondsLeft}</div>
-      </div>
     );
 };
 
