@@ -5,13 +5,14 @@ export type PlayNumberProps = {
     key: number
     status: string;
     number: number;
+    onClick: (number: number, currentStatus: string) => void;
 };
 
 const PlayNumber = (props: PlayNumberProps) => (
     <button
         className="number"
         style={{ backgroundColor: colors[props.status] }}
-        onClick={() => console.log('Num', props.number)}
+        onClick={() => props.onClick( props.number, props.status)}
     >
         {props.number}
     </button>
