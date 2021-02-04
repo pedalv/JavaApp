@@ -1,9 +1,9 @@
 import React from "react";
-import {Heading, Heading2} from './Heading';
+import { Heading, Heading2 } from "./Heading";
 import Counter from "./Counter";
+import RenderTsx from "./RenderTsx";
+import RenderHtml from "./RenderHtml";
 import StarMatch from './StarMatch';
-import RenderTsx from './RenderTsx';
-import RenderHtml from './RenderHtml';
 
 export function label(name: string) {
     return `Hello ${name.toLocaleUpperCase()}`;
@@ -88,4 +88,13 @@ const {PI, E, SQRT2} = Math;
 
 const {Component, Fragment, useState} = require('react');
 useState();
+ */
+
+
+/*
+const resetGame = () => {
+    setStars(utils.random(1, 9));
+    setAvailableNums(utils.range(1, 9));
+    setCandidateNums([0]);
+};
  */
