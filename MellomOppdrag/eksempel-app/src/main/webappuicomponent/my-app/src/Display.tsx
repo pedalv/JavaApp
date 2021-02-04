@@ -5,8 +5,8 @@ export type DisplayProps = {
     message: number;
 };
 
-function Display({ message } : DisplayProps) {
-    return <div>{message}</div>;
+function Display(props : DisplayProps) {
+    return <div>{props.message}</div>;
 }
 
 export default Display;

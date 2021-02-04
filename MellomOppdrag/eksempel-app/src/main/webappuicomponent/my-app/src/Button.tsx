@@ -6,11 +6,11 @@ export type ButtonProps = {
     onClickFunction: (incrementCounter: number) => void;
 };
 
-function Button( {increment, onClickFunction} : ButtonProps) {
-    const handleClick = () => onClickFunction(increment);
+function Button( props : ButtonProps) {
+    const handleClick = () => props.onClickFunction(props.increment);
     return (
         <button onClick={handleClick}>
-            +{increment}
+            +{props.increment}
         </button>
     );
 }
