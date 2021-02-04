@@ -2,9 +2,11 @@ import React from "react";
 import {Heading, Heading2} from './Heading';
 import Counter from "./Counter";
 import StarMatch from './StarMatch';
+import RenderTsx from './RenderTsx';
+import RenderHtml from './RenderHtml';
 
 export function label(name: string) {
-  return `Hello ${name.toLocaleUpperCase()}`;
+    return `Hello ${name.toLocaleUpperCase()}`;
 }
 
 const initialState = { count: 0 };
@@ -33,6 +35,9 @@ class App extends React.Component<object, CounterSate> {
                     count={this.state.count}
                     onCounterIncrease={this.increment}
                 />
+                <hr />
+                <RenderHtml />
+                <RenderTsx />
                 <hr />
                 <StarMatch />
             </div>
