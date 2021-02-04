@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react'; //effect og state hook
-import "./starmatch.css";
-import utils from "./utils";
-import PlayNumber from "./PlayNumber";
-import StarsDisplay from "./StarsDisplay";
-import PlayAgain from "./PlayAgain";
+import React from 'react'; //effect og state hook
+import './starmatch.css';
+import utils from './utils';
+import PlayNumber from './PlayNumber';
+import StarsDisplay from './StarsDisplay';
+import PlayAgain from './PlayAgain';
+import useGameState from './useGameState';
 
 //Use PropTypes or TypeScript
 export type GameProps = {
@@ -11,21 +12,13 @@ export type GameProps = {
 };
 
 const Game = (props: GameProps) => {
-    const [stars, setStars] = useState(utils.random(1, 9));
-    const [availableNums, setAvailableNums] =
-        useState(utils.range(1, 9));
-    const [candidateNums, setCandidateNums] = useState([0]);
-    const [secondsLeft, setSecondsLeft] = useState(10);
-
-    useEffect(() => {
-        console.log('Rendered...');
-        if (secondsLeft > 0 && availableNums.length > 0) {
-            const timerId = setTimeout(() => {
-                setSecondsLeft(secondsLeft - 1);
-            }, 1000);
-            return () => clearTimeout(timerId); // Clean always timer for prevent site affects
-        }
-    });
+    const {
+        stars,
+        availableNums,
+        candidateNums,
+        secondsLeft,
+        setGameState
+    } = useGameState();
 
     const calculateGameStatus = () => {
         return availableNums.length === 0
@@ -55,18 +48,9 @@ const Game = (props: GameProps) => {
         const newCandidateNums =
             currentStatus === "available"
                 ? candidateNums.concat(number)
-                : candidateNums.filter((cn) => cn !== number);
+                : candidateNums.filter((cn: number) => cn !== number);
 
-        if (utils.sum(newCandidateNums) !== stars) {
-            setCandidateNums(newCandidateNums);
-        } else {
-            const newAvailableNums = availableNums.filter(
-                (n) => !newCandidateNums.includes(n)
-            );
-            setStars(utils.randomSumIn(newAvailableNums, 9));
-            setAvailableNums(newAvailableNums);
-            setCandidateNums([]);
-        }
+        setGameState(newCandidateNums);
     };
 
     return (
