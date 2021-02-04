@@ -6,6 +6,21 @@ import StarsDisplay from './StarsDisplay';
 
 const StarMatch = () => {
     const [stars, setStars] = useState(utils.random(1, 9));
+    const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
+    const [candidateNums, setCanditateNums] = useState([0]);
+
+    const candidatesAreWrong = utils.sum(candidateNums) > stars;
+
+    const numberStatus = (number: number) => {
+        if (!availableNums.includes(number)) {
+            return 'used';
+        }
+        if (candidateNums.includes(number)) {
+            return candidatesAreWrong ? 'wrong': 'candidate';
+        }
+        return 'available';
+    };
+
     return (
         <div className="game">
             <div className="help">
@@ -34,7 +49,11 @@ const StarMatch = () => {
                 <div className="right">
                     {/* <button key={number} className="number">{number}</button> */}
                     {utils.range(1, 9).map(number =>
-                        <PlayNumber key={number}  number={number} />
+                        <PlayNumber
+                            key={number}
+                            status={numberStatus(number)}
+                            number={number}
+                        />
                     )}
                     {/*
                     <button className="number">1</button>
