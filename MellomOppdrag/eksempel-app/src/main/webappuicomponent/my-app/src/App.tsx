@@ -1,5 +1,5 @@
 import React from "react";
-import {Heading, Heading2} from './Heading';
+import { Heading, Heading2 } from "./Heading";
 import Counter from "./Counter";
 
 export function label(name: string) {
@@ -26,16 +26,50 @@ class App extends React.Component<object, CounterSate> {
                 <h1>{label("React")}</h1>
                 <Heading2 />
                 <Heading />
+                <hr />
                 <Counter
                     label={"Current"}
                     count={this.state.count}
                     onCounterIncrease={this.increment}
                 />
+                <hr />
             </div>
         );
     }
 
 }
+
+/*
+class App extends React.Component {
+    state = {
+        profiles: [],
+    };
+    addNewProfile = (profileData) => {
+        this.setState(prevState => ({
+            profiles: [...prevState.profiles, profileData],
+        }));
+    };
+    render() {
+        return (
+            <div>
+                <div className="header">{this.props.title}</div>
+                <Form onSubmit={this.addNewProfile} />
+                <CardList profiles={this.state.profiles} />
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(
+    <App title="The GitHub Cards App" />,
+    mountNode,
+);
+
+
+
+ */
+
+
 
 /*
 function App() {
