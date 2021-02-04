@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from 'react'; //effect og state hook
 import "./starmatch.css";
 import utils from "./utils";
 import PlayNumber from "./PlayNumber";
@@ -9,6 +9,17 @@ const StarMatch = () => {
     const [stars, setStars] = useState(utils.random(1, 9));
     const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
     const [candidateNums, setCandidateNums] = useState([0]);
+    const [secondsLeft, setSecondsLeft] = useState(10);
+
+    useEffect(() => {
+        console.log('Rendered...');
+        if (secondsLeft > 0 && availableNums.length > 0) {
+            const timerId = setTimeout(() => {
+                setSecondsLeft(secondsLeft - 1);
+            }, 1000);
+            return () => clearTimeout(timerId); // Clean always timer for prevent site affects
+        }
+    });
 
     const candidatesAreWrong = utils.sum(candidateNums) > stars;
     const gameIsDone = availableNums.length === 0;
@@ -52,26 +63,26 @@ const StarMatch = () => {
     };
 
     return (
-        <div className="game">
-            <div className="help">
-                Pick 1 or more numbers that sum to the number of stars
-            </div>
-            <div className="body">
-                <div className="left">
-                    {gameIsDone ? (
-                        <PlayAgain onClick={resetGame} />
-                    ) : (
-                        <StarsDisplay count={stars} />
-                    )}
+      <div className="game">
+        <div className="help">
+          Pick 1 or more numbers that sum to the number of stars
+        </div>
+        <div className="body">
+          <div className="left">
+            {gameIsDone ? (
+              <PlayAgain onClick={resetGame} />
+            ) : (
+              <StarsDisplay count={stars} />
+            )}
 
-                    {/*
+            {/*
                     {utils.range(1, stars).map(starId =>
                         <div key={starId} className="star" />
                     )}
                     <StarsDisplay count={stars} />
                     */}
 
-                    {/*
+            {/*
                     <div className="star" />
                     <div className="star" />
                     <div className="star" />
@@ -82,18 +93,18 @@ const StarMatch = () => {
                     <div className="star" />
                     <div className="star" />
                     */}
-                </div>
-                <div className="right">
-                    {/* <button key={number} className="number">{number}</button> */}
-                    {utils.range(1, 9).map((number) => (
-                        <PlayNumber
-                            key={number}
-                            status={numberStatus(number)}
-                            number={number}
-                            onClick={onNumberClick}
-                        />
-                    ))}
-                    {/*
+          </div>
+          <div className="right">
+            {/* <button key={number} className="number">{number}</button> */}
+            {utils.range(1, 9).map((number) => (
+              <PlayNumber
+                key={number}
+                status={numberStatus(number)}
+                number={number}
+                onClick={onNumberClick}
+              />
+            ))}
+            {/*
                     <button className="number">1</button>
                     <button className="number">2</button>
                     <button className="number">3</button>
@@ -104,10 +115,10 @@ const StarMatch = () => {
                     <button className="number">8</button>
                     <button className="number">9</button>
                     */}
-                </div>
-            </div>
-            <div className="timer">Time Remaining: 10</div>
+          </div>
         </div>
+        <div className="timer">Time Remaining: {secondsLeft}</div>
+      </div>
     );
 };
 

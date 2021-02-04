@@ -43,7 +43,7 @@ $ npx -v
 - [react-axios-react](https://www.digitalocean.com/community/tutorials/react-axios-react)
 - [Handling Axios error in React](https://stackoverflow.com/questions/47005457/handling-axios-error-in-react )
 - [react-beyond-basics](https://jscomplete.com/learn/react-beyond-basics)
-
+- [React Hooks Deep Dive](https://jscomplete.com/learn/react-beyond-basics/react-hooks-deep-dive)
 
 
 > Recomendations
