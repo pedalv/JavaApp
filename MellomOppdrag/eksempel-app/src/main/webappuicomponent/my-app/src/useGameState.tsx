@@ -3,6 +3,7 @@ import utils from './utils';
 
 //Customer Hook
 //1 - Management the state
+//timeLimit
 const useGameState = () => {
 
     const [stars, setStars] = useState(utils.random(1, 9));

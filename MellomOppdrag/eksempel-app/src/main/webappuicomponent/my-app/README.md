@@ -70,6 +70,8 @@ $ npx -v
 - Next.js
 
 ## komandoer 
+- npm i -g create-react-app && create-react-app my-app --template typescript
+- npm run eject
 - npm init react-app react-eksempel-app typescript
 - npx create-react-app my-app --template typescript
 - npm install --save-dev --save-exact prettier
