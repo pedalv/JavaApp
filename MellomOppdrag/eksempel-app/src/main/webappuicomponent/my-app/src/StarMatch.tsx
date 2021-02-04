@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import './starmatch.css';
 import utils from './utils';
+import PlayNumber from './PlayNumber';
 
 // STAR MATCH - Starting Template
+
+
 
 const StarMatch = () => {
     const [stars, setStars] = useState(utils.random(1, 9));
@@ -29,8 +32,9 @@ const StarMatch = () => {
                     */}
                 </div>
                 <div className="right">
+                    {/* <button key={number} className="number">{number}</button> */}
                     {utils.range(1, 9).map(number =>
-                        <button key={number} className="number">{number}</button>
+                        <PlayNumber key={number}  number={number} />
                     )}
                     {/*
                     <button className="number">1</button>
