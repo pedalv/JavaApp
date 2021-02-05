@@ -28,6 +28,10 @@ const Counter = ({
 };
 
 /*
+const initialState = { count: 0 }
+
+export type CounterSate = Readonly<typeof initialState>;
+
 class Counter extends Component<CounterProps, CounterSate> {
   readonly state: CounterSate = initialState;
 

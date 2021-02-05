@@ -5,6 +5,7 @@ import RenderHtml from "./render/RenderHtml";
 import StarMatch from "./match/StarMatch";
 import DisplayHeading from "./heading/DisplayHeading";
 import DisplayCounters from "./counters/DisplayCounters";
+import DisplayGithub from './github/DisplayGithub';
 
 export function label(name: string) {
   return `Hello ${name.toLocaleUpperCase()}`;
@@ -61,6 +62,8 @@ const App = () => {
     return (
         <div>
             <DisplayHeading />
+            <hr />
+            <DisplayGithub title="The GitHub Cards App" />
             <hr />
             <Counter
                 label={"Current"}
