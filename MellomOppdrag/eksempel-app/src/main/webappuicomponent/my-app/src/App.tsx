@@ -3,7 +3,7 @@ import { Heading, Heading2 } from "./heading/Heading";
 import Counter from "./counter/Counter";
 import RenderTsx from "./render/RenderTsx";
 import RenderHtml from "./render/RenderHtml";
-import StarMatch from './StarMatch';
+import StarMatch from './match/StarMatch';
 
 export function label(name: string) {
     return `Hello ${name.toLocaleUpperCase()}`;
