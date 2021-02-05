@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Heading, Heading2 } from "./heading/Heading";
 import Counter from "./counter/Counter";
 import RenderTsx from "./render/RenderTsx";
 import RenderHtml from "./render/RenderHtml";
-import StarMatch from './match/StarMatch';
+import StarMatch from "./match/StarMatch";
+import Button from './counters/Button';
+import Display from './counters/Display';
 
 export function label(name: string) {
-    return `Hello ${name.toLocaleUpperCase()}`;
+  return `Hello ${name.toLocaleUpperCase()}`;
 }
 
+/*
 const initialState = { count: 0 };
 export type CounterSate = Readonly<typeof initialState>;
 
@@ -45,6 +48,46 @@ class App extends React.Component<object, CounterSate> {
     }
 
 }
+*/
+
+const App = () => {
+
+    const [count, setCount] = useState(0);
+
+    const [counter, setCounter] = useState(0);
+    const incrementCounter = (incrementValue: number) => setCounter(counter+incrementValue);
+
+    const increment = (isShift: boolean) => {
+        const inc: number = isShift ? 10 : 1;
+        setCount(count + inc);
+    };
+
+
+    return (
+        <div>
+            <h1>{label("React")}</h1>
+            <Heading2 />
+            <Heading />
+            <hr />
+            <Counter
+                label={"Current"}
+                count={count}
+                onCounterIncrease={increment}
+            />
+            <hr />
+            <Button onClickFunction={incrementCounter} increment={1} />
+            <Button onClickFunction={incrementCounter} increment={5} />
+            <Button onClickFunction={incrementCounter} increment={10} />
+            <Button onClickFunction={incrementCounter} increment={100} />
+            <Display message={counter}/>
+            <hr />
+            <RenderHtml />
+            <RenderTsx />
+            <hr />
+            <StarMatch />
+        </div>
+    );
+};
 
 /*
 function App() {
@@ -53,7 +96,7 @@ function App() {
             <h1>{label("React")}</h1>
             <Heading2 />
             <Heading />
-            <Counter label={"Current"}/>
+            <StarMatch label={"Current"}/>
         </div>
     );
 }
