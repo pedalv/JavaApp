@@ -1,6 +1,6 @@
 import React from "react";
 import { Heading, Heading2 } from "./heading/Heading";
-import Counter from "./Counter";
+import Counter from "./counter/Counter";
 import RenderTsx from "./RenderTsx";
 import RenderHtml from "./RenderHtml";
 import StarMatch from './StarMatch';
