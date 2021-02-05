@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Heading, Heading2 } from "./heading/Heading";
 import Counter from "./counter/Counter";
 import RenderTsx from "./render/RenderTsx";
 import RenderHtml from "./render/RenderHtml";
 import StarMatch from "./match/StarMatch";
-import Button from './counters/Button';
-import Display from './counters/Display';
+import DisplayHeading from "./heading/DisplayHeading";
+import DisplayCounters from "./counters/DisplayCounters";
 
 export function label(name: string) {
   return `Hello ${name.toLocaleUpperCase()}`;
@@ -54,20 +53,14 @@ const App = () => {
 
     const [count, setCount] = useState(0);
 
-    const [counter, setCounter] = useState(0);
-    const incrementCounter = (incrementValue: number) => setCounter(counter+incrementValue);
-
     const increment = (isShift: boolean) => {
         const inc: number = isShift ? 10 : 1;
         setCount(count + inc);
     };
 
-
     return (
         <div>
-            <h1>{label("React")}</h1>
-            <Heading2 />
-            <Heading />
+            <DisplayHeading />
             <hr />
             <Counter
                 label={"Current"}
@@ -75,11 +68,7 @@ const App = () => {
                 onCounterIncrease={increment}
             />
             <hr />
-            <Button onClickFunction={incrementCounter} increment={1} />
-            <Button onClickFunction={incrementCounter} increment={5} />
-            <Button onClickFunction={incrementCounter} increment={10} />
-            <Button onClickFunction={incrementCounter} increment={100} />
-            <Display message={counter}/>
+            <DisplayCounters />
             <hr />
             <RenderHtml />
             <RenderTsx />
