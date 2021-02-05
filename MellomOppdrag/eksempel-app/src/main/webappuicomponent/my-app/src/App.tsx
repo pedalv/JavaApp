@@ -1,8 +1,8 @@
 import React from "react";
 import { Heading, Heading2 } from "./heading/Heading";
 import Counter from "./counter/Counter";
-import RenderTsx from "./RenderTsx";
-import RenderHtml from "./RenderHtml";
+import RenderTsx from "./render/RenderTsx";
+import RenderHtml from "./render/RenderHtml";
 import StarMatch from './StarMatch';
 
 export function label(name: string) {
