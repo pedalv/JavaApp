@@ -1,5 +1,5 @@
 import React from "react";
-import {label} from './App';
+import {label} from '../App';
 
 export type HeadinggProps = { name?: string };
 

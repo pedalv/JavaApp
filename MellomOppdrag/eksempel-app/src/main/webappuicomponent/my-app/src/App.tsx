@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Heading2 } from "./Heading";
+import { Heading, Heading2 } from "./heading/Heading";
 import Counter from "./Counter";
 import RenderTsx from "./RenderTsx";
 import RenderHtml from "./RenderHtml";
