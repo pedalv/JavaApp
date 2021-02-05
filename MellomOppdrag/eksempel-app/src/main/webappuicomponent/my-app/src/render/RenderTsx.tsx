@@ -1,5 +1,6 @@
 import React from "react";
 
+//Most developer prefer functions
 const RenderTsx = () => {
   return React.createElement(
     "div",
