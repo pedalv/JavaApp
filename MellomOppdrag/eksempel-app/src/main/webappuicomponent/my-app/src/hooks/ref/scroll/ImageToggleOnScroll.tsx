@@ -1,5 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from 'react';
 
+/**
+ * any === Image
+ * imageRef === img tag === HTMLInputElement => Image
+ * @param primaryImg
+ * @param secondaryImg
+ * @constructor
+ */
 const ImageToggleOnScroll = ({ primaryImg, secondaryImg }: any) => {
   const imageRef = useRef<HTMLInputElement>(null) as any;
 
@@ -26,17 +33,17 @@ const ImageToggleOnScroll = ({ primaryImg, secondaryImg }: any) => {
   }, []);
 
   return (
-    <img
-      src={
-        isLoading
-          ? "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" // 1x1gif === transparent gif
-          : inView
-          ? secondaryImg
-          : primaryImg
-      }
-      alt={""}
-      ref={imageRef}
-    />
+      <img
+          src={
+            isLoading
+                ? "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" // 1x1gif === transparent gif
+                : inView
+                ? secondaryImg
+                : primaryImg
+          }
+          alt={""}
+          ref={imageRef}
+      />
   );
 };
 
