@@ -6,7 +6,8 @@ import StarMatch from "./match/StarMatch";
 import DisplayHeading from "./heading/DisplayHeading";
 import DisplayCounters from "./counters/DisplayCounters";
 import DisplayGithub from './github/DisplayGithub';
-import InputElement from './hooks/InputElement';
+import InputElement from './hooks/state/InputElement';
+import ImageChangeOnMouseOver from './hooks/ImageChangeOnMouseOver';
 
 export function label(name: string) {
   return `Hello ${name.toLocaleUpperCase()}`;
@@ -80,6 +81,8 @@ const App = () => {
             <StarMatch />
             <hr />
             <InputElement />
+            <hr />
+            <ImageChangeOnMouseOver />
         </div>
     );
 };
