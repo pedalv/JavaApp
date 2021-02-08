@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const InputElement = () => {
+const InputElementHistory = () => {
   const [inputText, SetInputText] = useState(""); // Hook State
   const [historyList, SetHistoryList] = useState([] as string[]); // Hook State
 
@@ -25,4 +25,4 @@ const InputElement = () => {
   );
 };
 
-export default InputElement;
+export default InputElementHistory;

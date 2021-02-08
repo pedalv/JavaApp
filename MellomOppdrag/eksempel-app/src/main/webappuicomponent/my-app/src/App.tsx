@@ -6,7 +6,7 @@ import StarMatch from "./match/StarMatch";
 import DisplayHeading from "./heading/DisplayHeading";
 import DisplayCounters from "./counters/DisplayCounters";
 import DisplayGithub from './github/DisplayGithub';
-import InputElement from './hooks/state/InputElement';
+import InputElementHistory from './hooks/state/InputElementHistory';
 import ImageChangeOnMouseOver from './hooks/ref/ImageChangeOnMouseOver';
 
 export function label(name: string) {
@@ -80,7 +80,7 @@ const App = () => {
             <hr />
             <StarMatch />
             <hr />
-            <InputElement />
+            <InputElementHistory />
             <hr />
             <ImageChangeOnMouseOver />
         </div>
