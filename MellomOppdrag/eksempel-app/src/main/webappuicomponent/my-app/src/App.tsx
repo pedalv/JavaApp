@@ -77,15 +77,13 @@ const App = () => {
             <hr />
             <DisplayCounters />
             <hr />
-            <RenderHtml />
-            <RenderTsx />
+            <Syntax />
             <hr />
             <StarMatch />
             <hr />
             <InputElementHistory />
             <hr />
             <ImageChangeOnMouseOver />
-            <Syntax />
             <ImageChangeOnScroll />
         </div>
     );
