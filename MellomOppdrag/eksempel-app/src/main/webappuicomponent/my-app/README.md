@@ -98,9 +98,9 @@ $ npx -v
 - Virtual Reality Websites and 360 experience with React VR (react-vr)
 
 ## React Hooks
-- useState
+- useState: lets track state
 - useRef: Primarily used to allow access directly to an element in the DOM
-- useEffect
+- useEffect: lets set a state when component start and finish
 
 
 # Getting Started with Create React App
