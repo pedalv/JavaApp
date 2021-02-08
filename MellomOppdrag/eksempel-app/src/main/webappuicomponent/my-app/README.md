@@ -85,6 +85,8 @@ $ npx -v
 - npm i -g create-react-app && create-react-app my-app --template typescript
 - npm run eject
 - npx reactfull start-match
+- npm init -y
+- npm install react react-dom next
 
 ## React: The Big Picture
 - React (Library) | Angular | View | Ember (Framework)
@@ -94,6 +96,12 @@ $ npx -v
 - Desktop with Electron for run on MAC and WINDOWS
 - Server-rendered with NEXT.js (ReactDomServer.renderToString())
 - Virtual Reality Websites and 360 experience with React VR (react-vr)
+
+## React Hooks
+- useState
+- useRef
+- useEffect
+
 
 # Getting Started with Create React App
 

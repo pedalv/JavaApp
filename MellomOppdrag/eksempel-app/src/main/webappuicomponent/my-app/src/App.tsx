@@ -6,6 +6,7 @@ import StarMatch from "./match/StarMatch";
 import DisplayHeading from "./heading/DisplayHeading";
 import DisplayCounters from "./counters/DisplayCounters";
 import DisplayGithub from './github/DisplayGithub';
+import InputElement from './hooks/InputElement';
 
 export function label(name: string) {
   return `Hello ${name.toLocaleUpperCase()}`;
@@ -77,6 +78,8 @@ const App = () => {
             <RenderTsx />
             <hr />
             <StarMatch />
+            <hr />
+            <InputElement />
         </div>
     );
 };

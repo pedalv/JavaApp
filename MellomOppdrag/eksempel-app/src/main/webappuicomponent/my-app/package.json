@@ -19,7 +19,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+
+    "test2": "echo \"Error: no test specified\" && exit 1",
+    "dev2": "next",
+    "build2": "next build",
+    "start2": "next start"
   },
   "eslintConfig": {
     "extends": [
