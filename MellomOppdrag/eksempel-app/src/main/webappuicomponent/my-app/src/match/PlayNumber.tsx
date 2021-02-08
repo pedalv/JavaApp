@@ -2,7 +2,7 @@ import React from 'react';
 
 //Use PropTypes or TypeScript
 export type PlayNumberProps = {
-    key: number
+    key: number;
     status: string;
     number: number;
     onClick: (number: number, currentStatus: string) => void;

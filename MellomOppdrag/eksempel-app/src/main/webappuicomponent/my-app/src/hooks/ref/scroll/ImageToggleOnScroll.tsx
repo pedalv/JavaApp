@@ -1,8 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 
 /**
- * any === Image
- * imageRef === img tag === HTMLInputElement => Image
+ * imageRef === img tag === HTMLInputElement => Image === any
  * @param primaryImg
  * @param secondaryImg
  * @constructor

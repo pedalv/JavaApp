@@ -23,7 +23,7 @@ const Game = (props: GameProps) => {
     const calculateGameStatus = () => {
         return availableNums.length === 0
             ? 'won'
-            : secondsLeft === 0 ? 'lost' : 'active'
+            : secondsLeft === 0 ? 'lost' : 'active';
     };
 
     const gameStatus = calculateGameStatus();
