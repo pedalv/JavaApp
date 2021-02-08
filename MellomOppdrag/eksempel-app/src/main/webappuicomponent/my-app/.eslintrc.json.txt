@@ -1,6 +1,6 @@
 {
   "parserOptions": {
-    "ecmaVersion": 2021,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": false
@@ -17,11 +17,9 @@
 
 
 - package.json
-"devDependencies": {
-...
-  "eslint": "^7.19.0",
-  "eslint-plugin-react": "^7.22.0",
-  "eslint-plugin-react-hooks": "^4.2.0",
-  "react-hooks": "^1.0.1",
-  "react-performance": "^0.0.5"
-}
+    "eslint": "^7.19.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "2.2.1",
+    "react-hooks": "^1.0.1",
+    "react-performance": "^0.0.5",

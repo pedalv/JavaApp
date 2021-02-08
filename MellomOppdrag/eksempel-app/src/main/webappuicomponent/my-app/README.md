@@ -87,6 +87,7 @@ $ npx -v
 - npx reactfull start-match
 - npm init -y
 - npm install react react-dom next
+- npm install --save-dev bootstrap react-toastify
 
 ## React: The Big Picture
 - React (Library) | Angular | View | Ember (Framework)
