@@ -99,7 +99,7 @@ $ npx -v
 
 ## React Hooks
 - useState
-- useRef
+- useRef: Primarily used to allow access directly to an element in the DOM
 - useEffect
 
 
