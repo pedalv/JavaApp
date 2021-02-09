@@ -13,6 +13,14 @@ export function label(name: string) {
     return `Hello ${name.toLocaleUpperCase()}`;
 }
 
+export const ConfigContext = React.createContext({
+    showHeading: true
+});
+
+const configValue = {
+    showHeading: false
+};
+
 /*
 const initialState = { count: 0 };
 export type CounterSate = Readonly<typeof initialState>;
@@ -52,7 +60,12 @@ class App extends React.Component<object, CounterSate> {
 }
 */
 
-const App = () => {
+/*
+export type AppProps = { pageName?: string };
+{pageName = "Basic"} : AppProps
+*/
+
+const App = ( )=> {
 
     const [count, setCount] = useState(0);
 
@@ -63,7 +76,9 @@ const App = () => {
 
     return (
         <div>
-            <DisplayHeading />
+            <ConfigContext.Provider value={ configValue } >
+                <DisplayHeading />
+            </ConfigContext.Provider>
             <hr />
             <DisplayGithub title="The GitHub Cards App" />
             <hr />
