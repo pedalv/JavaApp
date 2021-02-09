@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import Counter from './counter/Counter';
 import StarMatch from './match/StarMatch';
 import DisplayHeading from './heading/DisplayHeading';
@@ -67,7 +67,9 @@ export type AppProps = { pageName?: string };
 
 const App = ( )=> {
 
-    const [count, setCount] = useState(0);
+    //const [count, setCount] = useState(0);
+    //Reducer Defined: (previousState, action) => newState
+    const [count, setCount] = useReducer( (state: any, action: any) => action,0);
 
     const increment = (isShift: boolean) => {
         const inc: number = isShift ? 10 : 1;

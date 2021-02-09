@@ -102,7 +102,11 @@ $ npx -v
 - useState: lets track state
 - useRef: Primarily used to allow access directly to an element in the DOM
 - useEffect: lets set a state when component start and finish
-
+- useContext
+- useReducer: [Typing a useReducer React hook in TypeScript](https://www.sumologic.com/blog/react-hook-typescript/), [React Context with useReducer and Typescript](https://dev.to/elisealcala/react-context-with-usereducer-and-typescript-4obm)
+- useCallback
+- useMemo
+- [React Hooks with Typescript : UseCallback, UseMemo, UseContext And UseRef](https://codersera.com/blog/react-hooks-with-typescript-usecallback-usememo/)
 
 # Getting Started with Create React App
 
