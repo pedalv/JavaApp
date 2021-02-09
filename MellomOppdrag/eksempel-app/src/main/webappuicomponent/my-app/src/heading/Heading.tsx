@@ -1,10 +1,10 @@
 import React from "react";
 import {label} from '../App';
 
-export type HeadinggProps = { name?: string };
+export type HeadingProps = { name?: string };
 
 //Most developer prefer functions
-export function Heading({ name = "React" }: HeadinggProps) {
+export function Heading({ name = "React" }: HeadingProps) {
   return <h1>Hello {name?.toLocaleUpperCase()}</h1>;
 }
 

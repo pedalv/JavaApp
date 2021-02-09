@@ -1,18 +1,16 @@
-import React, { useState } from "react";
-import Counter from "./counter/Counter";
-import RenderTsx from "./render/RenderTsx";
-import RenderHtml from "./render/RenderHtml";
-import StarMatch from "./match/StarMatch";
-import DisplayHeading from "./heading/DisplayHeading";
-import DisplayCounters from "./counters/DisplayCounters";
-import DisplayGithub from "./github/DisplayGithub";
-import InputElementHistory from "./hooks/state/InputElementHistory";
-import ImageChangeOnMouseOver from "./hooks/ref/mouseover/ImageChangeOnMouseOver";
+import React, {useState} from 'react';
+import Counter from './counter/Counter';
+import StarMatch from './match/StarMatch';
+import DisplayHeading from './heading/DisplayHeading';
+import DisplayCounters from './counters/DisplayCounters';
+import DisplayGithub from './github/DisplayGithub';
+import InputElementHistory from './hooks/state/InputElementHistory';
+import ImageChangeOnMouseOver from './hooks/ref/mouseover/ImageChangeOnMouseOver';
 import ImageChangeOnScroll from './hooks/ref/scroll/ImageChangeOnScroll';
 import Syntax from './hooks/effect/syntax';
 
 export function label(name: string) {
-  return `Hello ${name.toLocaleUpperCase()}`;
+    return `Hello ${name.toLocaleUpperCase()}`;
 }
 
 /*

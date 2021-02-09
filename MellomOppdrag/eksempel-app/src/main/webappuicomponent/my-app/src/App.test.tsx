@@ -1,14 +1,14 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import App, { label } from "./App";
-import userEvent from "@testing-library/user-event";
+import React from 'react';
+import {render, screen} from '@testing-library/react';
+import App, {label} from './App';
+import userEvent from '@testing-library/user-event';
 
-test("renders 3 headers", () => {
+test("renders 4 headers", () => {
   render(<App />);
   //const linkElement = screen.getByText(/Hello React/i);
   const linkElement = screen.getAllByText(/Hello React/i);
   //(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
-  expect(linkElement.length).toEqual(3);
+  expect(linkElement.length).toEqual(4);
   //expect(linkElement).toBeInTheDocument();
 });
 
