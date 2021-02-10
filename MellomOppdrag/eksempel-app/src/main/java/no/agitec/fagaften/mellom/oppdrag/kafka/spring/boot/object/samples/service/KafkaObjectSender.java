@@ -59,6 +59,10 @@ public class KafkaObjectSender {
     private KafkaTemplate<String, Object> kafkaTemplate; //ERROR (Foo1) - OKAY (String)
     //private KafkaTemplate<String, Foo1> kafkaTemplate; //ERROR (Foo1)
 
+    //WORKS
+    // see no.agitec.fagaften.mellom.oppdrag.kafka.spring.boot.object.sample.service.KafkaTemplate
+    //private KafkaTemplate<String, Customer> kafkaTemplate; //IMPORTANT EXAMPLE FOR STRING OR OBJECT
+
     @Autowired
     private KafkaTemplate<String, Foo1> kafkaTemplateObj;
 
@@ -105,7 +109,7 @@ public class KafkaObjectSender {
 
         String foo1AsString = null;
         try {
-            foo1AsString = objectMapper.writeValueAsString(data);
+            foo1AsString = objectMapper.writeValueAsString(data); //IMPORTANT EXAMPLE FOR STRING OR OBJECT
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

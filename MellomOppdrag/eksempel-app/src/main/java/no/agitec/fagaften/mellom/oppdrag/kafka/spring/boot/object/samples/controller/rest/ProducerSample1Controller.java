@@ -68,6 +68,7 @@ public class ProducerSample1Controller {
     //@PostMapping(path = "/send/foo/{what}")
     public String sendFoo(@PathVariable String what) {
 
+        //IMPORTANT EXAMPLE FOR STRING OR OBJECT
         kafkaObjectSender.sendStringOkay(what); //OKAY in consumer
         kafkaObjectSender.sendObjectOkay(new Foo1(what)); // Okay in consumer
 
