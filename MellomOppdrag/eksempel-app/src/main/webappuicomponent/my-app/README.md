@@ -78,6 +78,7 @@ $ npx -v
 - npx create-react-app my-app --template typescript
 - npm install --save-dev --save-exact prettier
 - npm install --save-dev axios
+- npm install --save-dev json-server 
 - npm install @testing-library/user-event @testing-library/dom --save-dev 
 - npm install --save-dev  @testing-library/react (browser is not need)   
 - npm i --save-dev enzyme enzyme-adapter-react-16

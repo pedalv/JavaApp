@@ -23,7 +23,8 @@
     "test2": "echo \"Error: no test specified\" && exit 1",
     "dev2": "next",
     "build2": "next build",
-    "start2": "next start"
+    "start2": "next start",
+    "json-server": "json-server --watch db.sjon --port 4000 --delay 500"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +49,7 @@
     "@testing-library/user-event": "^12.6.2",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "json-server": "^0.16.3",
     "react-toastify": "^7.0.3"
   }
 }
