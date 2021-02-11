@@ -8,6 +8,7 @@ import InputElementHistory from './hooks/state/InputElementHistory';
 import ImageChangeOnMouseOver from './hooks/ref/mouseover/ImageChangeOnMouseOver';
 import ImageChangeOnScroll from './hooks/ref/scroll/ImageChangeOnScroll';
 import Syntax from './hooks/effect/syntax';
+import EmailValidatingForm from './hooks/state/EmailValidatingForm';
 
 export function label(name: string) {
     return `Hello ${name.toLocaleUpperCase()}`;
@@ -95,6 +96,8 @@ const App = ( )=> {
             <Syntax />
             <hr />
             <StarMatch />
+            <hr />
+            <EmailValidatingForm />
             <hr />
             <InputElementHistory />
             <hr />
