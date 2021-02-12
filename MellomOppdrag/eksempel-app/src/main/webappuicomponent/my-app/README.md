@@ -109,6 +109,11 @@ $ npx -v
 - useMemo
 - [React Hooks with Typescript : UseCallback, UseMemo, UseContext And UseRef](https://codersera.com/blog/react-hooks-with-typescript-usecallback-usememo/)
 
+## React component Tree
+- Props go down
+- Functions go up
+- Global Store/State Manager (check later some examples)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
