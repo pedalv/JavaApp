@@ -99,7 +99,7 @@ $ npx -v
 - Server-rendered with NEXT.js (ReactDomServer.renderToString())
 - Virtual Reality Websites and 360 experience with React VR (react-vr)
 
-## React Hooks
+## [React Hooks](https://github.com/pkellner/pluralsight-course-using-react-hooks)
 - useState: lets track state
 - useRef: Primarily used to allow access directly to an element in the DOM
 - useEffect: lets set a state when component start and finish
@@ -108,6 +108,7 @@ $ npx -v
 - useCallback
 - useMemo
 - [React Hooks with Typescript : UseCallback, UseMemo, UseContext And UseRef](https://codersera.com/blog/react-hooks-with-typescript-usecallback-usememo/)
+- [To TypeScript or Not To TypeScript](https://peterkellner.net/2019/09/25/To-TypeScript-or-Not-To-TypeScript/)
 
 ## React component Tree
 - Props go down
