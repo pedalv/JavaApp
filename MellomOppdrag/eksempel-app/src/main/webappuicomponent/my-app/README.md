@@ -89,6 +89,14 @@ $ npx -v
 - npm init -y
 - npm install react react-dom next
 - npm install --save-dev bootstrap react-toastify
+- npm list
+- npm audit
+- npm install lodash@latest
+- npm install eslint --saveDev
+- ./node_modules/.bin/eslint --init
+- ./node_modules/.bin/eslint lib/**.js
+- npm install mocha --saveDev
+- ./node_modules/.bin/mocha lib/utils.test.js
 
 ## React: The Big Picture
 - React (Library) | Angular | View | Ember (Framework)
