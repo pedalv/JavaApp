@@ -25,7 +25,9 @@ The methods must not be static. (If they are, the method is hidden and not overr
  */
 public class BobcatKitten extends Bobcat { //public void findDen() { } FRO; Bobcat
 
-    public void findDen() { }
+    public void findDen() {
+        System.out.println("BobcatKitten");
+    }
     // It is an override because it has the same method signature.
 
     public void findDen(boolean b) { }
@@ -33,5 +35,15 @@ public class BobcatKitten extends Bobcat { //public void findDen() { } FRO; Bobc
 
     public int findden() throws Exception { return 0; }
     // It is not an override or overload because it has a different method name. Remember that Java is case sensitive.
+
+
+    public static void main(String... args) {
+        Bobcat bs =  new BobcatKitten();
+        bs.findDen();
+        Bobcat bb =  new Bobcat();
+        bb.findDen();
+
+    }
+
 
 }

@@ -26,8 +26,8 @@ public class EmployeeResponseEntityBuilder {
         if (httpStatus == null) {
             throw new IllegalStateException("HttpStatus må være satt");
         }
-        RestResponseBody brevResponseEntity = new RestResponseBody(this.httpStatus, this.message);
-        return new ResponseEntity<>(brevResponseEntity, httpStatus);
+        RestResponseBody employeeResponseEntity = new RestResponseBody(this.httpStatus, this.message);
+        return new ResponseEntity<>(employeeResponseEntity, httpStatus);
     }
 
     @SuppressWarnings("WeakerAccess") //Public på feltene er nødvendig for at Jackson skal greie å serialisere til JSON

@@ -31,7 +31,7 @@ public class CustomerController {
         List<Customer> customers = customerService.hentCustomer();
         log.info("Custommers size: " + customers.size());
 
-        model.addAttribute("customers", customerService.hentCustomer());
+        model.addAttribute("customers", customers);
         model.addAttribute("name", "NAV");
     }
 

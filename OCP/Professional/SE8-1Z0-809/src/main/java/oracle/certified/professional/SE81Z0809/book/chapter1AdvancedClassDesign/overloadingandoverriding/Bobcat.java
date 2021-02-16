@@ -2,6 +2,8 @@ package oracle.certified.professional.SE81Z0809.book.chapter1AdvancedClassDesign
 
 public class Bobcat {
 
-    public void findDen() { }
+    public void findDen() {
+        System.out.println("Bobcat");
+    }
 
 }
