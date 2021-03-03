@@ -35,22 +35,7 @@ docker image build -t nigelpoulton/gsd:ctr --no-cache .
 - [Play with Docker](https://labs.play-with-docker.com/)
 - Docker: (ESXI) - start | stop | delete ... container
 - [Play with Kubernetes](https://labs.play-with-k8s.com/)
-- Kubernetes: (vCenter) - Scheduling, scaling, healing, updating..., Alpha => Beta => GA
-
-## YAML
-```
-- deploy (stateless) sts - statefull apps
-    - pod
-        - container === app
-          send to cluster === Google Kubernetes Engine, GKE, and Azure Kubernetes Service
-    - Master (Linux for cluster) === control plane === head nodes => 3 (5 | 7 masters), 1 Leader and 2 Follower
-    - node (Linux or Win for Apps)
-    * Register node with cluster
-    * Watches API Server for work tasks (Pods)
-    * Executes Pods
-    * Reports back to Master
-      gVisor and katacontainers
-```
+- Kubernetes: (vCenter) - Scheduling, scaling, healing, updating..., Alpha (v1alpha1, v1alpha2,...) => Beta (v1beta1, v1beta2,...) => GA (v1)
 
 ## Update docker windows server 2016
 * Install-Module DockerProvider -Force
