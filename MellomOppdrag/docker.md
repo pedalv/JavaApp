@@ -16,6 +16,8 @@
   * REGISTER/REPO:IMAGE (tag) => docker.io/redis:latest
   * [github](https://github.com/pedalv)
   * [dockerhub](https://hub.docker.com/u/pedalv)
+  * [docker kitematic](https://github.com/docker/kitematic/releases)
+  * [Dashboard UI](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default)
   * Build an image from a Dockerfile => docker build [OPTIONS] PATH | URL | -
 ```
 docker image build -t <docker Hub ID>/<Repo name>:<Image name> <path>

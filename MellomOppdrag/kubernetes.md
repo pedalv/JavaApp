@@ -16,17 +16,31 @@
 
 # [KUBERNETES](https://kubernetes.io/) Summary
 - Kubernets is an open-source system and provide a robust solution for automating deployment, scaling, and management of containerized application
+- Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications.
+- Kubernetes is the conductor of a container orchestra.
+- Kubernetes provides container orchestration capabilities.
+- Use for production, emulating production, testing, and more
+- Several options are available to run Kubernetes locally
+- Interact with Kubernetes using kubectl  
 - Relies on YAML (or JSON) files to represent desire state
 - Nodes and pods play a central role
 - Master: Also known as head nodes or the control plane
 - A container runs in a pod
 - Pod
-  * One or mor containers
-  * It's your application or service
+  * A Pod is the basic execution unit of a Kubernetes application-the smallest and simplest unit in the Kubernetes object model that you create or deploy
+  * One or more containers
+  * It's your application or service === server, caching, APIs, database, etc
+  * Pod IP, memory, volumes, etc shared across container
+  * Pods live and die but never come back to life  
+  * Scale horizontally by adding Pod replicas
+  * Pod containers share the same Network namespace (share IP/port)
+  * Pod containers have the same loopback network interface (localhost)
+  * Container processes need to bind to different ports within a Pod
+  * Ports can be reused by containers in separate Pods
   * The most basic unit of work
-  * Unit of acheduling
+  * Unit of scheduling
   * Ephemeral - no Pod is ever "redeployed"
-  * Atomicity - ther're there or NOT
+  * Atomicity - there or NOT
   * kubernets' job is keeping your Pods running
   * More specifically keeping the desired state an provides a way to move to a desired state
     * State - is the Pod up and running
@@ -51,7 +65,11 @@
 - kubectl can be used to issue commands and interact with the Kubernetes API
 - Interact with kubernetes using kubectl
 - Kubernetes on your Laptop === on-prem, On-premises software is installed and runs on computers on the premises of the person or organization using the software, rather than at a remote facility such as a server farm or cloud.
-- [Minikube](https://github.com/kubernetes/minikube) vs [Docker Desktop](https://www.docker.com/products/docker-desktop) for run kubernetes locally
+- for run kubernetes locally
+  * [Minikube](https://github.com/kubernetes/minikube) 
+  * [Docker Desktop](https://www.docker.com/products/docker-desktop) 
+  * [kind](https://kind.sigs.k8s.io/)
+  * [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
 * Deployment
   * Describe desired state
   * Can be used to replicate pods
@@ -64,6 +82,40 @@
   * [Compose on kubernetes](https://github.com/docker/compose-on-kubernetes)
   * [Kompose](https://kompose.io/)
     * kompose convert --out test.yaml (docker-compose.yml)
+
+## Kubectl Commands
+* PowerShell: Set-Alias -Name k -Value kubectl === Create alias for PowerShell
+* Mac/Linux: alias k="kubectl" === Create alias for Mac/Linus shell
+* kubectl version (k version) ===  Check Kubernetes version
+* kubectl cluster-info (k cluster-info) === View cluster information
+* kubectl get all (k get all) === Retrive information about Kubernetes Pods, Deployments, Services, and more
+* kubectl run [container-name] image=[image-name] === Simple way to create a Deployment for a Pod
+* kubectl port forward [pod] [ports] === Forward a port to allow external access
+* kubectl expose ... === Expose a port for a Deployment/Pod
+* kubectl create [resource] === Create a resource
+* kubectl apply [resource] === Create or modify a resource
+* k get pods
+* k get services
+
+Steps to enable the Web UI [Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+* kubectl apply [dashbord-yaml-url]
+  * kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+* kubectl describe secret -n kube-system
+  * Locate the kubernetes.io/service-account-token and copy the token
+* kubectl proxy --port 8082
+  * netstat -ano | findstr 8081
+  * taskkill /F /PID nnnn
+  * [Cannot bind to some ports due to permission denied](https://stackoverflow.com/questions/48478869/cannot-bind-to-some-ports-due-to-permission-denied) 
+  * [Error listening on port 8001](https://github.com/Azure/azure-cli/issues/6811)
+  * http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+  * http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default
+- visit the dashboard URL and login using token
+
+#### Dashboard UI - dockerhub - github
+* [Dashboard UI](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default)
+* [dockerhub](https://hub.docker.com/u/pedalv)
+* [docker kitematic](https://github.com/docker/kitematic/releases)
+* [github](https://github.com/pedalv)
 
 ## YAML
 - Stateful Application - An application that create and saves data that needs to be kept.
@@ -180,6 +232,7 @@ Steg 3 - kubectl version --client
 - Imperative
   * kubectl create deployment nginx --image=nginx
   * kubectl run nginx --image=nginx
+  * Example: kubectl run [podname] --image=nginx:alpine
 - Declarative   
   * Define our desired state in code
   * Manifest
@@ -279,19 +332,92 @@ Steg 3 - kubectl version --client
 
 ## Example YAML file
 ```
-# Simple Kubernetes Pod to deploy the app contained in nigelpoulton/getting-started-k8s:1.0
 apiVersion: v1
 kind: Pod
 metadata:
-  name: hello-pod
+  name: my-nginx
   labels:
-    app: web
+    app: nginx
+    rel: stable
+    
+    //--save-config
+    annotations:
+    kubectl.kubernetes.io/
+    last applied configuration: 
+    {
+        "apiVersion":"v1",
+        "kind":"Pod",
+        "nametadata": {
+          "name": "my-nginx"
+          ...
+          }
+    }
+    
 spec:
   containers:
-    - name: web-ctr
-      image: nigelpoulton/getting-started-k8s:1.0
+    - name: my-nginx
+      image: nginx:alpine
       ports:
-        - containerPort: 8080
+      - containerPort: 80
 ```
 
 ## Kubernetes for Developers: Core Concepts
+
+- Running a Pod, view and delete
+ * kubectl run command
+   * kubectl run [podname] --image=nginx:alpine
+    * kubectl get pods === List only Pods
+    * kubectl get all === List all resources
+    * kubectl port-forward [name-of-pod] 8080:80 === Expose a Pod Port "external por":"Internal port"
+    * kubectl delete pod [name-of-pod] === will cause pod to be recreated
+    * kubectl delete deployment [name-of-deployment] === Delete Deployment that manages the Pod
+    * kubectl delete -f file.pod.yml === Detele Pod using YAML file thet created it
+ * kubectl create/apply command with a yaml file
+    * kubectl create -f file.pod.yml --dry-run validate=true === Perform a "trial" create and also validate the YAML
+    * kubectl create -f file.pod.yml === Create a Pod from YAML, will error if Pod already exists
+
+- Creating or Applying Changes to a Pod
+  * kubectl apply -f file.pod.yml === Alternate way to create or apply changes to a Pod from YAML
+  * kubectl create -f file.pod.yml --save-config === Use --save-config (Store current properties in resource's annotations) when you want to use kubectl apply in the future
+    * In-place/non-disruptive changes can also be made to a Pod by
+        * kubectl edit -f nginx.pod.yml or
+        * kubectl patch f nginx.pod.yml  
+    * kubectl describe pod [pod-name] 
+    * kubectl exec [pod-name] it sh
+
+#### LAB: PowerShell
+```
+Set-Alias -Name k -Value kubectl
+k run my-nginx --image=nginx:alpine
+k get pods
+k get services
+k port-forward my-nginx  8080:80
+k get pods
+k delete pod my-nginx
+k get pods
+
+cd .\Pluralsight\kubernetes-developers-core-concepts
+k create -f .\nginx.pod.yml --save-config
+k get pods
+k get pod my-nginx -o yaml
+k apply -f .\nginx.pod.yml
+k describe pod my-nginx
+k get pods
+k exec my-nginx -it sh
+k edit -f .\nginx.pod.yml
+k delete -f .\nginx.pod.yml
+```
+
+## Pod Health
+- Kubernetes relies on Prodes to determine the health of a Pod container
+- A Prode is a diagnostic performed periodically by the kubelet on a Container: Success - Failure - Unknow
+- Types of Prodes, Failed Pod containers are recreated by default (restartPolicy defaults to Always)
+  * Liveness prode: determine if a Pod is healthy and running as expected    
+  * Readiness Prode: determine if a Pod should receive requests
+  * ExecAction: Executes an action inside the container
+  * TCPSocketAction: TCP check against the container's IP address on a specified port
+  * HTTPGetAction: HTTP GET request against container
+  
+  
+
+  
