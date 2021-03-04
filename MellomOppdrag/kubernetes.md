@@ -417,7 +417,20 @@ k delete -f .\nginx.pod.yml
   * ExecAction: Executes an action inside the container
   * TCPSocketAction: TCP check against the container's IP address on a specified port
   * HTTPGetAction: HTTP GET request against container
-  
-  
 
-  
+#### Lab
+```
+k create -f .\nginx.pod.yml
+k exec my-nginx -it sh
+  cd /usr/share/nginx/html
+  rm -rf index.html
+exit  
+k describe my-nginx
+k delete -f .\nginx.pod.yml
+
+k delete -f .\healthy.nginx.pod.yml
+k create -f .\healthy.nginx.pod.yml
+k get pods
+k describe pod my-healthy-nginx
+k delete -f .\healthy.nginx.pod.yml
+```
