@@ -206,3 +206,7 @@ The Spring for Apache Kafka (spring-kafka) project applies core Spring concepts 
 ## Prosjekt: [eksempel-app-integrating-spring-and-jsf](https://github.com/pedalv/JavaApp/tree/master/MellomOppdrag/eksempel-app-integrating-spring-and-jsf)
 
 ## Prosjekt: [angular-eksempel-app](https://github.com/pedalv/JavaApp/tree/master/MellomOppdrag/eksempel-app/src/main/webappplatform/angular-eksempel-app)
+
+## [Docker](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/docker.md)
+
+## [Kubernetes](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes.md)
