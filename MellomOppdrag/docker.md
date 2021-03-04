@@ -3,9 +3,9 @@
 - [Getting Started with Docker](https://app.pluralsight.com/library/courses/getting-started-docker/table-of-contents)
 - [Docker for Web Developers](https://app.pluralsight.com/library/courses/docker-web-development/table-of-contents)
 - [Docker Deep Dive](https://app.pluralsight.com/library/courses/docker-deep-dive-update/table-of-contents)
+- [Integrating Docker with DevOps Automated Workflows](https://app.pluralsight.com/library/courses/integrating-docker-with-devops-automated-workflows/table-of-contents)
 - [Docker Networking (TODO)](https://app.pluralsight.com/library/courses/docker-networking/table-of-contents)
 - [Docker Swarm: Native Docker Clustering (TODO)](https://app.pluralsight.com/library/courses/docker-swarm-native-docker-clustering/table-of-contents)
-- [Integrating Docker with DevOps Automated Workflows (TODO)](https://app.pluralsight.com/library/courses/integrating-docker-with-devops-automated-workflows/table-of-contents)
 - [Containerizing Angular Applications with Docker (TODO)](https://app.pluralsight.com/library/courses/containerizing-angular-apps-docker/table-of-contents)
 
 ## Resume
@@ -661,3 +661,72 @@ til: "applicationUrl": "https://+:5000",
   * sudo service docker restart
   * docker swarm unlock ====> docker node ls (works after unlock)
   * docker swarm update--cert-expiry 48h
+
+
+## Example Dockerfile
+```
+FROM node:latest
+LABEL author="Pedro Alves"
+ENV NODE_ENV=production
+ENV PORT=3000
+COPY 	. /var/www
+WORKDIR	/var/www
+RUN 	npm install
+VOLUME ["/var/www"]
+EXPOSE $PORT
+ENTRYPOINT ["npm","start"]
+```
+
+```
+FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
+WORKDIR /app
+EXPOSE 5000
+
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+WORKDIR /src
+COPY ["donetSite.csproj", "./"]
+RUN dotnet restore "donetSite.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "donetSite.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "donetSite.csproj" -c Release -o /app/publish
+
+FROM base AS final
+## run in port 80 if line above is comment
+#ENV ASPNETCORE_URLS=http://*:5000 
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "donetSite.dll"]
+```
+
+## Example docker-compose.yml
+```
+version: '3.7'
+
+services:
+
+  node:
+    container_name: nodeapp
+    image: nodeapp
+    build:
+      context: .
+      dockerfile: node.dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - nodeapp-network
+    depends_on: 
+      - mongodb
+      
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    networks:
+      - nodeapp-network
+
+networks:
+  nodeapp-network:
+    driver: bridge
+```
