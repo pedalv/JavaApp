@@ -534,3 +534,194 @@ k get all
 k apply -f .\node-app-v3.deployment.yml
 k get all
 ```
+
+## Service
+- A Service provides a single point of entry for accessing one or mor Pods
+  * Since Pods live and die, we can not rely on their IP. So that's why we need Services - IPs change a lot 
+- The Life of a Pod
+  * Pods are "mortal" and may only live a short time (ephemeral)
+  * You can't rely on a Pod IP adddress staying the same
+  * Pods can be horizontally scaled so each Pod gets its own IP address
+  * A Pod gets an IP address after it has been schedule (no way for client to know IP ahead of time)
+- The Role of Services
+  * Services abstract Pod IP addresses from consumers
+  * Load balances between Pods
+  * Relies on labels to associate a Service with a Pod
+  * Node's kube-proxy creates a vurtual IP for Services
+  * Layer 4 (TCP/UDP over IP)
+  * Services are not ephemeral
+  * Creates endpoints which sit between a Service and Pod
+- Services types
+  * ClusterIP: Expose the service on a cluster-internal IP (default)
+    * Service IP is exposed internally within the cluster
+    * Only Pods within the cluster can talk to the Service
+    * Allows Pods to talk to other Pods
+  * NodePort: Expose the service on each Node's IP at a static port
+    * Exposes the Service on each Node's IP at a static port
+    * Allocates a port from a range (default is 30000-32767)
+    * Each Node proxies the allocated port
+  * LoadBalancer: Provide an external IP to act as a load balancer for the service
+    * Exposes a Service externally
+    * Useful when combined with a cloud provider's load balancer
+    * NodePort and ClusterIP Service are created
+    * Each Node proxies the allocated port
+  * ExternalName: Maps a service to a DNS name
+    * Services thar acts as an alias for an external service
+    * Allows a Service to act as the proxy for an external service
+    * External service details are hidden from cluster (easier to change)
+
+#### Running a service, view and delete
+* kubectl port-forward pod/[pod name] 8080:80 === Listen on port 8080 locally and forward to port 80 in Pod
+* kubectl port-forward deployment/[deployment name] 8080 === Listen on port 8080 locally and forward to Deployment's Pod 
+* kubectl port-forward service/[service name] 8080 === Listen on port 8080 locally and forward to Service's Pod
+* kubectl create -f file.service.yml === Create a Service
+* kubectl apply -f file.service.yml === Update a Service, Assumes save config was used with create
+* kubectl delete -f file.service.yml === Delete a Service
+* kubectl exec [pod-name] curl s http://podIP == Shell into a Pod and test a URL. Add -c [containerID] in cases where multiple containers are running in the Pod
+* kubectl exec [pod-name] it sh === Install and use curl (example shown is for Alpine Linux)
+  * > apk add curl
+  * > curl -s http://podIP
+
+#### Lab
+```
+Set-Alias -Name k -Value kubectl
+cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\deployments (files from the course)
+k apply -f .\nginx.deployment.yml
+k get all
+k get pods
+k port-forward pod/my-nginx-5bb9b897c8-7d2jb 8080:80
+k get deploy
+k port-forward deployment/my-nginx 8080:80
+http://localhost:8080/
+
+cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\services
+k create service -f .\clusterIP.service.yml
+k create -f .\clusterIP.service.yml
+k get services
+k get pods
+k exec my-nginx-5bb9b897c8-cx9kg -it sh
+- inside pod
+  apk add curl
+  curl http://10.1.0.54
+  curl http://10.107.21.38:8080
+  curl http://nginx-clusterip:8080
+  exit
+
+- other termninal to get podId
+Set-Alias -Name k -Value kubectl
+k get pods
+k get pod my-nginx-5bb9b897c8-7d2jb -o YAML
+k get services
+  
+k create -f .\nodeport.service.yml or k apply -f .\nodeport.service.yml
+http://localhost:31000/
+
+k create -f .\loadbalancer.service.yml
+http://localhost
+
+k delete service nginx-clusterip
+k delete service nginx-loadbalancer
+k delete service nginx-nodeport
+```
+
+## Storage Options
+- Store application state/data and exchange it between Pods with Kubernetes via Volumes or database
+- A Volume can be used to hold data and state for Pods and containers
+- Pod State and Data
+  * Pods live and die so their file system is short-lived (ephemeral)
+  * Volumes cab be used to store state/data and use it in a Pod
+  * A Pod can have multiple Volumes to access a Volume
+  * Kubernetes supports:
+    * Volumes
+    * PersistentVolumes (PV)
+      * PV is a cluster-wide storage unit provisioned by an administrator with a lefecycle independent from a Pod
+      * PV is a cluster-wide storage resource that relies on network-attached storage (NAS)
+      * Normally provisioned by a cluster administrator
+      * Available to a Pod even if it gets rescheduled to a different Node
+      * Rely on a sttage provider such as NFS, cloud storage, or other options
+      * Assosciated with a Pod by using a PVC
+    * PersistentVolumesClaims (PVC)
+      * PCV is a request for a storage unit (PV)
+    * StorageClasses (SC)
+      * SC is a type of storage template that can be used to dynamically provision storage
+      * Used to define different "classes" of storage
+      * Act as a type of storege template
+      * Supports dynamic provisioning of PV
+      * Supports dynamic provisioning od PV
+      * Administrators don't have to create PVs in advance
+- Volumes an Volumes Mounts
+  * A Volume references a storage location
+  * Must have a unique name
+  * Attached to a Pod and may or may not be tied to the Pod's lifetime (depending on the Volume type)
+  * A Volume Mount references a Volume by name and defines a mountPath
+- Volumes Type Examples
+  * emptyDir: Empty directory for storing "transient" data (shares a Pod's lifetime) usefull for sharing files between containers in a Pod
+  * hostPath: Pod mounts into the node's filesystem
+  * nfs - An NFS (Network File Syste,) share mounted into the Pod
+  * configMap/secret: Special types of columes that provide a Pod with access to Kubernetes resources
+  * persistentVolumeClaim: Provides Pods with a more persistent storage option that is abstracted from the details
+  * Cloud: Cluster-wide storage
+- Cloud Volumes
+  * Cloud providers (Azure, AWS, GCP, etc) support different types of Volumes:
+    * Azure: Azure Disk and Azure File
+    * AWS: Elastic Block Store
+    * GCP: GCE Persistent Disk
+
+#### Viewing a Pod's Volumes
+* kubectl describe pod [pod name] === Describe Pod
+* kubectl get pod [pod name] -o yaml === Get Pod YAML
+
+#### Lab 
+- emptyDir
+```
+Set-Alias -Name k -Value kubectl
+cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\volumes
+k apply -f nginx-alpine-emptyDir.pod.yml
+k port-forward nginx-alpine-volume 8080:80
+http://localhost:8080/
+```
+
+- hostPath
+```
+Set-Alias -Name k -Value kubectl
+cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\volumes
+k apply -f docker-hostPath.pod.yml
+k get pods
+k describe pod docker-volume 
+# Once Pod is created you can shell into it to run Docker commands:
+k exec docker-volume -it sh
+  #inside the pod
+  docker
+  docker ps -a
+```
+
+- PersistentVolume (PV) Workflow, [examples](https://github.com/kubernetes/examples)
+  1. Create network storage resource (NFS, cloud, etc)
+  2. Define a Persistent Volume (PV) and send to the Kubernetes API
+  3. Create a PersistentVolumeClaim (PVC)
+  4. Kubernetes binds the PVC to the PV
+  5. Pod Volumes references the PVC
+
+- StorageClass (SC) Workflow === cloud or local network (database), [statefulset](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), [storage-classes (provisioner)](https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner)
+  1. Create StorageClass (SC)
+  2. Create PersistentVolumeClaim (PVC) that references StorageClass (SC)
+  3. Kubernetes uses StorageClass (SC) provisioner to provision a PersistentVolume (PV)
+  4. Storage provisioned, PersistentVolume (PV) created and bound to PersistentVolumeClaim (PVC)
+  5. Pod volume references PersistentVolumeClaim (PVC)
+
+```
+Set-Alias -Name k -Value kubectl
+cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\volumes\pv-pvc-sc-cm
+docker pull mongo
+k describe pod mongo
+k create -f .\mongo.deployment.win.yml --save-config
+k get pods
+k exec mongo-0 -it sh
+  #inside pod
+  mongo
+#mange files in C:\temp\data\db
+kubectl describe pod mongo-0
+k get pv  
+``` 
+
+## ConfigMaps and Secrets
