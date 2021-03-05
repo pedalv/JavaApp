@@ -429,7 +429,6 @@ exit
 k describe my-nginx
 k delete -f .\nginx.pod.yml
 
-k delete -f .\healthy.nginx.pod.yml
 k create -f .\healthy.nginx.pod.yml
 k get pods
 k describe pod my-healthy-nginx
@@ -533,6 +532,10 @@ k apply -f .\node-app-v2.deployment.yml
 k get all
 k apply -f .\node-app-v3.deployment.yml
 k get all
+
+k delete -f .\node-app-v1.deployment.yml
+k delete -f .\node-app-v2.deployment.yml
+k delete -f .\node-app-v3.deployment.yml
 ```
 
 ## Service
@@ -593,6 +596,8 @@ k port-forward pod/my-nginx-5bb9b897c8-7d2jb 8080:80
 k get deploy
 k port-forward deployment/my-nginx 8080:80
 http://localhost:8080/
+k delete -f .\nginx.deployment.yml
+
 
 cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\services
 k create service -f .\clusterIP.service.yml
@@ -612,16 +617,14 @@ Set-Alias -Name k -Value kubectl
 k get pods
 k get pod my-nginx-5bb9b897c8-7d2jb -o YAML
 k get services
+k delete -f .\clusterIP.service.yml
   
 k create -f .\nodeport.service.yml or k apply -f .\nodeport.service.yml
 http://localhost:31000/
 
 k create -f .\loadbalancer.service.yml
 http://localhost
-
-k delete service nginx-clusterip
 k delete service nginx-loadbalancer
-k delete service nginx-nodeport
 ```
 
 ## Storage Options
@@ -679,6 +682,7 @@ cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\volumes
 k apply -f nginx-alpine-emptyDir.pod.yml
 k port-forward nginx-alpine-volume 8080:80
 http://localhost:8080/
+k delete -f nginx-alpine-emptyDir.pod.yml
 ```
 
 - hostPath
@@ -713,15 +717,62 @@ k exec docker-volume -it sh
 Set-Alias -Name k -Value kubectl
 cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\volumes\pv-pvc-sc-cm
 docker pull mongo
-k describe pod mongo
+docker images
+docker image inspect mongo
 k create -f .\mongo.deployment.win.yml --save-config
 k get pods
+k describe pod mongo
 k exec mongo-0 -it sh
   #inside pod
   mongo
 #mange files in C:\temp\data\db
 kubectl describe pod mongo-0
-k get pv  
+k get pv
+k delete -f .\mongo.deployment.win.yml --save-config  
 ``` 
 
-## ConfigMaps and Secrets
+#### ConfigMaps
+- ConfigMaps provide a way to store configuration information and provide it to containers
+- Provides a way to inject configuration data into a container
+- Can store entire files or provide key/value pairs
+  * Store in a File. Key is the filename, value is the file content (can be JSON, XML, keys/values, etc)
+  * Provide on the command-line
+  * ConfigMap manifest
+- Accessing ConfigMap Data in a Pod
+  * Environment variables  (key/value)
+  * ConfigMap Volume (access as files)
+- Create a ConfigMap 
+* kubectl create -f file.configmap.yml === Create from a ConfigMap manifest 
+* kubectl create configmap [cm-name] --from-file=[path to file] === Create a ConfigMap using data from a file
+* kubectl create configmap [cm name] --from-env-file=[path to file] === Create a env ConfigMap using data from a file
+* kubectl create configmap [cm name] --from-literal=apiUrl=https://my-api --from-literal=otherKey=otherValue ... === Create a ConfigMap from individual data values
+* kubectl get cm [cm-name] o yaml === Get a ConfigMap
+
+
+#### Secrets 
+- A secret is an object that contains a small amount of sensitive data such as a password, a token, or a key
+- Kubernetes can store sensitive information (passwords, keys, certificates, etc)
+- Avoid storing secrets in container images, in files, or in deployment manifests
+- Mount secrets into pods as files or as environment variables
+- Kubernetes only makes secrets available to Nodes that have a Pod requesting the secret
+- Secrets are stored in tmpfs on a Node (not on disk)
+- Enable encrytion at rest for cluster data - [encrypt-data](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)
+- Limit access to etcd (where Secrets are stored) to only admin users
+- Use SSL/TLS for etcd peer-to-peer communications
+- Manifest (YAML/JSON) files only base64 encode the Secret
+- Pods can access Secrets to secure which users can create Pods. Role-based access control (RBAC) can be used
+- [Secrets best practices](https://kubernetes.io/docs/concepts/configuration/secret/#best-practices)
+- Create a Secret
+  * kubectl create secret generic my-secret --from-literal=pwd=my-password === Create a secret and store securely in Kubernetes
+  * kubectl create secret generic my-secret --from-file=ssh-privatekey=~/.ssh/id_rsa --from-file=ssh-publickey=~/.ssh/id_rsa.pub === Create a secret from a file
+  * kubectl create secret tls tls-secret --cert=path/to/tls.cert --key=path/to/ tls.key === Create a secret from a key pair
+  * kubectl get secrets === Get secrets
+  * kubectl get secrets db-passwords -o yaml ===  Get YAML for specific secret
+- You can declaratively define secrets using YAML, but any secret data is only base64 encoded in the manifest file!
+  * Use caution when working with Secrets and ensure proper security is in place
+- Secrets provide a way to store sensitive data or files
+- Access key/value pairs using environment variables or volumes
+
+
+
+
