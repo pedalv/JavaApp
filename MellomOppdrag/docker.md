@@ -18,7 +18,8 @@
   * [dockerhub](https://hub.docker.com/u/pedalv)
   * [docker kitematic](https://github.com/docker/kitematic/releases)
   * [Dashboard UI](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default)
-  * Build an image from a Dockerfile => docker build [OPTIONS] PATH | URL | -
+  * Build an image from a Dockerfile => docker build [OPTIONS] PATH | URL | - 
+    * docker build -f .\v1\dockerfile -t node-app:1.0 .\v1\.
 ```
 docker image build -t <docker Hub ID>/<Repo name>:<Image name> <path>
 docker image build -t nigelpoulton/gsd:ctr --no-cache .
@@ -166,11 +167,12 @@ docker.io (default)/<repo>/ latest(default)
 * docker image ls nigelpoulton/getting-started-k8s:1.0
   
 - build image
-* docker build <path/to/docker/file>: Used to generate an image from the specified Docker file
-* docker image build -t nigelpoulton/ctr-demo:2 .
-* docker build -t docker101tutorial .
-* docker image build -t nigelpoulton/getting-started-k8s:1.0 .
-* docker image build -t nigelpoulton/gsd:ctr --no-cache .
+* docker build <path/to/docker/file> .: Used to generate an image from the specified Docker file
+    * docker build -f .\v1\dockerfile -t node-app:1.0 .\v1\.    
+    * docker image build -t nigelpoulton/ctr-demo:2 .
+    * docker build -t docker101tutorial .
+    * docker image build -t nigelpoulton/getting-started-k8s:1.0 .
+    * docker image build -t nigelpoulton/gsd:ctr --no-cache .
 
 - push image til dockerhub
 * docker image push nigelpoulton/gsd:ctr
@@ -258,7 +260,8 @@ docker.io (default)/<repo>/ latest(default)
 ## Create a project for build an image
 - Dockerfile is a simple text file with instructions that is used to create an image
 - Each Dockerfile starts with a FROM instruction
-- Custom images are built using: docker build -t <username>/imageName
+- Custom images are built using: docker build -t <username>/imageName .
+  * docker build -f .\v1\dockerfile -t node-app:1.0 .\v1\.
 - Images can be pushed to Docker Hub
 
 #### Project 1
@@ -269,7 +272,8 @@ docker.io (default)/<repo>/ latest(default)
 
 - DOCKERFILE and Images: Dockerfile => docker build => Docker Image
 * docker build -t <your username>/node .  
-    *  docker build "Short for --tag | -t" "Tag name"/"Custom image name | node" "Build context | ."  
+    * docker build "Short for --tag | -t" "Tag name"/"Custom image name | node" "Build context | ." 
+    * docker build -f .\v1\dockerfile -t node-app:1.0 .\v1\.
 * docker build -f <file_name> -t <your username>/node .    (-t === --tag)
 * rimraf node_modules
 * docker build -f Dockerfile -t pedalv/node .
@@ -328,6 +332,7 @@ til: "applicationUrl": "https://+:5000",
 - DOCKERFILE and Images: Dockerfile => docker build => Docker Image
 * docker build -t <your username>/aspnetcore . (-t === --tag, file er default)
     *  docker build "Short for --tag | -t" "Tag name"/"Custom image name | aspnetcore" "Build context | ."
+    * docker build -f .\v1\dockerfile -t node-app:1.0 .\v1\.
 * docker build --pull --rm -f "dev.dockerfile" -t donetsite-dev .
 * rimraf node_modules
 * docker build -f dev.dockerfile -t aspnetcore-dev . (-t === --tag)

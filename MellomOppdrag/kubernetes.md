@@ -107,8 +107,8 @@ Steps to enable the Web UI [Dashboard](https://kubernetes.io/docs/tasks/access-a
   * taskkill /F /PID nnnn
   * [Cannot bind to some ports due to permission denied](https://stackoverflow.com/questions/48478869/cannot-bind-to-some-ports-due-to-permission-denied) 
   * [Error listening on port 8001](https://github.com/Azure/azure-cli/issues/6811)
-  * http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
-  * http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default
+  * [Web UI Dashboard login](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login)
+  * [Web UI Dashboard](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default)
 - visit the dashboard URL and login using token
 
 #### Dashboard UI - dockerhub - github
@@ -330,7 +330,7 @@ Steg 3 - kubectl version --client
 * kubectl create serviceaccount service-reader
 * kubectl describe sa service-reader
 
-## Example YAML file
+## Example Pod YAML file
 ```
 apiVersion: v1
 kind: Pod
@@ -363,7 +363,7 @@ spec:
 
 ## Kubernetes for Developers: Core Concepts
 
-- Running a Pod, view and delete
+#### Running a Pod, view and delete
  * kubectl run command
    * kubectl run [podname] --image=nginx:alpine
     * kubectl get pods === List only Pods
@@ -420,6 +420,7 @@ k delete -f .\nginx.pod.yml
 
 #### Lab
 ```
+Set-Alias -Name k -Value kubectl
 k create -f .\nginx.pod.yml
 k exec my-nginx -it sh
   cd /usr/share/nginx/html
@@ -433,4 +434,103 @@ k create -f .\healthy.nginx.pod.yml
 k get pods
 k describe pod my-healthy-nginx
 k delete -f .\healthy.nginx.pod.yml
+```
+
+## Deployment
+- A ReplicaSet is a declarative way to manege Pods
+- A Deployment is a declarative way to manage Pods using a ReplicaSet
+- Deployment and ReplicaSets ensue Pods stay running and can be used to scale Pods
+- ReplicaSets act as a Pod controller:
+  * Self-healing mechanism
+  * Ebsure the requested number of Pods are available
+  * Provide fault-tolerance
+  * cab be used to scale Pods
+  * Relies on a Pod template
+  * No need to create Pods directly!
+  * Used by Deployments
+- A Deployment manages Pods:
+  * Pods are manager using ReplicaSets
+  * Scales ReplicaSets, which scale Pods
+  * Supports zero-downtime updates by creating and destroying ReplicaSets
+  * Provides rollback functionality
+  * Creates a unique label thet is assigned to the ReplicaSet and generated Pods
+  * YAML is very similar to a ReplicaSet
+- Deployment Options
+  * Rolling updates
+  * Blue-green deployments
+  * Canary deployments
+  * Rollbacks
+- Pods are deployed, managed, and scaled using deployments and ReplicaSets
+- Deployments are a higher-level resource that define one or more Pod templates
+- The kubectl create or apply commands can be used to run a deployment
+- Kubernetes supports zero downtime deployments
+
+#### Running a deployment, view and delete
+* kubectl create -f nginx.deployment.yml --save-config === Create a Deployment
+* kubectl create -f file.deployment.yml === Create a Deployment
+* kubectl describe [pod | deployment] [pod-name | deployment name]
+* kubectl apply -f nginx.pod.yml === Alternate way to create or apply changes to a Deployment from YAML
+* kubectl get deployments === List all Deployments
+* kubectl get deployment(s) --show-labels === List all Deployments and their labels
+* kubectl get deployment -l app=nginx === Get all Deployments with a specific label
+* kubectl delete deployment [deployment name] === Delete Deployment
+* kubectl delete -f nginx.pod.yml === Delete Deployment with YAML
+* kubectl scale deployment [deployment-name] --replicas=5 === Scale the Deployment Pods to 5
+* kubectl scale -f file.deployment.yml --replicas=5 === Scale by refencing the YAML file
+
+
+## Example Deployment YAML file
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx
+  labels:
+    app: my-nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-nginx
+  template:
+    metadata:
+      labels:
+        app: my-nginx
+    spec:
+      containers:
+        - name: my-nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "128Mi" #128 MB
+              cpu: "200m" #200 millicpu (.2 cpu or 20% of the cpu)
+```
+
+#### Lab
+```
+Set-Alias -Name k -Value kubectl
+cd .\Pluralsight\kubernetes-developers-core-concepts\
+k create -f .\nginx.deployment.yml --save-config
+k get all
+k describe deployment my-nginx
+k get deploy
+k get deployments -l app=my-nginx
+k get all
+k scale -f .\nginx.deployment.yml --replicas=5
+k get all
+k delete -f .\nginx.deployment.yml
+
+cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\deployments\node-app (files from the course)
+docker build -f .\v1\dockerfile -t node-app:1.0 .\v1\.
+docker build -f .\v2\dockerfile -t node-app:2.0 .\v2\.
+docker build -f .\v3\dockerfile -t node-app:3.0 .\v3\.
+k get all
+k apply -f .\node-app-v1.deployment.yml
+k get all
+k apply -f .\node-app-v2.deployment.yml
+k get all
+k apply -f .\node-app-v3.deployment.yml
+k get all
 ```
