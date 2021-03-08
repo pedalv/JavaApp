@@ -775,6 +775,7 @@ k exec node-configmap-577f5d6b98-t22fv -it sh
 - A secret is an object that contains a small amount of sensitive data such as a password, a token, or a key
 - Kubernetes can store sensitive information (passwords, keys, certificates, etc)
 - Avoid storing secrets in container images, in files, or in deployment manifests
+- Use caution when working with Secrets and ensure proper security is in place  
 - Mount secrets into pods as files or as environment variables
 - Kubernetes only makes secrets available to Nodes that have a Pod requesting the secret
 - Secrets are stored in tmpfs on a Node (not on disk)
@@ -819,4 +820,89 @@ kubectl delete pod mongo-0 === Delete the mongo Pod
 kubectl get pv === Once the pod is deleted, run it and note the reclaim policy that's shown and the status (should show Bound since the policy was Retain)  
 kubectl delete -f mongo.deployment.yml === Delete everything else 
 ```
+## Putting It All Together
+- Accessing Logs
+* kubectl logs [pod-name] === View the logs for a Pod's container
+* kubectl logs [pod-name] -c [container-name] === View the logs for a specific container within a Pod
+* kubectl logs -p [pod-name] === View the logs for a previously running Pod
+* kubectl logs -f [pod-name] === Stream a Pod's logs
 
+- Getting Details about a Pod
+* kubectl describe pod [pod-name] === Describe a Pod
+* kubectl get pod [pod-name] -o yaml === Change a Pod's output format
+* kubectl get deployment [deployment-name] -o yaml === Change a Deployment's output format
+
+- Shell into a Pod container
+* kubectl exec [pod-name] -it sh === Shell into a Pod container
+
+- YAML manifest files are used to define different Kubernetes resources
+- kubectl create or apply can be used with -f to deploy multiple manifest files
+- Learning different Pod trobleshooting commands and teckniques is important to resolve issues
+
+#### Lab
+```
+Set-Alias -Name k -Value kubectl
+cd .\Pluralsight\GitHub\CodeWithDanDockerServices
+# Ubuntu
+export APP_ENV=development
+export DOCKER_ACCT=codewithdan
+# Windowns DOS      
+set APP_ENV=development
+set DOCKER_ACCT=codewithdan
+# Windows Powershell
+$env:APP_ENV="development"
+$env:DOCKER_ACCT="codewithdan"
+- Run
+npm install === to install the Node.js dependencies for the project (when running containers in development mode since a volume is defined docker-compose.yml file)
+docker-compose build
+docker-compose up
+Visit http://localhost in a browser
+
+# Windows Powershell
+$env:APP_ENV="production"
+$env:DOCKER_ACCT="codewithdan"
+docker-compose build
+kubectl create secret generic db-passwords --from-literal=db-password='password' --from-literal=db-root-password='password'
+k get secrets
+kubectl create -f .k8s
+k get all
+Open the browser and go to http://localhost === (mongoDB feil in windows)
+
+kubectl delete -f .k8s
+
+kubectl apply -f .k8s
+k get pods
+k get pod mongo-0 -o yaml
+k describe pod mongo-0
+k logs mongo-0
+k logs nginx-6669dbb5c-p5vt7
+k describe pod node-f7b7d579c-mxbmd
+k logs node-f7b7d579c-mxbmd
+Open the browser and go to http://localhost === (mongoDB feil in windows)
+
+docker-compose build (if there is feil and correction on file as comfig.productiom.json)
+k get pods --watch
+kubectl apply -f .k8s
+Open the browser and go to http://localhost === (mongoDB feil in windows)
+#NOTE: The local storage hostname volume is commented out in the `.k8s/mongo.deployment.yml` StatefulSet because MongoDB doesn't support that type of volume correctly on Docker for Windows. It does work on Mac/Linux. You'd need to create a `/tmp/data/db` directory and then uncomment the `volumes` and `volumeMounts` properties (and sub-properties) in the StatefulSet to actually use the volume on Mac/Linux.
+
+l get pods
+k exec node-f7b7d579c-n2p4q -it sh
+  #inside the pod
+  apk add curl
+  curl http://node:8080  (node.servie.yml)
+  
+kubectl delete -f .k8s  
+```
+
+#### Load Balancer versus Port Forwarding
+- This demo includes a LoadBalancer service for the nginx Pod which is why you can hit http://localhost.
+- To expose a specific port for localhost for the nginx Pod, get the name of the `nginx` pod by running
+`kubectl get pods` and use the pod name in the following command: `sudo kubectl port-forward [name-of-nginx-pod] 8080:80`
+- Note that sudo is needed to enable port 80 in this case on Mac. You can choose a different port as well such as 8081:80.
+
+#### Running with Skaffold
+-  Open a command-prompt at the root of the project
+- Run the following to add the database passwords as secrets (yes - these are simple passwords for the demo :-)): `kubectl create secret generic db-passwords --from-literal=db-password='password' --from-literal=db-root-password='password'`
+- Install Skaffold from https://skaffold.dev.
+- Run the following command at the root of the project: `skaffold dev`
