@@ -383,7 +383,7 @@ spec:
         * kubectl edit -f nginx.pod.yml or
         * kubectl patch f nginx.pod.yml  
     * kubectl describe pod [pod-name] 
-    * kubectl exec [pod-name] it sh
+    * kubectl exec [pod-name] -it sh
 
 #### LAB: PowerShell
 ```
@@ -581,7 +581,7 @@ k delete -f .\node-app-v3.deployment.yml
 * kubectl apply -f file.service.yml === Update a Service, Assumes save config was used with create
 * kubectl delete -f file.service.yml === Delete a Service
 * kubectl exec [pod-name] curl s http://podIP == Shell into a Pod and test a URL. Add -c [containerID] in cases where multiple containers are running in the Pod
-* kubectl exec [pod-name] it sh === Install and use curl (example shown is for Alpine Linux)
+* kubectl exec [pod-name] -it sh === Install and use curl (example shown is for Alpine Linux)
   * > apk add curl
   * > curl -s http://podIP
 
@@ -728,7 +728,7 @@ k exec mongo-0 -it sh
 #mange files in C:\temp\data\db
 kubectl describe pod mongo-0
 k get pv
-k delete -f .\mongo.deployment.win.yml --save-config  
+k delete -f .\mongo.deployment.win.yml   
 ``` 
 
 #### ConfigMaps
@@ -741,15 +741,37 @@ k delete -f .\mongo.deployment.win.yml --save-config
 - Accessing ConfigMap Data in a Pod
   * Environment variables  (key/value)
   * ConfigMap Volume (access as files)
-- Create a ConfigMap 
+
+#### Create, delete, etc a ConfigMap 
 * kubectl create -f file.configmap.yml === Create from a ConfigMap manifest 
 * kubectl create configmap [cm-name] --from-file=[path to file] === Create a ConfigMap using data from a file
 * kubectl create configmap [cm name] --from-env-file=[path to file] === Create a env ConfigMap using data from a file
 * kubectl create configmap [cm name] --from-literal=apiUrl=https://my-api --from-literal=otherKey=otherValue ... === Create a ConfigMap from individual data values
-* kubectl get cm [cm-name] o yaml === Get a ConfigMap
+* kubectl get cm [cm-name] -o yaml === Get a ConfigMap
+* kubectl delete cm [cm name]
 
+#### Lab
+```
+Set-Alias -Name k -Value kubectl
+cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\configMaps
+docker build -t node-configmap .
+kubectl create cm app-settings --from-env-file=settings.config
+k get cm
+k get cm app-settings -o yaml
+kubectl apply -f node.deployment.yml
+k get pods
+k port-forward node-configmap-577f5d6b98-t22fv 9000
+k exec node-configmap-577f5d6b98-t22fv -it sh
+  #inside th epod 
+  cd /etc/config 
+  ls
+  cat enemies => aliens
+  cat enemies.cheat => true
+  cat enemies.cheat.level => noGoodRotten
+  cat lives => 3
+```
 
-#### Secrets 
+#### [Secrets - best-practices](https://kubernetes.io/docs/concepts/configuration/secret/#best-practices)
 - A secret is an object that contains a small amount of sensitive data such as a password, a token, or a key
 - Kubernetes can store sensitive information (passwords, keys, certificates, etc)
 - Avoid storing secrets in container images, in files, or in deployment manifests
@@ -762,17 +784,39 @@ k delete -f .\mongo.deployment.win.yml --save-config
 - Manifest (YAML/JSON) files only base64 encode the Secret
 - Pods can access Secrets to secure which users can create Pods. Role-based access control (RBAC) can be used
 - [Secrets best practices](https://kubernetes.io/docs/concepts/configuration/secret/#best-practices)
-- Create a Secret
-  * kubectl create secret generic my-secret --from-literal=pwd=my-password === Create a secret and store securely in Kubernetes
-  * kubectl create secret generic my-secret --from-file=ssh-privatekey=~/.ssh/id_rsa --from-file=ssh-publickey=~/.ssh/id_rsa.pub === Create a secret from a file
-  * kubectl create secret tls tls-secret --cert=path/to/tls.cert --key=path/to/ tls.key === Create a secret from a key pair
-  * kubectl get secrets === Get secrets
-  * kubectl get secrets db-passwords -o yaml ===  Get YAML for specific secret
+
+#### Create, delete, etc a Secret
+* kubectl create secret generic my-secret --from-literal=pwd=my-password === Create a secret and store securely in Kubernetes
+* kubectl create secret generic my-secret --from-file=ssh-privatekey=~/.ssh/id_rsa --from-file=ssh-publickey=~/.ssh/id_rsa.pub === Create a secret from a file
+* kubectl create secret tls tls-secret --cert=path/to/tls.cert --key=path/to/ tls.key === Create a secret from a key pair
+* kubectl get secrets === Get secrets
+* kubectl get secrets db-passwords -o yaml ===  Get YAML for specific secret
 - You can declaratively define secrets using YAML, but any secret data is only base64 encoded in the manifest file!
   * Use caution when working with Secrets and ensure proper security is in place
 - Secrets provide a way to store sensitive data or files
 - Access key/value pairs using environment variables or volumes
+* k exec [mongo-pod-name] -it sh
+* kubectl delete pod [mongo-pod-name] === Delete the mongo Pod
 
-
-
+#### Lab
+```
+Set-Alias -Name k -Value kubectl
+cd .\Pluralsight\GitHub\DockerAndKubernetesCourseCode\samples\
+#on Windows go into `mongo.deployment.win.yml` and change the PersistentVolume's local path to `/c/temp/data/db`. Save the file.
+kubectl create secret generic db-passwords --from-literal=db-password='password' --from-literal=db-root-password='password' === Run the following to add the database passwords as secrets
+k get secrets
+kubectl create -f mongo.deployment.yml === Start up the Pod
+k get pods
+kubectl port-forward mongo-0 27017 === If you have a tool that can hit MongoDB externally  to the pod to expose 27017.
+k exec mongo-0 -it sh
+   #Inside the Pod
+    cd /etc/db-passwords
+    ls
+    cat deb-password => password    
+    mongo === to make sure the database is working
+    exit 
+kubectl delete pod mongo-0 === Delete the mongo Pod
+kubectl get pv === Once the pod is deleted, run it and note the reclaim policy that's shown and the status (should show Bound since the policy was Retain)  
+kubectl delete -f mongo.deployment.yml === Delete everything else 
+```
 
