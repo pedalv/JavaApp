@@ -3,7 +3,7 @@
 - [How to Install Ubuntu Linux on Windows 10 With VirtualBox](https://www.lifewire.com/install-ubuntu-linux-windows-10-steps-2202108)
 - [Install Linux Inside Windows Using VirtualBox](https://itsfoss.com/install-linux-in-virtualbox/)
 
-## [Hyper-V on Windows 10](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/) - Only some Windows version has Hyper-V
+## Only some Windows version has [Hyper-V on Windows 10](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/) 
 - Client Hyper-V: 
   * is the same hypervisor which powers virtualization in Windows Server and the Microsoft Azure datacenters.
   * With Hyper-V, you can create virtual machines running on Windows 10, without the need for third-party software.
@@ -37,6 +37,28 @@
 * Deleting checkpoints: ``` Export-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name> -Path <path for export> ```
 * Exporting checkpoints: ``` Export-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name> -Path <path for export> ```
 
+## On-line courses:
+- TODO [Getting Started With Ubuntu](https://app.pluralsight.com/library/courses/ubuntu-getting-started/table-of-contents)
+- TODO [Linux Fundamentals](https://app.pluralsight.com/paths/skill/linux-fundamentals-1)
+- [Managing Docker on Linux Servers](https://app.pluralsight.com/library/courses/managing-docker-linux-servers/table-of-contents)
+- [Creating Shell Scripts in Enterprise Linux](https://app.pluralsight.com/library/courses/creating-shell-scripts-enterprise-linux/table-of-contents)
+- [inux: Managing Web Services (LPIC-2)](https://app.pluralsight.com/library/courses/linux-managing-web-services-lpic-2/table-of-contents)
+- [LPIC-2: Linux Engineer (201-450 and 202-450)](https://app.pluralsight.com/paths/certificate/lpic-2)
+- [Linux 10 Paths](https://app.pluralsight.com/search/?q=linux&type=path&m_sort=relevance&query_id=2e3d4a30-67b5-4cb0-91aa-e9d6ebce4299&source=user_typed)
+- [Vagrant](https://www.vagrantup.com/downloads)
+- TODO [Microsoft Azure API Management Essentials](https://app.pluralsight.com/library/courses/microsoft-azure-api-management-essentials/table-of-contents)
+- TODO [Microsoft Azure Developer: Implement API Management](https://app.pluralsight.com/library/courses/microsoft-azure-developer-implement-api-management/table-of-contents)
+- TODO [Designing an API Management Strategy for Microsoft Azure](https://app.pluralsight.com/library/courses/microsoft-azure-api-management-strategy-designing/table-of-contents)
+- TODO [Azure Functions Fundamentals](https://app.pluralsight.com/library/courses/azure-functions-fundamentals/table-of-contents)
+- TODO [Learning Azure Cosmos DB](https://app.pluralsight.com/library/courses/azure-cosmos-db/table-of-contents)
+- [Monitoring Microsoft Azure](https://app.pluralsight.com/paths/skill/monitoring-microsoft-azure)
+- [Microsoft Azure Deployment]https://app.pluralsight.com/paths/skill/microsoft-azure-deployment)
+- [Integration on Microsoft Azure](https://app.pluralsight.com/paths/skill/integration-on-microsoft-azure)
+- [Testing on Microsoft Azure](https://app.pluralsight.com/paths/skill/testing-on-microsoft-azure)
+- [Azure Monthly Update](https://app.pluralsight.com/paths/conference/microsoft-azure-monthly-update)
+- [Microsoft Azure datacenters](https://app.pluralsight.com/search/?q=Microsoft%20Azure%20datacenters&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=3a4f71ed-57a8-409b-897d-51aa7c5660ff&source=user_typed)
+- [Customer Stories: ServiceNow gains business scalability, speeds time to market with SAP on Microsoft Azure](https://customers.microsoft.com/en-us/story/779822-servicenow-partner-professional-services-azure)
+
 ## Tips og råd
 - LTS, stands for long-term support: which means five years, until April 2025, of free security and maintenance updates, guaranteed
 - Install from a .iso or .vhdx file
@@ -49,19 +71,22 @@
 ```
 Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 ```
+- [Bootstrap IT](http://bootstrap-it.com/linux-start/)
+- About Linux: redhat, suse, Centos, kernel, ubuntu, Android
+- Thunderbird Mail
+-  Dockerfile Script
+```
+FROM ubuntu:latest
+MAINTAINER D Clinton info@bootstrap-it.com
+RUN apt-get update
+RUN apt-get install -y apache2
+ADD index.html /var/www/html/
+CMD /usr/sbin/apache2ctl -D FOREGROUND
+EXPOSE 80
+```
 
-#### On-line courses:
-- [Getting Started With Ubuntu](https://app.pluralsight.com/library/courses/ubuntu-getting-started/table-of-contents)
-- [Linux Fundamentals](https://app.pluralsight.com/paths/skill/linux-fundamentals-1)
-- [Managing Docker on Linux Servers](https://app.pluralsight.com/library/courses/managing-docker-linux-servers/table-of-contents)
-- [Creating Shell Scripts in Enterprise Linux](https://app.pluralsight.com/library/courses/creating-shell-scripts-enterprise-linux/table-of-contents)
-- [inux: Managing Web Services (LPIC-2)](https://app.pluralsight.com/library/courses/linux-managing-web-services-lpic-2/table-of-contents)
-- [LPIC-2: Linux Engineer (201-450 and 202-450)](https://app.pluralsight.com/paths/certificate/lpic-2)
-- [Linux 10 Paths](https://app.pluralsight.com/search/?q=linux&type=path&m_sort=relevance&query_id=2e3d4a30-67b5-4cb0-91aa-e9d6ebce4299&source=user_typed)
-- [Vagrant](https://www.vagrantup.com/downloads)
-- [Monitoring Microsoft Azure](https://app.pluralsight.com/paths/skill/monitoring-microsoft-azure)
-- [Microsoft Azure Deployment]https://app.pluralsight.com/paths/skill/microsoft-azure-deployment)
-- [Integration on Microsoft Azure](https://app.pluralsight.com/paths/skill/integration-on-microsoft-azure)
-- [Testing on Microsoft Azure](https://app.pluralsight.com/paths/skill/testing-on-microsoft-azure)
-- [Azure Monthly Update](https://app.pluralsight.com/paths/conference/microsoft-azure-monthly-update)
-- [Microsoft Azure datacenters](https://app.pluralsight.com/search/?q=Microsoft%20Azure%20datacenters&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=3a4f71ed-57a8-409b-897d-51aa7c5660ff&source=user_typed)
+## command
+- Single Partition Install: ``` df -h ```
+- Linux package managers
+  * APT: Debian/Ubuntu
+  * YUM: Red Hat/CentOS
