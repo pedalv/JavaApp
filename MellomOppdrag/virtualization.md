@@ -184,6 +184,7 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 ```
 - [Bootstrap IT](http://bootstrap-it.com/linux-start/)
 - [Vagrant](https://www.vagrantup.com/downloads)
+- [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 
 ## About Linux: 
   * Linux kernel
