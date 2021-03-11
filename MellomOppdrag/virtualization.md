@@ -30,6 +30,7 @@
     * Last modified: Dec 7 19:49
     * Name: example.sh
 - Create a file: ``` sudo touch /var/file.txt ```
+- Open for edit a file: ``` nano touch /var/file.txt ```
 - Print to output: ``` echo "line 1" ```
 - Print to file: ``` sudo echo "line 1">> /var/file.txt ``` 
 - Run as root: ``` sudo su ```
@@ -114,7 +115,13 @@
     * Run script: ``` ./script.sh ```
   * chown: Change owner
   * find: Find files by pattern 
-   
+- copy from to: 
+  * ``` sudo cp -r * /var/www/prosject-frontend ```
+  * ``` sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/prosjekct-frontend ```
+- create a link: ``` sudo ln -s /etc/nginx/sites-available//prosjekt /etc/nginx/sites-enabled/  ```  
+- remove a link: ``` sudo rm -s /etc/nginx/sites-available/default/  ```
+
+ 
 ## Only some Windows version has [Hyper-V on Windows 10](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/) 
 - Client Hyper-V: 
   * is the same hypervisor which powers virtualization in Windows Server and the Microsoft Azure datacenters.
@@ -238,3 +245,67 @@ ADD index.html /var/www/html/
 CMD /usr/sbin/apache2ctl -D FOREGROUND
 EXPOSE 80
 ```
+
+## web Development ==== Ubuntu Desktop
+- [How to Install and Configure Docker on Ubuntu 20.04](https://linuxhint.com/install_configure_docker_ubuntu/)
+- [How to install IntelliJ IDEA on Ubuntu 20.04 Linux Desktop](https://linuxconfig.org/how-to-install-intellij-idea-on-ubuntu-20-04-linux-desktop)
+- [Aptana Studio 3](http://www.aptana.com/)
+- [How to Install Apache Maven on Ubuntu 20.04](https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-20-04/)
+- [How To Install Java with Apt on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-20-04)
+- [https://vitux.com/how-to-install-java-on-ubuntu-20-04/](https://vitux.com/how-to-install-java-on-ubuntu-20-04/)
+  * sudo apt install openjdk-11-jdk
+- Java, python, perl, bash shell, .NET
+
+#### front-end, Nginx web server: 
+  * Apache 
+  * IIS 
+  *  NGinx (frontend)
+    * sudo apt-get update
+    * apt search nginx
+    * sudo apt-get install nginx
+    * sudo apt-get install nodejs
+    * sudo npm install -g gulp
+    * sudo service nginx restart
+
+#### Back-end workloads === Ubuntu server and the Cloud
+- SSH and Command Line
+  * ssh 172.16.141.186
+    * whoami
+    * hostname
+    * sudo apt-get install nginx
+    * sudo ls -l /var/logs/syslog*
+    * sudo tail –f /var/logs/syslog
+  * ssh elton@ub-ws-01.cloidapp.net
+    * user/password
+    * privat/public key === pair of keys
+      * ssh-keygen -b 2018 -t rsa -C elton@sixeyed.com
+      * ls .ssh
+      * cat .shh/id_rsa.pub
+      * ssh-copy-id -i .ssh/id_rsa.pub elton@172.16.141.186
+      * ls .ssh
+      * ls .ssh/authorizer_keys
+- Ubuntu in the Cloud
+  * MicrosoftAzure, amazon web services, etc
+  * Infrastructure as a Service
+    * ssh azureuser@pod-ubuntu.cloudapp.net
+      * apt-get update
+      * sudo apt-get install nginx  
+      * service nginx restart
+  * juju (DOCKER for 2021): creating and configuring servers and deploying software like web servers via script files
+    * juju deploy --repository=/home/elton/charms local:trusty/omnium-web
+    * juju status
+    * ab -r -n 5000 -c 500 http://juju-azure-d3r0l4sypr.cloudapp.net/index.html === ab apache bench - Apache HTTP server benchmarking tool
+  * openstack: create their own Clouds on their own hardware 
+  * Mocrosoft Azure: Virtual Machines => create image OS => Config 
+    * ssh elton@ub-ws-01.cloudapp.net
+      * sudo apt-get update && sudo apt-get upgrade 
+    * SSH and File Transfer: /var/www      
+      * ftp –u ftp://user@ub-ws-01.cloudapp.net ~/a-file === user/password
+      * git push azure master
+      * scp ~/a-file user@ub-ws-01.cloudapp.net:/dest === pair of keys
+      * sudo mkdir -p  /var/www/
+      * sudo chmod a+w /var/www
+      * sudo chmod a+x /var/www
+      * scp -r /var/www/omnium.net azure:/var/www/omnium.net/
+      * scp user@ub-ws-01.cloudapp.net:~/a-file ~/
+      * scp user@x.y.z:~/a-file user@a.b.c:~/a-file
