@@ -4,6 +4,7 @@
 - [Install Linux Inside Windows Using VirtualBox](https://itsfoss.com/install-linux-in-virtualbox/)
 
 ## Linux commands line
+- CPU + MEM: ``` top ```
 - updates the package lists for upgrades for packages that need upgrading,: ``` sudo apt update ```
 - fetch new versions of packages existing on the machine: ``` sudo apt-get update && sudo -apt-get upgrade ```
 - Single Partition Install: ``` df -h ```
@@ -158,7 +159,7 @@
 
 ## On-line courses:
 - TODO [Getting Started With Ubuntu](https://app.pluralsight.com/library/courses/ubuntu-getting-started/table-of-contents)
-- TODO [Linux Fundamentals](https://app.pluralsight.com/paths/skill/linux-fundamentals-1)
+- TODO [Getting Started with Linux](https://app.pluralsight.com/library/courses/getting-started-linux/table-of-contents)
 - [Managing Docker on Linux Servers](https://app.pluralsight.com/library/courses/managing-docker-linux-servers/table-of-contents)
 - [Creating Shell Scripts in Enterprise Linux](https://app.pluralsight.com/library/courses/creating-shell-scripts-enterprise-linux/table-of-contents)
 - [Linux: Managing Web Services (LPIC-2)](https://app.pluralsight.com/library/courses/linux-managing-web-services-lpic-2/table-of-contents)
