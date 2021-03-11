@@ -210,3 +210,5 @@ The Spring for Apache Kafka (spring-kafka) project applies core Spring concepts 
 ## [Docker](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/docker.md)
 
 ## [Kubernetes](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes.md)
+
+## [Virtualization](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/virtualization.md)
