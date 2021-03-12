@@ -7,7 +7,10 @@
 - CPU + MEM: ``` top ```
 - updates the package lists for upgrades for packages that need upgrading,: ``` sudo apt update ```
 - fetch new versions of packages existing on the machine: ``` sudo apt-get update && sudo -apt-get upgrade ```
-- Single Partition Install: ``` df -h ```
+- display information related to file systems about total space and available space: 
+  * ``` df -h ```
+  * ``` df -ht ext4 ```
+  * [Lvm](https://wiki.ubuntu.com/Lvm)
 - Display the information about USB: ``` lsusb ```
 - List items in directory: ``` ls ```
 - List items, showwing source for linked files: ``` ls -L ```
@@ -177,6 +180,7 @@
 - [Azure Monthly Update](https://app.pluralsight.com/paths/conference/microsoft-azure-monthly-update)
 - [Microsoft Azure datacenters](https://app.pluralsight.com/search/?q=Microsoft%20Azure%20datacenters&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=3a4f71ed-57a8-409b-897d-51aa7c5660ff&source=user_typed)
 - [Customer Stories: ServiceNow gains business scalability, speeds time to market with SAP on Microsoft Azure](https://customers.microsoft.com/en-us/story/779822-servicenow-partner-professional-services-azure)
+- [Using Docker with AWS Elastic Beanstalk](https://app.pluralsight.com/library/courses/docker-aws-elastic-beanstalk/table-of-contents)
 
 ## Tips og råd
 - LTS, stands for long-term support: which means five years, until April 2025, of free security and maintenance updates, guaranteed
@@ -195,33 +199,70 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 - [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 
 ## About Linux: 
-  * Linux kernel
-    * Core operating system
-    * CPU intructions
-    * Accesing storage
-    * Device communication    
-  * Linux distributions: 
-    * Ubuntu
-      * Free Open Source Distro
-      * Linux kernel
-      * Unity user interface
-      * GNOME desktop
-      * APT package manager
-      * LVM: this will set up Logical Volume Management. It allows taking snapshopts and easier partition resizing
-    * Debian
-      * APT package manager
-    * redhat
-      * YUM package manager
-    * suse, 
+* Open Source Licensing Models:
+  * Free Software Foundation (FSF)
+    * GPL (Linux kernel) 
+  * Open Source Initiative (OSI)
+    * MIT, Apache, BSD
+  * Creative Commons    
+* Linux kernel
+  * Core operating system
+  * CPU intructions
+  * Accesing storage
+  * Device communication
+* Linux desktops (GNOME, KDR, Cinnamon)
+* Linux distributions (Red Hat or Ubuntu)
+  * Android (mobile devices)
+  * Red Hat Enterprise Linux (CentOS and Fedora)
+    * YUM package manager
     * CentOS
-      * YUM package manager
-    * Android
+  * SUSE
+    * openSUSE
+  * Scientific Linux (science and math)  
+  * Kali Linux (security)
+  * Raspbian (mini architectures), [Raspberry Pi](https://www.raspberrypi.org/)
+  * Ubuntu (all-round)  
+    * Free Open Source Distro
+    * Linux kernel
+    * Unity user interface
+    * GNOME desktop
+    * APT package manager
+    * LVM: this will set up Logical Volume Management. It allows taking snapshopts and easier partition resizing
+  * Mint (consummer-friendly)
+  * Viryual Machines
+  * Cloud Computing
+* Distribution Families    
+  * Debian (Ubuntu, Mint, Kali Linux)
+  * Red Hat Enterprise Linux (CentOS and Fedora)
+  * SUSE (openSUSE)
+  * Arch Linux (LinHES and Manjaro)
 * Ubuntu and Canonical
   * Standdard Ubuntu desktop and server
   * Ubuntu GNOME and Kubuntu, which use different desktops
   * Xubuntu and Lubuntu, which are built to run on modest hardware
   * Edubunto, which is built for schools
   * Ubunto Studio, which is built for designers
+* Linus Runnlevels
+  * 0: system halt
+  * 1: single-user (rescue) mode
+  * 3: multi-user mode without GUI
+  * 5: multi-user mode with GUI
+  * 6: reboot
+* Root-level Directories
+  * /bin: Binary files for (single user mode) system commands
+  * /sbin: Binary files for (multi-user) system commands
+  * /boot: Linux images and boot configuration files
+  * /dev: Pseudo files representing devices
+  * /etc: Configuration files
+  * /home: User files
+  * /lib: Software library dependencies
+  * /root: Root user files
+  * /usr: Additional binaries
+  * /var: Updating files: logs, application data, cache
+* Pseudo File Directories
+  * /proc: Files representing running system processes
+  * /dev: Pseudo files representing devices
+  * /sys: Data on system and kernel resources
 
 #### Install Ubuntu programs
 - Format: *.deb
@@ -239,13 +280,18 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 ##  Dockerfile Script
 ```
 FROM ubuntu:latest
-MAINTAINER D Clinton info@bootstrap-it.com
+MAINTAINER D Clinton 
+info@bootstrap-it.com
 RUN apt-get update
 RUN apt-get install -y apache2
 ADD index.html /var/www/html/
 CMD /usr/sbin/apache2ctl -D FOREGROUND
 EXPOSE 80
 ```
+- docker build -t webserver .
+- docker images => webserver
+- docker run -d webserver
+- curl 172.17.0.2 => Hello World
 
 ## web Development ==== Ubuntu Desktop
 - [How to Install and Configure Docker on Ubuntu 20.04](https://linuxhint.com/install_configure_docker_ubuntu/)
@@ -268,7 +314,7 @@ EXPOSE 80
     * sudo npm install -g gulp
     * sudo service nginx restart
 
-#### Back-end workloads === Ubuntu server and the Cloud
+#### Back-end workloads === Ubuntu server and the Cloud (AWS, Azure...)
 - SSH and Command Line
   * ssh 172.16.141.186
     * whoami
@@ -285,7 +331,7 @@ EXPOSE 80
       * ssh-copy-id -i .ssh/id_rsa.pub elton@172.16.141.186
       * ls .ssh
       * ls .ssh/authorizer_keys
-- Ubuntu in the Cloud
+- Ubuntu in the Cloud (AWS, Azure...)
   * MicrosoftAzure, amazon web services, etc
   * Infrastructure as a Service
     * ssh azureuser@pod-ubuntu.cloudapp.net
@@ -297,7 +343,7 @@ EXPOSE 80
     * juju status
     * ab -r -n 5000 -c 500 http://juju-azure-d3r0l4sypr.cloudapp.net/index.html === ab apache bench - Apache HTTP server benchmarking tool
   * openstack: create their own Clouds on their own hardware 
-  * Mocrosoft Azure: Virtual Machines => create image OS => Config 
+  * Microsoft Azure: Virtual Machines => create image OS => Config 
     * ssh elton@ub-ws-01.cloudapp.net
       * sudo apt-get update && sudo apt-get upgrade 
     * SSH and File Transfer: /var/www      
