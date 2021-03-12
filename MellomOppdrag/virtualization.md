@@ -43,10 +43,10 @@
 - Change owner: ``` chmown pedro /var/file.txt  ```
 - Give to owner write permissions: ``` chmod u-w /var/file.txt  ```
 - combine commands
-  * ls -l /var/log/syslog* 
-  * find /var/log/syslog*
-  * find /var/log/syslog* -type f (f for files)
-  * find /var/log/syslog* -type f -print0
+  * ``` ls -l /var/log/syslog* ```
+  * ``` find /var/log/syslog* ```
+  * ``` find /var/log/syslog* -type f ```  (f for files) 
+  * ``` find /var/log/syslog* -type f -print0 ```
   * Change permissions for all files matching the pattern: ``` sudo find /var/log/syslog* -print0 | xargs -0 sudo chmod a+r ```
   * Unzip all *.gz files: ``` sudo find /var/log/syslog*.gz -type f -print0 | xargs -0 sudo gunzip ```
   * cat all files: ``` sudo find /var/log/syslog* -type f -print0 | xargs -0 cat ```
@@ -100,22 +100,22 @@
   * crontab -e === m h dom mon dow command (minutes hour dayOgmonth month dayOfweek )
 - DO NOT RUN THIS COMMAND! REALLY!, clean your hard disk: sudo rm –R –f –no-preserve-root /
 - The UNIX Philosophy
-  * whoami: Print currebt user's name
-  * hostname: Print computer name
-  * pwd: Print working directory
-  * ls: List items in directory
-  * man: Show manual
-  * cat: Print file(s) to screen
-  * tail: Print the last X line of file
-  * nano: print file 
-  * less: Print files in pages
+  * ``` whoami ```: Print currebt user's name
+  * ``` hostname ```: Print computer name
+  * ``` pwd ```: Print working directory
+  * ``` ls ```: List items in directory
+  * ``` man [command/tool name] ```: Show manual
+  * ``` cat [file] ```: Print file(s) to screen
+  * ``` tail [file] ```: Print the last X line of file
+  * ``` nano [file] ```: print file 
+  * ``` less [file] ```: Print files in pages
   * chmod: Change permissions
     * Make script executable: 
       * ``` chmod u+x script.sh ```
       * ``` chmod u+x [file] ```
     * Run script: ``` ./script.sh ```
-  * chown: Change owner
-  * find: Find files by pattern 
+  * ``` chown [OPTIONS] USER[:GROUP] FILE(s) ```: Change owner
+  * ``` find [-H] [-L] [-P] [-D debugopts] [-Olevel] [starting-point...] [expression] ```: Find files by pattern 
 - copy from to: 
   * ``` sudo cp -r * /var/www/prosject-frontend ```
   * ``` sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/prosjekct-frontend ```
@@ -159,7 +159,7 @@
 
 ## On-line courses:
 - TODO [Getting Started With Ubuntu](https://app.pluralsight.com/library/courses/ubuntu-getting-started/table-of-contents)
-- TODO [Getting Started with Linux](https://app.pluralsight.com/library/courses/getting-started-linux/table-of-contents)
+- TODO [Linux Fundamentals](https://app.pluralsight.com/paths/skill/linux-fundamentals-1)  
 - [Managing Docker on Linux Servers](https://app.pluralsight.com/library/courses/managing-docker-linux-servers/table-of-contents)
 - [Creating Shell Scripts in Enterprise Linux](https://app.pluralsight.com/library/courses/creating-shell-scripts-enterprise-linux/table-of-contents)
 - [Linux: Managing Web Services (LPIC-2)](https://app.pluralsight.com/library/courses/linux-managing-web-services-lpic-2/table-of-contents)
