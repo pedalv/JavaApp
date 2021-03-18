@@ -5,13 +5,6 @@
 
 ## Linux commands line
 - CPU + MEM: ``` top ```
-- updates the package lists for upgrades for packages that need upgrading,: ``` sudo apt update ```
-- fetch new versions of packages existing on the machine: ``` sudo apt-get update && sudo -apt-get upgrade ```
-- display information related to file systems about total space and available space: 
-  * ``` df -h ```
-  * ``` df -ht ext4 ```
-  * [Lvm](https://wiki.ubuntu.com/Lvm)
-- Display the information about USB: ``` lsusb ```
 - List items in directory: ``` ls ```
 - List items, showwing source for linked files: ``` ls -L ```
 - Long list items: 
@@ -231,38 +224,156 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
   * Mint (consummer-friendly)
   * Viryual Machines
   * Cloud Computing
-* Distribution Families    
-  * Debian (Ubuntu, Mint, Kali Linux)
-  * Red Hat Enterprise Linux (CentOS and Fedora)
-  * SUSE (openSUSE)
-  * Arch Linux (LinHES and Manjaro)
+* Distribution Families - Linux package managers   
+  * Debian (Ubuntu, Mint, Kali Linux) - APT/DPKG
+  * Red Hat Enterprise Linux (CentOS and Fedora) - YUM/RPM (DNF)
+  * SUSE (openSUSE) - ZYpp
+  * Arch Linux (LinHES and Manjaro) - Pacman
+  * komandoer:
+        
+    * ubuntu package manager: ``` sudo nano /etc/apt/sources.list ```
+      * updates the package lists for upgrades for packages that need upgrading: ``` sudo apt update ```
+      * fetch new versions of packages existing on the machine: ``` sudo apt-get update && sudo -apt-get upgrade ```
+      * Ubuntu Software Repositories
+        * Main: Support by Canonical
+        * Restricted: Proprietary
+        * Universe: Community supported
+        * Multiverse: Restricted usage      
+      * third part repositories: 
+        * ``` ls /etc/apt/sources.d ```
+        * ``` apt list --all-versions | wc ```
+        * search for third part repo: 
+          * ``` apt search business card | less ```
+          * ``` apt search glabels ```
+          * ``` apt show glabels ```
+          * ``` sudo apt install glabels ``` or ``` sudo apt-get glabels ``` ==== recommended
+    * CentOS    
+      *  search for packages: ``` yum infor vino  ```
+      *  ``` yum info vino ```
+      *  ``` yum install vino ```
+      *  ``` yum infor trousers ```
+      * YUM will be replaced by DNF
+    * Linux Desktop Application
+      * [LibreOffice](https://www.libreoffice.org/discover/libreoffice/) === write, calc, impress, draw, base
+      * from 2016, [Linux Networking Security](https://app.pluralsight.com/library/courses/linux-network-security-lpic-3-303/table-of-contents)
+      * Thunderbird Mail, Firefox Web Browser (standard)
+      * Google Chrome
+      * web and nettwork applications
+        * [APACHE HTTP SERVER PROJECT](https://httpd.apache.org/)
+        * [MariaDB Foundation](https://mariadb.org/)
+        * [Samba opening windows to a wider world](https://www.samba.org/)
+      * [Vagrant](https://www.vagrantup.com/downloads)     
+      * [GIMP GNU IMAGE MANIPULATION PROGRAM](https://www.gimp.org/)
+      * [kdenlive for edit videos](https://kdenlive.org/en/)
+      * [blender Open source #D creation](https://www.blender.org/)
+      * [jEdit](http://www.jedit.org/)
+      * [Visual Studio Code on Linux](https://code.visualstudio.com/docs/setup/linux)
+      * jetbrains === ubuntu software
+          * [Install WebStorm](https://www.jetbrains.com/help/webstorm/installation-guide.html)
+          * [Install as a snap package on Linux](https://www.jetbrains.com/help/webstorm/installation-guide.html#snap)
+    * Linux Desktops
+      * Cinnamon/Mate
+        * ``` sudo apt install mint-meta-meta ```
+      * Gnome
+      * Xfce
 * Ubuntu and Canonical
   * Standdard Ubuntu desktop and server
   * Ubuntu GNOME and Kubuntu, which use different desktops
   * Xubuntu and Lubuntu, which are built to run on modest hardware
   * Edubunto, which is built for schools
   * Ubunto Studio, which is built for designers
+* [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)  
+  * Root-level Directories  
+    * /bin: Binary files for (single user mode) system commands
+    * /sbin: Binary files for (multi-user) system commands
+    * /boot: Linux images and boot configuration files
+    * /dev: Pseudo files representing devices
+    * /etc: Configuration files
+    * /home: User files
+    * /lib: Software library dependencies
+    * /root: Root user files
+    * /usr: Additional binaries
+    * /var: Updating files: logs, application data, cache
+  * Pseudo (ephemeral) File Directories
+    * /proc: Files representing running system processes
+    * /dev: Pseudo files representing devices
+    * /sys: Data on system and kernel resources
+      * first drive read by the system: ``` cd ls/sys/block/sda/ ```      
+      * second drive in the system: ``` cd ls/sys/block/sdb/ ```
+      * partition 1...n from second drive in the system: ``` cd ls/sys/block/sdb/sdb1 ```
+      * ``` cat size ``` => size of sdb1
+      * list block devices 
+        * ``` lsblk ``` 
+        * ``` lsblk | grep sd ```
+      * mount a partition|drive: 
+          * ``` sudo mkdir /media /newplace ```
+          * ``` sudo mount /dev/sdb2 /media/newplace/ ```
+      * list hardware
+        * ``` sudo lshw | less ```    
+      * Display the information about USB: 
+        * ``` lsusb ```  
+      * report file system disk space usage 
+        * ``` df -h ```
+        * ``` df -ht ext4 ```
+        * [Lvm](https://wiki.ubuntu.com/Lvm)
+      * print or control the kernel ring buffer
+        * ``` dmesg ```
+        * ``` dmesg | less ```
+        * wireless land: ``` dmesg | wl ```       
+* The Linux Boot Process
+  * BIOS/UEFI
+  * Master Boot Record (MBR) on boot disk launched
+  * Bootloader (GRUB) launched
+  * Linux kernel loaded into memory
+  * init executes config file targets (runlevels)
+  * Display manager loaded
+  * Desktop loaded
+  * Bootstrap directory : ``` ls /boot ``` 
+  * Se bootstrap config: ``` ls /boot/grub/grub.cfg ```
+  * Se how bootstrap config: ``` less /boot/grub/grub.cfg ```
+  * Edit bootstrap config: ``` less /etc/default/grub ``` and ``` ls /etc/grub.d ```
+  * Update grub: ``` sudo update-grub ```
 * Linus Runnlevels
   * 0: system halt
   * 1: single-user (rescue) mode
   * 3: multi-user mode without GUI
   * 5: multi-user mode with GUI
   * 6: reboot
-* Root-level Directories
-  * /bin: Binary files for (single user mode) system commands
-  * /sbin: Binary files for (multi-user) system commands
-  * /boot: Linux images and boot configuration files
-  * /dev: Pseudo files representing devices
-  * /etc: Configuration files
-  * /home: User files
-  * /lib: Software library dependencies
-  * /root: Root user files
-  * /usr: Additional binaries
-  * /var: Updating files: logs, application data, cache
-* Pseudo File Directories
-  * /proc: Files representing running system processes
-  * /dev: Pseudo files representing devices
-  * /sys: Data on system and kernel resources
+  * kommandoer: 
+    * ``` sudo telinit 0 ```, 
+    * ``` systemctl get-default ``` => graphical.target,
+    * ``` systemctl isolate rescue.target ```
+    * ``` systemctl enable multi-user.target ```   
+ * Managing Linux Environments
+    * [Azure documentation](https://docs.microsoft.com/en-us/azure/)
+    * [Assign Azure roles using Azure PowerShell](https://docs.microsoft.com/en-gb/azure/role-based-access-control/role-assignments-powershell)
+    * How are Norwegian organizations like Vipps, Elkjøp and NRK using Azure Kubernetes Service (AKS), and how does Microsoft support them?
+      * In the first section the speakers will briefly tell about their experiences with AKS and insights that are most valuable to them: 
+        * [Azure Kubernetes Service (AKS) at Norway | DEVREAL.io](https://www.youtube.com/watch?v=-UQmGM4r-rQ)
+      * In the second section, Gustav Kaleta from Microsoft will tell about how they help and support us developers: 
+        * [the second section available soon](https://www.meetup.com/azure-meetup-oslo)
+      * In the third section we will have a short tech conversation where we will discuss topics and answer questions coming from the audience and the moderator:
+        * [the thirs section available soon](https://www.meetup.com/azure-meetup-oslo)
+    * [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+    * Kommmandoer:
+      * ``` locale ```
+        * Located:  ``` cd /usr/share/i18n/locales/ ``` 
+        * Edit locale: ``` less en_CA ```
+      * view and edit locale settings: 
+        * ``` localectl status  ```
+        * ``` localectl list-locales ```
+        * ``` localectl set-locale LANG=en_CA.utf8 ```
+      * Present work directory: ``` pwd ``` or ``` echo $PWD ``` 
+      * Environment: 
+        * ``` env ``` or ``` env | less ```
+        *  ``` myval=5 ```, ``` echo $myval ``` => 5             
+        * open a new terminal: ``` bash ```, myval is not available
+          * ``` export myval=5 ```, myval is available on a new terminal
+      * history from all commands in terminal: ``` history ``` 
+      * Location commands: ``` type wget ``` => wget is /usr/bin/wget
+      * print current time zone: ``` timedatectl ```
+      * print all time zones: ``` timedatectl list-timezones | grep -i america ```
+      * set time zones: ``` timedatectl set-timezone Canada/Toronto ```
 
 #### Install Ubuntu programs
 - Format: *.deb
@@ -275,7 +386,6 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 - Rhythmbox ubuntu (Rubyripper for better som quality)
 - Games: Battle for Wesnoth,
 - Lifesstyle front: Stellarium
-- LibreOffice (write, calc, impress, draw)
   
 ##  Dockerfile Script
 ```
