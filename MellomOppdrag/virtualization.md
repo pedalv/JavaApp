@@ -230,7 +230,6 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
   * SUSE (openSUSE) - ZYpp
   * Arch Linux (LinHES and Manjaro) - Pacman
   * komandoer:
-        
     * ubuntu package manager: ``` sudo nano /etc/apt/sources.list ```
       * updates the package lists for upgrades for packages that need upgrading: ``` sudo apt update ```
       * fetch new versions of packages existing on the machine: ``` sudo apt-get update && sudo -apt-get upgrade ```
@@ -254,10 +253,18 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
       *  ``` yum infor trousers ```
       * YUM will be replaced by DNF
     * Linux Desktop Application
+      * Format: *.deb
       * [LibreOffice](https://www.libreoffice.org/discover/libreoffice/) === write, calc, impress, draw, base
       * from 2016, [Linux Networking Security](https://app.pluralsight.com/library/courses/linux-network-security-lpic-3-303/table-of-contents)
       * Thunderbird Mail, Firefox Web Browser (standard)
-      * Google Chrome
+      * [How to Install Google Chrome Web Browser on Ubuntu 20.04](https://linuxize.com/post/how-to-install-google-chrome-web-browser-on-ubuntu-20-04/)
+        * wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        * sudo apt install ./google-chrome-stable_current_amd64.deb
+      * Cheese (webcam)
+      * Empathy Ubuntu (skype, mattermost, slack, signal, teams, osv)
+      * Rhythmbox ubuntu (Rubyripper for better som quality)
+      * Games: Battle for Wesnoth,
+      * Lifesstyle front: Stellarium
       * web and nettwork applications
         * [APACHE HTTP SERVER PROJECT](https://httpd.apache.org/)
         * [MariaDB Foundation](https://mariadb.org/)
@@ -374,24 +381,69 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
       * print current time zone: ``` timedatectl ```
       * print all time zones: ``` timedatectl list-timezones | grep -i america ```
       * set time zones: ``` timedatectl set-timezone Canada/Toronto ```
+ 
+#### Working with the Linux Server
+  * Server applications: Apache, Nextcloud, Yum, Snaps
+  * LXC (Linux Containers)
+    * [Amazon EC2 - Free AWS Cloud Compute Service](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc)
+    * [Linux Containers](https://linuxcontainers.org/)
+    * ``` sudo apt install lxd ```  
+      * from 2016, [Linux Server Virtualization](https://app.pluralsight.com/library/courses/linux-server-virtualization-lpic3-304-1/table-of-contents)
+    * From ubuntu: 
+      * ``` sudo lxd launch images:centos/7/amd64 cebtos7 ```
+      * ``` sudo lxc list ```
+      * ``` sudo lxc exec centros7 /bin/bash ``` ==== inside the linux server
+        * Installing and Working with Server Apps: Apache
+          * ``` yum install httpd ``` (install firewall for allowed who as access and permitions)
+          * ``` systemctl start httpd ```
+          * ``` systemctl enable httpd ``` === for start witch time boot the computer
+          * ``` ip address ``` => inet 10.0.160.1/16 
+          * browser: 10.0.160.1 or ``` curl 10.0.160.1 ``` 
+          * ``` echo "Hello World" > /var/www/html/hello.html ``` 
+          * default web root for search for web resources === /var/www/html/  => ``` curl 10.0.160.1/hello.html ```
+        * Installing and Working with Server Apps: [Nextcloud](https://nextcloud.com/)
+          * Manual Nextcloud Installation
+            * Install a LAMP server
+            * Configure service connectivity
+            * Download Nextclod archive
+            * Set permissions
+            * Troubleshoot
+            * [snapcraft - The app store for Linux](https://snapcraft.io/docs/getting-started)  
+            * [David Clinton](https://www.youtube.com/channel/UCzAhxo5HNimfjSj1i85utMA/videos)  
+            * kommandoer:
+              * ``` snap install nextcloud ``` 
+              * browser: 10.0.31.131 - create an admin account on Nextcloud
+              * ``` cd /var/snap, ls ``` => core nextcloud 
+              * ``` cd nextcloud ``` => 10314 common  current
+              * ``` cd 10314, ls ``` => apache certs mysql nextcloud php redis 
+              * ``` less nextcloud/config/config.php ```
+              * ``` cd /etc/,  nano hosts ```
+                * Backup always before any change: ``` sudo cp hosts hosts.backup ```
+  * Compiling code in Linux
+    * Packages needed to compile binaries: [Bootstrap IT](https://bootstrap-it.com/linux-start/)
+      * Maybe is need install package to compile binaries
+        ```
+          sudo apt install autoconf g++ subversion linux-source \
+                linux-headers-`uname -r` build-essential tofrodos \
+                  git-core subversion dos2unix make gcc automake cmake \
+                checkinstall git-core dpkg-dev fakeroot pbuilder \
+                  dh-make debhelper devscripts patchutils quilt \
+                  git-buildpackage pristine-tar git yasm checkinstall \
+                  cvs mercurial 
+        ```
+      * for heavy network analysis, [NMAP.org (gzip compressed)](https://nmap.org/download.html)  
+        * ``` wget https://nmap.org/dist/nmap-7.91.tgz ```
+        * ``` tar xzf nmap-7.91.tgz ```
+        * ``` cd nmap-7.91  ```
+        * ``` ./configure ```
+        * ``` make ```
+        * ``` make install ```
+        * ``` nmap -F 10.0.0.0/16 ```
 
-#### Install Ubuntu programs
-- Format: *.deb
-- [How to Install Google Chrome Web Browser on Ubuntu 20.04](https://linuxize.com/post/how-to-install-google-chrome-web-browser-on-ubuntu-20-04/)
-  * wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  * sudo apt install ./google-chrome-stable_current_amd64.deb
-- Thunderbird Mail
-- Cheese (webcam)
-- Empathy Ubuntu (skype, mattermost, slack, signal, teams, osv)
-- Rhythmbox ubuntu (Rubyripper for better som quality)
-- Games: Battle for Wesnoth,
-- Lifesstyle front: Stellarium
-  
 ##  Dockerfile Script
 ```
 FROM ubuntu:latest
-MAINTAINER D Clinton 
-info@bootstrap-it.com
+MAINTAINER D Clinton info@bootstrap-it.com
 RUN apt-get update
 RUN apt-get install -y apache2
 ADD index.html /var/www/html/
