@@ -3,17 +3,47 @@
 - [How to Install Ubuntu Linux on Windows 10 With VirtualBox](https://www.lifewire.com/install-ubuntu-linux-windows-10-steps-2202108)
 - [Install Linux Inside Windows Using VirtualBox](https://itsfoss.com/install-linux-in-virtualbox/)
 
-## Linux commands line
+## [Getting Started with the Linux Command Line](https://bootstrap-it.com/linux-cli)
+-  Creating Data Archives
+  * ``` ls ```=> latest.tar.gz
+  * extract zip file: ``` tar xzt latest.tar.gz ```
+  * ``` ls ```=> latest.tar.gz   wordpress
+  * create zip file: ``` tar czf newarchive.tar.gz wordpress ```
+  *  [Akismet Spam Protection](https://wordpress.org/plugins/akismet/#description)
+    * ``` wget https://downloads.wordpress.org/plugin/akismet.4.1.9.zip ```
+      * ``` unzip akismet.4.1.9.zip ```
+      * ``` zip newname.zip * ```
 - CPU + MEM: ``` top ```
-- List items in directory: ``` ls ```
-- List items, showwing source for linked files: ``` ls -L ```
+- List items in directory: 
+  * ``` ls ```
+  * ``` ls -a ``` or ``` ls --all ```
+  * ``` less .bashrc ```
+  * ``` ssh ubuntu@10.0.70.110 ```
+  * ``` less .profile ```
+  * ``` less /etc/profile ```
+  * ``` cat /etc/passwd ```
+- List items, showing source for linked files: ``` ls -L ```
 - Long list items: 
   * ``` ls -l /var/log ``` === command name | ls + Arguments | -l + operand | /var/log
-  * ``` ls -l /bin/p* ```  
+  * ``` ls -l /bin/p* ```
+  * ``` ls -l /etc/ ```
+- Long list items and size: ``` ls -lh ```
+- Long list items and size and order files by sending chronological order: ``` ls -lht ```
 - Long lisy item in working directory: 
   * ``` ls -l -G ```  === ``` ls -l --no-group ```
   * ``` ls -L ```
-- Show the manual for ls: ``` man ls ```  
+- [serverfault - Questions tagged [linux]] (https://serverfault.com/questions/tagged/linux)
+  * Show the manual for ls: ``` man ls ```
+  * Show the manual for wget: 
+    * ``` man wget  ```
+        * ``` sudo apt install man-db ```
+    * ``` wget wordpress.org/latest.tar.gz ```
+    * ``` info wget examples simple ```
+        * ``` sudo apt install info ```
+        * ``` info  ```
+        * ``` less cd /usr/share/doc/wget/README ```
+    * ``` wget --help | less  ```
+    * ``` type wget ``` => wget is hashed (/usr/bin/wget) 
 - Files and User
   * -rwxr-xr-x 1 elton staff 97 Dec 7 19:49 example.sh
     * 1: Type: directory 8d) or file (-) 
@@ -26,8 +56,23 @@
     * Size: 97 bytes
     * Last modified: Dec 7 19:49
     * Name: example.sh
-- Create a file: ``` sudo touch /var/file.txt ```
-- Open for edit a file: ``` nano touch /var/file.txt ```
+- Create a file: 
+  * ``` sudo touch /var/file.txt ```
+  * ``` touch another four word name ``` => created 4 empty files: another, four, word and name
+    * ``` touch another\ four\ word\ name
+    * ``` touch "another four word name"
+    * ``` touch another-four-word-name
+    * ``` touch file1 file2  file12 ```
+  * ``` nano file1 ``` === create a file to edit
+    * ``` mkdir newdata ```
+    * ``` cp file1 newdata/ ```
+    * ``` cp file* newdata/ ```
+    * ``` rm file? ``` === file12 wasn't removed
+    * ``` rm file* ``` === all files were removed
+    * ``` mv ../file* . ```
+    * ``` rm * ```
+    * ``` rmdir newdata/ ```
+- Open a file for edit: ``` nano touch /var/file.txt ```
 - Print to output: ``` echo "line 1" ```
 - Print to file: ``` sudo echo "line 1">> /var/file.txt ``` 
 - Run as root: ``` sudo su ```
@@ -53,6 +98,7 @@
     * ``` sudo find /var/log/syslog* -type f -print0 | xargs -0 cat | grep -c "NetworkManage.*warn" ``` === 111
    * network
       * display layer 3 the IP (IPv4 and IPv6, etc) addresses assigned to all interfaces: 
+        * ``` ip addr ```  or ``` ip a ```       
         * ``` ip address show ```
         * ``` ip address show | grap inet ```
         * ``` ip address show | grap inet | head -n 1 ``` === get first result === 
@@ -188,7 +234,7 @@
 ```
 Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 ```
-- [Bootstrap IT](http://bootstrap-it.com/linux-start/)
+- [Bootstrap IT](https://bootstrap-it.com/linux-start/)
 - [Vagrant](https://www.vagrantup.com/downloads)
 - [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 
@@ -316,10 +362,20 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
       * mount a partition|drive: 
           * ``` sudo mkdir /media /newplace ```
           * ``` sudo mount /dev/sdb2 /media/newplace/ ```
-      * list hardware
-        * ``` sudo lshw | less ```    
-      * Display the information about USB: 
-        * ``` lsusb ```  
+      * Troubleshooting Peripherals
+        * Display the information about USB:
+          * ``` lsusb ```
+        * Display the information about all PCI devices:
+          * ``` lspci ```
+        * list hardware
+          * ``` sudo lshw | less ```
+          * ``` sudo lshw > lshw-output ```
+          * ``` less  lshw-output ```
+          * ``` ls /lib/modules/ ```
+            * ``` uname -r ```
+            * ``` cd  /lib/modules/`uname -r`/kernel/sound ```
+              * ``` lsmod | grep sound ```
+              * to load the module: ``` modprobe soundcore ```
       * report file system disk space usage 
         * ``` df -h ```
         * ``` df -ht ext4 ```
@@ -365,8 +421,34 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
     * [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
     * Kommmandoer:
       * ``` locale ```
+        * ``` locale adduser ```
+          * ``` sudo nano /etc/adduser.conf ``` 
+          * ``` sudo updatedb ``` == update index from all recent files changed for find them
+            * ``` cat /var/log/systlog ```
+            * ``` cat /etc/group | grep ubuntu ```
+            * ``` cat /etc/group | grep ubuntu >> newfile ``` === create and append
+            * ``` cat /etc/group | grep ubuntu > newfile ``` === create or overwriting 
+            * ``` head /etc/group  ``` === print first 10 lines of a file
+            * ``` tail /etc/group  ``` === print last 10 lines of a file
+            * ``` cut -d: -f3 /etc/group  ``` === print only third column
+              * ``` cut -d: -f3 /etc/group | sort -n  ``` === print only third column ascending order
+              * ``` cut -d: -f3 /etc/group | sort -rn  ``` === print only third column descending order
+              * word count: ``` wc /etc/group ```
         * Located:  ``` cd /usr/share/i18n/locales/ ``` 
         * Edit locale: ``` less en_CA ```
+      * Standard Strems
+
+        | Name            | designation | Numeric Code  |
+        | --------------- |:-----------:| -------------:|
+        | Standard Input  | stdin       |       0       |
+        | Standard Output | stdout      |       1       |
+        | Standard Error  | stderr      |       2       |
+
+          * Standard Input: ``` mysql -u root -p < mydatabase.sql ```
+          *  ``` echo "Hello"  ``` or ``` cat myfile.txt ``` === stdout
+          * ``` echo "Hello" >> myfile.txt ``` === stdin   
+          * ``` wget pluralsight.comm 2> errorfile.txt ``` === stderr
+
       * view and edit locale settings: 
         * ``` localectl status  ```
         * ``` localectl list-locales ```
