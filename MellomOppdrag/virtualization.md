@@ -96,23 +96,74 @@
     *  ``` sudo find /var/log/syslog* -type f -print0 | xargs -0 cat | grep "NetworkManage" ```
     * ``` sudo find /var/log/syslog* -type f -print0 | xargs -0 cat | grep "NetworkManage.*warn" ```
     * ``` sudo find /var/log/syslog* -type f -print0 | xargs -0 cat | grep -c "NetworkManage.*warn" ``` === 111
-   * network
+   * network connectivity
+      * ``` ip route show  ``` === ``` route  ```  (old)
+      * ``` sudo dhclient  ```
       * display layer 3 the IP (IPv4 and IPv6, etc) addresses assigned to all interfaces: 
-        * ``` ip addr ```  or ``` ip a ```       
+        * ``` ip addr ```  or ``` ip a ```      ==== ``` ifconfig ``` (old)   
         * ``` ip address show ```
         * ``` ip address show | grap inet ```
         * ``` ip address show | grap inet | head -n 1 ``` === get first result === 
         * ``` ip address show | grap inet | head -n 1 | cut -d ":" -f 2 ``` === 10.0.2.15 Bcast
         * ``` ip address show | grap inet | head -n 1 | cut -d ":" -f 2 | cut -d " " -f 1 ``` === 10.0.2.15 
-        * details about the layer 2 (MAC address, ethernet address, etc) properties of the interface: ``` ip link show ```
-        * Listing available Wi-Fi APs: ``` nmcli device wifi list ``` === [nmcli](https://developer.gnome.org/NetworkManager/stable/nmcli-examples.html)
+        * details about the layer 2 (MAC address, ethernet address, etc) properties of the interface
+          * ``` ip link show ```
+        * Listing available Wi-Fi APs
+          * ``` nmcli device wifi list ``` === [nmcli](https://developer.gnome.org/NetworkManager/stable/nmcli-examples.html)
+      * Network Addressing
+        * IPv4
+          * 256.256.256.256 = 4,294,967,296 (2^32)
+          * Example address: 192.168.1.3
+        * Network Address Translation (NAT) ranges
+          * 10.0.0.0 to 10.255.255.255
+          * 172.16.0.0 to 172.31.255.255
+          * 192.168.0.0 to 192.168.255.255
+        * IPv6
+          * Example address:
+            * fd42:7fd5:d2a7:bf0d:216:3eff:fed3:5889
+        * Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+          * ``` netstat -l  ```
+          * ``` netstat -i  ```  
+            * Install: ``` sudo apt install net-tools ```
+          * ``` ssh -i  ```
+            * ``` ssh -i mykeyfile.pem ubuntu@10.0.31.131  ```
+      * Domain Name System (DNS) configuration
+        * ``` host bootstrap-it.com ``` => bootstrap-it.com has address 52.3.203.146
+        * ``` ping 8.8.8.8  ``` => one of google servers
+        * ``` cat /etc/resolv.conf  ```
+          * ``` systemd-resolve --status  ```
+          * ``` sudo nano /etc/hosts  ``` === add for eksemple 192.168.1.5 mysite.com to the file
+      * Remote connections and Secure and SSH
+        * SSH Key Exchange, Client (private key), Server (public key) === pair of keys
+          * Step 1: connection request
+          * Step 2: encrypted number
+          * Step 3: decrypted number
+          * connection started
+        * [OpenSSH in Windows 10!](https://devblogs.microsoft.com/commandline/openssh-in-windows-10/)
+          * Installing OpenSSH
+            * Server (It is the machine that owns the session, the resources you want administration)
+              * ``` apt install openssh-server ```
+              * ``` yum install openssh-server ```
+            * Client (it is your machine, laptop, or workstation)
+              * ``` apt install openssh-client ```
+              * ``` yum install openssh-clients ```
+            * ``` cd /etc/ssh ``` 
+              * ssh_config: handler the way your system login as a client on remote hosts  
+              * sshd_config: manager your system hosts behaviour
+                * ``` sudo nano sshd_config ```
+                * from 2016, [Protocol Deep Dive: SSH and Telnet](https://app.pluralsight.com/library/courses/ssh-telnet-protocol-deep-dive/table-of-contents)
+            *  ``` ssh ubuntu@10.0.31.131 ``` === pair of keys
+                *  ``` ssh -p 2222 ubuntu@10.0.31.131 ```
+                *  ``` ssh -i /home/myusername/mykeyfile.pem ubuntu@10.0.31.131 ``` === Amazon
+            *  ``` scp update-local.sh ubuntu@10.0.31.131:/home/ubuntu ``` === pair of keys
+                * ``` scp script.sh ubuntu@10.0.31.131:/home/ubuntu  ```
   * Scripting commands
     * Script name: write-ip.sh
     * Run permissions: ``` chmod a+x write-ip.sh```
     * Run script: ``` ./write-ip.sh ```   
     * Show Ip address: ``` tail -f ip.txt ``` === show last changes in the file that come  
     * Show script: ``` nano write-ip.sh ```
-    * script example:      
+    * script example 1:
       ```
       - Specify BASH shell
       #!/bin/bash
@@ -127,6 +178,117 @@
       - Print variable to file
       echo $originalAddress>> ~/ip.txt
       ```
+    * script example 2:      
+      ``` 
+      #!/bin/bash
+      chmod +x myscript.sh
+      read number1
+      total=$number1*$number2
+      for filename in file1 file2 file3
+      if test $text1 != $text2; then
+      while [ $counter -gt 2 ]; do
+      case $weather in
+      ```
+    * [Shell Scripting with Bash](https://app.pluralsight.com/library/courses/bash-shell-scripting/table-of-contents)
+    * ``` mkdir scripts ```
+    * ``` cd /home/ubuntu/scripts ```
+    * ``` pwd ``` => /home/ubuntu/scripts
+      * exemple 3:
+        * ``` nano myscript.sh ``` 
+          ```
+          #!/bin/bash
+          declare -i number1
+          declare -i number2
+          declare -i total
+          echo "What's your favorite number? "
+            read number1
+          echo "What number do you really hate? "
+            read number2
+          total=$mumber1*$number2
+            echo "Aha! They equal " $total
+          exit 0
+          ```
+          * ``` chmod +x myscript.sh ```
+          * ``` ./myscript.sh ```
+      * exemple 4:
+        * ``` nano theloop.sh ```
+          ```
+          #!/bin/bash
+          for i in {0..10..2}
+            do
+              echo "We've been through this $i times already!"
+            done
+          ```
+          * ``` chmod +x theloop.sh ```
+          * ``` ./theloop.sh ```
+      * exemple 5:    
+        * ``` touch file1 file2 file3 ```
+        * ``` ls ```
+        * ``` nano newloop.sh ```
+          ```
+          #!/bin/bash
+          for filename in file1 file2 file3
+            do
+              echo "Important stuff" >> $filename
+            done
+          ```
+          * ``` chmod +x newloop.sh ```
+          * ``` ./newloop.sh ```
+          * ``` cat file3 ``` => Important stuff
+      * exemple 6:    
+        * ``` nano colors.sh ```
+        ```
+        #!/bin/bash
+        #declare -s text1
+        #declare -s text2
+        echo "What's your favorite color? "
+          read text1
+        echo "What's your best friend's favorite color? "
+          read text2
+          if test $text1 != $text2; then
+            echo "I quess opposites attract.
+          else 
+            echo "You two do think alike!
+          fi
+        exit 0
+        ```
+        * ``` chmod +x colors.sh ```
+        * ``` ./colors.sh ```
+      * exemple 7:    
+        * ``` nano counter.sh ```
+        ```
+        #!/bin/bash
+        declare -i counter
+        counter=10
+          while [ $counter -gt 2]; do
+            echo the counter is $counter
+            counter=counter-1
+          done
+        exit 0
+        ```
+        * ``` chmod +x counter.sh ```
+        * ``` ./counter.sh ```
+      * exemple 8:    
+        * ``` nano weather.sh ```
+        ```
+        #!/bin/bash
+        echo "What's tomorrow's wather going to be like? "
+        read weather
+          case $weather in
+            sunny | warm ) echo "Nice! I love it when it's " $weather
+            ;;
+            cloudy | cool ) echo "Not bad... " $weather" is ok, too"
+            ;;
+            rainy | cold ) echo "Yuk!" $weather" weather is depressing"
+            ;;
+            * ) echo "Sorry, I'm not faniliar with that weather system."
+            ;;
+          esac        
+        exit 0
+        ```
+        * ``` chmod +x weather.sh ```
+        * ``` ./weather.sh ```
+      * bash built-in commands: ``` man builtins ```
 - CRON (daily, weekly, montly): run script.sh as pedro
   * evert 10 minutes, every day:  ```` 10 * * * * [script or command] ```
   * at 00:05 am, every day:  ```` 5 0 * * * [script or command] ```
@@ -203,6 +365,7 @@
 - TODO [Getting Started With Ubuntu](https://app.pluralsight.com/library/courses/ubuntu-getting-started/table-of-contents)
 - TODO [Linux Fundamentals](https://app.pluralsight.com/paths/skill/linux-fundamentals-1)  
 - TODO [Shell Scripting with Bash](https://app.pluralsight.com/library/courses/bash-shell-scripting/table-of-contents)  
+- TODO [Protocol Deep Dive: SSH and Telnet](https://app.pluralsight.com/library/courses/ssh-telnet-protocol-deep-dive/table-of-contents)
 - [Managing Docker on Linux Servers](https://app.pluralsight.com/library/courses/managing-docker-linux-servers/table-of-contents)
 - [Creating Shell Scripts in Enterprise Linux](https://app.pluralsight.com/library/courses/creating-shell-scripts-enterprise-linux/table-of-contents)
 - [Linux: Managing Web Services (LPIC-2)](https://app.pluralsight.com/library/courses/linux-managing-web-services-lpic-2/table-of-contents)
