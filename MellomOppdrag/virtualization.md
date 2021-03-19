@@ -3,7 +3,7 @@
 - [How to Install Ubuntu Linux on Windows 10 With VirtualBox](https://www.lifewire.com/install-ubuntu-linux-windows-10-steps-2202108)
 - [Install Linux Inside Windows Using VirtualBox](https://itsfoss.com/install-linux-in-virtualbox/)
 
-## [Getting Started with the Linux Command Line](https://bootstrap-it.com/linux-cli)
+## [Getting Started with the Linux Command Line](http://bootstrap-it.com/linux-cli)
 -  Creating Data Archives
   * ``` ls ```=> latest.tar.gz
   * extract zip file: ``` tar xzt latest.tar.gz ```
@@ -13,7 +13,6 @@
     * ``` wget https://downloads.wordpress.org/plugin/akismet.4.1.9.zip ```
       * ``` unzip akismet.4.1.9.zip ```
       * ``` zip newname.zip * ```
-- CPU + MEM: ``` top ```
 - List items in directory: 
   * ``` ls ```
   * ``` ls -a ``` or ``` ls --all ```
@@ -366,6 +365,10 @@
 - TODO [Linux Fundamentals](https://app.pluralsight.com/paths/skill/linux-fundamentals-1)  
 - TODO [Shell Scripting with Bash](https://app.pluralsight.com/library/courses/bash-shell-scripting/table-of-contents)  
 - TODO [Protocol Deep Dive: SSH and Telnet](https://app.pluralsight.com/library/courses/ssh-telnet-protocol-deep-dive/table-of-contents)
+- TODO [Linux Performenca Monitoring and Tuning](https://app.pluralsight.com/library/courses/linux-performance-monitoring-tuning/table-of-contents)
+- TODO [Linux Network Security](https://app.pluralsight.com/library/courses/linux-network-security-lpic-3-303/table-of-contents)
+- TODO [Securing Linux Servers](https://app.pluralsight.com/library/courses/securing-linux-servers/table-of-contents)
+- TODO [Linux Encryption Security](https://app.pluralsight.com/library/courses/linux-encryption-security-lpic-3-303/table-of-contents)  
 - [Managing Docker on Linux Servers](https://app.pluralsight.com/library/courses/managing-docker-linux-servers/table-of-contents)
 - [Creating Shell Scripts in Enterprise Linux](https://app.pluralsight.com/library/courses/creating-shell-scripts-enterprise-linux/table-of-contents)
 - [Linux: Managing Web Services (LPIC-2)](https://app.pluralsight.com/library/courses/linux-managing-web-services-lpic-2/table-of-contents)
@@ -397,7 +400,7 @@
 ```
 Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 ```
-- [Bootstrap IT](https://bootstrap-it.com/linux-start/)
+- [Bootstrap IT - linux-star](http://bootstrap-it.com/linux-start/)
 - [Vagrant](https://www.vagrantup.com/downloads)
 - [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 
@@ -666,7 +669,7 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
               * ``` cd /etc/,  nano hosts ```
                 * Backup always before any change: ``` sudo cp hosts hosts.backup ```
   * Compiling code in Linux
-    * Packages needed to compile binaries: [Bootstrap IT](https://bootstrap-it.com/linux-start/)
+    * Packages needed to compile binaries: [Bootstrap IT - linux-start](http://bootstrap-it.com/linux-start/)
       * Maybe is need install package to compile binaries
         ```
           sudo apt install autoconf g++ subversion linux-source \
@@ -685,21 +688,6 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
         * ``` make ```
         * ``` make install ```
         * ``` nmap -F 10.0.0.0/16 ```
-
-##  Dockerfile Script
-```
-FROM ubuntu:latest
-MAINTAINER D Clinton info@bootstrap-it.com
-RUN apt-get update
-RUN apt-get install -y apache2
-ADD index.html /var/www/html/
-CMD /usr/sbin/apache2ctl -D FOREGROUND
-EXPOSE 80
-```
-- docker build -t webserver .
-- docker images => webserver
-- docker run -d webserver
-- curl 172.17.0.2 => Hello World
 
 ## web Development ==== Ubuntu Desktop
 - [How to Install and Configure Docker on Ubuntu 20.04](https://linuxhint.com/install_configure_docker_ubuntu/)
@@ -764,3 +752,238 @@ EXPOSE 80
       * scp -r /var/www/omnium.net azure:/var/www/omnium.net/
       * scp user@ub-ws-01.cloudapp.net:~/a-file ~/
       * scp user@x.y.z:~/a-file user@a.b.c:~/a-file
+
+## [Linux System Administration](http://bootstrap-it.com/linux-admin/)
+- Why Linux?
+  * Most web and application servers run on Linux
+  * Nost Continuous Integration/Continuous Deployments run on Linux
+  * Docker vurtualizes kernel resources of its Linux host
+  * All SWS EC2 instances run on Linux hosts (using Xen or KVM)
+- [Linux Performenca Monitoring and Tuning](https://app.pluralsight.com/library/courses/linux-performance-monitoring-tuning/table-of-contents)
+  * ``` cd /proc ```
+  * ``` ls ```
+  * ``` less /proc/meminfo ```
+  * ``` less /proc/cpuinfo ```
+  * HW: ``` top ``` === CPU + MEM
+  * ``` free ``` or  ``` free -h ```
+  * ``` df  ``` or ``` df -ht ext4 ``` == for format partitions 
+  * [Speed Test](http://www.dslreports.com/speedtest)
+  * ``` sudo apt update && sudo apt install iftop ```
+  * ``` ip addr ``` or ``` ip a  ```
+  * ``` sudo iftop -i eth0  ```
+  * report a snapshot of the current processes:
+    * ``` ps  ```
+    * ``` ps  aux ```
+    * ``` ps  aux | wc ```
+    * ``` ps  aux | grep sshd ```
+    * ``` man sshd ```
+    * ``` journalctl --since "10 minutes ago" ```
+    * ``` cat /var/log/syslog | grep sshd ```
+    * ``` cat /var/log/syslog | grep eth0 ```
+    * print or control the kernel ring buffer
+        * ``` dmesg ```
+        * ``` dmesg | less ```
+        * wireless land: ``` dmesg | wl ```
+        * ``` ssh ubuntu@10.0.31.131 ```
+          * ``` snap list ```
+    * ``` yes > /dev/null & ```  === it will bw automatic deleted
+      * ``` ps ```
+      * ``` kill 11287 ``` === kill only one processe
+      * ``` killall yes ``` === kill all instances of yes run on the system
+      * ``` nice -19 yes > /dev/null &``` === change the run priority, 0: neutral, 1-20: high, -1-20: low  
+        *  ``` renice 15 -p 1187 ``` 
+  * ``` sudo systemctl status apache2 ```
+    * ``` sudo systemctl disable apache2 ```
+    * ``` sudo systemctl enable apache2 ```
+    * ``` sudo systemctl start apache2 ```
+    * ``` sudo systemctl stop apache2 ```
+- Users and Groups
+  * ``` less /etc/shadow ``` => Permission denied  
+  * ``` sudo less /etc/shadow ```
+  * ``` sudo less /etc/passwd ```
+  * ``` sudo less /etc/group ```
+  * ``` id ubuntu ``` , ``` id steve ```
+  * ``` who ``` === who is loggin
+  * ``` w ``` === who is loggin and what he/she doing
+  * ``` last | less``` 
+  * ``` sudo useradd -m jane ``` === ``` cd /home/jane && ls -a ``` => . .. .bash_logout .bashrc .profile
+  * ``` ls -a /etc/skel && ls -a ``` => . .. .bash_logout .bashrc .profile 
+  * ``` sudo passwd jane ``` 
+  * ``` sudo mkdir /var/secret ```  
+    * ``` sudo groupadd secret-group ``` 
+    * ``` sudo chown :secret-group /var/secret ``` 
+    * ``` sudo usermod -a -G secret-group jane ```
+    * ``` sudo chmod g+w /var/secret ``` === group can edit files now
+- [Linux Network Security - Security your Linux Server](https://app.pluralsight.com/library/courses/linux-network-security-lpic-3-303/table-of-contents)
+  * ``` cd /var/secret ```
+  * ``` ls ```
+  * ``` su jane ``` == janes new terminal 
+  * ``` touch data.txt ```
+  * ``` ls ```
+  * ``` touch /var/log/stuff ``` => Permission denied
+  * ``` ls -l ```  => -rw-rw-r-- 1 jane jane 0 Jan 23 20:30 data.txt
+    * -rw-rw-r-- 1 jane jane 0 Jan 23 20:30 data.txt
+      * 1: Type: file (-)
+      * 3: Owner permissions: read + write
+      * 3: Group permissions: read + execute
+      * 3: Other user permissions: read 
+      * : File references: 1 link
+      * Owner: jane
+      * Group: jane
+      * Size: 0 bytes
+      * Last modified: Jan 23 20:30
+      * Name: data.txt
+  * ``` ls -dl ``` => drwxrwxr-x 2 root secret-group 4096 Jan 23 20:03
+  * drwxrwxr-x 2 root secret-group 4096 Jan 23 20:03
+    * 1: Type: directory (d)
+    * 3: Owner permissions: read + write + execute
+    * 3: Group permissions: read + write + execute
+    * 3: Other user permissions: read + execute
+    * : File references: 2 link
+    * Owner: root
+    * Group: secret-group
+    * Size: 4096  bytes
+    * Last modified: Jan 23 20:30
+    * Name: -
+  * ``` sudo chown ubuntu:secret-group /var/secret/ ```
+  * ``` chmod o+x data.txt ```
+  * Permission: Numeric Notation
+
+        | Read      | r |  4 |
+        | Write     | w |  2 |
+        | Execeute  | x |  2 |
+      
+    * Full permissions: 7
+    * Read/execute: 5
+    * Execute: 1
+    * chmod 777 data.txt => -rwxrwxrwx 1 jane jane 0 Jan 23 20:30 data.txt
+  * ``` ls -dl ``` => drwxrwxr-x 2 root secret-group 4096 Jan 23 20:03
+  * ``` sudo chmod +t . ``` === A sticky bit is a permission bit that is set on a directory that allows only the owner of the file within that directory, the owner of the directory or the root user to delete or rename the file. No other user has the needed privileges to delete the file created by some other user.
+  * ``` ls -dl ``` => drwxrwxr-t 2 root secret-group 4096 Jan 23 20:03
+  * chmod +s /var/secret  === set user or group ID on execution (s)
+  * create symbolic link 
+    * ``` mkdir scripts ```
+    * ``` cd /home/ubuntu/scripts ```  
+    * ``` nano myscript.sh ```
+    ```
+    #!/bin/bash
+    # Lots of secret stuff  
+    ```
+    * ``` sudo ln -s /home/ubuntu(scripts/myscript.sh /var/secret ``` === sudo ln -s FILE_LOCATED FILE_AVAILABLE 
+    * ``` ls -l ``` => lrwxrwxrwx 1 root root 32 Aug 6 17:58 myscript.sh -> /home/ubuntu(scripts/myscript.sh 
+  * Hardening Your Server 
+    * [Dpkg Team](https://wiki.debian.org/Teams/Dpkg)
+    * [Ubuntu Security Notices](https://ubuntu.com/security/notices)
+    * Software updates
+      * ``` sudo apt update && sudo apt upgrade ```
+      * ``` yum update ```
+    * Service Access Controls
+      * Service Hardening
+      * Port control
+        * Open/close ports
+          * ``` nmap -v -sT localhost ``` === scan computer for open ports
+          * ``` systemctl disable apache2 ``` === 443=https
+      * Firewall rules
+        * [Securing Linux Servers](https://app.pluralsight.com/library/courses/securing-linux-servers/table-of-contents) 
+        * [Cisco](https://app.pluralsight.com/search/?q=cisco&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=44ece8ef-8dec-4645-9551-14ea74a36090&source=user_typed) 
+    * Data encryption 
+      * [Linux Encryption Security](https://app.pluralsight.com/library/courses/linux-encryption-security-lpic-3-303/table-of-contents)
+      * [Let's encrypt - A nonprofit Certificate Authority providing TLS certificates to 240 million websites.](https://letsencrypt.org/)
+      * Disk Encryption (Installation Choice)
+      * Web servers: 
+        * SSL Encryption
+        * TLS Encryption, computer - server, [certbot instructions](https://certbot.eff.org/lets-encrypt/ubuntubionic-apache)
+          * compute -> server, valid CA certificate?
+          * compute <- server, Response
+          * compute -> server, Page request
+          * compute <- server, Encrypted web page
+      * Email Server Elements
+        * Mail transport agent (MTA): Postfix, Sendmail
+        * Mail delivery agent (MDA): Dovecot
+        * Mail user agents (MUA): Thunderbird
+- Working with Docker and Linux Containers
+  * Virtualization (< 2012)
+  * Container virtualization (> 2013)
+    * Docker === Dockerfile 
+    * Kubernetes === Orchestrators 
+  * Linux In a Container World
+    * Host administration
+      * Privileges
+      * kernel access
+    * Container administration
+      * Application design
+    * The Future of Linux
+      * Microservices
+      * DevOps
+      * Development support
+  * Understand the Docker ecosystem
+    * Docker Resources
+      * Image hosting:
+        * [Docker Hub](https://hub.docker.com/)
+        * [Docker Registry](https://docs.docker.com/registry/#:~:text=The%20Registry%20is%20a%20stateless,under%20the%20permissive%20Apache%20license.)
+      * Storage:
+        * Docker Volumes
+        * Third-part solutions (cloud === Google Kubernetes Engine, GKE, and Azure Kubernetes Service)
+      * [docker](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/docker.md)
+        * ```  docker network ls ```
+        * ```  docker networlk create newnet ```
+          * [Swarm mode overview](https://docs.docker.com/engine/swarm/)  
+          * [kubernetes](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes.md)
+  * Install Docker Engine on Linux
+    * [Install Docker Engine](https://docs.docker.com/engine/install/)
+    * [How to Install and Configure Docker on Ubuntu 20.04](https://linuxhint.com/install_configure_docker_ubuntu/)
+    * Exampel 1 - Docker repositories: 
+      * From 
+        * [DockerHub](https://hub.docker.com/search?q=&type=image) 
+        * [harbor](https://goharbor.io/) 
+      * ``` sudo docker run hello-world ==== image1: hello-world ``` === [hello-world](https://hub.docker.com/_/hello-world)
+        *  ``` curl 172.17.0.2 ``` => hello-world
+      * ``` sudo docker run -it ubuntu bash ==== image2: ubuntu ``` === [ubuntu](https://hub.docker.com/_/ubuntu)
+         * ``` sudo namo /etc/group ```  
+            * Edit group file from "docker:x:999:" to "docker:x:999:ubuntu" === not need sudo anymore
+            * ``` ssh ubuntu@192.168.1.21 ```
+      * ``` sudo docker ps -a ``` => image1 and image2 
+    * Exampel 2 - Docker deployment:
+      * From Dockerfile script: 
+        * ``` sudo namo Dockerfile ```
+        * from course 1:
+          ```
+          # Create a webserver on Ubuntu
+          FROM ubuntu:latest
+          MAINTAINER D Clinton info@bootstrap-it.com
+          RUN apt-get update
+          RUN apt-get install -y apache2
+          ADD index.html /var/www/html/
+          CMD /usr/sbin/apache2ctl -D FOREGROUND
+          EXPOSE 80
+          ```
+        * from course 2:
+          ```
+          # Dockerfile to create Ubuntu webserver
+          #
+          FROM ubuntu:latest
+          
+          RUN apt-get update
+          RUN apt-get install -y apache2
+          RUN echo "Welcome to my web site" > /var/www/html/index.html
+          EXPOSE 80
+          ```
+      *  Work with a Dockerfile script
+        * ``` ls ``` => Dockerfile
+        * ``` docker build -t webserver . ```
+        * ``` docker images => webserver ```
+        * Example 2 for course 1: 
+          * ``` docker run -d webserver ```
+            * ``` docker ps ```
+            * ``` curl 172.17.0.2 ``` => 'html page'
+        * Example 2 for course 2: 
+          * ``` docker run -d -p 80:80 webserver /usr/sbin/apache2ctl -D FOREGROUND ```  === 80 is default port 
+            * ``` docker ps ```            
+            * ``` curl 172.17.0.2 ``` or from a browser 192.168.1.21 => Welcome to my web site
+        * Set example 2 in DockerHub
+          * ``` docker login ```
+          * ``` docker tag webserver pedalv/webserver ```
+          * ``` docker push pedalv/webserver ```
+        * Search and pull a image inside DockerHub    
+          * ``` docker search nextcloud ```
+          * ``` docker pull nextcloud ```  
