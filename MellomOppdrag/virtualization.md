@@ -975,3 +975,7 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
         * Search and pull a image inside DockerHub    
           * ``` docker search nextcloud ```
           * ``` docker pull nextcloud ```  
+
+# Resume
+
+![containers](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/containers.PNG)
