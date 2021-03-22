@@ -12,19 +12,34 @@
 
 ## Tips
 - [Find the Azure geography that meets your needs](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)
-- Type of Cloud Computing Services
-* on-prem === On-premises software is installed and runs on computers on the premises of the person or organization using the software, rather than at a remote facility such as a server farm or cloud
-    * Infrastructure as a Service (IaaS) === Microsoft Azure; Azure Compute (Virtula Machines), Azure Storage
-        * Test and development
-        * Storage and backups
-        * High performance computing
-        * Big data analysis
-    * Platform as a Service (PaaS) === Azure Logic Apps, Azure Functions, Azure Web Jobs, Azure Automation
-        * Analytics or busines intelligence
-        * Development framework    
-    * Software as a Service(SaaS) === Office 365, Dropbox, Microsoft Teams, App, ...
-        * Gain access to sophisticated applications
-        * Mobilize your workforce easily
+- Blueprint === an early plan or design that explains how something might be achieved
+- Big band === is popular in situations or adopted when the project's stakeholders or customers are not certain regarding their wants and requirements  
+- Type of Cloud Computing Services 
+    * on-prem === On-premises software is installed and runs on computers on the premises of the person or organization using the software, rather than at a remote facility such as a server farm or cloud
+      * Ex: Made Pizza at home
+    * Infrastructure as a Service (IaaS) ===  Ex: Take and bake (frozen pizza) 
+        * Providers: 
+          * Microsoft Azure, Amazon Web Services, Google Compute Engine 
+            * Azure Compute (Virttual Machines), Azure Storage
+        * Scenarios:    
+            * Test and development
+            * Storage and backups
+            * High performance computing
+            * Big data analysis
+    * Platform as a Service (PaaS) === Ex: Pizza delivery 
+        * Providers: 
+          * Azure Logic Apps, Heroku, Amazon Elastic Beanstalk 
+            * Azure Logic Apps, Azure Functions, Azure Web Jobs, Azure Automation
+        * Scenarios:    
+            * Analytics or business intelligence
+            * Development framework    
+    * Software as a Service(SaaS) === Ex: Dine out
+        * Providers: 
+          * Office 365, Google G Suite, Salesforce, Dropbox 
+            * SharePoint, OneDrive for Business, Microsoft Teams, Power Platfor
+        * Scenarios:    
+            * Gain access to sophisticated applications
+            * Mobilize your workforce easily        * 
 - Cloud Computing === enables companies to consume a compute resource, such as a virtual machine, storage, or an application, as a utility -- just like electricity -- rather than having to build and maintain computing infrastructures in-house
 - Cloud Computing Deployment Models
     * Public Cloud: Cloud service provided by a third-party provider, harware can be shared amongst multiple clients
@@ -102,7 +117,8 @@ Virtualization
 - 3h38m Feb 26, 2021 [Microsoft Azure Services and Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-services-concepts/table-of-contents)
 - 2h 31m Mar 2, 2020 [Microsoft Azure Security and Privacy Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-security-privacy-concepts/table-of-contents)
 - 1h 37m July 1h 37, 2020 [Microsoft Azure Pricing and Support Options](https://app.pluralsight.com/library/courses/microsoft-azure-pricing-support-options/table-of-contents)
--  3h 40m 25 Apr 2019 [Azure Functions Fundamentals](https://app.pluralsight.com/library/courses/azure-functions-fundamentals/table-of-contents)
+- 3h 40m 25 Apr 2019 [Azure Functions Fundamentals](https://app.pluralsight.com/library/courses/azure-functions-fundamentals/table-of-contents)
+- 2h 9m 15 May, 2017 [Fundamentals of Cloud Computing](https://app.pluralsight.com/library/courses/cloud-computing-fundamentals/table-of-contents)
 
 - TODO [POPULAR - Microsoft Azure Solutions Architect: Introduction to the AZ-303 Exam](https://app.pluralsight.com/library/courses/microsoft-azure-solutions-architect-introduction-az-303-exam/table-of-contents)
 - TODO [POPULAR - Deploying Windows Virtual Desktop in Microsoft Azure](https://app.pluralsight.com/library/courses/deploying-windows-virtual-desktop-microsoft-azure/table-of-contents)
@@ -197,10 +213,14 @@ Maybe repeated
 - TODO [Cloud Certifications: Azure Database Administrator Associate](https://app.pluralsight.com/guides/cloud-certifications:-azure-database-administrator-associate)
 - TODO [Microsoft Azure Data Engineer (DP-200)]https://app.pluralsight.com/paths/certificate/microsoft-azure-data-engineer-dp-200)
 
+
+## Microsoft Azure Security and Privacy Concepts
+TODO
+
+
+
 # Resume
 
 ![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/types-of-cloud-computing-services.PNG)
 
 ![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/cloud-computing-deployment-models.PNG)
-
-
