@@ -11,6 +11,34 @@
 - [Dashboard UI Kubernetes](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default)
 
 ## Tips
+- [Find the Azure geography that meets your needs](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)
+- Type of Cloud Computing Services
+* on-prem === On-premises software is installed and runs on computers on the premises of the person or organization using the software, rather than at a remote facility such as a server farm or cloud
+    * Infrastructure as a Service (IaaS) === Microsoft Azure; Azure Compute (Virtula Machines), Azure Storage
+        * Test and development
+        * Storage and backups
+        * High performance computing
+        * Big data analysis
+    * Platform as a Service (PaaS) === Azure Logic Apps, Azure Functions, Azure Web Jobs, Azure Automation
+        * Analytics or busines intelligence
+        * Development framework    
+    * Software as a Service(SaaS) === Office 365, Dropbox, Microsoft Teams, App, ...
+        * Gain access to sophisticated applications
+        * Mobilize your workforce easily
+- Cloud Computing === enables companies to consume a compute resource, such as a virtual machine, storage, or an application, as a utility -- just like electricity -- rather than having to build and maintain computing infrastructures in-house
+- Cloud Computing Deployment Models
+    * Public Cloud: Cloud service provided by a third-party provider, harware can be shared amongst multiple clients
+    * Private Cloud (1): Hardware is only used by a single company, which often owns the hardware and datacenter
+    * Hybrid Cloud (1): Combination of public and private cloud with automation and orchestration between the tho
+        * (1) Azure Stack allows you to run cloud services on-premises
+        * (1) Azure Stack can be used for connected or disconnected scenarios
+        * (1) Consistent tools, experiences, and app models
+        * (1) Easy transfer workloads to Azure (public cloud)
+    * Community Cloud: Infrastructure is shared between several orgs from a specific community concerns (security, compliance, jurisdiction, etc)
+        * Azure Government is an Azure offeing specific to government entities
+        * Can handle data that is subjec to government regulation & requirements - FedRAMP /DOD /CJIS /etc
+        *Other Azure community cloud offerings - Azure China - Azure Germany
+      
 Docker
 * Third-part solutions (cloud === Google Kubernetes Engine, GKE, and Azure Kubernetes Service)
 
@@ -158,6 +186,7 @@ Maybe repeated
 - TODO [Maybe usefully](https://app.pluralsight.com/search/?q=windows%20azure&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&page=3&query_id=aa070f68-951e-4d82-a2f7-4336a3acb010&source=user_typed)
 #### Certifications
 - TODO [Microsoft Azure Fundamentals (AZ-900)](https://app.pluralsight.com/paths/certificate/microsoft-azure-fundamentals-az-900)
+  * [Exam AZ-900: Microsoft Azure Fundamentals](https://docs.microsoft.com/en-gb/learn/certifications/exams/az-900?wt.mc_id=learningredirect_certs-web-wwl)
 - TODO [Microsoft Azure Administrator (AZ-104)](https://app.pluralsight.com/paths/certificate/microsoft-azure-administrator-az-104)
 - TODO [Microsoft Azure Architect Design (AZ-304)](https://app.pluralsight.com/paths/certificate/microsoft-azure-architect-design-az-304)
 - TODO [Microsoft Azure Architect Technologies (AZ-303)](https://app.pluralsight.com/paths/certificate/microsoft-azure-architect-technologies-az-303)
@@ -167,3 +196,11 @@ Maybe repeated
 - TODO [Microsoft Certified: Azure Fundamentals](https://docs.microsoft.com/en-us/learn/certifications/azure-fundamentals/)  
 - TODO [Cloud Certifications: Azure Database Administrator Associate](https://app.pluralsight.com/guides/cloud-certifications:-azure-database-administrator-associate)
 - TODO [Microsoft Azure Data Engineer (DP-200)]https://app.pluralsight.com/paths/certificate/microsoft-azure-data-engineer-dp-200)
+
+# Resume
+
+![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/types-of-cloud-computing-services.PNG)
+
+![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/cloud-computing-deployment-models.PNG)
+
+
