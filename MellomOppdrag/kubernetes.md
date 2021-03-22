@@ -912,17 +912,31 @@ kubectl delete -f .k8s
 
 ![K8s Orchestrator](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/game_orchestrator.PNG)
 
+
 ![K8s View](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes_view.PNG)
+
 ![K8s Service](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes_service.PNG)
+
 ![K8s Network](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes_network.PNG)
 
+
 ![K8s Pods](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/Kubernetes_Pods.PNG)
+
 ![K8s Pods + App + Service](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/Kubernetes_Pods_app_service.PNG)
 
+
+
 ![K8s Deploy](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes_deploy_rs_pod_app.PNG)
+
 ![K8s Container](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/run_demo_container_service-2.PNG)
 
+
+
 ![K8s Cluster](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/K8s_cluster-1.PNG)
+
 ![K8s Cluster View](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/K8s_cluster-2.PNG)
+
 ![K8s Master](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes_master.PNG)
+
 ![K8s Node](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes_node.PNG)
+

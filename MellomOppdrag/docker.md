@@ -741,5 +741,7 @@ networks:
 # Resume
 
 ![Docker Linux](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/docker_linux.PNG)
+
 ![Docker Linux View](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/docker_linux-2.PNG)
+
 ![Docker Windows Linux](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/docker_win_linux-2.PNG)
