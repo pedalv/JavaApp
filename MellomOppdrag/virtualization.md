@@ -978,4 +978,8 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 
 # Resume
 
+![Datacenters in the Past](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/datacenters-in-the-past.PNG)
+
+![Virtual Host and Machines](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/virtual-host-machines.PNG)
+
 ![containers](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/containers.PNG)
