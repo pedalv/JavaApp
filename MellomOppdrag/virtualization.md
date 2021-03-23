@@ -2,6 +2,7 @@
 - [How to create an Ubuntu VM on Windows 10](https://www.thomasmaurer.ch/2019/06/how-to-create-an-ubuntu-vm-on-windows-10/)
 - [How to Install Ubuntu Linux on Windows 10 With VirtualBox](https://www.lifewire.com/install-ubuntu-linux-windows-10-steps-2202108)
 - [Install Linux Inside Windows Using VirtualBox](https://itsfoss.com/install-linux-in-virtualbox/)
+- VMware Fusion:  is a software hypervisor developed by VMware for Macintosh computers
 
 ## [Getting Started with the Linux Command Line](http://bootstrap-it.com/linux-cli)
 -  Creating Data Archives
