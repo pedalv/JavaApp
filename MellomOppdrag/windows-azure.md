@@ -6,6 +6,8 @@
 
 ##  Accounts
 - [Portal Azure](https://portal.azure.com/?quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)
+    * [Learn new skills and discover the power of Microsoft products with step-by-step guidance. Start your journey today by exploring our learning paths and modules.](https://docs.microsoft.com/en-us/learn/browse/?WT.mc_id=Portal-Microsoft_Azure_Resources&products=azure&expanded=azure)
+    * [Take an online course](https://portal.azure.com/?quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)
 - [github](https://github.com/pedalv)
 - [dockerhub](https://hub.docker.com/u/pedalv)
 - [Dashboard UI Kubernetes](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default)
@@ -13,11 +15,12 @@
 ## Tips
 - [Find the Azure geography that meets your needs](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)
 - Blueprint === an early plan or design that explains how something might be achieved
-- Big band === is popular in situations or adopted when the project's stakeholders or customers are not certain regarding their wants and requirements  
+- Big band === is popular in situations or adopted when the project's stakeholders or customers are not certain regarding their wants and requirements
+- off-premises === performed remotely, across the internet  
 - Type of Cloud Computing Services 
     * on-prem === On-premises software is installed and runs on computers on the premises of the person or organization using the software, rather than at a remote facility such as a server farm or cloud
       * Ex: Made Pizza at home
-    * Infrastructure as a Service (IaaS) ===  Ex: Take and bake (frozen pizza) 
+    * Infrastructure as a Service (IaaS) ===  Ex: Take and bake (frozen pizza), access a virtual machine in the cloud
         * Providers: 
           * Microsoft Azure, Amazon Web Services, Google Compute Engine 
             * Azure Compute (Virttual Machines), Azure Storage
@@ -26,21 +29,50 @@
             * Storage and backups
             * High performance computing
             * Big data analysis
-    * Platform as a Service (PaaS) === Ex: Pizza delivery 
+      * virtualization is the logical division of physical computing resources
+      * container is operating-system level virtualization where the OS kerne provides isolated user spaces to run specific applications === Docker container
+      * Iaas Networking options
+            
+        > Virtual Privaye Cloud (VPC) Networking
+        
+        * Public Networking: Using public IP addresses
+        * Private Networking: via VPN tunnel or, in some cases dedicated connections
+      * Storage
+        * Inside the Virtual Machine: Each VM has storage of ith own 
+            * Disk, database
+        * Outside the Virtual Machine: Each VM can access external storage  
+            * Cloud File Storage === Dropbox, Microsoft OneDrive, Google Drive
+            * Object Storage === amazon webservice S3 Simple Storage Service, Microsoft Azure Blob Storage
+                * usually used for pictures, videoa, and archival data
+            * Data Protection in the Cloud === CRASHPLAN, CARBONITEO, AWS STORAGE Gateway, Microsoft Azure Backup
+                * Disaster Recovery to the Cloud === Zert, veeam, Infrascale
+      * Security
+        * Encryption: the process of converting information or data into ciphertext, which cannot be easily understood by anymore except those who have the key
+            * Compliance === Laws,Requirements, Policies, Rules, Standards, Governance, Regulations 
+    * Platform as a Service (PaaS) === Ex: Pizza delivery
+        * is for developers who want to develop, run, and manage applications
+        * No servers, storage, network, OS, middleware, or database are needed
         * Providers: 
-          * Azure Logic Apps, Heroku, Amazon Elastic Beanstalk 
-            * Azure Logic Apps, Azure Functions, Azure Web Jobs, Azure Automation
+          * Azure Logic Apps, Heroku, Amazon Elastic Beanstalk, Google App Engine, Cloud Foundry 
+            * Azure Logic Apps, Azure Functions, Azure Web Jobs, Azure Automation          
         * Scenarios:    
             * Analytics or business intelligence
             * Development framework    
-    * Software as a Service(SaaS) === Ex: Dine out
+    * Software as a Service(SaaS) === Ex: Dine out, access application direct in the cloud
+        * Benefits
+            * No hardware/software to buy or install
+            * No Software to maintain or upgrade
+            * You only pay for what you use
+            * New features are included
         * Providers: 
           * Office 365, Google G Suite, Salesforce, Dropbox 
-            * SharePoint, OneDrive for Business, Microsoft Teams, Power Platfor
+            * SharePoint, OneDrive for Business, Microsoft Teams, Power Platform
         * Scenarios:    
             * Gain access to sophisticated applications
-            * Mobilize your workforce easily        * 
-- Cloud Computing === enables companies to consume a compute resource, such as a virtual machine, storage, or an application, as a utility -- just like electricity -- rather than having to build and maintain computing infrastructures in-house
+            * Mobilize your workforce easily 
+- Cloud Computing 
+    * enables companies to consume a compute resource, such as a virtual machine, storage, or an application, as a utility -- just like electricity -- rather than having to build and maintain computing infrastructures in-house
+    * The more things change, the more they stay the same
 - Cloud Computing Deployment Models
     * Public Cloud: Cloud service provided by a third-party provider, harware can be shared amongst multiple clients
     * Private Cloud (1): Hardware is only used by a single company, which often owns the hardware and datacenter
@@ -112,13 +144,14 @@ Virtualization
 
 ## On-line courses:
 - [POPULAR - Microsoft Azure: The Big Picture](https://app.pluralsight.com/library/courses/microsoft-azure-the-big-picture/table-of-contents)
-
-- 38m July 17, 2020 [POPULAR - Microsoft Azure Cloud Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-cloud-concepts)  
+- [POPULAR - Microsoft Azure Cloud Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-cloud-concepts)
+- [Fundamentals of Cloud Computing](https://app.pluralsight.com/library/courses/cloud-computing-fundamentals/table-of-contents)
 - 3h38m Feb 26, 2021 [Microsoft Azure Services and Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-services-concepts/table-of-contents)
+
 - 2h 31m Mar 2, 2020 [Microsoft Azure Security and Privacy Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-security-privacy-concepts/table-of-contents)
 - 1h 37m July 1h 37, 2020 [Microsoft Azure Pricing and Support Options](https://app.pluralsight.com/library/courses/microsoft-azure-pricing-support-options/table-of-contents)
 - 3h 40m 25 Apr 2019 [Azure Functions Fundamentals](https://app.pluralsight.com/library/courses/azure-functions-fundamentals/table-of-contents)
-- 2h 9m 15 May, 2017 [Fundamentals of Cloud Computing](https://app.pluralsight.com/library/courses/cloud-computing-fundamentals/table-of-contents)
+
 
 - TODO [POPULAR - Microsoft Azure Solutions Architect: Introduction to the AZ-303 Exam](https://app.pluralsight.com/library/courses/microsoft-azure-solutions-architect-introduction-az-303-exam/table-of-contents)
 - TODO [POPULAR - Deploying Windows Virtual Desktop in Microsoft Azure](https://app.pluralsight.com/library/courses/deploying-windows-virtual-desktop-microsoft-azure/table-of-contents)
@@ -215,7 +248,67 @@ Maybe repeated
 
 
 ## Microsoft Azure Security and Privacy Concepts
-TODO
+- What Is Azure Active Directory?
+    * for Authentication
+      * Something you Know / have / are
+      * add user to a group
+    * Single sigh on and application
+    * User and computer registration
+    * Does not provide group policies
+    * No trust relationships
+    * Application management
+    * Use Azure AD connect to replicate objects from Active Directory Domain Services
+    * No domain controller
+    * Azure AD provides:
+        * User management
+        * Application integration
+        * Single signon
+        * Integration with other directory services
+  * Azure AD conditional access can used to secure access to Azure AD integrated applications
+  * Azure AD Conditional Access
+        * Controll access to applications no mather where our users are
+        * We create conditional access policies which at their heart are if-then statements
+        * Signals are used to make decisions
+            * IP location information
+            * Risk analysis
+            * Device information
+            * Application being accessed
+                * Common Decisions
+                    * Block access: Block access if the various policy conditions are met
+                    * Grant access: Can be qualified to include requirements like MFA required or an AD joined device required
+-  Azure AD Domain Services
+   * Application migration, NTLM and Kerberos Support
+- Active Directory Domain Services (use on-prem)
+    * Full directory service, all features offered by active directory
+    * User and computer registration
+    * Provides group policies
+    * Can create trusts
+    * Application and device management and deployment
+    * Kerberos and NTLM support
+    * Schema a management
+    * Hierarchical directory service
+- What is RBAC?
+    * for Authorization
+      * There will be different types of users requiring different access to Azure
+      * Some users will require admin access to Azure while others will use the resources we deploy
+      * These different types of users need to be managed and monitored
+    * is used daily   
+    * is the tool we use to provide shared access  
+    * Central to access control in Azure
+    * Roles allow you to group together sets of permissions
+    * We can make users or groups members of roles
+    * Member of role inherit all the permissions assigned to the role
+    * When using roles
+        * Choose or create a role
+        * Assign role members
+    * three of the built-in roles
+        1. Owner: Lets you manage everything including access to resources
+        2. Contributor: Lets you manage everything except grating access to resources
+        3. Reader: Lets youview everything but not make changes
+    * using roles
+        * Built-in roles: use the buil-in roles first. Dozens to choose from
+        * Custom roles: if the buil-in roles don't meet your requirements, then create you own
+        * Least Privilege: Always follow the principal of least privilege
 
 
 
@@ -224,3 +317,5 @@ TODO
 ![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/types-of-cloud-computing-services.PNG)
 
 ![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/cloud-computing-deployment-models.PNG)
+
+![IaaS vs PaaS](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/IaaS_PaaS.PNG)
