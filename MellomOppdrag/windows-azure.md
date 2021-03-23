@@ -248,10 +248,13 @@ Maybe repeated
 
 
 ## Microsoft Azure Security and Privacy Concepts
-- What Is Azure Active Directory?
-    * for Authentication
-      * Something you Know / have / are
-      * add user to a group
+- Azure Identity Services
+  - authentication
+    * the act of proving who or what something is
+  - authorization
+    * Granting the correct level of access to a resource or service
+  - What Is Azure Active Directory?
+    * for Authentication          
     * Single sigh on and application
     * User and computer registration
     * Does not provide group policies
@@ -264,8 +267,8 @@ Maybe repeated
         * Application integration
         * Single signon
         * Integration with other directory services
-  * Azure AD conditional access can used to secure access to Azure AD integrated applications
-  * Azure AD Conditional Access
+    * Azure AD conditional access can used to secure access to Azure AD integrated applications
+    * Azure AD Conditional Access
         * Controll access to applications no mather where our users are
         * We create conditional access policies which at their heart are if-then statements
         * Signals are used to make decisions
@@ -276,9 +279,12 @@ Maybe repeated
                 * Common Decisions
                     * Block access: Block access if the various policy conditions are met
                     * Grant access: Can be qualified to include requirements like MFA required or an AD joined device required
--  Azure AD Domain Services
-   * Application migration, NTLM and Kerberos Support
-- Active Directory Domain Services (use on-prem)
+  - Azure multi-factor authentication
+    * Something you Know / have / are
+        * add user to a group    
+  -  Azure AD Domain Services
+    * Application migration, NTLM and Kerberos Support
+  - Active Directory Domain Services (use on-prem)
     * Full directory service, all features offered by active directory
     * User and computer registration
     * Provides group policies
@@ -287,28 +293,31 @@ Maybe repeated
     * Kerberos and NTLM support
     * Schema a management
     * Hierarchical directory service
-- What is RBAC?
-    * for Authorization
-      * There will be different types of users requiring different access to Azure
-      * Some users will require admin access to Azure while others will use the resources we deploy
-      * These different types of users need to be managed and monitored
-    * is used daily   
-    * is the tool we use to provide shared access  
-    * Central to access control in Azure
-    * Roles allow you to group together sets of permissions
-    * We can make users or groups members of roles
-    * Member of role inherit all the permissions assigned to the role
-    * When using roles
-        * Choose or create a role
-        * Assign role members
-    * three of the built-in roles
-        1. Owner: Lets you manage everything including access to resources
-        2. Contributor: Lets you manage everything except grating access to resources
-        3. Reader: Lets youview everything but not make changes
-    * using roles
-        * Built-in roles: use the buil-in roles first. Dozens to choose from
-        * Custom roles: if the buil-in roles don't meet your requirements, then create you own
-        * Least Privilege: Always follow the principal of least privilege
+- Implementing Azure Role Based Access Control
+    - What is RBAC?
+        * for Authorization
+          * There will be different types of users requiring different access to Azure
+          * Some users will require admin access to Azure while others will use the resources we deploy
+          * These different types of users need to be managed and monitored
+        * is used daily   
+        * is the tool we use to provide shared access  
+        * Central to access control in Azure
+        * Roles allow you to group together sets of permissions
+        * We can make users or groups members of roles
+        * Member of role inherit all the permissions assigned to the role
+        * When using roles
+            * Choose or create a role
+            * Assign role members
+        * three of the built-in roles
+            1. Owner: Lets you manage everything including access to resources
+            2. Contributor: Lets you manage everything except grating access to resources
+            3. Reader: Lets youview everything but not make changes
+        * using roles
+            * Built-in roles: use the buil-in roles first. Dozens to choose from
+            * Custom roles: if the buil-in roles don't meet your requirements, then create you own
+            * Least Privilege: Always follow the principal of least privilege
+- Implementing Azure Access and Governance Tools
+ TODO  
 
 
 
