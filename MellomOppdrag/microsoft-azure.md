@@ -8,6 +8,11 @@
 - [Portal Azure](https://portal.azure.com/?quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)
     * [Learn new skills and discover the power of Microsoft products with step-by-step guidance. Start your journey today by exploring our learning paths and modules.](https://docs.microsoft.com/en-us/learn/browse/?WT.mc_id=Portal-Microsoft_Azure_Resources&products=azure&expanded=azure)
     * [Take an online course](https://portal.azure.com/?quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)
+    * Used: 
+      * Users, Azure AD Conditional Access, Azure Active Directory, 
+      * Resource groups, Policy, Blueprints, Advisor, Security, 
+      * Network security groups, Application security groups
+      * 
 - [github](https://github.com/pedalv)
 - [dockerhub](https://hub.docker.com/u/pedalv)
 - [Dashboard UI Kubernetes](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default)
@@ -142,6 +147,180 @@ Virtualization
             * scp user@ub-ws-01.cloudapp.net:~/a-file ~/
             * scp user@x.y.z:~/a-file user@a.b.c:~/a-file
 
+## Microsoft Azure Security and Privacy Concepts
+- Azure Identity Services
+    - authentication
+        * the act of proving who or what something is
+    - authorization
+        * Granting the correct level of access to a resource or service
+    - What Is Azure Active Directory?
+        * for Authentication
+        * Single sigh on and application
+        * User and computer registration
+        * Does not provide group policies
+        * No trust relationships
+        * Application management
+        * Use Azure AD connect to replicate objects from Active Directory Domain Services
+        * No domain controller
+        * Azure AD provides:
+            * User management
+            * Application integration
+            * Single signon
+            * Integration with other directory services
+        * Azure AD conditional access can used to secure access to Azure AD integrated applications
+        * Azure AD Conditional Access
+            * Controll access to applications no mather where our users are
+            * We create conditional access policies which at their heart are if-then statements
+            * Signals are used to make decisions
+                * IP location information
+                * Risk analysis
+                * Device information
+                * Application being accessed
+                    * Common Decisions
+                        * Block access: Block access if the various policy conditions are met
+                        * Grant access: Can be qualified to include requirements like MFA required or an AD joined device required
+    - Azure multi-factor authentication
+        * Something you Know / have / are
+            * add user to a group
+    -  Azure AD Domain Services
+    * Application migration, NTLM and Kerberos Support
+    - Active Directory Domain Services (use on-prem)
+        * Full directory service, all features offered by active directory
+        * User and computer registration
+        * Provides group policies
+        * Can create trusts
+        * Application and device management and deployment
+        * Kerberos and NTLM support
+        * Schema a management
+        * Hierarchical directory service
+- Implementing Azure Role Based Access Control
+    - What is RBAC?
+        * for Authorization
+            * There will be different types of users requiring different access to Azure
+            * Some users will require admin access to Azure while others will use the resources we deploy
+            * These different types of users need to be managed and monitored
+        * is used daily
+        * is the tool we use to provide shared access
+        * Central to access control in Azure
+        * Roles allow you to group together sets of permissions
+        * We can make users or groups members of roles
+        * Member of role inherit all the permissions assigned to the role
+        * When using roles
+            * Choose or create a role
+            * Assign role members
+        * three of the built-in roles
+            1. Owner: Lets you manage everything including access to resources
+            2. Contributor: Lets you manage everything except grating access to resources
+            3. Reader: Lets youview everything but not make changes
+        * using roles
+            * Built-in roles: use the buil-in roles first. Dozens to choose from
+            * Custom roles: if the buil-in roles don't meet your requirements, then create you own
+            * Least Privilege: Always follow the principal of least privilege
+- Implementing Azure Access and Governance Tools
+    * Why Do We Need Governance Tools?
+        * Enforce our security requirements: We will have mapped out our security requirements. Governance tools give us a way to enforce some of these requirements.
+        * Enforce our technical requirements: We will have standard sizes, builds and configurations that we will wish to enforce.
+    * Azure Tags
+        * key/value pairs assigned to resources
+        * Organizations should have a tagging policy enforced by Azures policies
+        * Tags can be used
+            * To enforce security requirements
+            * To control costs
+            * To deploy software
+    * What Is Azure Policy?
+        * Azure policy is a collection of rules
+        * Each policy is assigned to a scope such as an Azure subscription
+        * Using Azure policy means that resources will remain compliant with corporate standards
+        * Using Azure policy
+            * Policy definition
+            * Policy assignment
+            * policy parameters
+    * What Are Initiatives?
+        * Initiatives are a collection of policies
+        * Policies in an initiative are grouped to achieve a larger goal
+        * Initiative are assigned to a scope such as a resource group
+        * Using initiatives
+            * initiative definition
+            * initiative assignment
+            * initiative parameters
+    * Built-in Policies === Think about your teams and resources they will need to work with. Use Azure Policy to allow these resources
+        * Storage accounts: Defines wich storage SKU (Stock Keeping Unit)  sizes can be used
+        * Resource types: Defines which resource types can be used
+        * Allowed locations: Restrict locations that can be used
+        * Enforce tags: Enforces a required tag
+        * Virtual machine DKUs: Specifies a set of Virtual Machines SKUs that cvan be deployed
+    * Azure Blueprints
+        * Blueprints are a way of orchestrating the deployment of resource tenmplates and artifacts
+        * Blueprints maintain a relationsship with the deployed resources
+        * Blueprints include Azure policy and initiatives as well as artifacts such as roles
+        * Using Blueprints
+            * Blueprint definition
+                * Resource groups can be defined and created
+                * Azure resource manager templates can be included to deploy resources
+                * Azure policy can be included to enforce compliance
+                * Roles can be assigned to resources thet blueprints have created
+            * Blueprint publishing
+            * Blueprint assignment
+    * What is Azure Adviser Security Asssistance?
+        * Azure adviser integrates with Azure security center
+        * Adviser security assistance helps prevent, detect and respond to threats
+        * You should be using this tool everyday
+        * Configuration is managed through security center
+- Security Azure Virtual Network
+    * Plan your security with defense-in-depth at its heart
+        * Physical security: Manager by Microsoft
+        * Identity and access: Managed by you using Azure AD
+        * Perimeter: Standard DDoS protection enabled by default
+        * Network and application: Network security groups, firewalls and gateways
+        * Compute and data: OS security, access control and encryption
+    * What Are Network Security Groups (NSGs)?
+        * NSGs filter traffic: NSGs allow or deny inboud and outbound traffic
+        * NSGs contain rules: Rules are ordered based on a number from 100 (processe first) to 4096 (processed last)
+        * Attached to subnets or network cards
+        * Each NSG can be linked to multiple resources
+        * NSGs are stateful
+        * NSGs properties include
+          * Name
+          * Priority
+          * Source or destination
+          * Protocol
+          * Direction
+          * Port range
+          * Action
+    * Problems with Network Security Groups
+        * Can become complex: Can contain lots of rules, the more rules we need the more complex the design
+        * Can be difficult to maintain: If we add more resources, we may need to update several network security groups
+    * Solving Network Security Group Problems
+        * Use service tags: Represent services like Azure load balancer or API management and locations like internet
+        * Use the default security rules: Default security allow and deny common traffic
+        * Use application security groups: Application security groups allow us define a service made up of resources like virtual machines.
+    * What Are Application Security Groups?
+        * Allows us to reference a group of resources
+        * Used as a source or destination in network security groups
+        * Network security group are still required
+        * Working ith application security groups
+            * Create the application security group
+            * Link the group to resources
+            * Use the group when working with network security groups
+        * Think About Your Requirements
+            * N-Tier applications: Each tier would have its own application security groups 
+            * DMZ : Resources in your DMZ would be added to their own application security groups
+                * DMZ or demilitarized zone is a physical or logical subnetwork that contains and exposes an organization's external-facing services to an untrusted, usually larger, network such as the Internet 
+                * DMZ called a perimeter network, between the on-premises network and an Azure virtual network
+            * Automation: When automating deployments include application security groups
+- Security Azure Virtual Networks
+    * 
+
+
+# Resume
+
+![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/types-of-cloud-computing-services.PNG)
+
+![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/cloud-computing-deployment-models.PNG)
+
+![IaaS vs PaaS](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/IaaS_PaaS.PNG)
+
+
 ## On-line courses:
 - [POPULAR - Microsoft Azure: The Big Picture](https://app.pluralsight.com/library/courses/microsoft-azure-the-big-picture/table-of-contents)
 - [POPULAR - Microsoft Azure Cloud Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-cloud-concepts)
@@ -244,86 +423,3 @@ Maybe repeated
 - TODO [Microsoft Certified: Azure Fundamentals](https://docs.microsoft.com/en-us/learn/certifications/azure-fundamentals/)  
 - TODO [Cloud Certifications: Azure Database Administrator Associate](https://app.pluralsight.com/guides/cloud-certifications:-azure-database-administrator-associate)
 - TODO [Microsoft Azure Data Engineer (DP-200)]https://app.pluralsight.com/paths/certificate/microsoft-azure-data-engineer-dp-200)
-
-
-## Microsoft Azure Security and Privacy Concepts
-- Azure Identity Services
-  - authentication
-    * the act of proving who or what something is
-  - authorization
-    * Granting the correct level of access to a resource or service
-  - What Is Azure Active Directory?
-    * for Authentication          
-    * Single sigh on and application
-    * User and computer registration
-    * Does not provide group policies
-    * No trust relationships
-    * Application management
-    * Use Azure AD connect to replicate objects from Active Directory Domain Services
-    * No domain controller
-    * Azure AD provides:
-        * User management
-        * Application integration
-        * Single signon
-        * Integration with other directory services
-    * Azure AD conditional access can used to secure access to Azure AD integrated applications
-    * Azure AD Conditional Access
-        * Controll access to applications no mather where our users are
-        * We create conditional access policies which at their heart are if-then statements
-        * Signals are used to make decisions
-            * IP location information
-            * Risk analysis
-            * Device information
-            * Application being accessed
-                * Common Decisions
-                    * Block access: Block access if the various policy conditions are met
-                    * Grant access: Can be qualified to include requirements like MFA required or an AD joined device required
-  - Azure multi-factor authentication
-    * Something you Know / have / are
-        * add user to a group    
-  -  Azure AD Domain Services
-    * Application migration, NTLM and Kerberos Support
-  - Active Directory Domain Services (use on-prem)
-    * Full directory service, all features offered by active directory
-    * User and computer registration
-    * Provides group policies
-    * Can create trusts
-    * Application and device management and deployment
-    * Kerberos and NTLM support
-    * Schema a management
-    * Hierarchical directory service
-- Implementing Azure Role Based Access Control
-    - What is RBAC?
-        * for Authorization
-          * There will be different types of users requiring different access to Azure
-          * Some users will require admin access to Azure while others will use the resources we deploy
-          * These different types of users need to be managed and monitored
-        * is used daily   
-        * is the tool we use to provide shared access  
-        * Central to access control in Azure
-        * Roles allow you to group together sets of permissions
-        * We can make users or groups members of roles
-        * Member of role inherit all the permissions assigned to the role
-        * When using roles
-            * Choose or create a role
-            * Assign role members
-        * three of the built-in roles
-            1. Owner: Lets you manage everything including access to resources
-            2. Contributor: Lets you manage everything except grating access to resources
-            3. Reader: Lets youview everything but not make changes
-        * using roles
-            * Built-in roles: use the buil-in roles first. Dozens to choose from
-            * Custom roles: if the buil-in roles don't meet your requirements, then create you own
-            * Least Privilege: Always follow the principal of least privilege
-- Implementing Azure Access and Governance Tools
- TODO  
-
-
-
-# Resume
-
-![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/types-of-cloud-computing-services.PNG)
-
-![Types of Cloud Computing Services](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/cloud-computing-deployment-models.PNG)
-
-![IaaS vs PaaS](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/IaaS_PaaS.PNG)
