@@ -11,8 +11,9 @@
     * Used: 
       * Users, Azure AD Conditional Access, Azure Active Directory, 
       * Resource groups, Policy, Blueprints, Advisor, Security, 
-      * Network security groups, Application security groups
-      * 
+      * Network security groups, Application security groups,
+      * Route tables, Distributed Denial of Service (DDoS) Protection, Firewalls,
+      * Key vaults, Security Center, 
 - [github](https://github.com/pedalv)
 - [dockerhub](https://hub.docker.com/u/pedalv)
 - [Dashboard UI Kubernetes](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default)
@@ -270,7 +271,7 @@ Virtualization
     * Plan your security with defense-in-depth at its heart
         * Physical security: Manager by Microsoft
         * Identity and access: Managed by you using Azure AD
-        * Perimeter: Standard DDoS protection enabled by default
+        * Perimeter: Standard Distributed Denial of Service (DDoS) protection enabled by default
         * Network and application: Network security groups, firewalls and gateways
         * Compute and data: OS security, access control and encryption
     * What Are Network Security Groups (NSGs)?
@@ -278,7 +279,7 @@ Virtualization
         * NSGs contain rules: Rules are ordered based on a number from 100 (processe first) to 4096 (processed last)
         * Attached to subnets or network cards
         * Each NSG can be linked to multiple resources
-        * NSGs are stateful
+        * NSGs are [stateful](https://www.redhat.com/en/topics/cloud-native-apps/stateful-vs-stateless)
         * NSGs properties include
           * Name
           * Priority
@@ -308,8 +309,255 @@ Virtualization
                 * DMZ or demilitarized zone is a physical or logical subnetwork that contains and exposes an organization's external-facing services to an untrusted, usually larger, network such as the Internet 
                 * DMZ called a perimeter network, between the on-premises network and an Azure virtual network
             * Automation: When automating deployments include application security groups
-- Security Azure Virtual Networks
-    * 
+- Working with Azure Firewalls and User Defined Routes
+    * WHat Is Azure Firewall?
+        * Azure managed stateful firewall service
+        * Protects access to virtual networks
+        * Highly available
+        * Features include
+            * Threat intelligence
+            * Outbound and inbound Network address translation (NAT) support  
+            * Integration with Azure Monitor
+            * Network traffic filtering rules
+            * Unrestricted scalability
+    * What Is Azure Distributed Denial of Service (DDoS) Protection?
+        * Distributed Denial of Service (DDoS) mitigation for networks and applications
+        * Always-on monitoring
+        * Application layer protection
+        * Integration with Azure monitor
+        * Features offered
+            * Multi-layered protection  
+            * Attack analytics
+            * Scale and elasticity
+            * Protection against unplanned costs
+    * Azure Distributed Denial of Service (DDoS) Service Tiers
+        * Basic
+            * active traffic monitoring and always on detection
+            * Availability Guarantee
+            * Backed by an service-level agreement (SLA)
+            * Free      
+        * Standard
+            * Everything offered by the basic tier
+            * Real time Metrics
+            * Post attack reports
+            * Access to Distributed Denial of Service (DDoS) experts during and active attack
+            * Security information and event management (SIEM) integration
+            * Monthly fee and usage based
+        * Think About Your Azure Networks === Virtual appliances can be deployed to add additional protection
+            * Will you need Azure firewall? 
+                * Do you use a network firewall noe? What rules will need to configure?
+            * Witch Distributed Denial of Service (DDoS) tier will yopu need? 
+               * The Basic tier is free but might not offer the service-level agreement (SLA), reporting or response you might need
+        * Azure User Defined Routers
+            * Default system routes are enabled by default
+            * System routes allow routing between subnet and to the internet
+            * User defined routes allow us to override Azure's default system routes
+            * Often used when we want traffic to be filtered through a virtual applicance
+        * Azure Security Options
+            1. Azure firewall
+            2. Azure Distributed Denial of Service (DDoS) Protection
+            3. Azure web application firewall
+            4. Network security groups
+            5. Forced tunneling  
+            5. Marketplace devices
+        * Security Scenarios
+            * Controll internet traffic
+                * You wish to control the flow of traffic heading to the internet so that it cab be inspected at layer 7
+                    * Security Solutions: User defines routes, Azure firewall or marketplace device
+            * Azure hosted SQL Server
+                * Only traffic from your Azure subnets should be allowed to access your Azure SQL server
+                    * Security Solutions: Network security groups (NSGs) 
+            * Router internet traffic
+                * All internet bound traffic that is generated by your application servers must be routed through HQ
+                    * Security Solutions: Forced tunneling
+ - Working with Azure Security and Reporting Tools  
+    * What Is Azure Information Protection (AIP)?
+        * Azure Information Protection (AIP) is used to classsify documents and emails
+        * Azure Information Protection (AIP) applies labels to documents
+        * Labeled documents can be protected
+        * Azure Information Protection (AIP) labels
+            * Can be applied automatically
+            * Can be applied manually
+            * Can be recommended to users
+    * Two Sides to Azure Information Protection (AIP)
+        * Classification: Metadata is added to documents. Clear text and visual markings like headers, footers and watermarks
+        * Protection: Azure rights management encrypts documents using rights management templates
+    * Classifying and Protecting Existing Documents
+        * Ideally documents and emails should be labeled and protected when they are created
+        * you will probably have lots of existing documents in Azure and on-premises
+        * For on-premise data stores you can use Azure information protection scanner
+        * For cloud data stores we cab use Microsoft cloud app security
+    * Three Security and Reporting Resources
+        * Azure monitor: Collect and analyze metric information for Azure and on-premises resources 
+          * What is Azure monitor
+            * Collect, analyze and act on telemetry
+            * Azure or on-premises
+            * Troubleshooting and performance monitoring
+            * Data collected by Azure monitor
+                * Metrics
+                * Logs
+        * Azure service health: Notifies you about Azure services and planned maintenance
+          * What is Azure Service Health?
+            * Notifies you about service status
+            * Reports incidents and planned maintenance
+            * Azure service health offers
+                * Personalized dashboards
+                * Configurable alerts
+                * Guidance and support
+        * Azure advanced threat protection: Detect and investigate attacks in Azure and on-premises
+            * What Is Azure Advanced Threat Protection?
+                * Monitor and analyze user activity
+                * Identifies suspecious activity and events
+                * Works with your on-premises Active Directory forest
+                * Identifies
+                    * Reconnaissance attacks
+                    * Compromised credentials
+                    * Lateral movements
+                    * Domain dominance
+        * Azure key vault
+            * The problem with secrets
+                * Secrets management: How do you control access tokens, passwords, API keys and other secrets?
+                * Key management: How do you create and control encryption keys?
+                * Certificate management: How do you provision, manage and deploy certificates?
+            * What Is Azure Key Vault?
+                * Centralize the storage or application secrets 
+                * Uses FIPS 140-2 level 2 Validated HSMs
+                * Enable logging to monitor how and when secrets are being used
+                * Enable centralized administration of secrets  
+            * Azure Key Vault recommendations
+                * Use separate key vault for each application or environment
+                * Take regular backups of your key vault  
+                * Turn on logging and set up alerts   
+                * Turn on soft date and purge protection   
+        * Azure Security Centre and Azure Sentinel
+            * Cloud Security Challenges
+                * Rapid change: How do you make sure that changes to services meet your security requirements?
+                * Complex attacks: Attacks are becoming more sophisticated, How do you keep up with new threats?
+                * Skils shortage: Lots of information available but who monitors it?
+        * Azure Security Center
+            * Protect Paas: No deployment needed, just works
+            * Non-Azure services: Deploy monitoring agent
+            * Compliance: Reports our compliance posture
+            * Assessement: Continous assessment of existing and new sources
+            * Threat protection:  Detect and prevent threats to IaaS and PaaS
+            * Azure Sentinel
+                * Cloud-native security information event management (SIEM) and security orchestration automated response (SOAR) solution
+                * A single solution for:
+                    * Collect data at cloud scale
+                    * Detect previously undetected threats
+                    * Investigate threats with artificial intelligence
+                    * Respond to incidents rapidly 
+                * Connect to your security source with data connectors
+                * Analyze your data using workbooks and analytics
+                * Security automation and orchestration using playbooks
+                * Deep investigation and hunting
+- Understanding Azure compliance and data protection standards
+    * Azure Industry Compliance
+        * Regulatory Compilance
+            * Process of ensuring that you follow the standards or laws laid out by governing bodies
+            * People and process monitor systems to detect and prevent violations
+            * Compliance monitoring can be complex  
+            * Azure provides several tools to help us asses our compliance posture
+    * Selected Compliance Standards 
+      * HIPAA
+      * PCI
+      * GDPR
+      * FredRAMP
+      * ISO 27001
+    * Azure Compliance
+        * Global compliance: More than 90 compilance offerings
+        * Industry compilance: Over 35 industry specific offerings
+        * Blueprints: Deploy compliant environments   
+        * Proof: Access to 3rd party reports
+        * Azure security center: Unify security management
+    * Azure Service Trust Portal and Service Trust Center
+        * Azure Service Trust Portal
+            * Contents: Details of Microsoft's implementation of controls and processes
+            * Access: Login as an authenticated user with a Microsoft cloud service account
+            * What will we find?
+                * Compliance manager: Workflow based risk assessment tool
+                * Trust socuments: Security implementation and design information
+                * Industries and regions: Industry and regionspecific compilance information  
+                * Trust Center: Links to the Microsoft trust center
+                * My library: You cab save and access your compliance documents
+        * What is Service Trust Center?
+            * Security, privacy and compliance information
+            * Access to Microsoft product compliance information
+            * Compliance tools
+                * Compliance score
+                * Audit reports
+                * Data protection resources
+    * Azure Special Regions === You must request access to the Azure special regions if you whish to deploy resources to them.
+        * US Gov: US Goc Virginia and US Gov lowa. US goverment agencies
+            * Additional compliance certifications such as FedRAMP and DISA. Level 5 DoD approval
+        * Chine: Chine East and Chine North- Available through a partnership with 21Vianet
+            * Microsoft does not directly maintain these data centers
+        * Germany: Germany central and Germany Northeast. Available through a data trustee model
+            * Customer data remains under the control of T-System, A Deutsche Telekom company
+    * Azure compilance Resources
+        * Trusted Cloud
+            * Security: Azure helps to keep customers data secure
+            * Privacy: Azure gives customers ownership and control of their own data
+            * Compliance: Azure conforms to global standards
+        * Microsoft Cloud Adoption Framework
+            * Outlines cloud adoption best prectices from Microsoft employees, partners and customers
+            * Guidance for busines leaders and IT decision makers
+            * Helps you define a busuness strategy for cloud adoption
+            * Provides guidance on best practice governance of Microsoft cloud services
+        * Azure compliance Documentation
+            * Starting point for learning about compliance in Azure
+            * Organized into regional and global compliance offerings
+            * Industry specific offerings
+                * Financial services
+                * Automative 
+                * Media
+                * Energy
+        * Microsoft Privacy Statment
+            * Explains how Microsoft collects and processes personal data and for what proposes
+            * Includes product specific information
+            * Microsoft use personal data
+                * Improve and develop products
+                * Personalize products and make recommendations
+                * Advertising and marketing
+                * Performance analyses and reasearch
+        * Service Agreements and Terms
+            * Microsoft Online Subscription Agreement (MOSA)
+            * Online Services Terms (OST)
+            * Online Service Data Protection Addendum (DPA)
+            * Service Level Agreements
+        * Dedicated Hosts
+            * Azure Dedicated Host provide physical servers that host one or more virtual machines
+            * Your server is dedicated to your organization
+            * Host-level isolation helps address compliance requirements
+            * Visibility of underlying cores to meet server-based software licensing requirements
+- Course Summary
+    * Identity and Access Management
+       * Azure AC
+       * Azure AD Domain Services
+       * Role base access control (RBAC)
+       * Built in and custom roles
+    * Governace Tools and Secure Virtual Networks
+      * Azure policy
+      * Azure initiatives
+      * Azure blueprints
+      * Secure virtual networks
+        * Network security groups
+        * Application security groups
+    * Azure Firewalls and User Defined Routes
+        * Azure firewall
+        * Azure DDoS protection
+        * User defined routes
+        * Azure security solutions
+    * Azure Security and Compliance
+        * Azure information protection
+        * Azure key vault
+        * Azure monitor
+        * Azure security center
+        * Compliance
+            * Compliance standards
+            * Azure special regions
+            * Azure trust center
+            * Azure service trust portal
 
 
 # Resume
@@ -325,11 +573,11 @@ Virtualization
 - [POPULAR - Microsoft Azure: The Big Picture](https://app.pluralsight.com/library/courses/microsoft-azure-the-big-picture/table-of-contents)
 - [POPULAR - Microsoft Azure Cloud Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-cloud-concepts)
 - [Fundamentals of Cloud Computing](https://app.pluralsight.com/library/courses/cloud-computing-fundamentals/table-of-contents)
-- 2h 31m Mar 2, 2020 [Microsoft Azure Security and Privacy Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-security-privacy-concepts/table-of-contents)
+- [Microsoft Azure Security and Privacy Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-security-privacy-concepts/table-of-contents)
 -
-- 3h38m Feb 26, 2021 [Microsoft Azure Services and Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-services-concepts/table-of-contents)
-- 1h 37m July 1h 37, 2020 [Microsoft Azure Pricing and Support Options](https://app.pluralsight.com/library/courses/microsoft-azure-pricing-support-options/table-of-contents)
+- - 3h38m Feb 26, 2021 [Microsoft Azure Services and Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-services-concepts/table-of-contents)
 - 3h 40m 25 Apr 2019 [Azure Functions Fundamentals](https://app.pluralsight.com/library/courses/azure-functions-fundamentals/table-of-contents)
+- - 1h 37m July 1h 37, 2020 [Microsoft Azure Pricing and Support Options](https://app.pluralsight.com/library/courses/microsoft-azure-pricing-support-options/table-of-contents)
 -
 - TODO [POPULAR - Microsoft Azure Solutions Architect: Introduction to the AZ-303 Exam](https://app.pluralsight.com/library/courses/microsoft-azure-solutions-architect-introduction-az-303-exam/table-of-contents)
 - TODO [POPULAR - Deploying Windows Virtual Desktop in Microsoft Azure](https://app.pluralsight.com/library/courses/deploying-windows-virtual-desktop-microsoft-azure/table-of-contents)
