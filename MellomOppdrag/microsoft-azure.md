@@ -639,7 +639,130 @@ Virtualization
         * [Achieve operational excellence by using Azure Advisor](https://docs.microsoft.com/en-us/azure/advisor/advisor-operational-excellence-recommendations)
         * [Improve the performance of Azure applications by using Azure Advisor](https://docs.microsoft.com/en-us/azure/advisor/advisor-performance-recommendations)
 - Exploring Azure Core Products
-    * TODO
+    * Azure Compute
+        * Set of services
+        * On-demand computing power
+        * Virtual Machines
+            * Infrastructure-as-a-Service (IaaS)
+            * Full control over operating system
+            * Must maintain and patch VM
+            * When creating a VM
+                * Type of image
+                * Size of VM
+                * Availability options
+            * Can install custom software
+            * Can shut down to save costs
+                * Manually or on a schedule
+            * Enables hybrid cloud
+            * Familiar administrative model
+            * Lift-and-shift migration
+                * Azure Site Recovery
+                * Azure Migrate
+            * Uses an Azure virtual network (VNET)
+            * Underlying disks are stored in Azure Storage Account
+            * Azure Batch
+                * Pool of Virtual Machines
+                * High Performance Computing (HPC)
+            * Virtual Machine Scale Sets
+                * Identical Virtual Machines with load balancing
+                * Number of VMs can scale out/in
+                * Spread across fault domains and update domains
+                * Only pay for the underlying resources          
+        * Containers
+            * Docker
+                * Standard for container format
+                * Runtime for Docker containers
+                * Open-source prosject
+                * Docker is also a company that evolves the technology
+            * Hosting Options for Containers
+                * Local Workstation
+                * On-premises Servers
+                * VMs in Azure
+                * Azure Container Instances (ACI)
+                * Azure Kubernetes Service (AKS)
+                    * Container management system in Azure
+                    * Scale out container-based applications
+                    * Monitoring and deploying container
+                    * Pods are group of containers
+                    * Node are virtual machines
+                    * Can leverage VM Scale Sets
+                    * Azure Container Registry
+                    * Azure Monitor
+                * Azure App Services
+        * Azure App Service
+            * https://<your app service name>.azurewebsites.net === CDN Endpoints
+            * Similar to traditional web hosting
+            * Framework runtimes installed on servers
+            * Azure manages web servers for you
+            * Web Apps
+            * Api Apps
+            * Mobile Apps
+            * Containers
+            * WebJobs                      
+        * Serverless Computing
+            * Azure Functions: Run custom code Initiated by triggers
+            * Azure Logic Apps: Designer in portal Initiated by triggers Large library of connectors
+            * Azure Event Grid: Connects data sources and event handlers
+            * Logic App: Outlook Email account, Azure Function, Blob Storage
+        * Core Networking Products
+            * Application Gateway Features
+                * SSL Termination
+                * Autoscaling
+                * Session Affinity
+                * HTTP Header Rewriting
+                * Advanced Routing
+                * Web Application 
+                * Firewall (WAF)
+            * ExpressRoute
+                * Pricing
+                    * Metered data (per GB outbound)
+                    * Unlimited data
+                * Bandwith
+                    * 50Mbps to 10Gbps
+                    * 100Gbps (ExpressRoute Direct)
+                * Redundancy
+        * Windows Virtual Desktop
+            * Full desktop for users
+            * Apps running remotely
+            * Similar to Remote Desktop Services (RDS)
+            * Fully manager solution in the cloud
+            * Supported Clients: 
+                * Windows - Mac - iOS - Android - HTML5 Browser
+            * Authentication using Azure AD
+            * Azure Multi-factor Authentication
+            * Support operation systems:
+                * Windowns Server 2019 / 2016 / 2012 R2
+                * Windows 10 / 7 Enterprise
+        * Azure Content Delivery Network (CDN) === from Microsoft / Verizon / Akamai 
+            * Distributed network of servers
+            * Store cached data
+                * Minimize latency to global users
+                * Offload treffic from source servers
+            * Typically static data
+            * Also dynamic data using Dynamic Sire Acceleration (DSA)
+        * Dynamic Site Acceleration (DSA)
+            * Dynamic data in response to user behavior
+            * DSA is an optimization option
+            * Uses several different approaches
+            * Route Optimization
+                * Finds fastest route to origin server
+                * Compares paths
+                * Performs health checks
+            * TCP Optimization
+                * Avoids "TCP slow start"
+                * Persistent connections
+                * Tunning packet parameters
+            * Object Prefetch
+                * Parses HTML
+                * Serves embedded images and scripts
+            * Adaptive Image Compression
+                * Monitors network quality
+                * Provides smaller files when network speed is slower
+        * Azure Compute Benefits
+            * Easy to provision new resources
+            * Pay for what you use
+            * Platform-as-a-Service option available
+            * Scale depending on workloads
 - Data Storage in Azure
     * TODO
 - Exploring Azure Platform Solutions
@@ -657,6 +780,8 @@ Virtualization
 ![IaaS vs PaaS](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/IaaS_PaaS.PNG)
 
 ![IaaS vs PaaS](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/Azure-Resource-Manager.PNG)
+
+![Virtual Machines vs Containers](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/VM_Containers.png)
 
 
 ## On-line courses:
