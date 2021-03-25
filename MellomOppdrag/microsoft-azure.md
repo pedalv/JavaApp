@@ -14,6 +14,8 @@
       * Network security groups, Application security groups,
       * Route tables, Distributed Denial of Service (DDoS) Protection, Firewalls,
       * Key vaults, Security Center, 
+- [Service Trust Center](https://servicetrust.microsoft.com/)    
+- [Microsoft Privacy Statement](https://privacy.microsoft.com/en-gb/privacystatement)  
 - [github](https://github.com/pedalv)
 - [dockerhub](https://hub.docker.com/u/pedalv)
 - [Dashboard UI Kubernetes](http://127.0.0.1:8082/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default)
@@ -459,11 +461,12 @@ Virtualization
             * Compliance monitoring can be complex  
             * Azure provides several tools to help us asses our compliance posture
     * Selected Compliance Standards 
-      * HIPAA
-      * PCI
-      * GDPR
-      * FredRAMP
-      * ISO 27001
+      * [HIPAA](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act) === The Health Insurance Portability and Accountability Act of 1996. It was created primarily to modernize the flow of healthcare information, stipulate how personally identifiable information maintained by the healthcare and healthcare insurance industries should be protected from fraud and theft, and address limitations on healthcare insurance coverage 
+      * [PCI](https://en.wikipedia.org/wiki/PCI) === The payment card industry (PCI) denotes the debit, credit, prepaid, e-purse, ATM, and POS cards and associated businesses
+            * [PCI DSS]() === The Payment Card Industry Data Security Standard (PCI DSS) is an information security standard for organizations that handle branded credit cards from the major card schemes
+      * [GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) ===  The General Data Protection Regulation (EU) 2016/679 (GDPR) is a regulation in EU law on data protection and privacy in the European Union (EU) and the European Economic Area (EEA)
+      * [FredRAMP](https://en.wikipedia.org/wiki/FedRAMP) === The Federal Risk and Authorization Management Program (FedRAMP) is a US government-wide program that provides a standardized approach to security assessment, authorization, and continuous monitoring for cloud products and services
+      * [ISO/IEC 27001](https://en.wikipedia.org/wiki/ISO/IEC_27001) === how to manage information security
     * Azure Compliance
         * Global compliance: More than 90 compilance offerings
         * Industry compilance: Over 35 industry specific offerings
@@ -488,6 +491,10 @@ Virtualization
                 * Audit reports
                 * Data protection resources
     * Azure Special Regions === You must request access to the Azure special regions if you whish to deploy resources to them.
+        * Azure operates in multiple datacenters around the world
+        * These datacenters are groups into regions such as West US and UK South
+        * You deploy you resources to a region that matches your requirements
+        * Azure special regions exist for compliance or legal reasons
         * US Gov: US Goc Virginia and US Gov lowa. US goverment agencies
             * Additional compliance certifications such as FedRAMP and DISA. Level 5 DoD approval
         * Chine: Chine East and Chine North- Available through a partnership with 21Vianet
@@ -545,7 +552,7 @@ Virtualization
         * Application security groups
     * Azure Firewalls and User Defined Routes
         * Azure firewall
-        * Azure DDoS protection
+        * Azure Distributed Denial of Service (DDoS) protection
         * User defined routes
         * Azure security solutions
     * Azure Security and Compliance
