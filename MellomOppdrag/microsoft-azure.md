@@ -13,8 +13,11 @@
       * Resource groups, Policy, Blueprints, Advisor, Security, 
       * Network security groups, Application security groups,
       * Route tables, Distributed Denial of Service (DDoS) Protection, Firewalls,
-      * Key vaults, Security Center, 
-- [Service Trust Center](https://servicetrust.microsoft.com/)    
+      * Key vaults, Security Center, Templates, Service Health, Monitor, Advisor,
+- [Service Trust Center](https://servicetrust.microsoft.com/) 
+- [Azure status](https://status.azure.com/status)
+- [‎Microsoft Azure on the App Store - App Store - Apple](https://apps.apple.com/us/app/microsoft-azure/id1219013620)  
+- [Remote Desktop Mobile on the App Store - App Store - Apple](https://apps.apple.com/us/app/remote-desktop-mobile/id714464092)  
 - [Microsoft Privacy Statement](https://privacy.microsoft.com/en-gb/privacystatement)  
 - [github](https://github.com/pedalv)
 - [dockerhub](https://hub.docker.com/u/pedalv)
@@ -467,6 +470,7 @@ Virtualization
       * [GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) ===  The General Data Protection Regulation (EU) 2016/679 (GDPR) is a regulation in EU law on data protection and privacy in the European Union (EU) and the European Economic Area (EEA)
       * [FredRAMP](https://en.wikipedia.org/wiki/FedRAMP) === The Federal Risk and Authorization Management Program (FedRAMP) is a US government-wide program that provides a standardized approach to security assessment, authorization, and continuous monitoring for cloud products and services
       * [ISO/IEC 27001](https://en.wikipedia.org/wiki/ISO/IEC_27001) === how to manage information security
+      * [SOC 1 & 2 & 3](https://en.wikipedia.org/wiki/System_and_Organization_Controls) === System and Organization Controls (SOC), defined by the American Institute of Certified Public Accountants (AICPA), is the name of a suite of reports produced during an audit. 
     * Azure Compliance
         * Global compliance: More than 90 compilance offerings
         * Industry compilance: Over 35 industry specific offerings
@@ -566,6 +570,83 @@ Virtualization
             * Azure trust center
             * Azure service trust portal
 
+## Microsoft Azure Services and Concepts
+- Understanding Azure Architecture and Management
+    * 100% renewable energy by 2025 in Azure Data Centers === Project Natick 
+    * [Azure pricing](https://azure.microsoft.com/en-us/pricing/)  
+    * Azure Regions and Availability Zones === Disaster Recovery and High Availability
+        * Azure Geographies
+          * [Find the Azure geography that meets your needs](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)        
+            * Azure Regions
+                * [Products available by region](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=machine-learning-service)
+                * Availability Zones
+            * Region Pairs
+                * Regions within a Geography
+                * Data centers usually 300+ miles apart
+                * Automatic replication and failover for some Azure services
+                * High Availability
+                    * Service updates
+                    * Outage recovery prioritization
+    * Understanding Resource Groups
+        * Resources in Azure
+            * Virtual Machines
+            * Storage Accounts
+            * Web Apps
+            * Databases 
+            * VNETs
+            * etc
+        * Resources share the same lifecycle
+        * Resources can only exist in one Resource Group
+        * Resources can communicate across Resource Groups
+        * Container for security boundaries
+        * Can export infrastructure-as-code using Resources Manager Templates
+        * Resources can be in defferent regions
+    * Azure Resource Manager (ARM) and Management Tools
+        * In: Azure SDKs - Azure Portal  - Azure PowerShell - Azure CLI
+        * Out: web server - Azure AD - VM - SQL - machine learning
+        * [Install the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+          * ``` az --version ```
+          * ``` az login ```                  
+          * [Azure Command-Line Interface (CLI) documentation](https://docs.microsoft.com/en-gb/cli/azure/)
+              * ``` az group list ```
+              * ``` az resource list --resource-group GLOBO-SECURE ```
+              * ``` az resource list --resource-group GLOBO-SECURE --out table ```
+                * ``` az resource list --resource-group GLOBO-SECURE --out table --query "[].{name:name, Type:type}" ```
+                * ``` az appservice plan create --resource-group GLOBO-SECURE --name TestAppSvcPlan --sku S1 ```
+                    * ``` az webapp create --resource-group GLOBO-SECURE --plan TestAppSvcPlan --name webappnmcliglobal ```
+                        * [Open on a browser](https://webappnmcliglobal.azurewebsites.net/)
+              * [App Service documentation](https://docs.microsoft.com/en-us/azure/app-service/)
+    * Infrastructure-as-Code using Azure Resource Manager Templates
+        * Agile Development and DevOps
+            * Combines IT Operations and Development
+            * Infrastructure now being managed as code
+            * Can be stored and versioned in code repositories
+            * Included in CI/CD pipelines
+    * Azure Resources Manager Templates
+        * Written in JavaScript Object Notation (JSON)
+        * Defines infrastructure and configuration for Axure resources
+        * Declarative syntax
+        * Deployment
+            * Using Azure Pipelines (CI/CD)
+            * From GitHub
+            * Using PowerShell and the Azure CLI              
+            * Resource Manager REST API
+            * Using the Azure Portal
+    * Azure Advisor for Optimizing Your Azure Resources
+        * [Reduce service costs by using Azure Advisor](https://docs.microsoft.com/en-us/azure/advisor/advisor-cost-recommendations)
+        * [Make resources more secure with Azure Advisor](https://docs.microsoft.com/en-us/azure/advisor/advisor-security-recommendations)
+        * [Improve the reliability of your application by using Azure Advisor](https://docs.microsoft.com/en-us/azure/advisor/advisor-high-availability-recommendations)
+        * [Achieve operational excellence by using Azure Advisor](https://docs.microsoft.com/en-us/azure/advisor/advisor-operational-excellence-recommendations)
+        * [Improve the performance of Azure applications by using Azure Advisor](https://docs.microsoft.com/en-us/azure/advisor/advisor-performance-recommendations)
+- Exploring Azure Core Products
+    * TODO
+- Data Storage in Azure
+    * TODO
+- Exploring Azure Platform Solutions
+    * TODO
+- DevOps Solutions in Azure
+    * TODO
+
 
 # Resume
 
@@ -575,15 +656,18 @@ Virtualization
 
 ![IaaS vs PaaS](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/IaaS_PaaS.PNG)
 
+![IaaS vs PaaS](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/Azure-Resource-Manager.PNG)
+
 
 ## On-line courses:
 - [POPULAR - Microsoft Azure: The Big Picture](https://app.pluralsight.com/library/courses/microsoft-azure-the-big-picture/table-of-contents)
 - - [POPULAR - Microsoft Azure Cloud Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-cloud-concepts)
 - [Fundamentals of Cloud Computing](https://app.pluralsight.com/library/courses/cloud-computing-fundamentals/table-of-contents)
 - - [Microsoft Azure Security and Privacy Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-security-privacy-concepts/table-of-contents)
-- 3h 40m 25 Apr 2019 [Azure Functions Fundamentals](https://app.pluralsight.com/library/courses/azure-functions-fundamentals/table-of-contents)
 - - 3h38m Feb 26, 2021 [Microsoft Azure Services and Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-services-concepts/table-of-contents)
+- TODO [Creating and Configuring Microsoft Azure Storage Accounts](https://app.pluralsight.com/library/courses/microsoft-azure-creating-configuring-storage-accounts/table-of-contents)
 - - 1h 37m July 1h 37, 2020 [Microsoft Azure Pricing and Support Options](https://app.pluralsight.com/library/courses/microsoft-azure-pricing-support-options/table-of-contents)
+- 3h 40m 25 Apr 2019 [Azure Functions Fundamentals](https://app.pluralsight.com/library/courses/azure-functions-fundamentals/table-of-contents)
 - TODO [POPULAR - Microsoft Azure Solutions Architect: Introduction to the AZ-303 Exam](https://app.pluralsight.com/library/courses/microsoft-azure-solutions-architect-introduction-az-303-exam/table-of-contents)
 - TODO [POPULAR - Deploying Windows Virtual Desktop in Microsoft Azure](https://app.pluralsight.com/library/courses/deploying-windows-virtual-desktop-microsoft-azure/table-of-contents)
 - TODO [POPULAR - Microsoft Azure Developer: Implement API Management](https://app.pluralsight.com/library/courses/microsoft-azure-developer-implement-api-management/table-of-contents)
