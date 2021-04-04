@@ -764,7 +764,131 @@ Virtualization
             * Platform-as-a-Service option available
             * Scale depending on workloads
 - Data Storage in Azure
-    * TODO
+    * Azure Machines
+        * Virtual Machines
+          * Infrastructure-as-a-Service (IaaS)
+          * Full control over operating system
+          * Must maintain and patch VM
+          * When creating a VM
+            * Type of image
+            * Size of VM
+            * Availability options
+          * Can install custom software
+          * Can shut down to save costs
+            * Manually or on a schedule
+          * Enables hybrid cloud
+          * Familiar administrative model
+          * Lift-and-shift migration
+            * Azure Site Recovery
+            * Azure Migrate
+          * Uses and Azyre virtual network (VNET)
+          * Underlying disks are stored in Aure Storage Account  
+          * Virtual Machine Scale Sets
+            * Identical Virtual Machines with load balancing
+            * Number of VMs can scale out/in
+            * Spread across fault domains and update domains
+            * Only pay for the underlying resources
+        * Containers
+          * Standard for container format
+          * Runtime for Docker containers
+          * Open-sourve project
+          * Docker is also a company thatevolves the technology
+          * Hosting Options for Containers
+            * Local Workstation
+            * On-premises Servers
+            * VMs in Aure
+            * Azure Container Instances (ACI)
+            * Azure Kubernetes Service (AKS)
+              * Container management system in Azure
+              * Scale out container-based applications
+              * Monitoring and deploying container
+              * Pods are group of containers
+              * Nodes are virtual machines
+              * Can leverage VM Scale Stes
+              * Azure Container Registry
+              * Azure Monitor  
+            * Azure App Service
+              * Similar to traditional web hosting
+              * Framework runtimes inatalled on servers
+              * Azure manages web servers for you
+              * Web Apps - API Apps - Mobile Apps -  Containers - WebJobs
+                * https://<your app service name>.azurewebsites.net
+        * Serverless Computing
+          * Azure Functions: 
+            * Run custom code 
+            * Initiated by triggers
+          * Azure Logic Apps (Outlook - Azure Function - Blob Storage): 
+            * Designer in portal
+            * Initiated by triggers
+            * Large library of connectors
+          * Azure Event Grid
+            * Connects data sources and event handlers
+        * Networking products
+          * Applications Gateway Features:
+            * SSL Termination
+            * Autoscaling
+            * Session Affinity
+            * HTTP Header Rewriting
+            * Advanced Routing
+                * ExpressToute
+                    * Pricing
+                      * Metered data (per GB outbound)
+                      * Unlimited data      
+                    * Bandwidth
+                      * 50Mbps to 10Gbps
+                      * 100Gbps (ExpressRoute Direct)  
+                    * Redundancy
+            * Web Application
+            * Firewall (WAF)
+        * Windows Virtual Desktop
+          * Full desktop for users
+          * Apps running remotely
+          * Similar to Remote Desktop Services (RDS)
+          * Fully managed solution in the cloud
+          * Supported Clients: Windows - Mac - iOS - Android - HTML5 Browser
+          * Authentication using Azure AD
+          * Azure Multi-factor Authentication
+          * Supported operating systems:
+            * Windows Server 2019 / 2016 / 2012 R2
+            * Windows 10 / 7 Enterprise
+        * Azure Content Delivery Network (CDN)
+          * Distributed network of servers
+          * Store cached data
+            * Minimize latency to global users
+            * Offload traffic from source servers
+          * Typically static data
+          * Also dynamic data using Dynamic Site Aceleration (DSA)
+            * Dynamic data in response to user behaviour
+            * DSA is an optimiation option
+            * Uses several different approaches  
+            * Route optimization
+              * Finds fastest route to origin server
+              * Compares paths
+              * Performs health checks
+            * TCP Optimazation
+              * Avoids "TCP slow start"
+              * Persistent connections
+              * Tunning packet parameters
+            * Object Prefetch
+              * Parses HTML
+              * Serves embedded images and scripts
+            * Adaptive Image Compression
+              * Monitors network quality
+              * Provides smaller files when network speed is slower
+          * CDN Profile
+            * Pricing Tier
+                * Azure CDN from Microsoft / Verison / Akamai
+                * Azure CND Premium from Verizon
+          * CND Endpoints
+            * https://webapp1.azureedge.net -> App Service
+            * https://myblobs.azureedge.net -> Blob Service
+            * https://mycustomdomain.com -> Media Files
+    * Azure Compute Benefits
+        * Easy to provision new resources
+        * Pay for what you use
+        * Platform-as-a-Service option availaable
+        * Scale depending on workloads
+        
 - Exploring Azure Platform Solutions
     * TODO
 - DevOps Solutions in Azure
