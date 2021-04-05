@@ -672,7 +672,7 @@ Virtualization
             * Docker
                 * Standard for container format
                 * Runtime for Docker containers
-                * Open-source prosject
+                * Open-source project
                 * Docker is also a company that evolves the technology
             * Hosting Options for Containers
                 * Local Workstation
@@ -700,10 +700,17 @@ Virtualization
             * Containers
             * WebJobs                      
         * Serverless Computing
-            * Azure Functions: Run custom code Initiated by triggers
-            * Azure Logic Apps: Designer in portal Initiated by triggers Large library of connectors
-            * Azure Event Grid: Connects data sources and event handlers
-            * Logic App: Outlook Email account, Azure Function, Blob Storage
+            * Azure Functions: 
+              * Run custom code 
+              * Initiated by triggers
+            * Azure Logic Apps: 
+              * Designer in portal 
+              * Initiated by triggers 
+              * Large library of connectors
+            * Azure Event Grid: 
+              * Connects data sources and event handlers
+            * Logic App: 
+              * Outlook Email account, Azure Function, Blob Storage
         * Core Networking Products
             * Application Gateway Features
                 * SSL Termination
@@ -711,16 +718,16 @@ Virtualization
                 * Session Affinity
                 * HTTP Header Rewriting
                 * Advanced Routing
+                  * ExpressRoute
+                    * Pricing
+                        * Metered data (per GB outbound)
+                        * Unlimited data
+                    * Bandwith
+                        * 50Mbps to 10Gbps
+                        * 100Gbps (ExpressRoute Direct)
+                    * Redundancy
                 * Web Application 
-                * Firewall (WAF)
-            * ExpressRoute
-                * Pricing
-                    * Metered data (per GB outbound)
-                    * Unlimited data
-                * Bandwith
-                    * 50Mbps to 10Gbps
-                    * 100Gbps (ExpressRoute Direct)
-                * Redundancy
+                * Firewall (WAF)            
         * Windows Virtual Desktop
             * Full desktop for users
             * Apps running remotely
@@ -758,142 +765,437 @@ Virtualization
             * Adaptive Image Compression
                 * Monitors network quality
                 * Provides smaller files when network speed is slower
+      * CDN Profile
+          * Pricing Tier
+              * Azure CDN from Microsoft / Verison / Akamai
+              * Azure CND Premium from Verizon
+          * CND Endpoints
+              * https://webapp1.azureedge.net -> App Service
+              * https://myblobs.azureedge.net -> Blob Service
+              * https://mycustomdomain.com -> Media Files  
         * Azure Compute Benefits
             * Easy to provision new resources
             * Pay for what you use
             * Platform-as-a-Service option available
             * Scale depending on workloads
 - Data Storage in Azure
-    * Azure Machines
-        * Virtual Machines
-          * Infrastructure-as-a-Service (IaaS)
-          * Full control over operating system
-          * Must maintain and patch VM
-          * When creating a VM
-            * Type of image
-            * Size of VM
-            * Availability options
-          * Can install custom software
-          * Can shut down to save costs
-            * Manually or on a schedule
-          * Enables hybrid cloud
-          * Familiar administrative model
-          * Lift-and-shift migration
-            * Azure Site Recovery
-            * Azure Migrate
-          * Uses and Azyre virtual network (VNET)
-          * Underlying disks are stored in Aure Storage Account  
-          * Virtual Machine Scale Sets
-            * Identical Virtual Machines with load balancing
-            * Number of VMs can scale out/in
-            * Spread across fault domains and update domains
-            * Only pay for the underlying resources
-        * Containers
-          * Standard for container format
-          * Runtime for Docker containers
-          * Open-sourve project
-          * Docker is also a company thatevolves the technology
-          * Hosting Options for Containers
-            * Local Workstation
-            * On-premises Servers
-            * VMs in Aure
-            * Azure Container Instances (ACI)
-            * Azure Kubernetes Service (AKS)
-              * Container management system in Azure
-              * Scale out container-based applications
-              * Monitoring and deploying container
-              * Pods are group of containers
-              * Nodes are virtual machines
-              * Can leverage VM Scale Stes
-              * Azure Container Registry
-              * Azure Monitor  
-            * Azure App Service
-              * Similar to traditional web hosting
-              * Framework runtimes inatalled on servers
-              * Azure manages web servers for you
-              * Web Apps - API Apps - Mobile Apps -  Containers - WebJobs
-                * https://<your app service name>.azurewebsites.net
-        * Serverless Computing
-          * Azure Functions: 
-            * Run custom code 
-            * Initiated by triggers
-          * Azure Logic Apps (Outlook - Azure Function - Blob Storage): 
-            * Designer in portal
-            * Initiated by triggers
-            * Large library of connectors
-          * Azure Event Grid
-            * Connects data sources and event handlers
-        * Networking products
-          * Applications Gateway Features:
-            * SSL Termination
-            * Autoscaling
-            * Session Affinity
-            * HTTP Header Rewriting
-            * Advanced Routing
-                * ExpressToute
-                    * Pricing
-                      * Metered data (per GB outbound)
-                      * Unlimited data      
-                    * Bandwidth
-                      * 50Mbps to 10Gbps
-                      * 100Gbps (ExpressRoute Direct)  
-                    * Redundancy
-            * Web Application
-            * Firewall (WAF)
-        * Windows Virtual Desktop
-          * Full desktop for users
-          * Apps running remotely
-          * Similar to Remote Desktop Services (RDS)
-          * Fully managed solution in the cloud
-          * Supported Clients: Windows - Mac - iOS - Android - HTML5 Browser
-          * Authentication using Azure AD
-          * Azure Multi-factor Authentication
-          * Supported operating systems:
-            * Windows Server 2019 / 2016 / 2012 R2
-            * Windows 10 / 7 Enterprise
-        * Azure Content Delivery Network (CDN)
-          * Distributed network of servers
-          * Store cached data
-            * Minimize latency to global users
-            * Offload traffic from source servers
-          * Typically static data
-          * Also dynamic data using Dynamic Site Aceleration (DSA)
-            * Dynamic data in response to user behaviour
-            * DSA is an optimiation option
-            * Uses several different approaches  
-            * Route optimization
-              * Finds fastest route to origin server
-              * Compares paths
-              * Performs health checks
-            * TCP Optimazation
-              * Avoids "TCP slow start"
-              * Persistent connections
-              * Tunning packet parameters
-            * Object Prefetch
-              * Parses HTML
-              * Serves embedded images and scripts
-            * Adaptive Image Compression
-              * Monitors network quality
-              * Provides smaller files when network speed is slower
-          * CDN Profile
-            * Pricing Tier
-                * Azure CDN from Microsoft / Verison / Akamai
-                * Azure CND Premium from Verizon
-          * CND Endpoints
-            * https://webapp1.azureedge.net -> App Service
-            * https://myblobs.azureedge.net -> Blob Service
-            * https://mycustomdomain.com -> Media Files
-    * Azure Compute Benefits
-        * Easy to provision new resources
-        * Pay for what you use
-        * Platform-as-a-Service option availaable
-        * Scale depending on workloads
-        
+    * Categories of Data
+        * Structured Data
+            * Azure SQL Database
+            * Azure Database for MySQL
+            * Azure Database for PostgreSQL
+        * Unstructured Data
+            * Azure Blob / File / Disk Storage
+        * Semi-structured Data (NoSQL)
+            * Cosmos DB
+    * Managed Relational Database Products in Azure
+        * SQL Server on Virtual Machines
+            * Full control over the SQL Server
+            * Can provision from the Azure Marketplace
+            * Flexible pricing options
+            * Automated updates scheduling
+            * Managed Backup to Microsoft Azure
+        * Azure SQL Database
+            * Fully managed platform-as-a-service
+            * Always running the latest version of SQL Server
+            * Flexible pricing model
+                * Vcores
+                * DTU's
+            * Single database or Elastic Pool
+            * Automatic scaling
+            * Service tiers for  different workloads
+        * Azure SQL Managed Instance
+            * Broadest set of SQL Server capabilities
+            * Benefits of managed platform
+            * Deploy VM onto you own VNET
+            * Lift-and-shift with minimal changes
+        * Azure Database for MySQL
+            * Open-sourve tools and platform compability
+            * MySQL Community Edition
+            * Flexible pricing options
+            * High-availability
+            * Dynamic scalability
+            * Encryption
+            * Automated patching and backup
+        * Azure Database for PostgreSQL
+            * Supports complex data structures
+            * Geometric data types
+            * Extensions for GIS, etc.
+            * Managed database features
+            * Single server
+            * Hyperscale (Citus)
+                * Faster response time
+                * Larger datasets (100GB+)
+        * Cosmos DB for Semo-structured Data Storage
+            * Azure Cosmos DB
+                * Elastically scale throughput and storage across any number of Azure regions
+                * Add or remove regions easily
+                * Backed by SSD storage
+                * Consistency options to ensure distrubutred data is updated
+                * Cosmos DB APIs
+                    * SQL API
+                    * Cassandra
+                    * Mongo DB
+                    * Gremlin
+                    * Azure Table Storage
+        * Azure Storage Accounts
+            * Azure Storage Services
+                * Blob Storage === https://mystorageaccount.blob.core.windows.net
+                * File Storage === https://mystorageaccount.file.core.windows.net
+                * Disk Storage 
+                * Table Storage === https://mystorageaccount.table.core.windows.net
+                * Queue Storage === https://mystorageaccount.queue.core.windows.net
+           * Locally Redundant Storage (LRS)     
+           * Zone Redundant Storage (ZRS) 
+           * GEO Redundant Storage (GRS)
+           * GEO Zone Redundant Storage (GZRS)
+        * Authorization to Data
+            * RBAC in Azure AD
+            * Storage Account Keys
+            * Shared Access Signatures
+                * Example: https://myaccount.blob.core.windows.net/container1/file1.pdf?sv=2017-07-29&st=2018-04-30T19%3A19%3A19Z&se=2018-05-01T19%3A19%3A19Z&sr=b&sp=rl&sip=168.1.5.60-168.1.5.70&spr=https&sig=pk9oGEPqYyu0K4Gutfreq9n0CJqgnjyYgkEwcIEL8l0%3D
+                * Security token string
+                    * "SAS Token"
+                * Scope to
+                    * Storage Account
+                    * Services, i.e Blob or File
+                    * Individual containers and blobs
+                * Start and end validity period
+                * Contains permissions
+        * Programmatic Access to Storage Accounts
+            * REST APIs
+            * SDKs
+            * PowerShell
+            * Azure CLI
+            * Azure Storage Explorer
+            * AzCopy
+        * Azure Files
+            * Supports the SMB protocol
+                * Attach to multiple VMs
+                * File share with drive letter
+            * Good for migration scenarios
+            * Files accessible through REST interface
+                * Mechanisms for restricting access
+        * Blob
+            * Acronym for Bimary Large Object
+            * Unstructured data:  Data that doesn't adhere to a particular data model or definition
+            * Blob types
+              * Block Blob
+                * Composed of blocks
+              * Append Blob
+                * Can only Append Blocks Ideal for logs
+              * Page Blob
+                * 8TB max blob size
+                * VM disks and databases
+                * Frequent random read/write applications
+            * Cost Factores
+                * Storage Cost 
+                * Transaction Cost
+            * Blob Access Tiers
+                * Hot Tier
+                    * Highest Storage cost
+                    * Lowest data access cost
+                * Cool Tier
+                    * Lower stoorage cost
+                    * Higher data access cost
+                * Arcgive Tier
+                    * Lowest storage cost
+                    * Highest data retrieval cost
+                    * Data is offline
+            * Blob Service Features
+                * Blob Snapshots
+                * Blob Leases
+                * Soft Delete
+                * Static Website Hosting
+                * CND Integration
+                * Azure Search Integration
+            * Data Transfer Options
+                * Azure Database Migration Service (DMS)
+                    * Managed Service to migrate database data to Azure data platforms
+                        * On-premises databases
+                        * Azure databases
+                        * Azure Web Services
+                * Create target database in Azure
+                * Assess source database for compatibility
+                * Create instance of Azure DMS
+                * Configure source and target databases
+                * Migrate data
+                * Switchover production applications
+                * Data Transfer Considerations
+                    * Amount of data to transfer
+                    * Frequency of data transfer
+                    * Available network bandwidth
+                * Online Data Transfer Opstions
+                    * Azure Storage Explorer
+                    * Azure Portal
+                    * AzCopy
+                    * PowerShell / Azure CLI
+                    * Storage Client Libraries
+                    * Azure Data Factory
+                * Azure Data Box
+                    * Data Box Disk (SSD)
+                        * Solid State Disks
+                        * 35TB per order
+                        * USB 3.0 connection
+                * Data Box
+                    * Device on network 
+                    * 80TB capacity
+                    * RJ45 or SFP+ 10GbE
+                * Data Box Heavy
+                    * 1PB capacity
+                    * 40GbE connection
+                * Import / Export Service
+                    * Ship your own disks
+                    * For Azure Blob or File Service
+                    * Can use for exporting data from Azure also
+                    * Prepare drives with encryption software
+                * Data Centre Solutions
+                    * Azure Data Box Gateway
+                    * Azure File Sync
+                    * Azure Data Box Edge
 - Exploring Azure Platform Solutions
-    * TODO
+    * The Internet of Things
+        * Devices and sensors
+        * Connected to each other and the internet
+        * Examples
+            * Smart thermostat
+            * Motion sensors and security cameras
+            * Sensors in manufacturing machines
+            * Sensors embedded in concrete
+            * Trafffic sensors
+            * Sensors in streetlamps
+            * Fitness trackers
+            * Retail beacons
+        * Alerts - Insights - Actions
+        * Isssues with IoT
+            * Lack of standards
+                * IEEE is working on standards
+                * Left to device manufacturers 
+            * Security
+                * Potential to be hacked
+                * Communications can be intercepted
+        * IoT Services in Azure
+            * Azure IoT Central
+              * Managed App Platform
+              * Faster to start developing solutions
+              * Industry-specific templates
+              * Built-in device profiles      
+            * Azure IoT Hub
+                * Platform service
+                    * Connecting devices to the cloud
+                    * Managing devices
+                    * Ingesting data
+              * Bi-directional communication
+              * Automatic provisioning of device objects
+              * SDKs and APIs
+              * Simulated devices for development
+              * Authentication capabilities
+                * X.509 certificates
+                * Shared Access Signatures
+            * Azure Sphere
+                * Application platform  
+                    * Micro-controller unit
+                    * Linux-based operating system
+                    * Clod-based security service
+                * Foundation for IoT devices
+                * Component to IoT solutions
+                * Devices also use Azure Sphere service
+                    * Verify security of operating system on start-up
+                    * Microsoft pushes OS updates and security patches
+    * Understanding Big Data
+        * Big Data
+            * Technologies and strategies
+                * Gather large datasets
+                * Organize the data
+                * Process the data
+                * Gather insights from the data
+            * Insights
+                * Sales and Marketing
+                * Risk Management
+                * Product Design
+                * Supply Chain Management
+                * Planning and Safety
+            * Data Analysis using Excel spreadsheets
+            * Manipulations and visualizations
+            * Data stored in spreadsheet
+            * Not scalable to Big Data solutions
+            * The Three V's of Big Data
+                * Volume
+                * Velocity
+                * Variety
+            * Categories of Big Data Processing
+                * Ingest
+                  * Extract-transform-load
+                  * Modifying
+                  * Categorizing
+                  * Filtering bad data
+                  * Validating data
+                  * Often stored as raw data
+                  * Azure Data Factory, Event Hubs, IoT Hubs, SSIS, Azure Synapse, Kafka (HDInsight)      
+                * Persist
+                  * Data warehouse (Azure Synapse)
+                  * Distributed file systems (Hadoop)
+                  * Azure Blob Storage  
+                * Analyze
+                  * Batch processing
+                    * Splitting, mapping, reducing, assimbling
+                    * Hadoop MapReduce
+                    * Apache Spack
+                  * Real-time processing
+                    * Spark
+                    * Apache Storm, Kafka
+                    * Azure Stream Analytics
+                  * R, Python, Scala
+                  * SQL , Java, C#
+                * Visialize
+                    * Querying and reporting
+                        * Power BI
+                        * MS Excel
+                        * Jupyter notebooks
+            * Big Data Solutions in Azure
+                * Azure HDInsight
+                    * Open-source anlytics tools
+                    * Apache Hadoop
+                    * Cluster of compute nodes
+                    * On-dem,and scalability and autoscale
+                    * Integration with Azure services for building analytics pipelines
+                    * Azure HDInsight Features
+                        * Hadoop Distributed File System (DFS)
+                        * MapReduce for batch processing
+                        * Also supports Apche Spark
+                        * Supports familiar open-source tools
+                        * Supports newer development environments also                    
+                * Azure Databricks
+                    * Company outside Microsoft
+                    * Azure has hosted Databricks platform
+                    * Based on Apache Spark platform
+                    * Fully-managed Spark Clusters
+                    * Workspace for visualizingf data
+                    * Serverless option
+                    * Notebooks
+                    * Interactive dashboards
+                    * Integration with othwr Azure services
+                * Azure Synapse Analytics
+                    * Formerly Azure SQL Data Warehouse
+                    * Storage component
+                    * Azure Synapse Analytics
+                        * SQL tecknologies
+                        * Spack analytics
+                        * Pipelines for orchestration
+                        * Serverless or provisioned options
+                        * Spark languages and T-SQL
+                        * ETL functionality
+                        * Integration with Azure services
+    * Azure Machine Learning
+        * Using existing data to forecast future behaviours, outcomes and trends    
+        * Model is trained using known data
+        * Model makes predictions for unknown data
+        * Machine Learning Studio
+    * Cognitive Services
+        * Vision
+            * Computer Vision
+                * Process and catalog images
+                * Generate captions for images
+                * Optical character recognition
+                    * Typewriter text
+                    * Handwritten text
+                    * Many languages
+                * Video indexer
+                * Face API
+                * Form Recognizer
+        * Speech
+            * Speech APIs
+              * Speech-to-text
+              * Text-to-speech
+            * Speaker recognition
+              * Identify speaker by voice
+              * Train model by provising samples
+        * Language
+        * Web Search
+          * Bing Web Search
+          * Bing Custom Search API
+          * Bing Image Search
+          * Bing Entity Search API
+          * Bing News Search API
+          * Bing Video Search API
+          * Bing Visual Search API
+          * Bing Autisuggest API
+          * Bing Spell Check API
+          * Bing Business Search API
+        * Decision 
+            * Decision APIs
+                * Anomaly API
+                * Comntent Moderator 
+                * Personalizer
+    * Azure Bot Service
+        * Virtual assistant on the web
+        * Responds to questions
+        * Uses natuiral language processing
+        * Tools
+            * Bot Framework SDK
+            * Bot Framework Composer
+                * Desktop application
+                * Emulator
+                * .NET Core SDK 3.1
+        * Deploy to App Service or Function App 
 - DevOps Solutions in Azure
-    * TODO
-
+    * Code Repositories
+        * Team is working on the same code
+        * Potential for overwriting work of others
+        * Central place to store code
+        * Check-out capability
+        * Ability to merge code conflicts
+    * Collaboration Tools
+        * Tracking of task and responsibilities
+        * Work broken down into iterations
+        * Kanban boards are a popular tecnique
+    * Azure DevOps Boards
+        * Supports popular project management methodologies
+            * Agile
+            * Scrum
+            * Basic
+            * CMMI
+        * Link work items
+            * Pull request
+            * Code commits
+            * Tests
+            * Builds
+            * Architectural diagrams
+    * On-premises Solutions
+        * Azure DevOps Server
+        * GitHub Enterprise 
+    * Azure DevOps Pipelines and GitHub Actions
+       * DevOps CI/CD
+            * Continous Integration
+            * Continous Deployment
+        * Azure DevOps Pipelines
+            * Build pipelines and release pipelines
+            * Defined in YAML file
+            * Code can be puløled from Azure Repos or external repo (i.e. GitHub)
+            * Run tests during pipeline
+            * Create reports within pipelinw
+            * Publish artifact
+            * Publish ARM templates to create resources in Azure
+    * GitHub Actions
+        * Similar to Azure DevOps Pipelines
+        * Also written in YAML
+        * Similar capabilities
+        * Build code on Windoens, Linux, and Mac agents
+        * GitHub actions run within workflows
+    * Azure DevTest Labs
+        * Base images for virtual machines
+        * Images pr-configured with tools
+        * Existing VMs in a ppol
+        * Constrains on resources that can be created by a developer
+            * Size of VM
+            * Number of VMs
+        * Auto-start and auto-stop of VMs
+        * Use Cases for DEvTest labs
+            * Developer Desktops
+            * Test Environments
+            * Hands-on Labs
+            * Sandbox Environment
+    
 
 # Resume
 
