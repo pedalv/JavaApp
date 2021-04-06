@@ -14,6 +14,8 @@
       * Network security groups, Application security groups,
       * Route tables, Distributed Denial of Service (DDoS) Protection, Firewalls,
       * Key vaults, Security Center, Templates, Service Health, Monitor, Advisor,
+      * Compute, Connect, Container Instances, Kubernetes Service, App Service Domain, Serverless: Resource group (Function App, Logic App),
+      * 
 - [Service Trust Center](https://servicetrust.microsoft.com/) 
 - [Azure status](https://status.azure.com/status)
 - [‎Microsoft Azure on the App Store - App Store - Apple](https://apps.apple.com/us/app/microsoft-azure/id1219013620)  
@@ -639,6 +641,11 @@ Virtualization
         * [Achieve operational excellence by using Azure Advisor](https://docs.microsoft.com/en-us/azure/advisor/advisor-operational-excellence-recommendations)
         * [Improve the performance of Azure applications by using Azure Advisor](https://docs.microsoft.com/en-us/azure/advisor/advisor-performance-recommendations)
 - Exploring Azure Core Products
+    * Azure Compute Benefits
+      * Easy to provision new resources
+      * Pay for what you use
+      * Platform-as-a-Service option available
+      * Scale depending on workloads
     * Azure Compute
         * Set of services
         * On-demand computing power
@@ -649,7 +656,15 @@ Virtualization
             * When creating a VM
                 * Type of image
                 * Size of VM
-                * Availability options
+                * Availability options            
+            * Virtual Machine Scale Sets
+              * Identical Virtual Machines with load balancing
+              * Number of VMs can scale out/in
+              * Spread across fault domains and update domains
+              * Only pay for the underlying resources
+            * Azure Batch
+                * Pool of Virtual Machines
+                * High Performance Computing (HPC)
             * Can install custom software
             * Can shut down to save costs
                 * Manually or on a schedule
@@ -659,15 +674,10 @@ Virtualization
                 * Azure Site Recovery
                 * Azure Migrate
             * Uses an Azure virtual network (VNET)
-            * Underlying disks are stored in Azure Storage Account
-            * Azure Batch
-                * Pool of Virtual Machines
-                * High Performance Computing (HPC)
-            * Virtual Machine Scale Sets
-                * Identical Virtual Machines with load balancing
-                * Number of VMs can scale out/in
-                * Spread across fault domains and update domains
-                * Only pay for the underlying resources          
+            * Underlying disks are stored in Azure Storage Account  
+            * Access to VM via Connect
+                * RDP:  Windows -  download and login with admin creditials
+                * SSH: Linux
         * Containers
             * Docker
                 * Standard for container format
@@ -678,7 +688,7 @@ Virtualization
                 * Local Workstation
                 * On-premises Servers
                 * VMs in Azure
-                * Azure Container Instances (ACI)
+                * Azure Container Instances (ACI) - create (get image via DockerHuB osv)
                 * Azure Kubernetes Service (AKS)
                     * Container management system in Azure
                     * Scale out container-based applications
@@ -688,18 +698,18 @@ Virtualization
                     * Can leverage VM Scale Sets
                     * Azure Container Registry
                     * Azure Monitor
-                * Azure App Services
-        * Azure App Service
-            * https://<your app service name>.azurewebsites.net === CDN Endpoints
-            * Similar to traditional web hosting
-            * Framework runtimes installed on servers
-            * Azure manages web servers for you
-            * Web Apps
-            * Api Apps
-            * Mobile Apps
-            * Containers
-            * WebJobs                      
-        * Serverless Computing
+                * Azure App Services - create (get image via DockerHuB osv) - Need an [App Service Plan](https://azure.microsoft.com/en-us/pricing/details/app-service/windows/)      
+                    * https://<your app service name>.azurewebsites.net === CDN Endpoints
+                    * Similar to traditional web hosting
+                    * Framework runtimes installed on servers
+                    * Azure manages web servers for you
+                    * Web Apps
+                    * Api Apps
+                    * Mobile Apps
+                    * Containers
+                    * WebJobs    
+                    * Development Tools  (use to get information about application): Console and Advances Tools === Kudu portal
+        * Serverless Computing - Code you write
             * Azure Functions: 
               * Run custom code 
               * Initiated by triggers
@@ -707,8 +717,9 @@ Virtualization
               * Designer in portal 
               * Initiated by triggers 
               * Large library of connectors
-            * Azure Event Grid: 
-              * Connects data sources and event handlers
+            * [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview): 
+              * Connects data 
+              * Sources and event handlers
             * Logic App: 
               * Outlook Email account, Azure Function, Blob Storage
         * Core Networking Products
@@ -717,7 +728,10 @@ Virtualization
                 * Autoscaling
                 * Session Affinity
                 * HTTP Header Rewriting
-                * Advanced Routing
+                * Advanced Routing === connect on-premises Network to Azure
+                  * VPN Gateway: use for admin users
+                  * ExpressRoute Direct: for big corporation as Banks, governance ===  not use public network
+                  * ExpressRoute Location: use Service Provider   
                   * ExpressRoute
                     * Pricing
                         * Metered data (per GB outbound)
@@ -740,14 +754,22 @@ Virtualization
             * Support operation systems:
                 * Windowns Server 2019 / 2016 / 2012 R2
                 * Windows 10 / 7 Enterprise
-        * Azure Content Delivery Network (CDN) === from Microsoft / Verizon / Akamai 
-            * Distributed network of servers
-            * Store cached data
-                * Minimize latency to global users
-                * Offload treffic from source servers
-            * Typically static data
-            * Also dynamic data using Dynamic Sire Acceleration (DSA)
-        * Dynamic Site Acceleration (DSA)
+        * Azure Content Delivery Network (CDN) === from Microsoft / Verizon / Akamai === cached static data
+          * Distributed network of servers
+          * Store cached data
+            * Minimize latency to global users
+            * Offload treffic from source servers
+          * Typically static data
+          * CDN Profile
+            * Pricing Tier
+                * Azure CDN from Microsoft / Verison / Akamai
+                * Azure CND Premium from Verizon
+            * CND Endpoints
+                * https://webapp1.azureedge.net -> App Service
+                * https://myblobs.azureedge.net -> Blob Service
+                * https://mycustomdomain.com -> Media Files
+          * Also dynamic data using Dynamic Sire Acceleration (DSA) === Content change often, no caching available, dynamic data
+            * Dynamic Site Acceleration (DSA)
             * Dynamic data in response to user behavior
             * DSA is an optimization option
             * Uses several different approaches
@@ -765,19 +787,6 @@ Virtualization
             * Adaptive Image Compression
                 * Monitors network quality
                 * Provides smaller files when network speed is slower
-      * CDN Profile
-          * Pricing Tier
-              * Azure CDN from Microsoft / Verison / Akamai
-              * Azure CND Premium from Verizon
-          * CND Endpoints
-              * https://webapp1.azureedge.net -> App Service
-              * https://myblobs.azureedge.net -> Blob Service
-              * https://mycustomdomain.com -> Media Files  
-        * Azure Compute Benefits
-            * Easy to provision new resources
-            * Pay for what you use
-            * Platform-as-a-Service option available
-            * Scale depending on workloads
 - Data Storage in Azure
     * Categories of Data
         * Structured Data
@@ -1217,6 +1226,9 @@ Virtualization
 - - [Microsoft Azure Security and Privacy Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-security-privacy-concepts/table-of-contents)
 - - 3h38m Feb 26, 2021 [Microsoft Azure Services and Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-services-concepts/table-of-contents)
 - TODO [Creating and Configuring Microsoft Azure Storage Accounts](https://app.pluralsight.com/library/courses/microsoft-azure-creating-configuring-storage-accounts/table-of-contents)
+- TODO [Managing Microsoft Azure App Service Plan](https://app.pluralsight.com/library/courses/microsoft-azure-app-service-plan-managing/table-of-contents) 
+- TODO [Configuring and Using Microsoft Azure Blob Storage](https://app.pluralsight.com/library/courses/microsoft-azure-blob-storage-configuring-using/table-of-contents)
+- TODO [Managing Microsoft Azure App Services](https://app.pluralsight.com/library/courses/microsoft-azure-app-services-managing/table-of-contents)
 - - 1h 37m July 1h 37, 2020 [Microsoft Azure Pricing and Support Options](https://app.pluralsight.com/library/courses/microsoft-azure-pricing-support-options/table-of-contents)
 - 3h 40m 25 Apr 2019 [Azure Functions Fundamentals](https://app.pluralsight.com/library/courses/azure-functions-fundamentals/table-of-contents)
 - TODO [POPULAR - Microsoft Azure Solutions Architect: Introduction to the AZ-303 Exam](https://app.pluralsight.com/library/courses/microsoft-azure-solutions-architect-introduction-az-303-exam/table-of-contents)
