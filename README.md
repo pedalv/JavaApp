@@ -1,10 +1,9 @@
 # JavaApp
 Java projects to build competence.
 
-# Fetch all JavaApp projects
-```bash
-git clone https://github.com/pedalv/JavaApp.git
-```
+# Project 14: CloudComputing 
+- CloudComputing
+- CloudComputing project is located on [https://github.com/pedalv/JavaApp/tree/master/CloudComputing](https://github.com/pedalv/JavaApp/tree/master/CloudComputing)
 
 # Project 13: MellomOppdrag 
 - MellomOppdrag
@@ -58,3 +57,8 @@ git clone https://github.com/pedalv/JavaApp.git
 # Project 1: Sprint Boot - Hello World
 - Project to start with Sprint Boot framework.
 - Hello World project is located on [https://github.com/pedalv/JavaApp/tree/master/SpringBoot](https://github.com/pedalv/JavaApp/tree/master/SpringBoot)
+
+# Fetch all JavaApp projects
+```bash
+git clone https://github.com/pedalv/JavaApp.git
+```
