@@ -788,8 +788,16 @@ Virtualization
                 * Monitors network quality
                 * Provides smaller files when network speed is slower
 - Data Storage in Azure
+    * Storing data in the cloud requires flexible solutions to new and old problems
+    * Storage services for specific data types
+    * Benefits to Azure data storage solutions
+      * Automated backup and recovery
+      * Replication across the world
+      * Encryption options
+      * Secutity and platform integration
+      * Development features and support
     * Categories of Data
-        * Structured Data
+        * Structured Data === schema 
             * Azure SQL Database
             * Azure Database for MySQL
             * Azure Database for PostgreSQL
@@ -804,16 +812,17 @@ Virtualization
             * Flexible pricing options
             * Automated updates scheduling
             * Managed Backup to Microsoft Azure
-        * Azure SQL Database
+        * Azure SQL Database (There are some limitations: some build functions are not available, common language at runtime is not available, etc (1))
+            * (1) [Features comparison: Azure SQL Database and Azure SQL Managed Instance](https://docs.microsoft.com/en-us/azure/azure-sql/database/features-comparison)
             * Fully managed platform-as-a-service
             * Always running the latest version of SQL Server
             * Flexible pricing model
-                * Vcores
-                * DTU's
+                * Vcores (V-virtual)
+                * DTU's (Database transaction units)
             * Single database or Elastic Pool
             * Automatic scaling
-            * Service tiers for  different workloads
-        * Azure SQL Managed Instance
+            * Service tiers for different workloads
+        * Azure SQL Managed Instance (other solution without limitations)
             * Broadest set of SQL Server capabilities
             * Benefits of managed platform
             * Deploy VM onto you own VNET
@@ -826,10 +835,11 @@ Virtualization
             * Dynamic scalability
             * Encryption
             * Automated patching and backup
+          * Demo: Firewalls and virtula networks, Add IP address local machine to access database remotely - Microsoft SQL Server Management Studio 
         * Azure Database for PostgreSQL
             * Supports complex data structures
             * Geometric data types
-            * Extensions for GIS, etc.
+            * Extensions for [GIS - Geographic information system](https://en.wikipedia.org/wiki/Geographic_information_system), etc.
             * Managed database features
             * Single server
             * Hyperscale (Citus)
