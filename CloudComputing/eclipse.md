@@ -37,3 +37,4 @@ NetWeaver Developer Studio Info: Version 7.5 19 0003
 - [Git](https://app.pluralsight.com/search/?q=Git&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=ac732ffb-f756-48ec-b1c8-250aa2c9926c&source=user_typed)
 - [Java 9](https://app.pluralsight.com/search/?q=java%209&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=e4bff709-3ca4-4c98-bcdd-6ead80560e84&source=user_typed)
 - [Spring](https://app.pluralsight.com/search/?q=spring&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=ea6ed07c-077e-448a-8117-25fe97469634&source=user_typed)
+- [Postman](https://app.pluralsight.com/search/?q=Postman&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=e483a7ec-8e1a-4bd5-b912-6958d4cd30ba&source=user_typed)
