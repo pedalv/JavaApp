@@ -8,3 +8,4 @@ Cloud computing metaphor: the group of networked elements providing services nee
 - [Microsodt Azure](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/microsoft-azure.md)
 - [Eclipse](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/eclipse.md)
 - [SAP](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/sap.md)
+- [Gradle](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/gradle.md)

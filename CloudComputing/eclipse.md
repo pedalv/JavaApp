@@ -23,8 +23,6 @@ NetWeaver Developer Studio Info: Version 7.5 19 0003
 ## Tutorials 
 - [Eclipse Guided Tour for Java](https://app.pluralsight.com/library/courses/guided-tour-eclipse-for-java/table-of-contents) from 2018
 - [Eclipse for Java Developers](https://app.pluralsight.com/library/courses/eclipse-java-developers/exercise-files) from 2018
-- [Gradle Build Tool Fundamentals](https://app.pluralsight.com/library/courses/gradle-build-tool-fundamentals/table-of-contents) from 2020
-- [Gradle Fundamentals](https://app.pluralsight.com/library/courses/gradle-fundamentals/table-of-contents) from 2015
 - [Surviving Dependency with Maven](https://app.pluralsight.com/library/courses/allthetalks-session-66/table-of-contents) from 2020
 - [Maven Fundamentals](https://app.pluralsight.com/library/courses/maven-fundamentals/table-of-contents) from 2019
 - [Java EE: Getting Started](https://app.pluralsight.com/library/courses/java-ee-getting-started/table-of-contents)
@@ -44,3 +42,4 @@ NetWeaver Developer Studio Info: Version 7.5 19 0003
 - [Representational state transfer (REST)](https://app.pluralsight.com/search/?q=REST&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=e0168c7c-2c50-4800-8231-f69ab4533ef7&source=user_typed)
 - [Hypermedia as the Engine of Application State (HATEOAS)](https://app.pluralsight.com/search/?q=HATEOAS&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=40d3fd14-b1d7-4358-855a-014b452d622a&source=user_typed)
 - [Spring Rest](https://app.pluralsight.com/search/?q=Spring%20Rest&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=b37af775-93ee-4b63-abc2-434d48556241&source=user_typed)
+- [Welcome to the REST CookBook](https://restcookbook.com/Resources/asynchroneous-operations/)
