@@ -2,14 +2,14 @@
 - What Is gradle?
  * Convention based build tool
  * DSL to describe the build
- * Supports multiproject builds
+ * Supports multi-project builds
  * Easily customizable
- * Builds many lamguages
+ * Builds many languages
  * Supports dependencies
-- How I sgrade Used?
- * Create a buld script: Kotlin or Groovy DSL
- * Defines tasks: build, clean, etc
- * Run the appropreiate task: from the command line or an IDE  
+- How Is Grade Used?
+ * Create a build script: Kotlin or Groovy DSL
+ * This defines tasks: build, clean, etc
+ * Run the appropriate task: from the command line or an IDE  
 - Gradle mostly consists of 
  * Projects
  * Tasks
@@ -34,6 +34,10 @@
  * doFirst
  * doLast
 - Task Dependencies
+- Creating a Build
+  * Create a 'build' file
+  * Add the appropriate plugin(s)
+  * Override task and properties
 - Plugins
  * Extend project's capabilities
  ```
@@ -61,8 +65,7 @@
             }
         }
     }
-    ```
-  
+    ```  
  * Configure the kotlin Plugin
     - Add the plugin
     ```
@@ -177,14 +180,114 @@
        ```
     - can safely delete cached files
         * Cache will re-download them
- * Creating and Maging Multi Project Builds
+ * Creating and Managing Multi Project Builds
     - Applications generally consist of multiple projects
     - Top level settings file to specify projects
     - Top level build file to configure projects
        * and set dependencies
     - Project level build files
         * Set project level properties and tasks 
- * 
+- Manage Testing
+ * There Is a Test Source Set
+   - By default looks for unit tests in src/test/java
+   - Outputs to build/classes/test
+   - Reports to build/reports/test
+ * Dependencies
+   - Use testImplementation to define test dependencies
+   ```
+   testImplementation("junit:junit:4.12"
+   ```
+ * Configuration
+   - Use test block to configure testing
+   ```
+   test {
+      testLogging {
+         events TestLogEvent.FAILED,
+         TestLogEvent.PASSED,
+         TestLogEvent.SKIPPED
+      }
+   }
+   ```
+ * Configure jUnit5
+   - Add use jUnitPlatform to configure jUnit5
+   ```
+   tasks {
+      test {
+         useJUnitPlatform()
+         testLogging.events = setOf(TestLogEvent.FAILED, TestLogEvent.PASSED,TestLogEvent.SKIPPED)
+      }
+   }
+   ```
+   - Use testImplementation to define test dependencies
+   ```   
+   testImplementation("org.junit.jupiter:junit-jupiter-api:$junit_version")
+   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit_version")
+   ```
+   * Filtering tests
+   ```
+   test {
+      filter {
+         includeTestsMatching "com.foo.shouldCreateASession"
+         includeTestsMatching "*shouldCreateASession"
+      }
+   }
+   ```
+   
+   ```
+   tasks.register<Test>("singleTest") {
+      group = "Verification"
+      description = "Runs a single test"
+      dependsOn("testClasses")
+      filter {
+         includeTestsMatching("com.pluralsight.security.TestCreateStreams.testWhenInputFileDoesExist")
+      }
+   }   
+   ```
+   * Filtering (JUnit 5)   
+   ``` 
+   tasks.register<Test>("singleTest") {
+      group = "Verification"
+      description = "Runs a single test"
+      dependsOn("testClasses")
+      useJUnitPlatform()
+      filter {
+         includeTestsMatching("com.pluralsight.security.TestCreateStreams.testWhenInputFileDoesExist")
+      }
+   }   
+   ```
+   
+   ```
+   gradle test --tests *shouldCreateASession
+   ```
+-  Gradle Wrapper and How to Use it
+   * What Is the Gradle Wrapper?
+      - Gives the project a specific version of Gradle
+      - Get consistent builds
+      - gradlew.bat on Windows
+      - gradlew shell script on *nix environments
+   * Wrapper Task
+      - Standard task
+      - Can override in build file
+      - Install Bootstrap Files
+      ```
+      myproject/
+         gradlew
+         gradlew.bat
+         gradle/wrapper/
+            gradle-wrapper.jar
+            gradle-wrapper.properties
+      ```
+   * Why Use the Wrapper?
+      - IDEs need it when loading a project
+      - Build Servers need it to create a build
+   * Why Use a Build Server?
+      - Continuous integration is very important
+      - If not CI then at least nightly builds
+      - If not nightly then a clean place to build
+      - 'Works on my machine'
+      - Tem City
+         * Build Server from JetBrains
+         * https://www.jetbrains.com/teamcity/
 
 ## Tutorials 
 - [Gradle Build Tool Fundamentals](https://app.pluralsight.com/library/courses/gradle-build-tool-fundamentals/table-of-contents) from 2020
