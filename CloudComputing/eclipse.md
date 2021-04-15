@@ -35,7 +35,7 @@ NetWeaver Developer Studio Info: Version 7.5 19 0003
 - [Git](https://app.pluralsight.com/search/?q=Git&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=ac732ffb-f756-48ec-b1c8-250aa2c9926c&source=user_typed)
 - [Java 9](https://app.pluralsight.com/search/?q=java%209&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=e4bff709-3ca4-4c98-bcdd-6ead80560e84&source=user_typed)
 - [Spring](https://app.pluralsight.com/search/?q=spring&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=ea6ed07c-077e-448a-8117-25fe97469634&source=user_typed)
-- [Postman](https://app.pluralsight.com/search/?q=Postman&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=e483a7ec-8e1a-4bd5-b912-6958d4cd30ba&source=user_typed)
+-- [Postman](https://app.pluralsight.com/search/?q=Postman&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=e483a7ec-8e1a-4bd5-b912-6958d4cd30ba&source=user_typed)
 - [GraphQL](https://app.pluralsight.com/search/?q=GraphQL&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=54d83f5a-9cfd-444e-af0b-0bd41666dc38&source=user_typed)
 - [OAuth 2.0](https://app.pluralsight.com/search/?q=OAuth&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=82a674e7-da09-43ed-adef-95f5e9066f62&source=user_typed)
 - [HTTP](https://app.pluralsight.com/search/?q=http&type=conference%2Cvideo-course%2Cdemo%2Cguide%2Cwebinar%2Cpath%2Cassessment&m_sort=relevance&query_id=3394f5b5-8263-4da1-a1ef-6ab0e4d12b7f&source=user_typed)
