@@ -1,4 +1,4 @@
-package no.dfo.springbootdockermvn.controler;
+package no.dfo.springbootdockermvn.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +8,7 @@ public class HelloController {
 
     @RequestMapping("/")
     public String home() {
-        return "Hello Docker World";
+        return "Hello Docker World With Maven";
     }
 
 }
