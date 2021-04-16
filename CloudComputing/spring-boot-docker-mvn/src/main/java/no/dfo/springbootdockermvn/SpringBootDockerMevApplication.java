@@ -17,6 +17,7 @@ public class SpringBootDockerMevApplication {
 	java -jar target/spring-boot-docker-mvn-0.0.1-SNAPSHOT.jar
 
 	docker build -t pedalv/spring-boot-docker .
+  	docker run -p 8080:8080 pedalv/spring-boot-docker
 
 
 	https://stackoverflow.com/questions/53375613/why-is-the-java-11-base-docker-image-so-large-openjdk11-jre-slim
