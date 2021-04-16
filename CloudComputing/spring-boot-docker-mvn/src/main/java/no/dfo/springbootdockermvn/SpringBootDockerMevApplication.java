@@ -16,13 +16,14 @@ public class SpringBootDockerMevApplication {
 
 	java -jar target/spring-boot-docker-mvn-0.0.1-SNAPSHOT.jar
 
-	docker build -t pedalv/spring-boot-docker .
-  	docker run -p 8080:8080 pedalv/spring-boot-docker
+	docker build -t pedalv/spring-boot-docker-mvn .
+  	docker run -p 8080:8080 pedalv/spring-boot-docker-mvn
+	curl http://localhost:8080 === Hello Docker World With Maven
 
-  	docker push pedalv/spring-boot-docker
+  	docker push pedalv/spring-boot-docker-mvn
 
-  	docker pull pedalv/spring-boot-docker
-  	docker run -p 8080:8080 pedalv/spring-boot-docker
+  	docker pull pedalv/spring-boot-docker-mvn
+  	docker run -p 8080:8080 pedalv/spring-boot-docker-mvn
   	curl http://localhost:8080/
 
 */
