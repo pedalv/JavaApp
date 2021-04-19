@@ -25,6 +25,7 @@ public class SpringBootDockerMevApplication {
   	docker pull pedalv/spring-boot-docker-mvn
   	docker run -p 8080:8080 pedalv/spring-boot-docker-mvn
   	curl http://localhost:8080/
+  	curl http://localhost:8080/add?parm1=1&parm2=3
 
 */
 
