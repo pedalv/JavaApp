@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,6 +20,7 @@ public class CalcRestController {
     }
 
     @GetMapping("/add")
+    @ResponseBody
     public ResponseEntity<?> add(@RequestParam(name="parm1") Integer parm1,
                                  @RequestParam(name="parm2") Integer parm2)  {
         try {

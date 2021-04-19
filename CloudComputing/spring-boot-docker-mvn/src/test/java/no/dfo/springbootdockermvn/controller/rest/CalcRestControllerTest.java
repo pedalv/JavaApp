@@ -14,7 +14,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
-//@RunWith(SpringRunner.class)
 class CalcRestControllerTest {
 
     private CalcRestController calcRestController;
