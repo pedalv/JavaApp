@@ -701,6 +701,11 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 
 #### Back-end workloads === Ubuntu server and the Cloud (AWS, Azure...)
 - SSH and Command Line
+  * [sudo...](https://askubuntu.com/questions/376199/sudo-su-vs-sudo-i-vs-sudo-bin-bash-when-does-it-matter-which-is-used)
+    * sudo su
+    * sudo su - 
+    * sudo -i
+    * sudo /bin/bash
   * ssh 172.16.141.186
     * whoami
     * hostname
