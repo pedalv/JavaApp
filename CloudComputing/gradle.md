@@ -6,6 +6,20 @@
  * Easily customizable
  * Builds many languages
  * Supports dependencies
+- Install
+ * From the web site
+  - All platforms
+ * SDK manager (for Linux and Mac)
+  - https://sdkman.io
+   * curl -s 'https://get.sdkman.io' | bash
+   * add to path
+   * install Gradle
+   	* sdk install gradle
+  - *nix platforms
+  - Can also install on Cygwin etc...
+ * Homebrew (for Mac)
+  - brew update
+  - brew install gradle     
 - How Is Grade Used?
  * Create a build script: Kotlin or Groovy DSL
  * This defines tasks: build, clean, etc
