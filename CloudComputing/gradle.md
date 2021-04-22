@@ -62,9 +62,9 @@
  * Java Plugins
      - Expect to find source code in standard locations
      ```
-     plugins { java }
-     plugins { java-library }
-     plugins { application }
+     plugins { java } 
+     plugins { java-library } 
+     plugins { application } 
      ```
     - Can change this using SourceSets
     ``` 
@@ -185,6 +185,7 @@
     - Modules are cached
         * File based 
         * Metadata and files stored separately
+        * Repository caches are independent
     - Dependencies can be refreshed
         * --refresh-dependencies flag
         * Will check if it needs to re-download
@@ -209,7 +210,7 @@
  * Dependencies
    - Use testImplementation to define test dependencies
    ```
-   testImplementation("junit:junit:4.12"
+   testImplementation("junit:junit:4.12")
    ```
  * Configuration
    - Use test block to configure testing
