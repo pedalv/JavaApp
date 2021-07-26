@@ -7,6 +7,7 @@ import no.agitec.fagaften.mellom.oppdrag.common.EmployeeResponseEntityBuilder;
 import no.agitec.fagaften.mellom.oppdrag.domain.Employee;
 import no.agitec.fagaften.mellom.oppdrag.exception.EmployeeNotFoundException;
 import no.agitec.fagaften.mellom.oppdrag.service.EmployeeService;
+import org.apache.geode.security.NotAuthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -59,17 +60,35 @@ public class EmployeeRestController {
         }
 
         Optional<Employee> employee = employeeService.fetch(id);
+
+        if(employee.isEmpty()) {
+            return new EmployeeResponseEntityBuilder()
+                    .httpStatus(HttpStatus.NOT_FOUND)
+                    //404 - NOT FOUND I DATABASE
+                    .message("An error occurred while retrieving employee with ID " + id + " because it is not available in database")
+                    .build();
+        }
+
         if(employee.isPresent()) {
             try {
-                return ResponseEntity.ok(objectMapper.writeValueAsString(employee.get()));
+                // 200 - DATA IS AVAILABLE TO SEND
+                ResponseEntity.ok(objectMapper.writeValueAsString(employee.get()));
             } catch (JsonProcessingException e) {
                 return new EmployeeResponseEntityBuilder()
                         .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+                        //5nn - SERVER IS DOWN/BAD_GATEWAY/ETC
+                        .message("An error occurred while retrieving employee with ID " + id + " about " + e.getMessage())
+                        .build();
+            } catch(NotAuthorizedException e) {
+                return new EmployeeResponseEntityBuilder()
+                        .httpStatus(HttpStatus.FORBIDDEN)
+                        //4nn - USER DO NOT HAVE ACCESS TO RETRIVE DATA FROM SERVER
                         .message("An error occurred while retrieving employee with ID " + id + " about " + e.getMessage())
                         .build();
             }
         }
 
+        //OTHER PROBLEMS
         return new EmployeeResponseEntityBuilder()
                 .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
                 .message(new EmployeeNotFoundException(id).getMessage())
