@@ -27,6 +27,8 @@
 ## HANA database
 - [Part 1 How to Create simple REST service in S/4HANA | REST API in ABAP and S/4HANA | Simple REST](https://www.youtube.com/watch?v=ErtjdNRMszE)
 - [Part 2 How to Create simple REST service in S/4HANA | Implementing the REST Service | REST API in S4](https://www.youtube.com/watch?v=GUJD6xLeKlU)
+- [Part 3 How to Create simple REST service in S/4HANA | CSRF token issue in SAP S/4HANA System](https://www.youtube.com/watch?v=DgqzfFuMH5s)
+- [Part 4 Consume Simple REST Service in SAP Fiori Apps | SAP Fiori Handle CSRF Token in AJAX calls](https://www.youtube.com/watch?v=IAgOt1IBBTo)
 - [SAP Training & Adoption](https://www.youtube.com/c/SAPTrainingAdoption/search?query=database)
 - [Accessing Data using REST APIs with Python on XSA | SAP](https://blogs.sap.com/2018/07/05/accessing-data-using-rest-apis-with-python-on-xsa/)
 - [Writing and Modifying Data using REST APIs with Python on XSA | SAP](https://blogs.sap.com/2018/07/05/writing-and-modifying-data-using-rest-apis-with-python-on-xsa/)
