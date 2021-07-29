@@ -23,3 +23,15 @@
 - [Enterprise Services Repository](https://wiki.scn.sap.com/wiki/display/ESpackages/Enterprise+Services+Repository)
 - [Integration Directory](https://help.sap.com/doc/saphelp_nw75/7.5.5/en-US/48/c7a206da5e31ebe10000000a42189b/content.htm?no_cache=true)
 - [How to install SAP 7.52 in 20 minutes [Step by step] *free download*](https://www.youtube.com/watch?v=Mk9dslG-_RU)
+
+## HANA database
+- [Part 1 How to Create simple REST service in S/4HANA | REST API in ABAP and S/4HANA | Simple REST](https://www.youtube.com/watch?v=ErtjdNRMszE)
+- [Part 2 How to Create simple REST service in S/4HANA | Implementing the REST Service | REST API in S4](https://www.youtube.com/watch?v=GUJD6xLeKlU)
+- [SAP Training & Adoption](https://www.youtube.com/c/SAPTrainingAdoption/search?query=database)
+- [Accessing Data using REST APIs with Python on XSA | SAP](https://blogs.sap.com/2018/07/05/accessing-data-using-rest-apis-with-python-on-xsa/)
+- [Writing and Modifying Data using REST APIs with Python on XSA | SAP](https://blogs.sap.com/2018/07/05/writing-and-modifying-data-using-rest-apis-with-python-on-xsa/)
+- [SAP WebIDE for HANA 1.0 SPS 12 | SAP](https://blogs.sap.com/2018/07/05/writing-and-modifying-data-using-rest-apis-with-python-on-xsa/)
+- [Developing a REST API in ABAP | SAP](https://blogs.sap.com/2013/01/24/developing-a-rest-api-in-abap/)
+- [Update the DB from Rest API | SAP Community](https://answers.sap.com/questions/13065919/update-the-db-from-rest-api.html)
+- [UPDATE dbtab - source - ABAP Keyword Documentation (sap.com)](https://help.sap.com/doc/abapdocu_750_index_htm/7.50/en-US/abapupdate_source.htm)
+- [Kilde: How to update database table in sap via rest api with java](https://www.google.com/search?q=how+to+update+database+table+in+sap+via+rest+api+with+java&ei=YmkCYb-xCYSUrwSJ-YfQDw&oq=how+to+update+database+table+in+sap+via+rest+api+with+java&gs_lcp=Cgdnd3Mtd2l6EAM6BwgAEEcQsAM6BQghEKABOgQIIRAVOgcIIRAKEKABSgQIQRgAUOtLWNFeYJNjaAFwAngAgAGCAYgB9weSAQM3LjSYAQCgAQHIAQTAAQE&sclient=gws-wiz&ved=0ahUKEwi_6pfk8IfyAhUEyosKHYn8AfoQ4dUDCA4&uact=5#scso=_RmoCYfz4DO-krgTPjqzACA41:36)
