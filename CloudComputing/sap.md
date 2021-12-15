@@ -23,6 +23,8 @@
 - [Enterprise Services Repository](https://wiki.scn.sap.com/wiki/display/ESpackages/Enterprise+Services+Repository)
 - [Integration Directory](https://help.sap.com/doc/saphelp_nw75/7.5.5/en-US/48/c7a206da5e31ebe10000000a42189b/content.htm?no_cache=true)
 - [How to install SAP 7.52 in 20 minutes [Step by step] *free download*](https://www.youtube.com/watch?v=Mk9dslG-_RU)
+- [Sap Teched 2021 Session Catalog](https://reg.sapevents.sap.com/flow/sap/sapteched2021/portal/page/sessions?showMyInterest=false)
+
 
 ## HANA database
 - [Part 1 How to Create simple REST service in S/4HANA | REST API in ABAP and S/4HANA | Simple REST](https://www.youtube.com/watch?v=ErtjdNRMszE)
