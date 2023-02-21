@@ -59,9 +59,9 @@
 - Create a file: 
   * ``` sudo touch /var/file.txt ```
   * ``` touch another four word name ``` => created 4 empty files: another, four, word and name
-    * ``` touch another\ four\ word\ name
-    * ``` touch "another four word name"
-    * ``` touch another-four-word-name
+    * ``` touch another\ four\ word\ name ```
+    * ``` touch "another four word name" ```
+    * ``` touch another-four-word-name ```
     * ``` touch file1 file2  file12 ```
   * ``` nano file1 ``` === create a file to edit
     * ``` mkdir newdata ```
@@ -750,7 +750,7 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
 ## [Linux System Administration](http://bootstrap-it.com/linux-admin/)
 - Why Linux?
   * Most web and application servers run on Linux
-  * Nost Continuous Integration/Continuous Deployments run on Linux
+  * Most Continuous Integration/Continuous Deployments run on Linux
   * Docker vurtualizes kernel resources of its Linux host
   * All SWS EC2 instances run on Linux hosts (using Xen or KVM)
 - [Linux Performenca Monitoring and Tuning](https://app.pluralsight.com/library/courses/linux-performance-monitoring-tuning/table-of-contents)
@@ -841,6 +841,8 @@ Set-VMFirmware -VMName "VMname" -EnableSecureBoot Off
     * Name: -
   * ``` sudo chown ubuntu:secret-group /var/secret/ ```
   * ``` chmod o+x data.txt ```
+  * ``` chmod u+x data.txt ``` 
+  * ``` chmod +x data.txt ```
   * Permission: Numeric Notation
 
         | Read      | r |  4 |
