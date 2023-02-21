@@ -131,6 +131,7 @@ docker image build -t nigelpoulton/gsd:ctr --no-cache .
 * docker image build -t nigelpoulton/gsd:ctr --no-cache .
 * docker image build -t <docker Hub ID>/<Repo name>:<Image name>
 * docker rmi [image ID]
+* docker rmi -f <image-id>, remove an image
 * docker rmi <imageid>: Used to delete the specified image ID from local storage.
 - Docker Client Container Commands
 * docker run [image name]
@@ -147,7 +148,7 @@ $ docker ps
 CONTAINER ID   IMAGE                         COMMAND          CREATED         STATUS         PORTS                NAMES
 832618254ae7   kitematic/hello-world-nginx   "sh /start.sh"   3 minutes ago   Up 3 minutes   0.0.0.0:81->80/tcp   ecstatic_poitras
 ```
-* docker ps -a
+* docker ps -a, List of kill containers
 * docker rm [container ID]
 * docker rm <container id>: Used to delete a stopped container
 * docker rm -f $(docker ps -a -q)
@@ -162,6 +163,7 @@ docker.io/bginx/1.13.5
 docker.io (default)/<repo>/ latest(default)
 ```
 
+* docker images
 * docker image ls
 * docker image ls nigelpoulton/ctr-demo:2
 * docker image ls nigelpoulton/getting-started-k8s:1.0
@@ -202,7 +204,7 @@ docker.io (default)/<repo>/ latest(default)
     * ps -elf (inside the container terminal. Ctrl+P+Q to exit from container terminal)
 * docker container ls
 * docker container run -d alpine sleep 1d
-* docker conatainer exec -it 60 sh (60 container_id)
+* docker container exec -it 60 sh (60 container_id)
     * ps -elf
 * docker container ls
 * docker container run -d --name web1 -p 80:80 microsoft/iis === Start a new background container running the default IIS web server and map port 80 on the host to 80 in the container
@@ -219,6 +221,7 @@ docker.io (default)/<repo>/ latest(default)
 * docker container run -it --name test alpine sh
     * exit or Ctrl+P+Q
 * docker container rm <test> -f
+
 
 - Share 
 * docker tag docker101tutorial {userName}/docker101tutorial
