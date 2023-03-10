@@ -534,6 +534,15 @@
     - We can safely use collect() with parallel streams if we follow the same requirements of associativity and identity. (For example, combining any partially accumulated result with an empty result container must produce an equivalent result.)
     - Or, if we are grouping with the Collectors class and ordering is not important, we can use the method groupingByConcurrent(), the concurrent version of groupingBy().
 
+## TIPs
+- Use Java streams to filter, transform and process data.
+- Perform decomposition and reduction, including grouping and partitioning on sequential and parallel streams.
+- A lambda expression is an anonymous method
+- Functional programming: Passing code as data
+- Lambda expression implements functional interfaces
+- Standard functional interfaces in package java.util.function
+
+
 ## Resources
 - [Working with Streams and Lambda Expressions in Java (Java SE 11 Developer Certification 1Z0-819)](https://app.pluralsight.com/library/courses/streams-lambda-expressions-java-se-11-developer-certification-1z0-819/table-of-contents)
 - [Implementing Concurrency in Java (Java SE 11 Developer Certification 1Z0-819)](https://app.pluralsight.com/library/courses/java-concurrency-implementing-certification-1z0-819)
