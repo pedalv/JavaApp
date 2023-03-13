@@ -11,6 +11,7 @@ import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class LambdasExercise02 {
 
@@ -29,7 +30,11 @@ public class LambdasExercise02 {
         // TODO: Implement interface ProductFilter with a lambda expression
         // The lambda expression should return true if the product is in the given category
         //ProductFilter filter = null; // TODO: Replace 'null' by a lambda expression
-        ProductFilter filter = p -> p.getCategory().equals(category);
+        ProductFilter filter = p ->  p.getCategory().equals(category);
+
+        // Creating predicate
+        Predicate<Category> hasCategory = c -> (c.equals(category));
+
 
         //List<Product> result = exercise.findProductsByCategory(products, FOOD);
 
@@ -38,8 +43,12 @@ public class LambdasExercise02 {
         for (Product product : products) {
             // TODO: Add products that are accepted by the filter to the 'result' list
             if(filter.accept(product)) {
+                //result.add(product);
+            }
+            if(hasCategory.test(product.getCategory())) {
                 result.add(product);
             }
+
         }
 
         return result;
