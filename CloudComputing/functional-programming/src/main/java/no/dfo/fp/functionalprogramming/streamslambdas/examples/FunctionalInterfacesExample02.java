@@ -34,7 +34,7 @@ public class FunctionalInterfacesExample02 {
             productsByCategory.get(category).add(product);
         }
 
-        // With Map.computeIfAbsent()
+        // With Map.computeIfAbsent() - it works as a map with key, values
         for (Product product : products) {
             Category category = product.getCategory();
 

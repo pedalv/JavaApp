@@ -540,9 +540,6 @@
 - A lambda expression is an anonymous method.
 - Functional programming: Passing code as data.
 - Lambda expression implements functional interface.
-- A functional interface has a single abstract method.
-- Any interface with a SAM(Single Abstract Method) is a functional interface, and its implementation may be treated as lambda expressions.
-- Standard functional interfaces in package java.util.function.
 - Catch an exception in a loop with lambda expressions can be very verbose.
 - Captured local variable must be effectively final. This approach should simplify the process of making lambda execution thread-safe.
 - One of the main purposes of lambdas is use in parallel computing, which means that they're really helpful when it comes to thread-safety.
@@ -554,22 +551,8 @@
 - [Lambda Expressions and Functional Interfaces: Tips and Best Practices](https://www.baeldung.com/java-8-lambda-expressions-tips)
 - [Functional Interfaces in Java 8](https://www.baeldung.com/java-8-functional-interfaces)
 - Method references: products.forEach(product -> System.out.println(product)) => products.forEach(System.out::println)
-- Functions, functional interfaces:
-  - public interface Function<T, R> { … }
-  - Map<String, Integer> nameMap = new HashMap<>(); Integer value = nameMap.computeIfAbsent("John", String::length);
-  - IntFunction, LongFunction, DoubleFunction: arguments are of specified type, return type is parameterized
-  - ToIntFunction, ToLongFunction, ToDoubleFunction: return type is of specified type, arguments are parameterized
-  - BiFunction: DoubleToIntFunction, DoubleToLongFunction, IntToDoubleFunction, IntToLongFunction, LongToIntFunction, LongToDoubleFunction: having both argument and return type defined as primitive types, as specified by their names
-  - @FunctionalInterface public interface ShortToByteFunction { byte applyAsByte(short s); }
-  - BooleanSupplier, DoubleSupplier, LongSupplier and IntSupplier, whose return types are corresponding primitives.
-  - the Consumer accepts a generified argument and returns nothing: DoubleConsumer, IntConsumer and LongConsumer
-  - Predicates is a function that receives a value and returns a boolean value: IntPredicate, DoublePredicate and LongPredicate
-  - Operators. Operator interfaces are special cases of a function that receive and return the same value type.
-  - reduction operation: se above, Reduction  is an operation that takes many elements and combines them to reduce them into a single value or object. Reduction is done by applying an operation multiple times.
-  - 
 - map() is used to transform the value or the type of the elements of a stream => String, integer, Long, etc
 - flatMap() is used to flatten (or combine) the elements of a stream into one (new) stream => ? 
-
 
 ## Resources
 - [Working with Streams and Lambda Expressions in Java (Java SE 11 Developer Certification 1Z0-819)](https://app.pluralsight.com/library/courses/streams-lambda-expressions-java-se-11-developer-certification-1z0-819/table-of-contents)
@@ -592,3 +575,39 @@
 - [Leveraging Parallel Streams for Fast Data Processing in Java 8](https://app.pluralsight.com/library/courses/leveraging-parallel-streams-fast-data-processing-java/table-of-contents)
 - [Java: JSON Fundamentals](https://app.pluralsight.com/library/courses/java-json-fundamentals/table-of-contents)
 - [Introduction to Developing AWS Lambdas in Java](https://app.pluralsight.com/library/courses/enterprise-aws-lambdas-java-eclipse-ide/table-of-contents)
+
+## Functions, functional interfaces:
+- A functional interface has a single abstract method.
+- Any interface with a SAM(Single Abstract Method) is a functional interface, and its implementation may be treated as lambda expressions.
+- Standard functional interfaces in package java.util.function.
+- Examples: 
+  - interface Function<T, R> { R apply(T value); }
+  - interface Consumer<T> { void accept(T value); }
+    - the Consumer accepts a generified argument and returns nothing: DoubleConsumer, IntConsumer and LongConsumer
+  - interface Supplier<T> { T get(); }
+    - Opposite of consumer 
+    - BooleanSupplier, DoubleSupplier, LongSupplier and IntSupplier, whose return types are corresponding primitives.
+  - interface Predicate<T> { boolean test(T value); }
+    - Predicates is a function that receives a value and returns a boolean value: IntPredicate, DoublePredicate and LongPredicate
+  - interface UnaryOperator<T> { T apply(T value); }
+      - Operators. Operator interfaces are special cases of a function that receive and return the same value type. 
+  - BiFunction: DoubleToIntFunction, DoubleToLongFunction, IntToDoubleFunction, IntToLongFunction, LongToIntFunction, LongToDoubleFunction: having both argument and return type defined as primitive types, as specified by their names
+    - interface BiFunction<T, U, R> { R apply(T v1, U v2); }
+    - interface BiConsumer<T, U> { void apply(T v1, U v2); }
+    - interface BiPredicate<T, U> { boolean test(T v1, U v2); }
+    - interface BinaryOperator<T> { T test(T v1, T v2); }
+      - Operators. Operator interfaces are special cases of a function that receive and return the same value type.
+  - default V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction) { ... }
+    - it works as a map with key, values
+    ```
+      Map<Category, List<Product>> productsByCategory = new HashMap<>();
+      ...
+      productsByCategory.computeIfAbsent(category, c -> new ArrayList<>()).add(product);
+    ```
+  - Map<String, Integer> nameMap = new HashMap<>(); Integer value = nameMap.computeIfAbsent("John", String::length);
+  - IntFunction, LongFunction, DoubleFunction: arguments are of specified type, return type is parameterized
+  - ToIntFunction, ToLongFunction, ToDoubleFunction: return type is of specified type, arguments are parameterized
+  - @FunctionalInterface public interface ShortToByteFunction { byte applyAsByte(short s); }
+  - reduction operation: se above, Reduction  is an operation that takes many elements and combines them to reduce them into a single value or object. Reduction is done by applying an operation multiple times.
+- Functional Composition
+  -  
