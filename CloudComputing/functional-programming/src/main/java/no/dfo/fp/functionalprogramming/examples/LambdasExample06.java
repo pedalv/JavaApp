@@ -28,7 +28,7 @@ public class LambdasExample06 {
             products.forEach(product -> {
                 try {
                     writer.write(product.toString() + "\n");
-                } catch (IOException e) {
+                } catch (IOException e) { // Catch an exception in a loop with lambda expressions can be very verbose
                     throw new RuntimeException(e);
                 }
             });

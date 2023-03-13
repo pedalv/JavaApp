@@ -541,6 +541,7 @@
 - Functional programming: Passing code as data
 - Lambda expression implements functional interfaces
 - Standard functional interfaces in package java.util.function
+- Catch an exception in a loop with lambda expressions can be very verbose 
 
 
 ## Resources
