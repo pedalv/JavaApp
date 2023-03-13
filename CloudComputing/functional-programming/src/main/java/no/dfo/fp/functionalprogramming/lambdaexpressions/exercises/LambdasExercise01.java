@@ -5,7 +5,7 @@
  */
 package no.dfo.fp.functionalprogramming.lambdaexpressions.exercises;
 
-import no.dfo.fp.functionalprogramming.lambdaexpressions.model.Product;
+import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.List;
 

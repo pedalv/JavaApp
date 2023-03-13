@@ -5,8 +5,8 @@
  */
 package no.dfo.fp.functionalprogramming.lambdaexpressions.examples;
 
-import no.dfo.fp.functionalprogramming.lambdaexpressions.model.ExampleData;
-import no.dfo.fp.functionalprogramming.lambdaexpressions.model.Product;
+import no.dfo.fp.functionalprogramming.model.ExampleData;
+import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.Comparator;
 import java.util.List;

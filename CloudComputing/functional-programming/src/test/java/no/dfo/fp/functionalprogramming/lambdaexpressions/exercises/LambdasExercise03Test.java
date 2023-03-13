@@ -5,7 +5,7 @@
  */
 package no.dfo.fp.functionalprogramming.lambdaexpressions.exercises;
 
-import no.dfo.fp.functionalprogramming.lambdaexpressions.model.Product;
+import no.dfo.fp.functionalprogramming.model.Product;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,10 +13,10 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-import static no.dfo.fp.functionalprogramming.lambdaexpressions.model.Category.CLEANING;
-import static no.dfo.fp.functionalprogramming.lambdaexpressions.model.Category.FOOD;
-import static no.dfo.fp.functionalprogramming.lambdaexpressions.model.Category.OFFICE;
-import static no.dfo.fp.functionalprogramming.lambdaexpressions.model.Category.UTENSILS;
+import static no.dfo.fp.functionalprogramming.model.Category.CLEANING;
+import static no.dfo.fp.functionalprogramming.model.Category.FOOD;
+import static no.dfo.fp.functionalprogramming.model.Category.OFFICE;
+import static no.dfo.fp.functionalprogramming.model.Category.UTENSILS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LambdasExercise03Test {

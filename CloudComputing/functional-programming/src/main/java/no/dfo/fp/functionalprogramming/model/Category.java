@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2021 by Jesper de Jong (jesper@jdj-it.com).
  */
-package no.dfo.fp.functionalprogramming.lambdaexpressions.model;
+package no.dfo.fp.functionalprogramming.model;
 
 public enum Category {
     FOOD,

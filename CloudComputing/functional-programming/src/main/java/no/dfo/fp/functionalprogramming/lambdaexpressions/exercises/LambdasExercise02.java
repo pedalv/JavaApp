@@ -6,8 +6,8 @@
 package no.dfo.fp.functionalprogramming.lambdaexpressions.exercises;
 
 
-import no.dfo.fp.functionalprogramming.lambdaexpressions.model.Category;
-import no.dfo.fp.functionalprogramming.lambdaexpressions.model.Product;
+import no.dfo.fp.functionalprogramming.model.Category;
+import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;

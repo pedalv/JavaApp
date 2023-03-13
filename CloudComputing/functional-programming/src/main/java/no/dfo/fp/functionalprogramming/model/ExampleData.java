@@ -3,14 +3,14 @@
  *
  * Copyright (C) 2021 by Jesper de Jong (jesper@jdj-it.com).
  */
-package no.dfo.fp.functionalprogramming.lambdaexpressions.model;
+package no.dfo.fp.functionalprogramming.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static no.dfo.fp.functionalprogramming.lambdaexpressions.model.Category.*;
+import static no.dfo.fp.functionalprogramming.model.Category.*;
 
 public class ExampleData {
 

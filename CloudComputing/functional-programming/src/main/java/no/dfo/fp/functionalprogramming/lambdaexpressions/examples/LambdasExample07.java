@@ -5,9 +5,9 @@
  */
 package no.dfo.fp.functionalprogramming.lambdaexpressions.examples;
 
-import no.dfo.fp.functionalprogramming.lambdaexpressions.model.Category;
-import no.dfo.fp.functionalprogramming.lambdaexpressions.model.ExampleData;
-import no.dfo.fp.functionalprogramming.lambdaexpressions.model.Product;
+import no.dfo.fp.functionalprogramming.model.Category;
+import no.dfo.fp.functionalprogramming.model.ExampleData;
+import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
