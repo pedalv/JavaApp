@@ -537,11 +537,38 @@
 ## TIPs
 - Use Java streams to filter, transform and process data.
 - Perform decomposition and reduction, including grouping and partitioning on sequential and parallel streams.
-- A lambda expression is an anonymous method
-- Functional programming: Passing code as data
-- Lambda expression implements functional interfaces
-- Standard functional interfaces in package java.util.function
-- Catch an exception in a loop with lambda expressions can be very verbose 
+- A lambda expression is an anonymous method.
+- Functional programming: Passing code as data.
+- Lambda expression implements functional interface.
+- A functional interface has a single abstract method.
+- Any interface with a SAM(Single Abstract Method) is a functional interface, and its implementation may be treated as lambda expressions.
+- Standard functional interfaces in package java.util.function.
+- Catch an exception in a loop with lambda expressions can be very verbose.
+- Captured local variable must be effectively final. This approach should simplify the process of making lambda execution thread-safe.
+- One of the main purposes of lambdas is use in parallel computing, which means that they're really helpful when it comes to thread-safety.
+    ```
+    int[] total = new int[1];
+    Runnable r = () -> total[0]++;
+    r.run();
+    ```
+- [Lambda Expressions and Functional Interfaces: Tips and Best Practices](https://www.baeldung.com/java-8-lambda-expressions-tips)
+- [Functional Interfaces in Java 8](https://www.baeldung.com/java-8-functional-interfaces)
+- Method references: products.forEach(product -> System.out.println(product)) => products.forEach(System.out::println)
+- Functions, functional interfaces:
+  - public interface Function<T, R> { … }
+  - Map<String, Integer> nameMap = new HashMap<>(); Integer value = nameMap.computeIfAbsent("John", String::length);
+  - IntFunction, LongFunction, DoubleFunction: arguments are of specified type, return type is parameterized
+  - ToIntFunction, ToLongFunction, ToDoubleFunction: return type is of specified type, arguments are parameterized
+  - BiFunction: DoubleToIntFunction, DoubleToLongFunction, IntToDoubleFunction, IntToLongFunction, LongToIntFunction, LongToDoubleFunction: having both argument and return type defined as primitive types, as specified by their names
+  - @FunctionalInterface public interface ShortToByteFunction { byte applyAsByte(short s); }
+  - BooleanSupplier, DoubleSupplier, LongSupplier and IntSupplier, whose return types are corresponding primitives.
+  - the Consumer accepts a generified argument and returns nothing: DoubleConsumer, IntConsumer and LongConsumer
+  - Predicates is a function that receives a value and returns a boolean value: IntPredicate, DoublePredicate and LongPredicate
+  - Operators. Operator interfaces are special cases of a function that receive and return the same value type.
+  - reduction operation: se above, Reduction  is an operation that takes many elements and combines them to reduce them into a single value or object. Reduction is done by applying an operation multiple times.
+  - 
+- map() is used to transform the value or the type of the elements of a stream => String, integer, Long, etc
+- flatMap() is used to flatten (or combine) the elements of a stream into one (new) stream => ? 
 
 
 ## Resources
