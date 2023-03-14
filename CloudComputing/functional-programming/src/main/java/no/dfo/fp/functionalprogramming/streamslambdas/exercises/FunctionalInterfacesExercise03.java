@@ -33,8 +33,11 @@ public class FunctionalInterfacesExercise03 {
         // TODO: Implement this method; apply the appropriate operation on the values a and b.
         // Note: This is a one-liner. You don't need a switch statement, for example.
 
+        return operation.getOperator().applyAsDouble(a,b);
+
+
 //        return ...;
 
-        throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
+        //throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
     }
 }

@@ -38,21 +38,36 @@ public class FunctionalInterfacesExercise02 {
      * @return A Predicate that returns true for products that match the combination of search criteria.
      */
     public Predicate<Product> createSearchPredicate(SearchCriteria criteria) {
-        Predicate<Product> categoryIs = null; /* TODO: Implement a lambda expression that checks if a product's category is equal to criteria.category */;
+        Predicate<Product> categoryIs = product -> product.getCategory().compareTo(criteria.category) == 0; /* TODO: Implement a lambda expression that checks if a product's category is equal to criteria.category */;
         Predicate<Product> nameMatches = product -> product.getName().matches(criteria.namePattern);
-        Predicate<Product> minimumPriceIs = null; /* TODO: Implement a lambda expression that checks if a product's price is greater than criteria.minimumPrice */;
+        Predicate<Product> minimumPriceIs = product -> product.getPrice().compareTo(criteria.minimumPrice) >= 0; /* TODO: Implement a lambda expression that checks if a product's price is greater than criteria.minimumPrice */;
         Predicate<Product> maximumPriceIs = product -> product.getPrice().compareTo(criteria.maximumPrice) <= 0;
 
-        Predicate<Product> predicate = null; /* TODO: Implement a lambda expression that takes a product and always returns true */;
+        Predicate<Product> predicate = product -> true; /* TODO: Implement a lambda expression that takes a product and always returns true */;
 
         if (criteria.category != null) {
             // TODO: Update 'predicate' to combine it with the 'categoryIs' predicate.
+            //predicate = product -> categoryIs.test(product);
+            predicate = predicate.and(product -> categoryIs.test(product));
+
         }
 
         // TODO: Do the same for the other search criteria and corresponding predictates:
         // - if criteria.namePattern is not null, include the 'nameMatches' predicate
+        if(criteria.namePattern != null) {
+            //predicate = product -> nameMatches.test(product);
+            predicate = predicate.and(product -> nameMatches.test(product));
+        }
         // - if criteria.minimumPrice is not null, include the 'minimumPriceIs' predicate
+        if(criteria.minimumPrice != null) {
+            //predicate = product -> minimumPriceIs.test(product);
+            predicate = predicate.and(product -> minimumPriceIs.test(product));
+        }
         // - if criteria.maximumPrice is not null, include the 'maximumPriceIs' predicate
+        if(criteria.maximumPrice != null) {
+            //predicate = product -> maximumPriceIs.test(product);
+            predicate = predicate.and(product -> maximumPriceIs.test(product));
+        }
 
         return predicate;
     }
