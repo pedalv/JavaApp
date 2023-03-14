@@ -11,6 +11,7 @@ import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class BasicStreamsExample03 {
 
@@ -34,5 +35,9 @@ public class BasicStreamsExample03 {
         products.stream()
                 .flatMap(product -> spaces.splitAsStream(product.getName()))
                 .forEach(System.out::println);
+
+        Stream<Stream<String>> streammap = products.stream().map(product -> spaces.splitAsStream(product.getName()));
+        Stream<String> streamflastmap = products.stream().flatMap(product -> spaces.splitAsStream(product.getName()));
+
     }
 }

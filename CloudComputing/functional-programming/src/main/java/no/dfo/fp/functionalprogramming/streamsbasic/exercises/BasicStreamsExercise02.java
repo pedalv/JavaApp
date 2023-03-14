@@ -5,6 +5,7 @@ import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BasicStreamsExercise02 {
@@ -25,9 +26,15 @@ public class BasicStreamsExercise02 {
         //
         // Hint: Use the API documentation of interface java.util.stream.Stream.
 
+        return products
+                .stream()
+                .filter(product -> product.getCategory().equals(category))
+                .map(Product::getName)
+                .collect(Collectors.toList());
+
 //        return products.stream()...;
 
-        throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
+        //       throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
     }
 
     /**
@@ -46,8 +53,41 @@ public class BasicStreamsExercise02 {
         //
         // Hint: You'll need to use different mapping methods.
 
+
+/*
+        //Try 1
+        //Can only run one time otherway stream has already been operated upon or closed
+        List<String> names = new ArrayList<>();
+        categories.forEach( c -> {
+            List<Product> p = productsByCategory.get(c);
+            List<String> cpn = p.stream()
+                    .map(Product::getName)
+                    .distinct()
+                    .collect(Collectors.toList());
+            names.addAll(cpn);
+        });
+        //return names;
+*/
+
+/*
+        //Try 2
+        //Can only run one time otherway stream has already been operated upon or closed
+        List<Stream<String>> a = categories
+                .map(c -> productsByCategory.get(c))
+                .map(products -> products.stream().map(Product::getName))
+                .distinct()
+                .collect(Collectors.toList());
+*/
+        //Final version
+        return categories
+                .map(c -> productsByCategory.get(c))
+                .flatMap(products -> products.stream().map(Product::getName))
+                .distinct()
+                .collect(Collectors.toList());
+
+
 //        return categories...;
 
-        throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
+//        throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
     }
 }

@@ -551,8 +551,10 @@
 - [Lambda Expressions and Functional Interfaces: Tips and Best Practices](https://www.baeldung.com/java-8-lambda-expressions-tips)
 - [Functional Interfaces in Java 8](https://www.baeldung.com/java-8-functional-interfaces)
 - Method references: products.forEach(product -> System.out.println(product)) => products.forEach(System.out::println)
-- map() is used to transform the value or the type of the elements of a stream => String, integer, Long, etc
-- flatMap() is used to flatten (or combine) the elements of a stream into one (new) stream => ? 
+- map() - one to one - is used to transform the value or the type of the elements of a stream => String, integer, Long, etc
+  - ``` Stream<Stream<String>> streammap = products.stream().map(product -> spaces.splitAsStream(product.getName())); ```
+- flatMap() - one to many -  is used to flatten (or combine) the elements of a stream into one (new) stream => ? 
+  -  ``` Stream<String> streamflastmap = products.stream().flatMap(product -> spaces.splitAsStream(product.getName())); ```
 
 ## Resources
 - [Working with Streams and Lambda Expressions in Java (Java SE 11 Developer Certification 1Z0-819)](https://app.pluralsight.com/library/courses/streams-lambda-expressions-java-se-11-developer-certification-1z0-819/table-of-contents)

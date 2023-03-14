@@ -13,6 +13,7 @@ import no.dfo.fp.functionalprogramming.model.Product;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class BasicStreamsExample04 {
 
@@ -25,6 +26,14 @@ public class BasicStreamsExample04 {
                 .filter(product -> product.getCategory() == Category.OFFICE)
                 .findFirst();
         opt.ifPresent(System.out::println);
+
+        products.stream()
+                .filter(product -> product.getCategory() == Category.OFFICE)
+                .findFirst()
+                .ifPresentOrElse(
+                        System.out::println,
+                        () -> Stream.empty()
+                );
 
         // If you only want to check if the stream contains an element that matches your search criteria,
         // then you can use anyMatch(), which will return a boolean result

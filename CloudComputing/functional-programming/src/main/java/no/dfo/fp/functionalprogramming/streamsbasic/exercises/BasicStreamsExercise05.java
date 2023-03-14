@@ -1,9 +1,11 @@
 package no.dfo.fp.functionalprogramming.streamsbasic.exercises;
 
+import no.dfo.fp.functionalprogramming.model.Category;
 import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 public class BasicStreamsExercise05 {
 
@@ -21,8 +23,16 @@ public class BasicStreamsExercise05 {
         // Hint: Use two stream operations; one the find the appropriate products,
         // and another one to check if they all cost less than the price limit.
 
+        return products
+                .stream()
+                .filter(p -> p.getCategory().equals(Category.OFFICE))
+                .filter(p -> p.getPrice().compareTo(priceLimit) <= 0)
+                .findAny()
+                .isPresent();
+
+
 //        return products.stream()...;
 
-        throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
+        //throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
     }
 }

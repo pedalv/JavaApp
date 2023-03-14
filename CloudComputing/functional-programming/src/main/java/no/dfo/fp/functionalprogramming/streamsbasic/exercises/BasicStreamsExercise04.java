@@ -1,5 +1,6 @@
 package no.dfo.fp.functionalprogramming.streamsbasic.exercises;
 
+import no.dfo.fp.functionalprogramming.model.Category;
 import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.List;
@@ -20,8 +21,16 @@ public class BasicStreamsExercise04 {
         // Hint: Use a terminal operation to find the cheapest product.
         // Look at the API documentation of interface java.util.stream.Stream, find out which operation would be suitable.
 
+        return products
+                .stream()
+                .filter(p -> p.getCategory().equals(Category.CLEANING))
+                .sorted((p1, p2) -> p1.getPrice().compareTo(p2.getPrice()))
+                .findFirst();
+
+
+
 //        return products.stream()...;
 
-        throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
+        //throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
     }
 }

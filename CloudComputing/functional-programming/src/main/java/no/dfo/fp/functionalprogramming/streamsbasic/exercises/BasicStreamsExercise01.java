@@ -1,8 +1,10 @@
 package no.dfo.fp.functionalprogramming.streamsbasic.exercises;
 
+import no.dfo.fp.functionalprogramming.model.Category;
 import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BasicStreamsExercise01 {
 
@@ -19,10 +21,18 @@ public class BasicStreamsExercise01 {
         // 2) Sort them by name
         // 3) Collect the result into a List
         //
+
+
+        return products
+                .stream()
+                .filter(product -> product.getCategory().equals(Category.UTENSILS))
+                .sorted((p1,p2) -> p1.getName().compareTo(p2.getName()))
+                .collect(Collectors.toList());
+
         // Hint: Use the API documentation of interface java.util.stream.Stream.
 
 //        return products.stream()...;
 
-        throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
+        //throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
     }
 }

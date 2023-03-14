@@ -18,14 +18,18 @@ class BasicStreamsExercise05Test {
     private BasicStreamsExercise05 exercise = new BasicStreamsExercise05();
 
     @Test
-    @DisplayName("Are all office products cheap?")
-    void areAllOfficeProductsCheap() {
+    @DisplayName("Are all office products cheap? True")
+    void areAllOfficeProductsCheapTrue() {
         assertThat(exercise.areAllOfficeProductsCheap(new ArrayList<>(TEST_PRODUCTS), new BigDecimal("8.00")))
                 .describedAs("Exercise 5: Your solution does not return the correct result, all office products are less than $ 8.00.")
                 .isTrue();
+    }
 
-        assertThat(exercise.areAllOfficeProductsCheap(new ArrayList<>(TEST_PRODUCTS), new BigDecimal("6.00")))
-                .describedAs("Exercise 5: Your solution does not return the correct result, not all office products are less than $ 6.00.")
+    @Test
+    @DisplayName("Are all office products cheap? False")
+    void areAllOfficeProductsCheapFalse() {
+        assertThat(exercise.areAllOfficeProductsCheap(new ArrayList<>(TEST_PRODUCTS), new BigDecimal("4.00")))
+                .describedAs("Exercise 5: Your solution does not return the correct result, not all office products are less than $ 4.00.")
                 .isFalse();
     }
 }

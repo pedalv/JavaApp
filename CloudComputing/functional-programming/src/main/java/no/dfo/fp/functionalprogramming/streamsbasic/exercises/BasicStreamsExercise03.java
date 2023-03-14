@@ -21,8 +21,15 @@ public class BasicStreamsExercise03 {
         //
         // Hint: You'll need to add two stream operations.
 
+        return products
+                .stream()
+                .filter( p -> p.getPrice().compareTo(priceLimit) <= 0)
+                //.findFirst()
+                .findAny();
+
+
 //        return products.stream()...;
 
-        throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
+        //throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
     }
 }
