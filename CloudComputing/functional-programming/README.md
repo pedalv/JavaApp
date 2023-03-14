@@ -597,6 +597,7 @@
     - interface BiPredicate<T, U> { boolean test(T v1, U v2); }
     - interface BinaryOperator<T> { T test(T v1, T v2); }
       - Operators. Operator interfaces are special cases of a function that receive and return the same value type.
+      - interface IntBinaryOperator<T> { int applyAsOnt(int v1, int v2); }
   - default V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction) { ... }
     - it works as a map with key, values
     ```
@@ -610,4 +611,28 @@
   - @FunctionalInterface public interface ShortToByteFunction { byte applyAsByte(short s); }
   - reduction operation: se above, Reduction  is an operation that takes many elements and combines them to reduce them into a single value or object. Reduction is done by applying an operation multiple times.
 - Functional Composition
-  -  
+  - combine to function in one
+    - **Function** andThen **Function**
+    - **Function** compode **Function**
+    - **Predicate** and **Predicate**
+  ```
+  Function<Product, BigDecimal> productToPrice = Product::getPrice;
+  Function<BigDecimal, String> priceToMessage = price -> String.format("The price of %s is $ %.2f%n", name, price);
+
+  //From
+  .map(productToPrice)
+  .map(priceToMessage)
+  //To
+  // Compose a new function out of the two functions above by using andThen(...)
+  Function<Product, String> productToMessage = productToPrice.andThen(priceToMessage);
+  // Alternative: use compose(...), which is the same as andThen(...) except that the order of the functions is reversed
+  // Function<Product, String> productToMessage = priceToMessage.compose(productToPrice);
+  .map(productToMessage)
+  
+  // Two simple predicates that can be combined using the functional composition methods in interface Predicate.
+  Predicate<Product> isFood = product -> product.getCategory() == Category.FOOD;
+  Predicate<Product> isCheap = product -> product.getPrice().compareTo(priceLimit) < 0;
+  isFood.and(isCheap)
+  ```
+  
+  
