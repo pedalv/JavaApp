@@ -577,6 +577,8 @@
 - [Leveraging Parallel Streams for Fast Data Processing in Java 8](https://app.pluralsight.com/library/courses/leveraging-parallel-streams-fast-data-processing-java/table-of-contents)
 - [Java: JSON Fundamentals](https://app.pluralsight.com/library/courses/java-json-fundamentals/table-of-contents)
 - [Introduction to Developing AWS Lambdas in Java](https://app.pluralsight.com/library/courses/enterprise-aws-lambdas-java-eclipse-ide/table-of-contents)
+- [Functional Reactive with Core JDK - by Sven Ruppert (Foojay JUG tour)](https://www.youtube.com/watch?v=dljXXu3eEnU)
+- [javaBin Online: "Fight Complexity with Functional Programming", Gopal Akshintala](https://www.youtube.com/watch?v=tnpL1O8kTbM)
 
 ## Functions, functional interfaces:
 - A functional interface has a single abstract method.
