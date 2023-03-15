@@ -21,7 +21,8 @@ public class AdvancedStreamsExample02 {
         // It returns an Optional; if the stream is empty, the result is an empty Optional
         Optional<BigDecimal> opt = products.stream()
                 .map(Product::getPrice)
-                .reduce((result, element) -> result.add(element)); // Can also be written with a method reference: BigDecimal::add
+                //.reduce((result, element) -> result.add(element)); // Can also be written with a method reference: BigDecimal::add
+                .reduce(BigDecimal::add);
 
         opt.ifPresentOrElse(
                 total -> System.out.printf("The total value of all products is: $ %.2f%n", total),
@@ -39,7 +40,11 @@ public class AdvancedStreamsExample02 {
         // The third parameter is a combiner function to combine intermediate results; this is useful for example for a parallel
         // stream, where different threads compute intermediate results that have to be combined into a final result
         BigDecimal total2 = products.stream()
-                .reduce(BigDecimal.ZERO, (result, product) -> result.add(product.getPrice()), BigDecimal::add);
+                .reduce(
+                        BigDecimal.ZERO, //identity
+                        (result, product) -> result.add(product.getPrice()), //accumulator
+                        BigDecimal::add //combiner
+                );
         System.out.printf("The total value of all products is: $ %.2f%n", total2);
     }
 }

@@ -19,12 +19,21 @@ public class AdvancedStreamsExample04 {
     public static void main(String[] args) {
         List<Product> products = ExampleData.getProducts();
 
+        /*
+         public static <T, K, U>
+            Collector<T, ?, Map<K,U>> toMap(Function<? super T, ? extends K> keyMapper,
+                                            Function<? super T, ? extends U> valueMapper,
+                                            BinaryOperator<U> mergeFunction) {
+                return toMap(keyMapper, valueMapper, mergeFunction, HashMap::new);
+            }
+         */
+        //IMPORTANT****************************************
         // Using Collectors.toMap() to compute the total price of products per category.
         Map<Category, BigDecimal> totalPerCategory = products.stream()
                 .collect(Collectors.toMap(
                         Product::getCategory,   // Key mapper function
                         Product::getPrice,      // Value mapper function
                         BigDecimal::add));      // Merge function
-        System.out.println(totalPerCategory);
+        System.out.println(totalPerCategory);   // {OFFICE=25.25, UTENSILS=56.49, FOOD=45.50, CLEANING=12.16}
     }
 }

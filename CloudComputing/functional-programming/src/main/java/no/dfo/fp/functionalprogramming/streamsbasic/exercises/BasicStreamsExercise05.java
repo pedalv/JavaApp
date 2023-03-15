@@ -5,7 +5,8 @@ import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class BasicStreamsExercise05 {
 
@@ -23,12 +24,25 @@ public class BasicStreamsExercise05 {
         // Hint: Use two stream operations; one the find the appropriate products,
         // and another one to check if they all cost less than the price limit.
 
+        //IMPORTANT ************************************'
+        Map<Boolean, List<Product>> partitionedProducts = products.stream()
+                .collect(Collectors.partitioningBy(product -> product.getPrice().compareTo(priceLimit) < 0));
+        System.out.println("Cheap products: ");
+        partitionedProducts.get(true).forEach(System.out::println);
+
+        System.out.println("Expensive products: ");
+        partitionedProducts.get(false).forEach(System.out::println);
+
+        //IMPORTANT ************************************'
         return products
                 .stream()
                 .filter(p -> p.getCategory().equals(Category.OFFICE))
                 .filter(p -> p.getPrice().compareTo(priceLimit) <= 0)
                 .findAny()
                 .isPresent();
+
+
+
 
 
 //        return products.stream()...;

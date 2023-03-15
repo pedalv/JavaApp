@@ -30,6 +30,7 @@ public class AdvancedStreamsExample05 {
 //                .map(Product::getName)
 //                .collect(Collectors.groupingBy(...));
 
+        //*IMPORTANT****************************************************************'
         // Create a Map of product names grouped by category.
         // We use a downstream collector, created by Collectors.mapping(...), to map grouped products to product names.
         // Note that Collectors.mapping(...) takes a mapping function and another downstream collector to determine how to collect its result.
@@ -47,5 +48,10 @@ public class AdvancedStreamsExample05 {
         // Use the API documentation of class Collectors to learn about the factory methods.
         Map<Category, BigDecimal> totalPerCategory = products.stream()
                 .collect(Collectors.groupingBy(Product::getCategory, Collectors.mapping(Product::getPrice, Collectors.reducing(BigDecimal.ZERO, BigDecimal::add))));
+
+        totalPerCategory.forEach((category, totalprice)-> {
+            System.out.println( String.format("%s - $   %.2f", category, totalprice));
+        });
+
     }
 }

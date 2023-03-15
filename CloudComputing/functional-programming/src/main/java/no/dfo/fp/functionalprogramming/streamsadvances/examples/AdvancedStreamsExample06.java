@@ -20,6 +20,7 @@ public class AdvancedStreamsExample06 {
 
         BigDecimal priceLimit = new BigDecimal("5.00");
 
+        //IMPORTANT ************************************'
         // Partitioning is a special case of grouping, where the classifier function is a Predicate
         // and the stream elements are divided into two groups.
         // The result is a map with two entries, with boolean values 'true' and 'false' as keys.
