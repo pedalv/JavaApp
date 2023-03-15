@@ -5,6 +5,13 @@ import no.dfo.fp.functionalprogramming.model.Product;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.partitioningBy;
+import static java.util.stream.Collectors.toSet;
 
 public class AdvancedStreamsExercise03 {
 
@@ -30,8 +37,17 @@ public class AdvancedStreamsExercise03 {
         // Hint: Look carefully at the type of the keys of the map that this method should return. It tells you something about the classifier function.
         // What relation does this have with the classifier function that you use when using a grouping operation?
 
+
+        Map<PriceRange, List<Product>> priceRangeKeys = products
+                .stream()
+                .collect(groupingBy(p -> p.getPrice().compareTo(cheapLimit) <= 0 ? PriceRange.CHEAP : ((p.getPrice().compareTo(expensiveLimit) >= 0) ? PriceRange.EXPENSIVE : PriceRange.MEDIUM)));
+
+        return products
+                .stream()
+                .collect(groupingBy(p -> p.getPrice().compareTo(cheapLimit) <= 0 ? PriceRange.CHEAP : ((p.getPrice().compareTo(expensiveLimit) >= 0) ? PriceRange.EXPENSIVE : PriceRange.MEDIUM)));
+
 //        return products.stream()...;
 
-        throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
+        //throw new UnsupportedOperationException("Not yet implemented"); // Remove this line
     }
 }

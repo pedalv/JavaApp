@@ -5,6 +5,7 @@ import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class BasicStreamsExercise04 {
 
@@ -20,6 +21,17 @@ public class BasicStreamsExercise04 {
         //
         // Hint: Use a terminal operation to find the cheapest product.
         // Look at the API documentation of interface java.util.stream.Stream, find out which operation would be suitable.
+
+        List<Product> unsorted = products
+                .stream()
+                .filter(p -> p.getCategory().equals(Category.CLEANING))
+                .collect(Collectors.toList());
+
+        List<Product> sortedOK = products
+                .stream()
+                .filter(p -> p.getCategory().equals(Category.CLEANING))
+                .sorted((p1, p2) -> p1.getPrice().compareTo(p2.getPrice()))
+                .collect(Collectors.toList());
 
         return products
                 .stream()

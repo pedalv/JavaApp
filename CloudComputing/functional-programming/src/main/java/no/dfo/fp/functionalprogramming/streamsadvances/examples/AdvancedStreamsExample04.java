@@ -27,7 +27,7 @@ public class AdvancedStreamsExample04 {
                 return toMap(keyMapper, valueMapper, mergeFunction, HashMap::new);
             }
          */
-        //IMPORTANT****************************************
+        //******************IMPORTANT*****************
         // Using Collectors.toMap() to compute the total price of products per category.
         Map<Category, BigDecimal> totalPerCategory = products.stream()
                 .collect(Collectors.toMap(

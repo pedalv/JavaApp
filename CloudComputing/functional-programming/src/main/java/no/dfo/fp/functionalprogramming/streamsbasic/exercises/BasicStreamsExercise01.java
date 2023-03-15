@@ -22,6 +22,16 @@ public class BasicStreamsExercise01 {
         // 3) Collect the result into a List
         //
 
+        List<Product> unsorted = products
+                .stream()
+                .filter(product -> product.getCategory().equals(Category.UTENSILS))
+                .collect(Collectors.toList());
+
+        List<Product> sortedOK = products
+                .stream()
+                .filter(product -> product.getCategory().equals(Category.UTENSILS))
+                .sorted((p1,p2) -> p1.getName().compareTo(p2.getName()))
+                .collect(Collectors.toList());
 
         return products
                 .stream()

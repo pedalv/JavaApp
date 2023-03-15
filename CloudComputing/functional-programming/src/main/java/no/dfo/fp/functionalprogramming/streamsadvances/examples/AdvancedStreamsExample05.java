@@ -30,7 +30,7 @@ public class AdvancedStreamsExample05 {
 //                .map(Product::getName)
 //                .collect(Collectors.groupingBy(...));
 
-        //*IMPORTANT****************************************************************'
+        //******************IMPORTANT*****************
         // Create a Map of product names grouped by category.
         // We use a downstream collector, created by Collectors.mapping(...), to map grouped products to product names.
         // Note that Collectors.mapping(...) takes a mapping function and another downstream collector to determine how to collect its result.

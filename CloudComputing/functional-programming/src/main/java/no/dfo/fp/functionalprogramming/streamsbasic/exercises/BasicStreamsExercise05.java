@@ -24,7 +24,7 @@ public class BasicStreamsExercise05 {
         // Hint: Use two stream operations; one the find the appropriate products,
         // and another one to check if they all cost less than the price limit.
 
-        //IMPORTANT ************************************'
+        //******************IMPORTANT*****************
         Map<Boolean, List<Product>> partitionedProducts = products.stream()
                 .collect(Collectors.partitioningBy(product -> product.getPrice().compareTo(priceLimit) < 0));
         System.out.println("Cheap products: ");
@@ -33,7 +33,7 @@ public class BasicStreamsExercise05 {
         System.out.println("Expensive products: ");
         partitionedProducts.get(false).forEach(System.out::println);
 
-        //IMPORTANT ************************************'
+        //******************IMPORTANT*****************
         return products
                 .stream()
                 .filter(p -> p.getCategory().equals(Category.OFFICE))
