@@ -1,6 +1,6 @@
 package no.dfo.fp.functionalprogramming.functionreactive.examples;
 
-import no.dfo.fp.functionalprogramming.functionreactive.Predicate;
+import no.dfo.fp.functionalprogramming.functionreactive.funint.Predicate;
 
 public class MainPredicate {
 
