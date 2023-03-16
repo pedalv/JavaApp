@@ -5,6 +5,7 @@ import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -32,17 +33,50 @@ public class AdvancedStreamsExercise04 {
                         partitioningBy(product -> product.getCategory().compareTo(Category.FOOD) == 0)
                 );
 
-
-
+        //******************IMPORTANT*****************
         Map<Boolean, List<String>> maptruefalseNames = products
                 .stream()
-                .collect(Collectors.groupingBy(
-                        p -> p.getCategory().compareTo(Category.FOOD) == 0,
-                        Collectors.mapping(Product::getName, Collectors.toList())));
+                .collect(Collectors
+                        .partitioningBy(
+                                p -> p.getCategory().compareTo(Category.FOOD) == 0,             //Predicate<? super T> predicate,
+                                Collectors.mapping(Product::getName, Collectors.toList()))      //Collector<? super T, A, D> downstream
+                );
         /*
-        <R> R collect(Supplier<R> supplier,
-                  BiConsumer<R, ? super T> accumulator,
-                  BiConsumer<R, R> combiner);
+        or
+                .collect(Collectors
+                        .groupingBy(
+                                p -> p.getCategory().compareTo(Category.FOOD) == 0,             //Function<? super T, ? extends K> classifier,
+                                Collectors.mapping(Product::getName, Collectors.toList()))      //Collector<? super T, A, D> downstream
+                );
+         */
+
+
+        /*
+        <R> R collect(  Supplier<R> supplier,
+                        BiConsumer<R, ? super T> accumulator,
+                        BiConsumer<R, R> combiner);
+
+        <R, A> R collect(Collector<? super T, A, R> collector);
+
+        --
+
+        public static <T, K> Collector<T, ?, Map<K, List<T>>>
+        groupingBy(Function<? super T, ? extends K> classifier) {
+            return groupingBy(classifier, toList());
+        }
+
+        public static <T, K, D, A, M extends Map<K, D>>
+        Collector<T, ?, M> groupingBy(Function<? super T, ? extends K> classifier, Supplier<M> mapFactory, Collector<? super T, A, D> downstream) { ... }
+
+        --
+
+        public static <T>
+        Collector<T, ?, Map<Boolean, List<T>>> partitioningBy(Predicate<? super T> predicate) {
+            return partitioningBy(predicate, toList());
+        }
+
+        public static <T, D, A>
+        Collector<T, ?, Map<Boolean, D>> partitioningBy(Predicate<? super T> predicate, Collector<? super T, A, D> downstream) { ... }
 
          */
 
