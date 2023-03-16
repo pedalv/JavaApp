@@ -1,8 +1,8 @@
 package no.dfo.fp.functionalprogramming.streamsadvances.exercises;
 
+import no.dfo.fp.functionalprogramming.functionreactive.TriFunction;
 import no.dfo.fp.functionalprogramming.model.Category;
 import no.dfo.fp.functionalprogramming.model.Product;
-import no.dfo.fp.functionalprogramming.streamsadvances.functionreactive.TriFunction;
 
 import java.util.Comparator;
 import java.util.List;

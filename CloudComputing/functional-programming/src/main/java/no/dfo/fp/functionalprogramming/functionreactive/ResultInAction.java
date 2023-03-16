@@ -1,4 +1,4 @@
-package no.dfo.fp.functionalprogramming.streamsadvances.functionreactive;
+package no.dfo.fp.functionalprogramming.functionreactive;
 
 import javax.xml.transform.Result;
 

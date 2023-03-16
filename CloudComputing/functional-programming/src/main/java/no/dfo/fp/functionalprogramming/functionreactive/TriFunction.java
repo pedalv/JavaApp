@@ -1,4 +1,4 @@
-package no.dfo.fp.functionalprogramming.streamsadvances.functionreactive;
+package no.dfo.fp.functionalprogramming.functionreactive;
 
 import java.util.Objects;
 import java.util.function.Function;
