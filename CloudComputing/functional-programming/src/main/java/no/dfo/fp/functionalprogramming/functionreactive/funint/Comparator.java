@@ -1,4 +1,4 @@
-package no.dfo.fp.functionalprogramming.functionreactive;
+package no.dfo.fp.functionalprogramming.functionreactive.funint;
 
 import java.util.function.Function;
 
@@ -17,7 +17,7 @@ public interface Comparator<T> {
         return thenComparing(comparing(f)) ;
     }
 
-    static <U> Comparator<U> comparing(Function<U, Comparable> f) {
+    static <U> Comparator<U> comparing(Function<U, Comparable> f) { //Comparable for Integer and String
 
         return (p1, p2) ->  f.apply(p1).compareTo(f.apply(p2));
     }

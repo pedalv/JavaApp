@@ -1,6 +1,6 @@
 package no.dfo.fp.functionalprogramming.streamsadvances.exercises;
 
-import no.dfo.fp.functionalprogramming.functionreactive.TriFunction;
+import no.dfo.fp.functionalprogramming.functionreactive.funint.TriFunction;
 import no.dfo.fp.functionalprogramming.model.Category;
 import no.dfo.fp.functionalprogramming.model.Product;
 

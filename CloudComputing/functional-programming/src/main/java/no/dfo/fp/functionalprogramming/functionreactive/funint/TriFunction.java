@@ -1,4 +1,4 @@
-package no.dfo.fp.functionalprogramming.functionreactive;
+package no.dfo.fp.functionalprogramming.functionreactive.funint;
 
 import java.util.Objects;
 import java.util.function.Function;
