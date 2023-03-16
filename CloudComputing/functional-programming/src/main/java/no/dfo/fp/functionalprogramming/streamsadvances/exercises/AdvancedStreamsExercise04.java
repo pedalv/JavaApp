@@ -5,12 +5,9 @@ import no.dfo.fp.functionalprogramming.model.Product;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.partitioningBy;
-import static java.util.stream.Collectors.toList;
 
 public class AdvancedStreamsExercise04 {
 

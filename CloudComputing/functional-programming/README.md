@@ -555,6 +555,18 @@
   - ``` Stream<Stream<String>> streammap = products.stream().map(product -> spaces.splitAsStream(product.getName())); ```
 - flatMap() - one to many -  is used to flatten (or combine) the elements of a stream into one (new) stream => ? 
   -  ``` Stream<String> streamflastmap = products.stream().flatMap(product -> spaces.splitAsStream(product.getName())); ```
+- Reducing Bugs with Immutable Data
+  - ``` final String = "data not change after created"; ```
+- Lazy Evaluation : delays the evaluation of an expression until its value is needed
+  - Powered by pure functions
+- Stream, Lazy evaluation, stream.sort()
+- Collection, Eager evaluation, list.sort()
+- Caching results => Functional programming -> Lazy evaluation === Memoization, Sample: Redux => Store - memoized - Selector  
+- Memoization: to speed up computer programs by storing the results of expensive function calls and returning the cached result when sa,e inputs occur again.
+- Benefits  of functional programming:  memorization, parallelism, reducing bugs, do one thing well === decompose problems
+  - public IEnumerable<T> findCoursesForAuthor<T> (T author, IEnumerable<T> courses), C# Generics
+  - public Iterator<T> findCoursesForAuthor<T> (T author, Iterator<T> courses), Java Generics
+- Functional Programming Languages: Java, .Net (#C), Javascript, Scala, Haskell, Elixir (from 2011 and influenced by Ruby); Dynamic type language: Pearl, Java, Rubby, Python, Javascript; Multi-paradigm language: .Net (F#)
 
 ## Resources
 - [Working with Streams and Lambda Expressions in Java (Java SE 11 Developer Certification 1Z0-819)](https://app.pluralsight.com/library/courses/streams-lambda-expressions-java-se-11-developer-certification-1z0-819/table-of-contents)
