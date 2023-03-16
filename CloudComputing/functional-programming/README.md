@@ -567,6 +567,10 @@
   - public IEnumerable<T> findCoursesForAuthor<T> (T author, IEnumerable<T> courses), C# Generics
   - public Iterator<T> findCoursesForAuthor<T> (T author, Iterator<T> courses), Java Generics
 - Functional Programming Languages: Java, .Net (#C), Javascript, Scala, Haskell, Elixir (from 2011 and influenced by Ruby); Dynamic type language: Pearl, Java, Rubby, Python, Javascript; Multi-paradigm language: .Net (F#)
+- Functional Programming : A programming paradigm that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+- Pure Function : Does not cause side effects, and will always return the same result for a given input.
+- OOP: More data structures - Fewer functions per data structure - 10 functions on 10 data structures
+- FP : Fewer data stuctures - More functions per data structure -  100 functions on 1 data structure
 
 ## Resources
 - [Working with Streams and Lambda Expressions in Java (Java SE 11 Developer Certification 1Z0-819)](https://app.pluralsight.com/library/courses/streams-lambda-expressions-java-se-11-developer-certification-1z0-819/table-of-contents)
