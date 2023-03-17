@@ -99,7 +99,12 @@ public class MainReduction {
         //      .stream
         //      .filter(ages, age -> age > 20)   //Reduce the list with only correct values
         //      .map(person -> person.getAge()) //Mapping Person to Integer
+        //      .mapToDouble(i -> i.doubleValue())
         //      .average()
+        //      .ifPresentOrElse(
+        //         System.out::println,
+        //         () -> System.out.println("No value to show")
+        //      );
 
     }
 

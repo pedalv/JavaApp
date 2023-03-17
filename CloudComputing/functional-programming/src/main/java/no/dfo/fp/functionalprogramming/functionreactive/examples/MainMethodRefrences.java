@@ -28,17 +28,6 @@ public class MainMethodRefrences {
         Consumer<String> printer1 = s -> System.out.println(s);
         Consumer<String> printer = System.out::println;
 
-        //--
-
-
-        //--
-
-
-        //--
-
-
-
-
     }
 
 }
