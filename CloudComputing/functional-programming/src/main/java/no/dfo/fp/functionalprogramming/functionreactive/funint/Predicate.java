@@ -1,18 +1,22 @@
 package no.dfo.fp.functionalprogramming.functionreactive.funint;
 
+import java.util.Objects;
+
 public interface Predicate<T> {
 
-    public boolean test(T t);
+    boolean test(T t);
 
-    public default Predicate<T> and(Predicate<T> other) {
+    default Predicate<T> and(Predicate<T> other) {
+        Objects.requireNonNull(other);
         return t -> test(t) && other.test(t) ;
     }
 
-    public default Predicate<T> or(Predicate<T> other) {
+    default Predicate<T> or(Predicate<T> other) {
+        Objects.requireNonNull(other);
         return t -> test(t) || other.test(t);
     }
 
-    public static <U> Predicate<U> isEqualsTo(U u) {
+    static <U> Predicate<U> isEqualsTo(U u) {
         return s -> s.equals(u);
     }
 
