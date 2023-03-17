@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -56,12 +57,22 @@ public class MainComparator {
                 //.sorted(cmpAge)
                 .forEach(p -> System.out.println(p.toString())); //ok
 
+        //stream has already been operated upon or closed
+        //persons.forEach(p -> System.out.println(p.toString()));
+
         List<Person> personsorted = Stream.of(p1,p2,p3,p4,p5,p6,p7)
                 .sorted(cmp)
                 //.sorted(cmpPersonAge)
                 //.sorted(cmpPersonLastName)
                 //.sorted(cmpAge)
                 .collect(Collectors.toList());
+
+        final Consumer<Person> println = System.out::println;
+        personsorted.forEach(println);
+        personsorted.forEach(System.out::println);
+        personsorted.forEach(p -> System.out.println(p.toString()));
+
+
 
         List<Person> personage = Stream.of(p1,p2,p3,p4,p5,p6,p7)
                 //.sorted(cmp)
