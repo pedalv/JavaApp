@@ -12,6 +12,12 @@ public class MainRecordOthers {
         log.info(plambok.toString());
         PersonRecord precord = new PersonRecord("name", "address");
         log.info(precord.toString());
+        PersonRecord precord2 = new PersonRecord("name2");
+        log.info(precord2.toString());
+
+        log.info(PersonRecord.UNKNOWN_ADDRESS);
+
+
     }
 
 }
