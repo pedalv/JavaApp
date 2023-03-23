@@ -2,6 +2,12 @@ package no.dfo.whatsnewinjava.switchexpressions;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.DayOfWeek;
+
+/**
+ * javac --enable-preview --release 12 MainSwitch.java
+ * java --enable-preview MainSwitch
+ */
 @Slf4j
 public class MainSwitch {
 
@@ -42,6 +48,16 @@ public class MainSwitch {
             default ->  "Unknown";
         };
         log.info(String.format("switch-new: %s", monthName2));
+
+
+        DayOfWeek day = DayOfWeek.SATURDAY;
+        String activity = switch (day) {
+            case SATURDAY, SUNDAY -> "Relax";
+            case MONDAY -> "Try to Work";
+            default -> "Work";
+        };
+        log.info(activity); // Relax
+
     }
 
 }
