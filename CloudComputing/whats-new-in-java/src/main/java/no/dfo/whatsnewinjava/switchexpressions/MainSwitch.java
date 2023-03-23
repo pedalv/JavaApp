@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MainSwitch {
 
     public static void main(String ...args) {
-        int monthNumber = 1;
+        int monthNumber = 3;
 
         String monthName;
 
@@ -36,6 +36,7 @@ public class MainSwitch {
                 String month = "February";
                 yield month;
             }
+            case 3 -> "MARS";
 
             // rest of cases omitted
             default ->  "Unknown";
