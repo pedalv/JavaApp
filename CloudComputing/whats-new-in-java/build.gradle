@@ -24,6 +24,12 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core
+	implementation 'org.openjdk.jmh:jmh-core:1.36'
+	// https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess
+	implementation 'org.openjdk.jmh:jmh-generator-annprocess:1.36'
+
 }
 
 tasks.named('test') {
