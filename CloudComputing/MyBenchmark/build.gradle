@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core
+    implementation 'org.openjdk.jmh:jmh-core:1.36'
+    // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess
+    implementation 'org.openjdk.jmh:jmh-generator-annprocess:1.36'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'no.dfo.jbm.MyBenchmark'
+        )
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
