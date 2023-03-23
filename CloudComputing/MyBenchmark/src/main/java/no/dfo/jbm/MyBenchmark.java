@@ -17,6 +17,8 @@ import java.util.concurrent.TimeUnit;
  * javac .\src\main\java\no\dfo\whatsnewinjava\microbenchmarking\MyBenchmark.java
  * PS C:\workspace2\JavaApp\CloudComputing\MyBenchmark> ..\..\..\..\java\jdk-17.0.6+10\bin\java -jar .\build\libs\MyBenchmark-1.0-SNAPSHOT.jar
  *
+ * PS C:\workspace2\JavaApp\CloudComputing\whats-new-in-java> java .\src\main\java\no\dfo\whatsnewinjava\microbenchmarking\MainMicroBenchmarking.java
+ * Error: Could not find or load main class .\src\main\java\no\dfo\whatsnewinjava\microbenchmarking\MainMicroBenchmarking.java
  */
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)

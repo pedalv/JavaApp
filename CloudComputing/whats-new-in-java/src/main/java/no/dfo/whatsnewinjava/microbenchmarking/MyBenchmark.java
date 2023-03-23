@@ -19,6 +19,8 @@ import java.util.concurrent.TimeUnit;
  * java Hello
  *
  * Note: See jmh-number-verification-performance-test project with an example that runs with maven from the course
+ *
+ * PS C:\workspace2\JavaApp\CloudComputing\whats-new-in-java> ..\..\..\..\Java\jdk-17.0.6+10\bin\java .\src\main\java\no\dfo\whatsnewinjava\microbenchmarking\MyBenchmark.java
  */
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
