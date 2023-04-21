@@ -33,6 +33,9 @@ Top five of new features since Java 9:
   - Structured Concurrency
 - Simple web server
 - Platform changes
+  - [JEP 418: Internet-Address Resolution SPI (DNS Server Provider Interface)](https://openjdk.org/jeps/418)
+  - [JEP 416: Reimplement Core Reflection with Method Handles](https://openjdk.org/jeps/416)
+  - [JEP 400: UTF-8 by Default](https://openjdk.org/jeps/400)
 
 ### Java SE 17 Long-term Support (2021-2024), [JDK 17](https://openjdk.org/projects/jdk/17/)
 - Java Developmnet Kit (JDK), Readability, Stability
