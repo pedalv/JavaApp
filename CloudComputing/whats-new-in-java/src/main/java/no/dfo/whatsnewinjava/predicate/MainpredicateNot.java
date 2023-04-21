@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava;
+package no.dfo.whatsnewinjava.predicate;
 
 import java.util.function.Predicate;
 import java.util.stream.Stream;
