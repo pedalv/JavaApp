@@ -14,6 +14,7 @@ import java.nio.file.Path;
  */
 public class ListFiles {
 
+    //args[0] = "."
     public static void main(String ...args) throws Exception {
         Files.walk(Path.of(args[0]))
                 .forEach(System.out::println);

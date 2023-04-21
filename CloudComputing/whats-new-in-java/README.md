@@ -19,12 +19,18 @@ Top five of new features since Java 9:
 ### Java SE 20 Long-term Support (2024-2027), [JDK 20](https://openjdk.org/projects/jdk/20/)
 - It's coming
 
-### Java SE 18 & 19, [JDK 18](https://openjdk.org/projects/jdk/18/) and , [JDK 19](https://openjdk.org/projects/jdk/19/)
+### Java SE 18 & 19, [New APIs in Java 19](https://javaalmanac.io/jdk/19/apidiff/17/), [JDK 18](https://openjdk.org/projects/jdk/18/) and , [JDK 19](https://openjdk.org/projects/jdk/19/)
 - API improvements
   - CharSet
   - Duration
   - HttpClient
   - Future
+  - Pattern Matching for Switch (preview feature)
+  - Record Patterns (preview feature)
+  - Vector API
+  - Foreign Function & Memory API 
+  - Virtual Threads (preview feature)
+  - Structured Concurrency
 - Simple web server
 - Platform changes
 
