@@ -112,6 +112,30 @@ Top five of new features since Java 9:
    - Multiple return values
 - Java packaging Tool
 - JVM Improvements
+- ZGC
+  - [JEP 376: ZGC: Concurrent Thread-Stack Processing](https://openjdk.org/jeps/376) 
+- Strong Encapsulation of JDK Internals
+  - Encapsulating internal types: sun.security.x509.X500Name
+  - Block deep reflection on public types
+    ```
+    var dc = ClassLoader.class.getDeclaredMethod("defineClass", String.class, byte[].class, int.class, int.class);
+    dc.setAccessible(true); 
+    
+    Exception for sun.misc.Unsafe
+    ``` 
+  - Security
+    ```
+    var ks = java.security.KeyStore.getInstance("jceks"); 
+    var f = ks.getClass().getDeclaredField("keyStoreSpi");
+    f.setAccessible(true);
+    ```
+  - Maintainability:  Allow evolution of JDK implementation  
+  - [JEP 396: Strongly Encapsulate JDK Internals by Default](https://openjdk.org/jeps/396)
+  - Run your applications with --illegal-access=permit, Java 9-15, runs
+  - Run your applications with **--illegal-access=deny**, Java 16, not runs => java.lang.IllegalAccessError
+  - Upgrade libraries, fix code where required
+  - Use jdeps -jdkinternals to find problematic code
+  - As a last resort: use --add-exports and --add-opens JVM flags
 
 ### Java SE 15, [JDK 15](https://openjdk.org/projects/jdk/15/)
 - Helpful NullPointerExceptions
