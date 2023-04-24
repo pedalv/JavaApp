@@ -84,6 +84,31 @@ Top five of new features since Java 9:
    var output = formatter.format(LocalDateTime.of(2021, 6,1, 19,30)); // in the evening
   ```
 - Records and Pattern matching
+  - Implicity final
+  - Implicitly extends java.land.Record
+  - Cannot have native methods
+    - Native methods can access system-specific functions and APIs that are not available directly in Java 
+  - Serializable by default
+  - Annotations on Components
+    - Annotation can be propagated to: Field, Accessor method and Constructor parameter
+    - Annotations's target: Field, Method, Parameter, Type
+  - Records and Reflection
+   - isRecord() -> true|false
+   - getRecordComponents() -> RecordComponent[], returns components in definition order for further reflection
+ - Where Would you Use Records?
+   - Data Transfer Objects (**not JPA entities!**)
+     - In popular JPA providers like Hibernate, entities are created and managed using proxies. 
+     - Proxies are classes that are generated at runtime and extend the entity class. 
+     - **These proxies rely on the entity class to have a no-args constructor and setters.** 
+     - **Since records don't have these, they can't be used as entities**
+     - Records do not work with immutable objects
+     - [Can I use Java 16 record with JPA entity?](https://stackoverflow.com/questions/70601508/can-i-use-java-16-record-with-jpa-entity)
+     - [JEP 395: Records](https://openjdk.org/jeps/395)
+     - [Jakarta Persistence](https://en.wikipedia.org/wiki/Jakarta_Persistence)
+     - [Hibernate (framework)](https://en.wikipedia.org/wiki/Hibernate_(framework))
+   - Jackson 2.12+ support
+   - Compound map keys
+   - Multiple return values
 - Java packaging Tool
 - JVM Improvements
 
