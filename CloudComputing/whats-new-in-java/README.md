@@ -154,6 +154,8 @@ Top five of new features since Java 9:
 - Vector API (incubating)
 - Foreign Linker & Foreign Memory Access Api 8incubating)
 - Text blocks
+  - [Programmer's Guide To Text Blocks](bit.ly/textblocks-guide) 
+  - [Programmer's Guide To Text Blocks](https://docs.oracle.com/en/java/javase/20/text-blocks/index.html)
   ```
   String json = """ 
   { 

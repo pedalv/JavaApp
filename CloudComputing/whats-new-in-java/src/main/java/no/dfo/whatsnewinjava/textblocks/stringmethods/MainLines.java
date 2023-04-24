@@ -57,6 +57,30 @@ public class MainLines {
 
          */
 
+        //Support multi-line string
+        String json = """
+                {
+                    "firstName": "Sander,
+                    "lastName": "Mak"
+                }
+                """;
+
+        System.out.println(json);
+
+        System.out.println("""
+                {
+                    "firstName": "Sander,
+                    "lastName": "Mak"
+                }""");
+
+        String js = """
+                function getString() { \
+                    return ('"A JS String""'); \
+                } \
+                  \
+                  getString()""";
+
+        System.out.println(js); //function getString() {     return ('"A JS String""'); }     getString()
 
     }
 }

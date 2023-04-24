@@ -33,6 +33,24 @@ public class MainTextBlocks {
                 }""";
         log.info(json);
 
+        log.info("""
+                { \
+                    "key1" : "value1"  ,\
+                    "key2": "value2"\
+                }"""); // {     "key1" : "value1"  ,    "key2": "value2"}
+
+        log.info("""
+                { \
+                    \"""key1" : "value1"  ,\
+                    "key2": "value2"\
+                }"""); // {     """key1" : "value1"  ,    "key2": "value2"}
+
+        log.info("""
+                { 
+                    "key1" : "value1"  ,
+                    "key2": "%s"
+                }""".formatted("MAK")); // {     """key1" : "value1"  ,    "key2": "value2"}
+
     }
 
 }
