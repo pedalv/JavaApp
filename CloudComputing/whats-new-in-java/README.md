@@ -37,6 +37,7 @@ Top five of new features since Java 9:
   - [JEP 416: Reimplement Core Reflection with Method Handles](https://openjdk.org/jeps/416)
   - [JEP 400: UTF-8 by Default](https://openjdk.org/jeps/400)
 
+
 ### Java SE 17 Long-term Support (2021-2024), [JDK 17](https://openjdk.org/projects/jdk/17/)
 - Java Developmnet Kit (JDK), Readability, Stability
   ```
@@ -149,7 +150,54 @@ Top five of new features since Java 9:
 - the new ZGC garbage collector (still experimental, but approaching GA state in Java 14 and later),
 - Switch expressions (Java 14), and
 - Text Blocks
-- Jpackage
+- The jpackege Tool
+  - Windows: -EXE & .MSI
+  - Requires Wix Toolset 3.0 or later
+  - MacOS: .DMG & .PKG
+  - Requires Xcode tools (when signing)
+  - Linux: .RPM & .DEB
+  - Depending on distro: requires rpm-build or fakeroot
+
+  ``` 
+  mvn package -> target directory
+  jpackage --input target --main-jar jpackege-sample-1.0.0.jar --name jpackage-sample --type pkg -> jpackage-sample-1.0.pkg
+  install package on MacOS
+  go application and run jpackage-sample.app with double click 
+  ```
+  - Packaging Process
+    - 1. Create runtime image : jlink  
+      - jpackege ... -jlink-options ... 
+    - 2. Create native package
+      - jpackhe ... --runtime-image image-dir
+   
+    - Additional Configuration
+    ```
+    jpackage --input target/ \
+    --main-jar jpackage-sample-1.0.0.jar \
+    --type dmg \
+    --name "JPackage Sample" \
+    --app-version 1.0 \
+    --description "Demo of JPackage tool" \
+    --vendor "Sander Mak Inc." \
+    --copyright "(C) 2021"
+    ```
+  
+    ```
+    --arguments "first second" or --arguments first --arguments second 
+    
+    --java-options "-Xms1g -Xmx4g"
+    
+    --linux-shortcut
+    --linux-menu-group Samples
+    
+    --windows-shortcut
+    --win-menu-group Samples
+    --win-menu
+    
+    --win-dir-chooser
+    ```
+  - [JEP 392: Packaging Tool](https://openjdk.org/jeps/392)
+  - [Packaging Tool User's Guide](https://docs.oracle.com/en/java/javase/20/jpackage/)
 - the Records preview feature in Java 14.
 - Api Updates Deprecated/Removed
   - java.security.acl
