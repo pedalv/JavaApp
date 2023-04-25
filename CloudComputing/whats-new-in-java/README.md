@@ -7,6 +7,20 @@ Top five of new features since Java 9:
 - Switch expressions (Java 14), and 
 - the Records preview feature in Java 14.
 
+### Platforms
+- Azul, IBM, AdoptOpenJDK,...
+- [temurin](https://adoptium.net/),
+  - [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/?version=17)
+- GitHub Action: [Setup Java JDK](https://github.com/marketplace/actions/setup-java-jdk)
+- [Foojay Today](https://foojay.io/)
+  - [Download OpenJDK](https://foojay.io/download/)
+  - [OpenJDK Update & Release Details](https://foojay.io/java-20/?version=20.0.1&quarter=042023&tab=component)
+- Root Certificates
+  - cacerts
+  - Oracle's Root CA program, to be ported to OpenJDK
+  - CA,Certification Authorities
+  - [JEP 319: Root Certificates](https://openjdk.org/jeps/319)
+
 ### Java SE 29 Long-term Support (2027-2030)
 - It's coming
 
@@ -17,12 +31,15 @@ Top five of new features since Java 9:
 - It's coming
 
 ### Java SE 21, [JDK 21](https://openjdk.org/projects/jdk/21/), [New APIs in Java 21](https://javaalmanac.io/jdk/21/apidiff/17/)
+- --enable-preview --release 21
 - Early access: JDK 21, Generational ZGC, JavaFX 21, Jextract, Loom, Metropolis, Panama, & Valhalla
 
 ### Java SE 20, [JDK 20](https://openjdk.org/projects/jdk/20/), [New APIs in Java 20](https://javaalmanac.io/jdk/20/apidiff/17/)
+- --enable-preview --release 20
 - Ready for use: JDK 20, JDK 19, JavaFX 20, JMC 8
 
 ### Java SE 18 & 19, [New APIs in Java 19](https://javaalmanac.io/jdk/19/apidiff/17/), [JDK 18](https://openjdk.org/projects/jdk/18/) and , [JDK 19](https://openjdk.org/projects/jdk/19/)
+- --enable-preview --release 18|19 
 - API improvements
   - CharSet
   - Duration
@@ -43,6 +60,7 @@ Top five of new features since Java 9:
 
 
 ### Java SE 17 Long-term Support (2021-2024), [JDK 17](https://openjdk.org/projects/jdk/17/)
+- --enable-preview --release 17
 - Java Developmnet Kit (JDK), Readability, Stability
   ```
    javac Hello.java -> Hello.class
@@ -55,6 +73,7 @@ Top five of new features since Java 9:
 3. Standard library
 
 ### Java SE 16, [JDK 16](https://openjdk.org/projects/jdk/16/)
+- --enable-preview --release 16
 - [Java](https://github.com/topics/java)
 - [openJDK](https://github.com/openjdk)
 - Stream API improvements
@@ -145,6 +164,7 @@ Top five of new features since Java 9:
   - As a last resort: use --add-exports and --add-opens JVM flags
 
 ### Java SE 15, [JDK 15](https://openjdk.org/projects/jdk/15/)
+- --enable-preview --release 15
 - Helpful NullPointerExceptions
   ```
   -XX:+ShowCodeDetailsInExceptionMessages //activate
@@ -282,6 +302,7 @@ Top five of new features since Java 9:
   - [JEP 349: JFR Event Streaming](https://openjdk.org/jeps/349)
 
 ### Java SE 13, [JDK 13](https://openjdk.org/projects/jdk/13/)
+- --enable-preview --release 13
 - API Updates
   - Direct & indirect ByteBuffers
     - ByteBuffer != byte[]
@@ -363,6 +384,7 @@ Top five of new features since Java 9:
       - ``` -noverify ```
 
 ### Java SE 12, [JDK 12](https://openjdk.org/projects/jdk/12/)
+- --enable-preview --release 12
 - String::indent
 - String::transform
 - Switch statements vs expressions
@@ -378,6 +400,7 @@ Top five of new features since Java 9:
   - java.lang.constant 
 
 ### Java SE 11 Long-term Support (2018-2021), [JDK 11](https://openjdk.org/projects/jdk/11/)
+- --enable-preview --release 11
 - Java module system fundamentals,
 - Modular JDK,
 - Services,
@@ -410,14 +433,20 @@ Top five of new features since Java 9:
   - HTTPS: [JEP 332: Transport Layer Security (TLS) 1.3](https://openjdk.org/jeps/332)
 
 ### Java SE 10, [JDK 10](https://openjdk.org/projects/jdk/10/)
+- --enable-preview --release 10
 - the `var` keyword (Java 10), local-variable Type Inference
-- 
+- Java Flight Recorder
+- Java Mission Control
+- Z Garbage Collector
+- Application Class Data Sharing 
 
 ### Java SE 9, [JDK 9](https://openjdk.org/projects/jdk/9/)
+- --enable-preview --release 9
 - Module system
 - Caching
 - jshell
 
 ### Java SE 8 Long-term Support, [JDK 8](https://openjdk.org/projects/jdk/8/)
+- --enable-preview --release 8
 - Lambda
 - Streams
