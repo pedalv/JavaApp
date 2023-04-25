@@ -1,5 +1,5 @@
 ## What's new in Java
-- Java long term: Java 8, Java 11 and Java 17 === every three years
+- Java long term: Java 8, Java 11 (2018-2021), Java 17 (2021-2024), Java 23 (2024-2027) === every three years
 Top five of new features since Java 9: 
 - the `var` keyword (Java 10), 
 - the HttpClient API (made official in Java 11), 
@@ -7,17 +7,20 @@ Top five of new features since Java 9:
 - Switch expressions (Java 14), and 
 - the Records preview feature in Java 14.
 
-### Java SE 26 Long-term Support (2030-2033)
+### Java SE 29 Long-term Support (2027-2030)
 - It's coming
 
-### Java SE 23 Long-term Support (2027-2030), [JDK 20](https://openjdk.org/projects/jdk/20/)
+### Java SE 23 Long-term Support (2024-2027), [JDK 23 - NOT AVAILABLE](https://openjdk.org/projects/jdk/23/)
 - It's coming
 
-### Java SE 21, [JDK 21](https://openjdk.org/projects/jdk/21/)
+### Java SE 22, [JDK 22 - NOT AVAILABLE](https://openjdk.org/projects/jdk/22/)
 - It's coming
 
-### Java SE 20 Long-term Support (2024-2027), [JDK 20](https://openjdk.org/projects/jdk/20/)
-- It's coming
+### Java SE 21, [JDK 21](https://openjdk.org/projects/jdk/21/), [New APIs in Java 21](https://javaalmanac.io/jdk/21/apidiff/17/)
+- Early access: JDK 21, Generational ZGC, JavaFX 21, Jextract, Loom, Metropolis, Panama, & Valhalla
+
+### Java SE 20, [JDK 20](https://openjdk.org/projects/jdk/20/), [New APIs in Java 20](https://javaalmanac.io/jdk/20/apidiff/17/)
+- Ready for use: JDK 20, JDK 19, JavaFX 20, JMC 8
 
 ### Java SE 18 & 19, [New APIs in Java 19](https://javaalmanac.io/jdk/19/apidiff/17/), [JDK 18](https://openjdk.org/projects/jdk/18/) and , [JDK 19](https://openjdk.org/projects/jdk/19/)
 - API improvements
@@ -407,7 +410,8 @@ Top five of new features since Java 9:
   - HTTPS: [JEP 332: Transport Layer Security (TLS) 1.3](https://openjdk.org/jeps/332)
 
 ### Java SE 10, [JDK 10](https://openjdk.org/projects/jdk/10/)
-- the `var` keyword (Java 10).
+- the `var` keyword (Java 10), local-variable Type Inference
+- 
 
 ### Java SE 9, [JDK 9](https://openjdk.org/projects/jdk/9/)
 - Module system
