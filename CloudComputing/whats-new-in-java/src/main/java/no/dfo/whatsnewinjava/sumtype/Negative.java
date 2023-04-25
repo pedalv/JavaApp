@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava.sumtypepattern;
+package no.dfo.whatsnewinjava.sumtype;
 
 //error: class is not allowed to extend sealed class: Expr (as it is not listed in its permits clause)
 public record Negative(Expr e) /*implements Expr*/ {

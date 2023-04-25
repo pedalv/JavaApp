@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava.sumtypepattern;
+package no.dfo.whatsnewinjava.sumtype;
 
 public sealed interface Expr  {
 
@@ -27,5 +27,13 @@ record Mul(Expr lval, Expr rval) implements Expr {
     @Override
     public int eval() {
         return lval.eval() * rval().eval();
+    }
+}
+
+//class is allowed to extend sealed class: Expr (as it is listed in its permits clause)
+record Negate2(Expr e) implements Expr {
+    @Override
+    public int eval() {
+        return -e.eval();
     }
 }

@@ -1,6 +1,4 @@
-package no.dfo.whatsnewinjava.sumtypepattern;
-
-import jakarta.el.ExpressionFactory;
+package no.dfo.whatsnewinjava.sumtype;
 
 public class MainSealedExp {
 
