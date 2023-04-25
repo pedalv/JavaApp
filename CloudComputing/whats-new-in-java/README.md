@@ -394,6 +394,17 @@ Top five of new features since Java 9:
   - Upgrade from Unicode 8 in Java 10
   - Adds 16,000+ new Characters as bitcoin \u20BF
 - [JEP 309: Dynamic Class-File Constants](https://openjdk.org/jeps/309) 
+- Garbage Collection: 
+  - G1, 
+  - Epsilon: Apps with predictable, bounded memory usage
+    - -XX:+UnlockExxperimentalVMOptions
+    - -XX:+UseEpsilonGC
+  - Z: pause times under 10ms
+    - Linux/x64 only
+      - -XX:+UnlockExxperimentalVMOptions
+      - -XX:+UseZGC
+- Security
+  - HTTPS: [JEP 332: Transport Layer Security (TLS) 1.3](https://openjdk.org/jeps/332)
 
 ### Java SE 10, [JDK 10](https://openjdk.org/projects/jdk/10/)
 - the `var` keyword (Java 10).
