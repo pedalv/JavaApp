@@ -172,9 +172,24 @@ Top five of new features since Java 9:
   - Depreceted tool: rmid
   - Removed tool: rmic
 - Removed Nashorn JavaScript engine
+  - [JEP 372: Remove the Nashorn JavaScript Engine](https://openjdk.org/jeps/372) 
   - Removed tool: jjs
   - Alternative: GraalVM 
     - [Nashorn removal: GraalVM to the rescue!](https://medium.com/graalvm/nashorn-removal-graalvm-to-the-rescue-d4da3605b6cb)
+- ZGC
+  - [Understanding the JDK’s New Superfast Garbage Collectors](bit.ly/zgc-benchmark)
+    - -XX:+UseZGC 
+  - Pause times under 10ms
+  - Scale to multi-terabyte heaps
+  - Great performance without tuning
+- Garbage Collection: Shenandoah
+  - Developed by Red Hat, contributed to OpenJDK
+  - Backported to java 8 & Java 11
+  - -XX:+UseShenandoahGC, error occurred during initialization of VM option -XX:+UseShenandoahGC not supported 
+- Other JVM improvements
+  - [JEP 371: Hidden Classes](https://openjdk.org/jeps/371)
+  - [JEP 339: Edwards-Curve Digital Signature Algorithm (EdDSA)](JEP 339: Edwards-Curve Digital Signature Algorithm (EdDSA))
+  - [JEP 373: Reimplement the Legacy DatagramSocket API](https://openjdk.org/jeps/373)
 
 ### Java SE 14, [JDK 14](https://openjdk.org/projects/jdk/14/)
 - the new ZGC garbage collector (still experimental, but approaching GA state in Java 14 and later),
