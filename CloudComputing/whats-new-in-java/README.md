@@ -197,6 +197,10 @@ Top five of new features since Java 9:
 ### Java SE 14, [JDK 14](https://openjdk.org/projects/jdk/14/)
 - --enable-preview --release 14
 - the new ZGC garbage collector (still experimental, but approaching GA state in Java 14 and later),
+  - [Understanding the JDK’s New Superfast Garbage Collectors](bit.ly/zgc-benchmark)
+    - -XX:+UseZGC
+- garbage Collection changes: G1, -XX:+UseNUMA
+- garbage Collection changes: CMS removed, -XX:+UseConcMarkSweepGC -> OpenJDK 64-Bit Server VM warning: Ignoring option UseConcMarkSweepGC; support was removed in 14.0
 - Switch expressions (Java 14), and
 - Text Blocks
 - The jpackege Tool
@@ -269,6 +273,10 @@ Top five of new features since Java 9:
   private static final long serialVersionUID = 1L;
   -Xlint:serial
   ```
+- Other improvements
+  - [JEP 352: Non-Volatile Mapped Byte Buffers](https://openjdk.org/jeps/352) 
+  - [JEP 370: Foreign-Memory Access API (Incubator)](https://openjdk.org/jeps/370)
+  - [JEP 349: JFR Event Streaming](https://openjdk.org/jeps/349)
 
 ### Java SE 13, [JDK 13](https://openjdk.org/projects/jdk/13/)
 - API Updates
