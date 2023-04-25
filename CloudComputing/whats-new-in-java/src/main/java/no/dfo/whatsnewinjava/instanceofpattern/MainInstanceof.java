@@ -1,10 +1,41 @@
 package no.dfo.whatsnewinjava.instanceofpattern;
 
+import java.math.BigDecimal;
+
 public class MainInstanceof {
 
     public static void main(String... args) {
-        String o2 = new String();
+        Object object = new BigDecimal(2);
+        //Before Pattern Matching
+        if(object instanceof BigDecimal) {
+            BigDecimal b = (BigDecimal) object;
+            int precision = b.precision();
+        }
+        //Pattern Matching
+        if(object instanceof BigDecimal b) {
+            int precision = b.precision();
+        }
 
+        //---------------
+
+        //Pattern Matching: Future
+        /*
+        Object object = new BigDecimal(2);
+        int value = switch(object) {
+            case BigDecimal b -> b.intValue();
+            case String s -> Integer.parseInt(s);
+            case Integer i -> i;
+            default -> throw new IllegalArgumentException("bla bla");
+        };
+         */
+
+
+
+
+        //-----------------
+
+
+        String o2 = new String();
         //Before Pattern Matching
         if(o2 instanceof String) {
             String s = (String) o2;

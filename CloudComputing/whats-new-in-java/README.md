@@ -85,8 +85,10 @@ Top five of new features since Java 9:
    var output = formatter.format(LocalDateTime.of(2021, 6,1, 19,30)); // in the evening
   ```
 - Records and Pattern matching
+  - [JEP 384: Records (Second Preview)](https://openjdk.org/jeps/384) 
   - Implicity final
-  - Implicitly extends java.land.Record
+  - Implicitly extends java.land.Record === can not extends from other class
+  - can only implements several interfaces
   - Cannot have native methods
     - Native methods can access system-specific functions and APIs that are not available directly in Java 
   - Serializable by default
@@ -156,6 +158,7 @@ Top five of new features since Java 9:
 - Text blocks
   - [Programmer's Guide To Text Blocks](bit.ly/textblocks-guide) 
   - [Programmer's Guide To Text Blocks](https://docs.oracle.com/en/java/javase/20/text-blocks/index.html)
+  - [JEP 305: Pattern Matching for instanceof (Preview)](https://openjdk.org/jeps/305)
   ```
   String json = """ 
   { 

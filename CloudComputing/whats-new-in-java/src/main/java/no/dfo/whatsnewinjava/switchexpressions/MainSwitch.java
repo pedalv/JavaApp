@@ -50,6 +50,21 @@ public class MainSwitch {
         log.info(String.format("switch-new: %s", monthName2));
 
 
+        //Pattern Matching: Future
+        /*
+        Object object = new BigDecimal(2);
+        int value = switch(object) {
+            case BigDecimal b -> b.intValue();
+            case String s -> Integer.parseInt(s);
+            case Integer i -> i;
+            default -> throw new IllegalArgumentException("bla bla");
+        };
+         */
+
+
+
+
+
         DayOfWeek day = DayOfWeek.SATURDAY;
         String activity = switch (day) {
             case SATURDAY, SUNDAY -> "Relax";

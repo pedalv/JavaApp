@@ -1,9 +1,5 @@
 package no.dfo.whatsnewinjava.instanceofpattern;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 public record Person(String name) {
 
 
