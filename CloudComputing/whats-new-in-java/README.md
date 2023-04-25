@@ -393,6 +393,7 @@ Top five of new features since Java 9:
 - Unicode 10
   - Upgrade from Unicode 8 in Java 10
   - Adds 16,000+ new Characters as bitcoin \u20BF
+- [JEP 309: Dynamic Class-File Constants](https://openjdk.org/jeps/309) 
 
 ### Java SE 10, [JDK 10](https://openjdk.org/projects/jdk/10/)
 - the `var` keyword (Java 10).
