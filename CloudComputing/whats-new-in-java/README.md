@@ -26,6 +26,7 @@ Top five of new features since Java 9:
   - HttpClient
   - Future
   - Pattern Matching for Switch (preview feature)
+    - [JEP 305: Pattern Matching for instanceof (Preview)](https://openjdk.org/jeps/305) 
   - Record Patterns (preview feature)
   - Vector API
   - Foreign Function & Memory API 
@@ -86,6 +87,7 @@ Top five of new features since Java 9:
   ```
 - Records and Pattern matching
   - [JEP 384: Records (Second Preview)](https://openjdk.org/jeps/384) 
+  - [JEP 305: Pattern Matching for instanceof (Preview)](https://openjdk.org/jeps/305)
   - Implicity final
   - Implicitly extends java.land.Record === can not extends from other class
   - can only implements several interfaces
@@ -157,6 +159,7 @@ Top five of new features since Java 9:
 - Vector API (incubating)
 - Foreign Linker & Foreign Memory Access Api 8incubating)
 - Text blocks
+  - [JEP 368: Text Blocks (Second Preview)](https://openjdk.org/jeps/368)  
   - [Programmer's Guide To Text Blocks](bit.ly/textblocks-guide) 
   - [Programmer's Guide To Text Blocks](https://docs.oracle.com/en/java/javase/20/text-blocks/index.html)
   - [JEP 305: Pattern Matching for instanceof (Preview)](https://openjdk.org/jeps/305)
@@ -192,24 +195,26 @@ Top five of new features since Java 9:
   - [JEP 373: Reimplement the Legacy DatagramSocket API](https://openjdk.org/jeps/373)
 
 ### Java SE 14, [JDK 14](https://openjdk.org/projects/jdk/14/)
+- --enable-preview --release 14
 - the new ZGC garbage collector (still experimental, but approaching GA state in Java 14 and later),
 - Switch expressions (Java 14), and
 - Text Blocks
 - The jpackege Tool
-  - Windows: -EXE & .MSI
+  - [JEP 343: Packaging Tool (Incubator)](https://openjdk.org/jeps/343) 
+  - **Windows**: **.EXE** & **.MSI**
   - Requires Wix Toolset 3.0 or later
-  - MacOS: .DMG & .PKG
+  - **MacOS**: **.DMG** & **.PKG**
   - Requires Xcode tools (when signing)
-  - Linux: .RPM & .DEB
+  - **Linux**: **.RPM** & **.DEB**
   - Depending on distro: requires rpm-build or fakeroot
 
   ``` 
   mvn package -> target directory
-  jpackage --input target --main-jar jpackege-sample-1.0.0.jar --name jpackage-sample --type pkg -> jpackage-sample-1.0.pkg
   install package on MacOS
   go application and run jpackage-sample.app with double click 
   ```
-  - Packaging Process
+  - Packaging Process  jpackage --input target --main-jar jpackege-sample-1.0.0.jar --name jpackage-sample --type pkg -> jpackage-sample-1.0.pkg
+
     - 1. Create runtime image : jlink  
       - jpackege ... -jlink-options ... 
     - 2. Create native package
@@ -244,6 +249,7 @@ Top five of new features since Java 9:
   - [JEP 392: Packaging Tool](https://openjdk.org/jeps/392)
   - [Packaging Tool User's Guide](https://docs.oracle.com/en/java/javase/20/jpackage/)
 - the Records preview feature in Java 14.
+  - [JEP 384: Records (Second Preview)](https://openjdk.org/jeps/384) 
 - Api Updates Deprecated/Removed
   - java.security.acl
   - java.util.jar

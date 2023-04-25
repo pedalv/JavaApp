@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava.instanceofpattern;
+package no.dfo.whatsnewinjava.instanceofpatternmatching;
 
 public class PatternMatchingMain {
 

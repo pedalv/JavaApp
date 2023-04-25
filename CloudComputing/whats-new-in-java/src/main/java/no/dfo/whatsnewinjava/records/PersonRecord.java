@@ -10,6 +10,8 @@ import java.util.Objects;
  * - isRecord()
  * - getRecordComponents()
  *
+ * PersonRecord(...Components)
+ *
  */
 public record PersonRecord(String name, String address) {
 
