@@ -14,7 +14,8 @@ public class HttpClientAsync {
                 .version(HttpClient.Version.HTTP_2)
                 .build();
 
-        HttpRequest req = HttpRequest.newBuilder(URI.create("https://app.pluralsight.com/profile/author/sander-mak"))
+        HttpRequest req = HttpRequest
+                .newBuilder(URI.create("https://app.pluralsight.com/profile/author/sander-mak"))
                 .GET()
                 .build();
         /*
@@ -23,9 +24,10 @@ public class HttpClientAsync {
                 .GET()
                 .build();
         */
-        CompletableFuture<HttpResponse<String>> resFuture = httpClient.sendAsync(req, HttpResponse.BodyHandlers.ofString());
+        CompletableFuture<HttpResponse<String>> resFuture =
+                httpClient.sendAsync(req, HttpResponse.BodyHandlers.ofString());
 
         resFuture.thenAccept(res -> System.out.println(res.version()));
-        resFuture.join();
+        resFuture.join(); //joing until the future will be finish
     }
 }
