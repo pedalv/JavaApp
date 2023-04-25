@@ -153,6 +153,7 @@ Top five of new features since Java 9:
   java -XX:+ShowCodeDetailsInExceptionMessages HelpfulNPEDEMO 
   ```  
 - Sealed Classes
+  - [JEP 360: Sealed Classes (Preview)](https://openjdk.org/jeps/360) 
 - Vector API (incubating)
 - Foreign Linker & Foreign Memory Access Api 8incubating)
 - Text blocks
