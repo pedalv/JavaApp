@@ -438,7 +438,18 @@ Top five of new features since Java 9:
 - Java Flight Recorder
 - Java Mission Control
 - Z Garbage Collector
+- G1 Garbage Collector
+- -XX:ParallelGCThreads
+  - Java 9: serial full GC
+  - Java 10: parallel full GC
 - Application Class Data Sharing 
+  - [cl4cds](https://github.com/simonis/cl4cds)
+- Improved Container Awareness
+  - Linux & Docker only
+  - -XX:ActiveProcessorCount=<n>
+  - -XX:InitialRAMPercentage
+  - -XX:MaxRAMPercentage
+  - -XX:MinRAMPercentage
 
 ### Java SE 9, [JDK 9](https://openjdk.org/projects/jdk/9/)
 - --enable-preview --release 9
