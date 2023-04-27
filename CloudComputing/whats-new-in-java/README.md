@@ -551,14 +551,81 @@ Top five of new features since Java 9:
       // and more
       
     }
-   ```
- - Java Platform Module System
-   - Migratin Classpsth Based Applications
-   - Encapsulated Types
-   - Non-Default Modules
-   - [Java 9 Modularity](https://javamodularity.com/)
+    ```
+  - Java Platform Module System
+    - Migratin Classpsth Based Applications
+    - Encapsulated Types
+    - Non-Default Modules
+    - [Java 9 Modularity](https://javamodularity.com/)
 - Caching
-- jshell
+- jshell: 
+  - Read, type code 
+  - Eval, execute code
+  - Print, see results
+  - Loop, interactively refine
+  ```
+  PS C:\workspace2\JavaApp\CloudComputing\whats-new-in-java> jshell
+  |  Welcome to JShell -- Version 11.0.10
+  |  For an introduction type: /help intro
+  
+  /exit or ctrl c
+  
+  ctrl l : clean screen
+  
+  ctrl c : interrupt run process
+  
+  tab : override functions => Thread.sleep( tab
+  tab tab : documentation
+  
+  "ab c".matches("[ab]+b\\sc")
+  
+  
+  /help
+  /set feeback verbose
+  
+  int x = 1
+  x = 2
+  /vars
+  
+  Module witchModule(Class clazz) {
+   return clazz.getModule();
+  }
+  witchModule(String.class); //module java.base
+  witchModule(java.util.logging.LogManager.class); //module java.logging
+
+  /imports
+  import java.util.logging.LogManager
+  witchModule(LogManager.class); //module java.logging
+  
+  /methods
+  
+  int timeTwo(int i) {
+    return i * x;
+  }
+  timesTwo(2); // x=2 from last change
+  
+  class Person {
+    private String name;
+    public Person(String name) {
+      this.name = name;
+    }
+    public String toString() {
+      return "[Person: " + name + "]";
+    }
+  }
+  new Person("Pedro")
+  
+  /types
+  
+  /save mysession.jsh
+  /open mysession.jsh
+  
+  /open Person.java
+  
+  jshell --class-path commans-lang3-3-5.jar
+  import org.apache.commons.lang3.StringUtils
+  StringUtils.leftPad("Indispensible!", 20);
+  ```
 
 ### Java SE 8 Long-term Support, [JDK 8](https://openjdk.org/projects/jdk/8/)
 - --enable-preview --release 8
