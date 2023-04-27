@@ -459,7 +459,7 @@ Top five of new features since Java 9:
   - [https://openjdk.org/jeps/396](JEP 396: Strongly Encapsulate JDK Internals by Default) 
   - [Java 17 cannot access class sun.security.pkcs.PKCS7](https://intellij-support.jetbrains.com/hc/en-us/community/posts/5153987456018-Java-17-cannot-access-class-sun-security-pkcs-PKCS7)
   - [Access `sun.security.x509` in JDK 11 without modules?](https://stackoverflow.com/questions/61149455/access-sun-security-x509-in-jdk-11-without-modules)
-  - --ikkwgal-access=deny Main
+  - --illegal-access=deny Main
 
   - > 90 Platform Modules
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules     
@@ -537,7 +537,8 @@ Top five of new features since Java 9:
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules | grep "java\."
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --describe-module java.sql
   - Increased security
-    - encapsulation
+    - Strong encapsulation
+    - Explicit dependencies, expressed in Module Descriptors
     - Reduced footprint
   - Easy deprecation
   - Future-proof 
@@ -551,6 +552,11 @@ Top five of new features since Java 9:
       
     }
    ```
+ - Java Platform Module System
+   - Migratin Classpsth Based Applications
+   - Encapsulated Types
+   - Non-Default Modules
+   - [Java 9 Modularity](https://javamodularity.com/)
 - Caching
 - jshell
 
