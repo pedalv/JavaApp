@@ -10,6 +10,9 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.*;
 
 /**
+ * Stream API: New Collectors
+ * filtering
+ * flatMapping
  *
  */
 public class NewCollectors {
