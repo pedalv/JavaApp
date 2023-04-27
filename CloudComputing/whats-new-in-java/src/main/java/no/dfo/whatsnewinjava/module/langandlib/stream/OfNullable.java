@@ -24,7 +24,7 @@ public class OfNullable {
         // Before ofNullable
         Book book = getPossiblyNull(true);
         Stream<String> authors =
-                book == null ? Stream.empty() : book.authors.stream();
+                book == null ? Stream.empty() /*det kommer ikke null point exception*/ : book.authors.stream();
         authors.forEach(System.out::println);
 
         // With ofNullable
