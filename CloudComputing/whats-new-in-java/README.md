@@ -1,5 +1,6 @@
 ## What's new in Java
-- Java long term: Java 8, Java 11 (2018-2021), Java 17 (2021-2024), Java 23 (2024-2027) === every three years
+- Java long term support: Java 8 (2015-2018), Java 11 (2018-2021), Java 17 (2021-2024), Java 23 (2024-2027) === every three years
+
 Top five of new features since Java 9: 
 - the `var` keyword (Java 10), 
 - the HttpClient API (made official in Java 11), 
@@ -454,6 +455,102 @@ Top five of new features since Java 9:
 ### Java SE 9, [JDK 9](https://openjdk.org/projects/jdk/9/)
 - --enable-preview --release 9
 - Module system
+  - [JEP 261: Module System](https://openjdk.org/jeps/261#Relaxed-strong-encapsulation)
+  - [https://openjdk.org/jeps/396](JEP 396: Strongly Encapsulate JDK Internals by Default) 
+  - [Java 17 cannot access class sun.security.pkcs.PKCS7](https://intellij-support.jetbrains.com/hc/en-us/community/posts/5153987456018-Java-17-cannot-access-class-sun-security-pkcs-PKCS7)
+  - [Access `sun.security.x509` in JDK 11 without modules?](https://stackoverflow.com/questions/61149455/access-sun-security-x509-in-jdk-11-without-modules)
+  - --ikkwgal-access=deny Main
+
+  - > 90 Platform Modules
+    - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules     
+      java.base@20.0.1
+      java.compiler@20.0.1
+      java.datatransfer@20.0.1
+      java.desktop@20.0.1
+      java.instrument@20.0.1
+      java.logging@20.0.1
+      java.management@20.0.1
+      java.management.rmi@20.0.1
+      java.naming@20.0.1
+      java.net.http@20.0.1
+      java.prefs@20.0.1
+      java.rmi@20.0.1
+      java.scripting@20.0.1
+      java.se@20.0.1
+      java.security.jgss@20.0.1
+      java.security.sasl@20.0.1
+      java.smartcardio@20.0.1
+      java.sql@20.0.1
+      java.sql.rowset@20.0.1
+      java.transaction.xa@20.0.1
+      java.xml@20.0.1
+      java.xml.crypto@20.0.1
+      jdk.accessibility@20.0.1
+      jdk.attach@20.0.1
+      jdk.charsets@20.0.1
+      jdk.compiler@20.0.1
+      jdk.crypto.cryptoki@20.0.1
+      jdk.crypto.ec@20.0.1
+      jdk.crypto.mscapi@20.0.1
+      jdk.dynalink@20.0.1
+      jdk.editpad@20.0.1
+      jdk.hotspot.agent@20.0.1
+      jdk.httpserver@20.0.1
+      jdk.incubator.concurrent@20.0.1
+      jdk.incubator.vector@20.0.1
+      jdk.internal.ed@20.0.1
+      jdk.internal.jvmstat@20.0.1
+      jdk.internal.le@20.0.1
+      jdk.internal.opt@20.0.1
+      jdk.internal.vm.ci@20.0.1
+      jdk.internal.vm.compiler@20.0.1
+      jdk.internal.vm.compiler.management@20.0.1
+      jdk.jartool@20.0.1
+      jdk.javadoc@20.0.1
+      jdk.jcmd@20.0.1
+      jdk.jconsole@20.0.1
+      jdk.jdeps@20.0.1
+      jdk.jdi@20.0.1
+      jdk.jdwp.agent@20.0.1
+      jdk.jfr@20.0.1
+      jdk.jlink@20.0.1
+      jdk.jpackage@20.0.1
+      jdk.jshell@20.0.1
+      jdk.jsobject@20.0.1
+      jdk.jstatd@20.0.1
+      jdk.localedata@20.0.1
+      jdk.management@20.0.1
+      jdk.management.agent@20.0.1
+      jdk.management.jfr@20.0.1
+      jdk.naming.dns@20.0.1
+      jdk.naming.rmi@20.0.1
+      jdk.net@20.0.1
+      jdk.nio.mapmode@20.0.1
+      jdk.random@20.0.1
+      jdk.sctp@20.0.1
+      jdk.security.auth@20.0.1
+      jdk.security.jgss@20.0.1
+      jdk.unsupported@20.0.1
+      jdk.unsupported.desktop@20.0.1
+      jdk.xml.dom@20.0.1
+      jdk.zipfs@20.0.1
+    - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules | grep "java\."
+    - ..\..\..\..\Java\jdk-20.0.1\bin\java --describe-module java.sql
+  - Increased security
+    - encapsulation
+    - Reduced footprint
+  - Easy deprecation
+  - Future-proof 
+  - A module has a name, it groups related code and is self-contained
+    ```
+    module java.base {
+      exports java.lang;
+      exports java.util;
+      exports java.io;
+      // and more
+      
+    }
+   ```
 - Caching
 - jshell
 
