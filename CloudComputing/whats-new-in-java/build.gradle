@@ -35,3 +35,13 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+
+tasks.withType(AbstractCompile) {
+	//options.compilerArgs += ["--add-exports", "java.base/sun.security.util=ALL-UNNAMED"]
+	//options.compilerArgs += ["--add-exports", "java.base/sun.security.pkcs=ALL-UNNAMED"]
+	options.compilerArgs += ["--add-exports", "java.base/sun.security.x509=ALL-UNNAMED"]
+	//options.compilerArgs += ["--add-exports", "java.se.ee/java.xml.bind=ALL-UNNAMED"]
+	//options.compilerArgs += ["--add-exports", "java.se.ee=ALL-UNNAMED"]
+}
+
