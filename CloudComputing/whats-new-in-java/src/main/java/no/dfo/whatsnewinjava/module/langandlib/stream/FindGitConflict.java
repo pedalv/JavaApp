@@ -40,7 +40,7 @@ public class FindGitConflict {
 
         //Exception in thread "main" java.nio.file.NoSuchFileException: resources\index.html
         // Files.lines -> Stream<String>
-        Files.lines(Paths.get("resources/index.html"))
+        Files.lines(Paths.get("C:\\workspace2\\JavaApp\\CloudComputing\\whats-new-in-java\\src\\main\\resources\\index.html"))
              .dropWhile(l -> !l.contains("<<<<<<<"))
              .skip(1)
              .takeWhile(l -> !l.contains(">>>>>>>"))
