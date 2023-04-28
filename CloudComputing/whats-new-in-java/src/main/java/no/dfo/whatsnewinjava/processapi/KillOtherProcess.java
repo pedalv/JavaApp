@@ -1,5 +1,8 @@
 package no.dfo.whatsnewinjava.processapi;
 
+/**
+ * java.lang.IllegalArgumentException
+ */
 public class KillOtherProcess {
 
     public static void main(String... args) throws Exception {
