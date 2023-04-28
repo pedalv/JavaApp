@@ -8,6 +8,21 @@ Top five of new features since Java 9:
 - Switch expressions (Java 14), and 
 - the Records preview feature in Java 14.
 
+### [Java Platform, Standard Edition Documentation](https://docs.oracle.com/en/java/javase/index.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 20 API Specification](https://docs.oracle.com/javase/20/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 19 API Specification](https://docs.oracle.com/javase/19/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 18 API Specification](https://docs.oracle.com/javase/18/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 17 API Specification](https://docs.oracle.com/javase/17/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 16 API Specification](https://docs.oracle.com/en/java/javase/16/docs/api/index.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 15 API Specification](https://docs.oracle.com/javase/16/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 14 API Specification](https://docs.oracle.com/javase/15/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 13 API Specification](https://docs.oracle.com/javase/14/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 12 API Specification](https://docs.oracle.com/javase/13/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 11 API Specification](https://docs.oracle.com/javase/12/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 10 API Specification](https://docs.oracle.com/javase/11/docs/api/overview-summary.html)
+- [Java® Platform, Standard Edition & Java Development Kit Version 9 API Specification](https://docs.oracle.com/javase/9/docs/api/overview-summary.html)
+- [Java™ Platform, Standard Edition 8 API Specification](https://docs.oracle.com/javase/8/docs/api/overview-summary.html)
+
 ### Platforms
 - Azul, IBM, AdoptOpenJDK,...
 - [temurin](https://adoptium.net/),
