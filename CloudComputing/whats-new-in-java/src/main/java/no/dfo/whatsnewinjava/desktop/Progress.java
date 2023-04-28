@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.Set;
 
 /**
- * Works for Mac
+ * Works for Linux
  */
 public class Progress {
 
