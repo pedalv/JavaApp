@@ -6,6 +6,9 @@ import java.awt.*;
 import java.io.File;
 import java.util.Set;
 
+/**
+ * Works for Mac
+ */
 public class Progress {
 
     public static void main(String[] args) throws Exception {

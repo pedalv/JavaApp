@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
+/**
+ * Work for Windows
+ */
 public class Badge {
 
     public static void main(String[] args) throws Exception {
