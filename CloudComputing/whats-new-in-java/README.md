@@ -10,9 +10,11 @@ Top five of new features since Java 9:
 
 ### [Java Platform, Standard Edition Documentation](https://docs.oracle.com/en/java/javase/index.html)
 - [Java® Platform, Standard Edition & Java Development Kit Version 20 API Specification](https://docs.oracle.com/javase/20/docs/api/overview-summary.html)
+  - [JDK 20 Documentation](https://docs.oracle.com/en/java/javase/20/) 
 - [Java® Platform, Standard Edition & Java Development Kit Version 19 API Specification](https://docs.oracle.com/javase/19/docs/api/overview-summary.html)
 - [Java® Platform, Standard Edition & Java Development Kit Version 18 API Specification](https://docs.oracle.com/javase/18/docs/api/overview-summary.html)
 - [Java® Platform, Standard Edition & Java Development Kit Version 17 API Specification](https://docs.oracle.com/javase/17/docs/api/overview-summary.html)
+  - [JDK 17 Documentation](https://docs.oracle.com/en/java/javase/17/) 
 - [Java® Platform, Standard Edition & Java Development Kit Version 16 API Specification](https://docs.oracle.com/en/java/javase/16/docs/api/index.html)
 - [Java® Platform, Standard Edition & Java Development Kit Version 15 API Specification](https://docs.oracle.com/javase/16/docs/api/overview-summary.html)
 - [Java® Platform, Standard Edition & Java Development Kit Version 14 API Specification](https://docs.oracle.com/javase/15/docs/api/overview-summary.html)
@@ -21,6 +23,9 @@ Top five of new features since Java 9:
 - [Java® Platform, Standard Edition & Java Development Kit Version 11 API Specification](https://docs.oracle.com/javase/12/docs/api/overview-summary.html)
 - [Java® Platform, Standard Edition & Java Development Kit Version 10 API Specification](https://docs.oracle.com/javase/11/docs/api/overview-summary.html)
 - [Java® Platform, Standard Edition & Java Development Kit Version 9 API Specification](https://docs.oracle.com/javase/9/docs/api/overview-summary.html)
+  - [Overview of What’s New in JDK 9](https://docs.oracle.com/javase/9/whatsnew/toc.htm) 
+  - [Java 9 Modularity](https://javamodularity.com/)
+  - [Java 9 Modularity: First look](bit.ly/java9course)
 - [Java™ Platform, Standard Edition 8 API Specification](https://docs.oracle.com/javase/8/docs/api/overview-summary.html)
 
 ### Platforms
@@ -37,7 +42,10 @@ Top five of new features since Java 9:
   - CA,Certification Authorities
   - [JEP 319: Root Certificates](https://openjdk.org/jeps/319)
 
-### [Reactive Streams](http://www.reactive-streams.org/)
+### Tips
+- [Reactive Streams](http://www.reactive-streams.org/)
+- [Concatenating Strings In Java](https://www.baeldung.com/java-strings-concatenation)
+- [Java String Concatenation: Best Practices and Performance Optimization](https://copyprogramming.com/howto/java-string-concatenation-best-practices-and-performance-optimization)
 
 ### Java SE 29 Long-term Support (2027-2030)
 - It's coming
@@ -469,7 +477,7 @@ Top five of new features since Java 9:
   - -XX:MaxRAMPercentage
   - -XX:MinRAMPercentage
 
-### Java SE 9, [JDK 9](https://openjdk.org/projects/jdk/9/)
+### Java SE 9, [JDK 9](https://openjdk.org/projects/jdk/9/), [Project Jigsaw](https://openjdk.org/projects/jigsaw/)
 - --enable-preview --release 9
 - Module system
   - [JEP 261: Module System](https://openjdk.org/jeps/261#Relaxed-strong-encapsulation)
@@ -554,8 +562,11 @@ Top five of new features since Java 9:
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules | grep "java\."
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --describe-module java.sql
   - Increased security
-    - Strong encapsulation
-    - Explicit dependencies, expressed in Module Descriptors
+  - Three Tenets of Modularity
+    - Strong encapsulation, hide your internals, be strict about what is public API
+    - Well-defined interfaces, when modules interact, use stable and well-defined interfaces
+    - Explicit module dependencies, expressed in Module Descriptors, a module lists what it needs from other modules
+    - Services build/implemented above module system
     - Reduced footprint
   - Easy deprecation
   - Future-proof 
