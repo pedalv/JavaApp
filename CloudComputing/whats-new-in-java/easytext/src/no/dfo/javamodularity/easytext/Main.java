@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Example before Java 9
- * - Compiling and running a module
+ * - Create, compiling and running a module
  *
  * Example Application: EasyText, https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests
  * - Analyze text complexity
