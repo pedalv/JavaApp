@@ -585,6 +585,20 @@ Top five of new features since Java 9:
     - Encapsulated Types
     - Non-Default Modules
     - [Java 9 Modularity](https://javamodularity.com/)
+    - Can access all public types from exported packages because public no longer means public
+      1. Do you read the module?
+      2. Is the package exported?
+      3. Is the type public?
+      Note: 
+      - Readability is not transitive, does not read === error: warning() in Logger is defined in an inaccessible class or interface for example
+      - Solution: requires transitive
+      - ![Implied Readability](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/whats-new-in-java/modulo-implied-readability.JPG)
+      - ![Implied Readability](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/whats-new-in-java/modulo-aggregator-modules.JPG)
+  - Platform Modules
+    1. Core Java SE: java.base, java.sql, java.desktop, java.se
+    2. JavaFX: javafx.base, javafx.web, javafx.xontrols,
+    3. Enterprise (Java Enterprise Edition, JEE): java.corba, java.xml.ws, java.transaction
+    4. JDK: jdk.compiler, jdk.httpserver, jdk.jartool
 - Caching
 - jshell: 
   - Read, type code 
