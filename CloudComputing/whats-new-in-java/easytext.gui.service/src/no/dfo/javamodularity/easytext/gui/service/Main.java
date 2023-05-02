@@ -15,8 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import no.dfo.javamodularity.easytext.analysis.api.Analyzer;
-import static no.dfo.javamodularity.easytext.analysis.api.Preprocessing.toSentences;
+import no.dfo.javamodularity.easytext.analysis.api.service.Analyzer;
+import static no.dfo.javamodularity.easytext.analysis.api.service.Preprocessing.toSentences;
 
 public class Main extends Application {
 
