@@ -486,7 +486,7 @@ Top five of new features since Java 9:
   - [Access `sun.security.x509` in JDK 11 without modules?](https://stackoverflow.com/questions/61149455/access-sun-security-x509-in-jdk-11-without-modules)
   - --illegal-access=deny Main
 
-  - > 90 Platform Modules
+  - > The Modular JDK: Explicit Dependencies, 90 Platform Modules
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules     
       java.base@20.0.1
       java.compiler@20.0.1
