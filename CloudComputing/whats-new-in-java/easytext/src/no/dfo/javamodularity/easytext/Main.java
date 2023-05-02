@@ -37,7 +37,7 @@ import java.util.List;
  * error: no source files
  *
  * Step 2:
- * PS C:\workspace2\JavaApp\CloudComputing\whats-new-in-java> java --module-path out -m .\out\production\easytext\no\dfo\javamodularity\easytext\Main.class /<textinput.txt>
+ * PS C:\workspace2\JavaApp\CloudComputing\whats-new-in-java> java --module-path out -m .\out\production\easytext\no\dfo\javamodularity\easytext\Main.class textinput.txt
  * Unrecognized option: --module-path
  * Error: Could not create the Java Virtual Machine.
  * Error: A fatal exception has occurred. Program will exit.
@@ -45,14 +45,17 @@ import java.util.List;
  *
  * Run for IDE *****************
  * Step 1:
- * C:\Java\jdk-17.0.6+10\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2022.3.3\lib\idea_rt.jar=49299:C:\Program Files\JetBrains\IntelliJ IDEA 2022.3.3\bin" -Dfile.encoding=UTF-8 -classpath C:\workspace2\JavaApp\CloudComputing\whats-new-in-java\out\production\easytext no.dfo.javamodularity.easytext.Main C:\workspace2\JavaApp\CloudComputing\whats-new-in-java\easytext\src\no\dfo\javamodularity\easytext\Main.java
+ * C:\Java\jdk-17.0.6+10\bin\java.exe -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:52356,suspend=y,server=n -javaagent:C:\Users\0-peal\AppData\Local\JetBrains\IntelliJIdea2022.3\captureAgent\debugger-agent.jar -Dfile.encoding=UTF-8 -classpath "C:\workspace2\JavaApp\CloudComputing\whats-new-in-java\out\production\easytext;C:\Program Files\JetBrains\IntelliJ IDEA 2022.3.3\lib\idea_rt.jar" no.dfo.javamodularity.easytext.Main C:/workspace2/JavaApp/CloudComputing/whats-new-in-java/testinput.txt
+ * Connected to the target VM, address: '127.0.0.1:52356', transport: 'socket'
  * Hello world!
- * Reading C:\workspace2\JavaApp\CloudComputing\whats-new-in-java\easytext\src\no\dfo\javamodularity\easytext\Main.java
- * Flesch-Kincaid: 41.69812149763109
+ * Reading C:\workspace2\JavaApp\CloudComputing\whats-new-in-java\testinput.txt
+ * Flesch-Kincaid: 83.42468299865723
  *
  * Step 2:
  * Java to Java 17 for example
  *
+ *
+ * file: C:/workspace2/JavaApp/CloudComputing/whats-new-in-java/testinput.txt
  */
 public class Main {
     public static void main(String... args) throws IOException {
@@ -98,6 +101,9 @@ public class Main {
         return words;
     }
 
+    /**
+     * https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests
+     */
     public static double analyze(List<List<String>> sentences) {
         float totalsentences = sentences.size();
         float totalwords = sentences.stream().mapToInt(sentence -> sentence.size()).sum();

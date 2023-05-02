@@ -4,6 +4,9 @@ import java.util.List;
 
 import static no.dfo.javamodularity.easytext.analysis.internal.SyllableCounter.countSyllables;
 
+/**
+ * https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests
+ */
 public class FleschKincaid {
 
     public double analyze(List<List<String>> sentences) {

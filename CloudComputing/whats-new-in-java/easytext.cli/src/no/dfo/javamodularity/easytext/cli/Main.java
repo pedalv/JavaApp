@@ -23,6 +23,9 @@ import java.util.List;
 /**
  * javac --module-source-path src -d out $(find . name '*.java')
  * java -mp out -easytext.cli/no.dfo.javamodularity.easytext.cli.Main
+ *
+ *
+ * file: C:/workspace2/JavaApp/CloudComputing/whats-new-in-java/testinput.txt
  */
 public class Main {
     public static void main(String[] args) throws IOException {
