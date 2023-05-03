@@ -25,6 +25,8 @@ Top five of new features since Java 9:
 - [Java® Platform, Standard Edition & Java Development Kit Version 9 API Specification](https://docs.oracle.com/javase/9/docs/api/overview-summary.html)
   - [Overview of What’s New in JDK 9](https://docs.oracle.com/javase/9/whatsnew/toc.htm) 
   - [Java 9 Modularity](https://javamodularity.com/)
+    - [Java 9 Modularity link2](https://bit.ly/java9book)
+    - [Java 9 Modularity link2](http://branchandbound.net/blog/java/2016/08/java9-modularity-oreilly-early-access-release/)
   - [Java 9 Modularity: First look](bit.ly/java9course)
 - [Java™ Platform, Standard Edition 8 API Specification](https://docs.oracle.com/javase/8/docs/api/overview-summary.html)
 
@@ -481,13 +483,14 @@ Top five of new features since Java 9:
 - --enable-preview --release 9
 - Module system
   - [JEP 261: Module System](https://openjdk.org/jeps/261#Relaxed-strong-encapsulation)
-  - [https://openjdk.org/jeps/396](JEP 396: Strongly Encapsulate JDK Internals by Default) 
+  - [JEP 396: Strongly Encapsulate JDK Internals by Default](https://openjdk.org/jeps/396)
   - [Java 17 cannot access class sun.security.pkcs.PKCS7](https://intellij-support.jetbrains.com/hc/en-us/community/posts/5153987456018-Java-17-cannot-access-class-sun-security-pkcs-PKCS7)
   - [Access `sun.security.x509` in JDK 11 without modules?](https://stackoverflow.com/questions/61149455/access-sun-security-x509-in-jdk-11-without-modules)
   - --illegal-access=deny Main
 
   - > The Modular JDK: Explicit Dependencies, 90 Platform Modules
-    - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules     
+    - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules   
+    ```
       java.base@20.0.1
       java.compiler@20.0.1
       java.datatransfer@20.0.1
@@ -559,6 +562,7 @@ Top five of new features since Java 9:
       jdk.unsupported.desktop@20.0.1
       jdk.xml.dom@20.0.1
       jdk.zipfs@20.0.1
+    ```
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules | grep "java\."
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --describe-module java.sql
   - Increased security
@@ -679,7 +683,11 @@ Top five of new features since Java 9:
    jar --create --file jars/easytext.analysis.api.jar -C out/esaytest.analysis.api .
    jar --create --file jars/easytext.jar -C out/production/esaytest .
    jar --create --file jars/easytext.cli.jar --main-class=no.dfo.javamodularity.eadytext.cli.Main -C out/esaytest.gui .
-   rm -rf image && jlink --module-path jars/:$JAVA_HOME/jmods --add-modules easytext.cli --strip-debug --compress=2 --output image
+   rm -rf image && jlink --module-path jars/:$JAVA_HOME/jmods \
+                         --add-modules easytext.cli \
+                         --strip-debug \
+                         --compress=2 \
+                         --output image
    image/bin/easytext.cli === to run application from command line
   image/bin/easytext.cli testinput.txt
   ./image/bin/java --list-modules
