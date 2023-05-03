@@ -100,6 +100,9 @@ public class MainX500Name {
 
     public static void main(String... args) throws IOException {
         X500Name name = new X500Name("CN=user");
+
+        sun.security.x509.X500Name name2 = new sun.security.x509.X500Name("CN=user");
+
     }
 
 }
