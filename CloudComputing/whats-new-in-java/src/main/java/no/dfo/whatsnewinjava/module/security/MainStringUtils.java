@@ -1,6 +1,6 @@
-package no.dfo.application;
+package no.dfo.whatsnewinjava.module.security;
 
-import org.apache.commons.lang3.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 
 /**
  * https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
@@ -18,6 +18,7 @@ import org.apache.commons.lang3.StringUtils;
  *     <version>3.12.0</version>
  * </dependency>
  *
+ *
  * Solution 1:
  * javac -cp lib/commons-lang3-3.4.jar -d out Main.java
  *
@@ -26,15 +27,12 @@ import org.apache.commons.lang3.StringUtils;
  * - Name derived from JAR filename
  * - Exports all packages
  *
- * javac --module-path lib --module-source-path Main.java
- * java --module-path lib:out -m application/Main
- *
  */
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+public class MainStringUtils {
 
-        String output = StringUtils.leftPad("Leftpad FTW!", 20);
-        System.out.println(output);
+    public static void main(String... args) {
+        //String output = StringUtils.leftPad("Leftpad FTW!", 20);
+        //System.out.println(output);
     }
+
 }
