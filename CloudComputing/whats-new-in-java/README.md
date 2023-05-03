@@ -32,7 +32,7 @@ Top five of new features since Java 9:
 
 ### Platforms
 - Azul, IBM, AdoptOpenJDK,...
-- [temurin](https://adoptium.net/),
+- **[temurin](https://adoptium.net/)**,
   - [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/?version=17)
 - GitHub Action: [Setup Java JDK](https://github.com/marketplace/actions/setup-java-jdk)
 - [Foojay Today](https://foojay.io/)
@@ -566,15 +566,9 @@ Top five of new features since Java 9:
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules | grep "java\."
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --describe-module java.sql
   - Increased security
-  - Three Tenets of Modularity
-    - Strong encapsulation, hide your internals, be strict about what is public API
-    - Well-defined interfaces, when modules interact, use stable and well-defined interfaces
-    - Explicit module dependencies, expressed in Module Descriptors, a module lists what it needs from other modules
-    - Services build/implemented above module system
-    - Reduced footprint
   - Easy deprecation
   - Future-proof 
-  - A module has a name, it groups related code and is self-contained
+  - **A module has a name, it groups related code and is self-contained**
     ```
     module java.base {
       exports java.lang;
@@ -584,6 +578,21 @@ Top five of new features since Java 9:
       
     }
     ```
+  - JAR Files and the Java Classpath
+    - A JAR file is not a module:
+    - it has a name, which disappears at run-time
+    - it groups code, but without access control
+    - it does not describe its dependencies
+  - Why modules?
+    - Understandability: explicit boundaries and dependencies
+    - Maintainability: hiding implementation details
+    - Flexibility: decoupling of parts of your system
+  - Three Tenets of Modularity
+    - Strong encapsulation, hide your internals, be strict about what is public API
+    - Well-defined interfaces, when modules interact, use stable and well-defined interfaces
+    - Explicit module dependencies, expressed in Module Descriptors, a module lists what it needs from other modules
+    - Services build/implemented above module system
+    - Reduced footprint 
   - Java Platform Module System
     - Migratin Classpsth Based Applications
     - Encapsulated Types
@@ -722,6 +731,7 @@ Top five of new features since Java 9:
   - java.xml.ws
   - java.corba
   - java.activation
+
 
 ### Java SE 8 Long-term Support, [JDK 8](https://openjdk.org/projects/jdk/8/)
 - --enable-preview --release 8
