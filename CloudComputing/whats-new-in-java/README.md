@@ -668,6 +668,39 @@ Top five of new features since Java 9:
   import org.apache.commons.lang3.StringUtils
   StringUtils.leftPad("Indispensible!", 20);
   ```
+- jlink  
+  - Jlink is a Java command line tool that is used to generate a custom Java runtime environment (JRE). 
+  - You can use your customized JRE to run Java applications. 
+  - Using jlink, you can create a custom runtime environment that only includes the relevant class file.
+  - ..\..\..\..\Java\jdk-11.0.14+9\bin\jlink -h
+  - create jar file
+  ```
+   rm -fr jars && mkfir -p jars 
+   jar --create --file jars/easytext.analysis.api.jar -C out/esaytest.analysis.api .
+   jar --create --file jars/easytext.jar -C out/production/esaytest .
+   jar --create --file jars/easytext.cli.jar --main-class=no.dfo.javamodularity.eadytext.cli.Main -C out/esaytest.gui .
+   rm -rf image && jlink --module-path jars/:$JAVA_HOME/jmods --add-modules easytext.cli --strip-debug --compress=2 --output image
+   image/bin/easytext.cli === to run application from command line
+  image/bin/easytext.cli testinput.txt
+  ./image/bin/java --list-modules
+  rm -rf image && jlink --module-path jars/:$JAVA_HOME/jmods \ 
+                        --add-modules easytext.cli \
+                        --add-modules easytext.analysis.coleman \
+                        --add-modules easytext.analysis.kincaid \
+                         --strip-debug \
+                         --compress=2 \
+                         --output image
+    ./image/bin/java --list-modules
+    image/bin/easytext.cli testinput.txt === to run application from command line
+    rm -rf image && jlink --module-path jars/:$JAVA_HOME/jmods \ 
+                        --add-modules easytext.gui \
+                        --add-modules easytext.analysis.coleman \
+                        --add-modules easytext.analysis.kincaid \
+                         --strip-debug \
+                         --compress=2 \
+                         --output image 
+  ```
+
 
 ### Java SE 8 Long-term Support, [JDK 8](https://openjdk.org/projects/jdk/8/)
 - --enable-preview --release 8
