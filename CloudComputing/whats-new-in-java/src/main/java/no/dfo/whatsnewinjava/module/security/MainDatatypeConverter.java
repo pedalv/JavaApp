@@ -42,6 +42,28 @@ package no.dfo.whatsnewinjava.module.security;
  * Java 10 - DEPRECATED
  * Java 11 - REMOVED
  *
+ * javax.xml.bind.DatatypeConverter;
+ * Java 8 - okay
+ * Java 9 - doest not exist === using non-default module
+ *
+ * Solution:
+ * javac --add-modules java.xml.bind MainDatatypeConverter.java
+ * java --add-modules java.xml.bind MainDatatypeConverter
+ * java --add-modules java.se.ee MainDatatypeConverter === import the 6 packages
+ * jdeps src/Main.class
+ * - unnamed module for java.lang - java.base
+ * - unnamed module for javax.xml.bind - not found
+ *
+ * okay: 2. You use types from non-default Java SE modules
+ *
+ * List of using non-default module
+ * - java.transaction
+ * - java.annotations.common
+ * - java.xml.bind
+ * - java.xml.ws
+ * - java.corba
+ * - java.activation
+ *
  */
 public class MainDatatypeConverter {
 

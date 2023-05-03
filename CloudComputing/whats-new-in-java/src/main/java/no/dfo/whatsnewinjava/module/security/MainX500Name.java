@@ -1,10 +1,13 @@
 package no.dfo.whatsnewinjava.module.security;
 
+import javax.security.auth.x500.X500Principal;
 import sun.security.x509.X500Name;
 //error: package sun.security.x509 is not visible
 //package sun.security.x509 is declared in module java.base, which does not export it to the unnamed module
 //--add-exports=java.base/sun.security.x509=ALL-UNNAMED --add-exports=java.base/sun.security.pkcs=ALL-UNNAMED --add-exports=java.base/sun.security.util=ALL-UNNAMED
 //Module: 'CloudComputing.whats-new-in-java.main'	--add-exports java.base/sun.security.x509=ALL-UNNAMED
+
+
 
 import java.io.IOException;
 
@@ -95,6 +98,30 @@ import java.io.IOException;
  *
  * JEP 396: Strongly Encapsulate JDK Internals by Default
  * https://openjdk.org/jeps/396
+ *
+ *
+ * sun.security.x509.X500Name - Private - you should not use - is not export
+ * Java 8 - okay
+ * Java 9 - doest not exist
+ * Javac src/Main.java
+ * java -cp src Main === IllegalAccessError
+ * jdeps -jdkinternals src/Main.class
+ * sun.security.x509.X500Name => javax.security.auth.x500.X500Principal === using non-default module
+ *
+ * Solution:
+ * javac --add-exports java.base/sun.security.x509=ALL-UNNAMED Main.java
+ * javac --add-exports java.base/sun.security.x509=ALL-UNNAMED Main
+ *
+ * okay: 1. You use JDK types that have been encapsulated
+ *
+ * List of using non-default module
+ * - java.transaction
+ * - java.annotations.common
+ * - java.xml.bind
+ * - java.xml.ws
+ * - java.corba
+ * - java.activation
+ *
  */
 public class MainX500Name {
 

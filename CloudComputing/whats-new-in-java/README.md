@@ -700,7 +700,20 @@ Top five of new features since Java 9:
                          --compress=2 \
                          --output image 
   ```
-
+- Classpath, Modules are optional
+  - javac -cp $CLASSPATH ...
+  - java -cp $CLASSPATH ...
+  - unless...
+    1. You use JDK types that have been encapsulated
+    2. You use types from non-default Java SE modules
+    - Classpath : located on unnamed module for your own application and others in modulo JDK.  
+- List of using non-default module
+  - java.transaction 
+  - java.annotations.common
+  - java.xml.bind
+  - java.xml.ws
+  - java.corba
+  - java.activation
 
 ### Java SE 8 Long-term Support, [JDK 8](https://openjdk.org/projects/jdk/8/)
 - --enable-preview --release 8
