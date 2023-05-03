@@ -5,6 +5,7 @@ import greeter.hello.service.HelloMessageService;
 
 /**
  * PS C:\workspace2\JavaApp\CloudComputing\whats-new-in-java>
+ * ..\..\..\..\..\Java\jdk-17.0.6+10\bin\javac -d out --module-source-path src -m greeter.cli
  * ..\..\..\..\..\Java\jdk-17.0.6+10\bin\javac -d out --module-source-path src -m greeter.cli,greeter.hello
  * error: module greeter.cli not found in module source path
  * error: module greeter.hello not found in module source path
@@ -26,6 +27,10 @@ import greeter.hello.service.HelloMessageService;
  * ..\..\..\..\..\Java\jdk-17.0.6+10\bin\javac -d out \
  *  .\src\greeter\hello\service\HelloMessageService.java \
  *  .\src\greeter\helloutil\CapitalizeUtil.java .\src\module-info.java
+ *
+ *
+ * Java -p out -m greeter.cli/greeter,cli.Main
+ *
  *
  */
 public class Main {
