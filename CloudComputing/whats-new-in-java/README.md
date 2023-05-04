@@ -578,6 +578,10 @@ Top five of new features since Java 9:
       exports <package>;
       opens <package>;
       requires <module_name>;
+    
+      uses <package>.<type_name>;
+    
+      provides <package>.<type_name> with <package>.<type_name>;    
     }
     
     module java.base {
