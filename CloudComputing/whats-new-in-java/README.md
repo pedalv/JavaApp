@@ -487,8 +487,12 @@ Top five of new features since Java 9:
   - [Java 17 cannot access class sun.security.pkcs.PKCS7](https://intellij-support.jetbrains.com/hc/en-us/community/posts/5153987456018-Java-17-cannot-access-class-sun-security-pkcs-PKCS7)
   - [Access `sun.security.x509` in JDK 11 without modules?](https://stackoverflow.com/questions/61149455/access-sun-security-x509-in-jdk-11-without-modules)
   - --illegal-access=deny Main
+  - Exploring the Modular JDK
+    - java --list-modules
+    - java --describe-module java.sql
+    - java.* vs jdk.*
 
-  - > The Modular JDK: Explicit Dependencies, 90 Platform Modules
+  - > The Modular JDK: Explicit Dependencies, 71 Platform Modules in Java JDK 11
     - ..\..\..\..\Java\jdk-20.0.1\bin\java --list-modules   
     ```
       java.base@20.0.1
@@ -588,6 +592,19 @@ Top five of new features since Java 9:
       exports no.dfo.util to mymodule;
       opens no.dfo.util to mymodule, anothermodule;
     }
+    
+    other solution is using TRANSITIVE
+    
+    ..\..\..\..\Java\jdk-17.0.6+10\bin\java --describe-module java.sql
+    Windows PowerShell
+    java.sql@17.0.6
+    exports java.sql
+    exports javax.sql
+    requires java.transaction.xa transitive
+    requires java.xml transitive
+    requires java.logging transitive
+    requires java.base mandated
+    uses java.sql.Driver
     ```
   - JAR Files and the Java Classpath
     - A JAR file is not a module:
@@ -692,7 +709,9 @@ Top five of new features since Java 9:
   import org.apache.commons.lang3.StringUtils
   StringUtils.leftPad("Indispensible!", 20);
   ```
+-  ..\..\..\..\Java\jdk-11.0.14+9\jmods\
 - jlink  
+  - ..\..\..\..\Java\jdk-11.0.14+9\bin\jlink --version
   - Jlink is a Java command line tool that is used to generate a custom Java runtime environment (JRE). 
   - You can use your customized JRE to run Java applications. 
   - Using jlink, you can create a custom runtime environment that only includes the relevant class file.
