@@ -137,7 +137,7 @@ public class MainX500Name {
         //java -cp out MainX500Name - okay
         //java --illegal-access=deny -cp MainX500Name - error
         //java -add-exports java.base/sun.security.x509=ALL-UNNAMED --illegal-access=deny -cp MainX500Name - Okay
-        //but solutin is use jdeps
+        //but solution is use jdeps
         //jdeps -jdkinternals out/.../MainX500Name.class
 
     }
