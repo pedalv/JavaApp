@@ -570,12 +570,23 @@ Top five of new features since Java 9:
   - Future-proof 
   - **A module has a name, it groups related code and is self-contained**
     ```
+    [open] module <module_name> {
+      exports <package>;
+      opens <package>;
+      requires <module_name>;
+    }
+    
     module java.base {
       exports java.lang;
       exports java.util;
       exports java.io;
-      // and more
-      
+      // and more 
+    
+    }
+    
+    module util {
+      exports no.dfo.util to mymodule;
+      opens no.dfo.util to mymodule, anothermodule;
     }
     ```
   - JAR Files and the Java Classpath
