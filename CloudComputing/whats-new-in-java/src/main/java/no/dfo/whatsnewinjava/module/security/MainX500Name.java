@@ -127,8 +127,18 @@ public class MainX500Name {
 
     public static void main(String... args) throws IOException {
         X500Name name = new X500Name("CN=user");
+        System.out.println(name);
 
-        sun.security.x509.X500Name name2 = new sun.security.x509.X500Name("CN=user");
+        sun.security.x509.X500Name name2 = new sun.security.x509.X500Name("test.com","test", "test","US");
+        System.out.println(name2);
+
+        //javac -d out MainX500Name.java - error med Java 9+
+        //javac -add-exports java.base/sun.security.x509=ALL-UNNAMED -d out MainX500Name.java - okay with WARN but nonono
+        //java -cp out MainX500Name - okay
+        //java --illegal-access=deny -cp MainX500Name - error
+        //java -add-exports java.base/sun.security.x509=ALL-UNNAMED --illegal-access=deny -cp MainX500Name - Okay
+        //but solutin is use jdeps
+        //jdeps -jdkinternals out/.../MainX500Name.class
 
     }
 
