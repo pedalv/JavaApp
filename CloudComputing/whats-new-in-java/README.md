@@ -483,9 +483,15 @@ Top five of new features since Java 9:
 - --enable-preview --release 9
 - Module system
   - [JEP 261: Module System](https://openjdk.org/jeps/261#Relaxed-strong-encapsulation)
+    - [JEP 376: ZGC: Concurrent Thread-Stack Processing](https://openjdk.org/jeps/376)
+    - [JEP 200: The Modular JDK](https://openjdk.org/jeps/200)
+    - [JEP 282: jlink: The Java Linker](https://openjdk.org/jeps/282)
+    - [JEP 220: Modular Run-Time Images](https://openjdk.org/jeps/220)
+    - [JEP 260: Encapsulate Most Internal APIs](https://openjdk.org/jeps/260)
   - [JEP 396: Strongly Encapsulate JDK Internals by Default](https://openjdk.org/jeps/396)
   - [Java 17 cannot access class sun.security.pkcs.PKCS7](https://intellij-support.jetbrains.com/hc/en-us/community/posts/5153987456018-Java-17-cannot-access-class-sun-security-pkcs-PKCS7)
   - [Access `sun.security.x509` in JDK 11 without modules?](https://stackoverflow.com/questions/61149455/access-sun-security-x509-in-jdk-11-without-modules)
+  - [Interface ModuleFinder](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/module/ModuleFinder.html)
   - --illegal-access=deny Main
   - Exploring the Modular JDK
     - java --list-modules
@@ -765,7 +771,6 @@ Top five of new features since Java 9:
   - java.xml.ws
   - java.corba
   - java.activation
-
 
 ### Java SE 8 Long-term Support, [JDK 8](https://openjdk.org/projects/jdk/8/)
 - --enable-preview --release 8
