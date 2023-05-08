@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava.module.langandlib.language;
+package no.dfo.whatsnewinjava.langandlib.language;
 
 public class Book implements PricedObject {
 

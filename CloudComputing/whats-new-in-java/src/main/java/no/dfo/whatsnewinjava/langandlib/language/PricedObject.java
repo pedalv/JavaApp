@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava.module.langandlib.language;
+package no.dfo.whatsnewinjava.langandlib.language;
 
 public interface PricedObject {
     // Private fields are not allowed

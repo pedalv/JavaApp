@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava.module.langandlib.collectionfactory;
+package no.dfo.whatsnewinjava.langandlib.collectionfactory;
 
 import java.util.ArrayList;
 import java.util.List;

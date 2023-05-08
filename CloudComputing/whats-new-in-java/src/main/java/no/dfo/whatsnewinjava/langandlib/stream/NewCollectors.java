@@ -1,8 +1,7 @@
-package no.dfo.whatsnewinjava.module.langandlib.stream;
+package no.dfo.whatsnewinjava.langandlib.stream;
 
-import no.dfo.whatsnewinjava.module.langandlib.Book;
+import no.dfo.whatsnewinjava.langandlib.Book;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;

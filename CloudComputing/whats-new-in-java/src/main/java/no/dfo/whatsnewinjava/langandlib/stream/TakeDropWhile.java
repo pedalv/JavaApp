@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava.module.langandlib.stream;
+package no.dfo.whatsnewinjava.langandlib.stream;
 
 import java.util.stream.IntStream;
 

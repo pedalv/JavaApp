@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava.module.langandlib.language;
+package no.dfo.whatsnewinjava.langandlib.language;
 
 import java.io.FileInputStream;
 import java.io.IOException;

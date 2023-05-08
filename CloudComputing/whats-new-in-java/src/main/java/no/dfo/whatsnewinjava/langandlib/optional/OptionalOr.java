@@ -1,8 +1,7 @@
-package no.dfo.whatsnewinjava.module.langandlib.optional;
+package no.dfo.whatsnewinjava.langandlib.optional;
 
-import no.dfo.whatsnewinjava.module.langandlib.Book;
+import no.dfo.whatsnewinjava.langandlib.Book;
 
-import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 

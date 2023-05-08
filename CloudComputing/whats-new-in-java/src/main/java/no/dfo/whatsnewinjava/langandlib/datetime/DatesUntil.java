@@ -1,4 +1,4 @@
-package no.dfo.whatsnewinjava.module.langandlib.datetime;
+package no.dfo.whatsnewinjava.langandlib.datetime;
 
 import java.time.LocalDate;
 import java.time.Period;
