@@ -731,7 +731,7 @@ Top five of new features since Java 9:
    rm -fr jars && mkfir -p jars 
    jar --create --file jars/easytext.analysis.api.jar -C out/esaytest.analysis.api .
    jar --create --file jars/easytext.jar -C out/production/esaytest .
-   jar --create --file jars/easytext.cli.jar --main-class=no.dfo.javamodularity.eadytext.cli.Main -C out/esaytest.gui .
+   jar --create --file jars/easytext.cli.jar --main-class=no.dfo.javamodularity.eadytext.no.dfo.javamodularity.easytext.cli.Main -C out/esaytest.gui .
    rm -rf image && jlink --module-path jars/:$JAVA_HOME/jmods \
                          --add-modules easytext.cli \
                          --strip-debug \
