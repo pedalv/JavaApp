@@ -1,6 +1,4 @@
-package mymodule.com.pluralsight;
-
-import com.pluralsight.util.LoggingUtil;
+package com.pluralsight;
 
 public class Main {
   public static void main(String... args) {

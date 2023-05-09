@@ -1,4 +1,4 @@
-package util.com.pluralsight.util;
+package com.pluralsight;
 
 import java.util.logging.Logger;
 

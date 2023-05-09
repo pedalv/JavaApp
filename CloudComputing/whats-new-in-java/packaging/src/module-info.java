@@ -1,3 +1,3 @@
 module com.pluralsight {
-  exports com.pluralsight;
+  exports com.pluralsight.util;
 }

@@ -1,4 +1,4 @@
 module util {
-  exports util.com.pluralsight.util;
+  exports com.pluralsight;
   requires java.logging;
 }
