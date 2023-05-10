@@ -9,7 +9,8 @@ public class MainDuration {
 
         var hourBack = Duration.ofHours(-1);
 
-        //Java 18
+        //Java 17
+        boolean isNegative = hourBack.isNegative();
         //boolean isPositive = hourBack.isPositive();
         //MainDuration.java:13: error: cannot find symbol
 
