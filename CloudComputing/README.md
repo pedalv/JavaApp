@@ -3,10 +3,11 @@ Cloud computing metaphor: the group of networked elements providing services nee
 
 ## Topics
 - [Docker](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/docker.md)
-- [Kubernetes](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/kubernetes.md)
-- [Virtualization](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/virtualization.md)
-- [Microsodt Azure](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/microsoft-azure.md)
 - [Eclipse](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/eclipse.md)
-- [SAP](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/sap.md)
 - [Gradle](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/gradle.md)
+- [Java](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/java.md)
+- [Kubernetes](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/kubernetes.md)
+- [Microsodt Azure](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/microsoft-azure.md)
+- [SAP](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/sap.md)
 - [Security](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/security.md)
+- [Virtualization](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/virtualization.md)

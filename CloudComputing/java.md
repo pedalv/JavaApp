@@ -6,7 +6,8 @@
 - [Java EE: Working with JSON Using JSON-B and JSON-P](https://app.pluralsight.com/library/courses/java-ee-json-using-jsonp-jsonb/exercise-files)
 - [JDK 11 Releases](http://jdk.java.net/11/)
 - [javadoc.io](https://javadoc.io/)
-
+- [functional-programming](https://github.com/pedalv/JavaApp/tree/master/CloudComputing/functional-programming)
+- [whats-new-in-java](https://github.com/pedalv/JavaApp/tree/master/CloudComputing/whats-new-in-java)
 
 ## [Jave EE: Working with JSON Using JSON-B and JSON-P](https://app.pluralsight.com/library/courses/java-ee-json-using-jsonp-jsonb/table-of-contents)
 * [JSON](https://www.json.org/json-en.html) - The basic for webservices
