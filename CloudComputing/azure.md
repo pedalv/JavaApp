@@ -1268,14 +1268,16 @@ Virtualization
        - Cache much more data comparing to API Management built-in caching
        - Use caching with Consumption tier of API Management
  - Internal cache is not available in the APIM Consumption tier === Redis fixed it 
- - Policies
-   - Inbound processing
+ - Policies are a collection of Statements that are executed sequentially on the request or response of an API.
+   - Inbound processing: Statements to be applied to the request
      - Filter IP addresses
      - Limit call rate
      - Mock responses
      - Rewrite URL
-   - Outbound processing
-   - Backend
+   - Backend: Statement to be applied before the request is forwarded ro the back-end
+   - Outbound processing: Stetements to be applied to the response
+   - on-error: Statements to be applied if there is an error
+   
 - A unit is composed of dedicated Azure resources and has a certain load-bearing capacity expressed as a number of AOI calls per month
 - Automating APIM Tasks
   - You can write PowerShell scripts to perform many of your API Managements tasks.
