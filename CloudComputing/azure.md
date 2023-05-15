@@ -1238,7 +1238,7 @@ Virtualization
     - Set up policies such as quotas or transdormations on the APIs
     - Get insights from analytics
     - Manage API access for users
-  - Azure API Gateway: The endpoint that acceåts the API calls from clients
+  - Azure API Gateway: The endpoint that accepts the API calls from clients
     - Accepts calls from clients and directs to the back-end APIs
     - Verifies API keys, security tokens, certificates, and other credencials
     - Enforces usage quotas and call rate limits
@@ -1275,9 +1275,11 @@ Virtualization
      - Mock responses
      - Rewrite URL
    - Backend: Statement to be applied before the request is forwarded ro the back-end
-   - Outbound processing: Stetements to be applied to the response
+   - Outbound processing: Statements to be applied to the response
    - on-error: Statements to be applied if there is an error
-   
+   - Where Do Policies Live?
+     - Policies are configured in APIM > "Azure Portal"
+     - Policies are executed in APIM > "Azure API Gateway"
 - A unit is composed of dedicated Azure resources and has a certain load-bearing capacity expressed as a number of AOI calls per month
 - Automating APIM Tasks
   - You can write PowerShell scripts to perform many of your API Managements tasks.
