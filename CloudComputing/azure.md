@@ -1250,6 +1250,38 @@ Virtualization
     - Try-out/test an API via the interactive console
     - Create an account and subscribe to the APIs by getting an API key
     - Access API call analytics on their own usage
+- Managed identity (MSI)
+  - MSI allows API Management to easily and securely access Azure AD-protected resources, such as Azure Key Vault
+  - Currently, managed identities can be used to obtain certificates from Azure Key Vault for API Management custom domain names
+  - Ask for the SSL Certificate
+  - Get the SSL Certificate from Azure Key Vault (KV)
+  - [Securing Applications in Microsoft Azure](https://app.pluralsight.com/library/courses/microsoft-azure-applications-securing/table-of-contents)
+- Response Caching and APIM
+  - API Management operations can use response caching
+  - Response caching reduces latency, bandwith and resource consumption
+  - Should only be used to load data withc does not change frequently
+  - Two types of caching
+    1. Build-in Cache: Comes with your APIM tier
+    2. External Redis Cache: Both Aure-hosted and external Redis instances
+       - Avoid loosing cached responses due to API Management updates
+       - Have fine-tuned control over redis cache configuration
+       - Cache much more data comparing to API Management built-in caching
+       - Use caching with Consumption tier of API Management
+ - Internal cache is not available in the APIM Consumption tier === Redis fixed it 
+ - Policies
+   - Inbound processing
+     - Filter IP addresses
+     - Limit call rate
+     - Mock responses
+     - Rewrite URL
+   - Outbound processing
+   - Backend
+- A unit is composed of dedicated Azure resources and has a certain load-bearing capacity expressed as a number of AOI calls per month
+- Automating APIM Tasks
+  - You can write PowerShell scripts to perform many of your API Managements tasks.
+  - The scripts can be run manually or by Azure Automation workflows.
+  - You can pair these cmdlets in Azure Automation with the cmdlets for other Azure services, to automate complex tasks across Azure services.
+
 
 ## On-line courses:
 - [POPULAR - Microsoft Azure: The Big Picture](https://app.pluralsight.com/library/courses/microsoft-azure-the-big-picture/table-of-contents)
