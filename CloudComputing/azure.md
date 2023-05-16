@@ -1285,7 +1285,38 @@ Virtualization
   - You can write PowerShell scripts to perform many of your API Managements tasks.
   - The scripts can be run manually or by Azure Automation workflows.
   - You can pair these cmdlets in Azure Automation with the cmdlets for other Azure services, to automate complex tasks across Azure services.
-
+- Common Antipatterns
+  1. Extraneous-fetching Antipattern: Retrieving more data than needed
+     - Avoid fetching laarge volumes of data that may quickly become outdated or might be discarded
+     - Take advantage of features  build into the data store. SQL databases provide aggregate functions.
+     - Implement pagination and only a limited nu,ber of entities at a time.
+     - Examine the source code to determine whether all of these fields are actually necessary.
+  2. Chatty I/O Antipattern: A large number of I/O requests
+     - Reduce the number of I/O requests by packaging the data into larger, fewer requests
+     - When writing data, avoid locking resources for longer than necessary
+     - Consider caching data that you retrieve from a service or a database
+- APIM Logging and Monitoring
+  -  Performance Implecations of Application Insights
+    - Based on internal load tests, enabling this feature caused a 40%-50% reduction in throughput when request rate exceeded 1 000 request per second
+    - Manipulate the number of requests being logged by adjusting the Sampling setting. Value 100% means all requests are logged, while 0% reflects no logging at all. Sampling helps to reduce colume of telemetry.
+    - Skipping logging of headers and body of requests and responses will have positive impact on performance.
+  - Azure Applications Insights is designed for assessing application performances.
+  - Azure Applications Insights is not intended to be an audit system and is not suited for logging each individual request. 
+  - View metrics of your APIs, giving you near real-time visibility into the state and health of your APIs.
+  - Activity logs provide insight into the operations that were performed on your API Management services.
+  - You can configure alerts based on metrics and activity logs (email, webhook, LogicApp).
+  - Diagnostic logs provide information about operations and errors that are important for auditing and troubleshooting.
+- Azure Application Gateway; A web traffic load balancer that enables you to manage traffic o your web applications.
+  - other Azure Application Gateway Features
+    - Custom error pages: Application Gateway allows creating custom error pages
+    - Session affinity: The cookie-based session affinity allows keeping a user session on the same server
+    - Redirection: a generic redirection mechanism, can redirect from and to any port defined by rules.
+    - Connection draining: helps graceful removal of backend pool members during planned service updates.
+  - Integrating APIM with Azure Application Gateway
+    - Single API Management service for both internal and external consumers
+    - Make it act as a single frontend for both on-prem and cloud APIs
+    - Expose only a subset of your APIs for External consumption using routing functionality available in Application Gateway
+    - Using the load balancer and wen application firewall (WAF) features offered by Application Gateway.
 
 ## On-line courses:
 - [POPULAR - Microsoft Azure: The Big Picture](https://app.pluralsight.com/library/courses/microsoft-azure-the-big-picture/table-of-contents)
