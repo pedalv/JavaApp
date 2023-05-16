@@ -1322,11 +1322,7 @@ Virtualization
   - Azure Service Fabric: Build and manage applications composed of microservices
     - [Azure Kubernetes Service (AKS) – The Big Picture](https://app.pluralsight.com/library/courses/azure-container-service-big-picture/table-of-contents)
     - [Azure Service Fabric](https://app.pluralsight.com/search/?q=Azure%20Service%20Fabric&type=code-challenge%2Cconference%2Cvideo-course%2Cguide%2Cinteractive-course%2Clab%2Cpath%2Cproject%2Cskilliq&m_sort=relevance&query_id=acdf9bf0-4236-445f-b99d-e4b4939e69db&source=user_typed&tag_level3_filter=a1b028dd-8464-4c63-85e8-ae29ea184fc7)
-
-
-
-
-
+    - Service Fabric enables you to build and manage scalable and reliable applications composed of microservices that run at high density on a shared pool of machines, which is referred to as a cluster.
 
 ## On-line courses:
 - [POPULAR - Microsoft Azure: The Big Picture](https://app.pluralsight.com/library/courses/microsoft-azure-the-big-picture/table-of-contents)
