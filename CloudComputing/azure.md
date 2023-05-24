@@ -1334,6 +1334,9 @@ Virtualization
   - You usually won't have to write any code. However, if you do need to write code, you can create code snippets using [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview) and run that code from your workflow. You can also create code snippets that run in your workflow by using the [Inline Code action](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-add-run-inline-code?tabs=consumption). If your workflow needs to interact with events from Azure services, custom apps, or other solutions, you can monitor, route, and publish events using [Azure Event Grid](https://learn.microsoft.com/en-us/azure/event-grid/overview).
   - We often build systems to react to a series of critical events. Whether you're building a web API, responding to database changes, processing IoT data streams, or even managing message queues - every application needs a way to run some code as these events occur.
 
+- Role-based access control (RBAC)
+  - Role-based access control (RBAC) is a method of restricting network access based on the roles of individual users within an enterprise.
+
 ## On-line courses:
 - [POPULAR - Microsoft Azure: The Big Picture](https://app.pluralsight.com/library/courses/microsoft-azure-the-big-picture/table-of-contents)
 - - [POPULAR - Microsoft Azure Cloud Concepts](https://app.pluralsight.com/library/courses/microsoft-azure-cloud-concepts)
