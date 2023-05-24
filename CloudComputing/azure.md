@@ -1323,6 +1323,16 @@ Virtualization
     - [Azure Kubernetes Service (AKS) – The Big Picture](https://app.pluralsight.com/library/courses/azure-container-service-big-picture/table-of-contents)
     - [Azure Service Fabric](https://app.pluralsight.com/search/?q=Azure%20Service%20Fabric&type=code-challenge%2Cconference%2Cvideo-course%2Cguide%2Cinteractive-course%2Clab%2Cpath%2Cproject%2Cskilliq&m_sort=relevance&query_id=acdf9bf0-4236-445f-b99d-e4b4939e69db&source=user_typed&tag_level3_filter=a1b028dd-8464-4c63-85e8-ae29ea184fc7)
     - Service Fabric enables you to build and manage scalable and reliable applications composed of microservices that run at high density on a shared pool of machines, which is referred to as a cluster.
+    - Build scalable and reliable applications composed of microservices.
+    - Provision, deploy, monitor, upgrade/patch, and delete deployed microservices.
+    - Run at high density onn a shared pool of machines, which is referred to as a cluster.
+    - Start small and grow to massive scale with hundreds or thousands of machines.
+    - Stateless, and stateful microservices.
+    - Abstracts-out inter-service communication from  developers.
+
+- Why use Azure Logic Apps
+  - You usually won't have to write any code. However, if you do need to write code, you can create code snippets using [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview) and run that code from your workflow. You can also create code snippets that run in your workflow by using the [Inline Code action](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-add-run-inline-code?tabs=consumption). If your workflow needs to interact with events from Azure services, custom apps, or other solutions, you can monitor, route, and publish events using [Azure Event Grid](https://learn.microsoft.com/en-us/azure/event-grid/overview).
+  - We often build systems to react to a series of critical events. Whether you're building a web API, responding to database changes, processing IoT data streams, or even managing message queues - every application needs a way to run some code as these events occur.
 
 ## On-line courses:
 - [POPULAR - Microsoft Azure: The Big Picture](https://app.pluralsight.com/library/courses/microsoft-azure-the-big-picture/table-of-contents)
