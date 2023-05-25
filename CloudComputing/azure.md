@@ -1232,20 +1232,20 @@ Virtualization
 - Azure API Management (APIM)
   - APIM helps organizations to pubish existing back-end APIs for external consumers, partners, and internal developers 
 - What is APIM?
-  - Azure Portal: The administrative interface where the API management is set up
+  - Azure Portal: The administrative interface where the API management is set up, The administrative interface where you set up your API program
     - Define or import back-end API schema
     - Logical API packaging into products
-    - Set up policies such as quotas or transdormations on the APIs
+    - Set up policies such as quotas or transformations on the APIs
     - Get insights from analytics
     - Manage API access for users
-  - Azure API Gateway: The endpoint that accepts the API calls from clients
+  - Azure API Gateway: The endpoint that accepts the API calls from clients 
     - Accepts calls from clients and directs to the back-end APIs
     - Verifies API keys, security tokens, certificates, and other credencials
     - Enforces usage quotas and call rate limits
     - Transforms API on the fly without code modifications using policies
     - Caches backend responses if set up
     - Logs API call details for analytics and monitoring purposes
-  - Developer Portal: The web panel for the developers who intend to consume the APIs
+  - Developer Portal: The web panel for the developers who intend to consume the APIs, Web user interface for developers where they can read API documentation
     - Developers can read API documentation
     - Try-out/test an API via the interactive console
     - Create an account and subscribe to the APIs by getting an API key
