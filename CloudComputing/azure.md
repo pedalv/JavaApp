@@ -1306,7 +1306,7 @@ Virtualization
   - Activity logs provide insight into the operations that were performed on your API Management services.
   - You can configure alerts based on metrics and activity logs (email, webhook, LogicApp).
   - Diagnostic logs provide information about operations and errors that are important for auditing and troubleshooting.
-- Azure Application Gateway; A web traffic load balancer that enables you to manage traffic o your web applications.
+- Azure Application Gateway; A web traffic load balancer that enables you to manage traffic on your web applications.
   - other Azure Application Gateway Features
     - Custom error pages: Application Gateway allows creating custom error pages
     - Session affinity: The cookie-based session affinity allows keeping a user session on the same server
