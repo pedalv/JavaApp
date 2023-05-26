@@ -1330,6 +1330,14 @@ Virtualization
     - Stateless, and stateful microservices.
     - Abstracts-out inter-service communication from  developers.
 
+- Versions
+  - Versions allow to present groups of related APIs to the developers. 
+  - You can use versions to handle breaking changes in your API safely
+  - https://apis.dfo-lonn.no/lonn/v1 or https://apis.dfo-lonn.no/lonn/v3
+- Revisions
+  - Revisions allow you to make changes to the APIs in a controlled and safe way, without disturbing your API consumers
+  - https://apis.dfo-lonn.no/lonn;rev=3
+
 - Why use Azure Logic Apps
   - You usually won't have to write any code. However, if you do need to write code, you can create code snippets using [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview) and run that code from your workflow. You can also create code snippets that run in your workflow by using the [Inline Code action](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-add-run-inline-code?tabs=consumption). If your workflow needs to interact with events from Azure services, custom apps, or other solutions, you can monitor, route, and publish events using [Azure Event Grid](https://learn.microsoft.com/en-us/azure/event-grid/overview).
   - We often build systems to react to a series of critical events. Whether you're building a web API, responding to database changes, processing IoT data streams, or even managing message queues - every application needs a way to run some code as these events occur.
