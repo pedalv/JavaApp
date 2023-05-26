@@ -1337,6 +1337,28 @@ Virtualization
 - Revisions
   - Revisions allow you to make changes to the APIs in a controlled and safe way, without disturbing your API consumers
   - https://apis.dfo-lonn.no/lonn;rev=3
+- Each  version can have multiple revisions, just like a non-versioned API. You can use revisions without using versions, or the other way around.
+- Typically versions are used to separate API versions with breaking changes, while revisions can be used for minor and non-breaking changes to an API.
+- APIs and their operations
+  - Each API in the Azure API Management contains a reference to the back-end service that implements the API and its operations. 
+- Products
+  - Products are how APIs are surfaced to developers, and have one or more APIs, title, description, and terms of use
+  - Products can be Open or Protected. Protected products must be subscribed to before they can be used.
+  - When a product is ready for use by developers, it can be published for developers to use it.
+  - Subscription approval is configured at the product level. Developers need this subscription to access products.
+- Groups
+  - Groups are used to manage the visibility of products to developers
+  - Administrators: 
+    - Manage API Management service instances, creating the APIs, operations, and products
+    - Administrators can also create custom groups or leverage external groups in associated Azure Active Directory tenants.
+  - Developers: 
+    - Developers are granted access to the developer portal and build applications that call the operations of an API
+    - Developers can be created or invited to join by administrators, or they can sign up from  the Developer portal
+    - Each developer is a member of one or more groups, and can subscribe to the products that grant visibility to those groups.
+  - Guest: Unauthenticated developer portal users with certain ready-only access, such as the ability to view APIs but not call them.
+- Policies
+  - Policies are a powerful capability of Azure API Management that allow changing the behaviour of the API through configuration.
+  - Policies are a colllection of statements that are executed sequentially on the request or response of an API.
 
 - Why use Azure Logic Apps
   - You usually won't have to write any code. However, if you do need to write code, you can create code snippets using [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview) and run that code from your workflow. You can also create code snippets that run in your workflow by using the [Inline Code action](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-add-run-inline-code?tabs=consumption). If your workflow needs to interact with events from Azure services, custom apps, or other solutions, you can monitor, route, and publish events using [Azure Event Grid](https://learn.microsoft.com/en-us/azure/event-grid/overview).
