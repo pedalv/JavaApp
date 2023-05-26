@@ -1360,6 +1360,19 @@ Virtualization
   - Policies are a powerful capability of Azure API Management that allow changing the behaviour of the API through configuration.
   - Policies are a colllection of statements that are executed sequentially on the request or response of an API.
 
+- Metrics
+  - Metrics are numerical values that describe some aspect of a system at a particular time.
+  - Example of metrics can be CPU or memory usage value.
+- Logs
+  - Logs are events that occurred within the system.
+  - They can contain different kinds of data and may be structured or free form text with a timestamp.
+  - Example of logs can be information about exception thrown during application execution.
+- Azure Monitor can collect log data from any REST client what allows to create custom monitoring scenarios, including on-premises solutions. 
+- An Action Group
+  - Collection of notification preferences defined by the owner of an Azure subscription.
+  - Azure Moonitor and Service Health alerts use action groups to notify users that an alert has been triggered.
+- Transient faults include the momentary loss of network connectivity to components and services, the temporary unavailability of a service, or timeouts that arise when a service is busy. 
+
 - Why use Azure Logic Apps
   - You usually won't have to write any code. However, if you do need to write code, you can create code snippets using [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview) and run that code from your workflow. You can also create code snippets that run in your workflow by using the [Inline Code action](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-add-run-inline-code?tabs=consumption). If your workflow needs to interact with events from Azure services, custom apps, or other solutions, you can monitor, route, and publish events using [Azure Event Grid](https://learn.microsoft.com/en-us/azure/event-grid/overview).
   - We often build systems to react to a series of critical events. Whether you're building a web API, responding to database changes, processing IoT data streams, or even managing message queues - every application needs a way to run some code as these events occur.
