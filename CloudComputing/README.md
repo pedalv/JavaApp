@@ -11,3 +11,4 @@ Cloud computing metaphor: the group of networked elements providing services nee
 - [SAP](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/sap.md)
 - [Security](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/security.md)
 - [Virtualization](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/virtualization.md)
+- [RabbitMQ](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/rabbitmq.md)
