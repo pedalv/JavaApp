@@ -1,8 +1,14 @@
 ## RabbitMQ
+
+
+#### Advanced Message Queuing Protocol
 ![AMQP](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/amqp.JPG)
 - Advanced Message Queuing Protocol (AMQP)
   - AMQP is an open source published standard for asynchronous messaging by wire.
 
+#### [Client Documentation Guides](https://www.rabbitmq.com/documentation.html)
+- [Java Client API Guide](https://www.rabbitmq.com/api-guide.html)
+- [.NET/C# Client API Guide](https://www.rabbitmq.com/dotnet-api-guide.html)
 - [EasyNetQ](https://easynetq.com/) Notifications: 
   - **Publish and subscribe pattern**
     - Notifications / Broadcast 
@@ -26,3 +32,4 @@
       - Topic based publish and subscribe routes messages using a topic key
         - '*' can substitute for exactly one word
         - '#' can substitute for zero or more words
+- [RabbitMQ extensions to AMQP 0-9-1](https://www.rabbitmq.com/extensions.html)
