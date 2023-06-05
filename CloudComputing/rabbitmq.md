@@ -1,4 +1,7 @@
 ## RabbitMQ
+- publish: 	 send msg 	- Producer - EnQueue - Virtual HOST - VH - Quorum
+- Broken:    exchange, port: 5672
+- subscribe: receive msg - Consumer - DeQueue
 
 
 #### Advanced Message Queuing Protocol
@@ -6,8 +9,12 @@
 - Advanced Message Queuing Protocol (AMQP)
   - AMQP is an open source published standard for asynchronous messaging by wire.
 
+#### [Downloading and Installing RabbitMQ](https://rabbitmq.com/download.html)
+
 #### [Client Documentation](https://www.rabbitmq.com/clients.html) - [RabbitMQ Documentation](https://www.rabbitmq.com/documentation.html)
 - [Java Client API Guide](https://www.rabbitmq.com/api-guide.html)
+- [.NET/C# RabbitMQ Client Library](https://www.rabbitmq.com/dotnet.html)
+  - [Newtonsoft.Json ](https://www.nuget.org/packages/Newtonsoft.Json/) 
 - [.NET/C# Client API Guide](https://www.rabbitmq.com/dotnet-api-guide.html)
 - [EasyNetQ](https://easynetq.com/) Notifications: 
   - **Publish and subscribe pattern**
@@ -33,3 +40,17 @@
         - '*' can substitute for exactly one word
         - '#' can substitute for zero or more words
 - [RabbitMQ extensions to AMQP 0-9-1](https://www.rabbitmq.com/extensions.html)
+
+#### Exchanges
+- Direct Exchanges
+- Fanout Exchanges
+- Topic Exchanges
+- Header Exchanges
+
+#### Queues
+- LIFO
+
+#### Binbdings
+
+##### Consumers
+
