@@ -38,6 +38,12 @@
 - [Java Client API Guide](https://www.rabbitmq.com/api-guide.html)
 - [.NET/C# RabbitMQ Client Library](https://www.rabbitmq.com/dotnet.html)
   - [Newtonsoft.Json ](https://www.nuget.org/packages/Newtonsoft.Json/) 
+- MassTransit.RabbitMQ
+  - [Using MassTransit with RabbitMQ in ASP.NET Core](https://code-maze.com/masstransit-rabbitmq-aspnetcore/)
+  - [Quartz.NET](https://www.quartz-scheduler.net/)
+  - [MassTransit Quartz service](https://masstransit.io/documentation/configuration/scheduling)
+  - [MassTransit/Sample-Quartz](https://github.com/MassTransit/Sample-Quartz)
+  - [Saga State Machines](https://masstransit.io/documentation/patterns/saga/state-machine)
 - [.NET/C# Client API Guide](https://www.rabbitmq.com/dotnet-api-guide.html)
 - [EasyNetQ](https://easynetq.com/) Notifications: 
   - **Publish and subscribe pattern**
