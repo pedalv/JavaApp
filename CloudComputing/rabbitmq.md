@@ -3,6 +3,29 @@
 - Broken:    exchange, port: 5672
 - subscribe: receive msg - Consumer - DeQueue
 
+#### Communication Between Services
+- RPC, Remote Procedure Call
+- SOAP, Simple Object Access Protocol
+- REST, Representational State Transfer
+- Messaging
+
+#### Messaging Patterns
+- Point-To-Point
+- RCP
+- Event Broadcasting, Publish Subscribe
+
+#### Message Brokers and MSMQ
+- Centralized vs Decentralized
+- Multiplatform vs Windows only
+- Standardized vs No standard
+- Scale with clustering vs Scales automatically
+- Supported by MassTransit vs Supported by NServiceBus
+
+#### Microservices, each individual microservice is autonomous
+- A software architectural style
+- Composed of small, highly decoupled independent processes 
+- Communicate with each other using language-agnostic APIs
+- Each process focusses on doing one small task
 
 #### Advanced Message Queuing Protocol
 ![AMQP](https://github.com/pedalv/JavaApp/blob/master/CloudComputing/amqp.JPG)
@@ -41,9 +64,10 @@
         - '#' can substitute for zero or more words
 - [RabbitMQ extensions to AMQP 0-9-1](https://www.rabbitmq.com/extensions.html)
 
-#### Exchanges
+#### Exchange types
 - Direct Exchanges
 - Fanout Exchanges
+- Routing keys Exchange
 - Topic Exchanges
 - Header Exchanges
 
