@@ -1899,3 +1899,450 @@ nslookup www.centinosystems.com
 
 - Exit out of our second SSH session and get a shell back on c1-cp1
 ``` exit ```
+
+- 1 - Exposing and accessing applications with Services on our local cluster
+- ClusterIP
+
+- Imperative, create a deployment with one replica
+``` 
+kubectl create deployment hello-world-clusterip \
+--image=psk8s.azurecr.io/hello-app:1.0
+```
+
+- When creating a service, you can define a type, if you don't define a type, the default is ClusterIP
+```
+kubectl expose deployment hello-world-clusterip \
+--port=80 --target-port=8080 --type ClusterIP
+```
+
+- Get a list of services, examine the Type, CLUSTER-IP and Port
+``` kubectl get service ``` 
+
+- Get the Service's ClusterIP and store that for reuse.
+``` 
+SERVICEIP=$(kubectl get service hello-world-clusterip -o jsonpath='{ .spec.clusterIP }')
+echo $SERVICEIP
+```
+
+- Access the service inside the cluster
+``` curl http://$SERVICEIP ```
+
+- Get a listing of the endpoints for a service, we see the one pod endpoint registered.
+```
+kubectl get endpoints hello-world-clusterip
+kubectl get pods -o wide
+```
+
+- Access the pod's application directly on the Target Port on the Pod, not the service's Port, useful for troubleshooting.
+- Right now there's only one Pod and its one Endpoint
+```
+kubectl get endpoints hello-world-clusterip
+PODIP=$(kubectl get endpoints hello-world-clusterip -o jsonpath='{ .subsets[].addresses[].ip }')
+echo $PODIP
+curl http://$PODIP:8080
+```
+
+- Scale the deployment, new endpoints are registered automatically
+```
+kubectl scale deployment hello-world-clusterip --replicas=6
+kubectl get endpoints hello-world-clusterip
+```
+
+- Access the service inside the cluster, this time our requests will be load balanced...whooo!
+``` curl http://$SERVICEIP ```
+
+- The Service's Endpoints match the labels, let's look at the service and it's selector and the pods labels.
+```
+kubectl describe service hello-world-clusterip
+kubectl get pods --show-labels
+```
+
+- Clean up these resources for the next demo
+```
+kubectl delete deployments hello-world-clusterip
+kubectl delete service hello-world-clusterip
+```
+
+- 2 - Creating a NodePort Service
+- Imperative, create a deployment with one replica
+``` 
+kubectl create deployment hello-world-nodeport \ 
+--image=psk8s.azurecr.io/hello-app:1.0
+```
+
+- When creating a service, you can define a type, if you don't define a type, the default is ClusterIP
+```
+kubectl expose deployment hello-world-nodeport \
+--port=80 --target-port=8080 --type NodePort
+```
+
+- Let's check out the services details, there's the Node Port after the : in the Ports column. It's also got a ClusterIP and Port
+- This NodePort service is available on that NodePort on each node in the cluster
+``` kubectl get service ```
+```
+CLUSTERIP=$(kubectl get service hello-world-nodeport -o jsonpath='{ .spec.clusterIP }')
+PORT=$(kubectl get service hello-world-nodeport -o jsonpath='{ .spec.ports[].port }')
+NODEPORT=$(kubectl get service hello-world-nodeport -o jsonpath='{ .spec.ports[].nodePort }')
+```
+
+- Let's access the services on the Node Port...we can do that on each node in the cluster and
+- from outside the cluster...regardless of where the pod actually is
+
+- We have only one pod online supporting our service
+``` kubectl get pods -o wide ```
+
+- And we can access the service by hitting the node port on ANY node in the cluster on the Node's Real IP or Name.
+- This will forward to the cluster IP and get load balanced to a Pod. Even if there is only one Pod.
+```
+curl http://c1-cp1:$NODEPORT
+curl http://c1-node1:$NODEPORT
+curl http://c1-node2:$NODEPORT
+curl http://c1-node3:$NODEPORT
+```
+
+- And a Node port service is also listening on a Cluster IP, in fact the Node Port traffic is routed to the ClusterIP
+```
+echo $CLUSTERIP:$PORT
+curl http://$CLUSTERIP:$PORT
+```
+
+- Let's delete that service
+```
+kubectl delete service hello-world-nodeport
+kubectl delete deployment hello-world-nodeport
+```
+
+ 3 - Creating LoadBalancer Services in Azure or any cloud
+- Switch contexts into AKS, we created this cluster together in 'Kubernetes Installation and Configuration Fundamentals'
+- I've added a script to create a GKE and AKS cluster this course's downloads.
+```
+kubectl config use-context 'CSCluster'
+kubectl config use-context 'k8s-cloud'
+```
+
+- Let's create a deployment
+```
+kubectl create deployment hello-world-loadbalancer \
+--image=psk8s.azurecr.io/hello-app:1.0
+```
+
+- When creating a service, you can define a type, if you don't define a type, the default is ClusterIP
+```
+kubectl expose deployment hello-world-loadbalancer \
+--port=80 --target-port=8080 --type LoadBalancer
+```
+
+- Can take a minute for the load balancer to provision and get an public IP, you'll see EXTERNAL-IP as <pending>
+```
+kubectl get service
+kubectl get service --watch
+```
+```
+LOADBALANCERIP=$(kubectl get service hello-world-loadbalancer -o jsonpath='{ .status.loadBalancer.ingress[].ip }')
+curl http://$LOADBALANCERIP:$PORT
+```
+
+- The loadbalancer, which is 'outside' your cluster, sends traffic to the NodePort Service which sends it to the ClusterIP to get to your pods!
+- Your cloud load balancer will have health probes checking the health of the node port service on the real node IPs.
+- This isn't the health of our application, that still needs to be configured via readiness/liveness probes and maintained by your Deployment configuration
+``` kubectl get service hello-world-loadbalancer ```
+
+- Clean up the resources from this demo
+```
+kubectl delete deployment hello-world-loadbalancer
+kubectl delete service hello-world-loadbalancer
+```
+
+- Let's switch back to our local cluster
+``` kubectl config use-context kubernetes-admin@kubernetes ```
+
+- Declarative examples
+```
+kubectl config use-context kubernetes-admin@kubernetes
+kubectl apply -f service-hello-world-clusterip.yaml
+kubectl get service
+```
+
+- Creating a NodePort with a predefined port, first with a port outside of the NodePort range then a corrected one.
+```
+kubectl apply -f service-hello-world-nodeport-incorrect.yaml
+kubectl apply -f service-hello-world-nodeport.yaml
+kubectl get service
+```
+
+- Switch contexts to Azure to create a cloud load balancer
+```
+kubectl config use-context 'CSCluster'
+kubectl config use-context 'k8s-cloud'
+kubectl apply -f service-hello-world-loadbalancer.yaml
+kubectl get service
+```
+
+- Clean up these resources
+```
+kubectl delete -f service-hello-world-loadbalancer.yaml
+kubectl config use-context kubernetes-admin@kubernetes
+kubectl delete -f service-hello-world-nodeport.yaml
+kubectl delete -f service-hello-world-clusterip.yaml
+```
+
+- Service Discovery
+- Cluster DNS
+
+- Let's create a deployment in the default namespace
+```
+kubectl create deployment hello-world-clusterip \
+--image=psk8s.azurecr.io/hello-app:1.0
+```
+
+- Let's create a deployment in the default namespace
+```
+kubectl expose deployment hello-world-clusterip \
+--port=80 --target-port=8080 --type ClusterIP
+```
+
+- We can use nslookup or dig to investigate the DNS record, it's CNAME @10.96.0.10 is the cluser IP of our DNS Server
+``` kubectl get service kube-dns --namespace kube-system ```
+
+- Each service gets a DNS record, we can use this in our applications to find services by name.
+- The A record is in the form <servicename>.<namespace>.svc.<clusterdomain>
+```
+nslookup hello-world-clusterip.default.svc.cluster.local 10.96.0.10
+kubectl get service hello-world-clusterip
+```
+
+- Create a namespace, deployment with one replica and a service
+``` kubectl create namespace ns1 ```
+
+- Let's create a deployment with the same name as the first one, but in our new namespace
+```
+kubectl create deployment hello-world-clusterip --namespace ns1 \
+--image=psk8s.azurecr.io/hello-app:1.0
+```
+```
+kubectl expose deployment hello-world-clusterip --namespace ns1 \
+--port=80 --target-port=8080 --type ClusterIP
+```
+
+- Let's check the DNS record for the service in the namespace, ns1. See how ns1 is in the DNS record?
+- <servicename>.<namespace>.svc.<clusterdomain>
+``` nslookup hello-world-clusterip.ns1.svc.cluster.local 10.96.0.10 ```
+
+- Our service in the default namespace is still there, these are completely unique services.
+``` nslookup hello-world-clusterip.default.svc.cluster.local 10.96.0.10 ```
+
+- Get the environment variables for the pod in our default namespace
+- More details about the lifecycle of variables in "Configuring and Managing Kubernetes Storage and Scheduling"
+- Only the kubernetes service is available? Why? I created the deployment THEN I created the service
+```
+PODNAME=$(kubectl get pods -o jsonpath='{ .items[].metadata.name }')
+echo $PODNAME
+kubectl exec -it $PODNAME -- env | sort
+```
+
+- Environment variables are only created at pod start up, so let's delete the pod
+``` kubectl delete pod $PODNAME ```
+
+- And check the enviroment variables again...
+``` 
+PODNAME=$(kubectl get pods -o jsonpath='{ .items[].metadata.name }')
+echo $PODNAME
+kubectl exec -it $PODNAME -- env | sort
+```
+
+- ExternalName
+``` kubectl apply -f service-externalname.yaml ```
+
+- The record is in the form <servicename>.<namespace>.<clusterdomain>. You may get an error that says ** server can't find hello-world.api.example.com: NXDOMAIN this is ok.
+``` nslookup hello-world-api.default.svc.cluster.local 10.96.0.10 ```
+
+- Let's clean up our resources in this demo
+```
+kubectl delete service hello-world-api
+kubectl delete service hello-world-clusterip
+kubectl delete service hello-world-clusterip --namespace ns1
+kubectl delete deployment hello-world-clusterip
+kubectl delete deployment hello-world-clusterip --namespace ns1
+kubectl delete namespace ns1
+```
+
+- Check out 1-ingress-loadbalancer.sh for the cloud demos
+
+- Demo 1 - Deploying an ingress controller
+- For our Ingress Controller, we're going to go with nginx, widely available and easy to use.
+- Follow this link here to find a manifest for nginx Ingress Controller for various infrastructures, Cloud, Bare Metal, EKS and more.
+- We have to choose a platform to deploy in...we can choose Cloud, Bare-metal (which we can use in our local cluster) and more.
+``` https://kubernetes.github.io/ingress-nginx/deploy/ ```
+
+
+- Bare-metal: On our on prem cluster: Bare Metal (NodePort)
+- Let's make sure we're in the right context and deploy the manifest for the Ingress Controller found in the link just above (around line 9).
+```
+kubectl config use-context kubernetes-admin@kubernetes
+kubectl apply -f ./baremetal/deploy.yaml
+```
+
+- Using this manifest, the Ingress Controller is in the ingress-nginx namespace but
+- It will monitor for Ingresses in all namespaces by default. If can be scoped to monitor a specific namespace if needed.
+
+- Check the status of the pods to see if the ingress controller is online.
+kubectl get pods --namespace ingress-nginx
+
+- Now let's check to see if the service is online. This of type NodePort, so do you have an EXTERNAL-IP?
+kubectl get services --namespace ingress-nginx
+
+- Check out the ingressclass nginx...we have not set the is-default-class so in each of our Ingresses we will need
+- specify an ingressclassname
+```
+kubectl describe ingressclasses nginx
+#kubectl annotate ingressclasses nginx "ingressclass.kubernetes.io/is-default-class=true"
+```
+
+- Demo 2 - Single Service
+- Create a deployment, scale it to 2 replicas and expose it as a serivce.
+- This service will be ClusterIP and we'll expose this service via the Ingress.
+```
+kubectl create deployment hello-world-service-single --image=psk8s.azurecr.io/hello-app:1.0
+kubectl scale deployment hello-world-service-single --replicas=2
+kubectl expose deployment hello-world-service-single --port=80 --target-port=8080 --type=ClusterIP
+```
+
+- Create a single Ingress routing to the one backend service on the service port 80 listening on all hostnames
+``` kubectl apply -f ingress-single.yaml ```
+
+- Get the status of the ingress. It's routing for all host names on that public IP on port 80
+- This is a NodePort service so there's no public IP, its the NodePort Serivce that you'll use for access or integration into load balancing.
+- If you don't define an ingressclassname and don't have a default ingress class the address won't be updated.
+```
+kubectl get ingress --watch #Wait for the Address to be populated before proceeding
+kubectl get services --namespace ingress-nginx
+```
+
+- Notice the backends are the Service's Endpoints...so the traffic is going straight from the Ingress Controller to the Pod cutting out the kube-proxy hop.
+- Also notice, the default back end is the same service, that's because we didn't define any rules and
+- we just populated ingress.spec.backend. We're going to look at rules next...
+``` kubectl describe ingress ingress-single ```
+
+- Access the application via the exposed ingress that's listening the NodePort and it's static port, let's get some variables so we can reused them
+```
+INGRESSNODEPORTIP=$(kubectl get ingresses ingress-single -o jsonpath='{ .status.loadBalancer.ingress[].ip }')
+NODEPORT=$(kubectl get svc -n ingress-nginx ingress-nginx-controller -o jsonpath='{ .spec.ports[?(@.name=="http")].nodePort }')
+echo $INGRESSNODEPORTIP:$NODEPORT
+curl http://$INGRESSNODEPORTIP:$NODEPORT
+```
+
+- Demo 3 - Multiple Services with path based routing
+- Let's create two additional services
+```
+kubectl create deployment hello-world-service-blue --image=psk8s.azurecr.io/hello-app:1.0
+kubectl create deployment hello-world-service-red  --image=psk8s.azurecr.io/hello-app:1.0
+```
+```
+kubectl expose deployment hello-world-service-blue --port=4343 --target-port=8080 --type=ClusterIP
+kubectl expose deployment hello-world-service-red  --port=4242 --target-port=8080 --type=ClusterIP
+```
+
+- Let's create an ingress with paths each routing to different backend services.
+``` kubectl apply -f ingress-path.yaml ```
+
+- We now have two, one for all hosts and the other for our defined host with two paths
+- The Ingress controller is implementing these ingresses and we're sharing the one public IP, don't proceed until you see
+- the address populated for your ingress
+``` kubectl get ingress --watch ```
+
+- We can see the host, the path, and the backends.
+``` kubectl describe ingress ingress-path ```
+
+- Our ingress on all hosts is still routing to service single, since we're accessing the URL with an IP and not a domain name or host header.
+``` curl http://$INGRESSNODEPORTIP:$NODEPORT ```
+
+- Our paths are routing to their correct services, if we specify a host header or use a DNS name to access the ingress. That's how the rule will route the request.
+```
+curl http://$INGRESSNODEPORTIP:$NODEPORT/red  --header 'Host: path.example.com'
+curl http://$INGRESSNODEPORTIP:$NODEPORT/blue --header 'Host: path.example.com'
+```
+
+- Example Prefix matches...these will all match and get routed to red
+```
+curl http://$INGRESSNODEPORTIP:$NODEPORT/red/1  --header 'Host: path.example.com'
+curl http://$INGRESSNODEPORTIP:$NODEPORT/red/2  --header 'Host: path.example.com'
+```
+
+- Example Exact mismatches...these will all 404
+```
+curl http://$INGRESSNODEPORTIP:$NODEPORT/Blue  --header 'Host: path.example.com'
+curl http://$INGRESSNODEPORTIP:$NODEPORT/blue/1  --header 'Host: path.example.com'
+curl http://$INGRESSNODEPORTIP:$NODEPORT/blue/2  --header 'Host: path.example.com'
+```
+
+- If we don't specify a path we'll get a 404 while specifying a host header.
+- We'll need to configure a path and backend for / or define a default backend for the service
+``` curl http://$INGRESSNODEPORTIP:$NODEPORT/ --header 'Host: path.example.com' ```
+
+- Add a backend to the ingress listenting on path.example.com pointing to the single service
+``` kubectl apply -f ingress-path-backend.yaml ```
+
+- We can see the default backend, and in the Rules, the host, the path, and the backends.
+``` kubectl describe ingress ingress-path ```
+
+- Now we'll hit the default backend service, single for the undefined path.
+``` curl http://$INGRESSNODEPORTIP:$NODEPORT/ --header 'Host: path.example.com' ```
+
+- Demo 4 - Name based virtual hosts
+- Now, let's route traffic to the services using named based virtual hosts rather than paths
+```
+kubectl apply -f ingress-namebased.yaml
+kubectl get ingress --watch #Wait for the Address to be populated before proceeding
+```
+```
+curl http://$INGRESSNODEPORTIP:$NODEPORT/ --header 'Host: red.example.com'
+curl http://$INGRESSNODEPORTIP:$NODEPORT/ --header 'Host: blue.example.com'
+```
+
+- Demo 5 - TLS Example
+- 1 - Generate a certificate
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout tls.key -out tls.crt -subj "/C=US/ST=ILLINOIS/L=CHICAGO/O=IT/OU=IT/CN=tls.example.com"
+```
+
+- 2 - Create a secret with the key and the certificate
+``` kubectl create secret tls tls-secret --key tls.key --cert tls.crt ```
+
+- 3 - Create an ingress using the certificate and key. This uses HTTPS for both / and /red
+``` kubectl apply -f ingress-tls.yaml ```
+
+- Check the status...do we have an IP?
+``` kubectl get ingress --watch #Wait for the Address to be populated before proceeding ```
+
+- Test access to the hostname...we need --resolve because we haven't registered the DNS name
+- TLS is a layer lower than host headers, so we have to specify the correct DNS name.
+```
+kubectl get service -n ingress-nginx ingress-nginx-controller
+NODEPORTHTTPS=$(kubectl get svc -n ingress-nginx ingress-nginx-controller -o jsonpath='{ .spec.ports[?(@.name=="https")].nodePort }')
+echo $NODEPORTHTTPS
+```
+```
+curl https://tls.example.com:$NODEPORTHTTPS/ \
+  --resolve tls.example.com:$NODEPORTHTTPS:$INGRESSNODEPORTIP \
+  --insecure --verbose
+```
+
+- Clean up from our demo
+```
+kubectl delete ingresses ingress-path
+kubectl delete ingresses ingress-tls
+kubectl delete ingresses ingress-namebased
+kubectl delete deployment hello-world-service-single
+kubectl delete deployment hello-world-service-red
+kubectl delete deployment hello-world-service-blue
+kubectl delete service hello-world-service-single
+kubectl delete service hello-world-service-red
+kubectl delete service hello-world-service-blue
+kubectl delete secret tls-secret
+rm tls.crt
+rm tls.key
+```
+
+- Delete the ingress, ingress controller and other configuration elements
+``` kubectl delete -f ./baremetal/deploy.yaml ```
