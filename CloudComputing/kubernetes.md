@@ -942,7 +942,7 @@ kubectl delete -f .k8s
 
 ![K8s Node](https://github.com/pedalv/JavaApp/blob/master/MellomOppdrag/kubernetes_node.PNG)
 
-![Kubernetes deployments vs. pods: What's the difference?](https://www.techtarget.com/searchitoperations/answer/Kubernetes-deployments-vs-pods-Whats-the-difference)
+[Kubernetes deployments vs. pods: What's the difference?](https://www.techtarget.com/searchitoperations/answer/Kubernetes-deployments-vs-pods-Whats-the-difference)
 - A pod is the core building block for running applications in a Kubernetes cluster; 
 - A deployment is a management tool used to control the way pods behave
   - A deployment is responsible for keeping a set of pods running.
