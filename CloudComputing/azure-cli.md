@@ -328,8 +328,49 @@ Creating ARM Templates
 4. Azure Quickstart templates
 
 ## Automating with Service
-- ``` ```
-- ``` ```
+Using a Service Principal
+1. Application identity (az ad app create)
+```
+appName="ServicePrincipalDemo1"
+az ad app create \
+  --display-name $appName \
+  --homepage "http://localhost/$appName" \
+  --identifier-uris "http://localhost/$appName"
+```
+2. Service principal (az ad sp create-for-rbac)
+```
+appId=$(az ad app list --display-name $appName --query [].appId -o tsv) 
+az ad sp create-for-rbac --name $appId --password $spPassword
+```
+3. Permissions (az role assignment)
+```
+servicePrincipalAppId=$(az ad sp list --display-name $appId --query "[].appId" -o tsv)
+az role assignment list --assignee $servicePrincipalAppId
+
+roleId=$(az role assigment list --assignee $servicePrincipalAppId --query "[].id" -o tsv)
+az role assigmnet delete --ids $roleId
+
+resourceGroup="MyVmDemo"
+subscriptionId=$(az account show --query id -o tsv)
+az role assigment create --assignee $servicePrincipalAppId \
+  --role "contributor" \
+  --scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup
+  
+tenantId=$(az account show --query tenantId -o tsv)  
+az logout
+
+az login --service-principal -u $servicePrincipalAppId
+  --password $spPassword --tenant $tenentId
+  
+az group list -o table
+az group create -n NotAllowed -l westeurope => does not hva authorization to perform action
+```
+4. Log in (az login --service-principal)
+```
+
+
+
+```
 - ``` ```
 - ``` ```
 - ``` ```
