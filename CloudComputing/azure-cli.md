@@ -267,14 +267,69 @@ az webapp config connection-string set \
 ```
 
 ## Deploying Resources with ARM, [Azure Quickstart Templates](https://github.com/azure/azure-quickstart-templates)
-- ``` ```
-- ``` ```
-- ``` ```
-- ``` ```
-- ``` ```
-- ``` ```
-- ``` ```
+Create an ARM template (az group deployment create)
+- [Docker Wordpress MySQL](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wordpress/docker-wordpress-mysql)
+```
+resourceGroup="armtest"
+location="westeurope"
+az group create -l $location -n $resourceGroup 
+templateuri=https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wordpress/docker-wordpress-/azuredeploy.json
+az group deployment create \
+  --name TestDeployment \
+  --resource-group $resourceGroup \
+  --template-uri $templateUri \
+  -- parameters 'newStorageAccountName=<blabka>' \
+                'newsqlPassword=<blabla>' \
+                'adminUsername=<blabla>' \
+                'adminPassword=<blabla>' \
+                'dnsNameForPublicIP=<mypublicip72>' 
+```
+- ``` az resource list -g $resourceGroup -o table ```
+- ``` az network public-ip list -g $resourceGroup  --query "[0].dnsSettings.fqdn" -o tsv ``` => mypublicip72.westeurope.cloudapp.azure.com
+Generate an SRM template (az group export) and Creating templates (Azure portal and Visual Studio)
+``` 
+az group export -n CliWebAppDemo
+or inside Azure portal in "Automation script"
+or in Visual Studio from 2017 (old) via Azure Tool installed
+```
+deploy a local custom ARM template (az group dployment create), MySite.json - project from VS 
+``` 
+resourceGroup="templatedeploytest"
+az group create -n $resourceGroup -l westeurope
+deploymentName="MyDeployment"
+sqlPassword=<password>
+az group deployment create -g $resourceGroup -n $deploymentName \
+  --template-file MySite.json \
+  --parameters @MySite.parameters.json \
+  -- parameters "administratorLoginPassword=$sqlPassword"
+```
+- ``` az webapp list -g $resourceGroup --query "[].defaultHostName" -o tsv"``` => websitep7imolzztzydq.azurewebsites.net 
+Deploy an update template version (add an additional web app), MySiteV2.json - project from VS and incremental kan only create new resources === it is not allowed to delete for save reasons
+```
+az group deployment create -g $resourceGroup -n $deploymentName \
+  --template-file MySiteV2.json \
+  --parameters @MySite.parameters.json \
+  -- parameters "administratorLoginPassword=$sqlPassword"
+  --mode Incremental
+```
+- ``` az webapp list -g $resourceGroup --query "[].defaultHostName" -o tsv"``` => websitep7imolzztzydq.azurewebsites.net and website2p7imolzztzydq.azurewebsites.net
+Revert to original template (delete the addicional web app), complete : do not allow deleted any resource when completed used by MySite.json project in VS but MySiteV2.json will be deleted
+``` 
+az group deployment create -g $resourceGroup -n $deploymentName \
+  --template-file MySite.json \
+  --parameters @MySite.parameters.json \
+  -- parameters "administratorLoginPassword=$sqlPassword"
+  --mode Complete
+```
+Creating ARM Templates
+1. az group export
+2. Create automation script in Azure Portal
+3. Visual Studio tooling === Azure tool!
+4. Azure Quickstart templates
 
 ## Automating with Service
+- ``` ```
+- ``` ```
+- ``` ```
 - ``` ```
 - ``` ```
