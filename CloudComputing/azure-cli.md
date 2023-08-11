@@ -8,6 +8,8 @@
 - [How to install the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Command-Line Interface (CLI) documentation](https://learn.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
 - [Querying tables and entities](https://learn.microsoft.com/en-us/rest/api/storageservices/Querying-Tables-and-Entities)
+- [Azure Command-Line Interface (CLI) documentation](https://learn.microsoft.com/en-us/cli/azure/)
+  - [az](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)
 
 ## Logg in commands
 - ``` az --version```
@@ -355,7 +357,9 @@ subscriptionId=$(az account show --query id -o tsv)
 az role assigment create --assignee $servicePrincipalAppId \
   --role "contributor" \
   --scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup
-  
+```
+4. Scheduled Azure function (Log in with service principal: az login --service-principal and Deallocates virtual machine)
+```
 tenantId=$(az account show --query tenantId -o tsv)  
 az logout
 
@@ -364,13 +368,14 @@ az login --service-principal -u $servicePrincipalAppId
   
 az group list -o table
 az group create -n NotAllowed -l westeurope => does not hva authorization to perform action
-```
-4. Log in (az login --service-principal)
-```
 
+az vm show -d -g $resourceGroup -n $vmName --query "powerState" -o tsv => VM running 
 
+- runs from Azure portal, Azure Function
+az functionapp config appsettings set -n $functionAppName -g $functionappGroup \
+  --settings "SERVICE_PRINCIPAL=$servicePrincipalAppId" \
+             "SERVICE_PRINCIPAL_SECRET=$spPassword" \ 
+             "TENANT_ID=@tenantid"
 
+az vm show -d -g $resourceGroup -n $vmName --query "powerState" -o tsv  => Vm deallocated
 ```
-- ``` ```
-- ``` ```
-- ``` ```
