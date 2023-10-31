@@ -1,4 +1,0 @@
-#GlassFish 3
-#Wed Jan 24 10:46:23 CET 2018
-org.eclipse.jst.jee.server\:book-order-theclient=D\:\\java_ee_sdk-7u3\\glassfish4\\glassfish\\domains\\domain1\\eclipseApps\\book-order-theclient
-org.eclipse.jst.j2ee.server\:book-order=D\:\\java_ee_sdk-7u3\\glassfish4\\glassfish\\domains\\domain1\\eclipseApps\\book-order
