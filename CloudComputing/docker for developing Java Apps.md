@@ -94,7 +94,7 @@ ENTRYPOINT ["java", "-jar", "build/libs/api.jar"]
 
 docker build -f gradle.Dockerfile -t  my-api-gradle .
 
-docker run -p 9011:8080 -it --rm my-api-gradle (.)
+docker run -p 9011:8080 -it --rm my-api-gradle
 docker volume ls
 ```
 
@@ -182,4 +182,117 @@ ENTRYPOINT ["catalina.sh", "run"]
 docker build -f maven-cache.Dockerfile -t  my-web-maven-cache .
 
 docker run -p 9020:8080 -it --rm my-web-maven-cache
+```
+##Fabric8 Docker Maven plugin
+- [fabric8io/docker-maven-plugin](https://github.com/fabric8io/docker-maven-plugin)
+- [fabric8io/docker-maven-plugin](http://dmp.fabric8.io/#maven-goals)
+  - mvn clean package
+  - mvn docker:run 
+```
+cat target/docker/fabric8-dmp/v2/build/Dockerfile
+```
+
+##Benjamin Muschko's Gradle docker plugin
+- docker-remote-api
+  ```
+  docker startContainer
+  docker ps
+  docker stop <container-id>
+  ``` 
+- docker-java-application  
+- docker-spring-boot-application
+  ``` 
+  gradle dockerBuildImage
+  docker images
+  ```
+- [bmuschko/gradle-docker-plugin](https://github.com/bmuschko/gradle-docker-plugin)
+- [Gradle Docker Plugin User Guide & Examples](https://bmuschko.github.io/gradle-docker-plugin/)
+ 
+```
+plugins {
+    ...
+    id 'com.bmuschko.docker-spring-boot-application' version '9.3.0'
+    id 'com.bmuschko.docker-remote-api' version '9.3.0'
+    ...
+}
+```
+
+## Spring Boot 2.3 and Above
+- Buildpacks
+  ```
+  mvn spring-boot:build-image
+  gradle bootBuildImage
+  ```
+- Layered JARs
+  ```
+  java -Djarmode=layertools -jar my-app.jar command
+  command: list|extract|help
+  ```
+
+Example:
+```
+gradle bootBuildImage --imageName=layers-gradle
+docker images
+docker run -it --rm -p 9030:8080 layers-gradle
+java -Djarmode=layertools -jar build/libs/api.jar list
+gradle clean build
+java -Djarmode=layertools -jar build/libs/api.jar list
+java -Djarmode=layertools -jar build/libs/api.jar extract
+ls hibernate-deps/BOOT-INF/lib
+```
+
+```
+vim layers-gradle.Dockerfile
+
+FROM gradle:8.0-jdk17 as build
+WORKDIR /app
+RUN chown -R gradle:gradle /app
+USER gradle
+COPY build.gradle .
+COPY src src
+RUN gradle build
+RUN java -Djarmode=layertools -jar build/libs/api.jar extract
+
+FROM eclipse-temurin:17
+WORKDIR /app
+COPY --from=build /app/dependencies/ ./
+COPY --from=build /app/hibernate-deps/ ./
+COPY --from=build /app/spring-boot-loader/ ./
+COPY --from=build /app/snapshot-dependencies/ ./
+COPY --from=build /app/application/ ./
+ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+
+docker build -f layers-gradle.Dockerfile -t custom-layers-gradle .
+docker -it --rm -p 9031:8080 custom-layers-gradle 
+```
+
+### Google Jib, Spring Boot before 2.5 didn't support projects with WAR packaging 
+Build and Push the image to a Container Registry
+```
+mvn compile jib:build -Dimage=$IMAGE_PATH
+gradle jib --image=$IMAGE_PATH
+```
+Requires authorization credentials for the registry
+- Credential helpers
+- CLI tools
+- auth parameter is plugin's configuration
+- Maven settings
+
+Build Image with Local Docker Installation
+```
+mvn compile jib:dockerBuild
+gradle jibDockerBuild
+```
+
+Example:
+```
+mvn package com.google.cloud.tools:jib-maven-plugin:dockerBuild -Dimage=jib-web-maven
+docker images
+docker history jib-web-maven
+docker run -it --rm -p 9040:8080 jib-web-maven
+
+mvn jib:dockerBuild -f pom-jib.xml
+
+gradle jibDockerBuild
+docker run -it --rm -p 9041:8080 jib-web-gradle
 ```
