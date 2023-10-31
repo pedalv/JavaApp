@@ -296,3 +296,8 @@ mvn jib:dockerBuild -f pom-jib.xml
 gradle jibDockerBuild
 docker run -it --rm -p 9041:8080 jib-web-gradle
 ```
+
+## Docker Compose
+- To manage more than one container at the same time for the sa,e application
+- Uses a docker-compose.yml file for configuration
+- Uses the docker compose command to manage the containers of an application
