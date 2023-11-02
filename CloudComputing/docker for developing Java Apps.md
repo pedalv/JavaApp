@@ -288,7 +288,7 @@ Example:
 ```
 mvn package com.google.cloud.tools:jib-maven-plugin:dockerBuild -Dimage=jib-web-maven
 docker images
-docker history jib-web-maven
+docker history jib-web-maven[docker for developing Java Apps.md](docker%20for%20developing%20Java%20Apps.md)
 docker run -it --rm -p 9040:8080 jib-web-maven
 
 mvn jib:dockerBuild -f pom-jib.xml
@@ -298,6 +298,74 @@ docker run -it --rm -p 9041:8080 jib-web-gradle
 ```
 
 ## Docker Compose
-- To manage more than one container at the same time for the sa,e application
+- To manage more than one container at the same time for the same application
 - Uses a docker-compose.yml file for configuration
 - Uses the docker compose command to manage the containers of an application
+
+1. docker network, there are 6 drivers as:
+- Bridge
+- Host
+- Overlay
+- IPvlan
+- Macvlan
+- None
+- docker network create|Is|inspect|connect|disconnect|rm|prune
+```
+docker network create web-db
+docker network ls
+docker network inspect web-db 
+docker run --network-alias <alias>
+docker run -it --rm -p 5432:5432 -e POSTGRESS_PASSWORD=1234 -e POSTGRES_DB=bookdb -v ${PWD}/db:/var/lib/postgresql/data --net web-db --name db postgres
+
+docker build -f web.Dockerfile -t web-app-db .
+docker run -it --rm -p 8080:8080 --net web-db web-app-db
+#No exception
+```
+
+2. docker run commands
+```
+# JPA
+spring.jpa.open-in-view=false
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.properties.jakarta.persistence.sharedCache.mode=NONE
+spring.jpa.database=POSTGRESQL
+spring.datasource.url=jdbc:postgresql://db:5432/bookdb
+#spring.datasource.url=jdbc:postgresql://localhost:5432/bookdb
+spring.datasource.username=postgres
+spring.datasource.password=1234
+
+docker run -it --rm -p 5432:5432 -e POSTGRESS_PASSWORD=1234 -e POSTGRES_DB=bookdb -v ${PWD}/db:/var/lib/postgresql/data postgres
+gradle clean bootRun  
+
+docker build -f web.Dockerfile -t web-app .
+docker run -it --rm -p 8080:8080 web-app
+#PSQLException: Connection to localhost:5432 refused
+```
+3. docker compose configuration, yml fil
+- Dockerfile
+- YAML configuration file, docker-compose.yml (or.yaml)
+- Manager containers
+  - docker compose build|config|up|down|start|stop|ps|top|kill 
+```
+docker compose config
+docker compose config -q
+docker compose build
+docker compose
+rm -r db
+docker compose up 
+docker compose up --build
+docker container ls
+docker network ls
+docker compose ps
+docker compose top
+docker compose kill
+docker container ls -a
+docker compose rm 
+docker container ls -a
+docker compose up -d
+docker compose stop
+docker compose start
+docker compose down
+docker compose down --rmi all
+
+```
