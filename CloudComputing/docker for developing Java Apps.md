@@ -443,3 +443,41 @@ curl localhost:8082/env -> TEST
 docker compose down
 docker compose -p api-test down
 ```
+
+## Managing Application Logs with Docker
+docker logs [OPTIONS] CONTAINER
+- docker Logs --details|--follow|--since|-tail|-timestamps|--until
+- --since|--until: 2021-01-01T00:00:00Z or 10m
+
+docker compose logs [OPTIONS] [SERVICE...]
+- docker compose logs --no-color|--follow|--tail|--timestamps
+
+```
+docker build -f api.Dockerfile -t my-app-log .
+docker run -it --rm -p 8080:8080 --name api my-app-log
+docker logs api
+docker logs -f api
+
+docker run -it --rm -p 24224:24224 -v ${PWD}:/fluentd/etc/ -e FLUENTD_CONF=fluent.conf fluent/fluentd:v1.15
+docker run -it --rm p 8080:8080 --log-driver=fluentd --log-opt tag="{{.Name}}.{{.ImageName}}" --name api my-app-log
+```
+### Multiline Log Problem when an exception occurred: [fluent-plugin-concat](https://github.com/fluent-plugins-nursery/fluent-plugin-concat)
+```
+vim fluent-ml.conf
+vim fluentd.Dockerfile
+docker build -f fluentd.Dockerfile -t my-fluentd .
+docker run -it --rm -p 24224:24224 -v ${PWD}:/fluentd/etc/ -e FLUENTD_CONF=fluent.conf my-fluentd
+docker run -it -d p 8080:8080 --log-driver=fluentd --log-opt tag="{{.Name}}.{{.ImageName}}" --name api my-app-log
+```
+
+- Setting up Elastiscsearch, Kibana and Fluentd
+```
+vim fluent-efk.conf
+vim docker-compose.yml
+docker stop api
+docker stop my-fluentd
+docker container ls -a
+docker compose up
+#fetch data fra en of apis
+#visit kibana at localhost port 5601, go Analytics -> Discover (click create index patern, type fluent og choice timestamp)
+```
