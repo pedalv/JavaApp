@@ -369,5 +369,77 @@ docker compose stop
 docker compose start
 docker compose down
 docker compose down --rmi all
+```
 
+## Configuring Java Applications in Containers
+
+```
+gradle package
+java -jar target/api.jar
+curl localhost:8080/env -> NO_ENVIRONMENT
+
+docker build -f api-env.Dockerfile -t api-app-dev .
+docker run -it --rm -p 8081:8081 api-app-dev
+curl localhost:8081/env -> DEV
+
+docker run -it --rm -e SPRING_PROFILES_ACTIVE=test -p 8082:8082 api-app-dev
+curl localhost:8082/env -> TEST
+
+docker run -it --rm -p 8082:8082 api-app-dev --spring.profiles.active=test
+curl localhost:8082/env -> TEST
+```
+
+```
+docker run -it --rm -p 8082:8082 api-app-dev -Dspring.profiles.active=test
+#Do not work -> DEV, Se rules for CMD and ENTRYPOINT
+#See solution in "- Defining Java System Properties" 
+
+- Overeeiding CMD
+docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG...]
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD --server.port=8081
+docker run my-image --server.port=8082
+jar -jar app.jar --server.port=8082
+
+- Overringen ENTRYPOINT
+docker run --entrypoint /bin/bash my-image
+
+- Defining Java System Properties
+ENV JAVA_OPTS
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar app.jar ${0} ${@}"]
+
+docker build -f api-shell.Dockerfile -t api-app-shell .
+docker run --rm -it -e JAVA_OPTS=-Dspring.profiles.active=test -p 8082:8082 api-app-shell
+curl localhost:8082/env -> TEST
+docker run --rm -it -e JAVA_OPTS=-Dspring.profiles.active=test -p 8082:8082 api-app-shell --enviroment.label=HI
+curl localhost:8082/env -> HI
+docker run --rm -it -e JAVA_OPTS=-Dspring.profiles.active=test -p 8082:8082 api-app-shell --enviroment.label=HI --spring.main.banner-mode=console
+```
+- [features.external-config](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config)
+- [entrypoint](https://docs.docker.com/engine/reference/builder/#entrypoint)
+
+## Mounting External Properties Files
+```
+docker build -f api.Dockerfile -t api-app-external . 
+docker run -it --rm -p 8083:8083 -e spring_config_additional-location=/config/ext_application.properties -v ${PWD}/ext_application.properties:/config/ext_application.properties api-app-external
+docker run -it --rm -p 8083:8083 -e spring_config_additional-location=/config/ext_application.properties -v %cd%/ext_application.properties:/config/ext_application.properties api-app-external
+curl localhost:8083/env -> EXTERNAL
+```
+
+##Overriding Docker compose configuration files
+```
+docker build -f api.Dockerfile -t api-app .
+docker componse -f docker-compose.yml -f socker-compose-dev.yml config
+docker componse -f docker-compose.yml -f socker-compose-dev.yml up -> 8081  Network api_default|Container api-api-1 Created
+docker componse -f docker-compose.yml -f socker-compose-test.yml up -> 8082 Network api_default|Container api-api-1 Recreated
+curl localhost:8081/env -> kill/quit
+curl localhost:8082/env -> TEST
+
+docker componse -f docker-compose.yml -f socker-compose-dev.yml up -> 8081 === run              Network api_default|Container api-api-1 Created
+docker componse -f docker-compose.yml -f socker-compose-test.yml -p api-test up -> 8082 === run Network api-test_default|Container api-test-api-1 Created
+curl localhost:8081/env -> DEV
+curl localhost:8082/env -> TEST
+docker compose down
+docker compose -p api-test down
 ```
