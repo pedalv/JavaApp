@@ -76,6 +76,7 @@ docker run --rm -it \
     maven:3.9-eclipse-temurin-17 \
 
 docker run --rm -it -v ${PWD}:/app -v ${HOME}/.m2:/root/.m2 -w /app maven:3.9-eclipse-temurin-17 
+docker run --rm -it -v %cd%:/app -v ${HOME}/.m2:/root/.m2 -w /app maven:3.9-eclipse-temurin-17
 
 mvn clean packege
 ```  
@@ -107,7 +108,7 @@ docker run --rm -it \
     gradle:8.0-jdk17 \
 
 docker run --rm -it -u gradle -v ${PWD}:/app -v ${HOME}/.gradle:/home/gradle/.gradle -w /app gradle:8.0-jdk17 
-
+docker run --rm -it -u gradle -v %cd%:/app -v ${HOME}/.gradle:/home/gradle/.gradle -w /app gradle:8.0-jdk17
 gradle build
 
 ls build/libs
@@ -316,7 +317,7 @@ docker network ls
 docker network inspect web-db 
 docker run --network-alias <alias>
 docker run -it --rm -p 5432:5432 -e POSTGRESS_PASSWORD=1234 -e POSTGRES_DB=bookdb -v ${PWD}/db:/var/lib/postgresql/data --net web-db --name db postgres
-
+docker run -it --rm -p 5432:5432 -e POSTGRESS_PASSWORD=1234 -e POSTGRES_DB=bookdb -v %cd%/db:/var/lib/postgresql/data --net web-db --name db postgres
 docker build -f web.Dockerfile -t web-app-db .
 docker run -it --rm -p 8080:8080 --net web-db web-app-db
 #No exception
@@ -335,6 +336,7 @@ spring.datasource.username=postgres
 spring.datasource.password=1234
 
 docker run -it --rm -p 5432:5432 -e POSTGRESS_PASSWORD=1234 -e POSTGRES_DB=bookdb -v ${PWD}/db:/var/lib/postgresql/data postgres
+docker run -it --rm -p 5432:5432 -e POSTGRESS_PASSWORD=1234 -e POSTGRES_DB=bookdb -v %cd%/db:/var/lib/postgresql/data postgres
 gradle clean bootRun  
 
 docker build -f web.Dockerfile -t web-app .
