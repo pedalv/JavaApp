@@ -61,16 +61,19 @@
   http://localhost:15672 (guest/guest)
   ``` 
   - H2 database
-    - [H2 Database in Docker](https://github.com/jesperdj/docker-h2) and [H2 Database Engine](https://h2database.com/html/main.html)
+    - From the course: [GITHUB - H2 Database in Docker](https://github.com/jesperdj/docker-h2) and [H2 Database Engine](https://h2database.com/html/main.html) and [DOCKERHUB - jesperdj/h2](https://hub.docker.com/r/jesperdj/h2)
     ```
     docker build -t jesperdj/h2 .                                        //Use Dockerfile to change parameters or 
     docker pull jesperdj/h2
     docker images
-    docker run -d -p 8082:8082 -p 9092:9092 --name exampledb jesperdj/h2 //Access the H2 Console at: http://localhost:8082/
-                                                                         //Connect to a database named test using JDBC (the database will automatically be created if it does not yet exist):
-                                                                         //JDBC URL: jdbc:h2:tcp://localhost/test
-                                                                         //Username: sa
-                                                                         //Password: (none)
+    docker run -d -p 8082:8082 -p 9092:9092 --name h2 jesperdj/h2 //Access the H2 Console at: http://localhost:8082/
+                                                                  //Connect to a database named test using JDBC (the database will automatically be created if it does not yet exist):
+                                                                  //JDBC URL: jdbc:h2:tcp://localhost/test
+                                                                  //spring.datasource.url=jdbc:h2:tcp://localhost/globomantics      //NEW WITH IMAGE
+                                                                  //spring.datasource.url=jdbc:h2:mem:globomantics                  //OLD     
+                                                                  //Username: sa
+                                                                  //Password: (none)
+    docker ps
     ```
     - [h2database](https://hub.docker.com/r/buildo/h2database)
       - [GitHub h2database](https://github.com/h2database/h2database)
@@ -100,3 +103,14 @@
     docker images
     docker run -itd --rm -e POSTGRES_USER=username -e POSTGRES_PASSWORD=password -e POSTGRES_DB=my_db_movie -p 5432:5432 --name my_db_movie postgres
     ```
+
+- Run backend and frontend modules:
+  - Run one instances of frontend
+    ```
+    mvn -pl web spring-boot:run
+    ```
+  - Run two instances of backend and listen in the same queue in the RabbitMQ
+    ```
+    mvn -pl service spring-boot:run
+    ```
+    
