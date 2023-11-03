@@ -1,0 +1,55 @@
+<div>
+  <!-- show employee -->
+  <div class="card text-center" *ngIf="selectedEmployee">
+    <div class="card-header">
+      # {{selectedEmployee.id}}
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">{{selectedEmployee.firstName}} {{selectedEmployee.lastName}}</h4>
+      <p class="card-text">
+        {{selectedEmployee.role}}
+      </p>
+    </div>
+    <button class="btn btn-primary" (click)="editEmployee(selectedEmployee)">Edit employee</button>
+    <br />
+    <button class="btn btn-primary" (click)="change(employee)">Change employee via Output</button>
+  </div>
+
+  <!-- edit employee -->
+  <div class="alert alert-success" id="edit-success" *ngIf="isEdit">
+    {{msgEdit}}
+  </div>
+
+  <div class="alert alert-danger" id="edit-error" *ngIf="editError">
+    {{msgEditError}}
+  </div>
+
+  <!-- edit employee -->
+  <form *ngIf="showForm">
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input [(ngModel)]="employee.id" disabled type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="Employee ID">
+      <small id="idHelp" class="form-text text-muted">Enter your employee’s ID</small>
+
+      <label for="firstName">Employee Fornavn</label>
+      <input [(ngModel)]="employee.firstName" type="text" name="firstName" class="form-control" id="firstName" aria-describedby="firstNameHelp" placeholder="Enter your employee fornavn">
+      <small id="firstNameHelp" class="form-text text-muted">Enter your employee’s name</small>
+
+      <label for="lastName">Employee Etternavn</label>
+      <input [(ngModel)]="employee.lastName" type="text" name="lastName" class="form-control" id="lastName" aria-describedby="lastNameHelp"
+             placeholder="Enter your employee etternavn">
+      <small id="lastNameHelp" class="form-text text-muted">Enter your employee’s etternavn</small>
+
+      <label for="role">Employee Roller</label>
+      <select [(ngModel)]="employee.role" name="role" class="form-control" id="role" aria-describedby="roleHelp">
+        <option disabled>Select Roller</option>
+        <option *ngFor="let r of rolles">{{r.name}}</option>
+      </select>
+      <small id="roleHelp" class="form-text text-muted">Enter your employee’s rolle</small>
+    </div>
+    <button class="btn btn-primary" (click)="replaceEmployee(employee)">Update employee</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="change(employee)">Change employee via Output</button>
+  </form>
+
+</div>

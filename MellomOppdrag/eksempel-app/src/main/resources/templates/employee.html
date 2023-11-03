@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{../layouts/main}">
+<head>
+    <title>Employee</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div>
+        <h1>Employee list</h1>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th> First Name </th>
+                <th> Last Name </th>
+                <th> Role </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${employees.empty}">
+                <td colspan="2"> Ingen Employee </td>
+            </tr>
+            <tr th:each="employee : ${employees}">
+                <td><span th:text="${employee.firstName}"> First Name </span></td>
+                <td><span th:text="${employee.lastName}"> Last Name </span></td>
+                <td><span th:text="${employee.role}"> Role </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

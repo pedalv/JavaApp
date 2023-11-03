@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{../layouts/main}">
+<head>
+    <title>Partner</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div>
+        <h1>Partner list</h1>
+        <table>
+            <thead>
+            <tr>
+                <th> Name </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${partners.empty}">
+                <td colspan="2"> Ingen Partner </td>
+            </tr>
+            <tr th:each="partner : ${partners}">
+                <td><span th:text="${partner.name}"> Name </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <article>
+            <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        </article>
+        <aside>
+            <p> Aside information</p>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="btn btn-lg btn-primary" />
+            </form>
+        </aside>
+    </div>
+</section>
+</body>
+</html>

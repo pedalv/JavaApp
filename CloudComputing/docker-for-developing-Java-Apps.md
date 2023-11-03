@@ -447,7 +447,8 @@ docker compose -p api-test down
 ## Managing Application Logs with Docker
 docker logs [OPTIONS] CONTAINER
 - docker Logs --details|--follow|--since|-tail|-timestamps|--until
-- --since|--until: 2021-01-01T00:00:00Z or 10m
+- --since|--until: "2021-01-01T00:00:00Z" or "10m"
+- ``` docker logs --since "2023-11-03T08:45:00Z" 9ec ```
 
 docker compose logs [OPTIONS] [SERVICE...]
 - docker compose logs --no-color|--follow|--tail|--timestamps
@@ -480,4 +481,43 @@ docker container ls -a
 docker compose up
 #fetch data fra en of apis
 #visit kibana at localhost port 5601, go Analytics -> Discover (click create index patern, type fluent og choice timestamp)
+```
+
+## Debugging Java Applications Running in Containers
+- docker-compose-debugh.yml
+```
+services:
+  web-app:
+    command: ["catalina.sh", "jpda", "run"]
+    ports:
+      - 5005:5005
+    environment:
+      - JPDA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      
+services:
+  web-app:
+    ...
+    entrypoint: [
+      "Java", 
+      "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005",
+      "-jar", "app.jar"
+    ]    
+```
+
+- Dockerfile
+```
+FROM eclipse-temurin
+...
+ENTRYPOINT[
+  "Java",
+  "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005",
+  "-jar", "app.jar"
+]
+```
+
+- Docker Run Command
+```
+docker run -it --rm -p 8080:8080 --entrypoint java agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar app.jar
+
+docker run -it --rm -p 8080:8080 my-app-image java agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar app.jar
 ```

@@ -1,0 +1,25 @@
+<div class="view">
+  <div class="container">
+    <header>
+      <h3><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Employee Information</h3>
+    </header>
+    <br />
+    <nav>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/employee/list">Employees List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/list-sort">Employees List Sort</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/create">Employee Create</a>
+        </li>
+      </ul>
+      <router-outlet></router-outlet>
+    </nav>
+  </div>
+</div>
+
+
+<app-employee-details [selectedEmployee]="selectedEmployee" (selectedEmployeeChanged)="changed($event)"></app-employee-details>

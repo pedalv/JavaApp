@@ -1,0 +1,150 @@
+<div *ngIf="customer$ | async as customer" >
+
+  <!-- details -->
+  <div *ngIf="isdetails == true">
+
+      <p>Customer details:</p>
+
+      <h4>Details</h4>
+
+      <table *ngIf="customer$ | async as customer" class="table">
+
+        <tbody>
+        <tr>
+          <td>Id: </td>
+          <td>{{ customer.id }}</td>
+        </tr>
+        <tr>
+          <td>Name: </td>
+          <td>{{ customer.name }}</td>
+        </tr>
+        <tr>
+          <td>Project: </td>
+          <td>{{ customer.project }}</td>
+        </tr>
+        </tbody>
+        <!--
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Project</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{ customer$.id | async }}</td>
+            <td>{{ customer$.name }}</td>
+            <td>{{ customer$.project }}</td>
+          </tr>
+          </tbody>
+        -->
+      </table>
+      <br />
+      <button class="btn btn-primary" (click)="edit()">Edit customer</button>
+      &nbsp;&nbsp;
+      <button class="btn btn-primary"  id="del" (click)="delete()">Delete</button>
+  </div>
+
+  <!-- redigere -->
+  <div *ngIf="isdetails == false">
+
+
+    <p>Customer redigere:</p>
+
+    <h4>Redigere</h4>
+
+    <div class="container">
+
+      <!--
+        HTML5 validate === ngNativeValidate
+        - required
+        - pattern (ex: B.*)
+        - min/maxlength === text
+        - min/max === number
+      -->
+
+      <!--
+        Validation Classes in Angular
+        - ng-untouched
+        - ng-touched
+        -ng-pristine (unmodify)
+        -ng-dirty
+        - ng-valid
+        - ng-invalid
+      -->
+
+      <!--
+        #classTest
+        <h3> {{ classTest.className }} </h3>
+
+        form-control ng-untouched ng-dirty ng-invalid
+        form-control ng-untouched ng-valid ng-dirty
+      -->
+
+      <!--
+        #propertyTest="ngModel"
+
+        <h3>dirty: {{ propertyTest.dirty }} </h3>
+        <h3>pristine: {{ propertyTest.pristine }} </h3>
+        <h3>touched: {{ propertyTest.touched }} </h3>
+        <h3>untouched: {{ propertyTest.untouched }} </h3>
+        <h3>valid: {{ propertyTest.valid }} </h3>
+        <h3>invalid: {{ propertyTest.invalid }} </h3>
+      -->
+
+
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="form-group">
+          <label for="customerId">Customer Id</label>
+          <input [(ngModel)]="customer.id" type="text" disabled class="form-control" id="customerId" name="id" aria-describedby="customerIdHelp"
+                 placeholder="Customer ID" value="{{ customer.id }}">
+          <small id="customerIdHelp" class="form-text text-muted">Customer Id is automatic created.</small>
+        </div>
+        <div class="form-group">
+          <label for="customerName">Customer name</label>
+          <input [(ngModel)]="customer.name" type="text" class="form-control" id="customerName" name="name" aria-describedby="nameHelp"
+                  placeholder="Enter your customer navn" value="{{ customer.name }}"
+                  required #nameField="ngModel"
+                  (blur)="onBlur(nameField)"
+                  [class.field-error]="form.submitted && nameField.invalid">
+          <small id="nameHelp" class="form-text text-muted">Enter your customer’s name</small>
+          <div [hidden]="nameField.valid || nameField.untouched"
+                class="alert alert-danger">
+            Enter a name (Styling Forms)
+          </div>
+          <div [hidden]="!form.submitted || nameField.valid"
+               class="alert alert-danger">
+            Enter a name (Submitting Forms)
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="customerProject">Customer project</label>
+          <input [(ngModel)]="customer.project" type="text" class="form-control" id="customerProject" name="project" aria-describedby="projectHelp"
+                 placeholder="Enter your customer project" value="{{ customer.project }}">
+          <small id="projectHelp" class="form-text text-muted">Enter your customer’s etternavn</small>
+        </div>
+        <button class="btn btn-primary" (click)="save(customer)">Save employee via store</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-primary" >Submit</button>
+      </form>
+    </div>
+
+    <h3>{{ customerSettings | json }}</h3>
+    <h3>{{ form.value | json }}</h3>
+    <h3>{{ customer | json }}</h3>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+

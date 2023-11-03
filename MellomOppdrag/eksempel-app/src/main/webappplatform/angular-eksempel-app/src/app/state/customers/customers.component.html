@@ -1,0 +1,29 @@
+<div>
+
+  <div *ngIf="errorMessage$ | async as errorMessage" class="alert alert-danger">
+    Error: {{ errorMessage }}
+  </div>
+
+  <button (click)="addCustomerClone()" class="btn btn-primary">Add Customer (push a clone)</button>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <app-customers-list></app-customers-list>
+
+      <div class="ml-4">
+        <label>
+          <input class="form-check-input" type="checkbox"
+                 (change)="checkChanged()"
+                 [checked]="displayCustomers" />
+          Display Customers
+        </label>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <app-customer-details></app-customer-details>
+    </div>
+  </div>
+
+</div>
