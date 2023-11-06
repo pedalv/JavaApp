@@ -2,6 +2,11 @@
 - An implementation of the Enterprise Integration Patterns based on the Spring Framework
 - [Spring Integration 6](https://spring.io/projects/spring-integration)
 - [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/)
+- Event - based Sender like: AMQP, Kafka - [SAP Cloud Integration: Asynchronous Messaging Best Practices](https://www.integration-excellence.com/sap-cpi-asynchronous-messaging-best-practices/)
+- The Advanced Message Queuing Protocol (AMQP)
+  - MQP is an open source published standard for asynchronous messaging by wire. 
+  - AMQP enables encrypted and interoperable messaging between organizations and applications. 
+  - The protocol is used in client/server messaging and in IoT device management.
 
 ## Enterprise Integrations Patterns
 - Message
@@ -113,4 +118,7 @@
     ```
     mvn -pl service spring-boot:run
     ```
+
+Note: -pl,--projects <arg> : Comma-delimited list of specified reactor projects to build instead of all projects. A project can be specified by [groupId]:artifactId or by its relative path.
+
     
