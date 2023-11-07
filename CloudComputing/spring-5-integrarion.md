@@ -2,7 +2,11 @@
 - An implementation of the Enterprise Integration Patterns based on the Spring Framework
 - [Spring Integration 6](https://spring.io/projects/spring-integration)
 - [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/)
-- Event - based Sender like: AMQP, Kafka - [SAP Cloud Integration: Asynchronous Messaging Best Practices](https://www.integration-excellence.com/sap-cpi-asynchronous-messaging-best-practices/)
+- Event - based Sender like: AMQP, Kafka 
+  - [SAP Cloud Integration: Asynchronous Messaging Best Practices](https://www.integration-excellence.com/sap-cpi-asynchronous-messaging-best-practices/)
+  - Inbound/Outbound communication describe the communication direction from a SAP Cloud into a remote system
+  - Inbound Communication Channel to receive Messages
+  - Outbound communication refers to message processing from the integration platform to a remote system (where the integration platform is the client)
 - The Advanced Message Queuing Protocol (AMQP)
   - MQP is an open source published standard for asynchronous messaging by wire. 
   - AMQP enables encrypted and interoperable messaging between organizations and applications. 
@@ -18,13 +22,13 @@
 
 -  Message endpoint
   - Channel adapter
-  - Gateway
+  - Gateway[spring-5-integrarion.md](spring-5-integrarion.md)
   - Service activator
 
 - Message transform
 - Message Routing/filtring
 
-##Spring Integration
+## Spring Integration
 - Message Channel
   - Provider (sender)(Publish)(Store/Save/Activator), Consumer (receiver)(Subscribe)(Push/Pull)
   - Subscribable channels (Event-Driven Consumer):
@@ -50,7 +54,7 @@
     - Buffering    
     - Point-to-point channel: one sender, one receiver. Example: Queue
 
-##Using a Message Broker (RabbitMQ/Kafka) for Point-to-Point Messaging
+## Using a Message Broker (RabbitMQ/Kafka) for Point-to-Point Messaging
 - Message Broker
   - We can decouple the destination of a message from the sender and maintain central control over the flow of messages by RabbitMQ (Kafka) and Docker 
 - dockerhub
@@ -65,8 +69,8 @@
   docker rm rabbitmq
   http://localhost:15672 (guest/guest)
   ``` 
-  - H2 database
-    - From the course: [GITHUB - H2 Database in Docker](https://github.com/jesperdj/docker-h2) and [H2 Database Engine](https://h2database.com/html/main.html) and [DOCKERHUB - jesperdj/h2](https://hub.docker.com/r/jesperdj/h2)
+- H2 database
+  - From the course: [GITHUB - H2 Database in Docker](https://github.com/jesperdj/docker-h2) and [H2 Database Engine](https://h2database.com/html/main.html) and [DOCKERHUB - jesperdj/h2](https://hub.docker.com/r/jesperdj/h2)
     ```
     docker build -t jesperdj/h2 .                                        //Use Dockerfile to change parameters or 
     docker pull jesperdj/h2
@@ -102,12 +106,30 @@
     #http://localhost:8080
     docker logs -f MyH2Instance
     ```
-  - [postgres](https://hub.docker.com/_/postgres)  
-    ```
-    docker pull postgres
-    docker images
-    docker run -itd --rm -e POSTGRES_USER=username -e POSTGRES_PASSWORD=password -e POSTGRES_DB=my_db_movie -p 5432:5432 --name my_db_movie postgres
-    ```
+- [postgres](https://hub.docker.com/_/postgres)  
+   ```
+   docker pull postgres
+   docker images
+   docker run -itd --rm -e POSTGRES_USER=username -e POSTGRES_PASSWORD=password -e POSTGRES_DB=my_db_movie -p 5432:5432 --name my_db_movie postgres
+   ```
+- [greenmail](https://hub.docker.com/r/greenmail/standalone)
+  - [GitHub GreenMail](https://github.com/greenmail-mail-test/greenmail#greenmail)
+  - [About GreenMail](https://greenmail-mail-test.github.io/greenmail/#deploy_docker_standalone)
+  ```
+  docker run -d -h greenmail --name greenmail -p 3025:3025 -p 3143:3143 greenmail/standalone
+  
+  curl --url "imap://localhost:3143" --user "pedro@example.com:pedro@example.com" --request "EXAMINE INBOX"  
+  curl --url "imap://localhost:3143/INBOX;UID=1" --user "pedro@example.com:pedro@example.com"
+  ```
+  
+Resume
+```
+docker start rabbitmq
+docker start greenmail
+GlobomanticBillingApplication
+GlobomanticServerApplication, back-end 
+GlobomanticWebApplication, front-end
+```
 
 - Run backend and frontend modules:
   - Run one instances of frontend
