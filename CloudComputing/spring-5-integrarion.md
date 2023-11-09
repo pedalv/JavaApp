@@ -18,10 +18,11 @@
   - The Header contains additional information about the message, such as a correlation ID, sequence ID, expiration time
   - The Payload contains the body of the message
 
-- Message Channel
-  - Point-to-point channel: one sender, one receiver. Example: Queue
-  - Publish-subscribe channel: One sender, multiple receivers. Example: Event notifications
-
+- Message Channel : When two applications wish to exchange data, they do so by sending the data through a channel that connects the two.
+  - Point-to-point channel	: one sender, one receiver. Example: Queue
+							: A point-to-point semantic states that no more than one consumer can receive each message
+  - Publish-subscribe channel	: One sender, multiple receivers. Example: Event notifications
+								: A publish-subscribe semantic attempts to broadcast each message to all subscribers	
 -  Message endpoint: refers to some peace of code to connects with the messaging system to send or receive messages
   - Channel adapter
   - Gateway: if your primary need is to expose API’s for consumption by external business partners in a secure, scalable fashion, then you may want to consider just using an API gateway.
@@ -50,10 +51,21 @@
       - Publish-SubscribeChannel : it is a subscribable channel that provides a publish-subscribe semantic that broadcasts messages sent to it to all its subscribed handlers.
     - Push: subscribe(MesssageHandler handler)/unsubscribe(MesssageHandler handler)
     - Non-buffering
-    - Publish-subscribe channel: One sender, multiple receivers. Example: Event notifications
+    - Publish-subscribe channel	: One sender, multiple receivers. Example: Event notifications
+								: It is a subscribable channel that provides a publish-subscribe semantic that broadcasts messages sent to it to all its subscribed handlers.
+								: As a subscribable channel, the PublishSubscribeChannel does not buffer messages
+								: If the subscriber is not present when the message is published, it does not receive the message
+								: It is a subscribable channel that publishes messages to all of its subscribers
+								: It is best used for Event Messages								
   - Pollable  channels (Polling Consumer)
     - QueueChannel 	: It is a pollable channel that provides a point-to-point semantic by storing its messages in a queue and returning messages to receivers through its receive() method.
-					
+					: It is a pollable channel backed by a queue
+					: Allows consumers to throttle incoming messages
+					: Configure the polling interval
+					: Poller Triggers
+						- fixedDelay: A delay, in milliseconds, after a message is processed and the channel is polled
+						- fixedRate: A rate, in milliseconds, in which the channel is polled
+						- cron: A cron time configuration that defines when the channel is polled					
       - Buffers messages in an in-memory queue
       - Unbounded capacity
     - RendezvousChannel : It is a pollable point-to-point channel that enables a “direct-handoff” scenario, wherein a sender blocks until another party invokes the channel’s receive() method. The other party blocks until the sender sends the message.
@@ -192,3 +204,33 @@ Note: -pl,--projects <arg> : Comma-delimited list of specified reactor projects 
 				: A Subject publishes an event to a channel. Observers receive the event and process it
 				: It is used to allow one application to notify other applications of changes to its internal state
 				: It enforces loose coupling and allows other applications to integrate with it
+				
+## Designing an Error Handling Strategy for Different Integration Scenarios
+- Errors in an asynchronous application
+    - Handling errors when the message publisher is no longer available to receive the error
+	- Execute code that can throw an exception in a try block
+    - Catch exceptions in a catch block
+	
+- Error Handling in a Request-Replay Message Patterns
+  - The sender sends a request message through a channel and the receiver sends the reply through a reply channel
+  - Request-Reply Channels
+    - Direct Channel : Sender and receiver share the same thread
+	- Rendezvous Channel : Queuing Channel that uses a synchronous queue
+  - When using the request-reply message pattern, error handling can be accomplished using standard exception handling	
+  - Both Direct and Rendezvous channels work this way
+
+- Error Handling in Asynchronous Message Channels
+  - Handling errors when the message publisher is available to receive the error
+  - Spring Integration Error Channels
+    - Global Error Channel : Created by Spring Integration to catch all exceptions without an explicitly defined error channel
+	- Custom Error Channel : An error channel that you create and specify in your messaging gateway
+  - When an asynchronous message receiver cannot handle a message, it throws an exception that gets published to an error channel	
+  - There are two types of error channels: the global error channel and custom error channels
+
+- Custom Error Channels
+  - A custom error channel is defined in your configuration class as a PublishSubscribeChannel
+  - The gateway is configured to publish errors to the custom error channel through its “errorChannel” property
+  - The error handler is subscribed to the custom error channel
+
+- Dead Letter Channels : When a messaging system determines that it cannot or should not deliver a message, it may elect to move the message to a Dead Letter Channel
+  - Example: Amazon SQS, When a consumer retrieves a message from a queue, the message remains hidden on the queue. After processing the message, the consumer is responsible for deleting the message. If it does not delete the message in the allotted time, it becomes visible again. Once a message has been retrieved a certain number of times, SQS moves it to a dead letter queue.
