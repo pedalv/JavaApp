@@ -31,9 +31,15 @@
 - Message transform: from JSON to XML
   - Message translator
   - Content enricher
+    - Header enricher
+	- Envelope wrapper
+	- Claim check
+	- ...
   - Envelope wrapper
 - Message Routing
   - Message filtering
+  - Splitter/aggregator
+  - ...
 
 ## Spring Integration
 - Message Channel
@@ -234,3 +240,43 @@ Note: -pl,--projects <arg> : Comma-delimited list of specified reactor projects 
 
 - Dead Letter Channels : When a messaging system determines that it cannot or should not deliver a message, it may elect to move the message to a Dead Letter Channel
   - Example: Amazon SQS, When a consumer retrieves a message from a queue, the message remains hidden on the queue. After processing the message, the consumer is responsible for deleting the message. If it does not delete the message in the allotted time, it becomes visible again. Once a message has been retrieved a certain number of times, SQS moves it to a dead letter queue.
+
+
+## Metrics and Monitoring
+- Spring Boot Actuator : Monitor and manage String Boot applications 
+  - It lets you monitor and interact, or control, your application
+  - Examples:
+    - [Production-ready Features](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html) - 2. Endpoints
+    - [Spring Boot Actuator: Production-ready Features](https://docs.spring.io/spring-boot/docs/2.2.x/reference/html/production-ready-features.html) - 2. Endpoints
+    - [Spring Boot Reference Documentation](https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf) - 13.2. Endpoints 
+      - http://localhost/actuator/health
+      - http://localhost/actuator/info
+      - http://localhost/actuator/metrics
+        - http://localhost/actuator/metrics/jvm.memory/used
+      - http://localhost/actuator/loggers
+      - http://localhost/actuator/configprops
+      - http://localhost/actuator/beans
+      - http://localhost/actuator/readiness (Implemented a Custom Actuator Endpoint)
+    - [TODO APP](https://github.com/dustinschultz/todo-app) 
+    - https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator : 
+      - [Spring Boot Starter Actuator](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator)
+        - ``` implementation 'org.springframework.boot:spring-boot-starter-actuator:3.1.5' ```
+    - https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+        - [Spring Boot Starter Security](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security)
+        - ``` implementation 'org.springframework.boot:spring-boot-starter-security:3.1.5' ```
+    ```
+    Using default security password: <random string>
+    Note: The default username is ‘user’
+    spring.security.user.name=<username>
+    spring.security.user.password=<password>
+    ```
+  - Actuator : An actuator is a component ... responsible for ... controlling a mechanism or system
+    - An Actuator Receives a Signal and Generates Output
+  - Application health
+  - Configuration
+  - Metrics
+  - Security audit events
+- [Micrometer : SLF4Jm but for metrics](http://micrometer.io)
+- Monitoring with [InfluxDB: Time series database](https://www.influxdata.com) and [Grafana: Monitoring tool](https://grafana.com)
+- Spring Integration: Monitoring, System Management and Debugging
+
