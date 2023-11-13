@@ -6,7 +6,7 @@
   - Configuration management
 - [Install PowerShell on Windows, Linux, and macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3)
 - [Windows Terminal](https://learn.microsoft.com/en-us/windows/terminal/)
-- [PowerShell Documentation](https://learn.microsoft.com/en-us/powershell/)
+- [PowerShell Documentation](https://learn.microsoft.com/nb-no/powershell/)
 - [Azure Cloud PowerShell](https://learn.microsoft.com/en-us/azure/cloud-shell/overview)
 - ``` $PSEdition ``` : Desktop
 - PowerShell version
@@ -24,6 +24,8 @@
 	PSRemotingProtocolVersion      2.3
 	SerializationVersion           1.1.0.1
 	```
+- [Differences between Windows PowerShell 5.1 and PowerShell 7.x](https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell?view=powershell-7.3)
+  - Windows PowerShell 5.1 is built on top of the .NET Framework v4.5. With the release of PowerShell 6.0, PowerShell became an open source project built on .NET Core 2.0. Moving from the .NET Framework to .NET Core allowed PowerShell to become a cross-platform solution. PowerShell runs on Windows, macOS, and Linux.
 - Get-Service command:
 	```
 	Get-Service -Name P* -ComputerName Client1,Client2
